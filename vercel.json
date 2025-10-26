@@ -1,7 +1,7 @@
 {
   "buildCommand": "pnpm run build",
   "outputDirectory": "apps/web/.next",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "installCommand": "NODE_ENV=development pnpm install --frozen-lockfile",
   "framework": "nextjs",
   "functions": {
     "apps/web/pages/api/**/*.ts": {
