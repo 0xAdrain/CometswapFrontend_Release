@@ -21,7 +21,7 @@
     "dev:gamification": "pnpm turbo run dev --filter=gamification... --concurrency=50",
     "storybook": "turbo run start --filter=@cometswap/uikit...",
     "build:storybook": "turbo run build:storybook --filter=@cometswap/uikit...",
-    "build": "turbo run build --filter=web...",
+    "build": "turbo run build --filter=./packages/* --filter=./packages/routing-sdk/addons/* && turbo run build --filter=web...",
     "build:blog": "turbo run build --filter=blog...",
     "build:aptos": "turbo run build --filter=aptos-web...",
     "build:bridge": "turbo run build --filter=bridge...",
