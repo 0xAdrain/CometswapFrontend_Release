@@ -19,7 +19,7 @@ const fadeInUp = keyframes`
 
 const Container = styled(Box)`
   padding: 16px;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 20px;
   }
@@ -32,20 +32,12 @@ const AnimatedCard = styled(Box)<{ delay?: number }>`
 `
 
 const SummarySection = styled(Box)`
-  background: ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.02)' 
-      : 'rgba(0, 0, 0, 0.02)'
-  };
+  background: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)')};
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 20px;
-  border: 1px solid ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.1)' 
-      : 'rgba(0, 0, 0, 0.1)'
-  };
-  
+  border: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)')};
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 20px;
     margin-bottom: 24px;
@@ -61,7 +53,7 @@ const SummaryTitle = styled(Text)`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 18px;
     margin-bottom: 16px;
@@ -73,12 +65,12 @@ const SummaryGrid = styled(Box)`
   grid-template-columns: 1fr;
   gap: 12px;
   margin-bottom: 16px;
-  
+
   ${({ theme }) => theme.mediaQueries.sm} {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -89,13 +81,9 @@ const SummaryGrid = styled(Box)`
 const SummaryItem = styled(Box)`
   text-align: center;
   padding: 12px;
-  background: ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.05)' 
-      : 'rgba(0, 0, 0, 0.05)'
-  };
+  background: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)')};
   border-radius: 8px;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 16px;
   }
@@ -106,7 +94,7 @@ const SummaryValue = styled(Text)`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 4px;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 20px;
   }
@@ -115,7 +103,7 @@ const SummaryValue = styled(Text)`
 const SummaryLabel = styled(Text)`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.textSubtle};
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 14px;
   }
@@ -127,12 +115,12 @@ const ClaimButton = styled(Button)`
   font-weight: 600;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   border: none;
-  
+
   &:hover:not(:disabled) {
     background: linear-gradient(135deg, #059669 0%, #047857 100%);
     transform: translateY(-1px);
   }
-  
+
   &:disabled {
     background: ${({ theme }) => theme.colors.backgroundDisabled};
     color: ${({ theme }) => theme.colors.textDisabled};
@@ -144,7 +132,7 @@ const CyclesTitle = styled(Text)`
   font-weight: 600;
   margin-bottom: 16px;
   color: ${({ theme }) => theme.colors.text};
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 20px;
     margin-bottom: 20px;
@@ -156,12 +144,12 @@ const CyclesGrid = styled(Box)`
   grid-template-columns: 1fr;
   gap: 12px;
   margin-bottom: 20px;
-  
+
   ${({ theme }) => theme.mediaQueries.sm} {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-  
+
   ${({ theme }) => theme.mediaQueries.lg} {
     gap: 20px;
   }
@@ -169,7 +157,7 @@ const CyclesGrid = styled(Box)`
 
 const LargeCycleContainer = styled(Box)`
   margin-top: 16px;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     margin-top: 20px;
   }
@@ -178,17 +166,9 @@ const LargeCycleContainer = styled(Box)`
 const NoStakesContainer = styled(Box)`
   text-align: center;
   padding: 40px 20px;
-  background: ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.02)' 
-      : 'rgba(0, 0, 0, 0.02)'
-  };
+  background: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)')};
   border-radius: 12px;
-  border: 1px solid ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.1)' 
-      : 'rgba(0, 0, 0, 0.1)'
-  };
+  border: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)')};
 `
 
 const NoStakesText = styled(Text)`
@@ -203,7 +183,7 @@ const GoStakeButton = styled(Button)`
   color: ${({ theme }) => theme.colors.primary};
   padding: 8px 16px;
   font-size: 14px;
-  
+
   &:hover:not(:disabled) {
     background: ${({ theme }) => theme.colors.primary};
     color: white;
@@ -215,7 +195,7 @@ const HintText = styled(Text)`
   color: ${({ theme }) => theme.colors.textSubtle};
   margin-top: 8px;
   cursor: pointer;
-  
+
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
   }
@@ -253,31 +233,31 @@ const PayoutPoolsView: React.FC<PayoutPoolsViewProps> = ({
   onSwitchToStaking,
 }) => {
   const { t } = useTranslation()
-  
+
   // 计算用户总奖励
   const totalUserRewards = cycles.reduce((sum, cycle) => {
     return sum + cycle.userEstimate
   }, 0)
-  
+
   // 计算可领取奖励
   const claimableRewards = cycles
-    .filter(cycle => cycle.progress >= 100 && cycle.userEstimate > 0)
+    .filter((cycle) => cycle.progress >= 100 && cycle.userEstimate > 0)
     .reduce((sum, cycle) => sum + cycle.userEstimate, 0)
-  
+
   // 计算活跃周期数
-  const activeCycles = cycles.filter(cycle => cycle.progress < 100).length
-  
+  const activeCycles = cycles.filter((cycle) => cycle.progress < 100).length
+
   const hasStakes = userStaked > 0
-  
+
   // 分离前4个周期和最大的周期
   const regularCycles = cycles.slice(0, 4)
   const largeCycle = cycles.length > 4 ? cycles[4] : null
-  
+
   const handleClaimAll = () => {
     // console.log('Claiming all rewards:', claimableRewards)
     // TODO: 实现领取逻辑
   }
-  
+
   if (!hasStakes) {
     return (
       <Container>
@@ -285,12 +265,8 @@ const PayoutPoolsView: React.FC<PayoutPoolsViewProps> = ({
           <NoStakesContainer>
             <NoStakesText>{t('No Stakes Found')}</NoStakesText>
             <NoStakesText>{t('You need to stake COMET tokens to participate in payout pools.')}</NoStakesText>
-            <GoStakeButton onClick={onSwitchToStaking}>
-              {t('Go Stake')}
-            </GoStakeButton>
-            <HintText onClick={onSwitchToStaking}>
-              {t("Don't see your rewards? Go stake")}
-            </HintText>
+            <GoStakeButton onClick={onSwitchToStaking}>{t('Go Stake')}</GoStakeButton>
+            <HintText onClick={onSwitchToStaking}>{t("Don't see your rewards? Go stake")}</HintText>
           </NoStakesContainer>
         </AnimatedCard>
       </Container>
@@ -316,19 +292,13 @@ const PayoutPoolsView: React.FC<PayoutPoolsViewProps> = ({
             <SummaryLabel>{t('Active Cycles')}</SummaryLabel>
           </SummaryItem>
         </SummaryGrid>
-        <ClaimButton 
-          onClick={handleClaimAll}
-          disabled={claimableRewards === 0}
-        >
-          {claimableRewards > 0 
+        <ClaimButton onClick={handleClaimAll} disabled={claimableRewards === 0}>
+          {claimableRewards > 0
             ? t('Claim All Rewards (%amount% COMET)', { amount: formatNumber(claimableRewards, 0, 4) })
-            : t('No Rewards Available')
-          }
+            : t('No Rewards Available')}
         </ClaimButton>
         {claimableRewards === 0 && (
-          <HintText onClick={onSwitchToStaking}>
-            {t("Don't see your rewards? Go stake")}
-          </HintText>
+          <HintText onClick={onSwitchToStaking}>{t("Don't see your rewards? Go stake")}</HintText>
         )}
       </SummarySection>
 
@@ -343,7 +313,7 @@ const PayoutPoolsView: React.FC<PayoutPoolsViewProps> = ({
       </Box>
 
       <CyclesTitle>{t('Payout Cycles')}</CyclesTitle>
-      
+
       {/* 2x2 网格显示前4个周期 */}
       <CyclesGrid>
         {regularCycles.map((cycle, index) => (
@@ -352,7 +322,7 @@ const PayoutPoolsView: React.FC<PayoutPoolsViewProps> = ({
           </AnimatedCard>
         ))}
       </CyclesGrid>
-      
+
       {/* 最大的周期单独显示 */}
       {largeCycle && (
         <LargeCycleContainer>
@@ -366,20 +336,3 @@ const PayoutPoolsView: React.FC<PayoutPoolsViewProps> = ({
 }
 
 export default PayoutPoolsView
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

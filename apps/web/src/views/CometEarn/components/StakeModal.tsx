@@ -1,15 +1,5 @@
 import { useState, useCallback, useMemo } from 'react'
-import { 
-  Modal, 
-  ModalV2, 
-  Box, 
-  Flex, 
-  Text, 
-  Button, 
-  Input, 
-  Slider,
-  useMatchBreakpoints 
-} from '@cometswap/uikit'
+import { Modal, ModalV2, Box, Flex, Text, Button, Input, Slider, useMatchBreakpoints } from '@cometswap/uikit'
 import { useTranslation } from '@cometswap/localization'
 import { Currency } from '@cometswap/sdk'
 import styled, { keyframes, css } from 'styled-components'
@@ -37,7 +27,7 @@ const ModalContent = styled(Box)`
   padding: 24px;
   max-width: 480px;
   width: 100%;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 32px;
   }
@@ -53,7 +43,7 @@ const Title = styled(Text)`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 8px;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 28px;
   }
@@ -66,11 +56,10 @@ const Subtitle = styled(Text)`
 `
 
 const CycleInfoCard = styled(Box)`
-  background: ${({ theme }) => 
-    theme.isDark 
+  background: ${({ theme }) =>
+    theme.isDark
       ? 'linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(75, 0, 130, 0.05) 100%)'
-      : 'linear-gradient(135deg, rgba(138, 43, 226, 0.05) 0%, rgba(75, 0, 130, 0.02) 100%)'
-  };
+      : 'linear-gradient(135deg, rgba(138, 43, 226, 0.05) 0%, rgba(75, 0, 130, 0.02) 100%)'};
   border: 1px solid rgba(138, 43, 226, 0.2);
   border-radius: 16px;
   padding: 20px;
@@ -101,7 +90,7 @@ const InfoValue = styled(Text)`
   font-size: 16px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 18px;
   }
@@ -119,27 +108,19 @@ const InputLabel = styled(Text)`
 `
 
 const StyledInput = styled(Input)`
-  background: ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.05)' 
-      : 'rgba(0, 0, 0, 0.02)'
-  };
-  border: 2px solid ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.1)' 
-      : 'rgba(0, 0, 0, 0.1)'
-  };
+  background: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)')};
+  border: 2px solid ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)')};
   border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
   padding: 16px 20px;
   height: 56px;
-  
+
   &:focus {
     border-color: #8a2be2;
     box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
   }
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 20px;
     padding: 20px 24px;
@@ -160,7 +141,7 @@ const MaxButton = styled(Button)`
   padding: 6px 12px;
   height: 32px;
   color: white;
-  
+
   &:hover {
     background: linear-gradient(135deg, #9932cc 0%, #5d1a8b 100%);
   }
@@ -177,45 +158,28 @@ const QuickAmountButtons = styled(Flex)`
 `
 
 const QuickAmountButton = styled(Button)<{ isSelected?: boolean }>`
-  background: ${({ isSelected }) =>
-    isSelected
-      ? 'linear-gradient(135deg, #8a2be2 0%, #4b0082 100%)'
-      : 'transparent'
-  };
-  border: 2px solid ${({ isSelected, theme }) =>
-    isSelected
-      ? '#8a2be2'
-      : theme.isDark
-        ? 'rgba(255, 255, 255, 0.1)'
-        : 'rgba(0, 0, 0, 0.1)'
-  };
+  background: ${({ isSelected }) => (isSelected ? 'linear-gradient(135deg, #8a2be2 0%, #4b0082 100%)' : 'transparent')};
+  border: 2px solid
+    ${({ isSelected, theme }) =>
+      isSelected ? '#8a2be2' : theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
   padding: 8px 16px;
   height: 36px;
-  color: ${({ isSelected, theme }) =>
-    isSelected ? 'white' : theme.colors.text
-  };
+  color: ${({ isSelected, theme }) => (isSelected ? 'white' : theme.colors.text)};
   flex: 1;
   min-width: 80px;
-  
+
   &:hover {
     border-color: #8a2be2;
     background: ${({ isSelected }) =>
-      isSelected
-        ? 'linear-gradient(135deg, #9932cc 0%, #5d1a8b 100%)'
-        : 'rgba(138, 43, 226, 0.1)'
-    };
+      isSelected ? 'linear-gradient(135deg, #9932cc 0%, #5d1a8b 100%)' : 'rgba(138, 43, 226, 0.1)'};
   }
 `
 
 const EstimateCard = styled(Box)`
-  background: ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(34, 197, 94, 0.1)' 
-      : 'rgba(34, 197, 94, 0.05)'
-  };
+  background: ${({ theme }) => (theme.isDark ? 'rgba(34, 197, 94, 0.1)' : 'rgba(34, 197, 94, 0.05)')};
   border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 12px;
   padding: 16px;
@@ -246,7 +210,7 @@ const EstimateSubtext = styled(Text)`
 const ActionButtons = styled(Flex)`
   gap: 12px;
   flex-direction: column;
-  
+
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
   }
@@ -254,11 +218,7 @@ const ActionButtons = styled(Flex)`
 
 const CancelButton = styled(Button)`
   background: transparent;
-  border: 2px solid ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.2)' 
-      : 'rgba(0, 0, 0, 0.2)'
-  };
+  border: 2px solid ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)')};
   border-radius: 12px;
   font-weight: 600;
   font-size: 16px;
@@ -266,23 +226,16 @@ const CancelButton = styled(Button)`
   height: 56px;
   color: ${({ theme }) => theme.colors.text};
   flex: 1;
-  
+
   &:hover {
     border-color: ${({ theme }) => theme.colors.textSubtle};
-    background: ${({ theme }) => 
-      theme.isDark 
-        ? 'rgba(255, 255, 255, 0.05)' 
-        : 'rgba(0, 0, 0, 0.02)'
-    };
+    background: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)')};
   }
 `
 
 const StakeButton = styled(Button)<{ isValid: boolean }>`
   background: ${({ isValid }) =>
-    isValid
-      ? 'linear-gradient(135deg, #8a2be2 0%, #4b0082 100%)'
-      : 'rgba(138, 43, 226, 0.3)'
-  };
+    isValid ? 'linear-gradient(135deg, #8a2be2 0%, #4b0082 100%)' : 'rgba(138, 43, 226, 0.3)'};
   border: none;
   border-radius: 12px;
   font-weight: 600;
@@ -291,22 +244,24 @@ const StakeButton = styled(Button)<{ isValid: boolean }>`
   height: 56px;
   color: white;
   flex: 1;
-  cursor: ${({ isValid }) => isValid ? 'pointer' : 'not-allowed'};
+  cursor: ${({ isValid }) => (isValid ? 'pointer' : 'not-allowed')};
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  ${({ isValid }) => isValid && css`
-    animation: ${glow} 2s infinite;
-    
-    &:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, #9932cc 0%, #5d1a8b 100%);
-      box-shadow: 0 8px 32px rgba(138, 43, 226, 0.4);
-    }
-    
-    &:active {
-      transform: translateY(0);
-    }
-  `}
+
+  ${({ isValid }) =>
+    isValid &&
+    css`
+      animation: ${glow} 2s infinite;
+
+      &:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #9932cc 0%, #5d1a8b 100%);
+        box-shadow: 0 8px 32px rgba(138, 43, 226, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    `}
 `
 
 interface StakingCycle {
@@ -327,11 +282,7 @@ interface StakeModalProps {
   onClose: () => void
 }
 
-const StakeModal: React.FC<StakeModalProps> = ({
-  cycle,
-  token,
-  onClose,
-}) => {
+const StakeModal: React.FC<StakeModalProps> = ({ cycle, token, onClose }) => {
   const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
   const [stakeAmount, setStakeAmount] = useState('')
@@ -359,7 +310,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
   const estimatedReward = useMemo(() => {
     if (numericAmount === 0) return 0
     // Simple estimation: (amount * APY / 100) * (duration / 365)
-    return (numericAmount * cycle.apy / 100) * (cycle.duration / 365)
+    return ((numericAmount * cycle.apy) / 100) * (cycle.duration / 365)
   }, [numericAmount, cycle.apy, cycle.duration])
 
   const handleAmountChange = useCallback((value: string) => {
@@ -379,15 +330,15 @@ const StakeModal: React.FC<StakeModalProps> = ({
 
   const handleStake = useCallback(async () => {
     if (!isValidAmount) return
-    
+
     setIsLoading(true)
     try {
       // TODO: Implement actual staking logic
       // console.log('Staking:', numericAmount, 'COMET in cycle:', cycle.id)
-      
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+
       onClose()
     } catch (error) {
       console.error('Staking failed:', error)
@@ -420,7 +371,9 @@ const StakeModal: React.FC<StakeModalProps> = ({
             </InfoItem>
             <InfoItem>
               <InfoLabel>{t('Duration')}</InfoLabel>
-              <InfoValue>{cycle.duration} {t('Days')}</InfoValue>
+              <InfoValue>
+                {cycle.duration} {t('Days')}
+              </InfoValue>
             </InfoItem>
             <InfoItem>
               <InfoLabel>{t('Min Stake')}</InfoLabel>
@@ -442,11 +395,9 @@ const StakeModal: React.FC<StakeModalProps> = ({
               value={stakeAmount}
               onChange={(e) => handleAmountChange(e.target.value)}
             />
-            <MaxButton onClick={handleMaxClick}>
-              {t('MAX')}
-            </MaxButton>
+            <MaxButton onClick={handleMaxClick}>{t('MAX')}</MaxButton>
           </InputContainer>
-          
+
           <QuickAmountButtons>
             {quickAmounts.map((quick, index) => (
               <QuickAmountButton
@@ -474,18 +425,9 @@ const StakeModal: React.FC<StakeModalProps> = ({
         )}
 
         <ActionButtons>
-          <CancelButton onClick={onClose}>
-            {t('Cancel')}
-          </CancelButton>
-          <StakeButton
-            isValid={isValidAmount}
-            onClick={handleStake}
-            disabled={!isValidAmount || isLoading}
-          >
-            {isLoading 
-              ? t('Staking...') 
-              : t('Stake %amount% COMET', { amount: formatNumber(numericAmount, 2, 2) })
-            }
+          <CancelButton onClick={onClose}>{t('Cancel')}</CancelButton>
+          <StakeButton isValid={isValidAmount} onClick={handleStake} disabled={!isValidAmount || isLoading}>
+            {isLoading ? t('Staking...') : t('Stake %amount% COMET', { amount: formatNumber(numericAmount, 2, 2) })}
           </StakeButton>
         </ActionButtons>
       </ModalContent>
@@ -494,17 +436,3 @@ const StakeModal: React.FC<StakeModalProps> = ({
 }
 
 export default StakeModal
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,7 +14,7 @@ const pulseGlow = keyframes`
 
 const Container = styled(Box)`
   padding: 20px;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 24px;
   }
@@ -26,7 +26,7 @@ const Header = styled(Flex)`
   margin-bottom: 20px;
   flex-direction: column;
   gap: 12px;
-  
+
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
     align-items: center;
@@ -43,7 +43,7 @@ const CycleName = styled(Text)`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 4px;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 20px;
   }
@@ -80,17 +80,18 @@ const DetailBadge = styled(Box)<{ variant?: 'primary' | 'secondary' | 'success' 
         return theme.colors.textSubtle
     }
   }};
-  border: 1px solid ${({ theme, variant }) => {
-    switch (variant) {
-      case 'primary':
-        return 'rgba(138, 43, 226, 0.3)'
-      case 'success':
-        return 'rgba(34, 197, 94, 0.3)'
-      default:
-        return theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-    }
-  }};
-  
+  border: 1px solid
+    ${({ theme, variant }) => {
+      switch (variant) {
+        case 'primary':
+          return 'rgba(138, 43, 226, 0.3)'
+        case 'success':
+          return 'rgba(34, 197, 94, 0.3)'
+        default:
+          return theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+      }
+    }};
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 14px;
     padding: 6px 12px;
@@ -108,13 +109,15 @@ const StakeButton = styled(Button)`
   height: 40px;
   color: white;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   &:hover {
     transform: translateY(-2px);
     background: linear-gradient(135deg, #9932cc 0%, #5d1a8b 100%);
-    ${css`animation: ${pulseGlow} 1.5s infinite;`}
+    ${css`
+      animation: ${pulseGlow} 1.5s infinite;
+    `}
   }
-  
+
   &:active {
     transform: translateY(0);
   }
@@ -132,7 +135,7 @@ const StatsGrid = styled(Box)`
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 20px;
-  
+
   ${({ theme }) => theme.mediaQueries.sm} {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -140,19 +143,11 @@ const StatsGrid = styled(Box)`
 `
 
 const StatCard = styled(Box)`
-  background: ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.03)' 
-      : 'rgba(0, 0, 0, 0.02)'
-  };
+  background: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.02)')};
   border-radius: 8px;
   padding: 12px;
-  border: 1px solid ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.05)' 
-      : 'rgba(0, 0, 0, 0.05)'
-  };
-  
+  border: 1px solid ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)')};
+
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 16px;
     border-radius: 12px;
@@ -164,7 +159,7 @@ const StatLabel = styled(Text)`
   color: ${({ theme }) => theme.colors.textSubtle};
   margin-bottom: 4px;
   font-weight: 500;
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 14px;
   }
@@ -174,7 +169,7 @@ const StatValue = styled(Text)`
   font-size: 14px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
-  
+
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 16px;
   }
@@ -205,11 +200,7 @@ const ProgressValue = styled(Text)`
 const CustomProgress = styled.div<{ progress: number }>`
   width: 100%;
   height: 8px;
-  background: ${({ theme }) => 
-    theme.isDark 
-      ? 'rgba(255, 255, 255, 0.1)' 
-      : 'rgba(0, 0, 0, 0.1)'
-  };
+  background: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)')};
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -244,10 +235,7 @@ interface StakingCycleCardProps {
   onStakeClick: () => void
 }
 
-const StakingCycleCard: React.FC<StakingCycleCardProps> = ({
-  cycle,
-  onStakeClick,
-}) => {
+const StakingCycleCard: React.FC<StakingCycleCardProps> = ({ cycle, onStakeClick }) => {
   const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
 
@@ -271,21 +259,13 @@ const StakingCycleCard: React.FC<StakingCycleCardProps> = ({
         <CycleInfo>
           <CycleName>{cycle.name}</CycleName>
           <CycleDetails>
-            <DetailBadge variant="primary">
-              APY {cycle.apy}%
-            </DetailBadge>
-            <DetailBadge>
-              Min: {formatToken(cycle.minStake)}
-            </DetailBadge>
-            <DetailBadge variant="success">
-              {cycle.duration} Days
-            </DetailBadge>
+            <DetailBadge variant="primary">APY {cycle.apy}%</DetailBadge>
+            <DetailBadge>Min: {formatToken(cycle.minStake)}</DetailBadge>
+            <DetailBadge variant="success">{cycle.duration} Days</DetailBadge>
           </CycleDetails>
         </CycleInfo>
-        
-        <StakeButton onClick={onStakeClick}>
-          {t('Stake COMET')}
-        </StakeButton>
+
+        <StakeButton onClick={onStakeClick}>{t('Stake COMET')}</StakeButton>
       </Header>
 
       <StatsGrid>
@@ -293,19 +273,17 @@ const StakingCycleCard: React.FC<StakingCycleCardProps> = ({
           <StatLabel>{t('Global Pool')}</StatLabel>
           <StatValue>{formatCurrency(cycle.globalPool)}</StatValue>
         </StatCard>
-        
+
         <StatCard>
           <StatLabel>{t('Your Estimate')}</StatLabel>
-          <StatValue>
-            {cycle.userEstimate > 0 ? formatCurrency(cycle.userEstimate) : '$0'}
-          </StatValue>
+          <StatValue>{cycle.userEstimate > 0 ? formatCurrency(cycle.userEstimate) : '$0'}</StatValue>
         </StatCard>
-        
+
         <StatCard>
           <StatLabel>{t('Next Payout')}</StatLabel>
           <StatValue>{t('Day %day%', { day: cycle.nextPayoutDay })}</StatValue>
         </StatCard>
-        
+
         <StatCard>
           <StatLabel>{t('Cycle Progress')}</StatLabel>
           <StatValue>{cycle.progress}%</StatValue>
@@ -324,16 +302,3 @@ const StakingCycleCard: React.FC<StakingCycleCardProps> = ({
 }
 
 export default StakingCycleCard
-
-
-
-
-
-
-
-
-
-
-
-
-
