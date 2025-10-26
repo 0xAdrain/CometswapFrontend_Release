@@ -67,7 +67,7 @@
     "@cometswap/v3-sdk": "workspace:*",
     "@cometswap/wagmi": "workspace:*",
     "@cometswap/widgets-internal": "workspace:*",
-    "@cyberlab/cyber-app-sdk": "3.0.0-beta.5",
+    "@cyberlab/cyber-app-sdk": "v3.0.0-beta.5",
     "@datadog/browser-logs": "^5.8.0",
     "@datadog/browser-rum": "^5.8.0",
     "@gelatonetwork/limit-orders-lib": "^4.1.0",

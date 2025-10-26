@@ -7,5 +7,3 @@ export const LockIcon: React.FC<SvgProps> = (props) => (
 )
 
 
-
-

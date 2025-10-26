@@ -17,5 +17,3 @@ export const useUserEnoughCometValidator = (amount: string) => {
 }
 
 
-
-

@@ -21,5 +21,3 @@ export const SyncButton: React.FC<SyncButtonProps> = ({ onSync, isSyncing, ...pr
 }
 
 
-
-

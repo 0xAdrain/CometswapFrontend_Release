@@ -16,5 +16,3 @@ export const NextButton: React.FC<NextButtonProps> = ({ onNext, ...props }) => {
 }
 
 
-
-

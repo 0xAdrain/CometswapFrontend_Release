@@ -11,5 +11,3 @@ const MultipleBanner = () => {
 export default MultipleBanner
 
 
-
-

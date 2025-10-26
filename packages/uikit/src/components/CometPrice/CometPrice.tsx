@@ -45,9 +45,3 @@ const CometPrice: React.FC<React.PropsWithChildren<Props>> = ({
 };
 
 export default React.memo(CometPrice);
-
-
-
-
-
-

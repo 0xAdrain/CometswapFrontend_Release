@@ -19,5 +19,3 @@ export function useBveCometProxyContractAddress(): string | undefined {
 export const useBCometProxyContractAddress = useBveCometProxyContractAddress
 
 
-
-
