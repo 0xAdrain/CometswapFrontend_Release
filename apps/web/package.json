@@ -5,7 +5,7 @@
   "scripts": {
     "analyze": "ANALYZE=true pnpm build",
     "dev": "next dev",
-    "build": "next info && next build --debug",
+    "build": "cd ../.. && pnpm run build:packages && cd apps/web && next info && next build --debug",
     "start": "next start",
     "test": "LC_ALL=\"en_US.UTF-8\" vitest --run",
     "test:watch": "LC_ALL=\"en_US.UTF-8\" vitest --watch",
@@ -73,6 +73,7 @@
     "@gelatonetwork/limit-orders-lib": "^4.1.0",
     "@gnosis.pm/safe-apps-wagmi": "^1.2.0",
     "@next/bundle-analyzer": "13.0.7",
+    "@orbs-network/twap-ui-pancake": "0.11.31",
     "@orbs-network/twap-ui-pancake": "^1.0.0",
     "@pythnetwork/pyth-evm-js": "^1.29.2",
     "@reduxjs/toolkit": "^1.9.1",
@@ -132,7 +133,6 @@
     "recharts": "2.1.15",
     "redux-persist": "^6.0.0",
     "remark-gfm": "^1.0.0",
-    "sharp": "^0.34.4",
     "siwe": "^1.1.6",
     "split-grid": "^1.0.11",
     "styled-components": "6.0.7",
@@ -143,7 +143,6 @@
     "vconsole": "^3.15.1",
     "viem": "catalog:",
     "wagmi": "catalog:",
-    "webpack-retry-chunk-load-plugin": "2.2.0",
     "zod": "^3.22.3"
   },
   "devDependencies": {
@@ -193,6 +192,7 @@
     "stylelint-config-styled-components": "^0.1.1",
     "tilg": "^0.1.1",
     "typescript": "5.7.3",
-    "vite-tsconfig-paths": "^4.0.3"
+    "vite-tsconfig-paths": "^4.0.3",
+    "webpack-retry-chunk-load-plugin": "3.1.1"
   }
 }
