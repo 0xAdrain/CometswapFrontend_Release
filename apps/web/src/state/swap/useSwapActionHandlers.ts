@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@cometswap/sdk'
 import { useAtom } from 'jotai'
 import { swapReducerAtom } from 'state/swap/reducer'
 import { Field, selectCurrency, switchCurrencies, typeInput, setRecipient } from './actions'
@@ -44,3 +44,4 @@ export function useSwapActionHandlers(): {
     onChangeRecipient,
   }
 }
+

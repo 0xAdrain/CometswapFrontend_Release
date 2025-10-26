@@ -48,3 +48,4 @@ function getIDOContract(idoId: string, signer?: WalletClient, chainId?: number) 
     }),
   })
 }
+

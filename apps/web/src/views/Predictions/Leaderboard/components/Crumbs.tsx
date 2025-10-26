@@ -1,6 +1,6 @@
 import NextLink from 'next/link'
-import { Box, Breadcrumbs, Text, StyledLink } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Breadcrumbs, Text, StyledLink } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 const Crumbs = () => {
   const { t } = useTranslation()
@@ -21,3 +21,4 @@ const Crumbs = () => {
 }
 
 export default Crumbs
+

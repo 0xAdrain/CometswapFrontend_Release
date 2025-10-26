@@ -1,4 +1,4 @@
-import { ResetCSS, ScrollToTopButtonV2, ToastListener } from '@pancakeswap/uikit'
+import { ResetCSS, ScrollToTopButtonV2, ToastListener } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { SentryErrorBoundary } from 'components/ErrorBoundary'
 import GlobalCheckClaimStatus from 'components/GlobalCheckClaimStatus'
@@ -27,12 +27,9 @@ import Script from 'next/script'
 import { Fragment } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 import 'utils/abortcontroller-polyfill'
-import { V4CakeIcon } from 'views/Home/components/V4CakeIcon'
+import { V4veCometIcon } from 'views/Home/components/V4veCometIcon'
+import PageTransition from 'components/PageTransition' // CometSwap: 页面切换动画
 
-import { AdPanel } from 'components/AdPanel'
-import { layoutDesktopAdIgnoredPages, layoutMobileAdIgnoredPages } from 'components/AdPanel/config'
-import { shouldRenderOnPages } from 'components/AdPanel/renderConditions'
-import { ZKSyncAirdropModalWithAutoPopup } from 'components/ClaimZksyncAirdropModal'
 import { useDataDogRUM } from 'hooks/useDataDogRUM'
 import { useLoadExperimentalFeatures } from 'hooks/useExperimentalFeatureEnabled'
 import useInitNotificationsClient from 'hooks/useInitNotificationsClient'
@@ -99,7 +96,7 @@ function MyApp(props: AppProps<{ initialReduxState: any; dehydratedState: any }>
         />
         <meta
           name="description"
-          content="Cheaper and faster than Uniswap? Discover PancakeSwap, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for CAKE."
+          content="Cheaper and faster than Uniswap? Discover CometSwap, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for COMET."
         />
         <meta name="theme-color" content="#1FC7D4" />
       </Head>
@@ -183,9 +180,9 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
     <ProductionErrorBoundary>
       <ShowMenu>
         <Layout>
-          <Component {...pageProps} />
-          <AdPanel.MobileCard shouldRender={!shouldRenderOnPages(layoutMobileAdIgnoredPages)} mt="4px" mb="12px" />
-          <AdPanel.DesktopCard shouldRender={!shouldRenderOnPages(layoutDesktopAdIgnoredPages)} />
+          <PageTransition>
+            <Component {...pageProps} />
+          </PageTransition>
         </Layout>
       </ShowMenu>
       <EasterEgg iterations={2} />
@@ -195,8 +192,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       <TransactionsDetailModal />
       {isShowScrollToTopButton && <ScrollToTopButtonV2 />}
       {shouldScreenWallet && <Blocklist />}
-      {isShowV4IconButton && <V4CakeIcon />}
-      <ZKSyncAirdropModalWithAutoPopup />
+      {isShowV4IconButton && <V4veCometIcon />}
       <AffiliateExpiredModal />
       <AffiliateSunsetModal />
       <SimpleStakingSunsetModal />
@@ -206,3 +202,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 }
 
 export default MyApp
+
+
+

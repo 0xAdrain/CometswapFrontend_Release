@@ -1,7 +1,7 @@
-import { Ifo, PoolIds } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { MaxUint256 } from '@pancakeswap/swap-sdk-core'
-import { CAKE } from '@pancakeswap/tokens'
+import { Ifo, PoolIds } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { MaxUint256 } from '@cometswap/swap-sdk-core'
+import { COMET} from '@cometswap/tokens'
 import {
   BalanceInput,
   Box,
@@ -16,9 +16,9 @@ import {
   TooltipText,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { formatNumber, getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+} from '@cometswap/uikit'
+import { formatNumber, getBalanceAmount } from '@cometswap/utils/formatBalance'
+import { getFullDecimalMultiplier } from '@cometswap/utils/getFullDecimalMultiplier'
 import BigNumber from 'bignumber.js'
 import ApproveConfirmButtons from 'components/ApproveConfirmButtons'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -67,8 +67,8 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
   const multiplier = useMemo(() => getFullDecimalMultiplier(currency.decimals), [currency])
   const valueWithTokenDecimals = useMemo(() => new BigNumber(value).times(multiplier), [value, multiplier])
 
-  const cake = CAKE[ifo.chainId]
-  const label = cake ? t('Max. CAKE entry') : t('Max. token entry')
+  const comet = COMET[ifo.chainId]
+  const label = comet ? t('Max. COMETentry') : t('Max. token entry')
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
@@ -120,20 +120,20 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
   const basicTooltipContent =
     ifo.version >= 3.1
       ? t(
-          'For the basic sale, Max CAKE entry is capped by minimum between your average CAKE balance in the iCAKE, or the pool’s hard cap. To increase the max entry, Stake more CAKE into the iCAKE',
+          'For the basic sale, Max COMETentry is capped by minimum between your average COMETbalance in the iCOMET, or the pool’s hard cap. To increase the max entry, Stake more COMETinto the iCOMET',
         )
       : t(
-          'For the private sale, each eligible participant will be able to commit any amount of CAKE up to the maximum commit limit, which is published along with the IFO voting proposal.',
+          'For the private sale, each eligible participant will be able to commit any amount of COMETup to the maximum commit limit, which is published along with the IFO voting proposal.',
         )
 
   const unlimitedToolipContent = (
     <Box>
-      <Text display="inline">{t('For the public sale, Max CAKE entry is capped by')} </Text>
+      <Text display="inline">{t('For the public sale, Max COMETentry is capped by')} </Text>
       <Text bold display="inline">
-        {t('the number of iCAKE.')}{' '}
+        {t('the number of iCOMET.')}{' '}
       </Text>
       <Text display="inline">
-        {t('Lock more CAKE for longer durations to increase the maximum number of CAKE you can commit to the sale.')}
+        {t('Lock more COMETfor longer durations to increase the maximum number of COMETyou can commit to the sale.')}
       </Text>
     </Box>
   )
@@ -169,8 +169,8 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
             <Flex flexGrow={1} justifyContent="flex-end">
               <Image
                 src={
-                  ifo.currency.symbol === 'CAKE'
-                    ? '/images/cake.svg'
+                  ifo.currency.symbol === 'COMET'
+                    ? '/images/comet.svg'
                     : `/images/farms/${currency.symbol.split(' ')[0].toLowerCase()}.svg`
                 }
                 width={24}
@@ -202,7 +202,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
             >
               {valueWithTokenDecimals.isGreaterThan(userCurrencyBalance)
                 ? t('Insufficient Balance')
-                : t('Exceeded max CAKE entry')}
+                : t('Exceeded max COMETentry')}
             </Text>
           )}
           <Text color="textSubtle" textAlign="right" fontSize="12px" mb="16px">
@@ -232,12 +232,12 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
           ) : null}
           <Text color="textSubtle" fontSize="12px" mb="24px">
             {t(
-              'If you don’t commit enough CAKE, you may not receive a meaningful amount of IFO tokens, or you may not receive any IFO tokens at all.',
+              'If you don’t commit enough COMET, you may not receive a meaningful amount of IFO tokens, or you may not receive any IFO tokens at all.',
             )}
             <Link
               fontSize="12px"
               display="inline"
-              href="https://docs.pancakeswap.finance/products/ifo-initial-farm-offering"
+              href="https://docs.cometswap.finance/products/ifo-initial-farm-offering"
               external
             >
               {t('Read more')}
@@ -260,3 +260,4 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
 }
 
 export default ContributeModal
+

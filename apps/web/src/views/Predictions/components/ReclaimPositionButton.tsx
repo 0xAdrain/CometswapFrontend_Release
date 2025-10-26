@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button, ButtonProps, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRenewIcon, Button, ButtonProps, useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -52,3 +52,4 @@ const ReclaimPositionButton: React.FC<React.PropsWithChildren<ReclaimPositionBut
 }
 
 export default ReclaimPositionButton
+

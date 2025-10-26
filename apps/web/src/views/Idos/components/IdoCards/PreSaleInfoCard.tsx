@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { CheckmarkCircleIcon, CloseCircleIcon, FlexGap, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { CheckmarkCircleIcon, CloseCircleIcon, FlexGap, Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 export const CardWrapper = styled.div`
@@ -62,3 +62,4 @@ export const ComplianceCard: React.FC = () => {
     </FailureCardWrapper>
   )
 }
+

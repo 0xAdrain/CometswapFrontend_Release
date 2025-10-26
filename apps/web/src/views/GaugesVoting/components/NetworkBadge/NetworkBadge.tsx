@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Text } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { Text } from '@cometswap/uikit'
 import styled from 'styled-components'
 import { chains } from 'utils/wagmi'
 import { NetworkLogo, NetworkLogoTheme } from './NetworkLogo'
@@ -95,3 +95,4 @@ export const NetworkBadge: React.FC<{
     </Badge>
   )
 }
+

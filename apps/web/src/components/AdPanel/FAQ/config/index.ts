@@ -14,3 +14,4 @@ export const faqTypeByPage: Record<string, ConfigType> = {
   '/prediction': 'prediction',
   '/buy-crypto': 'buyCrypto',
 }
+

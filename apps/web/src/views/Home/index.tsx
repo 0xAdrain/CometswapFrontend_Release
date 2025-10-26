@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, PageSection, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+// import { useTranslation } from '@cometswap/localization' // Unused
+import { Box, PageSection, useMatchBreakpoints } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 import MultipleBanner from './components/Banners/MultipleBanner'
-import CakeDataRow from './components/CakeDataRow'
-import CakeSection from './components/CakeSection'
+// import CometDataRow from './components/CometDataRow' // CometSwap: 移除COMET相关显示
+// import CometSection from './components/CometSection' // CometSwap: 移除COMET相关显示
 import CommunitySection from './components/CommunitySection'
 import { RightTopBox } from './components/CommunitySection/ImagesOnBg'
 import EcoSystemSection from './components/EcoSystemSection'
@@ -31,7 +31,7 @@ const StyledHeroSection = styled(PageSection)`
 const Home: React.FC<React.PropsWithChildren> = () => {
   const { theme } = useTheme()
   const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '968px', padding: '0px 16px' }
-  const { t } = useTranslation()
+  // const { t } = useTranslation() // Unused
   const { isMobile } = useMatchBreakpoints()
 
   return (
@@ -122,16 +122,17 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             <WedgeTopRight />
           </InnerWedgeWrapper>
         </OuterWedgeWrapper>
-        <CakeSection />
-        <Flex style={{ gap: 5 }} justifyContent="center" mt="40px">
+        {/* CometSwap: 移除COMET相关显示 */}
+        {/* <CometSection /> */}
+        {/* <Flex style={{ gap: 5 }} justifyContent="center" mt="40px">
           <Text fontSize={24} bold>
-            {t('CAKE')}
+            {t('COMET')}
           </Text>
           <Text fontSize={24} bold color="secondary">
             {t('Figures')}
           </Text>
-        </Flex>
-        <CakeDataRow />
+        </Flex> */}
+        {/* <CometDataRow /> */}
         <OuterWedgeWrapper>
           <InnerWedgeWrapper id="bottom-wedge4-2">
             <WedgeBottomRight />
@@ -175,3 +176,4 @@ const Home: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default Home
+

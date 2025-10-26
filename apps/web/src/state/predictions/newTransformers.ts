@@ -34,3 +34,4 @@ export const newTransformUserResponse = (userResponse): PredictionUser => {
     netBNB: netAmount ? parseFloat(netAmount) : 0,
   }
 }
+

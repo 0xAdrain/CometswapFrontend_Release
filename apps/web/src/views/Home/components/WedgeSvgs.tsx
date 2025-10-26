@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 export const OuterWedgeWrapper = styled.div`
   z-index: -1;
@@ -56,3 +56,4 @@ export const WedgeBottomLeft: React.FC<React.PropsWithChildren<SvgProps>> = (pro
     </Svg>
   )
 }
+

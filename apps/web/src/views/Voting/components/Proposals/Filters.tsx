@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
-import { Flex, Radio, Text } from '@pancakeswap/uikit'
+import { Flex, Radio, Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { ProposalState } from 'state/types'
 
 interface FiltersProps {
@@ -57,3 +57,4 @@ const Filters: React.FC<React.PropsWithChildren<FiltersProps>> = ({ filterState,
 }
 
 export default Filters
+

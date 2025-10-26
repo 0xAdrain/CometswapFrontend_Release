@@ -1,4 +1,4 @@
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@cometswap/uikit'
 import React, { ReactElement } from 'react'
 import { DefaultTheme, styled } from 'styled-components'
 
@@ -101,3 +101,4 @@ export const AICardHeader: React.FC<React.PropsWithChildren<AICardHeaderProps>> 
     </StyledCardHeader>
   )
 }
+

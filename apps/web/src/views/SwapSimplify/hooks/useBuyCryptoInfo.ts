@@ -1,4 +1,4 @@
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
+import { PriceOrder } from '@cometswap/price-api-sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useCanBuyCrypto } from 'hooks/useCanBuyCrypto'
 import { useMemo } from 'react'
@@ -23,3 +23,4 @@ export function useBuyCryptoInfo(order: PriceOrder | undefined): {
 
   return { shouldShowBuyCrypto, buyCryptoLink }
 }
+

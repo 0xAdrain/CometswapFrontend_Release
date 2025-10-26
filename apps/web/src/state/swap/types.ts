@@ -26,3 +26,4 @@ export enum TradeState {
   SYNCING,
   VALID,
 }
+

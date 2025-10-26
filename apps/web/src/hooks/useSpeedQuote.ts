@@ -1,4 +1,4 @@
-import { useSpeedQuote as useSpeedQuoteState } from '@pancakeswap/utils/user'
+import { useSpeedQuote as useSpeedQuoteState } from '@cometswap/utils/user'
 import { EXPERIMENTAL_FEATURES } from 'config/experimentalFeatures'
 import { useExperimentalFeatureEnabled } from 'hooks/useExperimentalFeatureEnabled'
 
@@ -9,3 +9,4 @@ export const useSpeedQuote = () => {
 
   return [enabled, setSpeedQuote] as const
 }
+

@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/position-managers",
+  "name": "@cometswap/position-managers",
   "version": "0.1.41",
   "sideEffects": false,
   "private": true,
@@ -8,18 +8,18 @@
   },
   "type": "module",
   "dependencies": {
-    "@pancakeswap/chains": "workspace:*",
-    "@pancakeswap/sdk": "workspace:*",
-    "@pancakeswap/token-lists": "workspace:*",
-    "@pancakeswap/tokens": "workspace:*",
-    "@pancakeswap/v3-sdk": "workspace:*",
+    "@cometswap/chains": "workspace:*",
+    "@cometswap/sdk": "workspace:*",
+    "@cometswap/token-lists": "workspace:*",
+    "@cometswap/tokens": "workspace:*",
+    "@cometswap/v3-sdk": "workspace:*",
     "bignumber.js": "^9.0.0",
     "lodash": "^4.17.21",
     "viem": "catalog:"
   },
   "devDependencies": {
-    "@pancakeswap/tsconfig": "workspace:*",
-    "@pancakeswap/utils": "workspace:*",
+    "@cometswap/tsconfig": "workspace:*",
+    "@cometswap/utils": "workspace:*",
     "@types/lodash": "^4.14.168"
   }
 }

@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Flex,
@@ -10,7 +10,8 @@ import {
   UserMenuItem,
   UserMenuVariant,
   useModal,
-} from '@pancakeswap/uikit'
+  WalletFilledV2Icon,
+} from '@cometswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import useAirdropModalStatus from 'components/GlobalCheckClaimStatus/hooks/useAirdropModalStatus'
 import Trans from 'components/Trans'
@@ -84,7 +85,7 @@ const UserMenu = () => {
   const { isWrongNetwork } = useActiveChainId()
   const { hasPendingTransactions, pendingNumber } = usePendingTransactions()
   const { profile } = useProfile()
-  const avatarSrc = profile?.nft?.image?.thumbnail ?? avatar
+  const avatarSrc = avatar // CometSwap: 简化头像处理，直接使用默认头像
   const [userMenuText, setUserMenuText] = useState<string>('')
   const [userMenuVariable, setUserMenuVariable] = useState<UserMenuVariant>('default')
 
@@ -121,15 +122,35 @@ const UserMenu = () => {
   }
 
   return (
-    <ConnectWalletButton scale="sm">
+    <>
+      {/* CometSwap: 桌面端显示完整的Connect Wallet按钮 */}
       <Box display={['none', null, null, 'block']}>
-        <Trans>Connect Wallet</Trans>
+        <ConnectWalletButton scale="sm">
+          <Trans>Connect Wallet</Trans>
+        </ConnectWalletButton>
       </Box>
+      {/* CometSwap: 移动端显示紧凑的开关样式按钮 - 只显示图标 */}
       <Box display={['block', null, null, 'none']}>
-        <Trans>Connect</Trans>
+        <ConnectWalletButton 
+          scale="xs" 
+          variant="secondary"
+          style={{ 
+            minWidth: '36px',
+            width: '36px', 
+            height: '36px',
+            padding: '0',
+            borderRadius: '8px', // CometSwap: 使用更新的圆角�?            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {/* CometSwap: 移动端只显示钱包图标，无文字 */}
+          <WalletFilledV2Icon color="invertedContrast" width="20px" height="20px" />
+        </ConnectWalletButton>
       </Box>
-    </ConnectWalletButton>
+    </>
   )
 }
 
 export default UserMenu
+

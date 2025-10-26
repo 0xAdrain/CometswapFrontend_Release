@@ -1,4 +1,4 @@
-import { Skeleton } from '@pancakeswap/uikit'
+import { Skeleton } from '@cometswap/uikit'
 import { Container } from './styled'
 
 export const PositionItemSkeleton = () => {
@@ -12,3 +12,4 @@ export const PositionItemSkeleton = () => {
     </Container>
   )
 }
+

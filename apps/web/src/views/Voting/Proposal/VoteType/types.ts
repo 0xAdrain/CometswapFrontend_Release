@@ -8,3 +8,4 @@ export interface WeightedVoteState {
 }
 
 export type VoteState = SingleVoteState | WeightedVoteState
+

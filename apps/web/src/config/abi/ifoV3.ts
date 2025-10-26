@@ -314,8 +314,8 @@ export const ifoV3ABI = [
   },
   {
     inputs: [],
-    name: 'iCake',
-    outputs: [{ internalType: 'contract ICake', name: '', type: 'address' }],
+    name: 'iveComet',
+    outputs: [{ internalType: 'contract IveComet', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -323,12 +323,12 @@ export const ifoV3ABI = [
     inputs: [
       { internalType: 'address', name: '_lpToken', type: 'address' },
       { internalType: 'address', name: '_offeringToken', type: 'address' },
-      { internalType: 'address', name: '_pancakeProfileAddress', type: 'address' },
+      { internalType: 'address', name: '_cometProfileAddress', type: 'address' },
       { internalType: 'uint256', name: '_startBlock', type: 'uint256' },
       { internalType: 'uint256', name: '_endBlock', type: 'uint256' },
       { internalType: 'uint256', name: '_maxBufferBlocks', type: 'uint256' },
       { internalType: 'address', name: '_adminAddress', type: 'address' },
-      { internalType: 'address', name: '_iCakeAddress', type: 'address' },
+      { internalType: 'address', name: '_iveCometAddress', type: 'address' },
       { internalType: 'uint256', name: '_pointThreshold', type: 'uint256' },
       { internalType: 'address', name: '_admissionProfile', type: 'address' },
     ],
@@ -402,8 +402,8 @@ export const ifoV3ABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfile',
-    outputs: [{ internalType: 'contract PancakeProfile', name: '', type: 'address' }],
+    name: 'cometProfile',
+    outputs: [{ internalType: 'contract CometProfile', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -610,3 +610,4 @@ export const ifoV3ABI = [
     type: 'function',
   },
 ] as const
+

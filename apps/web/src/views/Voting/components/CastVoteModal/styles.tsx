@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@pancakeswap/uikit'
+import { Box, BoxProps } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 export const VotingBoxBorder = styled(Box)<{ hasBoosted?: boolean }>`
@@ -24,3 +24,4 @@ export const VotingBoxCardInner = styled(Box)<{ hasBoosted?: boolean }>`
 export const ModalInner: React.FC<React.PropsWithChildren<BoxProps>> = (props) => {
   return <Box mb="24px" maxWidth={['100%', '100%', '100%', '320px']} {...props} />
 }
+

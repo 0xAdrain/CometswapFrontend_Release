@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, ButtonMenu, ButtonMenuItem, Grid, PaginationButton, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, ButtonMenu, ButtonMenuItem, Grid, PaginationButton, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import Container from 'components/Layout/Container'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { notEmpty } from 'utils/notEmpty'

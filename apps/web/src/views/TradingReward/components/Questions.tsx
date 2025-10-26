@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { Card, CardBody, Text, Flex, Link } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, CardBody, Text, Flex, Link } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import FoldableText from 'components/FoldableSection/FoldableText'
 
 const Container = styled(Flex)`
@@ -60,7 +60,7 @@ const Questions = () => {
                 <Link
                   style={{ display: 'inline-block' }}
                   external
-                  href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/fees-and-routes#check-the-fee-rate-and-fee-amount-that-is-currently-applied"
+                  href="https://docs.cometswap.finance/products/cometswap-exchange/fees-and-routes#check-the-fee-rate-and-fee-amount-that-is-currently-applied"
                 >
                   <Text color="primary" ml="4px" as="span">
                     {t('this tutorial')}
@@ -97,12 +97,12 @@ const Questions = () => {
             >
               <StyledListText color="textSubtle">
                 {t(
-                  'Each campaign has its own eligibility requirements, like the unlock time of the CAKE staking position.',
+                  'Each campaign has its own eligibility requirements, like the unlock time of the COMET staking position.',
                 )}
               </StyledListText>
               <StyledListText color="textSubtle">
                 {t(
-                  'You may need to extend your locked CAKE staking position. Please follow the instructions on the page.',
+                  'You may need to extend your locked COMET staking position. Please follow the instructions on the page.',
                 )}
               </StyledListText>
             </FoldableText>

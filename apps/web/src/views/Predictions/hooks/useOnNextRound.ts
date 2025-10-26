@@ -1,5 +1,5 @@
-import { usePreviousValue } from '@pancakeswap/hooks'
-import { useIsomorphicEffect } from '@pancakeswap/uikit'
+import { usePreviousValue } from '@cometswap/hooks'
+import { useIsomorphicEffect } from '@cometswap/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useGetSortedRoundsCurrentEpoch } from 'state/predictions/hooks'
 import { useAccount } from 'wagmi'
@@ -37,3 +37,4 @@ const useOnNextRound = () => {
 }
 
 export default useOnNextRound
+

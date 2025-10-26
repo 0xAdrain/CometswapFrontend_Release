@@ -1,11 +1,11 @@
-import { AutoColumn, Button } from '@pancakeswap/uikit'
-import { Swap as SwapUI } from '@pancakeswap/widgets-internal'
+import { AutoColumn, Button } from '@cometswap/uikit'
+import { Swap as SwapUI } from '@cometswap/widgets-internal'
 
 import { useCallback, memo } from 'react'
-import replaceBrowserHistoryMultiple from '@pancakeswap/utils/replaceBrowserHistoryMultiple'
-import { useTranslation } from '@pancakeswap/localization'
+import replaceBrowserHistoryMultiple from '@cometswap/utils/replaceBrowserHistoryMultiple'
+import { useTranslation } from '@cometswap/localization'
 
-import { useExpertMode } from '@pancakeswap/utils/user'
+import { useExpertMode } from '@cometswap/utils/user'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 import { useSwapState } from 'state/swap/hooks'
 import { Field } from 'state/swap/actions'
@@ -50,3 +50,4 @@ export const FlipButton = memo(function FlipButton() {
     </AutoColumn>
   )
 })
+

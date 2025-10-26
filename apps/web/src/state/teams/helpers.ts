@@ -1,11 +1,11 @@
-import { ChainId } from '@pancakeswap/chains'
-import { pancakeProfileABI } from 'config/abi/pancakeProfile'
+import { ChainId } from '@cometswap/chains'
+import { cometProfileABI } from 'config/abi/cometProfile'
 import teamsList from 'config/constants/teams'
 import { Team } from 'config/constants/types'
 import fromPairs from 'lodash/fromPairs'
 import merge from 'lodash/merge'
 import { TeamsById } from 'state/types'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getCometProfileAddress } from 'utils/addressHelpers'
 import { getProfileContract } from 'utils/contractHelpers'
 import { publicClient } from 'utils/wagmi'
 
@@ -43,8 +43,8 @@ export const getTeams = async (): Promise<TeamsById | null> => {
     const calls = Array.from({ length: Number(nbTeams) }).map(
       (_, i) =>
         ({
-          abi: pancakeProfileABI,
-          address: getPancakeProfileAddress(),
+          abi: cometProfileABI,
+          address: getCometProfileAddress(),
           functionName: 'getTeamProfile',
           args: [BigInt(i + 1)] as const,
         } as const),
@@ -76,3 +76,4 @@ export const getTeams = async (): Promise<TeamsById | null> => {
     return null
   }
 }
+

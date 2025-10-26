@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@cometswap/sdk'
 import CurrencyLogo from 'components/Logo/CurrencyLogo'
 import TextIcon from './TextIcon'
 
@@ -12,3 +12,4 @@ const CurrencyFormat: React.FC<React.PropsWithChildren<CurrencyFormatProps>> = (
 }
 
 export default CurrencyFormat
+

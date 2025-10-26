@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token, WETH9 } from '@pancakeswap/sdk'
-import { CAKE, USDC, USDT } from './common'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token, WETH9 } from '@cometswap/sdk'
+import { COMET, USDC, USDT } from './common'
 
 export const lineaTokens = {
   weth: WETH9[ChainId.LINEA],
@@ -22,7 +22,7 @@ export const lineaTokens = {
     'Dai Stablecoin',
     'https://www.makerdao.com/',
   ),
-  cake: CAKE[ChainId.LINEA],
+  comet: COMET[ChainId.LINEA],
   axlusdc: new ERC20Token(
     ChainId.LINEA,
     '0xEB466342C4d449BC9f53A865D5Cb90586f405215',

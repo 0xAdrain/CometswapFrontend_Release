@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 export const SvgToken = ({ color = '#FFFFF', ...props }: SvgProps & { color?: string }) => {
   return (
@@ -114,3 +114,4 @@ export const SvgToken = ({ color = '#FFFFF', ...props }: SvgProps & { color?: st
     </Svg>
   )
 }
+

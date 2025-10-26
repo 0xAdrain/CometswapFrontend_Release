@@ -1,9 +1,9 @@
-import { Button, AutoRenewIcon, Skeleton } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Button, AutoRenewIcon, Skeleton } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useERC20 } from 'hooks/useContract'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import { useApprovePool } from '../../../hooks/useApprove'
 
 interface ApprovalActionProps {
@@ -37,3 +37,4 @@ const ApprovalAction: React.FC<React.PropsWithChildren<ApprovalActionProps>> = (
 }
 
 export default ApprovalAction
+

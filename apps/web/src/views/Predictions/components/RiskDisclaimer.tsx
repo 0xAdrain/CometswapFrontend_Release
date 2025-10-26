@@ -1,6 +1,6 @@
 import { useEffect, memo, useCallback } from 'react'
-import { useModal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { useModal } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import DisclaimerModal from 'components/DisclaimerModal'
 import { useUserPredictionAcceptedRisk } from 'state/user/hooks'
 
@@ -46,3 +46,4 @@ function RiskDisclaimer() {
 }
 
 export default memo(RiskDisclaimer)
+

@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { PairDataTimeWindowEnum } from '@pancakeswap/uikit'
-import { PriceCalculator } from '@pancakeswap/widgets-internal/roi'
+import { ChainId } from '@cometswap/chains'
+import { PairDataTimeWindowEnum } from '@cometswap/uikit'
+import { PriceCalculator } from '@cometswap/widgets-internal/roi'
 import { useMemo } from 'react'
 import { usePairPriceChartTokenData } from 'views/V3Info/hooks'
 
@@ -48,3 +48,4 @@ export const usePairTokensPrice = (
     [pairPriceData, pairPrice],
   )
 }
+

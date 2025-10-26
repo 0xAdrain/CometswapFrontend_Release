@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Balance,
   Button,
@@ -15,13 +15,13 @@ import {
   useModal,
   useToast,
   VoteIcon,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { BigNumber } from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import fromPairs from 'lodash/fromPairs'
 import { useEffect, useMemo, useState } from 'react'
 import { Proposal, ProposalState, ProposalTypeName, Vote } from 'state/types'
-import { VECAKE_VOTING_POWER_BLOCK } from 'views/Voting/helpers'
+import { VECOMET_VOTING_POWER_BLOCK } from 'views/Voting/helpers'
 import useGetVotingPower from 'views/Voting/hooks/useGetVotingPower'
 import { SingleVote } from 'views/Voting/Proposal/VoteType/SingleVote'
 import { SingleVoteState, VoteState, WeightedVoteState } from 'views/Voting/Proposal/VoteType/types'
@@ -82,18 +82,18 @@ const VoteComponent: React.FC<React.PropsWithChildren<VoteProps>> = ({
     />,
   )
 
-  const isVeCakeVersion = useMemo(
-    () => proposal.snapshot && BigInt(proposal.snapshot) >= VECAKE_VOTING_POWER_BLOCK,
+  const isveCometVersion = useMemo(
+    () => proposal.snapshot && BigInt(proposal.snapshot) >= VECOMET_VOTING_POWER_BLOCK,
     [proposal],
   )
 
-  const notEnoughVeCake = useMemo(() => {
-    if (isVeCakeVersion) {
+  const notEnoughveComet = useMemo(() => {
+    if (isveCometVersion) {
       return total === undefined || new BigNumber(total).lte(0)
     }
 
     return false
-  }, [isVeCakeVersion, total])
+  }, [isveCometVersion, total])
 
   const isAbleToVote = useMemo(() => {
     if (proposal.type === ProposalTypeName.SINGLE_CHOICE) {
@@ -112,16 +112,16 @@ const VoteComponent: React.FC<React.PropsWithChildren<VoteProps>> = ({
           <Heading as="h3" scale="md" mr="auto">
             {t('Cast your vote')}
           </Heading>
-          {account && isVeCakeVersion && (
+          {account && isveCometVersion && (
             <Flex alignItems="center">
-              <Text color={notEnoughVeCake ? 'failure' : 'text'}>{t('veCake Balance')}:</Text>
+              <Text color={notEnoughveComet ? 'failure' : 'text'}>{t('veComet Balance')}:</Text>
               <Balance
                 bold
                 fontSize="20px"
                 m="0 4px 0 8px"
                 lineHeight="110%"
                 decimals={2}
-                color={notEnoughVeCake ? 'failure' : 'text'}
+                color={notEnoughveComet ? 'failure' : 'text'}
                 value={total}
               />
               <Image
@@ -129,9 +129,9 @@ const VoteComponent: React.FC<React.PropsWithChildren<VoteProps>> = ({
                 height={32}
                 style={{ minWidth: '32px' }}
                 src={
-                  notEnoughVeCake
-                    ? '/images/cake-staking/not-enough-veCAKE.png'
-                    : '/images/cake-staking/token-vecake.png'
+                  notEnoughveComet
+                    ? '/images/comet-staking/not-enough-veCOMET.png'
+                    : '/images/comet-staking/token-veComet.png'
                 }
               />
             </Flex>
@@ -146,7 +146,7 @@ const VoteComponent: React.FC<React.PropsWithChildren<VoteProps>> = ({
           <WeightedVote
             proposal={proposal}
             hasAccountVoted={hasAccountVoted}
-            notEnoughVeCake={notEnoughVeCake}
+            notEnoughveComet={notEnoughveComet}
             vote={vote as WeightedVoteState}
             setVote={setVote}
           />
@@ -161,9 +161,9 @@ const VoteComponent: React.FC<React.PropsWithChildren<VoteProps>> = ({
                       {t('You cast your vote! Please wait until the voting ends to see the end results.')}
                     </MessageText>
                   </Message>
-                ) : notEnoughVeCake ? (
+                ) : notEnoughveComet ? (
                   <Button m="auto" display="block" disabled>
-                    {t('Not enough veCAKE')}
+                    {t('Not enough veCOMET')}
                   </Button>
                 ) : !isAbleToVote ? (
                   <Button m="auto" display="block" disabled>
@@ -191,3 +191,4 @@ const VoteComponent: React.FC<React.PropsWithChildren<VoteProps>> = ({
 }
 
 export default VoteComponent
+

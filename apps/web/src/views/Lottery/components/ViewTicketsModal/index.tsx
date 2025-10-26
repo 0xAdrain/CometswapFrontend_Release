@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Modal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Modal } from '@cometswap/uikit'
 import { LotteryStatus } from 'config/constants/types'
 import useTheme from 'hooks/useTheme'
 import { useLottery } from 'state/lottery/hooks'
@@ -41,3 +41,4 @@ const ViewTicketsModal: React.FC<React.PropsWithChildren<ViewTicketsModalProps>>
 }
 
 export default ViewTicketsModal
+

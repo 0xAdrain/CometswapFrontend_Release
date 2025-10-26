@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token } from '@cometswap/sdk'
 
 export const arbitrumWarningTokens = {
   mPendle: new ERC20Token(
@@ -11,3 +11,4 @@ export const arbitrumWarningTokens = {
     '',
   ),
 }
+

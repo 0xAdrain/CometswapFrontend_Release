@@ -5,7 +5,7 @@ import {
   CardBody as RawCardBody,
   CardHeader as RawCardHeader,
   CardFooter as RawCardFooter,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 
 export const Card = styled(RawCard)`
   overflow: initial;
@@ -54,3 +54,4 @@ export const StyledNextLink = styled(NextLink)`
     }
   }
 `
+

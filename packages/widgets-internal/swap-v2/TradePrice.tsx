@@ -1,6 +1,6 @@
-import { Currency, Price } from "@pancakeswap/swap-sdk-core";
-import { FlexGap, SkeletonV2, SwapHorizIcon, Text } from "@pancakeswap/uikit";
-import { formatPrice } from "@pancakeswap/utils/formatFractions";
+import { Currency, Price } from "@cometswap/swap-sdk-core";
+import { FlexGap, SkeletonV2, SwapHorizIcon, Text } from "@cometswap/uikit";
+import { formatPrice } from "@cometswap/utils/formatFractions";
 import { useState } from "react";
 
 interface TradePriceProps {

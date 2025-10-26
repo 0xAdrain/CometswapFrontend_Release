@@ -1,14 +1,14 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Pair, Percent, Token } from '@pancakeswap/sdk'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
-import { ArrowDropDownIcon, Box, Button, CopyButton, Flex, Loading, Skeleton, Text, useModal } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { CurrencyLogo, DoubleCurrencyLogo, Swap as SwapUI } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Pair, Percent, Token } from '@cometswap/sdk'
+import { WrappedTokenInfo } from '@cometswap/token-lists'
+import { ArrowDropDownIcon, Box, Button, CopyButton, Flex, Loading, Skeleton, Text, useModal } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { CurrencyLogo, DoubleCurrencyLogo, Swap as SwapUI } from '@cometswap/widgets-internal'
 import { memo, useCallback, useMemo } from 'react'
 import { styled } from 'styled-components'
 import { safeGetAddress } from 'utils'
 
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import { useStablecoinPriceAmount } from 'hooks/useStablecoinPrice'
 import { StablePair } from 'views/AddLiquidity/AddStableLiquidity/hooks/useStableLPDerivedMintInfo'
 
@@ -309,3 +309,4 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
 })
 
 export default CurrencyInputPanel
+

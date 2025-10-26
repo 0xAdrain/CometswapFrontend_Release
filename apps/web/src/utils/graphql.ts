@@ -1,53 +1,121 @@
-import { ChainId } from '@pancakeswap/chains'
-import { STABLE_SUPPORTED_CHAIN_IDS } from '@pancakeswap/stable-swap-sdk'
-import { BIT_QUERY, STABLESWAP_SUBGRAPHS_URLS, V3_BSC_INFO_CLIENT, V3_SUBGRAPH_URLS } from 'config/constants/endpoints'
+import { DocumentNode } from 'graphql'
 import { GraphQLClient } from 'graphql-request'
-import { V2_SUBGRAPH_URLS } from '../config/constants/endpoints'
 
-export const infoClient = new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.BSC])
+// GraphQL client configuration
+const GRAPH_API_ENDPOINT = process.env.NEXT_PUBLIC_GRAPH_API_ENDPOINT || 'https://api.thegraph.com/subgraphs/name/cometswap/exchange-v2'
 
-export const v3Clients = {
-  [ChainId.ETHEREUM]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.ETHEREUM]),
-  [ChainId.GOERLI]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.GOERLI]),
-  [ChainId.BSC]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.BSC]),
-  [ChainId.BSC_TESTNET]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.BSC_TESTNET]),
-  [ChainId.ARBITRUM_ONE]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.ARBITRUM_ONE]),
-  [ChainId.ARBITRUM_GOERLI]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.ARBITRUM_GOERLI]),
-  [ChainId.POLYGON_ZKEVM]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.POLYGON_ZKEVM]),
-  [ChainId.ZKSYNC]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.ZKSYNC]),
-  [ChainId.ZKSYNC_TESTNET]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.ZKSYNC_TESTNET]),
-  [ChainId.LINEA]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.LINEA]),
-  [ChainId.LINEA_TESTNET]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.LINEA_TESTNET]),
-  [ChainId.BASE]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.BASE]),
-  [ChainId.BASE_TESTNET]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.BASE_TESTNET]),
-  [ChainId.SCROLL_SEPOLIA]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.SCROLL_SEPOLIA]),
-  [ChainId.OPBNB]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.OPBNB]),
+const graphQLClient = new GraphQLClient(GRAPH_API_ENDPOINT)
+
+// Generic GraphQL query function
+export async function request<T = any>(
+  document: string | DocumentNode,
+  variables?: Record<string, any>
+): Promise<T> {
+  try {
+    return await graphQLClient.request<T>(document, variables)
+  } catch (error) {
+    console.error('GraphQL request failed:', error)
+    throw error
+  }
 }
 
-export const v3InfoClients = { ...v3Clients, [ChainId.BSC]: new GraphQLClient(V3_BSC_INFO_CLIENT) }
-
-export const v2Clients = {
-  [ChainId.ETHEREUM]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.ETHEREUM]),
-  [ChainId.BSC]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.BSC]),
-  [ChainId.POLYGON_ZKEVM]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.POLYGON_ZKEVM]),
-  [ChainId.ZKSYNC]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.ZKSYNC]),
-  [ChainId.LINEA]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.LINEA]),
-  [ChainId.BASE]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.BASE]),
-  [ChainId.ARBITRUM_ONE]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.ARBITRUM_ONE]),
-  [ChainId.OPBNB]: new GraphQLClient(V2_SUBGRAPH_URLS[ChainId.OPBNB]),
+// Batch GraphQL requests
+export async function batchRequests<T = any>(
+  documents: Array<{ document: string | DocumentNode; variables?: Record<string, any> }>
+): Promise<T[]> {
+  try {
+    const promises = documents.map(({ document, variables }) => 
+      graphQLClient.request(document, variables)
+    )
+    return await Promise.all(promises)
+  } catch (error) {
+    console.error('Batch GraphQL requests failed:', error)
+    throw error
+  }
 }
 
-export const infoStableSwapClients: Record<(typeof STABLE_SUPPORTED_CHAIN_IDS)[number], GraphQLClient> = {
-  [ChainId.BSC]: new GraphQLClient(STABLESWAP_SUBGRAPHS_URLS[ChainId.BSC]),
-  [ChainId.ARBITRUM_ONE]: new GraphQLClient(STABLESWAP_SUBGRAPHS_URLS[ChainId.ARBITRUM_ONE]),
-  [ChainId.ETHEREUM]: new GraphQLClient(STABLESWAP_SUBGRAPHS_URLS[ChainId.ETHEREUM]),
-  [ChainId.BSC_TESTNET]: new GraphQLClient(STABLESWAP_SUBGRAPHS_URLS[ChainId.BSC_TESTNET]),
+// Helper function to create GraphQL client with custom endpoint
+export function createGraphQLClient(endpoint: string): GraphQLClient {
+  return new GraphQLClient(endpoint)
 }
 
-export const bitQueryServerClient = new GraphQLClient(BIT_QUERY, {
-  headers: {
-    // only server, no `NEXT_PUBLIC` not going to expose in client
-    'X-API-KEY': process.env.BIT_QUERY_HEADER || '',
-  },
-  timeout: 5000,
-})
+// Common GraphQL fragments
+export const PAIR_FRAGMENT = `
+  fragment PairFields on Pair {
+    id
+    token0 {
+      id
+      symbol
+      name
+      decimals
+    }
+    token1 {
+      id
+      symbol
+      name
+      decimals
+    }
+    reserve0
+    reserve1
+    totalSupply
+    reserveUSD
+    volumeUSD
+    untrackedVolumeUSD
+    txCount
+    createdAtTimestamp
+    createdAtBlockNumber
+  }
+`
+
+export const TOKEN_FRAGMENT = `
+  fragment TokenFields on Token {
+    id
+    symbol
+    name
+    decimals
+    totalSupply
+    tradeVolume
+    tradeVolumeUSD
+    untrackedVolumeUSD
+    txCount
+    totalLiquidity
+    derivedETH
+  }
+`
+
+// Common queries
+export const GET_PAIRS = `
+  query GetPairs($first: Int!, $skip: Int!, $orderBy: String!, $orderDirection: String!) {
+    pairs(first: $first, skip: $skip, orderBy: $orderBy, orderDirection: $orderDirection) {
+      ...PairFields
+    }
+  }
+  ${PAIR_FRAGMENT}
+`
+
+export const GET_TOKENS = `
+  query GetTokens($first: Int!, $skip: Int!, $orderBy: String!, $orderDirection: String!) {
+    tokens(first: $first, skip: $skip, orderBy: $orderBy, orderDirection: $orderDirection) {
+      ...TokenFields
+    }
+  }
+  ${TOKEN_FRAGMENT}
+`
+
+export const GET_PAIR_BY_ID = `
+  query GetPairById($id: ID!) {
+    pair(id: $id) {
+      ...PairFields
+    }
+  }
+  ${PAIR_FRAGMENT}
+`
+
+export const GET_TOKEN_BY_ID = `
+  query GetTokenById($id: ID!) {
+    token(id: $id) {
+      ...TokenFields
+    }
+  }
+  ${TOKEN_FRAGMENT}
+`

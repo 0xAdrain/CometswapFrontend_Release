@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { Address } from 'viem'
 import { SupportedChainId } from './constants/supportedChains'
 import { ContractAddresses } from './type'
@@ -9,7 +9,7 @@ export const predictionsBNB: Record<string, Address> = {
   [ChainId.ARBITRUM_ONE]: '0x',
 } as const satisfies ContractAddresses<SupportedChainId>
 
-export const predictionsCAKE: Record<string, Address> = {
+export const predictionsCOMET: Record<string, Address> = {
   [ChainId.BSC]: '0x0E3A8078EDD2021dadcdE733C6b4a86E51EE8f07',
   [ChainId.ZKSYNC]: '0x',
   [ChainId.ARBITRUM_ONE]: '0x',

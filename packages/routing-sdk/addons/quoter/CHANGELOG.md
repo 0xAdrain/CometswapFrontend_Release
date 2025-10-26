@@ -1,11 +1,11 @@
-# @pancakeswap/routing-sdk-addon-v2
+# @cometswap/routing-sdk-addon-v2
 
 ## 2.0.2
 
 ### Patch Changes
 
-- @pancakeswap/routing-sdk-addon-stable-swap@2.0.5
-- @pancakeswap/routing-sdk-addon-v3@2.0.3
+- @cometswap/routing-sdk-addon-stable-swap@2.0.5
+- @cometswap/routing-sdk-addon-v3@2.0.3
 
 ## 2.0.1
 
@@ -14,12 +14,12 @@
 - Updated dependencies [176eb10]
 - Updated dependencies [176eb10]
 - Updated dependencies [ffa96b3]
-  - @pancakeswap/swap-sdk-core@1.3.0
-  - @pancakeswap/routing-sdk@0.2.2
-  - @pancakeswap/routing-sdk-addon-stable-swap@2.0.4
-  - @pancakeswap/routing-sdk-addon-v2@2.0.2
-  - @pancakeswap/routing-sdk-addon-v3@2.0.2
-  - @pancakeswap/v2-sdk@1.0.6
+  - @cometswap/swap-sdk-core@1.3.0
+  - @cometswap/routing-sdk@0.2.2
+  - @cometswap/routing-sdk-addon-stable-swap@2.0.4
+  - @cometswap/routing-sdk-addon-v2@2.0.2
+  - @cometswap/routing-sdk-addon-v3@2.0.2
+  - @cometswap/v2-sdk@1.0.6
 
 ## 2.0.0
 
@@ -31,23 +31,23 @@
 
 ### Patch Changes
 
-- @pancakeswap/routing-sdk-addon-stable-swap@2.0.3
+- @cometswap/routing-sdk-addon-stable-swap@2.0.3
 
 ## 1.0.2
 
 ### Patch Changes
 
 - Updated dependencies [f2818f6]
-  - @pancakeswap/routing-sdk@0.2.1
-  - @pancakeswap/routing-sdk-addon-stable-swap@2.0.2
-  - @pancakeswap/routing-sdk-addon-v2@2.0.1
-  - @pancakeswap/routing-sdk-addon-v3@2.0.1
+  - @cometswap/routing-sdk@0.2.1
+  - @cometswap/routing-sdk-addon-stable-swap@2.0.2
+  - @cometswap/routing-sdk-addon-v2@2.0.1
+  - @cometswap/routing-sdk-addon-v3@2.0.1
 
 ## 1.0.1
 
 ### Patch Changes
 
-- @pancakeswap/routing-sdk-addon-stable-swap@2.0.1
+- @cometswap/routing-sdk-addon-stable-swap@2.0.1
 
 ## 1.0.0
 
@@ -58,10 +58,10 @@
 ### Patch Changes
 
 - Updated dependencies [618ad06]
-  - @pancakeswap/routing-sdk-addon-stable-swap@2.0.0
-  - @pancakeswap/routing-sdk-addon-v2@2.0.0
-  - @pancakeswap/routing-sdk-addon-v3@2.0.0
-  - @pancakeswap/routing-sdk@0.2.0
+  - @cometswap/routing-sdk-addon-stable-swap@2.0.0
+  - @cometswap/routing-sdk-addon-v2@2.0.0
+  - @cometswap/routing-sdk-addon-v3@2.0.0
+  - @cometswap/routing-sdk@0.2.0
 
 ## 1.0.0
 
@@ -72,4 +72,4 @@
 ### Patch Changes
 
 - Updated dependencies [b1d1eaf]
-  - @pancakeswap/routing-sdk@0.1.0
+  - @cometswap/routing-sdk@0.1.0

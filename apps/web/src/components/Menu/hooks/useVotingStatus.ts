@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Proposal, ProposalState } from 'state/types'
 import { gql } from 'graphql-request'
 import { SNAPSHOT_API } from 'config/constants/endpoints'
-import { ADMINS, PANCAKE_SPACE } from 'views/Voting/config'
+import { ADMINS, COMET_SPACE } from 'views/Voting/config'
 import { multiQuery } from 'utils/infoQueryHelpers'
 
 type Proposals = Partial<{
@@ -21,7 +21,7 @@ export const getCoreProposal = async (types: ProposalState[]): Promise<Proposals
         (type) => `
           ${type}:proposals(first: 1, skip: 0, where: { author_in: ${JSON.stringify(
           ADMINS,
-        )}, space_in: "${PANCAKE_SPACE}", state: "${type}" }) {
+        )}, space_in: "${COMET_SPACE}", state: "${type}" }) {
           id
         }
     `,
@@ -58,3 +58,4 @@ export const useVotingStatus = () => {
   })
   return votingStatus
 }
+

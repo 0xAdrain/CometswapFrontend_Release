@@ -1,7 +1,7 @@
 import { Order } from '@gelatonetwork/limit-orders-lib'
 import { useCallback } from 'react'
 
-import { Currency, Price } from '@pancakeswap/sdk'
+import { Currency, Price } from '@cometswap/sdk'
 import { useQueryClient } from '@tanstack/react-query'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useOrderActionHandlers } from 'state/limitOrders/hooks'
@@ -237,3 +237,4 @@ const useGelatoLimitOrdersHandlers = (): GelatoLimitOrdersHandlers => {
 }
 
 export default useGelatoLimitOrdersHandlers
+

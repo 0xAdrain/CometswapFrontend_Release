@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { Token } from '@cometswap/sdk'
 import {
   arbSepoliaTokens,
   arbitrumGoerliTokens,
@@ -18,9 +18,10 @@ import {
   polygonZkEvmTestnetTokens,
   polygonZkEvmTokens,
   scrollSepoliaTokens,
+  xlayerTestnetTokens,
   zkSyncTestnetTokens,
   zksyncTokens,
-} from '@pancakeswap/tokens'
+} from '@cometswap/tokens'
 
 export const usdGasTokensByChain = {
   [ChainId.ETHEREUM]: [ethereumTokens.usdt],
@@ -43,6 +44,7 @@ export const usdGasTokensByChain = {
   [ChainId.SEPOLIA]: [scrollSepoliaTokens.usdc],
   [ChainId.ARBITRUM_SEPOLIA]: [arbSepoliaTokens.usdc],
   [ChainId.BASE_SEPOLIA]: [baseSepoliaTokens.usdc],
+  [ChainId.XLAYER_TESTNET]: [xlayerTestnetTokens.musdc],
 } satisfies Record<ChainId, Token[]>
 
 export * from './stableSwap'

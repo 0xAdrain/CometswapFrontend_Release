@@ -1,4 +1,4 @@
-import { PoolType } from '@pancakeswap/smart-router'
+import { PoolType } from '@cometswap/smart-router'
 
 import type { PoolTypeKey } from './types'
 

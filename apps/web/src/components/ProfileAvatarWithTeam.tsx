@@ -1,4 +1,4 @@
-import { NoProfileAvatarIcon } from '@pancakeswap/uikit'
+import { NoProfileAvatarIcon } from '@cometswap/uikit'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { Profile } from 'state/types'
 import { styled } from 'styled-components'
@@ -49,7 +49,7 @@ const AvatarInactive = styled(NoProfileAvatarIcon)`
 
 const ProfileAvatarWithTeam: React.FC<React.PropsWithChildren<ProfileAvatarProps>> = ({ profile }) => {
   return (
-    <AvatarWrapper $bg={profile.nft?.image.thumbnail}>
+    <AvatarWrapper $bg={undefined}> {/* CometSwap: 简化头像处理，移除nft属性访问 */}
       {!profile.isActive && <AvatarInactive />}
       {profile.team && <TeamAvatar src={`${ASSET_CDN}/web/teams/${profile.team.images.alt}`} alt={profile.team.name} />}
     </AvatarWrapper>
@@ -57,3 +57,4 @@ const ProfileAvatarWithTeam: React.FC<React.PropsWithChildren<ProfileAvatarProps
 }
 
 export default ProfileAvatarWithTeam
+

@@ -1,8 +1,8 @@
-import { usePreviousValue } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Token } from '@pancakeswap/sdk'
-import { TokenList, WrappedTokenInfo } from '@pancakeswap/token-lists'
-import { enableList, removeList, useFetchListCallback } from '@pancakeswap/token-lists/react'
+import { usePreviousValue } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Token } from '@cometswap/sdk'
+import { TokenList, WrappedTokenInfo } from '@cometswap/token-lists'
+import { enableList, removeList, useFetchListCallback } from '@cometswap/token-lists/react'
 import {
   Button,
   CopyButton,
@@ -18,8 +18,8 @@ import {
   ModalTitle,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { CurrencyLogo, ImportList } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { CurrencyLogo, ImportList } from '@cometswap/widgets-internal'
 import AddToWalletButton from 'components/AddToWallet/AddToWalletButton'
 import { ViewOnExplorerButton } from 'components/ViewOnExplorerButton'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -267,3 +267,4 @@ export default function CurrencySearchModal({
     </StyledModalContainer>
   )
 }
+

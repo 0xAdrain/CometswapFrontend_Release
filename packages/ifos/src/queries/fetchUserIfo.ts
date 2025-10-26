@@ -1,12 +1,12 @@
-import { ChainId } from '@pancakeswap/chains'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { Address, WalletClient, getContract } from 'viem'
 
-import { iCakeABI } from '../abis/ICake'
+import { iveCometABI } from '../abis/IveComet'
 import { ifoV7ABI } from '../abis/IfoV7'
 import { ifoV8ABI } from '../abis/IfoV8'
-import { ICAKE } from '../constants/contracts'
+import { ICOMET} from '../constants/contracts'
 import { OnChainProvider, PoolIds, UserVestingData } from '../types'
 import { getContractAddress } from '../utils'
 
@@ -15,16 +15,16 @@ export const getIfoCreditAddressContract = (
   provider: OnChainProvider,
   walletClient?: WalletClient,
 ) => {
-  const address = getContractAddress(ICAKE, chainId)
+  const address = getContractAddress(ICOMET, chainId)
   if (!address || address === '0x') {
-    throw new Error(`ICAKE not supported on chain ${chainId}`)
+    throw new Error(`ICOMETnot supported on chain ${chainId}`)
   }
   const publicClient = provider({ chainId })
   if (!publicClient) {
     throw new Error(`Invalid public client ${publicClient}`)
   }
 
-  return getContract({ abi: iCakeABI, address, client: { public: publicClient, wallet: walletClient } })
+  return getContract({ abi: iveCometABI, address, client: { public: publicClient, wallet: walletClient } })
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

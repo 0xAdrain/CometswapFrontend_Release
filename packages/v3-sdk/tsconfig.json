@@ -1,10 +1,10 @@
 {
-  "extends": "@pancakeswap/tsconfig/base",
+  "extends": "../tsconfig/base.json",
   "exclude": ["**/*.test.ts", "./dist/**"],
   "include": ["src"],
   "compilerOptions": {
     "outDir": "./dist",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "target": "es2020",
     "module": "esnext",
     "importHelpers": true,

@@ -1,4 +1,4 @@
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { useQuery } from '@tanstack/react-query'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
@@ -117,3 +117,4 @@ export async function getPoolTicks(
 
   return allTicks
 }
+

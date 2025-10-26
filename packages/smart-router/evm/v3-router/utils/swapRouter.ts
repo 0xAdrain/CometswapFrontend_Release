@@ -1,7 +1,7 @@
 import { encodeFunctionData, Hex, Address } from 'viem'
-import { Currency, CurrencyAmount, Percent, TradeType, validateAndParseAddress, WNATIVE } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
-import { FeeOptions, MethodParameters, Payments, PermitOptions, Position, SelfPermit, toHex } from '@pancakeswap/v3-sdk'
+import { Currency, CurrencyAmount, Percent, TradeType, validateAndParseAddress, WNATIVE } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { FeeOptions, MethodParameters, Payments, PermitOptions, Position, SelfPermit, toHex } from '@cometswap/v3-sdk'
 import invariant from 'tiny-invariant'
 
 import { swapRouter02Abi } from '../../abis/ISwapRouter02'
@@ -61,7 +61,7 @@ export interface SwapAndAddOptions extends SwapOptions {
 type AnyTradeType = SmartRouterTrade<TradeType> | SmartRouterTrade<TradeType>[]
 
 /**
- * Represents the Pancakeswap V2 + V3 + StableSwap SwapRouter02, and has static methods for helping execute trades.
+ * Represents the Cometswap V2 + V3 + StableSwap SwapRouter02, and has static methods for helping execute trades.
  */
 export abstract class SwapRouter {
   public static ABI = swapRouter02Abi

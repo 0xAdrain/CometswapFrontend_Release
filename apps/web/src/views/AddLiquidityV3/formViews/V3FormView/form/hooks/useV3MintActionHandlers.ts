@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Price, Token } from '@pancakeswap/swap-sdk-core'
+import { Price, Token } from '@cometswap/swap-sdk-core'
 import { useCallback } from 'react'
 import { batch } from 'react-redux'
 import { CurrencyField as Field } from 'utils/types'
@@ -138,3 +138,4 @@ export function useV3MintActionHandlers(
     onSetFullRange,
   }
 }
+

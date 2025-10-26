@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { createStore, Store } from '@reduxjs/toolkit'
 import {
   addTransaction,
@@ -225,3 +225,4 @@ describe('transaction reducer', () => {
     })
   })
 })
+

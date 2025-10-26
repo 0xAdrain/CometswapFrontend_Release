@@ -1,7 +1,7 @@
-import { IconButton, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { IconButton, Text, TooltipText, useTooltip } from '@cometswap/uikit'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId } from '@cometswap/chains'
 import { useCallback, useEffect, useState } from 'react'
 
 import { styled, keyframes } from 'styled-components'
@@ -74,7 +74,7 @@ export const V3SwapPromotionIcon: React.FC<{ wrapperStyle?: React.CSSProperties 
     tooltip: campaignTooltip,
     tooltipVisible: campaignTooltipVisible,
     targetRef: campaignTargetRef,
-  } = useTooltip(<Text>{t('Claim $135K CAKE Airdrop & Exclusive NFT')}</Text>, {
+  } = useTooltip(<Text>{t('Claim $135K COMETAirdrop & Exclusive NFT')}</Text>, {
     placement: 'top',
     trigger: 'hover',
     avoidToStopPropagation: true,
@@ -92,7 +92,7 @@ export const V3SwapPromotionIcon: React.FC<{ wrapperStyle?: React.CSSProperties 
             fontSize="20px"
             onClick={() => {
               window.open(
-                'https://blog.pancakeswap.finance/articles/participate-in-pancake-swap-v3-launch-claim-135-k-cake-airdrop-and-receive-an-exclusive-nft-for-early-supporters',
+                'https://blog.cometswap.finance/articles/participate-in-comet-swap-v3-launch-claim-135-k-comet-airdrop-and-receive-an-exclusive-nft-for-early-supporters',
                 '_blank',
                 'noreferrer noopener',
               )
@@ -106,3 +106,4 @@ export const V3SwapPromotionIcon: React.FC<{ wrapperStyle?: React.CSSProperties 
     </Text>
   )
 }
+

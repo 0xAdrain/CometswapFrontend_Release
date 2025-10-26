@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { Box } from '@pancakeswap/uikit'
+import { Token } from '@cometswap/sdk'
+import { Box } from '@cometswap/uikit'
 import { PredictionUser } from 'state/types'
 import MobileRow from './MobileRow'
 
@@ -20,3 +20,4 @@ const MobileResults: React.FC<React.PropsWithChildren<MobileResultsProps>> = ({ 
 }
 
 export default MobileResults
+

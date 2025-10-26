@@ -1,4 +1,4 @@
-import { IfoStatus } from '@pancakeswap/ifos'
+import { IfoStatus } from '@cometswap/ifos'
 
 export const getStatus = (currentBlock: number, startBlock: number, endBlock: number): IfoStatus => {
   // Add an extra check to currentBlock because it takes awhile to fetch so the initial value is 0
@@ -43,3 +43,4 @@ export const getStatusByTimestamp = (now: number, startTimestamp?: number, endTi
 }
 
 export default null
+

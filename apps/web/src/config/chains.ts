@@ -1,4 +1,4 @@
-import { ChainId, chainNames } from '@pancakeswap/chains'
+import { ChainId, chainNames } from '@cometswap/chains'
 import memoize from 'lodash/memoize'
 import {
   Chain,
@@ -22,6 +22,30 @@ import {
   sepolia,
   zkSync,
 } from 'wagmi/chains'
+
+const xlayerTestnet = {
+  id: 1952,
+  name: 'X Layer Testnet',
+  network: 'xlayer-testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'OKB',
+    symbol: 'OKB',
+  },
+  rpcUrls: {
+    public: { http: [`${process.env.NEXT_PUBLIC_SITE_URL || ''}/api/rpc/xlayer-testnet`] },
+    default: { http: [`${process.env.NEXT_PUBLIC_SITE_URL || ''}/api/rpc/xlayer-testnet`] },
+  },
+  blockExplorers: {
+    default: { name: 'X Layer Explorer', url: 'https://web3.okx.com/explorer/xlayer-test' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      blockCreated: 47416,
+    },
+  },
+} as const
 
 export const CHAIN_QUERY_NAME = chainNames
 
@@ -71,6 +95,7 @@ export const L2_CHAIN_IDS: ChainId[] = [
   ChainId.OPBNB_TESTNET,
   ChainId.ARBITRUM_SEPOLIA,
   ChainId.BASE_SEPOLIA,
+  ChainId.XLAYER_TESTNET,
 ]
 
 export const CHAINS: [Chain, ...Chain[]] = [
@@ -93,4 +118,7 @@ export const CHAINS: [Chain, ...Chain[]] = [
   opBNB,
   opBNBTestnet,
   scrollSepolia,
+  xlayerTestnet,
 ]
+
+

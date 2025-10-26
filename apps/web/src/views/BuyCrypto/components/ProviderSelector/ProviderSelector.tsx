@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowDropDownIcon, AutoColumn, Box, BoxProps, Button, Flex, SkeletonText } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowDropDownIcon, AutoColumn, Box, BoxProps, Button, Flex, SkeletonText } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import formatLocaleNumber from 'utils/formatLocaleNumber'
 import { OnRampProviderQuote } from 'views/BuyCrypto/types'
@@ -118,3 +118,4 @@ export const ProviderSelector = ({
     </Box>
   )
 }
+

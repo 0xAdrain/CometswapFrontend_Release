@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 
 const Row = styled(Box)<{
   width?: string
@@ -47,3 +47,4 @@ export const RowFixed = styled(Row)<{ gap?: string; justify?: string }>`
 `
 
 export default Row
+

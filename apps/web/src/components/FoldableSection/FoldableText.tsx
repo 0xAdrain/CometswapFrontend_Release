@@ -1,7 +1,7 @@
 import { useState, ReactNode, useCallback, useMemo } from 'react'
 import { styled } from 'styled-components'
-import { ExpandableLabel, Flex, FlexProps, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { ExpandableLabel, Flex, FlexProps, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 interface FoldableTextProps extends Omit<FlexProps, 'title'> {
   title?: ReactNode
@@ -55,3 +55,4 @@ const FoldableText: React.FC<React.PropsWithChildren<FoldableTextProps>> = ({
 }
 
 export default FoldableText
+

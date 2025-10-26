@@ -1,6 +1,6 @@
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { PriceOrder } from '@cometswap/price-api-sdk'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 
 import { Field } from 'state/swap/actions'
 import { useSwapState } from 'state/swap/hooks'
@@ -30,3 +30,4 @@ export function useParsedAmounts(trade: PriceOrder['trade'] | undefined, balance
         [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount,
       }
 }
+

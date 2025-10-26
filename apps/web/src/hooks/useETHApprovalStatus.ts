@@ -1,5 +1,5 @@
-import { WETH9 } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { WETH9 } from '@cometswap/sdk'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { Address, erc20Abi } from 'viem'
 import { useAccount, useReadContract } from 'wagmi'
@@ -28,3 +28,4 @@ export const useETHApprovalStatus = (spender: Address) => {
 }
 
 export default useETHApprovalStatus
+

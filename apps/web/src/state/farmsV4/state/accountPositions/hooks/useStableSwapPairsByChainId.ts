@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { LegacyRouter } from '@pancakeswap/smart-router/legacy-router'
+import { ChainId } from '@cometswap/chains'
+import { LegacyRouter } from '@cometswap/smart-router/legacy-router'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
@@ -23,3 +23,4 @@ export const useStableSwapPairsByChainId = (chainId: ChainId, enabled = true) =>
 
   return pairs
 }
+

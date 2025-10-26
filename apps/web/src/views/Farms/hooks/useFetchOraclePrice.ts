@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useReadContract } from '@pancakeswap/wagmi'
+import { ChainId } from '@cometswap/chains'
+import { useReadContract } from '@cometswap/wagmi'
 import { getChainlinkOracleContract } from 'utils/contractHelpers'
 import { Address } from 'viem'
 
@@ -26,3 +26,4 @@ export const useOraclePrice = (chainId?: number) => {
 
   return price?.toString() ?? '0'
 }
+

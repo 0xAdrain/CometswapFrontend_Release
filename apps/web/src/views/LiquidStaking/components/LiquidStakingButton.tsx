@@ -1,9 +1,9 @@
-import { masterChefV3Addresses } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, ERC20Token } from '@pancakeswap/sdk'
-import { AutoRenewIcon, Button, useToast } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getDecimalAmount, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { masterChefV3Addresses } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, ERC20Token } from '@cometswap/sdk'
+import { AutoRenewIcon, Button, useToast } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getDecimalAmount, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -156,3 +156,4 @@ const LiquidStakingButton: React.FC<LiquidStakingButtonProps> = ({
 }
 
 export default LiquidStakingButton
+

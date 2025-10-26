@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Modal } from '@pancakeswap/uikit'
-import { getBalanceNumber, getDecimalAmount } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Modal } from '@cometswap/uikit'
+import { getBalanceNumber, getDecimalAmount } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import useTheme from 'hooks/useTheme'
 import { useEffect, useMemo, useState } from 'react'
@@ -39,7 +39,7 @@ const LockedStakeModal: React.FC<React.PropsWithChildren<GenericModalProps>> = (
     [lockedAmount, stakingTokenPrice, stakingToken.decimals],
   )
 
-  const { allowance } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
+  const { allowance } = useCheckVaultApprovalStatus(VaultKey.CometVault)
   const needApprove = useMemo(() => {
     const amount = getDecimalAmount(new BigNumber(lockedAmount))
     return amount.gt(allowance)
@@ -47,7 +47,7 @@ const LockedStakeModal: React.FC<React.PropsWithChildren<GenericModalProps>> = (
 
   return (
     <RoiCalculatorModalProvider lockedAmount={lockedAmount}>
-      <Modal title={t('Lock CAKE')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
+      <Modal title={t('Lock COMET')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
         <Box mb="16px">
           <BalanceField
             stakingAddress={stakingToken.address}
@@ -75,3 +75,4 @@ const LockedStakeModal: React.FC<React.PropsWithChildren<GenericModalProps>> = (
 }
 
 export default LockedStakeModal
+

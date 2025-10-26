@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token } from '@cometswap/sdk'
 import { FARMS_API } from '../config/endpoint'
 import { Protocol, UniversalFarmConfig } from './types'
 

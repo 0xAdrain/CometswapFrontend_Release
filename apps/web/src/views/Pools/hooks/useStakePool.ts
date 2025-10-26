@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+import { getFullDecimalMultiplier } from '@cometswap/utils/getFullDecimalMultiplier'
 import { useSousChef } from 'hooks/useContract'
 
 const options = {}
@@ -35,3 +35,4 @@ const useStakePool = (sousId: number, isUsingBnb = false) => {
 }
 
 export default useStakePool
+

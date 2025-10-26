@@ -1,4 +1,4 @@
-import { CurrencyAmount, ONE_HUNDRED_PERCENT, Percent, TradeType } from '@pancakeswap/sdk'
+import { CurrencyAmount, ONE_HUNDRED_PERCENT, Percent, TradeType } from '@cometswap/sdk'
 
 import { Route, SmartRouterTrade } from '../types'
 import { getMidPrice } from './route'

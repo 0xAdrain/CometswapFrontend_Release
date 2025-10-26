@@ -1,6 +1,6 @@
 import { GraphQLClient, gql } from 'graphql-request'
 import { atom } from 'jotai'
-import { PANCAKE_SPACE } from '../config'
+import { COMET_SPACE } from '../config'
 
 interface Space {
   id: string
@@ -27,7 +27,7 @@ export const spaceAtom = atom(async () => {
   // 2. Define the Query
   const GET_SPACE_DATA = gql`
     query {
-      space(id: "${PANCAKE_SPACE}") {
+      space(id: "${COMET_SPACE}") {
         id
         name
         about
@@ -57,3 +57,4 @@ export const spaceAtom = atom(async () => {
     return null
   }
 })
+

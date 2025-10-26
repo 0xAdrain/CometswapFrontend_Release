@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { RocketIcon, Tag, TagProps } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { RocketIcon, Tag, TagProps } from '@cometswap/uikit'
 import { memo } from 'react'
 
 interface BoostedTag extends TagProps {
@@ -17,3 +17,4 @@ const BoosterTag: React.FC<BoostedTag> = (props) => {
 }
 
 export default memo(BoosterTag)
+

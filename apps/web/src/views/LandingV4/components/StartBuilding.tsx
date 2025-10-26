@@ -1,5 +1,5 @@
-import { Trans, useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, LinkExternal, PageSection, Text } from '@pancakeswap/uikit'
+import { Trans, useTranslation } from '@cometswap/localization'
+import { Box, Flex, LinkExternal, PageSection, Text } from '@cometswap/uikit'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
@@ -75,25 +75,25 @@ const BuildingConfig = [
     title: <Trans>Read the Whitepaper</Trans>,
     icon: <Step1Icon width={40} height={48} color="primary" />,
     imageUrl: `${ASSET_CDN}/web/v4-landing/buildings-1.png`,
-    url: 'https://github.com/pancakeswap/pancake-v4-core/blob/main/docs/whitepaper-en.pdf?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4whitepaper',
+    url: 'https://github.com/cometswap/comet-v4-core/blob/main/docs/whitepaper-en.pdf?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4whitepaper',
   },
   {
     title: <Trans>Get the Tools</Trans>,
     icon: <Step2Icon width={40} height={48} color="primary" />,
     imageUrl: `${ASSET_CDN}/web/v4-landing/buildings-2.png`,
-    url: 'https://github.com/pancakeswap/pancake-v4-hooks-template?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4hookstemplate',
+    url: 'https://github.com/cometswap/comet-v4-hooks-template?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4hookstemplate',
   },
   {
     title: <Trans>Join the Community</Trans>,
     icon: <Step3Icon width={40} height={48} color="primary" />,
     imageUrl: `${ASSET_CDN}/web/v4-landing/buildings-3.png`,
-    url: 'https://discord.gg/pancakeswap?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage',
+    url: 'https://discord.gg/cometswap?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage',
   },
   {
     title: <Trans>Start Building</Trans>,
     icon: <Step4Icon width={40} height={48} color="primary" />,
     imageUrl: `${ASSET_CDN}/web/v4-landing/buildings-4.png`,
-    url: 'https://developer.pancakeswap.finance/?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage',
+    url: 'https://developer.cometswap.finance/?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage',
   },
 ]
 
@@ -143,7 +143,7 @@ export const StartBuilding = () => {
               lineHeight={['32px', '36px', '36px', '40px']}
               fontSize={['28px', '36px', '36px', '40px']}
             >
-              {t('with PancakeSwap v4')}
+              {t('with CometSwap v4')}
             </Text>
           </HeaderTitle>
           <StepsContainer>
@@ -181,3 +181,4 @@ export const StartBuilding = () => {
     </>
   )
 }
+

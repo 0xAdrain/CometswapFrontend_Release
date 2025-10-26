@@ -1,7 +1,7 @@
 import { isCyberWallet } from '@cyberlab/cyber-app-sdk'
-import { WalletConfigV2 } from '@pancakeswap/ui-wallets'
-import { WalletFilledIcon } from '@pancakeswap/uikit'
-import { getTrustWalletProvider } from '@pancakeswap/wagmi/connectors/trustWallet'
+import { WalletConfigV2 } from '@cometswap/ui-wallets'
+import { WalletFilledIcon } from '@cometswap/uikit'
+import { getTrustWalletProvider } from '@cometswap/wagmi/connectors/trustWallet'
 import type { ExtendEthereum } from 'global'
 import { Config } from 'wagmi'
 import { ConnectMutateAsync } from 'wagmi/query'
@@ -87,9 +87,9 @@ const walletsConfig = <config extends Config = Config, context = unknown>({
         // && metaMaskConnector.ready
       },
       connectorId: ConnectorNames.MetaMask,
-      deepLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
+      deepLink: 'https://metamask.app.link/dapp/cometswap.finance/',
       qrCode,
-      downloadLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
+      downloadLink: 'https://metamask.app.link/dapp/cometswap.finance/',
     },
     {
       id: 'trust',
@@ -99,7 +99,7 @@ const walletsConfig = <config extends Config = Config, context = unknown>({
       get installed() {
         return !!getTrustWalletProvider()
       },
-      deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://pancakeswap.finance/',
+      deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://cometswap.finance/',
       downloadLink: 'https://trustwallet.com/browser-extension',
       guide: {
         desktop: 'https://trustwallet.com/browser-extension',
@@ -117,7 +117,7 @@ const walletsConfig = <config extends Config = Config, context = unknown>({
       },
       downloadLink: 'https://www.okx.com/download',
       deepLink:
-        'https://www.okx.com/download?deeplink=okx%3A%2F%2Fwallet%2Fdapp%2Furl%3FdappUrl%3Dhttps%253A%252F%252Fpancakeswap.finance',
+        'https://www.okx.com/download?deeplink=okx%3A%2F%2Fwallet%2Fdapp%2Furl%3FdappUrl%3Dhttps%253A%252F%252Fcometswap.finance',
       guide: {
         desktop: 'https://www.okx.com/web3',
         mobile: 'https://www.okx.com/web3',
@@ -293,5 +293,6 @@ const docLangCodeMapping: Record<string, string> = {
 
 export const getDocLink = (code: string) =>
   docLangCodeMapping[code]
-    ? `https://docs.pancakeswap.finance/v/${docLangCodeMapping[code]}/get-started/wallet-guide`
-    : `https://docs.pancakeswap.finance/get-started/wallet-guide`
+    ? `https://docs.cometswap.finance/v/${docLangCodeMapping[code]}/get-started/wallet-guide`
+    : `https://docs.cometswap.finance/get-started/wallet-guide`
+

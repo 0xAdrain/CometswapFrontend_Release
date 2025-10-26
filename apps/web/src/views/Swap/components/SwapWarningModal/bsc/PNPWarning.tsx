@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Link, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Link, Text } from '@cometswap/uikit'
 
 const PNPWarning = () => {
   const { t } = useTranslation()
@@ -27,3 +27,4 @@ const PNPWarning = () => {
 }
 
 export default PNPWarning
+

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Fraction, Percent, Price, Rounding } from '@pancakeswap/swap-sdk-core'
+import { Currency, CurrencyAmount, Fraction, Percent, Price, Rounding } from '@cometswap/swap-sdk-core'
 
 export function formatPercent(percent?: Percent, precision?: number) {
   return percent ? formatFraction(percent.asFraction.multiply(100), precision) : undefined

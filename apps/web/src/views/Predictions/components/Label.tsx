@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, PocketWatchIcon, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, PocketWatchIcon, Text } from '@cometswap/uikit'
 import { useGetCurrentRoundCloseTimestamp, useGetIntervalTimeInMinutes } from 'state/predictions/hooks'
 import { keyframes, styled } from 'styled-components'
 import { formatRoundTime } from '../helpers'
@@ -168,3 +168,4 @@ export const TimerLabel = () => {
     </Box>
   )
 }
+

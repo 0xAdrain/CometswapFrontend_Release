@@ -1,18 +1,18 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ModalV2 } from '@pancakeswap/uikit'
-import useCakeBenefits from 'components/Menu/UserMenu/hooks/useCakeBenefits'
+import { ChainId } from '@cometswap/chains'
+import { ModalV2 } from '@cometswap/uikit'
+import useVeCometBenefits from 'components/Menu/UserMenu/hooks/useVeCometBenefits'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useCallback, useEffect, useState } from 'react'
-import { VaultPosition } from 'utils/cakePool'
+import { VaultPosition } from 'utils/cometPool'
 import JoinRevenueModal from 'views/Pools/components/RevenueSharing/JoinRevenueModal'
-import useVCake from 'views/Pools/hooks/useVCake'
+import useVComet from 'views/Pools/hooks/useVComet'
 import { useAccountEffect } from 'wagmi'
 
-const VCakeModal = () => {
+const VCometModal = () => {
   const { account, chainId } = useAccountActiveChain()
-  const { isInitialization, refresh } = useVCake()
+  const { isInitialization, refresh } = useVComet()
   const [open, setOpen] = useState(false)
-  const { data: cakeBenefits, status: cakeBenefitsFetchStatus } = useCakeBenefits()
+  const { data: cakeBenefits, status: cakeBenefitsFetchStatus } = useVeCometBenefits()
 
   const closeModal = useCallback(() => {
     setOpen(false)
@@ -42,4 +42,5 @@ const VCakeModal = () => {
   )
 }
 
-export default VCakeModal
+export default VCometModal
+

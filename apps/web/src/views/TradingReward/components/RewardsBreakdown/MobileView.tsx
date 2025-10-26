@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Text } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Text } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import { styled } from 'styled-components'
 import PairInfo from 'views/TradingReward/components/PairInfo'
 import { RewardType } from 'views/TradingReward/hooks/useAllTradingRewardPair'
@@ -67,7 +67,7 @@ const MobileView: React.FC<React.PropsWithChildren<RewardsBreakdownMobileViewPro
                   </Flex>
                   <Flex justifyContent="space-between" mt="8px">
                     <Text fontSize="14px">{t('Reward Earned')}</Text>
-                    {type === RewardType.CAKE_STAKERS ? (
+                    {type === RewardType.COMET_STAKERS ? (
                       <Text fontSize="14px" bold color={pair.preCap > 0 ? 'text' : 'textSubtle'}>
                         {`$${formatNumber(pair.preCap)}`}
                       </Text>

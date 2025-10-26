@@ -1,33 +1,33 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import {
   FarmV3DataWithPrice,
   FarmV3DataWithPriceAndUserInfo,
   FarmV3DataWithPriceTVL,
   FarmsV3Response,
-  IPendingCakeByTokenId,
+  IPendingCometByTokenId,
   PositionDetails,
   Protocol,
   SerializedFarmsV3Response,
   UniversalFarmConfigV3,
-  bCakeSupportedChainId,
+  bCometSupportedChainId,
   createFarmFetcherV3,
   defineFarmV3ConfigsFromUniversalFarm,
   fetchUniversalFarms,
   supportedChainIdV3,
-} from '@pancakeswap/farms'
-import { priceHelperTokens } from '@pancakeswap/farms/constants/common'
-import { bCakeFarmBoosterVeCakeABI } from '@pancakeswap/farms/constants/v3/abi/bCakeFarmBoosterVeCake'
-import { TvlMap, fetchCommonTokenUSDValue } from '@pancakeswap/farms/src/fetchFarmsV3'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { masterChefV3ABI } from '@pancakeswap/v3-sdk'
+} from '@cometswap/farms'
+import { priceHelperTokens } from '@cometswap/farms/constants/common'
+import { bveCometFarmBoosterveCometABI as bCometFarmBoosterVeCometABI } from '@cometswap/farms/constants/v3/abi/bveCometFarmBoosterveComet'
+import { TvlMap, fetchCommonTokenUSDValue } from '@cometswap/farms/src/fetchFarmsV3'
+import { deserializeToken } from '@cometswap/token-lists'
+import { masterChefV3ABI } from '@cometswap/v3-sdk'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import BN from 'bignumber.js'
 import { FAST_INTERVAL } from 'config/constants'
 import { FARMS_API_V2 } from 'config/constants/endpoints'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import {
-  useBCakeFarmBoosterVeCakeContract,
+  useBCometFarmBoosterVeCometContract,
   useMasterchefV3,
   useMasterchefV3ByChain,
   useV3NFTPositionManagerContract,
@@ -64,7 +64,7 @@ const fallback: Awaited<ReturnType<typeof farmFetcherV3.fetchFarms>> = {
   chainId: ChainId.BSC,
   farmsWithPrice: [],
   poolLength: 0,
-  cakePerSecond: '0',
+  cometPerSecond: '0',
   totalAllocPoint: '0',
 }
 
@@ -75,7 +75,7 @@ const farmFetcherV3 = createFarmFetcherV3(getViemClients)
 export const useFarmsV3Public = () => {
   const { chainId } = useActiveChainId()
 
-  return useQuery({
+  const resp = useQuery({
     queryKey: [chainId, 'farmV3ApiFetch'],
 
     queryFn: async () => {
@@ -86,12 +86,12 @@ export const useFarmsV3Public = () => {
         })
       }
 
-      // direct copy from api routes, the client side fetch is preventing cache due to migration phase we want fresh data
-      const fetchFarmsV3 = await fetchUniversalFarms(chainId, Protocol.V3)
-      const farms = defineFarmV3ConfigsFromUniversalFarm(fetchFarmsV3 as UniversalFarmConfigV3[])
-      const commonPrice = await fetchCommonTokenUSDValue(priceHelperTokens[chainId ?? -1])
-
       try {
+        // direct copy from api routes, the client side fetch is preventing cache due to migration phase we want fresh data
+        const fetchFarmsV3 = await fetchUniversalFarms(chainId, Protocol.V3)
+        const farms = defineFarmV3ConfigsFromUniversalFarm(fetchFarmsV3 as UniversalFarmConfigV3[])
+        const commonPrice = await fetchCommonTokenUSDValue(priceHelperTokens[chainId ?? -1])
+
         const data = await farmFetcherV3.fetchFarms({
           chainId: chainId ?? -1,
           farms,
@@ -112,11 +112,17 @@ export const useFarmsV3Public = () => {
         return fallback
       }
     },
-
+    refetchInterval: 1_000 * 60 * 10,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
     enabled: Boolean(farmFetcherV3.isChainSupported(chainId ?? -1)),
-    refetchInterval: FAST_INTERVAL * 3,
-    initialData: fallback,
   })
+
+  return {
+    ...resp,
+    data: resp?.data ?? fallback,
+  }
 }
 
 interface UseFarmsOptions {
@@ -130,13 +136,13 @@ export const useFarmsV3 = ({ mockApr = false, boosterLiquidityX = {} }: UseFarms
 
   const farmV3 = useFarmsV3Public()
 
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const { data } = useQuery({
-    queryKey: [chainId, 'cake-apr-tvl', boosterLiquidityX],
+    queryKey: [chainId, 'comet-apr-tvl', boosterLiquidityX],
 
     queryFn: async ({ signal }) => {
-      if (chainId !== farmV3?.data.chainId) {
+      if (chainId !== farmV3?.data?.chainId) {
         throw new Error('ChainId mismatch')
       }
       const tvls: TvlMap = {}
@@ -177,7 +183,7 @@ export const useFarmsV3 = ({ mockApr = false, boosterLiquidityX = {} }: UseFarms
         })
       }
 
-      const farmWithPriceAndCakeAPR = farmV3.data.farmsWithPrice.map((f) => {
+      const farmWithPriceAndCometAPR = farmV3.data.farmsWithPrice.map((f) => {
         if (!tvls[f.lpAddress]) {
           return f
         }
@@ -191,17 +197,17 @@ export const useFarmsV3 = ({ mockApr = false, boosterLiquidityX = {} }: UseFarms
           tvl.token0 = token0Price ? String(1 / Number(token0Price)) : '1'
           tvl.token1 = token1Price ? String(1 / Number(token1Price)) : '1'
         }
-        const { activeTvlUSD, activeTvlUSDUpdatedAt, cakeApr } = farmFetcherV3.getCakeAprAndTVL(
+        const { activeTvlUSD, activeTvlUSDUpdatedAt, cometApr } = farmFetcherV3.getCometAprAndTVL(
           f,
           tvl,
-          cakePrice.toString(),
-          farmV3.data.cakePerSecond,
+          cometPrice.toString(),
+          farmV3.data?.cometPerSecond ?? '1',
           boosterLiquidityX?.[f.pid] ?? 1,
         )
 
         return {
           ...f,
-          cakeApr,
+          cometApr,
           activeTvlUSD,
           activeTvlUSDUpdatedAt,
         }
@@ -209,11 +215,11 @@ export const useFarmsV3 = ({ mockApr = false, boosterLiquidityX = {} }: UseFarms
 
       return {
         ...farmV3.data,
-        farmsWithPrice: farmWithPriceAndCakeAPR,
+        farmsWithPrice: farmWithPriceAndCometAPR,
       }
     },
 
-    enabled: Boolean(farmV3.data.farmsWithPrice.length > 0),
+    enabled: Boolean(farmV3?.data?.farmsWithPrice && farmV3?.data?.farmsWithPrice?.length > 0),
     placeholderData: (previousData, previousQuery) => {
       const queryKey = previousQuery?.queryKey
       if (!queryKey) return undefined
@@ -230,7 +236,7 @@ export const useFarmsV3 = ({ mockApr = false, boosterLiquidityX = {} }: UseFarms
 
   return {
     data: useMemo(() => {
-      return farmV3.isLoading || farmV3.data.chainId !== chainId
+      return farmV3.isLoading || farmV3.data?.chainId !== chainId
         ? (farmV3.data as FarmsV3Response<FarmV3DataWithPriceTVL>)
         : ((data?.chainId !== chainId ? farmV3.data : data ?? farmV3.data) as FarmsV3Response<FarmV3DataWithPriceTVL>)
     }, [chainId, data, farmV3.data, farmV3.isLoading]),
@@ -255,7 +261,7 @@ export const useStakedPositionsByUser = (stakedTokenIds: bigint[], _chainId?: nu
         callData.push(
           encodeFunctionData({
             abi: masterchefV3?.abi ?? [],
-            functionName: 'pendingCake',
+            functionName: 'pendingComet',
             args: [stakedTokenId],
           }),
         )
@@ -284,7 +290,7 @@ export const useStakedPositionsByUser = (stakedTokenIds: bigint[], _chainId?: nu
           .map((r) =>
             decodeFunctionResult({
               abi: masterchefV3?.abi,
-              functionName: zkSyncChains.includes(chainId ?? 0) ? 'pendingCake' : 'harvest',
+              functionName: zkSyncChains.includes(chainId ?? 0) ? 'pendingComet' : 'harvest',
               data: r,
             }),
           )
@@ -335,13 +341,13 @@ const usePositionsByUserFarms = (
     ]
   }, [positions, stakedIds, tokenIds])
 
-  const pendingCakeByTokenIds = useMemo(
+  const pendingCometByTokenIds = useMemo(
     () =>
-      (tokenIdResults as bigint[])?.reduce<IPendingCakeByTokenId>((acc, pendingCake, i) => {
+      (tokenIdResults as bigint[])?.reduce<IPendingCometByTokenId>((acc, pendingComet, i) => {
         const position = stakedPositions[i]
 
-        return pendingCake && position?.tokenId ? { ...acc, [position.tokenId.toString()]: pendingCake } : acc
-      }, {} as IPendingCakeByTokenId) ?? {},
+        return pendingComet && position?.tokenId ? { ...acc, [position.tokenId.toString()]: pendingComet } : acc
+      }, {} as IPendingCometByTokenId) ?? {},
     [stakedPositions, tokenIdResults],
   )
 
@@ -371,12 +377,12 @@ const usePositionsByUserFarms = (
           ...farm,
           unstakedPositions: unstaked,
           stakedPositions: staked,
-          pendingCakeByTokenIds: Object.entries(pendingCakeByTokenIds).reduce<IPendingCakeByTokenId>(
-            (acc, [tokenId, cake]) => {
+          pendingCometByTokenIds: Object.entries(pendingCometByTokenIds).reduce<IPendingCometByTokenId>(
+            (acc, [tokenId, comet]) => {
               const foundPosition = staked.find((p) => p?.tokenId === BigInt(tokenId))
 
               if (foundPosition) {
-                return { ...acc, [tokenId]: cake }
+                return { ...acc, [tokenId]: comet }
               }
 
               return acc
@@ -385,7 +391,7 @@ const usePositionsByUserFarms = (
           ),
         }
       }),
-    [farmsV3, pendingCakeByTokenIds, stakedPositions, unstakedPositions],
+    [farmsV3, pendingCometByTokenIds, stakedPositions, unstakedPositions],
   )
 
   return {
@@ -397,12 +403,12 @@ const usePositionsByUserFarms = (
 export function useFarmsV3WithPositionsAndBooster(options: UseFarmsOptions = {}): {
   farmsWithPositions: FarmV3DataWithPriceAndUserInfo[]
   userDataLoaded: boolean
-  cakePerSecond: string
+  cometPerSecond: string
   poolLength: number
   isLoading: boolean
 } {
   const { data: boosterLiquidityX } = useV3BoostedLiquidityX()
-  const { data, error: _error, isLoading } = useFarmsV3({ ...options, boosterLiquidityX })
+  const { data, isLoading } = useFarmsV3({ ...options, boosterLiquidityX })
   const { data: boosterWhitelist } = useV3BoostedFarm(data?.farmsWithPrice?.map((f) => f.pid))
 
   return {
@@ -413,26 +419,26 @@ export function useFarmsV3WithPositionsAndBooster(options: UseFarmsOptions = {})
       })),
     ),
     poolLength: data.poolLength,
-    cakePerSecond: data.cakePerSecond,
+    cometPerSecond: data.cometPerSecond,
     isLoading,
   }
 }
 
 const useV3BoostedFarm = (pids?: number[]) => {
   const { chainId } = useActiveChainId()
-  const farmBoosterVeCakeContract = useBCakeFarmBoosterVeCakeContract()
+  const farmBoosterVeCometContract = useBCometFarmBoosterVeCometContract()
 
   const { data } = useQuery({
     queryKey: ['v3/boostedFarm', chainId, pids?.join('-')],
 
     queryFn: () =>
       getV3FarmBoosterWhiteList({
-        farmBoosterContract: farmBoosterVeCakeContract,
+        farmBoosterContract: farmBoosterVeCometContract,
         chainId: chainId ?? -1,
         pids: pids ?? [],
       }),
 
-    enabled: Boolean(chainId && pids && pids.length > 0 && bCakeSupportedChainId.includes(chainId)),
+    enabled: Boolean(chainId && pids && pids.length > 0 && bCometSupportedChainId.includes(chainId)),
     retry: 3,
     retryDelay: 3000,
   })
@@ -455,7 +461,7 @@ const useV3BoostedLiquidityX = (): { data: Record<number, number> } => {
         pids: pids ?? [],
       }),
 
-    enabled: Boolean(chainId && pids && pids.length > 0 && bCakeSupportedChainId.includes(chainId)),
+    enabled: Boolean(chainId && pids && pids.length > 0 && bCometSupportedChainId.includes(chainId)),
   })
 
   return useMemo(() => {
@@ -470,20 +476,20 @@ const useV3BoostedLiquidityX = (): { data: Record<number, number> } => {
   }, [data])
 }
 
-export async function getV3FarmBoosterWhiteList({
+export const getV3FarmBoosterWhiteList = async ({
   farmBoosterContract,
   chainId,
   pids,
 }: {
-  farmBoosterContract: ReturnType<typeof useBCakeFarmBoosterVeCakeContract>
+  farmBoosterContract: ReturnType<typeof useBCometFarmBoosterVeCometContract>
   chainId: ChainId
   pids: number[]
-}): Promise<{ pid: number; boosted: boolean }[]> {
+}): Promise<{ pid: number; boosted: boolean }[]> => {
   const contracts = pids?.map((pid) => {
     return {
       address: farmBoosterContract.address,
       functionName: 'whiteList',
-      abi: bCakeFarmBoosterVeCakeABI,
+      abi: bCometFarmBoosterVeCometABI,
       args: [BigInt(pid)],
     } as const
   })
@@ -495,7 +501,7 @@ export async function getV3FarmBoosterWhiteList({
   return pids?.map((d, index) => ({ pid: d, boosted: whiteList[index].result ?? false }))
 }
 
-export async function getV3BoosterAPRLiquidityX({
+export const getV3BoosterAPRLiquidityX = async ({
   masterChefV3Contract,
   chainId,
   pids,
@@ -503,7 +509,7 @@ export async function getV3BoosterAPRLiquidityX({
   masterChefV3Contract: ReturnType<typeof useMasterchefV3>
   chainId: ChainId
   pids: number[]
-}): Promise<{ pid: number; boosterliquidityX: number }[]> {
+}): Promise<{ pid: number; boosterliquidityX: number }[]> => {
   const contracts = pids?.map((pid) => {
     return {
       address: masterChefV3Contract?.address ?? '0x',

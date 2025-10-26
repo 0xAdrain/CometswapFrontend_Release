@@ -1,4 +1,4 @@
-import { Button } from '@pancakeswap/uikit'
+import { Button } from '@cometswap/uikit'
 import styled from 'styled-components'
 
 export const PrimaryOutlineButton = styled(Button)<{ $height?: string }>`
@@ -8,3 +8,4 @@ export const PrimaryOutlineButton = styled(Button)<{ $height?: string }>`
   color: ${({ theme, variant }) => (variant === 'text' ? theme.colors.primary60 : 'text')};
   border: ${({ theme, variant }) => (variant === 'text' ? `2px solid ${theme.colors.primary}` : '')};
 `
+

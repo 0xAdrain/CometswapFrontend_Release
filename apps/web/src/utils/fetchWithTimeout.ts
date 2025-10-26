@@ -16,3 +16,4 @@ const fetchWithTimeout = (url, options: FetchTimeoutOptions = {}): Promise<Respo
 }
 
 export default fetchWithTimeout
+

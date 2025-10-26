@@ -36,3 +36,4 @@ export default function useSelectedPeriod({ pool, stakedPositions }) {
     lockedIndexes,
   }
 }
+

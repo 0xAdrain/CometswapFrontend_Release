@@ -1,7 +1,7 @@
 export const masterChefV3ABI = [
   {
     inputs: [
-      { internalType: 'contract IERC20', name: '_CAKE', type: 'address' },
+      { internalType: 'contract IERC20', name: '_COMET', type: 'address' },
       {
         internalType: 'contract INonfungiblePositionManager',
         name: '_nonfungiblePositionManager',
@@ -28,7 +28,7 @@ export const masterChefV3ABI = [
   { inputs: [], name: 'NotEmpty', type: 'error' },
   { inputs: [], name: 'NotOwner', type: 'error' },
   { inputs: [], name: 'NotOwnerOrOperator', type: 'error' },
-  { inputs: [], name: 'NotPancakeNFT', type: 'error' },
+  { inputs: [], name: 'NotCometNFT', type: 'error' },
   { inputs: [], name: 'WrongReceiver', type: 'error' },
   { inputs: [], name: 'ZeroAddress', type: 'error' },
   {
@@ -36,7 +36,7 @@ export const masterChefV3ABI = [
     inputs: [
       { indexed: true, internalType: 'uint256', name: 'pid', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
-      { indexed: true, internalType: 'contract IPancakeV3Pool', name: 'v3Pool', type: 'address' },
+      { indexed: true, internalType: 'contract ICometV3Pool', name: 'v3Pool', type: 'address' },
       { indexed: true, internalType: 'contract ILMPool', name: 'lmPool', type: 'address' },
     ],
     name: 'AddPool',
@@ -152,7 +152,7 @@ export const masterChefV3ABI = [
       { indexed: true, internalType: 'uint256', name: 'periodNumber', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'oldEndTime', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'newEndTime', type: 'uint256' },
-      { indexed: false, internalType: 'uint256', name: 'remainingCake', type: 'uint256' },
+      { indexed: false, internalType: 'uint256', name: 'remainingveComet', type: 'uint256' },
     ],
     name: 'UpdateUpkeepPeriod',
     type: 'event',
@@ -177,7 +177,7 @@ export const masterChefV3ABI = [
   },
   {
     inputs: [],
-    name: 'CAKE',
+    name: 'COMET',
     outputs: [{ internalType: 'contract IERC20', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -241,7 +241,7 @@ export const masterChefV3ABI = [
   {
     inputs: [
       { internalType: 'uint256', name: '_allocPoint', type: 'uint256' },
-      { internalType: 'contract IPancakeV3Pool', name: '_v3Pool', type: 'address' },
+      { internalType: 'contract ICometV3Pool', name: '_v3Pool', type: 'address' },
       { internalType: 'bool', name: '_withUpdate', type: 'bool' },
     ],
     name: 'add',
@@ -402,7 +402,7 @@ export const masterChefV3ABI = [
   },
   {
     inputs: [],
-    name: 'latestPeriodCakePerSecond',
+    name: 'latestPeriodveCometPerSecond',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -470,7 +470,7 @@ export const masterChefV3ABI = [
   },
   {
     inputs: [{ internalType: 'uint256', name: '_tokenId', type: 'uint256' }],
-    name: 'pendingCake',
+    name: 'pendingveComet',
     outputs: [{ internalType: 'uint256', name: 'reward', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -480,7 +480,7 @@ export const masterChefV3ABI = [
     name: 'poolInfo',
     outputs: [
       { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
-      { internalType: 'contract IPancakeV3Pool', name: 'v3Pool', type: 'address' },
+      { internalType: 'contract ICometV3Pool', name: 'v3Pool', type: 'address' },
       { internalType: 'address', name: 'token0', type: 'address' },
       { internalType: 'address', name: 'token1', type: 'address' },
       { internalType: 'uint24', name: 'fee', type: 'uint24' },

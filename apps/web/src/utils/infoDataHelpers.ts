@@ -24,3 +24,4 @@ export const getPercentChange = (valueNow?: number, valueBefore?: number): numbe
   }
   return 0
 }
+

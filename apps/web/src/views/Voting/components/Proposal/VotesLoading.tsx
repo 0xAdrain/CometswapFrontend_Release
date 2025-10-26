@@ -1,4 +1,4 @@
-import { Box, Flex, Skeleton } from '@pancakeswap/uikit'
+import { Box, Flex, Skeleton } from '@cometswap/uikit'
 import times from 'lodash/times'
 import { styled } from 'styled-components'
 
@@ -26,3 +26,4 @@ const VotesLoading = () => {
 }
 
 export default VotesLoading
+

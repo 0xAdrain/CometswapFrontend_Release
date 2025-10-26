@@ -1,5 +1,5 @@
-import { Trans } from '@pancakeswap/localization'
-import { AutoColumn, LockIcon, Text } from '@pancakeswap/uikit'
+import { Trans } from '@cometswap/localization'
+import { AutoColumn, LockIcon, Text } from '@cometswap/uikit'
 import { DisableCard } from 'components/Card'
 
 export default function LockedDeposit({ children, locked, ...rest }) {
@@ -16,3 +16,4 @@ export default function LockedDeposit({ children, locked, ...rest }) {
     children
   )
 }
+

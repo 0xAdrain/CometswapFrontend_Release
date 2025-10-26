@@ -1,5 +1,5 @@
-import { Currency, Token } from '@pancakeswap/sdk'
-import { useModal } from '@pancakeswap/uikit'
+import { Currency, Token } from '@cometswap/sdk'
+import { useModal } from '@cometswap/uikit'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
@@ -83,3 +83,4 @@ export default function useWarningImport() {
 
   return swapWarningHandler
 }
+

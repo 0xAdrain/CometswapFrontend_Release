@@ -28,3 +28,4 @@ export function useUserNotUsCitizenAcknowledgement(id: IdType) {
       return useAtom(perpetuals)
   }
 }
+

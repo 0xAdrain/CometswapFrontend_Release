@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { MANAGER } from '@pancakeswap/position-managers'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
-import { Button, Flex, LinkExternal, ModalV2, RowBetween, Text } from '@pancakeswap/uikit'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
-import { ConfirmationPendingContent } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { MANAGER } from '@cometswap/position-managers'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
+import { Button, Flex, LinkExternal, ModalV2, RowBetween, Text } from '@cometswap/uikit'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
+import { FeeAmount } from '@cometswap/v3-sdk'
+import { ConfirmationPendingContent } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { CurrencyInput } from 'components/CurrencyInput'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
@@ -13,7 +13,7 @@ import { styled } from 'styled-components'
 import { logGTMClickPositionManagerAddLiquidityEvent } from 'utils/customGTMEventTracking'
 import { formatCurrencyAmount } from 'utils/formatCurrencyAmount'
 import { Address } from 'viem'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
 import { DYORWarning } from 'views/PositionManagers/components/DYORWarning'
 import { SingleTokenWarning } from 'views/PositionManagers/components/SingleTokenWarning'
 import { StyledModal } from 'views/PositionManagers/components/StyledModal'
@@ -70,7 +70,7 @@ interface Props {
   learnMoreAboutUrl?: string
   lpTokenDecimals?: number
   aprTimeWindow?: number
-  bCakeWrapper?: Address
+  bCometWrapper?: Address
   adapterAddress?: Address
   minDepositUSD?: number
   boosterMultiplier?: number
@@ -123,7 +123,7 @@ export const AddLiquidity = memo(function AddLiquidity({
   learnMoreAboutUrl,
   lpTokenDecimals,
   aprTimeWindow,
-  bCakeWrapper,
+  bCometWrapper,
   minDepositUSD,
   isBooster,
   boosterMultiplier,
@@ -162,7 +162,7 @@ export const AddLiquidity = memo(function AddLiquidity({
     },
     [ratio, currencyA, currencyB],
   )
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { locked } = useBCometBoostLimitAndLockInfo()
 
   const onCurrencyAChange = useCallback(
     (value: string) =>
@@ -231,7 +231,7 @@ export const AddLiquidity = memo(function AddLiquidity({
     farmRewardAmount: aprDataInfo?.info?.rewardAmount ?? 0,
     rewardEndTime,
     rewardStartTime,
-    bCakeWrapperAddress: bCakeWrapper,
+    bCometWrapperAddress: bCometWrapper,
     adapterAddress,
   })
 
@@ -390,7 +390,7 @@ export const AddLiquidity = memo(function AddLiquidity({
                   lpTokenDecimals={lpTokenDecimals}
                   aprTimeWindow={aprTimeWindow}
                   rewardToken={earningToken}
-                  isBooster={isBooster && apr?.isInCakeRewardDateRange}
+                  isBooster={isBooster && apr?.isInCometRewardDateRange}
                   boosterMultiplier={
                     totalAssetsInUsd === 0 || !locked ? 3 : boosterMultiplier === 0 ? 3 : boosterMultiplier
                   }
@@ -408,7 +408,7 @@ export const AddLiquidity = memo(function AddLiquidity({
                 onAddLiquidity={mintThenDeposit}
                 isLoading={isTxLoading}
                 learnMoreAboutUrl={learnMoreAboutUrl}
-                bCakeWrapper={bCakeWrapper}
+                bCometWrapper={bCometWrapper}
               />
             </Flex>
           </>
@@ -426,7 +426,7 @@ interface AddLiquidityButtonProps {
   onAddLiquidity?: () => void
   isLoading?: boolean
   learnMoreAboutUrl?: string
-  bCakeWrapper?: Address
+  bCometWrapper?: Address
 }
 
 export const AddLiquidityButton = memo(function AddLiquidityButton({
@@ -437,17 +437,17 @@ export const AddLiquidityButton = memo(function AddLiquidityButton({
   onAddLiquidity,
   isLoading,
   learnMoreAboutUrl,
-  bCakeWrapper,
+  bCometWrapper,
 }: AddLiquidityButtonProps) {
   const { t } = useTranslation()
 
   const { approvalState: approvalStateToken0, approveCallback: approveCallbackToken0 } = useApproveCallback(
     amountA,
-    bCakeWrapper ?? contractAddress,
+    bCometWrapper ?? contractAddress,
   )
   const { approvalState: approvalStateToken1, approveCallback: approveCallbackToken1 } = useApproveCallback(
     amountB,
-    bCakeWrapper ?? contractAddress,
+    bCometWrapper ?? contractAddress,
   )
 
   const showAmountButtonA = useMemo(
@@ -505,3 +505,4 @@ export const AddLiquidityButton = memo(function AddLiquidityButton({
     </>
   )
 })
+

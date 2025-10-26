@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Box, BoxProps, Button, Flex, SkeletonText } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Box, BoxProps, Button, Flex, SkeletonText } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 import formatLocaleNumber from 'utils/formatLocaleNumber'
@@ -123,3 +123,4 @@ export const ProviderGroupItem = ({
     </Box>
   )
 }
+

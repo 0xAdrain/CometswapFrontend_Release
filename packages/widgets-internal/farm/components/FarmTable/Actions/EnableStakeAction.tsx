@@ -1,24 +1,24 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Button, Text, useMatchBreakpoints } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Button, Text, useMatchBreakpoints } from "@cometswap/uikit";
 import { ActionContent, ActionTitles, StyledActionContainer } from "./styles";
 
 export interface EnableStakeActionProps {
   pendingTx: boolean;
   handleApprove: () => void;
-  bCakeInfoSlot?: React.ReactElement;
+  bveCometInfoSlot?: React.ReactElement;
 }
 
 const EnableStakeAction: React.FunctionComponent<React.PropsWithChildren<EnableStakeActionProps>> = ({
   pendingTx,
   handleApprove,
-  bCakeInfoSlot,
+  bveCometInfoSlot,
 }) => {
   const { t } = useTranslation();
   const { isMobile } = useMatchBreakpoints();
   return (
     <StyledActionContainer
       style={
-        bCakeInfoSlot
+        bveCometInfoSlot
           ? {
               display: "flex",
               gap: 16,
@@ -29,19 +29,19 @@ const EnableStakeAction: React.FunctionComponent<React.PropsWithChildren<EnableS
           : undefined
       }
     >
-      {!bCakeInfoSlot && (
+      {!bveCometInfoSlot && (
         <ActionTitles>
           <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
             {t("Enable Farm")}
           </Text>
         </ActionTitles>
       )}
-      <ActionContent style={bCakeInfoSlot ? { flexGrow: 1, width: isMobile ? "100%" : "30%" } : undefined}>
+      <ActionContent style={bveCometInfoSlot ? { flexGrow: 1, width: isMobile ? "100%" : "30%" } : undefined}>
         <Button width="100%" disabled={pendingTx} onClick={handleApprove} variant="secondary">
           {t("Enable")}
         </Button>
       </ActionContent>
-      {bCakeInfoSlot}
+      {bveCometInfoSlot}
     </StyledActionContainer>
   );
 };

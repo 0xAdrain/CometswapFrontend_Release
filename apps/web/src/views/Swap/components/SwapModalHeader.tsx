@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, TradeType } from '@pancakeswap/sdk'
-import { ArrowDownIcon, AutoColumn, Button, ErrorIcon, Text } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent, TradeType } from '@cometswap/sdk'
+import { ArrowDownIcon, AutoColumn, Button, ErrorIcon, Text } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import truncateHash from '@cometswap/utils/truncateHash'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { CurrencyLogo } from 'components/Logo'
 import { ReactElement, useMemo } from 'react'
@@ -160,3 +160,4 @@ export default function SwapModalHeader({
     </AutoColumn>
   )
 }
+

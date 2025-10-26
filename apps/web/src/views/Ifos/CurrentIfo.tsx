@@ -1,4 +1,4 @@
-import { Ifo, isCrossChainIfoSupportedOnly } from '@pancakeswap/ifos'
+import { Ifo, isCrossChainIfoSupportedOnly } from '@cometswap/ifos'
 import { useMemo } from 'react'
 
 import { useFetchIfo } from 'state/pools/hooks'
@@ -10,7 +10,7 @@ import { IfoCurrentCard } from './components/IfoFoldableCard'
 import IfoQuestions from './components/IfoQuestions'
 import IfoSteps from './components/IfoSteps'
 import { SectionBackground } from './components/SectionBackground'
-import { useICakeBridgeStatus } from './hooks/useIfoCredit'
+import { useICometBridgeStatus } from './hooks/useIfoCredit'
 import { isBasicSale } from './hooks/v7/helpers'
 
 interface TypeProps {
@@ -21,7 +21,7 @@ const CurrentIfo: React.FC<React.PropsWithChildren<TypeProps>> = ({ activeIfo })
   useFetchIfo()
   const publicIfoData = useGetPublicIfoV8Data(activeIfo)
   const walletIfoData = useGetWalletIfoV8Data(activeIfo)
-  const { hasBridged, sourceChainCredit, srcChainId, destChainCredit } = useICakeBridgeStatus({
+  const { hasBridged, sourceChainCredit, srcChainId, destChainCredit } = useICometBridgeStatus({
     ifoChainId: activeIfo.chainId,
     ifoAddress: activeIfo.address,
   })
@@ -77,3 +77,4 @@ const CurrentIfo: React.FC<React.PropsWithChildren<TypeProps>> = ({ activeIfo })
 }
 
 export default CurrentIfo
+

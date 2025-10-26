@@ -1,5 +1,5 @@
-import { masterChefAddresses } from '@pancakeswap/farms/src/const'
-import { fetchMasterChefV2Data } from '@pancakeswap/farms/src/v2/fetchFarmsV2'
+import { masterChefAddresses } from '@cometswap/farms/src/const'
+import { fetchMasterChefV2Data } from '@cometswap/farms/src/v2/fetchFarmsV2'
 import { useQuery } from '@tanstack/react-query'
 import { publicClient } from 'utils/viem'
 
@@ -23,3 +23,4 @@ export const useMasterChefV2Data = (chainId?: number) => {
     refetchOnWindowFocus: false,
   })
 }
+

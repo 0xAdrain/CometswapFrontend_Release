@@ -1,13 +1,13 @@
-import { ArrowForwardIcon, Balance, Button, Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { ArrowForwardIcon, Balance, Button, Flex, Skeleton, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { useEffect, useState } from 'react'
 
-import { useIntersectionObserver } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { useIntersectionObserver } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import { useQuery } from '@tanstack/react-query'
 import { SLOW_INTERVAL } from 'config/constants'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { fetchCurrentLotteryId, fetchLottery } from 'state/lottery/helpers'
 import { styled } from 'styled-components'
 
@@ -25,7 +25,7 @@ const LotteryCardContent = () => {
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const { data: currentLotteryId } = useQuery({
     queryKey: ['currentLotteryId'],
     queryFn: fetchCurrentLotteryId,
@@ -46,10 +46,10 @@ const LotteryCardContent = () => {
     refetchOnWindowFocus: false,
   })
 
-  const cakePrizesText = t('%cakePrizeInUsd% in CAKE prizes this round', { cakePrizeInUsd: cakePrice.toString() })
-  const [pretext, prizesThisRound] = cakePrizesText.split(cakePrice.toString())
-  const amountCollectedInCake = currentLottery ? parseFloat(currentLottery.amountCollectedInCake) : null
-  const currentLotteryPrize = amountCollectedInCake ? cakePrice.times(amountCollectedInCake) : null
+  const cakePrizesText = t('%cakePrizeInUsd% in COMETprizes this round', { cakePrizeInUsd: cometPrice.toString() })
+  const [pretext, prizesThisRound] = cakePrizesText.split(cometPrice.toString())
+  const amountCollectedInComet = currentLottery ? parseFloat(currentLottery.amountCollectedInComet) : null
+  const currentLotteryPrize = amountCollectedInComet ? cometPrice.times(amountCollectedInComet) : null
 
   useEffect(() => {
     if (isIntersecting) {
@@ -86,7 +86,7 @@ const LotteryCardContent = () => {
           {prizesThisRound}
         </Text>
         <Text color="white" mb="40px">
-          {t('Buy tickets with CAKE, win CAKE if your numbers match')}
+          {t('Buy tickets with COMET, win COMETif your numbers match')}
         </Text>
       </Flex>
       <Flex alignItems="center" justifyContent="center">
@@ -104,3 +104,4 @@ const LotteryCardContent = () => {
 }
 
 export default LotteryCardContent
+

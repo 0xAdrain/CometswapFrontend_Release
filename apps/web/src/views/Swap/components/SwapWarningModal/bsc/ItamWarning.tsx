@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text, Link } from '@cometswap/uikit'
 
 const ItamWarning = () => {
   const { t } = useTranslation()
@@ -18,3 +18,4 @@ const ItamWarning = () => {
 }
 
 export default ItamWarning
+

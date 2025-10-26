@@ -1,4 +1,4 @@
-import { Currency, Price } from '@pancakeswap/sdk'
+import { Currency, Price } from '@cometswap/sdk'
 import invariant from 'tiny-invariant'
 
 import { BaseRoute, Pool, RouteType, PoolType, Route } from '../types'

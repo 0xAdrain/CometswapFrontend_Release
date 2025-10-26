@@ -1,4 +1,4 @@
-import { Card } from '@pancakeswap/widgets-internal'
+import { Card } from '@cometswap/widgets-internal'
 
 export {
   type LightCardProps,
@@ -9,6 +9,7 @@ export {
   GreyCard,
   LightTertiaryCard,
   DisableCard,
-} from '@pancakeswap/widgets-internal'
+} from '@cometswap/widgets-internal'
 
 export default Card
+

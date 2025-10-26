@@ -324,3 +324,4 @@ export const stableLPABI = [
     type: 'function',
   },
 ] as const
+

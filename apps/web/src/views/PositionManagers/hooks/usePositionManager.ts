@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { fetchPositionManager, VaultConfig } from '@pancakeswap/position-managers'
+import { ChainId } from '@cometswap/chains'
+import { fetchPositionManager, VaultConfig } from '@cometswap/position-managers'
 import { useQuery } from '@tanstack/react-query'
 
 export const usePositionManager = (chainId: ChainId): VaultConfig[] => {
@@ -14,3 +14,4 @@ export const usePositionManager = (chainId: ChainId): VaultConfig[] => {
 
   return data ?? []
 }
+

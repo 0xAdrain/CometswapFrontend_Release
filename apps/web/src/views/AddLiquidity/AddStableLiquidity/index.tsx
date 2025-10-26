@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, Price, Token } from '@pancakeswap/sdk'
-import { useModal } from '@pancakeswap/uikit'
-import { useIsExpertMode, useUserSlippage } from '@pancakeswap/utils/user'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent, Price, Token } from '@cometswap/sdk'
+import { useModal } from '@cometswap/uikit'
+import { useIsExpertMode, useUserSlippage } from '@cometswap/utils/user'
 import { ONE_HUNDRED_PERCENT } from 'config/constants/exchange'
 import { useStableSwapNativeHelperContract } from 'hooks/useContract'
 import { PairState } from 'hooks/usePairs'
@@ -399,3 +399,4 @@ export default function AddStableLiquidity({
     pair,
   })
 }
+

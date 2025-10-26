@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Price, Token } from '@pancakeswap/swap-sdk-core'
-import { IconButton, Row, SwapHorizIcon } from '@pancakeswap/uikit'
-import { Bound } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Price, Token } from '@cometswap/swap-sdk-core'
+import { IconButton, Row, SwapHorizIcon } from '@cometswap/uikit'
+import { Bound } from '@cometswap/widgets-internal'
 import { formatTickPrice } from 'hooks/v3/utils/formatTickPrice'
 import { memo, useCallback, useMemo, useState } from 'react'
 
@@ -59,3 +59,4 @@ export const PriceRange = memo(({ base, quote, priceLower, priceUpper, tickAtLim
     </Row>
   ) : null
 })
+

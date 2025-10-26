@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { RecentTransactions } from 'components/App/Transactions/TransactionsModal'
 
 interface WalletTransactionsProps {
@@ -14,3 +14,4 @@ const WalletTransactions: React.FC<React.PropsWithChildren<WalletTransactionsPro
 }
 
 export default WalletTransactions
+

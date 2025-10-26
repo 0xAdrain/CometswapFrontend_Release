@@ -1,4 +1,4 @@
-import { Box, BoxProps, Card, CardBody, CardHeader, Heading, Text } from '@pancakeswap/uikit'
+import { Box, BoxProps, Card, CardBody, CardHeader, Heading, Text } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import FoldableText from './FoldableText'
 
@@ -36,3 +36,4 @@ const SectionsWithFoldableText: React.FC<React.PropsWithChildren<Props>> = ({ he
 }
 
 export default SectionsWithFoldableText
+

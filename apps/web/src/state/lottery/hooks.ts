@@ -57,3 +57,4 @@ export const useFetchLottery = (fetchPublicDataOnly = false) => {
 export const useLottery = () => {
   return useSelector(lotterySelector)
 }
+

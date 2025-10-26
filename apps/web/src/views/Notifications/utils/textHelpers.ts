@@ -1,4 +1,4 @@
-import type { TranslateFunction } from '@pancakeswap/localization'
+import type { TranslateFunction } from '@cometswap/localization'
 import { SubsctiptionType } from '../types'
 
 export const getOnBoardingButtonText = (
@@ -13,7 +13,7 @@ export const getOnBoardingButtonText = (
 
   if (isStep1) return t('Enable Notifications')
   if (isStep2) return t('Sign In With Wallet')
-  if (isStep3) return t('Subscribe To PancakeSwap')
+  if (isStep3) return t('Subscribe To CometSwap')
 
   return t('Enable Notifications')
 }
@@ -70,3 +70,4 @@ export const getBadgeString = (isAPR: boolean, hasFallen: boolean, percentageCha
     ? `${percentageChange}% APR change `
     : `${hasFallen ? 'Down' : 'Up'} ${hasFallen ? '-' : '+'}${percentageChange}%`
 }
+

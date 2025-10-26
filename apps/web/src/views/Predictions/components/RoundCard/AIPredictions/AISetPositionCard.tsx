@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
 import {
   ArrowBackIcon,
   AutoRenewIcon,
@@ -14,13 +14,13 @@ import {
   IconButton,
   Slider,
   Text,
-} from '@pancakeswap/uikit'
-import { formatBigInt, formatNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { formatBigInt, formatNumber, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { TokenImage } from 'components/TokenImage'
-import useCakeApprovalStatus from 'hooks/useCakeApprovalStatus'
-import useCakeApprove from 'hooks/useCakeApprove'
+import useVeCometApprovalStatus from 'hooks/useVeCometApprovalStatus'
+import useVeCometApprove from 'hooks/useVeCometApprove'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { usePredictionsContract } from 'hooks/useContract'
@@ -94,8 +94,8 @@ export const AISetPositionCard: React.FC<React.PropsWithChildren<AISetPositionCa
 
   const predictionsContract = usePredictionsContract(predictionsAddress, isNativeToken)
 
-  const { setLastUpdated, allowance } = useCakeApprovalStatus(config?.isNativeToken ? null : predictionsAddress)
-  const { handleApprove, pendingTx } = useCakeApprove(
+  const { setLastUpdated, allowance } = useVeCometApprovalStatus(config?.isNativeToken ? null : predictionsAddress)
+  const { handleApprove, pendingTx } = useVeCometApprove(
     setLastUpdated,
     predictionsAddress,
     t('You can now start prediction'),
@@ -128,7 +128,7 @@ export const AISetPositionCard: React.FC<React.PropsWithChildren<AISetPositionCa
   }, [tokenPrice, value])
 
   // Native Token prediction doesn't need approval
-  const doesCakeApprovePrediction = isNativeToken || allowance.gte(valueAsBn.toString())
+  const doesCometApprovePrediction = isNativeToken || allowance.gte(valueAsBn.toString())
 
   const handleInputChange = (input: string) => {
     const inputAsBn = getValueAsEthersBn(input)
@@ -302,7 +302,7 @@ export const AISetPositionCard: React.FC<React.PropsWithChildren<AISetPositionCa
         </Flex>
         <Box mb="8px">
           {account ? (
-            doesCakeApprovePrediction ? (
+            doesCometApprovePrediction ? (
               <Button
                 width="100%"
                 disabled={disabled}
@@ -335,3 +335,4 @@ export const AISetPositionCard: React.FC<React.PropsWithChildren<AISetPositionCa
     </Card>
   )
 }
+

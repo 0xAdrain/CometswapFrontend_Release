@@ -1,5 +1,5 @@
-import { VaultKey } from '@pancakeswap/pools'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { VaultKey } from '@cometswap/pools'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useOfficialsAndUserAddedTokens } from 'hooks/Tokens'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -7,12 +7,12 @@ import { useFixedStakingContract, useVaultPoolContract } from 'hooks/useContract
 import toNumber from 'lodash/toNumber'
 import { useMemo } from 'react'
 import { useSingleContractMultipleData } from 'state/multicall/hooks'
-import { VaultPosition, getVaultPosition } from 'utils/cakePool'
+import { VaultPosition, getVaultPosition } from 'utils/cometPool'
 import { getAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useReadContract } from '@pancakeswap/wagmi'
+import { useReadContract } from '@cometswap/wagmi'
 import { safeGetAddress } from 'utils'
 import { DISABLED_POOLS } from '../constant'
 import { FixedStakingPool, StakedPosition } from '../type'
@@ -45,7 +45,7 @@ export function useShouldNotAllowWithdraw({ lockPeriod, lastDayAction }) {
 }
 
 export function useIfUserLocked() {
-  const vaultPoolContract = useVaultPoolContract(VaultKey.CakeVault)
+  const vaultPoolContract = useVaultPoolContract(VaultKey.CometVault as any)
   const { account, chainId } = useActiveWeb3React()
 
   const { data } = useReadContract({
@@ -243,3 +243,4 @@ export function useStakedPools(): FixedStakingPool[] {
       .filter(Boolean) as FixedStakingPool[]
   }, [chainId, fixedStakePools, tokens])
 }
+

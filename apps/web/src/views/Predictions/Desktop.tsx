@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PredictionStatus, PredictionsChartView } from '@pancakeswap/prediction'
-import { Box, Button, ChartIcon, Flex, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { PredictionStatus, PredictionsChartView } from '@cometswap/prediction'
+import { Box, Button, ChartIcon, Flex, Link } from '@cometswap/uikit'
 import { ChartByLabel } from 'components/Chart/ChartbyLabel'
 import { TabToggle } from 'components/TabToggle'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
@@ -295,3 +295,4 @@ const Desktop: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default memo(Desktop)
+

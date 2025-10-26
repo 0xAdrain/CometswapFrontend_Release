@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
 
@@ -32,3 +32,4 @@ export const useTotalStakedInUsd = ({
 
   return totalStakedInUsd * boostedLiquidityX
 }
+

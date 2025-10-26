@@ -56,3 +56,4 @@ export const useDrawSequenceImages = (
 
   return { drawSequenceImage, playing }
 }
+

@@ -1,4 +1,4 @@
-import { Box, HelpIcon } from "@pancakeswap/uikit";
+import { Box, HelpIcon } from "@cometswap/uikit";
 import Image from "next/image";
 import { memo } from "react";
 import { SpaceProps } from "styled-system";

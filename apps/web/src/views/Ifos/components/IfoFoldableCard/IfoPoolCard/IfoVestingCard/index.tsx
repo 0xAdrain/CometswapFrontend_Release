@@ -1,13 +1,13 @@
 import { useCallback, useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { Flex, Box, Text, IfoProgressStepper, IfoVestingFooter } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Box, Text, IfoProgressStepper, IfoVestingFooter } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import Divider from 'components/Divider'
-import { Ifo, PoolIds } from '@pancakeswap/ifos'
+import { Ifo, PoolIds } from '@cometswap/ifos'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
 import useIfoVesting from 'views/Ifos/hooks/useIfoVesting'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { BIG_ONE, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { getFullDisplayBalance } from '@cometswap/utils/formatBalance'
+import { BIG_ONE, BIG_ZERO } from '@cometswap/utils/bigNumber'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
@@ -106,3 +106,4 @@ const IfoVestingCard: React.FC<React.PropsWithChildren<IfoVestingCardProps>> = (
 }
 
 export default IfoVestingCard
+

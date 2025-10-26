@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { styled } from 'styled-components'
-import { Table, Td } from '@pancakeswap/uikit'
+import { Table, Td } from '@cometswap/uikit'
 import CompactRow from './CompactRow'
 
 const RowStyle = styled.tr`
@@ -26,3 +26,4 @@ const CompactLimitOrderTable = ({ orders }) => (
 )
 
 export default memo(CompactLimitOrderTable)
+

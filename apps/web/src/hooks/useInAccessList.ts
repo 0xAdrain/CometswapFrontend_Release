@@ -51,3 +51,4 @@ export function createUseInAccessListHook(list: Serializable[]) {
     return curItem === item && isInList
   }
 }
+

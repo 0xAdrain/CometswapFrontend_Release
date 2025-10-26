@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 const PoolAllocationChart: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -94,3 +94,4 @@ const PoolAllocationChart: React.FC<React.PropsWithChildren<SvgProps>> = (props)
 }
 
 export default PoolAllocationChart
+

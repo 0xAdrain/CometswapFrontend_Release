@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { arbitrumTokens, opBnbTokens } from '@pancakeswap/tokens'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { ChainId } from '@cometswap/chains'
+import { arbitrumTokens, opBnbTokens } from '@cometswap/tokens'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { getViemClients } from 'utils/viem'
 
@@ -39,3 +39,4 @@ export const fetchTokenAplPrice = async () => {
   const alpUsdPrice = getBalanceAmount(new BigNumber(alpPrice.toString()), TOKEN_DECIMALS).toNumber()
   return alpUsdPrice ?? 0
 }
+

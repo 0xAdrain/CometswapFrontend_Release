@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { Flex, Box, Button, useModal, Text, Tag, CalculateIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Box, Button, useModal, Text, Tag, CalculateIcon } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import WinRateModal from 'views/Pottery/components/WinRateModal'
 import { usePotteryData } from 'state/pottery/hook'
 
@@ -38,3 +38,4 @@ const WinRate: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default WinRate
+

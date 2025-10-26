@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import MERKL_POOLS from 'config/constants/merklPools.json'
 import { useMemo } from 'react'
 import { Address } from 'viem'
@@ -37,3 +37,4 @@ export const useMerklUserLink = (): string => {
   }, [account])
   return link
 }
+

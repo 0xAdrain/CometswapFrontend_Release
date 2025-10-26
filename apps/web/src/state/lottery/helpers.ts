@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { bigIntToSerializedBigNumber } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { bigIntToSerializedBigNumber } from '@cometswap/utils/bigNumber'
 import { lotteryV2ABI } from 'config/abi/lotteryV2'
 import { NUM_ROUNDS_TO_FETCH_FROM_NODES } from 'config/constants/lottery'
 import { LotteryStatus, LotteryTicket } from 'config/constants/types'
@@ -20,11 +20,11 @@ const processViewLotterySuccessResponse = (
     status,
     startTime,
     endTime,
-    priceTicketInCake,
+    priceTicketInveComet,
     discountDivisor,
     treasuryFee,
     firstTicketId,
-    amountCollectedInCake,
+    amountCollectedInveComet,
     finalNumber,
     cakePerBracket,
     countWinnersPerBracket,
@@ -32,7 +32,7 @@ const processViewLotterySuccessResponse = (
   } = response
 
   const statusKey = Object.keys(LotteryStatus)[status]
-  const serializedCakePerBracket = cakePerBracket.map((cakeInBracket) => bigIntToSerializedBigNumber(cakeInBracket))
+  const serializedveCometPerBracket = cakePerBracket.map((cometInBracket) => bigIntToSerializedBigNumber(cometInBracket))
   const serializedCountWinnersPerBracket = countWinnersPerBracket.map((winnersInBracket) =>
     bigIntToSerializedBigNumber(winnersInBracket),
   )
@@ -44,13 +44,13 @@ const processViewLotterySuccessResponse = (
     status: LotteryStatus[statusKey],
     startTime: startTime?.toString(),
     endTime: endTime?.toString(),
-    priceTicketInCake: bigIntToSerializedBigNumber(priceTicketInCake),
+    priceTicketInveComet: bigIntToSerializedBigNumber(priceTicketInveComet),
     discountDivisor: discountDivisor?.toString(),
     treasuryFee: treasuryFee?.toString(),
     firstTicketId: firstTicketId?.toString(),
-    amountCollectedInCake: bigIntToSerializedBigNumber(amountCollectedInCake),
+    amountCollectedInveComet: bigIntToSerializedBigNumber(amountCollectedInveComet),
     finalNumber,
-    cakePerBracket: serializedCakePerBracket,
+    cometPerBracket: serializedveCometPerBracket,
     countWinnersPerBracket: serializedCountWinnersPerBracket,
     rewardsBreakdown: serializedRewardsBreakdown,
   }
@@ -63,13 +63,13 @@ const processViewLotteryErrorResponse = (lotteryId: string): LotteryResponse => 
     status: LotteryStatus.PENDING,
     startTime: '',
     endTime: '',
-    priceTicketInCake: '',
+    priceTicketInveComet: '',
     discountDivisor: '',
     treasuryFee: '',
     firstTicketId: '',
-    amountCollectedInCake: '',
+    amountCollectedInveComet: '',
     finalNumber: 0,
-    cakePerBracket: [],
+    cometPerBracket: [],
     countWinnersPerBracket: [],
     rewardsBreakdown: [],
   }
@@ -158,3 +158,4 @@ export const hasRoundBeenClaimed = (tickets: LotteryTicket[]): boolean => {
   const claimedTickets = tickets.filter((ticket) => ticket.status)
   return claimedTickets.length > 0
 }
+

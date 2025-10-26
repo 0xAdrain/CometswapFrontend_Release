@@ -33,3 +33,4 @@ const affiliateExist = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default affiliateExist
+

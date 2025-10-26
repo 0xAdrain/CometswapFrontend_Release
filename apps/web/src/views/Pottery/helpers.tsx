@@ -1,24 +1,25 @@
 import BigNumber from 'bignumber.js'
 import { PotteryDepositStatus } from 'state/types'
 
-interface CalculateCakeAmount {
+interface CalculateCometAmount {
   status: PotteryDepositStatus
   previewRedeem: string
   shares: string
   totalSupply: BigNumber
-  totalLockCake: BigNumber
+  totalLockComet: BigNumber
 }
 
-export const calculateCakeAmount = ({
+export const calculateCometAmount = ({
   status,
   previewRedeem,
   shares,
   totalSupply,
-  totalLockCake,
-}: CalculateCakeAmount): BigNumber => {
+  totalLockComet,
+}: CalculateCometAmount): BigNumber => {
   if (status === PotteryDepositStatus.LOCK) {
-    return new BigNumber(shares).div(totalSupply).times(totalLockCake)
+    return new BigNumber(shares).div(totalSupply).times(totalLockComet)
   }
 
   return new BigNumber(previewRedeem)
 }
+

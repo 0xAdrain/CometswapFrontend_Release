@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Flex, FlexProps, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Flex, FlexProps, Text } from '@cometswap/uikit'
 import { useTokenUsdPriceBigNumber } from 'views/Predictions/hooks/useTokenPrice'
 
 export const Row: React.FC<React.PropsWithChildren<FlexProps>> = ({ children, ...props }) => {
@@ -67,3 +67,4 @@ export const NetWinningsRow: React.FC<React.PropsWithChildren<{ amount: number; 
     </Row>
   )
 }
+

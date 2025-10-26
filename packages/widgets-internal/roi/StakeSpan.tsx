@@ -1,7 +1,7 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 import { useMemo, memo } from "react";
 
-import { ButtonMenuItem } from "@pancakeswap/uikit";
+import { ButtonMenuItem } from "@cometswap/uikit";
 import { FullWidthButtonMenu } from "./FullWidthButtonMenu";
 
 export const SPANS = ["1d", "7d", "30d", "1y", "5y"];

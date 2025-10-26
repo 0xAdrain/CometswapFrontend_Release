@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, OptionProps, Select, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, OptionProps, Select, Text } from '@cometswap/uikit'
 import React from 'react'
 
 type FilterFieldSortProps = {
@@ -35,3 +35,4 @@ export const FilterFieldSort: React.FC<FilterFieldSortProps> = ({ onChange }) =>
     </AutoColumn>
   )
 }
+

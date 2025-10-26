@@ -1,4 +1,4 @@
-import { getInterestBreakdown, getRoi, getPrincipalForInterest, getApy } from '@pancakeswap/utils/compoundApyHelpers'
+import { getInterestBreakdown, getRoi, getPrincipalForInterest, getApy } from '@cometswap/utils/compoundApyHelpers'
 
 const TWICE_PER_DAY = 2
 const FIVE_THOUSAND_TIMES_PER_DAY = 5000
@@ -45,7 +45,7 @@ it.each([
     [32.272, 228.149, 1015.848, 22737.133, 3943794.378],
   ],
 ])(
-  'calculate cake earned with values %o',
+  'calculate comet earned with values %o',
   ({ principalInUSD, apr, earningTokenPrice, compoundFrequency, performanceFee }, expected) => {
     expect(getInterestBreakdown({ principalInUSD, apr, earningTokenPrice, compoundFrequency, performanceFee })).toEqual(
       expected,
@@ -120,3 +120,4 @@ it.each`
     })
   },
 )
+

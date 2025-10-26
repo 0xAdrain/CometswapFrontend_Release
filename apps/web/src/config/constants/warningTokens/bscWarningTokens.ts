@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token } from '@cometswap/sdk'
 
 export const bscWarningTokens = {
   pokemoney: new ERC20Token(ChainId.BSC, '0x32ff5b4C3B1744F0344D96fA2f87799Ed2805749', 18, 'PMY', 'Pokemoney Coin', ''),
@@ -55,3 +55,4 @@ export const bscWarningTokens = {
   pnp: new ERC20Token(ChainId.BSC, '0x5012c90F14d190607662CA8344120812Aaa2639D', 18, 'PNP', 'Penpie Token'),
   uniBTC: new ERC20Token(ChainId.BSC, '0x6B2a01A5f79dEb4c2f3c0eDa7b01DF456FbD726a', 8, 'uniBTC', 'uniBTC'),
 }
+

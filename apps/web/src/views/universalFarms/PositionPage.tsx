@@ -1,5 +1,5 @@
-import { Protocol } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
+import { Protocol } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
 import {
   AddIcon,
   Button,
@@ -14,15 +14,15 @@ import {
   Text,
   Toggle,
   useModal,
-} from '@pancakeswap/uikit'
-import { useExpertMode } from '@pancakeswap/utils/user'
+} from '@cometswap/uikit'
+import { useExpertMode } from '@cometswap/utils/user'
 import {
   INetworkProps,
   ITokenProps,
   Liquidity,
   toTokenValue,
   toTokenValueByCurrency,
-} from '@pancakeswap/widgets-internal'
+} from '@cometswap/widgets-internal'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import { SettingsMode } from 'components/Menu/GlobalSettings/types'
@@ -41,13 +41,13 @@ import {
 import styled from 'styled-components'
 import { useAccount } from 'wagmi'
 
-import { Currency } from '@pancakeswap/swap-sdk-core'
-import { getTokenByAddress } from '@pancakeswap/tokens'
-import { Pool } from '@pancakeswap/v3-sdk'
+import { Currency } from '@cometswap/swap-sdk-core'
+import { getTokenByAddress } from '@cometswap/tokens'
+import { Pool } from '@cometswap/v3-sdk'
 import { usePoolsWithMultiChains } from 'hooks/v3/usePools'
 import { PositionDetail } from 'state/farmsV4/state/accountPositions/type'
 import { V3_MIGRATION_SUPPORTED_CHAINS } from 'config/constants/supportChains'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
+import { useIntersectionObserver } from '@cometswap/hooks'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import {
   Card,
@@ -542,3 +542,4 @@ export const PositionPage = () => {
     </Card>
   )
 }
+

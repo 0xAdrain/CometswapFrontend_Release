@@ -1,4 +1,4 @@
-import { Flex, Spinner } from '@pancakeswap/uikit'
+import { Flex, Spinner } from '@cometswap/uikit'
 import { ChartV2Liquidity } from './ChartV2Liquidity'
 import { ChartV3Liquidity } from './ChartV3Liquidity'
 import { ChartLiquidityProps } from './type'
@@ -16,3 +16,4 @@ export const ChartLiquidity: React.FC<ChartLiquidityProps> = ({ address, poolInf
     <ChartV2Liquidity address={address} poolInfo={poolInfo} />
   )
 }
+

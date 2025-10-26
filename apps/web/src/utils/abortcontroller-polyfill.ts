@@ -12,3 +12,4 @@ if (!('timeout' in AbortSignal)) {
       console.error('Error loading polyfill:', err)
     })
 }
+

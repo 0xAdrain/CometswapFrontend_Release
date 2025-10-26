@@ -1,4 +1,4 @@
-import { Gauge } from '@pancakeswap/gauges'
+import { Gauge } from '@cometswap/gauges'
 import { watchAccount } from '@wagmi/core'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Hash } from 'viem'
@@ -85,3 +85,4 @@ export const useGaugeRows = () => {
     refetch,
   }
 }
+

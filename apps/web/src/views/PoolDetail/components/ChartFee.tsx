@@ -1,4 +1,4 @@
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import { useState } from 'react'
 import styled from 'styled-components'
@@ -43,3 +43,4 @@ export const ChartFee: React.FC<ChartVolumeProps> = ({ address }) => {
     </>
   )
 }
+

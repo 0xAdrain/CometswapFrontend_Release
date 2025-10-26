@@ -1,4 +1,4 @@
-import { AtomBox, SwapCSS } from "@pancakeswap/uikit";
+import { AtomBox, SwapCSS } from "@cometswap/uikit";
 
 import { NumericalInput, NumericalInputProps } from "./NumericalInput";
 
@@ -51,7 +51,7 @@ export function CurrencyInputPanelSimplify({
             showBridgeWarning: !!showBridgeWarning,
             error: Boolean(error),
           })}
-          style={{ borderRadius: "24px" }}
+          style={{ borderRadius: "12px" }} /* CometSwap: 减少圆角 24px → 12px */
         >
           <AtomBox
             display="flex"

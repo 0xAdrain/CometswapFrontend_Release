@@ -1,19 +1,19 @@
-import { ZERO_PERCENT } from "@pancakeswap/sdk";
+import { ZERO_PERCENT } from "@cometswap/sdk";
 import { useMemo } from "react";
 
-import { formatFraction } from "@pancakeswap/utils/formatFractions";
+import { formatFraction } from "@cometswap/utils/formatFractions";
 import { getAccrued } from "../aprHelper";
 import { floatToPercent as formatDecimalToPercent } from "../utils";
 
 interface Params extends AprParams {
   // Num of days staked
   stakeFor?: number;
-  cakeInterest?: number;
+  cometInterest?: number;
 }
 
 // @see https://www.calculatorsoup.com/calculators/financial/compound-interest-calculator.php
 export function useRate({ stakeFor = 1, ...rest }: Params) {
-  const { apr, apy } = useApr({ ...rest, interest: (rest.interest ?? 0) + (rest?.cakeInterest ?? 0) });
+  const { apr, apy } = useApr({ ...rest, interest: (rest.interest ?? 0) + (rest?.cometInterest ?? 0) });
   const { principal, compoundEvery, compoundOn } = rest;
   const accrued = useMemo(() => {
     if (!principal) {

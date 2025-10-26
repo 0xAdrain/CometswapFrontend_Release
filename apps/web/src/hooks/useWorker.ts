@@ -45,3 +45,4 @@ export const useInitGlobalWorker = createUseWorkerHook(true)
 export function useGlobalWorker() {
   return useAtomValue(globalWorkerAtom)
 }
+

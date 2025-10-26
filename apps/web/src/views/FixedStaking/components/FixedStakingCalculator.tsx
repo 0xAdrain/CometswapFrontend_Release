@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
 import {
   Box,
   Button,
@@ -11,7 +11,7 @@ import {
   PreTitle,
   RoiCard,
   useModalV2,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useStablecoinPriceAmount } from 'hooks/useStablecoinPrice'
 import toNumber from 'lodash/toNumber'
 import { useCallback, useMemo } from 'react'
@@ -189,3 +189,4 @@ export function FixedStakingCalculator({
     </>
   )
 }
+

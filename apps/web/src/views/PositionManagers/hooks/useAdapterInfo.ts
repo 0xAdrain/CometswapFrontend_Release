@@ -1,15 +1,14 @@
 import {
   positionManagerAdapterABI,
-  positionManagerVeBCakeWrapperABI,
   positionManagerWrapperABI,
-} from '@pancakeswap/position-managers'
-import { Percent } from '@pancakeswap/sdk'
+} from '@cometswap/position-managers'
+import { Percent } from '@cometswap/sdk'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import {
   useContract,
-  usePositionManagerBCakeWrapperContract,
+  usePositionManagerBCometWrapperContract,
   usePositionManagerWrapperContract,
 } from 'hooks/useContract'
 import { publicClient } from 'utils/wagmi'
@@ -114,48 +113,48 @@ export const useAdapterTokensAmounts = (adapterAddress: Address) => {
   return { data, refetch }
 }
 
-export const useUserAmounts = (wrapperAddress: Address, isBCakeWrapper: boolean) => {
+export const useUserAmounts = (wrapperAddress: Address, isBCometWrapper: boolean) => {
   const { address: account } = useAccount()
   const contract = usePositionManagerWrapperContract(wrapperAddress)
-  const bCakeContract = usePositionManagerBCakeWrapperContract(wrapperAddress)
+  const bCometContract = usePositionManagerBCometWrapperContract(wrapperAddress)
   const { data, refetch } = useQuery({
     queryKey: ['useUserAmounts', wrapperAddress, account],
     queryFn: () => contract.read.userInfo([account ?? '0x']),
-    enabled: !!wrapperAddress && !!account && !isBCakeWrapper,
+    enabled: !!wrapperAddress && !!account && !isBCometWrapper,
     refetchInterval: 3000,
     staleTime: 3000,
     gcTime: 3000,
   })
-  const { data: bCakeData, refetch: bCakeRefetch } = useQuery({
-    queryKey: ['useBCakeUserAmounts', wrapperAddress, account],
-    queryFn: () => bCakeContract.read.userInfo([account ?? '0x']),
-    enabled: !!wrapperAddress && !!account && isBCakeWrapper,
+  const { data: bCometData, refetch: bCometRefetch } = useQuery({
+    queryKey: ['useBCometUserAmounts', wrapperAddress, account],
+    queryFn: () => bCometContract.read.userInfo([account ?? '0x']),
+    enabled: !!wrapperAddress && !!account && isBCometWrapper,
     refetchInterval: 3000,
     staleTime: 3000,
     gcTime: 3000,
   })
-  return { data, refetch, bCakeData, bCakeRefetch }
+  return { data, refetch, bCometData, bCometRefetch }
 }
 
-export const useWrapperStaticData = (wrapperAddress: Address, isBCakeWrapper: boolean) => {
+export const useWrapperStaticData = (wrapperAddress: Address, isBCometWrapper: boolean) => {
   const { chainId } = useActiveChainId()
   const { data, refetch } = useQuery({
     queryKey: ['useWrapperStaticData', wrapperAddress, chainId],
     queryFn: () => getWrapperStaticData({ address: wrapperAddress, chainId }),
-    enabled: !!wrapperAddress && !!chainId && !isBCakeWrapper,
+    enabled: !!wrapperAddress && !!chainId && !isBCometWrapper,
     refetchInterval: 30000,
     staleTime: 30000,
     gcTime: 30000,
   })
-  const { data: bCakeData, refetch: bCakeRefetch } = useQuery({
-    queryKey: ['useBCakeWrapperStaticData', wrapperAddress, chainId],
-    queryFn: () => getBCakeWrapperStaticData({ address: wrapperAddress, chainId }),
-    enabled: !!wrapperAddress && !!chainId && isBCakeWrapper,
+  const { data: bCometData, refetch: bCometRefetch } = useQuery({
+    queryKey: ['useBCometWrapperStaticData', wrapperAddress, chainId],
+    queryFn: () => getBCometWrapperStaticData({ address: wrapperAddress, chainId }),
+    enabled: !!wrapperAddress && !!chainId && isBCometWrapper,
     refetchInterval: 30000,
     staleTime: 30000,
     gcTime: 30000,
   })
-  return { data, refetch, bCakeData, bCakeRefetch }
+  return { data, refetch, bCometData, bCometRefetch }
 }
 
 export const useVaultStaticData = (vaultAddress?: Address) => {
@@ -169,22 +168,22 @@ export const useVaultStaticData = (vaultAddress?: Address) => {
   return { data, refetch }
 }
 
-export const usePositionInfo = (wrapperAddress: Address, adapterAddress: Address, isBCakeWrapper: boolean) => {
+export const usePositionInfo = (wrapperAddress: Address, adapterAddress: Address, isBCometWrapper: boolean) => {
   const {
     data: userAmounts,
     refetch: refetchUserAmounts,
-    bCakeData: bCakeUserAmounts,
-    bCakeRefetch: refetchBCakeUserAmounts,
-  } = useUserAmounts(wrapperAddress, isBCakeWrapper)
+    bCometData: bCometUserAmounts,
+    bCometRefetch: refetchBCometUserAmounts,
+  } = useUserAmounts(wrapperAddress, isBCometWrapper)
   const { data: poolAmounts, refetch: refetchPoolAmounts } = useAdapterTokensAmounts(adapterAddress)
   const { data: pendingReward, refetch: refetchPendingReward } = useUserPendingRewardAmounts(wrapperAddress)
-  const { data: staticData, bCakeData: bCakeStaticData } = useWrapperStaticData(wrapperAddress, isBCakeWrapper)
+  const { data: staticData, bCometData: bCometStaticData } = useWrapperStaticData(wrapperAddress, isBCometWrapper)
   const { data: lpTokenDecimals } = useVaultStaticData(poolAmounts?.vaultAddress)
 
-  const poolAndUserAmountsReady = (userAmounts || bCakeUserAmounts) && poolAmounts
-  const bCakeDataReady = bCakeStaticData && bCakeUserAmounts
-  const userLpAmounts = isBCakeWrapper ? bCakeUserAmounts?.[0] ?? BigInt(0) : userAmounts?.[0] ?? BigInt(0)
-  const resultStaticData = isBCakeWrapper ? bCakeStaticData : staticData
+  const poolAndUserAmountsReady = (userAmounts || bCometUserAmounts) && poolAmounts
+  const bCometDataReady = bCometStaticData && bCometUserAmounts
+  const userLpAmounts = isBCometWrapper ? bCometUserAmounts?.[0] ?? BigInt(0) : userAmounts?.[0] ?? BigInt(0)
+  const resultStaticData = isBCometWrapper ? bCometStaticData : staticData
   return {
     pendingReward,
     poolToken0Amounts: poolAmounts?.token0Amounts ?? BigInt(0),
@@ -199,7 +198,7 @@ export const usePositionInfo = (wrapperAddress: Address, adapterAddress: Address
       ? new Percent(userLpAmounts, poolAmounts.totalSupply)
       : new Percent(0, 100),
     refetchPositionInfo: () => {
-      const refetchUser = isBCakeWrapper ? refetchBCakeUserAmounts : refetchUserAmounts
+      const refetchUser = isBCometWrapper ? refetchBCometUserAmounts : refetchUserAmounts
       refetchUser()
       refetchPoolAmounts()
       refetchPendingReward()
@@ -210,8 +209,8 @@ export const usePositionInfo = (wrapperAddress: Address, adapterAddress: Address
     totalSupplyAmounts: poolAmounts?.totalSupply,
     userLpAmounts,
     boosterMultiplier:
-      bCakeDataReady && isBCakeWrapper
-        ? Number(new BigNumber(bCakeUserAmounts?.[2].toString()).div(bCakeStaticData.boosterPrecision.toString()))
+      bCometDataReady && isBCometWrapper
+        ? Number(new BigNumber(bCometUserAmounts?.[2].toString()).div(bCometStaticData.boosterPrecision.toString()))
         : 0,
     precision: poolAmounts?.precision,
     adapterAddress: resultStaticData?.adapterAddress,
@@ -219,7 +218,7 @@ export const usePositionInfo = (wrapperAddress: Address, adapterAddress: Address
     managerFeePercentage: poolAmounts?.managerFeePercentage,
     managerAddress: poolAmounts?.managerAddress,
     lpTokenDecimals,
-    boosterContractAddress: bCakeStaticData?.boostContractAddress,
+    boosterContractAddress: bCometStaticData?.boostContractAddress,
   }
 }
 
@@ -288,7 +287,7 @@ export async function getWrapperStaticData({ address, chainId }): Promise<{
   }
 }
 
-export async function getBCakeWrapperStaticData({ address, chainId }): Promise<{
+export async function getBCometWrapperStaticData({ address, chainId }): Promise<{
   startTimestamp: string
   endTimestamp: string
   rewardPerSecond: string
@@ -310,32 +309,32 @@ export async function getBCakeWrapperStaticData({ address, chainId }): Promise<{
       {
         address,
         functionName: 'startTimestamp',
-        abi: positionManagerVeBCakeWrapperABI,
+        abi: positionManagerWrapperABI,
       },
       {
         address,
         functionName: 'endTimestamp',
-        abi: positionManagerVeBCakeWrapperABI,
+        abi: positionManagerWrapperABI,
       },
       {
         address,
         functionName: 'rewardPerSecond',
-        abi: positionManagerVeBCakeWrapperABI,
+        abi: positionManagerWrapperABI,
       },
       {
         address,
         functionName: 'adapterAddr',
-        abi: positionManagerVeBCakeWrapperABI,
+        abi: positionManagerWrapperABI,
       },
       {
         address,
         functionName: 'boostContract',
-        abi: positionManagerVeBCakeWrapperABI,
+        abi: positionManagerWrapperABI,
       },
       {
         address,
         functionName: 'BOOST_PRECISION',
-        abi: positionManagerVeBCakeWrapperABI,
+        abi: positionManagerWrapperABI,
       },
     ],
   })
@@ -368,3 +367,4 @@ export async function getBCakeWrapperStaticData({ address, chainId }): Promise<{
     boosterPrecision,
   }
 }
+

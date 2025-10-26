@@ -1,5 +1,5 @@
-import { Ifo, PoolIds } from '@pancakeswap/ifos'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { Ifo, PoolIds } from '@cometswap/ifos'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useERC20, useIfoV8Contract } from 'hooks/useContract'
@@ -7,7 +7,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAccount } from 'wagmi'
 
 import { useAppDispatch } from 'state'
-import { fetchCakeVaultUserData } from 'state/pools'
+import { fetchCometVaultUserData } from 'state/pools'
 import { WalletIfoData, WalletIfoState } from '../../types'
 import useIfoAllowance from '../useIfoAllowance'
 import { useIfoCredit } from '../useIfoCredit'
@@ -115,7 +115,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
       return
     }
     const data = await fetchIfoData(account, ifo, version, chainId)
-    dispatch(fetchCakeVaultUserData({ account, chainId: sourceChain }))
+    dispatch(fetchCometVaultUserData({ account, chainId: sourceChain }))
     setState((prevState) => ({
       ...prevState,
       isInitialized: true,
@@ -138,3 +138,4 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
 }
 
 export default useGetWalletIfoData
+

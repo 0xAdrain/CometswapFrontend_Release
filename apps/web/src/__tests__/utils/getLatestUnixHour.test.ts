@@ -8,3 +8,4 @@ describe('getLatestUnixHour', () => {
     expect(getLatestUnixHour(sampleDate.toDate())).toBe(expected)
   })
 })
+

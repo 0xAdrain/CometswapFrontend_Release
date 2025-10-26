@@ -1,6 +1,6 @@
-import { CurrencyAmount, Token } from '@pancakeswap/swap-sdk-core'
-import { Box, Flex, Spinner } from '@pancakeswap/uikit'
-import { FeeAmount, Pool, TICK_SPACINGS, TickMath } from '@pancakeswap/v3-sdk'
+import { CurrencyAmount, Token } from '@cometswap/swap-sdk-core'
+import { Box, Flex, Spinner } from '@cometswap/uikit'
+import { FeeAmount, Pool, TICK_SPACINGS, TickMath } from '@cometswap/v3-sdk'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Bar, BarChart, Cell, LabelList, ResponsiveContainer, Tooltip, XAxis } from 'recharts'
 import { maxUint128 } from 'viem'
@@ -212,3 +212,4 @@ export const ChartV3Liquidity: React.FC<ChartLiquidityProps> = ({ address, poolI
     </Box>
   )
 }
+

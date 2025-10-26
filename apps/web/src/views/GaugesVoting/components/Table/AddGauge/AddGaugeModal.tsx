@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoColumn,
   Box,
@@ -13,7 +13,7 @@ import {
   ModalWrapper,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useCallback } from 'react'
 import styled from 'styled-components'
 import { useGauges } from 'views/GaugesVoting/hooks/useGauges'
@@ -134,3 +134,4 @@ const BottomAction = styled(ColumnCenter)`
     padding-bottom: 32px;
   }
 `
+

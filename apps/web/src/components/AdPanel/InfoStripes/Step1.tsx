@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Link, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Link, Text } from '@cometswap/uikit'
 
 export const Step1 = () => {
   const { t } = useTranslation()
@@ -22,16 +22,17 @@ export const Step1 = () => {
         {t('of the proceeds to the')}
       </Text>
       <Text bold as="span" color="#FCC631" fontSize={['12px', '12px', '14px']}>
-        {t('CAKE community.')}
+        {t('COMETcommunity.')}
       </Text>
       <Link
         external
         display="inline !important"
         fontSize={['12px', '12px', '14px']}
-        href="https://docs.pancakeswap.finance/token-distribution"
+        href="https://docs.cometswap.finance/token-distribution"
       >
         {t('Learn More')}
       </Link>
     </Box>
   )
 }
+

@@ -1,7 +1,7 @@
-import { PositionDetails } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Price, Token } from '@pancakeswap/sdk'
-import { Position } from '@pancakeswap/v3-sdk'
+import { PositionDetails } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Price, Token } from '@cometswap/sdk'
+import { Position } from '@cometswap/v3-sdk'
 import { Bound } from 'config/constants/types'
 import { useToken } from 'hooks/Tokens'
 import useIsTickAtLimit from 'hooks/v3/useIsTickAtLimit'
@@ -27,6 +27,7 @@ export interface PositionListItemDisplayProps {
   subtitle: string
   setInverted: Dispatch<SetStateAction<boolean>>
   position: Position | undefined
+  isValidFee: boolean // 添加标识字段
 }
 
 interface PositionListItemProps {
@@ -42,6 +43,7 @@ export default function PositionListItem({ positionDetails, children }: Position
     liquidity,
     tickLower,
     tickUpper,
+    isValidFee = true, // 默认为true以保持向后兼容
   } = positionDetails
 
   const {
@@ -61,13 +63,30 @@ export default function PositionListItem({ positionDetails, children }: Position
   const [, pool] = usePool(currency0 ?? undefined, currency1 ?? undefined, feeAmount)
 
   const position = useMemo(() => {
+    // 如果fee无效，不尝试创建Position对象，避免错误
+    if (!isValidFee) {
+      console.warn('Skipping Position creation for invalid fee:', { feeAmount, isValidFee })
+      return undefined
+    }
+    
     if (pool) {
-      return new Position({ pool, liquidity: liquidity.toString(), tickLower, tickUpper })
+      try {
+        return new Position({ pool, liquidity: liquidity.toString(), tickLower, tickUpper })
+      } catch (error) {
+        console.error('Failed to create V3 Position:', { 
+          feeAmount, 
+          tickLower, 
+          tickUpper, 
+          error: error instanceof Error ? error.message : String(error)
+        })
+        return undefined
+      }
     }
     return undefined
-  }, [liquidity, pool, tickLower, tickUpper])
+  }, [liquidity, pool, tickLower, tickUpper, feeAmount, isValidFee])
 
-  const tickAtLimit = useIsTickAtLimit(feeAmount, tickLower, tickUpper)
+  // 只有在fee有效时才计算tickAtLimit，避免TICK_LOWER错误
+  const tickAtLimit = useIsTickAtLimit(isValidFee ? feeAmount : undefined, tickLower, tickUpper)
 
   // prices
   const { priceLower, priceUpper, quote, base } = getPriceOrderingFromPositionForUI(position)
@@ -84,7 +103,10 @@ export default function PositionListItem({ positionDetails, children }: Position
 
   let subtitle = ''
 
-  if (priceUpper && priceLower && currencyBase && currencyQuote) {
+  // 如果fee无效，显示警告信息
+  if (!isValidFee) {
+    subtitle = `⚠️ ${t('Invalid Pool')} - Fee: ${feeAmount} (${t('Non-standard fee rate, possibly created by script')})`
+  } else if (priceUpper && priceLower && currencyBase && currencyQuote) {
     subtitle = `${t('Min %minAmount%', {
       minAmount: formatTickPrice(inverted ? priceUpper.invert() : priceLower, tickAtLimit, Bound.LOWER, locale),
     })} / ${t('Max %maxAmount%', {
@@ -108,5 +130,7 @@ export default function PositionListItem({ positionDetails, children }: Position
     feeAmount,
     subtitle,
     setInverted,
+    isValidFee,
   })
 }
+

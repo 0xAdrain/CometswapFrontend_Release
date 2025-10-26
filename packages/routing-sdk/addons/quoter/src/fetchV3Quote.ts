@@ -1,8 +1,8 @@
-import { StablePool } from '@pancakeswap/routing-sdk-addon-stable-swap'
-import { V2Pool } from '@pancakeswap/routing-sdk-addon-v2'
-import { V3Pool } from '@pancakeswap/routing-sdk-addon-v3'
-import { ChainId } from '@pancakeswap/chains'
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { StablePool } from '@cometswap/routing-sdk-addon-stable-swap'
+import { V2Pool } from '@cometswap/routing-sdk-addon-v2'
+import { V3Pool } from '@cometswap/routing-sdk-addon-v3'
+import { ChainId } from '@cometswap/chains'
+import { CurrencyAmount } from '@cometswap/swap-sdk-core'
 
 import type { FetchQuote, QuoteRoute } from './types'
 import { V3_QUOTER_ADDRESSES } from './constants'

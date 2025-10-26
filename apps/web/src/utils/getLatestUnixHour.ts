@@ -8,3 +8,4 @@ const getLatestUnixHour = (date?: Date) => {
 }
 
 export default getLatestUnixHour
+

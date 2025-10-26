@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import replaceBrowserHistoryMultiple from '@pancakeswap/utils/replaceBrowserHistoryMultiple'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import replaceBrowserHistoryMultiple from '@cometswap/utils/replaceBrowserHistoryMultiple'
 import { ReactNode, useCallback, useMemo } from 'react'
 
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
@@ -155,3 +155,4 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
     </FormContainer>
   )
 }
+

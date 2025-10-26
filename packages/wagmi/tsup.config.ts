@@ -9,5 +9,5 @@ export default defineConfig({
   treeshake: true,
   splitting: true,
   format: ['esm', 'cjs'],
-  dts: true,
+  dts: false, // 暂时跳过类型声明文件生成，因为 wagmi 是 peerDependency
 })

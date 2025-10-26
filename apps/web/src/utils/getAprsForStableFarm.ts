@@ -1,4 +1,4 @@
-import { STABLE_SUPPORTED_CHAIN_IDS } from '@pancakeswap/stable-swap-sdk'
+import { STABLE_SUPPORTED_CHAIN_IDS } from '@cometswap/stable-swap-sdk'
 import BigNumber from 'bignumber.js'
 import { chainIdToExplorerInfoChainName, explorerApiClient } from 'state/info/api/client'
 import { operations } from 'state/info/api/schema'
@@ -33,3 +33,4 @@ export const getAprsForStableFarm = async (stableSwapAddress?: string, chainId?:
 
   return new BigNumber('0')
 }
+

@@ -1,4 +1,4 @@
-import { MINUTE_IN_SECONDS } from '@pancakeswap/utils/getTimePeriods'
+import { MINUTE_IN_SECONDS } from '@cometswap/utils/getTimePeriods'
 import { createSelector } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
 import orderBy from 'lodash/orderBy'
@@ -101,3 +101,4 @@ export const getCurrentRoundCloseTimestampSelector = createSelector(
 export const getIntervalTimeInMinutes = createSelector([selectIntervalSeconds], (intervalSeconds: number) => {
   return new BigNumber(intervalSeconds).div(MINUTE_IN_SECONDS).toNumber()
 })
+

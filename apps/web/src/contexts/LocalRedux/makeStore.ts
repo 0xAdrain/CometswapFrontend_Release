@@ -12,3 +12,4 @@ export default function makeStore(reducer, preloadedState: any = undefined, extr
     preloadedState,
   })
 }
+

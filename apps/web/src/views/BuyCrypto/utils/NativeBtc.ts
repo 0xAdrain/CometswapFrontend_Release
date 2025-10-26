@@ -1,5 +1,5 @@
-import { ERC20Token } from '@pancakeswap/sdk'
-import { Currency, NativeCurrency, Token } from '@pancakeswap/swap-sdk-core'
+import { ERC20Token } from '@cometswap/sdk'
+import { Currency, NativeCurrency, Token } from '@cometswap/swap-sdk-core'
 
 // only used as dummy to satify Currency Type
 const WNATIVE_BTC = new ERC20Token(
@@ -46,3 +46,4 @@ export class NativeBtc extends NativeCurrency {
     return other.isNative && other.chainId === this.chainId
   }
 }
+

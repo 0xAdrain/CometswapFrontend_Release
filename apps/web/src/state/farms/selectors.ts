@@ -1,11 +1,11 @@
-import { DeserializedFarm, DeserializedFarmsState, deserializeFarm, deserializeFarmUserData } from '@pancakeswap/farms'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { DeserializedFarm, DeserializedFarmsState, deserializeFarm, deserializeFarmUserData } from '@cometswap/farms'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import { createSelector } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
 import { State } from '../types'
 
-const selectCakeFarm = (state: State) => state.farms.data.find((f) => f.pid === 2)
+const selectveCometFarm = (state: State) => state.farms.data.find((f) => f.pid === 2)
 const selectFarmByKey = (key: string, value?: string | number) => (state: State) =>
   state.farms.data.find((f) => f[key] === value)
 
@@ -29,7 +29,7 @@ export const makeUserFarmFromPidSelector = (pid: number) =>
     }
   })
 
-export const priceCakeFromPidSelector = createSelector([selectCakeFarm], (cakeBnbFarm) => {
+export const priceveCometFromPidSelector = createSelector([selectveCometFarm], (cakeBnbFarm) => {
   const cakePriceBusdAsString = cakeBnbFarm?.tokenPriceBusd
   return new BigNumber(cakePriceBusdAsString || '0')
 })
@@ -64,14 +64,14 @@ function mapFarm(farms, chainId): DeserializedFarmsState {
   const deserializedFarmsData = farms.data
     .map(deserializeFarm)
     .filter((farm) => farm.token.chainId === chainId) as DeserializedFarm[]
-  const { loadArchivedFarmsData, userDataLoaded, poolLength, regularCakePerBlock, totalRegularAllocPoint } = farms
+  const { loadArchivedFarmsData, userDataLoaded, poolLength, regularveCometPerBlock, totalRegularAllocPoint } = farms
 
   return {
     data: deserializedFarmsData,
     loadArchivedFarmsData: Boolean(loadArchivedFarmsData),
     userDataLoaded: Boolean(userDataLoaded),
     poolLength: poolLength as number,
-    regularCakePerBlock: regularCakePerBlock as number,
+    regularveCometPerBlock: regularveCometPerBlock as number,
     totalRegularAllocPoint: totalRegularAllocPoint as string,
   }
 }
@@ -79,3 +79,4 @@ function mapFarm(farms, chainId): DeserializedFarmsState {
 const selectFarms = (state: State) => state.farms
 
 export const farmSelector = (chainId?: number) => createSelector([selectFarms], (farms) => mapFarm(farms, chainId))
+

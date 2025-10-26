@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 import { arbitrumTokens } from './constants/arb'
 import { arbitrumGoerliTokens } from './constants/arbGoerli'
@@ -18,6 +18,7 @@ import { polygonZkEvmTokens } from './constants/polygonZkEVM'
 import { polygonZkEvmTestnetTokens } from './constants/polygonZkEVMTestnet'
 import { scrollSepoliaTokens } from './constants/scrollSepolia'
 import { sepoliaTokens } from './constants/sepolia'
+import { xlayerTestnetTokens } from './constants/xlayerTestnet'
 import { zksyncTokens } from './constants/zkSync'
 import { zkSyncTestnetTokens } from './constants/zkSyncTestnet'
 
@@ -42,4 +43,5 @@ export const allTokens = {
   [ChainId.SEPOLIA]: sepoliaTokens,
   [ChainId.ARBITRUM_SEPOLIA]: arbSepoliaTokens,
   [ChainId.BASE_SEPOLIA]: baseSepoliaTokens,
+  [ChainId.XLAYER_TESTNET]: xlayerTestnetTokens,
 }

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import AnniversaryAchievementModal from './AnniversaryAchievementModal'
 import V3AirdropModal from './V3AirdropModal'
@@ -35,3 +35,4 @@ const GlobalCheckClaim: React.FC<React.PropsWithChildren<GlobalCheckClaimStatusP
 }
 
 export default GlobalCheckClaimStatus
+

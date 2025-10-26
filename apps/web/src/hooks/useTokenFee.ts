@@ -1,5 +1,5 @@
-import { ERC20Token, WNATIVE } from '@pancakeswap/sdk'
-import { feeOnTransferDetectorAddresses, fetchTokenFeeOnTransfer } from '@pancakeswap/smart-router'
+import { ERC20Token, WNATIVE } from '@cometswap/sdk'
+import { feeOnTransferDetectorAddresses, fetchTokenFeeOnTransfer } from '@cometswap/smart-router'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { usePublicClient } from 'wagmi'
 
@@ -27,3 +27,4 @@ export function useTokenFee(token?: ERC20Token) {
       !token.equals(WNATIVE[publicClient.chain.id as keyof typeof WNATIVE]),
   })
 }
+

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { ExtendEthereum } from 'global'
 import { useCallback, useMemo } from 'react'
@@ -138,3 +138,4 @@ export function useSwitchNetwork() {
     canSwitch,
   }
 }
+

@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react'
-import { Currency, Token } from '@pancakeswap/sdk'
+import { Currency, Token } from '@cometswap/sdk'
 import { useCombinedInactiveList } from 'state/lists/hooks'
 import { useIsUserAddedToken, useIsTokenActive } from 'hooks/Tokens'
 import ImportTokenRow from './ImportTokenRow'
@@ -41,3 +41,4 @@ export default function ImportRow({
     />
   )
 }
+

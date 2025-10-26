@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Breadcrumbs, CopyButton, Flex, ScanLink, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Breadcrumbs, CopyButton, Flex, ScanLink, Text } from '@cometswap/uikit'
 import { ChainLinkSupportChains, multiChainId, multiChainScan } from 'state/info/constant'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { useChainNameByQuery } from 'state/info/hooks'
 import { getBlockExploreLink } from 'utils'
 import { usePoolSymbol } from '../hooks/usePoolSymbol'
@@ -38,3 +38,4 @@ export const BreadcrumbNav: React.FC = () => {
     </Flex>
   )
 }
+

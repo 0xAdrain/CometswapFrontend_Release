@@ -1,5 +1,5 @@
-import { ChainId, chainNameToChainId } from '@pancakeswap/chains'
-import { PredictionSupportedSymbol, SUPPORTED_CHAIN_IDS } from '@pancakeswap/prediction'
+import { ChainId, chainNameToChainId } from '@cometswap/chains'
+import { PredictionSupportedSymbol, SUPPORTED_CHAIN_IDS } from '@cometswap/prediction'
 import PageLoader from 'components/Loader/PageLoader'
 import { FetchStatus } from 'config/constants/types'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
@@ -81,3 +81,4 @@ const Leaderboard = () => {
 }
 
 export default Leaderboard
+

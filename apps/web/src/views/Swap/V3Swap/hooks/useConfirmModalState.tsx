@@ -1,10 +1,10 @@
-import { usePreviousValue } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { getPermit2Address } from '@pancakeswap/permit2-sdk'
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
-import { Currency, CurrencyAmount, Percent, Token } from '@pancakeswap/swap-sdk-core'
-import { Permit2Signature } from '@pancakeswap/universal-router-sdk'
-import { ConfirmModalState, useAsyncConfirmPriceImpactWithoutFee } from '@pancakeswap/widgets-internal'
+import { usePreviousValue } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { getPermit2Address } from '@cometswap/permit2-sdk'
+import { PriceOrder } from '@cometswap/price-api-sdk'
+import { Currency, CurrencyAmount, Percent, Token } from '@cometswap/swap-sdk-core'
+import { Permit2Signature } from '@cometswap/universal-router-sdk'
+import { ConfirmModalState, useAsyncConfirmPriceImpactWithoutFee } from '@cometswap/widgets-internal'
 import { ALLOWED_PRICE_IMPACT_HIGH, PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN } from 'config/constants/exchange'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -28,7 +28,7 @@ import {
   TransactionReceiptNotFoundError,
   erc20Abi,
 } from 'viem'
-import { useToast } from '@pancakeswap/uikit'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { isClassicOrder, isXOrder } from 'views/Swap/utils'
 import { waitForXOrderReceipt } from 'views/Swap/x/api'
@@ -614,3 +614,4 @@ export const useConfirmModalState = (
     confirmActions,
   }
 }
+

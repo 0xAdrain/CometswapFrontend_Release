@@ -8,3 +8,4 @@ const userShowTestnetAtom = atomWithStorageWithErrorCatch<boolean>(USER_SHOW_TES
 export function useUserShowTestnet() {
   return useAtom(userShowTestnetAtom)
 }
+

@@ -1,4 +1,4 @@
-import { Flex, Spinner } from '@pancakeswap/uikit'
+import { Flex, Spinner } from '@cometswap/uikit'
 
 export default function LoadingSection() {
   return (
@@ -7,3 +7,4 @@ export default function LoadingSection() {
     </Flex>
   )
 }
+

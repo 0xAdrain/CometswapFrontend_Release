@@ -2,8 +2,8 @@ import {
   UNIVERSAL_FARMS_WITH_TESTNET,
   fetchAllUniversalFarms,
   formatUniversalFarmToSerializedFarm,
-} from '@pancakeswap/farms'
-import { cacheByLRU } from '@pancakeswap/utils/cacheByLRU'
+} from '@cometswap/farms'
+import { cacheByLRU } from '@cometswap/utils/cacheByLRU'
 import { NextApiHandler } from 'next'
 import { stringify } from 'viem'
 
@@ -39,3 +39,4 @@ const handler: NextApiHandler = async (req, res) => {
 }
 
 export default handler
+

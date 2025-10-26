@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowForwardIcon, Button, FlexGap, Grid, Message, MessageText, Modal, Text } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowForwardIcon, Button, FlexGap, Grid, Message, MessageText, Modal, Text } from '@cometswap/uikit'
 import { ChainLogo } from 'components/Logo/ChainLogo'
 import useAuth from 'hooks/useAuth'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
@@ -104,3 +104,4 @@ export function WrongNetworkModal({ currentChain, onDismiss }: { currentChain: C
     </Modal>
   )
 }
+

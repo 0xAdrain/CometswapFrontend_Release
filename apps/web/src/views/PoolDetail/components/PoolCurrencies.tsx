@@ -1,5 +1,5 @@
-import { Flex, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { Flex, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 import { PoolInfo } from 'state/farmsV4/state/type'
 import { useChainNameByQuery, useMultiChainPath } from 'state/info/hooks'
@@ -80,3 +80,4 @@ export const PoolCurrencies: React.FC<PoolCurrenciesProps> = ({ poolInfo }) => {
     </Flex>
   )
 }
+

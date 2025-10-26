@@ -1,5 +1,5 @@
-import { BetPosition } from '@pancakeswap/prediction'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BetPosition } from '@cometswap/prediction'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { useGetBetByEpoch, useGetCurrentEpoch } from 'state/predictions/hooks'
 import { NodeRound } from 'state/types'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
@@ -132,3 +132,4 @@ const RoundCard: React.FC<React.PropsWithChildren<RoundCardProps>> = ({ round, i
 }
 
 export default RoundCard
+

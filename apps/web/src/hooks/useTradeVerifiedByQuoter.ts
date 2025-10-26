@@ -1,8 +1,8 @@
-import { V4Router } from '@pancakeswap/smart-router'
-import { CurrencyAmount, Fraction, TradeType } from '@pancakeswap/swap-sdk-core'
+import { V4Router } from '@cometswap/smart-router'
+import { CurrencyAmount, Fraction, TradeType } from '@cometswap/swap-sdk-core'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { fetchQuotes, Quote } from '@pancakeswap/routing-sdk-addon-quoter'
+import { fetchQuotes, Quote } from '@cometswap/routing-sdk-addon-quoter'
 
 import { getViemClients } from 'utils/viem'
 import { toRoutingSDKTrade } from 'utils/convertTrade'
@@ -106,3 +106,4 @@ function reviseGasUseEstimate(
     gasUseEstimate: actualGasUseEstimate,
   }
 }
+

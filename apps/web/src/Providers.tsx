@@ -1,5 +1,5 @@
-import { LanguageProvider } from '@pancakeswap/localization'
-import { DialogProvider, ModalProvider, UIKitProvider, dark, light } from '@pancakeswap/uikit'
+import { LanguageProvider } from '@cometswap/localization'
+import { DialogProvider, ModalProvider, UIKitProvider, dark, light } from '@cometswap/uikit'
 import { Store } from '@reduxjs/toolkit'
 import { HydrationBoundary, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { HistoryManagerProvider } from 'contexts/HistoryContext'
@@ -52,3 +52,4 @@ const Providers: React.FC<
 }
 
 export default Providers
+

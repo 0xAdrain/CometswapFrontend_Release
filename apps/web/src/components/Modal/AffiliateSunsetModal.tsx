@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { LinkExternal, Text, useModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { LinkExternal, Text, useModal } from '@cometswap/uikit'
 import { Trans } from 'components/CustomTrans'
 import { useCallback, useEffect } from 'react'
 
@@ -17,11 +17,11 @@ export function AffiliateSunsetModal() {
     <DisclaimerModal
       bodyMaxWidth={['100%', '100%', '100%', '740px']}
       bodyMaxHeight="80vh"
-      modalHeader={t('Important Update: Closure of the PancakeSwap Affiliate Program')}
+      modalHeader={t('Important Update: Closure of the CometSwap Affiliate Program')}
       header={
         <>
           <Text mt="1.5rem">
-            {t(`The PancakeSwap Affiliate Program will officially close on %time%`, {
+            {t(`The CometSwap Affiliate Program will officially close on %time%`, {
               time: 'December 31, 2024',
             })}
           </Text>
@@ -50,7 +50,7 @@ export function AffiliateSunsetModal() {
             )}
           </Text>
           <Text mt="1.5rem">
-            {t('Thank you for your understanding and being a valued PancakeSwap community member.')}
+            {t('Thank you for your understanding and being a valued CometSwap community member.')}
           </Text>
         </>
       }
@@ -76,3 +76,4 @@ export function AffiliateSunsetModal() {
 
   return null
 }
+

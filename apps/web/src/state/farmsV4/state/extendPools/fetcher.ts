@@ -1,5 +1,5 @@
-import { getChainNameInKebabCase } from '@pancakeswap/chains'
-import { fetchAllUniversalFarms, fetchAllUniversalFarmsMap, getFarmConfigKey } from '@pancakeswap/farms'
+import { getChainNameInKebabCase } from '@cometswap/chains'
+import { fetchAllUniversalFarms, fetchAllUniversalFarmsMap, getFarmConfigKey } from '@cometswap/farms'
 import set from 'lodash/set'
 import { chainIdToExplorerInfoChainName, explorerApiClient } from 'state/info/api/client'
 import { PoolInfo, StablePoolInfo, V2PoolInfo } from '../type'
@@ -54,7 +54,7 @@ const composeFarmConfig = async (farm: PoolInfo) => {
     return farm
   }
 
-  set(farm, 'bCakeWrapperAddress', localFarm.bCakeWrapperAddress)
+  set(farm, 'bveCometWrapperAddress', localFarm.bveCometWrapperAddress)
 
   return farm
 }
@@ -87,3 +87,4 @@ export const fetchExplorerPoolInfo = async <TPoolType extends PoolInfo>(
 
   return data as TPoolType
 }
+

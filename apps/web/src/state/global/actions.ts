@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 // fired once when the app reloads but before the app renders
 // allows any updates to be applied to store data loaded from localStorage
@@ -15,3 +15,4 @@ export const pickFarmTransactionTx = createAction<{
   tx: string
   chainId: ChainId
 }>('transactions/pickFarmTransactionTx')
+

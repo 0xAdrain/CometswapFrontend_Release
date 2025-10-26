@@ -14,3 +14,4 @@ const StyledSpacer = styled.div<StyledSpacerProps>`
 `
 
 export default Spacer
+

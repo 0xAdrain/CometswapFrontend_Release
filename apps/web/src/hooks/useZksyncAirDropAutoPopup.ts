@@ -61,3 +61,4 @@ export const useZksyncAirDropAutoPopup = () => {
   }, [whitelistData, zksyncAirdropData, autoPopup, setAutoPopup])
   return { isOpen, onOpen, onDismiss }
 }
+

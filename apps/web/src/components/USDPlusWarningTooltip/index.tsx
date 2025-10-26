@@ -1,4 +1,4 @@
-import { Box, Placement, WarningIcon, useTooltip } from '@pancakeswap/uikit'
+import { Box, Placement, WarningIcon, useTooltip } from '@cometswap/uikit'
 import USDPlusWarning from 'views/Swap/components/SwapWarningModal/zksync/USDPlusWarning'
 
 type TooltipProps = {
@@ -26,3 +26,4 @@ export function USDPlusWarningTooltip({
     </>
   )
 }
+

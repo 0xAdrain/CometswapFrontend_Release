@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { REWARD_RATE } from '@pancakeswap/prediction'
-import { CheckmarkCircleFillIcon, CheckmarkCircleIcon, Tag, useTooltip } from '@pancakeswap/uikit'
-import { bigIntToBigNumber } from '@pancakeswap/utils/bigNumber'
+import { useTranslation } from '@cometswap/localization'
+import { REWARD_RATE } from '@cometswap/prediction'
+import { CheckmarkCircleFillIcon, CheckmarkCircleIcon, Tag, useTooltip } from '@cometswap/uikit'
+import { bigIntToBigNumber } from '@cometswap/utils/bigNumber'
 import { useMemo } from 'react'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 import { formatTokenv2 } from '../../helpers'
@@ -61,3 +61,4 @@ const EnteredTag: React.FC<React.PropsWithChildren<EnteredTagProps>> = ({ amount
 }
 
 export default EnteredTag
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, CardHeader, Skeleton, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, CardHeader, Skeleton, Text } from '@cometswap/uikit'
 import { LotteryStatus } from 'config/constants/types'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAppDispatch } from 'state'
@@ -133,3 +133,4 @@ const AllHistoryCard = () => {
 }
 
 export default AllHistoryCard
+

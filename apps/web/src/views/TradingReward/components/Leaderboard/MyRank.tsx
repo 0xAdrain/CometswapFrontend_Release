@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, Table, Td, Th, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, Table, Td, Th, useMatchBreakpoints } from '@cometswap/uikit'
 import { useMemo } from 'react'
 import DesktopResult from 'views/TradingReward/components/Leaderboard/DesktopResult'
 import MobileResult from 'views/TradingReward/components/Leaderboard/MobileResult'

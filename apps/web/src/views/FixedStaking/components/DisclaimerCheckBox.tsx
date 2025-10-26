@@ -1,4 +1,4 @@
-import { Checkbox, Flex, Link, Text } from '@pancakeswap/uikit'
+import { Checkbox, Flex, Link, Text } from '@cometswap/uikit'
 import { Dispatch, SetStateAction } from 'react'
 
 export function DisclaimerCheckBox({
@@ -21,7 +21,7 @@ export function DisclaimerCheckBox({
             display: 'inline',
             fontSize: '14px',
           }}
-          href="https://docs.pancakeswap.finance/products/simple-staking/terms-and-conditions"
+          href="https://docs.cometswap.finance/products/simple-staking/terms-and-conditions"
           external
         >
           the Terms & Conditions.
@@ -30,3 +30,4 @@ export function DisclaimerCheckBox({
     </Flex>
   )
 }
+

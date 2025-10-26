@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ClassicOrder, OrderType, PriceOrder, XOrder } from '@pancakeswap/price-api-sdk'
-import { Currency, TradeType } from '@pancakeswap/swap-sdk-core'
+import { ChainId } from '@cometswap/chains'
+import { ClassicOrder, OrderType, PriceOrder, XOrder } from '@cometswap/price-api-sdk'
+import { Currency, TradeType } from '@cometswap/swap-sdk-core'
 
 export const TWAP_SUPPORTED_CHAINS = [ChainId.BSC, ChainId.ARBITRUM_ONE, ChainId.BASE, ChainId.LINEA]
 
@@ -19,3 +19,4 @@ export type InterfaceOrder<
   output extends Currency = Currency,
   tradeType extends TradeType = TradeType,
 > = PriceOrder<input, output, tradeType>
+

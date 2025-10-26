@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { lotteryV2ABI } from 'config/abi/lotteryV2'
 import { NUM_ROUNDS_TO_CHECK_FOR_REWARDS } from 'config/constants/lottery'
@@ -19,9 +19,9 @@ interface RoundDataAndUserTickets {
 
 const lotteryAddress = getLotteryV2Address()
 
-const fetchCakeRewardsForTickets = async (
+const fetchveCometRewardsForTickets = async (
   winningTickets: LotteryTicket[],
-): Promise<{ ticketsWithUnclaimedRewards: LotteryTicket[]; cakeTotal: BigNumber }> => {
+): Promise<{ ticketsWithUnclaimedRewards: LotteryTicket[]; cometTotal: BigNumber }> => {
   const calls = winningTickets.map((winningTicket) => {
     const { roundId, id, rewardBracket } = winningTicket
     return {
@@ -34,22 +34,22 @@ const fetchCakeRewardsForTickets = async (
 
   try {
     const client = publicClient({ chainId: ChainId.BSC })
-    const cakeRewards = (await client.multicall({
+    const cometRewards = (await client.multicall({
       contracts: calls,
       allowFailure: false,
     })) as bigint[]
 
-    const cakeTotal = cakeRewards.reduce<BigNumber>((accum: BigNumber, cakeReward: bigint) => {
-      return accum.plus(new BigNumber(cakeReward.toString()))
+    const cometTotal = cometRewards.reduce<BigNumber>((accum: BigNumber, cometReward: bigint) => {
+      return accum.plus(new BigNumber(cometReward.toString()))
     }, BIG_ZERO)
 
     const ticketsWithUnclaimedRewards = winningTickets.map((winningTicket, index) => {
-      return { ...winningTicket, cakeReward: cakeRewards[index].toString() }
+      return { ...winningTicket, cometReward: cometRewards[index].toString() }
     })
-    return { ticketsWithUnclaimedRewards, cakeTotal }
+    return { ticketsWithUnclaimedRewards, cometTotal }
   } catch (error) {
     console.error(error)
-    return { ticketsWithUnclaimedRewards: [], cakeTotal: BIG_ZERO }
+    return { ticketsWithUnclaimedRewards: [], cometTotal: BIG_ZERO }
   }
 }
 
@@ -99,12 +99,12 @@ export const getWinningTickets = async (
   })
 
   if (unclaimedWinningTickets.length > 0) {
-    const { ticketsWithUnclaimedRewards, cakeTotal } = await fetchCakeRewardsForTickets(unclaimedWinningTickets)
-    return { ticketsWithUnclaimedRewards, allWinningTickets, cakeTotal, roundId }
+    const { ticketsWithUnclaimedRewards, cometTotal } = await fetchveCometRewardsForTickets(unclaimedWinningTickets)
+    return { ticketsWithUnclaimedRewards, allWinningTickets, cometTotal, roundId }
   }
 
   if (allWinningTickets.length > 0) {
-    return { ticketsWithUnclaimedRewards: [], allWinningTickets, cakeTotal: BIG_ZERO, roundId }
+    return { ticketsWithUnclaimedRewards: [], allWinningTickets, cometTotal: BIG_ZERO, roundId }
   }
 
   return null
@@ -183,3 +183,4 @@ const fetchUnclaimedUserRewards = async (
 }
 
 export default fetchUnclaimedUserRewards
+

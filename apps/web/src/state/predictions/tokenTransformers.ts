@@ -1,8 +1,8 @@
-import { BetPosition } from '@pancakeswap/prediction'
+import { BetPosition } from '@cometswap/prediction'
 import numberOrNull from 'utils/numberOrNull'
 import { Bet, PredictionUser, Round } from '../types'
 import { BetResponseBNB } from './bnbQueries'
-import { BetResponseCAKE } from './cakeQueries'
+import { BetResponseCOMET} from './cometQueries'
 import { NewBetResponse } from './newTokenQueries'
 import { RoundResponse } from './responseType'
 
@@ -23,7 +23,7 @@ const getRoundPosition = (positionResponse: string) => {
 }
 
 export const transformRoundResponseToken = (
-  roundResponse: RoundResponse<BetResponseCAKE | BetResponseBNB | NewBetResponse>,
+  roundResponse: RoundResponse<BetResponseCOMET| BetResponseBNB | NewBetResponse>,
   transformBetResponse: (betResponse: any) => Bet,
 ): Round => {
   const {
@@ -121,3 +121,4 @@ export const transformUserResponseToken = (userResponse): PredictionUser => {
     netBNB: 0,
   }
 }
+

@@ -12,8 +12,8 @@ import {
   ModalTitle,
   Heading,
   Box,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { styled } from 'styled-components'
 
 export interface CheckType {
@@ -144,3 +144,4 @@ const DisclaimerModal: React.FC<React.PropsWithChildren<RiskDisclaimerProps>> = 
 }
 
 export default DisclaimerModal
+

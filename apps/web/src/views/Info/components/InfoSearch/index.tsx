@@ -1,6 +1,6 @@
-import { useDebounce } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Input, Skeleton, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useDebounce } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Input, Skeleton, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { MINIMUM_SEARCH_CHARACTERS } from 'config/constants/info'
 import orderBy from 'lodash/orderBy'
 import { useRouter } from 'next/router'
@@ -365,3 +365,4 @@ const Search = () => {
 }
 
 export default Search
+

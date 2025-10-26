@@ -1,8 +1,8 @@
-import { MANAGER, Strategy } from '@pancakeswap/position-managers'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
-import { Card, CardBody } from '@pancakeswap/uikit'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { MANAGER, Strategy } from '@cometswap/position-managers'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
+import { Card, CardBody } from '@cometswap/uikit'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import BigNumber from 'bignumber.js'
 import { SwellTooltip } from 'components/SwellTooltip/SwellTooltip'
 import { useHasSwellReward } from 'hooks/useHasSwellReward'
@@ -82,7 +82,7 @@ interface Props {
   precision?: bigint
   lpTokenDecimals?: number
   aprTimeWindow?: number
-  bCakeWrapper?: Address
+  bCometWrapper?: Address
   minDepositUSD?: number
   boosterMultiplier?: number
   boosterContractAddress?: Address
@@ -130,7 +130,7 @@ export const DuoTokenVaultCard = memo(function DuoTokenVaultCard({
   totalStakedInUsd,
   learnMoreAboutUrl,
   lpTokenDecimals,
-  bCakeWrapper,
+  bCometWrapper,
   minDepositUSD,
   boosterMultiplier,
   boosterContractAddress,
@@ -151,7 +151,7 @@ export const DuoTokenVaultCard = memo(function DuoTokenVaultCard({
     rewardEndTime,
     rewardStartTime,
     adapterAddress,
-    bCakeWrapperAddress: bCakeWrapper,
+    bCometWrapperAddress: bCometWrapper,
   })
 
   const vaultName = useMemo(() => getVaultName(idByManager, name), [name, idByManager])
@@ -160,7 +160,7 @@ export const DuoTokenVaultCard = memo(function DuoTokenVaultCard({
   const tokenPerSecond = useMemo(() => {
     return getBalanceAmount(new BigNumber(rewardPerSecond), earningToken.decimals).toNumber()
   }, [rewardPerSecond, earningToken])
-  const { isBoosterWhiteList } = useIsWrapperWhiteList(boosterContractAddress, bCakeWrapper)
+  const { isBoosterWhiteList } = useIsWrapperWhiteList(boosterContractAddress, bCometWrapper)
   const hasSwellReward = useHasSwellReward(contractAddress)
 
   return (
@@ -174,7 +174,7 @@ export const DuoTokenVaultCard = memo(function DuoTokenVaultCard({
         autoCompound={autoCompound}
         isSingleDepositToken={isSingleDepositToken}
         allowDepositToken1={allowDepositToken1}
-        isBooster={isBoosterWhiteList && apr?.isInCakeRewardDateRange}
+        isBooster={isBoosterWhiteList && apr?.isInCometRewardDateRange}
         tags={hasSwellReward ? <SwellTooltip /> : null}
       />
       <CardBody>
@@ -233,15 +233,15 @@ export const DuoTokenVaultCard = memo(function DuoTokenVaultCard({
           totalSupplyAmounts={totalSupplyAmounts}
           userLpAmounts={userLpAmounts}
           precision={precision}
-          isInCakeRewardDateRange={apr.isInCakeRewardDateRange}
+          isInCometRewardDateRange={apr.isInCometRewardDateRange}
           totalStakedInUsd={totalStakedInUsd}
           strategyInfoUrl={strategyInfoUrl}
           learnMoreAboutUrl={learnMoreAboutUrl}
           lpTokenDecimals={lpTokenDecimals}
           aprTimeWindow={aprDataInfo.timeWindow}
-          bCakeWrapper={bCakeWrapper}
+          bCometWrapper={bCometWrapper}
           minDepositUSD={minDepositUSD}
-          isBooster={isBoosterWhiteList && apr?.isInCakeRewardDateRange}
+          isBooster={isBoosterWhiteList && apr?.isInCometRewardDateRange}
           boosterContractAddress={boosterContractAddress}
           adapterAddress={adapterAddress}
         />
@@ -259,12 +259,12 @@ export const DuoTokenVaultCard = memo(function DuoTokenVaultCard({
             isSingleDepositToken={isSingleDepositToken}
             tokenPerSecond={tokenPerSecond}
             earningToken={earningToken}
-            isInCakeRewardDateRange={apr.isInCakeRewardDateRange}
+            isInCometRewardDateRange={apr.isInCometRewardDateRange}
           />
           <VaultLinks
             mt="0.5em"
             manager={manager}
-            vaultAddress={bCakeWrapper ?? contractAddress}
+            vaultAddress={bCometWrapper ?? contractAddress}
             managerAddress={managerAddress}
             managerInfoUrl={managerInfoUrl}
             strategyInfoUrl={strategyInfoUrl}
@@ -275,3 +275,4 @@ export const DuoTokenVaultCard = memo(function DuoTokenVaultCard({
     </StyledCard>
   )
 })
+

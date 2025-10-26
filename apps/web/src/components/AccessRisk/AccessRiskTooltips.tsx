@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Link, Text } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Link, Text } from '@cometswap/uikit'
 import { TOKEN_RISK } from 'components/AccessRisk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
@@ -81,3 +81,4 @@ const AccessRiskTooltips: React.FC<AccessRiskTooltipsProps> = ({
 }
 
 export default AccessRiskTooltips
+

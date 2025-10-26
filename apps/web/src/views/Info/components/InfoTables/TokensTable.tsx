@@ -1,56 +1,53 @@
-import { ArrowBackIcon, ArrowForwardIcon, Box, Flex, Skeleton, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { ArrowBackIcon, ArrowForwardIcon, Flex, Skeleton, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 
-import { useTranslation } from '@pancakeswap/localization'
-import orderBy from 'lodash/orderBy'
-import { multiChainId } from 'state/info/constant'
-import { useChainNameByQuery, useMultiChainPath, useStableSwapPath } from 'state/info/hooks'
+import { ITEMS_PER_INFO_TABLE_PAGE } from 'config/constants/info'
+import { useMultiChainPath, useStableSwapPath } from 'state/info/hooks'
 import { TokenData } from 'state/info/types'
 import { formatAmount } from 'utils/formatInfoNumbers'
-import { getTokenNameAlias, getTokenSymbolAlias } from 'utils/getTokenAlias'
-import { CurrencyLogo } from 'views/Info/components/CurrencyLogo'
-import Percent from 'views/Info/components/Percent'
-import { Arrow, Break, ClickableColumnHeader, PageButtons, TableWrapper } from './shared'
+import { CurrencyLogo } from 'components/Logo'
+import { ClickableColumnHeader, TableWrapper, PageButtons, Arrow, Break } from './shared'
 
 /**
  *  Columns on different layouts
- *  6 = | # | Name | Price | Price Change | Volume 24H | TVL |
- *  5 = | # | Name | Price |              | Volume 24H | TVL |
- *  4 = | # | Name | Price |              | Volume 24H |     |
- *  2 = |   | Name |       |              | Volume 24H |     |
- *  On smallest screen Name is reduced to just symbol
+ *  5 = | # | Name | Price | Price Change | Volume 24H | TVL |
+ *  4 = | # | Name | Price | Price Change | Volume 24H |
+ *  3 = | # | Name | Price | Price Change |
+ *  2 = | # | Name | Price |
+ *  1 = | # | Name |
  */
 const ResponsiveGrid = styled.div`
   display: grid;
   grid-gap: 1em;
   align-items: center;
+  grid-template-columns: 20px 3.5fr repeat(4, 1fr);
 
   padding: 0 24px;
-
-  grid-template-columns: 20px 3fr repeat(4, 1fr);
-
   @media screen and (max-width: 900px) {
     grid-template-columns: 20px 2fr repeat(3, 1fr);
-    & :nth-child(4) {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    grid-template-columns: 20px 2fr repeat(2, 1fr);
     & :nth-child(6) {
       display: none;
     }
   }
 
-  @media screen and (max-width: 670px) {
-    grid-template-columns: 1fr 1fr;
-    > *:first-child {
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 20px 2fr repeat(1, 1fr);
+    & :nth-child(4) {
       display: none;
     }
-    > *:nth-child(3) {
+    & :nth-child(5) {
+      display: none;
+    }
+    & :nth-child(6) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: 2.5fr repeat(1, 1fr);
+    > *:nth-child(1) {
       display: none;
     }
   }
@@ -58,116 +55,117 @@ const ResponsiveGrid = styled.div`
 
 const LinkWrapper = styled(NextLinkFromReactRouter)`
   text-decoration: none;
-  &:hover {
+  :hover {
     cursor: pointer;
     opacity: 0.7;
   }
 `
 
 const ResponsiveLogo = styled(CurrencyLogo)`
+  border-radius: 50%;
   @media screen and (max-width: 670px) {
     width: 16px;
     height: 16px;
   }
 `
 
-const TableLoader: React.FC<React.PropsWithChildren> = () => {
-  const loadingRow = (
-    <ResponsiveGrid>
-      <Skeleton />
-      <Skeleton />
-      <Skeleton />
-      <Skeleton />
-      <Skeleton />
-      <Skeleton />
-    </ResponsiveGrid>
-  )
-  return (
-    <>
-      {loadingRow}
-      {loadingRow}
-      {loadingRow}
-    </>
-  )
-}
-
-const DataRow: React.FC<React.PropsWithChildren<{ tokenData: TokenData; index: number }>> = ({ tokenData, index }) => {
-  const { isXs, isSm } = useMatchBreakpoints()
-  const chianPath = useMultiChainPath()
-  const chainName = useChainNameByQuery()
-  const chainId = multiChainId[chainName]
-  const stableSwapPath = useStableSwapPath()
-
-  const tokenSymbol = getTokenSymbolAlias(tokenData.address, chainId, tokenData.symbol)
-  const tokenName = getTokenNameAlias(tokenData.address, chainId, tokenData.name)
-
-  return (
-    <LinkWrapper to={`/info${chianPath}/tokens/${tokenData.address}${stableSwapPath}`}>
-      <ResponsiveGrid>
-        <Flex>
-          <Text>{index + 1}</Text>
-        </Flex>
-        <Flex alignItems="center">
-          <ResponsiveLogo size="24px" address={tokenData.address} chainName={chainName} />
-          {(isXs || isSm) && <Text ml="8px">{tokenData.symbol}</Text>}
-          {!isXs && !isSm && (
-            <Flex marginLeft="10px">
-              <Text>{tokenName}</Text>
-              <Text ml="8px">({tokenSymbol})</Text>
-            </Flex>
-          )}
-        </Flex>
-        <Text fontWeight={400}>${formatAmount(tokenData.priceUSD, { notation: 'standard' })}</Text>
-        <Text fontWeight={400}>
-          <Percent value={tokenData.priceUSDChange} fontWeight={400} />
-        </Text>
-        <Text fontWeight={400}>${formatAmount(tokenData.volumeUSD)}</Text>
-        <Text fontWeight={400}>${formatAmount(tokenData.liquidityUSD)}</Text>
-      </ResponsiveGrid>
-    </LinkWrapper>
-  )
-}
-
 const SORT_FIELD = {
   name: 'name',
   volumeUSD: 'volumeUSD',
-  liquidityUSD: 'liquidityUSD',
+  totalValueLockedUSD: 'totalValueLockedUSD',
   priceUSD: 'priceUSD',
   priceUSDChange: 'priceUSDChange',
   priceUSDChangeWeek: 'priceUSDChangeWeek',
 }
 
-const MAX_ITEMS = 10
+const LoadingRow: React.FC<React.PropsWithChildren> = () => (
+  <ResponsiveGrid>
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+  </ResponsiveGrid>
+)
 
-const TokenTable: React.FC<
-  React.PropsWithChildren<{
-    tokenDatas: (TokenData | undefined)[]
-    maxItems?: number
-  }>
-> = ({ tokenDatas, maxItems = MAX_ITEMS }) => {
-  const [sortField, setSortField] = useState(SORT_FIELD.volumeUSD)
+const TableLoader: React.FC<React.PropsWithChildren> = () => (
+  <>
+    <LoadingRow />
+    <LoadingRow />
+    <LoadingRow />
+  </>
+)
+
+const DataRow = ({ tokenData, index }: { tokenData: TokenData; index: number }) => {
+  const { isMobile } = useMatchBreakpoints()
+  // const chainName = useChainNameByQuery() // Unused
+  const chainPath = useMultiChainPath()
+  const stableSwapPath = useStableSwapPath()
+
+  return (
+    <LinkWrapper to={`${chainPath}/info${stableSwapPath}/tokens/${tokenData.address}`}>
+      <ResponsiveGrid>
+        <Flex>
+          <Text>{index + 1}</Text>
+        </Flex>
+        <Flex alignItems="center">
+          <ResponsiveLogo address={tokenData.address} />
+          <Text ml="8px" fontWeight="600">
+            {tokenData.symbol}
+          </Text>
+          <Text ml="8px" color="textSubtle" fontSize={isMobile ? '14px' : '16px'}>
+            {tokenData.name}
+          </Text>
+        </Flex>
+        <Text fontWeight="600">${formatAmount(tokenData.priceUSD, { notation: 'standard' })}</Text>
+        <Text color={tokenData.priceUSDChange > 0 ? 'success' : 'failure'}>
+          {tokenData.priceUSDChange.toFixed(2)}%
+        </Text>
+        <Text fontWeight="600">${formatAmount(tokenData.volumeUSD)}</Text>
+        <Text fontWeight="600">${formatAmount(tokenData.totalValueLockedUSD)}</Text>
+      </ResponsiveGrid>
+    </LinkWrapper>
+  )
+}
+
+interface TokenTableProps {
+  tokenDatas: TokenData[]
+  loading?: boolean
+  maxItems?: number
+}
+
+const TokenTable: React.FC<React.PropsWithChildren<TokenTableProps>> = ({
+  tokenDatas,
+  loading = false,
+  maxItems = ITEMS_PER_INFO_TABLE_PAGE,
+}) => {
+  const [sortField, setSortField] = useState(SORT_FIELD.totalValueLockedUSD)
   const [sortDirection, setSortDirection] = useState<boolean>(true)
-  const { t } = useTranslation()
 
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
+
   useEffect(() => {
     let extraPages = 1
-    if (tokenDatas) {
-      if (tokenDatas.length % maxItems === 0) {
-        extraPages = 0
-      }
-      setMaxPage(Math.floor(tokenDatas.length / maxItems) + extraPages)
+    if (tokenDatas.length % maxItems === 0) {
+      extraPages = 0
     }
+    setMaxPage(Math.floor(tokenDatas.length / maxItems) + extraPages)
   }, [maxItems, tokenDatas])
 
   const sortedTokens = useMemo(() => {
     return tokenDatas
-      ? orderBy(
-          tokenDatas,
-          (tokenData) => tokenData?.[sortField as keyof TokenData],
-          sortDirection ? 'desc' : 'asc',
-        ).slice(maxItems * (page - 1), page * maxItems)
+      ? tokenDatas
+          .sort((a, b) => {
+            if (a && b) {
+              return a[sortField as keyof TokenData] > b[sortField as keyof TokenData]
+                ? (sortDirection ? -1 : 1) * 1
+                : (sortDirection ? -1 : 1) * -1
+            }
+            return -1
+          })
+          .slice(maxItems * (page - 1), page * maxItems)
       : []
   }, [tokenDatas, maxItems, page, sortDirection, sortField])
 
@@ -190,6 +188,7 @@ const TokenTable: React.FC<
   if (!tokenDatas) {
     return <Skeleton />
   }
+
   return (
     <TableWrapper>
       <ResponsiveGrid>
@@ -203,7 +202,7 @@ const TokenTable: React.FC<
           onClick={() => handleSort(SORT_FIELD.name)}
           textTransform="uppercase"
         >
-          {t('Name')} {arrow(SORT_FIELD.name)}
+          Name {arrow(SORT_FIELD.name)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
           color="secondary"
@@ -212,7 +211,7 @@ const TokenTable: React.FC<
           onClick={() => handleSort(SORT_FIELD.priceUSD)}
           textTransform="uppercase"
         >
-          {t('Price')} {arrow(SORT_FIELD.priceUSD)}
+          Price {arrow(SORT_FIELD.priceUSD)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
           color="secondary"
@@ -221,7 +220,7 @@ const TokenTable: React.FC<
           onClick={() => handleSort(SORT_FIELD.priceUSDChange)}
           textTransform="uppercase"
         >
-          {t('Price Change')} {arrow(SORT_FIELD.priceUSDChange)}
+          Price Change {arrow(SORT_FIELD.priceUSDChange)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
           color="secondary"
@@ -230,56 +229,53 @@ const TokenTable: React.FC<
           onClick={() => handleSort(SORT_FIELD.volumeUSD)}
           textTransform="uppercase"
         >
-          {t('Volume 24H')} {arrow(SORT_FIELD.volumeUSD)}
+          Volume 24H {arrow(SORT_FIELD.volumeUSD)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
           color="secondary"
           fontSize="12px"
           bold
-          onClick={() => handleSort(SORT_FIELD.liquidityUSD)}
+          onClick={() => handleSort(SORT_FIELD.totalValueLockedUSD)}
           textTransform="uppercase"
         >
-          {t('Liquidity')} {arrow(SORT_FIELD.liquidityUSD)}
+          TVL {arrow(SORT_FIELD.totalValueLockedUSD)}
         </ClickableColumnHeader>
       </ResponsiveGrid>
 
       <Break />
-      {sortedTokens.length > 0 ? (
-        <>
-          {sortedTokens.map((data, i) => {
-            if (data) {
-              return (
-                <Fragment key={data.address}>
-                  <DataRow index={(page - 1) * MAX_ITEMS + i} tokenData={data} />
-                  <Break />
-                </Fragment>
-              )
-            }
-            return null
-          })}
-          <PageButtons>
-            <Arrow
-              onClick={() => {
-                setPage(page === 1 ? page : page - 1)
-              }}
-            >
-              <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
-            </Arrow>
-            <Text>{t('Page %page% of %maxPage%', { page, maxPage })}</Text>
-            <Arrow
-              onClick={() => {
-                setPage(page === maxPage ? page : page + 1)
-              }}
-            >
-              <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
-            </Arrow>
-          </PageButtons>
-        </>
-      ) : (
-        <>
-          <TableLoader />
-          <Box />
-        </>
+      {loading && <TableLoader />}
+      {!loading &&
+        sortedTokens.map((tokenData, i) => {
+          if (tokenData) {
+            return (
+              <Fragment key={tokenData.address}>
+                <DataRow index={(page - 1) * maxItems + i} tokenData={tokenData} />
+                <Break />
+              </Fragment>
+            )
+          }
+          return null
+        })}
+      {!loading && (
+        <PageButtons>
+          <Arrow
+            onClick={() => {
+              setPage(page === 1 ? page : page - 1)
+            }}
+          >
+            <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
+          </Arrow>
+
+          <Text>Page {page} of {maxPage}</Text>
+
+          <Arrow
+            onClick={() => {
+              setPage(page === maxPage ? page : page + 1)
+            }}
+          >
+            <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
+          </Arrow>
+        </PageButtons>
       )}
     </TableWrapper>
   )

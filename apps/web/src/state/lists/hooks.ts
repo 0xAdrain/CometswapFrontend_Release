@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
-import { TokenAddressMap as TTokenAddressMap, TokenInfo, TokenList, WrappedTokenInfo } from '@pancakeswap/token-lists'
-import { ListsState } from '@pancakeswap/token-lists/react'
-import { EMPTY_LIST } from '@pancakeswap/tokens'
-import { enumValues } from '@pancakeswap/utils/enumValues'
+import { ChainId } from '@cometswap/chains'
+import { TokenAddressMap as TTokenAddressMap, TokenInfo, TokenList, WrappedTokenInfo } from '@cometswap/token-lists'
+import { ListsState } from '@cometswap/token-lists/react'
+import { EMPTY_LIST } from '@cometswap/tokens'
+import { enumValues } from '@cometswap/utils/enumValues'
 import {
   DEFAULT_LIST_OF_LISTS,
   MULTI_CHAIN_LIST_URLS,
@@ -19,10 +19,10 @@ import _pickBy from 'lodash/pickBy'
 import uniqBy from 'lodash/uniqBy'
 import { useMemo } from 'react'
 import { notEmpty } from 'utils/notEmpty'
-import DEFAULT_TOKEN_LIST from '../../config/constants/tokenLists/pancake-default.tokenlist.json'
-import ONRAMP_TOKEN_LIST from '../../config/constants/tokenLists/pancake-supported-onramp-currency-list.json'
-import UNSUPPORTED_TOKEN_LIST from '../../config/constants/tokenLists/pancake-unsupported.tokenlist.json'
-import WARNING_TOKEN_LIST from '../../config/constants/tokenLists/pancake-warning.tokenlist.json'
+import DEFAULT_TOKEN_LIST from '../../config/constants/tokenLists/comet-default.tokenlist.json'
+import ONRAMP_TOKEN_LIST from '../../config/constants/tokenLists/comet-supported-onramp-currency-list.json'
+import UNSUPPORTED_TOKEN_LIST from '../../config/constants/tokenLists/comet-unsupported.tokenlist.json'
+import WARNING_TOKEN_LIST from '../../config/constants/tokenLists/comet-warning.tokenlist.json'
 import { safeGetAddress } from '../../utils'
 import { listsAtom } from './lists'
 
@@ -267,3 +267,4 @@ export function useIsListActive(url: string): boolean {
   const activeListUrls = useActiveListUrls()
   return useMemo(() => Boolean(activeListUrls?.includes(url)), [activeListUrls, url])
 }
+

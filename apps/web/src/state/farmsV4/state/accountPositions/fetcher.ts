@@ -1,17 +1,17 @@
 import {
-  BCakeWrapperFarmConfig,
+  BveCometWrapperFarmConfig,
   Protocol,
   fetchAllUniversalFarms,
   fetchAllUniversalFarmsMap,
   getFarmConfigKey,
-} from '@pancakeswap/farms'
-import { CurrencyAmount, ERC20Token, Pair, Token, pancakePairV2ABI } from '@pancakeswap/sdk'
-import { LegacyStableSwapPair } from '@pancakeswap/smart-router/legacy-router'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/farms'
+import { CurrencyAmount, ERC20Token, Pair, Token, cometPairV2ABI } from '@cometswap/sdk'
+import { LegacyStableSwapPair } from '@cometswap/smart-router/legacy-router'
+import { deserializeToken } from '@cometswap/token-lists'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { infoStableSwapABI } from 'config/abi/infoStableSwap'
-import { v2BCakeWrapperABI } from 'config/abi/v2BCakeWrapper'
+import { v2BCometWrapperABI } from 'config/abi/v2BCometWrapper'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from 'config/constants/exchange'
 import memoize from 'lodash/memoize'
 import uniqWith from 'lodash/uniqWith'
@@ -33,25 +33,25 @@ export function getV2LiquidityToken([tokenA, tokenB]: [ERC20Token, ERC20Token]):
     Pair.getAddress(tokenA, tokenB),
     18,
     `${tokenA.symbol}-${tokenB.symbol} V2 LP`,
-    'Pancake LPs',
+    'Comet LPs',
   )
 }
 
-export const getAccountV2FarmingBCakeWrapperEarning = async (
+export const getAccountV2FarmingBveCometWrapperEarning = async (
   chainId: number,
   account: Address,
-  bCakeWrapperConfig: BCakeWrapperFarmConfig[],
+  bveCometWrapperConfig: BveCometWrapperFarmConfig[],
 ) => {
   const client = publicClient({ chainId })
 
-  if (!account || !chainId || bCakeWrapperConfig.length === 0) return []
+  if (!account || !chainId || bveCometWrapperConfig.length === 0) return []
 
-  const validConfig = bCakeWrapperConfig.filter((pool) => pool.bCakeWrapperAddress && pool.chainId === chainId)
+  const validConfig = bveCometWrapperConfig.filter((pool) => pool.bveCometWrapperAddress && pool.chainId === chainId)
 
   const earningCalls = validConfig.map((pool) => {
     return {
-      abi: v2BCakeWrapperABI,
-      address: pool.bCakeWrapperAddress,
+      abi: v2BCometWrapperABI,
+      address: pool.bveCometWrapperAddress,
       functionName: 'pendingReward',
       args: [account] as const,
     } as const
@@ -83,7 +83,7 @@ export const getTrackedV2LpTokens = memoize(
 
     // from farms
     fetchFarmConfig
-      .filter((farm) => farm.protocol === 'v2' && farm.bCakeWrapperAddress && farm.chainId === chainId)
+      .filter((farm) => farm.protocol === 'v2' && farm.bveCometWrapperAddress && farm.chainId === chainId)
       .forEach((farm) => {
         pairTokens.push(farm.token0.sortsBefore(farm.token1) ? [farm.token0, farm.token1] : [farm.token1, farm.token0])
       })
@@ -122,12 +122,12 @@ export const getTrackedV2LpTokens = memoize(
     `${chainId}:${Object.keys(presetTokens).length}:${Object.values(userSavedPairs).length}`,
 )
 
-export const getBCakeWrapperAddress = async (lpAddress: Address, chainId: number) => {
+export const getBveCometWrapperAddress = async (lpAddress: Address, chainId: number) => {
   const fetchUniversalFarmsMap = await fetchAllUniversalFarmsMap()
 
   const f = fetchUniversalFarmsMap[getFarmConfigKey({ lpAddress, chainId })] as V2PoolInfo | StablePoolInfo | undefined
 
-  return f?.bCakeWrapperAddress ?? '0x'
+  return f?.bveCometWrapperAddress ?? '0x'
 }
 
 // @todo @ChefJerry add getAccountV2FarmingStakedBalances result
@@ -144,10 +144,10 @@ export const getAccountV2LpDetails = async (
 
   const validLpTokens = lpTokens.filter((token) => token.chainId === chainId)
 
-  const bCakeWrapperAddresses = await Promise.all(
+  const bveCometWrapperAddresses = await Promise.all(
     validLpTokens.map(async (tokens) => {
-      const bCakeWrapperAddress = await getBCakeWrapperAddress(tokens.address, chainId)
-      return bCakeWrapperAddress
+      const bveCometWrapperAddress = await getBveCometWrapperAddress(tokens.address, chainId)
+      return bveCometWrapperAddress
     }),
   )
 
@@ -159,11 +159,11 @@ export const getAccountV2LpDetails = async (
       args: [account] as const,
     } as const
   })
-  const farmingCalls = bCakeWrapperAddresses.reduce(
+  const farmingCalls = bveCometWrapperAddresses.reduce(
     (acc, address) => {
       if (!address || address === '0x') return acc
       acc.push({
-        abi: v2BCakeWrapperABI,
+        abi: v2BCometWrapperABI,
         address,
         functionName: 'userInfo',
         args: [account] as const,
@@ -171,7 +171,7 @@ export const getAccountV2LpDetails = async (
       return acc
     },
     [] as Array<{
-      abi: typeof v2BCakeWrapperABI
+      abi: typeof v2BCometWrapperABI
       address: Address
       functionName: 'userInfo'
       args: readonly [Address]
@@ -179,14 +179,14 @@ export const getAccountV2LpDetails = async (
   )
   const reserveCalls = validLpTokens.map((token) => {
     return {
-      abi: pancakePairV2ABI,
+      abi: cometPairV2ABI,
       address: token.address,
       functionName: 'getReserves',
     } as const
   })
   const totalSupplyCalls = validLpTokens.map((token) => {
     return {
-      abi: pancakePairV2ABI,
+      abi: cometPairV2ABI,
       address: token.address,
       functionName: 'totalSupply',
     } as const
@@ -210,7 +210,7 @@ export const getAccountV2LpDetails = async (
     }),
   ])
 
-  const farming = bCakeWrapperAddresses.reduce((acc, address) => {
+  const farming = bveCometWrapperAddresses.reduce((acc, address) => {
     if (!address || address === '0x') {
       acc.push(undefined)
     } else {
@@ -291,9 +291,9 @@ export const getStablePairDetails = async (
 
   if (!account || !client || !validStablePairs.length) return []
 
-  const bCakeWrapperAddresses = await Promise.all(
+  const bveCometWrapperAddresses = await Promise.all(
     validStablePairs.reduce((acc, pair) => {
-      return [...acc, getBCakeWrapperAddress(pair.lpAddress, chainId)]
+      return [...acc, getBveCometWrapperAddress(pair.lpAddress, chainId)]
     }, [] as Array<Promise<Address>>),
   )
 
@@ -313,17 +313,17 @@ export const getStablePairDetails = async (
       account,
     } as const
   })
-  const farmingCalls = bCakeWrapperAddresses.map((address) => {
+  const farmingCalls = bveCometWrapperAddresses.map((address) => {
     if (address === '0x') {
       return {
-        abi: v2BCakeWrapperABI,
+        abi: v2BCometWrapperABI,
         address: zeroAddress,
         functionName: 'userInfo',
         args: [account] as const,
       }
     }
     return {
-      abi: v2BCakeWrapperABI,
+      abi: v2BCometWrapperABI,
       address,
       functionName: 'userInfo',
       args: [account] as const,
@@ -427,3 +427,4 @@ export const getStablePairDetails = async (
   })
   return result
 }
+

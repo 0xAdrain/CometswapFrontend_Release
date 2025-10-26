@@ -1,4 +1,4 @@
-# @pancakeswap/swap-sdk-core
+# @cometswap/swap-sdk-core
 
 ## 1.3.0
 

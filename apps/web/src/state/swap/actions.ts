@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { PairDataTimeWindowEnum } from '@pancakeswap/uikit'
+import { PairDataTimeWindowEnum } from '@cometswap/uikit'
 import { DerivedPairDataNormalized, PairDataNormalized } from './types'
 
 export enum Field {
@@ -28,3 +28,4 @@ export const updateDerivedPairData = createAction<{
   pairId: string
   timeWindow: PairDataTimeWindowEnum
 }>('swap/updateDerivedPairData')
+

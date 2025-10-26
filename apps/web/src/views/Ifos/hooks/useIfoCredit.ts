@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { fetchPublicIfoData } from '@pancakeswap/ifos'
+import { ChainId } from '@cometswap/chains'
+import { fetchPublicIfoData } from '@cometswap/ifos'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
@@ -29,12 +29,12 @@ export function useIfoCeiling({ chainId }: { chainId?: ChainId }): BigNumber | u
   return useMemo(() => (data?.ceiling ? new BigNumber(data.ceiling) : undefined), [data])
 }
 
-type ICakeStatusParams = {
+type ICometStatusParams = {
   ifoChainId?: ChainId
   ifoAddress?: Address
 }
 
-export function useICakeBridgeStatus({ ifoChainId, ifoAddress }: ICakeStatusParams) {
+export function useICometBridgeStatus({ ifoChainId, ifoAddress }: ICometStatusParams) {
   const srcChainId = useIfoSourceChain(ifoChainId)
 
   const isCrossChainIfo = useMemo(() => srcChainId !== ifoChainId, [srcChainId, ifoChainId])
@@ -44,8 +44,8 @@ export function useICakeBridgeStatus({ ifoChainId, ifoAddress }: ICakeStatusPara
   // Ifo address is only on target chain so pass undefined for source chain
   const sourceChainCredit = useIfoCredit({ chainId: srcChainId, ifoAddress: isCrossChainIfo ? undefined : ifoAddress })
 
-  const noICake = useMemo(() => !sourceChainCredit || sourceChainCredit.quotient === 0n, [sourceChainCredit])
-  const isICakeSynced = useMemo(
+  const noIComet = useMemo(() => !sourceChainCredit || sourceChainCredit.quotient === 0n, [sourceChainCredit])
+  const isICometSynced = useMemo(
     () => destChainCredit && sourceChainCredit && destChainCredit.quotient === sourceChainCredit.quotient,
     [sourceChainCredit, destChainCredit],
   )
@@ -60,11 +60,12 @@ export function useICakeBridgeStatus({ ifoChainId, ifoAddress }: ICakeStatusPara
 
   return {
     srcChainId,
-    noICake,
-    isICakeSynced,
+    noIComet,
+    isICometSynced,
     shouldBridgeAgain,
     sourceChainCredit,
     destChainCredit,
-    hasBridged: !noICake && isICakeSynced,
+    hasBridged: !noIComet && isICometSynced,
   }
 }
+

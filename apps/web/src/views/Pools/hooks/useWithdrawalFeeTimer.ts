@@ -37,3 +37,4 @@ const useWithdrawalFeeTimer = (lastDepositedTime: number, userShares: BigNumber,
 }
 
 export default useWithdrawalFeeTimer
+

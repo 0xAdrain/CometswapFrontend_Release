@@ -1,5 +1,5 @@
-import { ERC20Token } from '@pancakeswap/sdk'
-import { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { ERC20Token } from '@cometswap/sdk'
+import { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
 import { useMemo } from 'react'
 
@@ -27,3 +27,4 @@ export const useTotalPriceUSD = ({
     )
   }, [amount0, amount1, currency0PriceFromApi, currency1PriceFromApi])
 }
+

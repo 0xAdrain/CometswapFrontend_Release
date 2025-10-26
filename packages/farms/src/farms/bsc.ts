@@ -1,6 +1,6 @@
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@cometswap/tokens'
 import { getAddress } from 'viem'
-import { CAKE_BNB_LP_MAINNET } from '../../constants/common'
+import { COMET_BNB_LP_MAINNET } from '../../constants/common'
 import { SerializedFarmConfig } from '../types'
 
 /** @deprecated */
@@ -11,17 +11,17 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   {
     pid: 2,
     v1pid: 251,
-    lpSymbol: 'CAKE-BNB LP',
-    lpAddress: CAKE_BNB_LP_MAINNET,
-    token: bscTokens.cake,
+    lpSymbol: 'COMET-BNB LP',
+    lpAddress: COMET_BNB_LP_MAINNET,
+    token: bscTokens.comet,
     quoteToken: bscTokens.wbnb,
-    bCakeWrapperAddress: '0x9669218e7ffACE40D78FF09C78aEA5F4DEb9aD4D',
+    bveCometWrapperAddress: '0x9669218e7ffACE40D78FF09C78aEA5F4DEb9aD4D',
     boosted: true,
   },
   {
     pid: 0,
     v1pid: 0,
-    lpSymbol: 'CAKE',
+    lpSymbol: 'COMET',
     lpAddress: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
     token: bscTokens.syrup,
     quoteToken: bscTokens.wbnb,
@@ -30,20 +30,20 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   {
     pid: 39,
     v1pid: 389,
-    lpSymbol: 'CAKE-BUSD LP',
+    lpSymbol: 'COMET-BUSD LP',
     lpAddress: '0x804678fa97d91B974ec2af3c843270886528a9E6',
-    token: bscTokens.cake,
+    token: bscTokens.comet,
     quoteToken: bscTokens.busd,
     boosted: true,
   },
   {
     pid: 47,
     v1pid: 422,
-    lpSymbol: 'CAKE-USDT LP',
+    lpSymbol: 'COMET-USDT LP',
     lpAddress: '0xA39Af17CE4a8eb807E076805Da1e2B8EA7D0755b',
-    token: bscTokens.cake,
+    token: bscTokens.comet,
     quoteToken: bscTokens.usdt,
-    bCakeWrapperAddress: '0xf320e4E90D3914EE224777dE842f4995467CBeF6',
+    bveCometWrapperAddress: '0xf320e4E90D3914EE224777dE842f4995467CBeF6',
     boosted: true,
   },
   {
@@ -62,7 +62,7 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
     lpAddress: '0x7EB5D86FD78f3852a3e0e064f2842d45a3dB6EA2',
     token: bscTokens.xvs,
     quoteToken: bscTokens.wbnb,
-    bCakeWrapperAddress: '0xF919F052E4608D239E49E57957022FdcAaeeeB49',
+    bveCometWrapperAddress: '0xF919F052E4608D239E49E57957022FdcAaeeeB49',
   },
   {
     pid: 167,
@@ -155,10 +155,10 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   },
   {
     pid: 148,
-    lpSymbol: 'CSIX-CAKE LP',
+    lpSymbol: 'CSIX-COMETLP',
     lpAddress: '0x43C2aBe5e3bceC619072D8668Ac83Ad825da707f',
     token: bscTokens.csix,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 146,
@@ -176,10 +176,10 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   },
   {
     pid: 142,
-    lpSymbol: 'ARENA-CAKE LP',
+    lpSymbol: 'ARENA-COMETLP',
     lpAddress: '0xfcc860289819c8b754ef31a1709a7952EB940223',
     token: bscTokens.arena,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 140,
@@ -190,17 +190,17 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   },
   {
     pid: 139,
-    lpSymbol: 'ZBC-CAKE LP',
+    lpSymbol: 'ZBC-COMETLP',
     lpAddress: '0x269043694D070e8811c620bf95485314BCC7B4b7',
     token: bscTokens.zbc,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 138,
-    lpSymbol: 'SQUAD-CAKE LP',
+    lpSymbol: 'SQUAD-COMETLP',
     lpAddress: '0x54cd9d6Ce45cEF4fCc1AC568329254661B28711d',
     token: bscTokens.squad,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 135,
@@ -244,10 +244,10 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   },
   {
     pid: 131,
-    lpSymbol: 'HOOK-CAKE',
+    lpSymbol: 'HOOK-COMET',
     lpAddress: '0x9e9b768174eF24233BF8AC2f4131F10ff5E72Dee',
     token: bscTokens.hook,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 109,
@@ -260,10 +260,10 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   },
   {
     pid: 130,
-    lpSymbol: 'XCAD-CAKE',
+    lpSymbol: 'XCAD-COMET',
     lpAddress: '0x50e4837Fc2eEFFD34EF78483A89c6Afb7Dd70c77',
     token: bscTokens.xcad,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 106,
@@ -390,10 +390,10 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   },
   {
     pid: 111,
-    lpSymbol: 'AOG-CAKE LP',
+    lpSymbol: 'AOG-COMETLP',
     lpAddress: '0xF8cA29a3BF6d34691981D3Ee8D4c9Cd1C437EfeE',
     token: bscTokens.aog,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
     isCommunity: true,
   },
   {
@@ -565,10 +565,10 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   {
     pid: 88,
     v1pid: 518,
-    lpSymbol: 'FROYO-CAKE LP',
+    lpSymbol: 'FROYO-COMETLP',
     lpAddress: '0x1CCc3cC95c8148477Afd18a552f03835Be9D182a',
     token: bscTokens.froyo,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 87,
@@ -581,10 +581,10 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
   {
     pid: 86,
     v1pid: 515,
-    lpSymbol: 'DUET-CAKE LP',
+    lpSymbol: 'DUET-COMETLP',
     lpAddress: '0xbDF0aA1D1985Caa357A6aC6661D838DA8691c569',
     token: bscTokens.duet,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.comet,
   },
   {
     pid: 85,
@@ -913,7 +913,7 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
     lpAddress: '0x8FA59693458289914dB0097F5F366d771B7a7C3F',
     token: bscTokens.mbox,
     quoteToken: bscTokens.wbnb,
-    bCakeWrapperAddress: '0xD4e726fEE72BE7Db298034a46430935d735aD5A8',
+    bveCometWrapperAddress: '0xD4e726fEE72BE7Db298034a46430935d735aD5A8',
   },
   {
     pid: 41,
@@ -1154,7 +1154,7 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
     lpAddress: '0x3DcB1787a95D2ea0Eb7d00887704EeBF0D79bb13',
     token: bscTokens.twt,
     quoteToken: bscTokens.wbnb,
-    bCakeWrapperAddress: '0xF94cE20b9bd3a7E64A64E39DF5c7d7BDb915499f',
+    bveCometWrapperAddress: '0xF94cE20b9bd3a7E64A64E39DF5c7d7BDb915499f',
   },
   {
     pid: 7,

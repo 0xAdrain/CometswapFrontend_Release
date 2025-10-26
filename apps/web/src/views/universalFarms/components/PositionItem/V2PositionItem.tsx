@@ -1,4 +1,4 @@
-import { unwrappedToken } from '@pancakeswap/tokens'
+import { unwrappedToken } from '@cometswap/tokens'
 import { memo, useMemo } from 'react'
 import { usePoolInfo, usePoolTimeFrame } from 'state/farmsV4/hooks'
 import { V2LPDetail } from 'state/farmsV4/state/accountPositions/type'
@@ -43,16 +43,16 @@ export const V2PositionItem = memo(
 
     const feeAmount = useMemo(() => Number(v2Fee.multiply(100).toFixed(2)), [])
     const pool = usePoolInfo<V2PoolInfo>({ poolAddress: address, chainId })
-    const bCakeWrapperAddress = pool?.bCakeWrapperAddress
-    const { startTimestamp, endTimestamp } = usePoolTimeFrame(bCakeWrapperAddress, chainId)
+    const bCometWrapperAddress = pool?.bCometWrapperAddress
+    const { startTimestamp, endTimestamp } = usePoolTimeFrame(bCometWrapperAddress, chainId)
 
     const isFarmLive = useMemo(
       () =>
-        bCakeWrapperAddress &&
+        bCometWrapperAddress &&
         (!startTimestamp || Date.now() / 1000 >= startTimestamp) &&
         (!endTimestamp || Date.now() / 1000 < endTimestamp) &&
         (!poolLength || !pool?.pid || pool.pid <= poolLength),
-      [pool?.pid, poolLength, bCakeWrapperAddress, startTimestamp, endTimestamp],
+      [pool?.pid, poolLength, bCometWrapperAddress, startTimestamp, endTimestamp],
     )
     return (
       <>
@@ -73,7 +73,7 @@ export const V2PositionItem = memo(
             amount1={nativeDeposited1}
             detailMode={detailMode}
           >
-            {chainId && pool?.lpAddress && pool.bCakeWrapperAddress ? (
+            {chainId && pool?.lpAddress && pool.bCometWrapperAddress ? (
               <V2PositionActions
                 isFarmLive={isFarmLive}
                 poolInfo={pool}
@@ -105,7 +105,7 @@ export const V2PositionItem = memo(
             detailMode={detailMode}
             userPosition={data}
           >
-            {chainId && pool?.lpAddress && pool.bCakeWrapperAddress ? (
+            {chainId && pool?.lpAddress && pool.bCometWrapperAddress ? (
               <V2PositionActions
                 isFarmLive={isFarmLive}
                 isStaked
@@ -123,3 +123,4 @@ export const V2PositionItem = memo(
     )
   },
 )
+

@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getLegacyFarmConfig } from '@pancakeswap/farms'
-import { ERC20Token, Pair } from '@pancakeswap/sdk'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { useFeeData } from '@pancakeswap/wagmi'
+import { ChainId } from '@cometswap/chains'
+import { getLegacyFarmConfig } from '@cometswap/farms'
+import { ERC20Token, Pair } from '@cometswap/sdk'
+import { deserializeToken } from '@cometswap/token-lists'
+import { useFeeData } from '@cometswap/wagmi'
 import { useQuery } from '@tanstack/react-query'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from 'config/constants/exchange'
 import { useOfficialsAndUserAddedTokens } from 'hooks/Tokens'
@@ -374,7 +374,7 @@ export function usePairAdder(): (pair: Pair) => void {
  * @param tokenB the other token
  */
 export function toV2LiquidityToken([tokenA, tokenB]: [ERC20Token, ERC20Token]): ERC20Token {
-  return new ERC20Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'Cake-LP', 'Pancake LPs')
+  return new ERC20Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'veComet-LP', 'Comet LPs')
 }
 
 /**
@@ -503,3 +503,4 @@ export const useWatchlistPools = (): [string[], (address: string) => void] => {
   }, [savedPoolsFromSelector])
   return [savedPools, updateSavedPools]
 }
+

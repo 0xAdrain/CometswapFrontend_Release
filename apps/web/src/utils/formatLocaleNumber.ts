@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Price } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Price } from '@cometswap/sdk'
 
 interface FormatLocaleNumberArgs {
   number: CurrencyAmount<Currency> | Price<Currency, Currency> | number
@@ -30,3 +30,4 @@ export default function formatLocaleNumber({
     maximumSignificantDigits: options.maximumSignificantDigits || fixedDecimals ? undefined : sigFigs,
   })
 }
+

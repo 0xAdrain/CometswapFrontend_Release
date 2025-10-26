@@ -1,5 +1,5 @@
-import { BalanceInputProps, Box, Button, Flex, Text } from '@pancakeswap/uikit'
-import { StyledBalanceInput, StyledInput as UIKitStyledInput } from '@pancakeswap/uikit/components/BalanceInput/styles'
+import { BalanceInputProps, Box, Button, Flex, Text } from '@cometswap/uikit'
+import { StyledBalanceInput, StyledInput as UIKitStyledInput } from '@cometswap/uikit/components/BalanceInput/styles'
 import styled, { css } from 'styled-components'
 
 export type PercentInputProps = Omit<BalanceInputProps, 'unit' | 'switchEditingUnits'> & {
@@ -80,3 +80,4 @@ export const PercentInput: React.FC<PercentInputProps> = ({
     </StyledPercentInput>
   )
 }
+

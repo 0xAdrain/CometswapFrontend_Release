@@ -26,3 +26,4 @@ const CONTRACTS_LP_WITH_TOOLTIPS: CustomTooltipsType[] = [
 export function useHasCustomFarmLpTooltips(id?: Address) {
   return useMemo(() => CONTRACTS_LP_WITH_TOOLTIPS.find(({ identifier }) => identifier === id), [id])
 }
+

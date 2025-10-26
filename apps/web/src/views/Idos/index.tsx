@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, LogoWithTextIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, LogoWithTextIcon } from '@cometswap/uikit'
 import ConnectW3WButton, { DisconnectW3WButton } from 'components/ConnectW3WButton'
 import { styled } from 'styled-components'
 import { useAccount } from 'wagmi'
@@ -35,3 +35,4 @@ export const IdoPageLayout = ({ children }) => {
     </>
   )
 }
+

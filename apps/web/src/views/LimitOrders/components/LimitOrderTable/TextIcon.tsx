@@ -1,4 +1,4 @@
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@cometswap/uikit'
 import { ReactElement } from 'react'
 
 interface TextIconProps {
@@ -19,3 +19,4 @@ const TextIcon: React.FC<React.PropsWithChildren<TextIconProps>> = ({ icon, text
 }
 
 export default TextIcon
+

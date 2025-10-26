@@ -1,13 +1,9 @@
-import { languageList, useTranslation } from '@pancakeswap/localization'
-import { Text, Menu as UikitMenu, footerLinks, useModal } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { usePhishingBanner } from '@pancakeswap/utils/user'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
-import InfoStripes from 'components/AdPanel/InfoStripes'
+import { languageList, useTranslation } from '@cometswap/localization'
+import { Text, Menu as UikitMenu, footerLinks, useModal, Box, useMatchBreakpoints } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import USCitizenConfirmModal from 'components/Modal/USCitizenConfirmModal'
 import { NetworkSwitcher } from 'components/NetworkSwitcher'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useCakePrice } from 'hooks/useCakePrice'
 import { usePerpUrl } from 'hooks/usePerpUrl'
 import useTheme from 'hooks/useTheme'
 import { IdType, useUserNotUsCitizenAcknowledgement } from 'hooks/useUserIsUsCitizenAcknowledgement'
@@ -19,6 +15,7 @@ import { getOptionsUrl } from 'utils/getOptionsUrl'
 import GlobalSettings from './GlobalSettings'
 import { SettingsMode } from './GlobalSettings/types'
 import UserMenu from './UserMenu'
+import MobileMoreButton from './MobileMoreButton'
 import { UseMenuItemsParams, useMenuItems } from './hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuChildItem, getActiveSubMenuItem } from './utils'
 
@@ -32,22 +29,23 @@ const Menu = (props) => {
   const { enabled } = useWebNotifications()
   const { chainId } = useActiveChainId()
   const { isDark, setTheme } = useTheme()
-  const cakePrice = useCakePrice()
+  // const cometPrice = useCometPrice() // CometSwap: 移除COMET价格显示
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
+  const { isMobile } = useMatchBreakpoints()
   const perpUrl = usePerpUrl({ chainId, isDark, languageCode: currentLanguage.code })
   const [perpConfirmed] = useUserNotUsCitizenAcknowledgement(IdType.PERPETUALS)
   const [optionsConfirmed] = useUserNotUsCitizenAcknowledgement(IdType.OPTIONS)
 
   const [onPerpConfirmModalPresent] = useModal(
-    <USCitizenConfirmModal title={t('PancakeSwap Perpetuals')} id={IdType.PERPETUALS} href={perpUrl} />,
+    <USCitizenConfirmModal title={t('CometSwap Perpetuals')} id={IdType.PERPETUALS} href={perpUrl} />,
     true,
     false,
     'perpConfirmModal',
   )
   const [onOptionsConfirmModalPresent] = useModal(
     <USCitizenConfirmModal
-      title={t('PancakeSwap Options')}
+      title={t('CometSwap Options')}
       id={IdType.OPTIONS}
       href={getOptionsUrl()}
       desc={
@@ -80,7 +78,6 @@ const Menu = (props) => {
     },
     [perpConfirmed, optionsConfirmed, onPerpConfirmModalPresent, onOptionsConfirmModalPresent],
   )
-  const [showPhishingWarningBanner] = usePhishingBanner()
 
   const menuItems = useMenuItems({
     onClick: onSubMenuClick,
@@ -109,24 +106,36 @@ const Menu = (props) => {
       linkComponent={LinkComponent}
       rightSide={
         <>
-          <GlobalSettings mode={SettingsMode.GLOBAL} />
+          {/* CometSwap: 桌面端显示所有按钮 */}
+          <Box display={['none', null, null, 'block']}>
+            <GlobalSettings mode={SettingsMode.GLOBAL} />
+          </Box>
           {enabled && (
-            <Suspense fallback={null}>
-              <Notifications />
-            </Suspense>
+            <Box display={['none', null, null, 'block']}>
+              <Suspense fallback={null}>
+                <Notifications />
+              </Suspense>
+            </Box>
           )}
-          <NetworkSwitcher />
+          <Box display={['none', null, null, 'block']}>
+            <NetworkSwitcher />
+          </Box>
           <UserMenu />
+          {/* CometSwap: 移动端只显示更多按钮，替代其他按钮 */}
+          <Box display={['block', null, null, 'none']}>
+            <MobileMoreButton />
+          </Box>
         </>
       }
       chainId={chainId}
-      banner={showPhishingWarningBanner && typeof window !== 'undefined' && <InfoStripes />}
+      banner={undefined}
       isDark={isDark}
       toggleTheme={toggleTheme}
-      currentLang={currentLanguage.code}
-      langs={languageList}
-      setLang={setLanguage}
-      cakePriceUsd={cakePrice.eq(BIG_ZERO) ? undefined : cakePrice}
+      // CometSwap: 移动端隐藏语言选择器，桌面端显示
+      currentLang={isMobile ? '' : currentLanguage.code}
+      langs={isMobile ? [] : languageList}
+      setLang={isMobile ? undefined : setLanguage}
+      // cometPriceUsd={cometPrice.eq(BIG_ZERO) ? undefined : cometPrice} // CometSwap: 移除COMET价格显示
       links={menuItems}
       subLinks={
         activeSubMenuItem?.overrideSubNavItems ??
@@ -139,9 +148,7 @@ const Menu = (props) => {
       activeItem={activeMenuItem?.href}
       activeSubItem={activeSubMenuItem?.href}
       activeSubItemChildItem={activeSubChildMenuItem?.href}
-      buyCakeLabel={t('Buy CAKE')}
-      buyCakeLink="/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
-      {...props}
+      buyCometLabel="" // CometSwap: 移除Buy COMET按钮 - 传递空字符�?      buyCometLink="" // CometSwap: 移除Buy COMET按钮 - 传递空字符�?      {...props}
     />
   )
 }
@@ -170,3 +177,4 @@ export const SharedComponentWithOutMenu: React.FC<React.PropsWithChildren> = ({ 
     </>
   )
 }
+

@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, Text } from '@cometswap/uikit'
 import { useMemo } from 'react'
-import { ApproveAndLockModal } from 'views/CakeStaking/components/ApproveAndLockModal'
-import { useLockModal } from 'views/CakeStaking/hooks/useLockModal'
+import { ApproveAndLockModal } from 'views/CometStaking/components/ApproveAndLockModal'
+import { useLockModal } from 'views/CometStaking/hooks/useLockModal'
 import ComingSoon from 'views/TradingReward/components/YourTradingReward/ComingSoon'
 import QualifiedPreview from 'views/TradingReward/components/YourTradingReward/QualifiedPreview'
-import { VeCakePreview } from 'views/TradingReward/components/YourTradingReward/VeCake/VeCakePreview'
+import { VeCometPreview } from 'views/TradingReward/components/YourTradingReward/VeComet/VeCometPreview'
 import { Incentives, RewardInfo } from 'views/TradingReward/hooks/useAllTradingRewardPair'
 import { UserCampaignInfoDetail } from 'views/TradingReward/hooks/useAllUserCampaignInfo'
 
@@ -61,7 +61,7 @@ const CurrentPeriod: React.FC<React.PropsWithChildren<CurrentPeriodProps>> = ({
                     currentUserCampaignInfo={currentUserCampaignInfo}
                   />
                 ) : (
-                  <VeCakePreview
+                  <VeCometPreview
                     thresholdLockAmount={thresholdLockAmount}
                     endTime={campaignClaimTime}
                     rewardInfo={rewardInfo}

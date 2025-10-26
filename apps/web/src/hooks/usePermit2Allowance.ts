@@ -1,5 +1,5 @@
-import { getPermit2Address } from '@pancakeswap/permit2-sdk'
-import { Currency, Token } from '@pancakeswap/swap-sdk-core'
+import { getPermit2Address } from '@cometswap/permit2-sdk'
+import { Currency, Token } from '@cometswap/swap-sdk-core'
 import { Address } from 'viem'
 import { useActiveChainId } from './useActiveChainId'
 import useTokenAllowance from './useTokenAllowance'
@@ -13,3 +13,4 @@ export const usePermit2Allowance = (owner?: Address, token?: Currency) => {
   )
   return { allowance, refetch }
 }
+

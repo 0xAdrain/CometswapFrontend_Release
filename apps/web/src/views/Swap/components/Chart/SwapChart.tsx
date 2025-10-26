@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   ButtonMenu,
@@ -8,7 +8,7 @@ import {
   PairPriceChart,
   PairPriceChartType,
   Text,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { memo, useMemo, useState } from 'react'
 import { usePairRate } from 'state/swap/hooks'
 import PairPriceDisplay from '../../../../components/PairPriceDisplay'
@@ -176,3 +176,4 @@ export default memo(SwapChart, (prev, next) => {
       (prev.currentSwapPrice === null && next.currentSwapPrice === null))
   )
 })
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text, Link } from '@cometswap/uikit'
 
 const CcarWarning = () => {
   const { t } = useTranslation()
@@ -27,3 +27,4 @@ const CcarWarning = () => {
 }
 
 export default CcarWarning
+

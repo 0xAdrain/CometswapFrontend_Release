@@ -1,12 +1,12 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token, WETH9 } from '@pancakeswap/sdk'
-import { CAKE, USDC, USDT } from './common'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token, WETH9 } from '@cometswap/sdk'
+import { COMET, USDC, USDT } from './common'
 
 export const arbitrumTokens = {
   weth: WETH9[ChainId.ARBITRUM_ONE],
   usdt: USDT[ChainId.ARBITRUM_ONE],
   usdc: USDC[ChainId.ARBITRUM_ONE],
-  cake: CAKE[ChainId.ARBITRUM_ONE],
+  comet: COMET[ChainId.ARBITRUM_ONE],
   arb: new ERC20Token(
     ChainId.ARBITRUM_ONE,
     '0x912CE59144191C1204E64559FE8253a0e49E6548',
@@ -253,7 +253,7 @@ export const arbitrumTokens = {
     18,
     'DLP',
     'RDNT-WETH',
-    'https://pancakeswap.finance',
+    'https://cometswap.finance',
   ),
   mdlp: new ERC20Token(
     ChainId.ARBITRUM_ONE,

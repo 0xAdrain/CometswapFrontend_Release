@@ -21,3 +21,4 @@ export const getPercentChange = (valueNow: string | undefined, value24HoursAgo: 
   }
   return 0
 }
+

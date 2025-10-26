@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Balance,
   Box,
@@ -13,10 +13,10 @@ import {
   Skeleton,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { LotteryStatus } from 'config/constants/types'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useState } from 'react'
 import { useLottery } from 'state/lottery/hooks'
 import { styled } from 'styled-components'
@@ -60,14 +60,14 @@ const NextDrawCard = () => {
   } = useTranslation()
   const { address: account } = useAccount()
   const { currentLotteryId, isTransitioning, currentRound } = useLottery()
-  const { endTime, amountCollectedInCake, userTickets, status } = currentRound
+  const { endTime, amountCollectedInComet, userTickets, status } = currentRound
 
   const [onPresentViewTicketsModal] = useModal(<ViewTicketsModal roundId={currentLotteryId} roundStatus={status} />)
   const [isExpanded, setIsExpanded] = useState(false)
   const ticketBuyIsDisabled = status !== LotteryStatus.OPEN || isTransitioning
 
-  const cakePrice = useCakePrice()
-  const prizeInBusd = amountCollectedInCake.times(cakePrice)
+  const cometPrice = useCometPrice()
+  const prizeInBusd = amountCollectedInComet.times(cometPrice)
   const endTimeMs = parseInt(endTime, 10) * 1000
   const endDate = new Date(endTimeMs)
   const isLotteryOpen = status === LotteryStatus.OPEN
@@ -104,8 +104,8 @@ const NextDrawCard = () => {
             fontSize="14px"
             color="textSubtle"
             textAlign={['center', null, null, 'left']}
-            unit=" CAKE"
-            value={getBalanceNumber(amountCollectedInCake)}
+            unit=" COMET"
+            value={getBalanceNumber(amountCollectedInComet)}
             decimals={0}
           />
         )}
@@ -213,3 +213,4 @@ const NextDrawCard = () => {
 }
 
 export default NextDrawCard
+

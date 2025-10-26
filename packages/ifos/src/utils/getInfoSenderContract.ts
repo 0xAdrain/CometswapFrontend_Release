@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/sdk'
 import { Address, GetContractReturnType, PublicClient, getContract } from 'viem'
 
-import { pancakeInfoSenderABI } from '../abis/PancakeInfoSender'
+import { cometInfoSenderABI } from '../abis/CometInfoSender'
 import { INFO_SENDER } from '../constants/contracts'
 import { OnChainProvider } from '../types'
 import { isNativeIfoSupported } from './isIfoSupported'
@@ -14,16 +14,16 @@ type Params = {
 export function getInfoSenderContract({
   chainId,
   provider,
-}: Params): GetContractReturnType<typeof pancakeInfoSenderABI, PublicClient, Address> {
+}: Params): GetContractReturnType<typeof cometInfoSenderABI, PublicClient, Address> {
   if (!isNativeIfoSupported(chainId)) {
     throw new Error(`Cannot get info sender contract because native ifo is not supported on ${chainId}`)
   }
   const senderContractAddress = INFO_SENDER[chainId]
   return getContract({
-    abi: pancakeInfoSenderABI,
+    abi: cometInfoSenderABI,
     address: senderContractAddress,
     // TODO: Fix viem
     // @ts-ignore
     publicClient: provider({ chainId }),
-  }) as GetContractReturnType<typeof pancakeInfoSenderABI, PublicClient, Address>
+  }) as GetContractReturnType<typeof cometInfoSenderABI, PublicClient, Address>
 }

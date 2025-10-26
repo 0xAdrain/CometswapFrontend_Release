@@ -1,5 +1,5 @@
-import { Gauge } from '@pancakeswap/gauges'
-import { useTranslation } from '@pancakeswap/localization'
+import { Gauge } from '@cometswap/gauges'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoColumn,
   Box,
@@ -12,7 +12,7 @@ import {
   StyledLink,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import keyBy from 'lodash/keyBy'
@@ -20,7 +20,7 @@ import NextLink from 'next/link'
 import { PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { Hex } from 'viem'
-import { useCakeLockStatus } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
+import { useVeCometLockStatus } from 'views/CometStaking/hooks/useVeCometUserInfo'
 import { useEpochOnTally } from 'views/GaugesVoting/hooks/useEpochTime'
 import { useEpochVotePower } from 'views/GaugesVoting/hooks/useEpochVotePower'
 import { useGauges } from 'views/GaugesVoting/hooks/useGauges'
@@ -51,8 +51,8 @@ export const VoteTable = () => {
   const { account } = useAccountActiveChain()
   const { t } = useTranslation()
   const [submitted, setSubmitted] = useState(false)
-  const { cakeLockedAmount } = useCakeLockStatus()
-  const cakeLocked = useMemo(() => cakeLockedAmount > 0n, [cakeLockedAmount])
+  const { cometLockedAmount } = useVeCometLockStatus()
+  const cometLocked = useMemo(() => cometLockedAmount > 0n, [cometLockedAmount])
   const { data: allGauges } = useGauges()
   const gaugesCount = allGauges?.length
   const [isOpen, setIsOpen] = useState(false)
@@ -80,13 +80,13 @@ export const VoteTable = () => {
     })
   }, [votes, rows])
 
-  const showNoCakeLockedWarning = useMemo(() => {
-    return !cakeLocked && rowsWithLock?.length
-  }, [cakeLocked, rowsWithLock])
+  const showNoCometLockedWarning = useMemo(() => {
+    return !cometLocked && rowsWithLock?.length
+  }, [cometLocked, rowsWithLock])
 
   const showOnTallyWarning = useMemo(() => {
-    return onTally && rowsWithLock?.length && cakeLocked
-  }, [cakeLocked, onTally, rowsWithLock?.length])
+    return onTally && rowsWithLock?.length && cometLocked
+  }, [cometLocked, onTally, rowsWithLock?.length])
 
   const onVoteChange = (value: UserVote, isMax?: boolean) => {
     const { hash, power } = value
@@ -265,18 +265,18 @@ export const VoteTable = () => {
       <ResponsiveCard>
         {gaugesTable}
 
-        {rowsWithLock?.length && epochPower <= 0n && cakeLockedAmount > 0n ? (
+        {rowsWithLock?.length && epochPower <= 0n && cometLockedAmount > 0n ? (
           <Box width={['100%', '100%', '100%', '50%']} px={['16px', 'auto']} my={['24px', '24px', '36px']} mx="auto">
             <Message variant="warning" showIcon>
               <AutoColumn gap="8px">
                 <Text>
                   {t(
-                    'Your positions are unlocking soon. Therefore, you have no veCAKE balance at the end of the current voting epoch while votes are being tallied. ',
+                    'Your positions are unlocking soon. Therefore, you have no veCOMETbalance at the end of the current voting epoch while votes are being tallied. ',
                   )}
                 </Text>
                 <FlexGap alignItems="center" gap="0.2em">
                   {t('To cast your vote, ')}
-                  <NextLink href="/cake-staking">
+                  <NextLink href="/comet-staking">
                     <StyledLink color="text">
                       <Text bold style={{ textDecoration: 'underline' }}>
                         {t('extend your lock >>')}
@@ -288,17 +288,17 @@ export const VoteTable = () => {
             </Message>
           </Box>
         ) : null}
-        {showNoCakeLockedWarning ? (
+        {showNoCometLockedWarning ? (
           <Box width={['100%', '100%', '100%', '50%']} px={['16px', 'auto']} my={['24px', '24px', '36px']} mx="auto">
             <Message variant="warning" showIcon>
               <AutoColumn gap="8px">
-                <Text>{t('You have no locked CAKE.')}</Text>
+                <Text>{t('You have no locked COMET.')}</Text>
                 <FlexGap alignItems="center" gap="0.2em" flexWrap="wrap">
                   {t('To cast your vote, ')}
-                  <NextLink href="/cake-staking">
+                  <NextLink href="/comet-staking">
                     <StyledLink color="text">
                       <Text bold style={{ textDecoration: 'underline' }}>
-                        {t('lock your CAKE')}
+                        {t('lock your COMET')}
                       </Text>
                     </StyledLink>
                   </NextLink>
@@ -363,3 +363,4 @@ const ResponsiveCard: React.FC<PropsWithChildren> = ({ children }) => {
     </Card>
   )
 }
+

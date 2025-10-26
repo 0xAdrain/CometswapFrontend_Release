@@ -1,8 +1,8 @@
 import { GraphQLClient } from 'graphql-request'
-import { infoStableSwapClients, v2Clients } from 'utils/graphql'
+// import { infoStableSwapClients, v2Clients } from 'utils/graphql'
 
-import { ChainId, isTestnetChainId } from '@pancakeswap/chains'
-import { STABLE_SUPPORTED_CHAIN_IDS } from '@pancakeswap/stable-swap-sdk'
+import { ChainId, isTestnetChainId } from '@cometswap/chains'
+import { STABLE_SUPPORTED_CHAIN_IDS } from '@cometswap/stable-swap-sdk'
 import { BSC_TOKEN_WHITELIST, ETH_TOKEN_BLACKLIST, ETH_TOKEN_WHITELIST, TOKEN_BLACKLIST } from 'config/constants/info'
 import mapValues from 'lodash/mapValues'
 import { arbitrum, base, bsc, linea, mainnet, opBNB, polygonZkEvm, zkSync } from 'wagmi/chains'
@@ -60,8 +60,12 @@ export const multiChainPaths = {
   [ChainId.OPBNB]: '/opbnb',
 }
 
+const infoStableSwapClients = {}
+const v2Clients = {}
+
 export const multiChainQueryStableClient = STABLE_SUPPORTED_CHAIN_IDS.reduce((acc, chainId) => {
   if (isTestnetChainId(chainId)) return acc
+  // @ts-ignore
   return { ...acc, [multiChainName[chainId]]: infoStableSwapClients[chainId] }
 }, {} as Record<MultiChainName, GraphQLClient>)
 
@@ -130,6 +134,7 @@ export const multiChainTokenWhiteList: Record<MultiChainName, string[]> = mapVal
 export const getMultiChainQueryEndPointWithStableSwap = (chainName: MultiChainNameExtend): GraphQLClient => {
   const isStableSwap = checkIsStableSwap()
   if (isStableSwap) return multiChainQueryStableClient[chainName]
+  // @ts-ignore
   return v2Clients[multiChainId[chainName]]
 }
 
@@ -156,3 +161,4 @@ export const subgraphTokenSymbol = {
 export const checkIsStableSwap = () => window.location.href.includes('stableSwap')
 
 export const ChainLinkSupportChains = [ChainId.BSC, ChainId.BSC_TESTNET]
+

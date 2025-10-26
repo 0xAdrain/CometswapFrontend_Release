@@ -1,6 +1,6 @@
-import { Currency, getCurrencyAddress, sortCurrencies } from '@pancakeswap/swap-sdk-core'
-import { BinPoolManager, PoolKey, getPoolId } from '@pancakeswap/v4-sdk'
-import { Native } from '@pancakeswap/sdk'
+import { Currency, getCurrencyAddress, sortCurrencies } from '@cometswap/swap-sdk-core'
+import { BinPoolManager, PoolKey, getPoolId } from '@cometswap/v4-sdk'
+import { Native } from '@cometswap/sdk'
 import { Address } from 'viem'
 
 import { getPairCombinations } from '../../v3-router/functions'

@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, TradeType } from '@pancakeswap/sdk'
-import { LegacyPair as Pair } from '@pancakeswap/smart-router/legacy-router'
-import { AutoColumn, Flex, Link, Modal, ModalV2, QuestionHelper, SearchIcon, Text } from '@pancakeswap/uikit'
-import { formatAmount, formatFraction } from '@pancakeswap/utils/formatFractions'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent, TradeType } from '@cometswap/sdk'
+import { LegacyPair as Pair } from '@cometswap/smart-router/legacy-router'
+import { AutoColumn, Flex, Link, Modal, ModalV2, QuestionHelper, SearchIcon, Text } from '@cometswap/uikit'
+import { formatAmount, formatFraction } from '@cometswap/utils/formatFractions'
 import React, { memo, useState } from 'react'
 
-import { NumberDisplay } from '@pancakeswap/widgets-internal'
+import { NumberDisplay } from '@cometswap/widgets-internal'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { RoutingSettingsButton } from 'components/Menu/GlobalSettings/SettingsModal'
 import { Field } from 'state/swap/actions'
@@ -72,7 +72,7 @@ export const TradeSummary = memo(function TradeSummary({
             <QuestionHelper
               text={
                 <>
-                  <Text>{t('Fees saved on PancakeSwap compared to major DEXs charging interface fees')}</Text>
+                  <Text>{t('Fees saved on CometSwap compared to major DEXs charging interface fees')}</Text>
                 </>
               }
               ml="4px"
@@ -145,7 +145,7 @@ export const TradeSummary = memo(function TradeSummary({
                     </Text>
                     :{' '}
                     {t(
-                      'Fee ranging from 0.1% to 0.01% depending on the pool fee tier. You can check the fee tier by clicking the magnifier icon under the “Route” section.',
+                      'Fee ranging from 0.1% to 0.01% depending on the pool fee tier. You can check the fee tier by clicking the magnifier icon under the “Route�?section.',
                     )}
                   </Text>
                   <Text mt="12px">
@@ -153,7 +153,7 @@ export const TradeSummary = memo(function TradeSummary({
                       style={{ display: 'inline' }}
                       ml="4px"
                       external
-                      href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/faq#what-will-be-the-trading-fee-breakdown-for-v3-exchange"
+                      href="https://docs.cometswap.finance/products/cometswap-exchange/faq#what-will-be-the-trading-fee-breakdown-for-v3-exchange"
                     >
                       {t('Fee Breakdown and Tokenomics')}
                     </Link>
@@ -164,7 +164,7 @@ export const TradeSummary = memo(function TradeSummary({
                     </Text>
                     :{' '}
                     {t(
-                      'PancakeSwap does not charge any fees for trades. However, the market makers charge an implied fee of 0.05% - 0.25% (non-stablecoin) / 0.01% (stablecoin) factored into the quotes provided by them.',
+                      'CometSwap does not charge any fees for trades. However, the market makers charge an implied fee of 0.05% - 0.25% (non-stablecoin) / 0.01% (stablecoin) factored into the quotes provided by them.',
                     )}
                   </Text>
                 </>
@@ -277,3 +277,4 @@ export const AdvancedSwapDetails = memo(function AdvancedSwapDetails({
     </AutoColumn>
   )
 })
+

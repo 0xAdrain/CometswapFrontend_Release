@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 import { AMMOrder, AMMRequestConfig, TradeTypeKey } from './amm'
 import { Order } from './order'

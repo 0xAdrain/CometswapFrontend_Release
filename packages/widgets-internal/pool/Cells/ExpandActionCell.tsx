@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 
-import { Text, ChevronDownIcon } from "@pancakeswap/uikit";
+import { Text, ChevronDownIcon } from "@cometswap/uikit";
 import { BaseCell } from "./BaseCell";
 
 interface ExpandActionCellProps {

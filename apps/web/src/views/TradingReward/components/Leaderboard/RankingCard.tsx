@@ -10,15 +10,15 @@ import {
   Text,
   SubMenu,
   Skeleton,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { RankListDetail } from 'views/TradingReward/hooks/useRankList'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import { useProfileForAddress } from 'state/profile/hooks'
 import { useDomainNameForAddress } from 'hooks/useDomain'
-import truncateHash from '@pancakeswap/utils/truncateHash'
-import { useCakePrice } from 'hooks/useCakePrice'
+import truncateHash from '@cometswap/utils/truncateHash'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
 import Image from 'next/image'
@@ -51,13 +51,13 @@ const getRankingColor = (rank: number) => {
 const RankingCard: React.FC<React.PropsWithChildren<RankingCardProps>> = ({ rank, user }) => {
   const { t } = useTranslation()
   const rankColor = getRankingColor(rank)
-  const cakePrice = useCakePrice()
+  const cometPriceBusd = useCometPrice()
   const { profile, isLoading: isProfileLoading } = useProfileForAddress(user?.origin)
   const { domainName, avatar } = useDomainNameForAddress(user?.origin, !profile && !isProfileLoading)
 
-  const cakeAmount = useMemo(
-    () => new BigNumber(user?.estimateRewardUSD).div(cakePrice).toNumber() ?? 0,
-    [cakePrice, user?.estimateRewardUSD],
+  const cometAmount = useMemo(
+    () => new BigNumber(user?.estimateRewardUSD).div(cometPriceBusd).toNumber() ?? 0,
+    [cometPriceBusd, user?.estimateRewardUSD],
   )
 
   return (
@@ -116,7 +116,7 @@ const RankingCard: React.FC<React.PropsWithChildren<RankingCardProps>> = ({ rank
                     {`$${formatNumber(user?.estimateRewardUSD)}`}
                   </Text>
                   <Text textAlign="right" color="textSubtle" fontSize="12px">
-                    {`~${formatNumber(cakeAmount)} CAKE`}
+                    {`~${formatNumber(cometAmount)} COMET`}
                   </Text>
                 </>
               )}

@@ -1,4 +1,4 @@
-import latinise from '@pancakeswap/utils/latinise'
+import latinise from '@cometswap/utils/latinise'
 
 export const filterFarmsByQuery = <
   T extends {

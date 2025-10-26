@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, CardHeader, FlexGap, Spinner } from '@pancakeswap/uikit'
+import { Box, Card, CardBody, CardHeader, FlexGap, Spinner } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 import { useMemo } from 'react'
@@ -93,3 +93,4 @@ export const IdoCard: React.FC = () => {
     </CardBody>
   )
 }
+

@@ -1,5 +1,5 @@
-import { isThirdPartyVaultConfig } from '@pancakeswap/position-managers'
-import { ViewMode } from '@pancakeswap/uikit'
+import { isThirdPartyVaultConfig } from '@cometswap/position-managers'
+import { ViewMode } from '@cometswap/uikit'
 import { memo, useMemo } from 'react'
 import { useFarmsV3WithPositionsAndBooster } from 'state/farmsV3/hooks'
 
@@ -122,3 +122,4 @@ export const VaultContent = memo(function VaultContent() {
 
   return <TableLayout>{tableView}</TableLayout>
 })
+

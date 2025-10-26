@@ -1,4 +1,4 @@
-import { Image } from '@pancakeswap/uikit'
+import { Image } from '@cometswap/uikit'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import styled from 'styled-components'
 
@@ -25,3 +25,4 @@ export const PositionManagerLogo: React.FC<{ manager: string }> = ({ manager }) 
 
   return <ManagerLogo src={Logos[name as keyof typeof Logos]} alt={manager} width={16} height={16} />
 }
+

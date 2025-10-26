@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { SerializedFarm } from '@pancakeswap/farms'
+import { ChainId } from '@cometswap/chains'
+import { SerializedFarm } from '@cometswap/farms'
 import { masterChefV2ABI } from 'config/abi/masterchefV2'
 import chunk from 'lodash/chunk'
 import { farmFetcher } from 'state/farms'
@@ -88,3 +88,4 @@ export const fetchMasterChefData = async (
     return data
   })
 }
+

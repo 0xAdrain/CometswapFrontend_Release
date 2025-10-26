@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Token } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Token } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import { useSingleCallResult } from '../state/multicall/hooks'
 import { useTokenContract } from './useContract'
@@ -20,3 +20,4 @@ export function useTotalSupply(token?: Currency): CurrencyAmount<Token> | undefi
 }
 
 export default useTotalSupply
+

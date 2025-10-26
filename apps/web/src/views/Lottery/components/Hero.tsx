@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Box, Flex, Heading, Skeleton } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Box, Flex, Heading, Skeleton } from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { LotteryStatus } from 'config/constants/types'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useLottery } from 'state/lottery/hooks'
 import { keyframes, styled } from 'styled-components'
 import { TicketPurchaseCard } from '../svgs'
@@ -213,12 +213,12 @@ const StarsDecorations = styled(Box)`
 const Hero = () => {
   const { t } = useTranslation()
   const {
-    currentRound: { amountCollectedInCake, status },
+    currentRound: { amountCollectedInComet, status },
     isTransitioning,
   } = useLottery()
 
-  const cakePrice = useCakePrice()
-  const prizeInBusd = amountCollectedInCake.times(cakePrice)
+  const cometPrice = useCometPrice()
+  const prizeInBusd = amountCollectedInComet.times(cometPrice)
   const prizeTotal = getBalanceNumber(prizeInBusd)
   const ticketBuyIsDisabled = status !== LotteryStatus.OPEN || isTransitioning
 
@@ -255,7 +255,7 @@ const Hero = () => {
         <img src="/images/lottery/ticket-r.png" width="121px" height="72px" alt="" />
       </StarsDecorations>
       <Heading style={{ zIndex: 1 }} mb="8px" scale="md" color="#ffffff" id="lottery-hero-title">
-        {t('The PancakeSwap Lottery')}
+        {t('The CometSwap Lottery')}
       </Heading>
       {getHeroHeading()}
       <TicketContainer
@@ -277,3 +277,4 @@ const Hero = () => {
 }
 
 export default Hero
+

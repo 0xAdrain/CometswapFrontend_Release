@@ -1,8 +1,8 @@
-import { Currency } from '@pancakeswap/sdk'
-import { AddIcon, AutoColumn, Button, ChevronDownIcon, ColumnCenter, Text, useModal } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { Currency } from '@cometswap/sdk'
+import { AddIcon, AutoColumn, Button, ChevronDownIcon, ColumnCenter, Text, useModal } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { LightCard } from 'components/Card'
 import { MinimalPositionCard } from 'components/PositionCard'
 import { CommonBasesType } from 'components/SearchModal/types'
@@ -204,3 +204,4 @@ export default function PoolFinder() {
     </Page>
   )
 }
+

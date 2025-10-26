@@ -8,3 +8,4 @@ const showAdPanelAtom = atom<boolean>(true)
  * via the AdPlayer component.
  */
 export const useShowAdPanel = () => useAtom(showAdPanelAtom)
+

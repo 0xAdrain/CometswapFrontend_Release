@@ -1,14 +1,14 @@
 {
-  "name": "@pancakeswap/eslint-config-pancake",
+  "name": "@cometswap/eslint-config-comet",
   "version": "1.2.0",
-  "description": "Eslint config for PancakeSwap",
+  "description": "Eslint config for CometSwap",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "https://github.com/cometswap/comet-frontend.git",
     "directory": "packages/eslint-config"
   },
   "license": "MIT",

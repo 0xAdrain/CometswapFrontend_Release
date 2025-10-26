@@ -35,10 +35,21 @@ export const StyledCard = styled.div.withConfig({
   shouldForwardProp,
 })<StyledCardProps>`
   background: ${getBorderColor};
-  border-radius: ${({ theme }) => theme.radii.card};
+  border-radius: ${({ theme }) => theme.radii.card}; /* CometSwap: 现在使用12px圆角 */
   color: ${({ theme, isDisabled }) => theme.colors[isDisabled ? "textDisabled" : "text"]};
   overflow: hidden;
   position: relative;
+  /* CometSwap: 添加现代化阴影和过渡效果 */
+  box-shadow: ${({ theme }) => theme.shadows.card};
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* CometSwap: 现代化悬停效果 */
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: ${({ theme }) => theme.shadows.cardHover};
+      transform: translateY(-2px);
+    }
+  }
 
   ${({ isActive }) =>
     isActive &&

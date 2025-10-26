@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Flex, ArrowDownIcon, ArrowUpIcon } from '@pancakeswap/uikit'
+import { Flex, ArrowDownIcon, ArrowUpIcon } from '@cometswap/uikit'
 import { styled, keyframes } from 'styled-components'
 import { WinRateCalculatorState } from 'views/Pottery/hooks/useWinRateCalculator'
 import { CalculatorMode } from '../../types'
@@ -55,3 +55,4 @@ const AnimatedArrow: React.FC<React.PropsWithChildren<AnimatedArrowProps>> = ({ 
 }
 
 export default AnimatedArrow
+

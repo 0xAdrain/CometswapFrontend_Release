@@ -1,9 +1,9 @@
 export const smartChefABI = [
   {
     inputs: [
-      { internalType: 'address', name: '_pancakeProfile', type: 'address' },
-      { internalType: 'bool', name: '_pancakeProfileIsRequested', type: 'bool' },
-      { internalType: 'uint256', name: '_pancakeProfileThresholdPoints', type: 'uint256' },
+      { internalType: 'address', name: '_cometProfile', type: 'address' },
+      { internalType: 'bool', name: '_cometProfileIsRequested', type: 'bool' },
+      { internalType: 'uint256', name: '_cometProfileThresholdPoints', type: 'uint256' },
     ],
     stateMutability: 'nonpayable',
     type: 'constructor',
@@ -185,21 +185,21 @@ export const smartChefABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfile',
+    name: 'cometProfile',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
-    name: 'pancakeProfileIsRequested',
+    name: 'cometProfileIsRequested',
     outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
-    name: 'pancakeProfileThresholdPoints',
+    name: 'cometProfileThresholdPoints',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',

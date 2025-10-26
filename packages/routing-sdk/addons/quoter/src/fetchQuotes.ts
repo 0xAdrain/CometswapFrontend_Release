@@ -1,4 +1,4 @@
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount } from '@cometswap/swap-sdk-core'
 
 import { SupportedPool, buildV3QuoteCall } from './fetchV3Quote'
 import { FetchQuotes } from './types'

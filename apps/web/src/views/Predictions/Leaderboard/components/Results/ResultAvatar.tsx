@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Box, Flex, FlexProps, Link, ProfileAvatar, SubMenu, SubMenuItem, Text, useModal } from '@pancakeswap/uikit'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Box, Flex, FlexProps, Link, ProfileAvatar, SubMenu, SubMenuItem, Text, useModal } from '@cometswap/uikit'
+import truncateHash from '@cometswap/utils/truncateHash'
 import { useDomainNameForAddress } from 'hooks/useDomain'
 import { useStatModalProps } from 'state/predictions/hooks'
 import { useProfileForAddress } from 'state/profile/hooks'
@@ -92,3 +92,4 @@ const ResultAvatar: React.FC<React.PropsWithChildren<ResultAvatarProps>> = ({ us
 }
 
 export default ResultAvatar
+

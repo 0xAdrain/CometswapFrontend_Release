@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ERC20Token, Pair, Percent, Price, Trade, TradeType } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, ERC20Token, Pair, Percent, Price, Trade, TradeType } from '@cometswap/sdk'
 import invariant from 'tiny-invariant'
 import { Address } from 'viem'
 
@@ -20,7 +20,7 @@ export function createStableSwapPair(
     stableSwapAddress,
     lpAddress,
     infoStableSwapAddress,
-    liquidityToken: new ERC20Token(pair.token0.chainId, lpAddress, 18, 'Stable-LP', 'Pancake StableSwap LPs'),
+    liquidityToken: new ERC20Token(pair.token0.chainId, lpAddress, 18, 'Stable-LP', 'Comet StableSwap LPs'),
     // default price & fees are zero, need to get the actual price from chain
     price: new Price(pair.token0, pair.token1, '0', '1'),
     fee: new Percent(0),

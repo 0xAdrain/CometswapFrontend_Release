@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import { Table, Th, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Table, Th, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import FullRow from './FullRow'
 
 const SpaciousLimitOrderTable = ({ orders }) => {
@@ -45,3 +45,4 @@ const SpaciousLimitOrderTable = ({ orders }) => {
 }
 
 export default memo(SpaciousLimitOrderTable)
+

@@ -80,7 +80,7 @@ test('SmartRouter exports', () => {
       "createQuoteProvider",
       "createOffChainQuoteProvider",
       "createPoolQuoteGetter",
-      "PancakeMulticallProvider",
+      "CometMulticallProvider",
       "createCommonTokenPriceProvider",
       "getTokenUsdPricesBySubgraph",
       "getCommonTokenPricesBySubgraph",

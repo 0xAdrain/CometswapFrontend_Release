@@ -1,5 +1,5 @@
-import { Gauge, GaugeType } from '@pancakeswap/gauges'
-import { PCSDuoTokenVaultConfig, fetchPositionManager } from '@pancakeswap/position-managers'
+import { Gauge, GaugeType } from '@cometswap/gauges'
+import { PCSDuoTokenVaultConfig, fetchPositionManager } from '@cometswap/position-managers'
 import { Address, encodePacked, keccak256, zeroAddress } from 'viem'
 
 export const getGaugeHash = (gaugeAddress: Address = zeroAddress, chainId: number = 0) => {
@@ -23,3 +23,4 @@ export const getPositionManagerName = async (
 
   return `${matchedVault?.name}#${matchedVault?.idByManager}`
 }
+

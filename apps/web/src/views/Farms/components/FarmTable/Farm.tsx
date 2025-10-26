@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { zksyncTokens } from '@pancakeswap/tokens'
-import { Box, Flex, Link, Text } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { zksyncTokens } from '@cometswap/tokens'
+import { Box, Flex, Link, Text } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { GiftTooltip } from 'components/GiftTooltip/GiftTooltip'
 import { SwellTooltip } from 'components/SwellTooltip/SwellTooltip'
 import { TokenPairImage } from 'components/TokenImage'
@@ -59,7 +59,7 @@ export const FarmCell: React.FunctionComponent<
         <GiftTooltip>
           <Box>
             <Text lineHeight="110%" as="span">
-              {t('Stake CAKE, Earn PEPE in our')}
+              {t('Stake COMET, Earn PEPE in our')}
               <Link ml="4px" lineHeight="110%" display="inline !important" href="/pools?chain=bsc" external>
                 PEPE Syrup Pool
               </Link>
@@ -86,3 +86,4 @@ export const FarmCell: React.FunctionComponent<
     </Flex>
   )
 }
+

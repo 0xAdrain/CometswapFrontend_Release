@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 const DISTRIBUTOR_ADDRESS = '0x3Ef3D8bA38EBe18DB133cEc108f4D14CE00Dd9Ae' as const
 
@@ -10,3 +10,4 @@ export const DISTRIBUTOR_ADDRESSES = {
   [ChainId.ARBITRUM_ONE]: DISTRIBUTOR_ADDRESS,
   [ChainId.POLYGON_ZKEVM]: DISTRIBUTOR_ADDRESS,
 }
+

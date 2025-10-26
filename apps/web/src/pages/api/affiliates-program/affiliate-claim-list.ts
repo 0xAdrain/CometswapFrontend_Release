@@ -40,3 +40,4 @@ const affiliateClaimList = async (req: NextApiRequest, res: NextApiResponse) => 
 }
 
 export default affiliateClaimList
+

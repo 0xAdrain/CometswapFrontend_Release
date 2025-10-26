@@ -11,3 +11,4 @@ export interface CardConfigReturn {
   variant: 'blue' | 'violet'
   tooltip: string | ReactElement
 }
+

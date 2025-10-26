@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getMulticall3ContractAddress, multicall3ABI } from '@pancakeswap/multicall'
+import { ChainId } from '@cometswap/chains'
+import { getMulticall3ContractAddress, multicall3ABI } from '@cometswap/multicall'
 import { getViemClients } from 'utils/viem'
 import { InternalRpcError, InvalidInputRpcError } from 'viem'
 import { Call } from './actions'
@@ -79,3 +79,4 @@ export async function fetchChunk(
     blockNumber: l2DifferentBlockNumber ? minBlockNumber : Number(resultsBlockNumber),
   }
 }
+

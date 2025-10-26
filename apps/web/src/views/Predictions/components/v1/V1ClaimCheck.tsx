@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { bscTokens } from '@pancakeswap/tokens'
-import { Box, ChevronRightIcon, Flex, Loading, Text, useModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { bscTokens } from '@cometswap/tokens'
+import { Box, ChevronRightIcon, Flex, Loading, Text, useModal } from '@cometswap/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo, useState } from 'react'
@@ -92,3 +92,4 @@ const ClaimCheck = () => {
 }
 
 export default ClaimCheck
+

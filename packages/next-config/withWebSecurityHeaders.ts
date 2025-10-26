@@ -58,11 +58,11 @@ export function withWebSecurityHeaders(config: NextConfig): NextConfig {
 function mergeHeaders(a: Headers, b: Headers): Headers {
   const headerMap = new Map<string, Header>()
 
-  a.forEach((header) => {
+  a.forEach((header: Header) => {
     headerMap.set(header.source, { ...header })
   })
 
-  b.forEach((header) => {
+  b.forEach((header: Header) => {
     const existingHeader = headerMap.get(header.source)
 
     if (existingHeader) {
@@ -83,11 +83,11 @@ function mergeHeaders(a: Headers, b: Headers): Headers {
 function mergeHeadersArray(aHeaders: HeaderArray, bHeaders: HeaderArray): HeaderArray {
   const headerMap = new Map<string, string>()
 
-  aHeaders.forEach((header) => {
+  aHeaders.forEach((header: { key: string; value: string }) => {
     headerMap.set(header.key, header.value)
   })
 
-  bHeaders.forEach((header) => {
+  bHeaders.forEach((header: { key: string; value: string }) => {
     headerMap.set(header.key, header.value)
   })
 

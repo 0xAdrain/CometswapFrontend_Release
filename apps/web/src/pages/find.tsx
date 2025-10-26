@@ -6,3 +6,4 @@ const PoolFinderPage = () => <PoolFinder />
 PoolFinderPage.chains = CHAIN_IDS
 
 export default PoolFinderPage
+

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@pancakeswap/uikit": "workspace:*",
+    "@cometswap/uikit": "workspace:*",
     "@types/node": "20.5.7",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.0.6",

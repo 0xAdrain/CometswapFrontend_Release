@@ -1,12 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, CardBody, CardHeader, Flex, IfoNotTokens, Image, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, CardBody, CardHeader, Flex, IfoNotTokens, Image, Text } from '@cometswap/uikit'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 import { useAccount } from 'wagmi'
 
 import Trans from 'components/Trans'
 
-import { PoolIds } from '@pancakeswap/ifos'
+import { PoolIds } from '@cometswap/ifos'
 import { getHasClaimable } from 'views/Ifos/hooks/getVestingInfo'
 import useFetchVestingData from '../../hooks/vesting/useFetchVestingData'
 import { VestingStatus } from './types'
@@ -121,7 +121,7 @@ const IfoVesting: React.FC<React.PropsWithChildren<IfoVestingProps>> = ({ ifoBas
         {cardStatus.status === VestingStatus.NOT_TOKENS_CLAIM && (
           <IfoNotTokens
             participateText={t(
-              'Participate in our next IFO. and remember to lock your CAKE to increase your allocation!',
+              'Participate in our next IFO. and remember to lock your COMETto increase your allocation!',
             )}
           />
         )}
@@ -145,3 +145,4 @@ const IfoVesting: React.FC<React.PropsWithChildren<IfoVestingProps>> = ({ ifoBas
 }
 
 export default IfoVesting
+

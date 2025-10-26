@@ -1,18 +1,18 @@
-import { FarmV3DataWithPriceAndUserInfo } from '@pancakeswap/farms'
-import { PCSDuoTokenVaultConfig } from '@pancakeswap/position-managers'
-import { CurrencyAmount } from '@pancakeswap/sdk'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { FarmV3DataWithPriceAndUserInfo } from '@cometswap/farms'
+import { PCSDuoTokenVaultConfig } from '@cometswap/position-managers'
+import { CurrencyAmount } from '@cometswap/sdk'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { SwellTooltip } from 'components/SwellTooltip/SwellTooltip'
 import { usePositionManagerAdapterContract } from 'hooks/useContract'
 import { useHasSwellReward } from 'hooks/useHasSwellReward'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
 
 /* eslint-disable no-case-declarations */
-import { useDelayedUnmount } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useDelayedUnmount } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, useMatchBreakpoints } from '@cometswap/uikit'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useIsWrapperWhiteList } from '../../hooks/useWrapperBooster'
@@ -49,7 +49,7 @@ interface Props {
 
 export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, updatePositionMangerDetailsData }) => {
   const hasStakedAmount = false
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { locked } = useBCometBoostLimitAndLockInfo()
   const { t } = useTranslation()
   const [actionPanelExpanded, setActionPanelExpanded] = useState(hasStakedAmount)
   const toggleActionPanel = useCallback(() => {
@@ -88,7 +88,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
     learnMoreAboutUrl,
     minDepositUSD,
     aprTimeWindow,
-    bCakeWrapperAddress,
+    bCometWrapperAddress,
     autoCompound,
   } = vault
 
@@ -118,7 +118,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
     enabled: !priceFromV3FarmPid,
   })
   const vaultName = useMemo(() => getVaultName(idByManager, name), [name, idByManager])
-  const info = usePositionInfo(bCakeWrapperAddress ?? address, adapterAddress ?? '0x', Boolean(bCakeWrapperAddress))
+  const info = usePositionInfo(bCometWrapperAddress ?? address, adapterAddress ?? '0x', Boolean(bCometWrapperAddress))
 
   const tokensPriceUSD = useMemo(() => {
     const farm = priceFromV3FarmPid ? farmsV3.find((d) => d.pid === priceFromV3FarmPid) : undefined
@@ -194,7 +194,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
     rewardStartTime: info.startTimestamp,
     farmRewardAmount: aprDataInfo?.info?.rewardAmount ?? 0,
     adapterAddress,
-    bCakeWrapperAddress,
+    bCometWrapperAddress,
   })
 
   const staked0Amount = info?.userToken0Amounts
@@ -238,11 +238,11 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
   }, [info?.rewardPerSecond, earningToken])
 
   const earning = useMemo(
-    () => (apr.isInCakeRewardDateRange ? `${earningToken.symbol} + ${t('Fees')}` : t('Fees')),
-    [t, apr.isInCakeRewardDateRange, earningToken],
+    () => (apr.isInCometRewardDateRange ? `${earningToken.symbol} + ${t('Fees')}` : t('Fees')),
+    [t, apr.isInCometRewardDateRange, earningToken],
   )
 
-  const { isBoosterWhiteList } = useIsWrapperWhiteList(info?.boosterContractAddress, bCakeWrapperAddress)
+  const { isBoosterWhiteList } = useIsWrapperWhiteList(info?.boosterContractAddress, bCometWrapperAddress)
 
   return (
     <>
@@ -262,7 +262,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
                         autoCompound={autoCompound}
                         isSingleDepositToken={isSingleDepositToken}
                         allowDepositToken1={allowDepositToken1 ?? false}
-                        isBooster={isBoosterWhiteList && apr?.isInCakeRewardDateRange}
+                        isBooster={isBoosterWhiteList && apr?.isInCometRewardDateRange}
                       />
                       {hasSwellReward ? <SwellTooltip /> : null}
                     </CellInner>
@@ -301,7 +301,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
                           lpTokenDecimals={info?.lpTokenDecimals}
                           aprTimeWindow={aprTimeWindow}
                           rewardToken={earningToken}
-                          isBooster={isBoosterWhiteList && apr?.isInCakeRewardDateRange}
+                          isBooster={isBoosterWhiteList && apr?.isInCometRewardDateRange}
                           boosterMultiplier={
                             totalAssetsInUsd === 0 || !locked
                               ? 3
@@ -321,7 +321,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
                     <CellInner>
                       <CellLayout label={t('Reward Per Day')}>
                         <RewardPerDay
-                          rewardPerSec={(apr?.isInCakeRewardDateRange ? tokenPerSecond : 0) ?? 0}
+                          rewardPerSec={(apr?.isInCometRewardDateRange ? tokenPerSecond : 0) ?? 0}
                           symbol={earningToken.symbol ?? undefined}
                           scale="sm"
                           style={{ marginTop: 5 }}
@@ -371,7 +371,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
                   autoCompound={autoCompound}
                   isSingleDepositToken={isSingleDepositToken}
                   allowDepositToken1={allowDepositToken1 ?? false}
-                  isBooster={isBoosterWhiteList && apr?.isInCakeRewardDateRange}
+                  isBooster={isBoosterWhiteList && apr?.isInCometRewardDateRange}
                 />
                 {hasSwellReward ? (
                   <Box position="absolute" right="10px">
@@ -398,7 +398,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
                     lpTokenDecimals={info?.lpTokenDecimals}
                     aprTimeWindow={aprTimeWindow}
                     rewardToken={earningToken}
-                    isBooster={isBoosterWhiteList && apr?.isInCakeRewardDateRange}
+                    isBooster={isBoosterWhiteList && apr?.isInCometRewardDateRange}
                     boosterMultiplier={
                       totalAssetsInUsd === 0 || !locked
                         ? 3
@@ -434,7 +434,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
               isSingleDepositToken={isSingleDepositToken}
               tokenPerSecond={tokenPerSecond}
               earningToken={earningToken}
-              isInCakeRewardDateRange={apr.isInCakeRewardDateRange}
+              isInCometRewardDateRange={apr.isInCometRewardDateRange}
               manager={manager}
               vaultAddress={address}
               managerAddress={info?.managerAddress ?? ''}
@@ -464,7 +464,7 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
               learnMoreAboutUrl={learnMoreAboutUrl}
               lpTokenDecimals={info?.lpTokenDecimals}
               aprTimeWindow={aprDataInfo.timeWindow}
-              bCakeWrapper={bCakeWrapperAddress}
+              bCometWrapper={bCometWrapperAddress}
               minDepositUSD={minDepositUSD}
               adapterAddress={adapterAddress}
               isBooster={isBoosterWhiteList}
@@ -476,3 +476,4 @@ export const TableRow: React.FC<Props> = ({ config, farmsV3, aprDataList, update
     </>
   )
 }
+

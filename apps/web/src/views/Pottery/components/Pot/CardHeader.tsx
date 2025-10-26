@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { Flex, TokenPairImage } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Flex, TokenPairImage } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
 const Container = styled(Flex)`
   align-items: center;
@@ -31,3 +31,4 @@ const CardHeader: React.FC<React.PropsWithChildren<CardHeaderProps>> = ({
 }
 
 export default CardHeader
+

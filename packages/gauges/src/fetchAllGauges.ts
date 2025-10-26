@@ -1,4 +1,4 @@
-import { cacheByLRU } from '@pancakeswap/utils/cacheByLRU'
+import { cacheByLRU } from '@cometswap/utils/cacheByLRU'
 import { AbiStateMutability, ContractFunctionReturnType, PublicClient } from 'viem'
 import { gaugesVotingABI } from './abis/gaugesVoting'
 import { getContract } from './contract'

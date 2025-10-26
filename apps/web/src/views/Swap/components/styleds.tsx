@@ -1,4 +1,4 @@
-import { AutoColumn, ErrorIcon, Flex, Text } from '@pancakeswap/uikit'
+import { AutoColumn, ErrorIcon, Flex, Text } from '@cometswap/uikit'
 import { css, styled } from 'styled-components'
 
 export const Wrapper = styled(Flex)`
@@ -109,3 +109,4 @@ export const SwapShowAcceptChanges = styled(AutoColumn)`
   border-radius: 12px;
   margin-top: 8px;
 `
+

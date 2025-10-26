@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Container, LinkExternal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Container, LinkExternal } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import { Address } from 'viem'
 
@@ -37,7 +37,7 @@ const IfoContainer: React.FC<React.PropsWithChildren<TypeProps>> = ({
       </SectionBackground>
       {faq}
       <LinkExternal
-        href="https://docs.pancakeswap.finance/ecosystem-and-partnerships/business-partnerships/initial-farm-offerings-ifos"
+        href="https://docs.cometswap.finance/ecosystem-and-partnerships/business-partnerships/initial-farm-offerings-ifos"
         mx="auto"
         mt="16px"
       >
@@ -48,3 +48,4 @@ const IfoContainer: React.FC<React.PropsWithChildren<TypeProps>> = ({
 }
 
 export default IfoContainer
+

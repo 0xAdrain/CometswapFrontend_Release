@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -46,3 +46,4 @@ export const useIDOClaimCallback = () => {
 
   return { claim, isPending }
 }
+

@@ -12,3 +12,4 @@ export const AdvancedDetailsFooter = styled.div<{ show: boolean }>`
   transform: ${({ show }) => (show ? 'translateY(0%)' : 'translateY(-100%)')};
   transition: transform 300ms ease-in-out;
 `
+

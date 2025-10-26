@@ -1,4 +1,4 @@
-import { useIsWindowVisible } from '@pancakeswap/hooks'
+import { useIsWindowVisible } from '@cometswap/hooks'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { accurateTimer } from 'utils/accurateTimer'
 import { getNowInSeconds } from 'utils/getNowInSeconds'
@@ -55,3 +55,4 @@ const useCountdown = (timestamp: number) => {
 }
 
 export default useCountdown
+

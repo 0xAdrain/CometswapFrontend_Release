@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Text } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 import { PoolData } from '../../types'
@@ -92,3 +92,4 @@ function CustomToolTip({ chartProps, poolData, currentPrice }: CustomToolTipProp
 }
 
 export default CustomToolTip
+

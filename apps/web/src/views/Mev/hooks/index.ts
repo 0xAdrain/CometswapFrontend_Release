@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useQuery } from '@tanstack/react-query'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCallback } from 'react'
@@ -152,3 +152,4 @@ export const useAddMevRpc = (onSuccess?: () => void, onBeforeStart?: () => void,
   }, [onBeforeStart, onSuccess, onFinish, walletClient])
   return { addMevRpc }
 }
+

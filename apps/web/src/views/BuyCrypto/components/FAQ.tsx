@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, CardBody, CardHeader, Heading, LinkExternal, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, CardBody, CardHeader, Heading, LinkExternal, Text, useTooltip } from '@cometswap/uikit'
 
 import FoldableText from 'components/FoldableSection/FoldableText'
 import { ONRAMP_PROVIDERS } from '../constants'
@@ -58,7 +58,7 @@ const config = (t) => [
         )}{' '}
         <LinkExternal
           style={{ display: 'inline-flex' }}
-          href="https://docs.pancakeswap.finance/products/buy-crypto"
+          href="https://docs.cometswap.finance/products/buy-crypto"
           showExternalIcon={false}
         >
           {t('documentation')}
@@ -74,7 +74,7 @@ const config = (t) => [
         {t('Please refer to our documentation')}{' '}
         <LinkExternal
           style={{ display: 'inline-flex' }}
-          href="https://docs.pancakeswap.finance/products/buy-crypto"
+          href="https://docs.cometswap.finance/products/buy-crypto"
           showExternalIcon={false}
         >
           {t('here.')}
@@ -106,3 +106,4 @@ export const OnRampFaqs = () => {
     </Card>
   )
 }
+

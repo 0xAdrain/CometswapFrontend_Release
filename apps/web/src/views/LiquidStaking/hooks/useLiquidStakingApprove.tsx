@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { MaxUint256 } from '@pancakeswap/swap-sdk-core'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { MaxUint256 } from '@cometswap/swap-sdk-core'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -38,3 +38,4 @@ export const useLiquidStakingApprove = ({ approveToken, contractAddress }: UseLi
 
   return { isPending, onApprove }
 }
+

@@ -9,3 +9,4 @@ export function isVercelToolbarEnabled() {
 export function shouldInjectVercelToolbar() {
   return process.env.NEXT_PUBLIC_VERCEL_ENV === 'local'
 }
+

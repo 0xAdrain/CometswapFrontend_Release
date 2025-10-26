@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { ChevronRightIcon, Button as UIKitButton, AutoRenewIcon, ChevronDownIcon, Box, Flex } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { ChevronRightIcon, Button as UIKitButton, AutoRenewIcon, ChevronDownIcon, Box, Flex } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 export enum ButtonArrangement {
   ROW = 'row',
@@ -142,3 +142,4 @@ const ApproveConfirmButtons: React.FC<React.PropsWithChildren<ApproveConfirmButt
 }
 
 export default ApproveConfirmButtons
+

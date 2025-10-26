@@ -1,7 +1,7 @@
-import { BetPosition } from '@pancakeswap/prediction'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { formatBigIntToFixed } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { BetPosition } from '@cometswap/prediction'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { formatBigIntToFixed } from '@cometswap/utils/formatBalance'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import BN from 'bignumber.js'
 import memoize from 'lodash/memoize'
 
@@ -125,3 +125,4 @@ export const getRoundPosition = (
 }
 
 export const CHART_DOT_CLICK_EVENT = 'CHART_DOT_CLICK_EVENT'
+

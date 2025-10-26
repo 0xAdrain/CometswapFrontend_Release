@@ -1,12 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 
 import { Field } from 'state/swap/actions'
 import { useSwapState } from 'state/swap/hooks'
 import { isAddressEqual, safeGetAddress } from 'utils'
 
-import { ClassicOrder, PriceOrder } from '@pancakeswap/price-api-sdk'
+import { ClassicOrder, PriceOrder } from '@cometswap/price-api-sdk'
 import { isClassicOrder } from 'views/Swap/utils'
 import { useAccount } from 'wagmi'
 import { useSlippageAdjustedAmounts } from './useSlippageAdjustedAmounts'
@@ -84,3 +84,4 @@ export function useSwapInputError(order: PriceOrder | undefined, currencyBalance
 
   return inputError || ''
 }
+

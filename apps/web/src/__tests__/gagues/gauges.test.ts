@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getAllGauges } from '@pancakeswap/gauges'
+import { ChainId } from '@cometswap/chains'
+import { getAllGauges } from '@cometswap/gauges'
 import { getViemClients } from 'utils/viem'
 import { describe, it } from 'vitest'
 
@@ -20,3 +20,4 @@ describe('get all guages', () => {
     expect(notMatched).toBeUndefined()
   }, 300000)
 })
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Collapse, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Collapse, Text } from '@cometswap/uikit'
 import { memo, useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 import { faqConfig } from './config'
@@ -51,3 +51,4 @@ export const FAQ = memo(({ type }: FAQProps) => {
     </FAQWrapper>
   )
 })
+

@@ -1,10 +1,10 @@
 {
-  "name": "@pancakeswap/price-api-sdk",
+  "name": "@cometswap/price-api-sdk",
   "version": "6.0.2",
-  "description": "SDK for pancakeswap price api",
+  "description": "SDK for cometswap price api",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "https://github.com/cometswap/comet-frontend.git",
     "directory": "packages/price-api-sdk"
   },
   "type": "module",
@@ -23,35 +23,35 @@
     "dist"
   ],
   "peerDependencies": {
-    "@pancakeswap/permit2-sdk": "workspace:*",
-    "@pancakeswap/smart-router": "workspace:*",
-    "@pancakeswap/swap-sdk-core": "workspace:*",
-    "@pancakeswap/pcsx-sdk": "workspace:*"
+    "@cometswap/permit2-sdk": "workspace:*",
+    "@cometswap/smart-router": "workspace:*",
+    "@cometswap/swap-sdk-core": "workspace:*",
+    "@cometswap/pcsx-sdk": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@pancakeswap/permit2-sdk": {
+    "@cometswap/permit2-sdk": {
       "optional": true
     },
-    "@pancakeswap/swap-sdk-core": {
+    "@cometswap/swap-sdk-core": {
       "optional": true
     },
-    "@pancakeswap/smart-router": {
+    "@cometswap/smart-router": {
       "optional": true
     },
-    "@pancakeswap/pcsx-sdk": {
+    "@cometswap/pcsx-sdk": {
       "optional": true
     }
   },
   "dependencies": {
-    "@pancakeswap/chains": "workspace:*"
+    "@cometswap/chains": "workspace:*"
   },
   "devDependencies": {
-    "@pancakeswap/permit2-sdk": "workspace:*",
-    "@pancakeswap/sdk": "workspace:*",
-    "@pancakeswap/smart-router": "workspace:*",
-    "@pancakeswap/swap-sdk-core": "workspace:*",
-    "@pancakeswap/pcsx-sdk": "workspace:*",
-    "@pancakeswap/tsconfig": "workspace:*",
+    "@cometswap/permit2-sdk": "workspace:*",
+    "@cometswap/sdk": "workspace:*",
+    "@cometswap/smart-router": "workspace:*",
+    "@cometswap/swap-sdk-core": "workspace:*",
+    "@cometswap/pcsx-sdk": "workspace:*",
+    "@cometswap/tsconfig": "workspace:*",
     "tsup": "^6.7.0"
   },
   "exports": {

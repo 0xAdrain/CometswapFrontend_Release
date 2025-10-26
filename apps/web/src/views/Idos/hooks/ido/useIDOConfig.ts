@@ -1,5 +1,5 @@
-import type { IfoStatus } from '@pancakeswap/ifos'
-import { type Currency, CurrencyAmount, Price } from '@pancakeswap/swap-sdk-core'
+import type { IfoStatus } from '@cometswap/ifos'
+import { type Currency, CurrencyAmount, Price } from '@cometswap/swap-sdk-core'
 import dayjs from 'dayjs'
 import { useMemo } from 'react'
 import { getStatusByTimestamp } from '../helpers'
@@ -88,3 +88,4 @@ export const useIDOConfig = () => {
     now,
   ])
 }
+

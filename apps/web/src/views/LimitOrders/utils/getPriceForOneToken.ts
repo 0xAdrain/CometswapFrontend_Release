@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Price } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Price } from '@cometswap/sdk'
 
 /**
  * Given certain amount if input and output tokens
@@ -15,3 +15,4 @@ const getPriceForOneToken = (inputAmount?: CurrencyAmount<Currency>, outputAmoun
 }
 
 export default getPriceForOneToken
+

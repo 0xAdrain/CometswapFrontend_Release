@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { Card, CardBody, Text, WaitIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { Card, CardBody, Text, WaitIcon } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { NodeRound } from 'state/types'
 import { formatRoundTime } from '../../helpers'
@@ -39,3 +39,4 @@ const SoonRoundCard: React.FC<React.PropsWithChildren<SoonRoundCardProps>> = ({ 
 }
 
 export default SoonRoundCard
+

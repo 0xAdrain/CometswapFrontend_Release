@@ -1,6 +1,6 @@
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { baseColors, darkColors, lightColors } from '@pancakeswap/uikit'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { baseColors, darkColors, lightColors } from '@cometswap/uikit'
 import { CandleChartLoader } from 'components/ChartLoaders'
 import dayjs from 'dayjs'
 import { ColorType, IChartApi, createChart } from 'lightweight-charts'
@@ -153,3 +153,4 @@ const CandleChart = ({ data, setValue, setLabel }: LineChartProps) => {
 }
 
 export default CandleChart
+

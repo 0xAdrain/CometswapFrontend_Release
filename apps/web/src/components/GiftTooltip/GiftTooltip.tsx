@@ -1,4 +1,4 @@
-import { Box, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { Box, Text, TooltipText, useTooltip } from '@cometswap/uikit'
 import { PropsWithChildren, useCallback } from 'react'
 import { logger } from 'utils/datadog'
 import { useChainId } from 'wagmi'
@@ -28,3 +28,4 @@ export const GiftTooltip: React.FC<PropsWithChildren> = ({ children }) => {
     </Box>
   )
 }
+

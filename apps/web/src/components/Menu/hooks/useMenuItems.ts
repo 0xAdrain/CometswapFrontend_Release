@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { DropdownMenuItems } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { DropdownMenuItems } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import React, { useMemo } from 'react'
 import { multiChainPaths } from 'state/info/constant'
@@ -88,3 +88,4 @@ export const useMenuItems = ({ onClick }: UseMenuItemsParams = {}): ConfigMenuIt
     return menuItems
   }, [t, menuItems, menuItemsStatus, onClick, chainId])
 }
+

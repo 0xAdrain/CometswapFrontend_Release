@@ -50,3 +50,4 @@ export const useFontSize = (token0Symbol: string, token1Symbol: string) => {
     setFontSizesBySymbol,
   }
 }
+

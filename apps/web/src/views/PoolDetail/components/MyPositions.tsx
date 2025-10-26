@@ -1,5 +1,5 @@
-import { Protocol } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
+import { Protocol } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
 import {
   AddIcon,
   AutoColumn,
@@ -16,9 +16,9 @@ import {
   Row,
   Text,
   useToast,
-} from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { DoubleCurrencyLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { DoubleCurrencyLogo } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import Divider from 'components/Divider'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -41,13 +41,13 @@ import {
   V3PositionItem,
 } from 'views/universalFarms/components'
 import { useCheckShouldSwitchNetwork } from 'views/universalFarms/hooks'
-import { useV2CakeEarning, useV3CakeEarningsByPool } from 'views/universalFarms/hooks/useCakeEarning'
+import { useV2CometEarning, useV3CometEarningsByPool } from 'views/universalFarms/hooks/useVeCometEarning'
 import { useV2FarmActions } from 'views/universalFarms/hooks/useV2FarmActions'
 import { displayApr } from 'views/universalFarms/utils/displayApr'
 import { formatDollarAmount } from 'views/V3Info/utils/numbers'
 import { PERSIST_CHAIN_KEY } from 'config/constants'
 import { addQueryToPath } from 'utils/addQueryToPath'
-import { formatFiatNumber } from '@pancakeswap/utils/formatFiatNumber'
+import { formatFiatNumber } from '@cometswap/utils/formatFiatNumber'
 import { useTotalPriceUSD } from 'hooks/useTotalPriceUSD'
 import { useV3Positions } from '../hooks/useV3Positions'
 import { MyPositionsProvider, useMyPositions } from './MyPositionsContext'
@@ -153,8 +153,8 @@ const MyPositionsInner: React.FC<{ poolInfo: PoolInfo }> = ({ poolInfo }) => {
     }
   }, [_handleHarvestAll, loading, setLoading, poolInfo.chainId, switchNetworkIfNecessary])
 
-  const { earningsBusd: v2EarningsBusd } = useV2CakeEarning(poolInfo)
-  const { earningsBusd: v3EarningsBusd } = useV3CakeEarningsByPool(poolInfo)
+  const { earningsBusd: v2EarningsBusd } = useV2CometEarning(poolInfo)
+  const { earningsBusd: v3EarningsBusd } = useV3CometEarningsByPool(poolInfo)
 
   return (
     <AutoColumn gap="lg">
@@ -245,7 +245,7 @@ const MyPositionsInner: React.FC<{ poolInfo: PoolInfo }> = ({ poolInfo }) => {
               />
             ) : null}
             {count === 0 && (
-              <StyledImage src="/images/decorations/3dpan.png" alt="Pancake illustration" width={120} height={103} />
+              <StyledImage src="/images/decorations/3dpan.png" alt="Comet illustration" width={120} height={103} />
             )}
           </PositionCardBody>
         </PositionsCard>
@@ -425,7 +425,7 @@ const MyV2OrStablePositions: React.FC<{
     if (!data) return 0
     return [data.nativeBalance.greaterThan('0'), data.farmingBalance.greaterThan('0')].filter(Boolean).length
   }, [data])
-  const { onHarvest } = useV2FarmActions(poolInfo.lpAddress, poolInfo.bCakeWrapperAddress)
+  const { onHarvest } = useV2FarmActions(poolInfo.lpAddress, poolInfo.bCometWrapperAddress)
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError } = useCatchTxError()
   const handleHarvest = useCallback(() => {
@@ -435,7 +435,7 @@ const MyV2OrStablePositions: React.FC<{
         toastSuccess(
           `${t('Harvested')}!`,
           <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-            {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+            {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
           </ToastDescriptionWithTx>,
         )
       }
@@ -491,3 +491,4 @@ const MyV2OrStablePositions: React.FC<{
     </AutoColumn>
   )
 }
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text } from '@cometswap/uikit'
 
 import { css, styled } from 'styled-components'
 
@@ -65,3 +65,4 @@ const CommunitySummary = () => {
 }
 
 export default CommunitySummary
+

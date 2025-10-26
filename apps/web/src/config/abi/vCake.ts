@@ -1,7 +1,7 @@
-export const vCakeABI = [
+export const vveCometABI = [
   {
     inputs: [
-      { internalType: 'contract ICakePool', name: '_cakePool', type: 'address' },
+      { internalType: 'contract IveCometPool', name: '_cakePool', type: 'address' },
       { internalType: 'contract IMasterChefV2', name: '_masterchefV2', type: 'address' },
       { internalType: 'uint256', name: '_pid', type: 'uint256' },
     ],
@@ -19,14 +19,14 @@ export const vCakeABI = [
   },
   {
     inputs: [],
-    name: 'CakePool',
-    outputs: [{ internalType: 'contract ICakePool', name: '', type: 'address' }],
+    name: 'veCometPool',
+    outputs: [{ internalType: 'contract IveCometPool', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
-    name: 'CakePoolPID',
+    name: 'veCometPoolPID',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -156,7 +156,7 @@ export const vCakeABI = [
     stateMutability: 'view',
     type: 'function',
   },
-  { inputs: [], name: 'syncFromCakePool', outputs: [], stateMutability: 'nonpayable', type: 'function' },
+  { inputs: [], name: 'syncFromveCometPool', outputs: [], stateMutability: 'nonpayable', type: 'function' },
   {
     inputs: [],
     name: 'totalSupply',
@@ -208,3 +208,4 @@ export const vCakeABI = [
     type: 'function',
   },
 ] as const
+

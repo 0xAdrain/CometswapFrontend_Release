@@ -5,12 +5,12 @@ export const predictionFAQConfig: FAQConfig = (t) => ({
   title: t('Quick start to Prediction (BETA)'),
   imageUrl: getImageUrl('prediction_telegram_bot'),
   alt: 'Prediction Telegram bot',
-  docsUrl: 'https://docs.pancakeswap.finance/products/prediction',
+  docsUrl: 'https://docs.cometswap.finance/products/prediction',
   data: [
     {
       title: t('What is the Prediction Feature?'),
       content: t(
-        'The Prediction feature on PancakeSwap is a price-prediction game where users can guess whether the price of an asset, such as BNB, will be higher or lower after a set period. Correct predictions can earn rewards.',
+        'The Prediction feature on CometSwap is a price-prediction game where users can guess whether the price of an asset, such as BNB, will be higher or lower after a set period. Correct predictions can earn rewards.',
       ),
     },
     {
@@ -44,3 +44,4 @@ export const predictionFAQConfig: FAQConfig = (t) => ({
     },
   ],
 })
+

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { Address } from 'viem'
 
 // @fixme convert to ChainId after all chains are updated
@@ -32,6 +32,8 @@ const PERMIT2_ADDRESSES: Record<ChainId, Address> = {
 
   [ChainId.OPBNB]: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
   [ChainId.OPBNB_TESTNET]: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+  
+  [ChainId.XLAYER_TESTNET]: '0x',
 }
 
 export const getPermit2Address = (chainId: ChainId | undefined): Address | undefined => {

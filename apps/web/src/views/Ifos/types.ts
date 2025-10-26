@@ -1,4 +1,4 @@
-import { IfoStatus, PoolIds } from '@pancakeswap/ifos'
+import { IfoStatus, PoolIds } from '@cometswap/ifos'
 import BigNumber from 'bignumber.js'
 
 import {
@@ -131,3 +131,4 @@ type WalletIfoContract =
   | WalletIfoDataV3Contract
   | WalletIfoDataV7Contract
   | WalletIfoDataV8Contract
+

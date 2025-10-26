@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { Box, Flex, FlexProps, Skeleton, Text } from '@pancakeswap/uikit'
-import { formatBigInt } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { Box, Flex, FlexProps, Skeleton, Text } from '@cometswap/uikit'
+import { formatBigInt } from '@cometswap/utils/formatBalance'
 import { useMemo } from 'react'
 import { NodeRound, Round } from 'state/types'
 import { DefaultTheme, styled } from 'styled-components'
@@ -273,3 +273,4 @@ export const LockPriceHistoryRow: React.FC<React.PropsWithChildren<LockPriceHist
 /**
  * END TEMPORARY COMPONENTS
  */
+

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 export const GAUGES = '0xbCfBf7ED1756FE478B071687cb430C7B3eB682f1' as const
 export const GAUGES_TESTNET = '0x357b01894b21787B41A8FA4DCaFE92293470FaD9' as const

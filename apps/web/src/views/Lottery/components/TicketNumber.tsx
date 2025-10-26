@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text } from '@pancakeswap/uikit'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text } from '@cometswap/uikit'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { LotteryTicket } from 'config/constants/types'
 import _uniqueId from 'lodash/uniqueId'
 import { styled } from 'styled-components'
@@ -62,3 +62,4 @@ const TicketNumber: React.FC<React.PropsWithChildren<TicketNumberProps>> = ({ lo
 }
 
 export default TicketNumber
+

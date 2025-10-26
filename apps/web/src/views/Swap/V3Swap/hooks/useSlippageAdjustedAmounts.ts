@@ -1,4 +1,4 @@
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { useMemo } from 'react'
 import { InterfaceOrder } from 'views/Swap/utils'
 import { computeSlippageAdjustedAmounts } from '../utils/exchange'
@@ -7,3 +7,4 @@ export function useSlippageAdjustedAmounts(order: InterfaceOrder | undefined | n
   const [allowedSlippage] = useUserSlippage()
   return useMemo(() => computeSlippageAdjustedAmounts(order, allowedSlippage), [allowedSlippage, order])
 }
+

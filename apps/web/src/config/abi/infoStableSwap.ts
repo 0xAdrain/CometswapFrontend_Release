@@ -332,3 +332,4 @@ export const infoStableSwapABI = [
     type: 'function',
   },
 ] as const
+

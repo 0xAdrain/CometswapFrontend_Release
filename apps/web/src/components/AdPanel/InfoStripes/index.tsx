@@ -1,5 +1,5 @@
-import { CloseIcon, Flex, IconButton, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { usePhishingBanner } from '@pancakeswap/utils/user'
+import { CloseIcon, Flex, IconButton, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { usePhishingBanner } from '@cometswap/utils/user'
 import { CSSProperties, useCallback, useEffect, useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 import 'swiper/css'
@@ -13,7 +13,7 @@ import { useGetInfoStripeConfig } from './InfoStripeCommon'
 import { Step1 } from './Step1'
 import { Step2 } from './Step2'
 import { Step3 } from './Step3'
-import { TradingCompetitionInfoStripeAndy } from './TradingCompetition'
+// TradingCompetition removed - not needed for CometSwap
 
 const Container = styled(Flex).withConfig({ shouldForwardProp: (prop) => !['$background'].includes(prop) })<{
   $background?: string
@@ -103,12 +103,7 @@ type BannerConfig = {
 const useBannerConfigs = () => {
   const perpConfig = useGetInfoStripeConfig(AdsIds.TST_PERP)
   const CONFIG: BannerConfig[] = [
-    {
-      component: <TradingCompetitionInfoStripeAndy />,
-      stripeImage: `${ASSET_CDN}/web/phishing-warning/andy.png`,
-      stripeImageWidth: '92px',
-      stripeImageAlt: 'ANDY',
-    },
+    // TradingCompetition banner removed
     {
       ...perpConfig,
     },
@@ -187,3 +182,4 @@ const InfoStripes: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default InfoStripes
+

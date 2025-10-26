@@ -1,4 +1,4 @@
-import { Percent } from '@pancakeswap/sdk'
+import { Percent } from '@cometswap/sdk'
 import { DAYS_A_YEAR, PERCENT_DIGIT } from '../constant'
 
 export function calculateAPRPercent(percent: number) {
@@ -21,3 +21,4 @@ export function AprRange({
     </>
   )
 }
+

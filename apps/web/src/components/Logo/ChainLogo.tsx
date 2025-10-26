@@ -1,4 +1,4 @@
-import { HelpIcon } from '@pancakeswap/uikit'
+import { HelpIcon } from '@cometswap/uikit'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import Image from 'next/image'
 import { memo } from 'react'
@@ -22,3 +22,4 @@ export const ChainLogo = memo(
     return <HelpIcon width={width} height={height} />
   },
 )
+

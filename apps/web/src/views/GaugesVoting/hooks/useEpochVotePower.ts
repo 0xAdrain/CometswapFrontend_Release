@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
-import { useVeCakeContract } from 'hooks/useContract'
+import { useVeCometContract } from 'hooks/useContract'
 import { isAddressEqual } from 'utils'
 import { Address, zeroAddress } from 'viem'
-import { useVeCakeUserInfo } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
+import { useVeCometUserInfo } from 'views/CometStaking/hooks/useVeCometUserInfo'
 import { useNextEpochStart } from './useEpochTime'
 
 export const useEpochVotePower = () => {
   const nextEpoch = useNextEpochStart()
-  const contract = useVeCakeContract()
+  const contract = useVeCometContract()
   const { account } = useAccountActiveChain()
-  const { data: userInfo } = useVeCakeUserInfo()
+  const { data: userInfo } = useVeCometUserInfo()
 
   const { data, isLoading } = useQuery({
     queryKey: ['epochVotePower', nextEpoch, contract.address, contract.chain?.id],
@@ -33,3 +33,4 @@ export const useEpochVotePower = () => {
 
   return { data: data ?? 0n, isLoading }
 }
+

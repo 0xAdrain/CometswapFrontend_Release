@@ -1,6 +1,6 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { RowBetween, AutoColumn, Text, Card, CardBody } from "@pancakeswap/uikit";
-import { formatUnixTimestamp } from "@pancakeswap/utils/formatTimestamp";
+import { useTranslation } from "@cometswap/localization";
+import { RowBetween, AutoColumn, Text, Card, CardBody } from "@cometswap/uikit";
+import { formatUnixTimestamp } from "@cometswap/utils/formatTimestamp";
 import BigNumber from "bignumber.js";
 import dayjs from "dayjs";
 import { useMemo } from "react";
@@ -44,7 +44,7 @@ export function LockInfoCard({ amount = 0, usdPrice = 0, unlockAt = 0, ...props 
         <RowBetween>
           <AutoColumn>
             <Text fontSize="0.75rem" color="textSubtle" textTransform="uppercase" bold>
-              {t("CAKE locked")}
+              {t("COMETlocked")}
             </Text>
             <BalanceDisplay bold value={amountNum} decimals={2} fontSize="1.25rem" />
             <BalanceDisplay prefix="~" value={usdAmount} decimals={2} unit=" USD" fontSize="0.75rem" />

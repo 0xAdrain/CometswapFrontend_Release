@@ -1,44 +1,44 @@
 import { BOOSTED_FARM_GAS_LIMIT } from 'config'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
-import { useBCakeProxyContract } from 'hooks/useContract'
+import { useBCometProxyContract } from 'hooks/useContract'
 import { useCallback } from 'react'
 import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
 import { useGasPrice } from 'state/user/hooks'
 import { MasterChefContractType, harvestFarm, stakeFarm, unstakeFarm } from 'utils/calls/farms'
-import { useBCakeProxyContractAddress } from 'hooks/useBCakeProxyContractAddress'
+import { useBCometProxyContractAddress } from 'hooks/useBCometProxyContractAddress'
 import { useApproveBoostProxyFarm } from '../../../hooks/useApproveFarm'
-import useProxyCAKEBalance from './useProxyCAKEBalance'
+import useProxyCOMETBalance from './useProxyCOMETBalance'
 
 export default function useProxyStakedActions(pid, lpContract) {
   const { account, chainId } = useAccountActiveChain()
-  const { proxyAddress } = useBCakeProxyContractAddress(account, chainId)
-  const bCakeProxy = useBCakeProxyContract(proxyAddress) as unknown as MasterChefContractType
+  const { proxyAddress } = useBCometProxyContractAddress(account, chainId)
+  const bCometProxy = useBCometProxyContract(proxyAddress) as unknown as MasterChefContractType
   const dispatch = useAppDispatch()
   const gasPrice = useGasPrice()
-  const { proxyCakeBalance, refreshProxyCakeBalance } = useProxyCAKEBalance()
+  const { proxyCometBalance, refreshProxyCometBalance } = useProxyCOMETBalance()
 
   const onDone = useCallback(() => {
     if (!account || !chainId) return
-    refreshProxyCakeBalance()
+    refreshProxyCometBalance()
     dispatch(fetchFarmUserDataAsync({ account, pids: [pid], chainId, proxyAddress }))
-  }, [account, proxyAddress, chainId, pid, dispatch, refreshProxyCakeBalance])
+  }, [account, proxyAddress, chainId, pid, dispatch, refreshProxyCometBalance])
 
   const { onApprove } = useApproveBoostProxyFarm(lpContract, proxyAddress)
 
   const onStake = useCallback(
-    (value) => stakeFarm(bCakeProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
-    [bCakeProxy, pid, gasPrice],
+    (value) => stakeFarm(bCometProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
+    [bCometProxy, pid, gasPrice],
   )
 
   const onUnstake = useCallback(
-    (value) => unstakeFarm(bCakeProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
-    [bCakeProxy, pid, gasPrice],
+    (value) => unstakeFarm(bCometProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
+    [bCometProxy, pid, gasPrice],
   )
 
   const onReward = useCallback(
-    () => harvestFarm(bCakeProxy, pid, gasPrice, BOOSTED_FARM_GAS_LIMIT),
-    [bCakeProxy, pid, gasPrice],
+    () => harvestFarm(bCometProxy, pid, gasPrice, BOOSTED_FARM_GAS_LIMIT),
+    [bCometProxy, pid, gasPrice],
   )
 
   return {
@@ -47,6 +47,7 @@ export default function useProxyStakedActions(pid, lpContract) {
     onReward,
     onApprove,
     onDone,
-    proxyCakeBalance,
+    proxyCometBalance,
   }
 }
+

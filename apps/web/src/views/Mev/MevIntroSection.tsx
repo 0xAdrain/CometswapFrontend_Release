@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { FlexGap, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { FlexGap, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 
@@ -130,3 +130,4 @@ export const MevIntroSection: React.FC = () => {
     </MevIntroSectionWrapper>
   )
 }
+

@@ -1,6 +1,6 @@
-import { Flex, Text, Select, OptionProps, SearchInput } from '@pancakeswap/uikit'
+import { Flex, Text, Select, OptionProps, SearchInput } from '@cometswap/uikit'
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useMemo, useCallback, ChangeEvent } from 'react'
 
 import { useSearch, useSortBy } from '../hooks'
@@ -83,3 +83,4 @@ export function SearchFilter() {
     </LabelWrapper>
   )
 }
+

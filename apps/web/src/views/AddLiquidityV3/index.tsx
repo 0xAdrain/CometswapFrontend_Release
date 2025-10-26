@@ -1,7 +1,7 @@
 import { CurrencySelect } from 'components/CurrencySelect'
 import { CommonBasesType } from 'components/SearchModal/types'
 
-import { Currency, NATIVE, WNATIVE } from '@pancakeswap/sdk'
+import { Currency, NATIVE, WNATIVE } from '@cometswap/sdk'
 import {
   AddIcon,
   AutoColumn,
@@ -13,12 +13,12 @@ import {
   PreTitle,
   RefreshIcon,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 
-import { FeeAmount, Pool } from '@pancakeswap/v3-sdk'
+import { FeeAmount, Pool } from '@cometswap/v3-sdk'
 import React, { ReactNode, useCallback, useEffect, useMemo } from 'react'
 
-import { Trans, useTranslation } from '@pancakeswap/localization'
+import { Trans, useTranslation } from '@cometswap/localization'
 import { useRouter } from 'next/router'
 import currencyId from 'utils/currencyId'
 
@@ -26,7 +26,7 @@ import { AppHeader } from 'components/App'
 import { atom, useAtom } from 'jotai'
 import { styled } from 'styled-components'
 
-import { usePreviousValue } from '@pancakeswap/hooks'
+import { usePreviousValue } from '@cometswap/hooks'
 import { useCurrency } from 'hooks/Tokens'
 import AddLiquidity from 'views/AddLiquidity'
 import AddStableLiquidity from 'views/AddLiquidity/AddStableLiquidity'
@@ -439,3 +439,4 @@ export function AddLiquidityV3Layout({
     </BodyWrapper>
   )
 }
+

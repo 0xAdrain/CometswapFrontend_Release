@@ -49,3 +49,4 @@ export const getBlocksFromTimestamps = async (
   }, Promise.resolve([] as Block[]))
   return orderBy(blocks, (block) => block.number, sortDirection)
 }
+

@@ -1,14 +1,14 @@
 import BigNumber from 'bignumber.js'
 
 import { styled } from 'styled-components'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Flex, Text, Box } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { Flex, Text, Box } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { PoolCategory } from 'config/constants/types'
 import { useProfileRequirement } from 'views/Pools/hooks/useProfileRequirement'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import ApprovalAction from './ApprovalAction'
 import StakeActions from './StakeActions'
 import HarvestActions from './HarvestActions'
@@ -87,3 +87,4 @@ const CardActions: React.FC<React.PropsWithChildren<CardActionsProps>> = ({ pool
 }
 
 export default CardActions
+

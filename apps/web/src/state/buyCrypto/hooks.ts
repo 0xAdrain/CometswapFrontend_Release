@@ -84,7 +84,7 @@ export async function queryParametersToBuyCryptoState(
   if (parsedKey && onRampCurrenciesMap[parsedKey]) {
     outputCurrencyId = parsedKey
   } else {
-    outputCurrencyId = 'CAKE_56'
+    outputCurrencyId = 'COMET_56'
   }
 
   return {
@@ -92,7 +92,7 @@ export async function queryParametersToBuyCryptoState(
       currencyId: DEFAULT_FIAT_CURRENCY,
     },
     [Field.OUTPUT]: {
-      currencyId: outputCurrencyId ?? 'CAKE_56',
+      currencyId: outputCurrencyId ?? 'COMET_56',
     },
     typedValue: parseTokenAmountURLParameter(parsedQs.exactAmount),
     independentField: Field.INPUT,
@@ -121,3 +121,4 @@ export function useDefaultsFromURLSearch() {
     fetchData()
   }, [dispatch, query, isReady, chainId])
 }
+

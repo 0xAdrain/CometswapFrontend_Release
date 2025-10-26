@@ -30,3 +30,4 @@ describe('#chunkArray', () => {
     expect(chunked[2][31]).toEqual(99)
   })
 })
+

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
 import { BIG_INT_ZERO, MIN_BNB } from 'config/constants/exchange'
 
 type NullableCurrencyAmount = CurrencyAmount<Currency> | undefined
@@ -17,3 +17,4 @@ export function maxAmountSpend<T extends NullableCurrencyAmount>(currencyAmount?
   }
   return currencyAmount
 }
+

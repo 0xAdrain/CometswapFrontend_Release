@@ -1,5 +1,5 @@
-import { TranslateFunction } from '@pancakeswap/localization'
-import { Strategy } from '@pancakeswap/position-managers'
+import { TranslateFunction } from '@cometswap/localization'
+import { Strategy } from '@cometswap/position-managers'
 
 export function getStrategyName(t: TranslateFunction, strategy: Strategy, allTokenName?: string) {
   switch (strategy) {
@@ -27,3 +27,4 @@ export function getStrategyName(t: TranslateFunction, strategy: Strategy, allTok
       return ''
   }
 }
+

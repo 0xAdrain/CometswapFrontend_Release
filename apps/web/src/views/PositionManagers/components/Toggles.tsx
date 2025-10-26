@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { Text, Flex, Toggle, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Flex, Toggle, useMatchBreakpoints } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 import { useStakeOnly } from '../hooks'
 
@@ -25,3 +25,4 @@ export function StakeOnlyToggle() {
     </ToggleWrapper>
   )
 }
+

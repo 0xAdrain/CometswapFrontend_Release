@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 const GradientLogo: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -20,3 +20,4 @@ const GradientLogo: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
 }
 
 export default GradientLogo
+

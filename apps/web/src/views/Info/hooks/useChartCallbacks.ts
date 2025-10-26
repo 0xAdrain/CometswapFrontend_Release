@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 
 export const useChartCallbacks = (setHoverValue, setHoverDate) => {
   const {
@@ -29,3 +29,4 @@ export const useChartCallbacks = (setHoverValue, setHoverDate) => {
 
   return useMemo(() => ({ onMouseLeave, onMouseMove }), [onMouseLeave, onMouseMove])
 }
+

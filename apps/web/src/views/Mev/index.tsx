@@ -15,3 +15,4 @@ export const MevLanding: React.FC<PageProps> = ({ txCount, walletCount }) => {
     </Wrapper>
   )
 }
+

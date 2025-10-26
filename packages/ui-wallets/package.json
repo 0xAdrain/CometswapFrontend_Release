@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/ui-wallets",
+  "name": "@cometswap/ui-wallets",
   "version": "0.0.2",
   "main": "src/index.ts",
   "sideEffects": [
@@ -7,9 +7,9 @@
   ],
   "private": true,
   "dependencies": {
-    "@pancakeswap/hooks": "workspace:*",
-    "@pancakeswap/localization": "workspace:*",
-    "@pancakeswap/uikit": "workspace:*",
+    "@cometswap/hooks": "workspace:*",
+    "@cometswap/localization": "workspace:*",
+    "@cometswap/uikit": "workspace:*",
     "qrcode.react": "^3.1.0"
   },
   "peerDependencies": {

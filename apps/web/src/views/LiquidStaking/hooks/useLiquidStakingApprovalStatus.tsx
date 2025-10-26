@@ -1,4 +1,4 @@
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { Address, erc20Abi } from 'viem'
@@ -37,3 +37,4 @@ export const useLiquidStakingApprovalStatus = ({
 }
 
 export default useLiquidStakingApprovalStatus
+

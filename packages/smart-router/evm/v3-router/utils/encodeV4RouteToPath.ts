@@ -1,6 +1,6 @@
 import { Address, zeroAddress } from 'viem'
-import { Currency, getCurrencyAddress } from '@pancakeswap/swap-sdk-core'
-import { encodePoolParameters } from '@pancakeswap/v4-sdk'
+import { Currency, getCurrencyAddress } from '@cometswap/swap-sdk-core'
+import { encodePoolParameters } from '@cometswap/v4-sdk'
 
 import { BaseRoute, Pool } from '../types'
 import { getOutputCurrency, isV4BinPool, isV4ClPool } from './pool'

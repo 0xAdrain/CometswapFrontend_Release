@@ -1,4 +1,4 @@
-# @pancakeswap/chains
+# @cometswap/chains
 
 ## 0.4.6
 
@@ -72,4 +72,4 @@
 
 ### Patch Changes
 
-- 2d7e1b3e2: The single source of truth for Pancakeswap chain-related information
+- 2d7e1b3e2: The single source of truth for Cometswap chain-related information

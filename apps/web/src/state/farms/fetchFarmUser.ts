@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import BigNumber from 'bignumber.js'
 import { masterChefV2ABI } from 'config/abi/masterchefV2'
 import { crossFarmingVaultABI } from 'config/abi/crossFarmingVault'
-import { v2BCakeWrapperABI } from 'config/abi/v2BCakeWrapper'
+import { v2BCometWrapperABI } from 'config/abi/v2BCometWrapper'
 import { SerializedFarmConfig, SerializedFarmPublicData } from 'config/constants/types'
 import { farmFetcher } from 'state/farms'
 import { getMasterChefV2Address, getCrossFarmingVaultAddress } from 'utils/addressHelpers'
@@ -39,7 +39,7 @@ export const fetchFarmUserAllowances = async (
   return parsedLpAllowances
 }
 
-export const fetchFarmBCakeWrapperUserAllowances = async (
+export const fetchFarmBveCometWrapperUserAllowances = async (
   account: Address,
   farmsToFetch: SerializedFarmPublicData[],
   chainId: number,
@@ -51,7 +51,7 @@ export const fetchFarmBCakeWrapperUserAllowances = async (
         abi: erc20Abi,
         address: lpContractAddress,
         functionName: 'allowance',
-        args: [account, farm?.bCakeWrapperAddress ?? '0x'] as const,
+        args: [account, farm?.bveCometWrapperAddress ?? '0x'] as const,
       } as const
     }),
     allowFailure: false,
@@ -114,7 +114,7 @@ export const fetchFarmUserStakedBalances = async (
   return parsedStakedBalances
 }
 
-export const fetchFarmUserBCakeWrapperStakedBalances = async (
+export const fetchFarmUserBveCometWrapperStakedBalances = async (
   account: string,
   farmsToFetch: SerializedFarmPublicData[],
   chainId: number,
@@ -123,8 +123,8 @@ export const fetchFarmUserBCakeWrapperStakedBalances = async (
   const rawStakedBalances = await publicClient({ chainId }).multicall({
     contracts: farmsToFetch.map((farm) => {
       return {
-        abi: v2BCakeWrapperABI,
-        address: farm?.bCakeWrapperAddress ?? '0x',
+        abi: v2BCometWrapperABI,
+        address: farm?.bveCometWrapperAddress ?? '0x',
         functionName: 'userInfo',
         args: [account as Address] as const,
       } as const
@@ -145,12 +145,12 @@ export const fetchFarmUserBCakeWrapperStakedBalances = async (
   return { parsedStakedBalances, boosterMultiplier, boostedAmounts }
 }
 
-export const fetchFarmUserBCakeWrapperConstants = async (farmsToFetch: SerializedFarmPublicData[], chainId: number) => {
+export const fetchFarmUserBveCometWrapperConstants = async (farmsToFetch: SerializedFarmPublicData[], chainId: number) => {
   const boosterContractAddress = await publicClient({ chainId }).multicall({
     contracts: farmsToFetch.map((farm) => {
       return {
-        abi: v2BCakeWrapperABI,
-        address: farm?.bCakeWrapperAddress ?? '0x',
+        abi: v2BCometWrapperABI,
+        address: farm?.bveCometWrapperAddress ?? '0x',
         functionName: 'boostContract',
       } as const
     }),
@@ -159,8 +159,8 @@ export const fetchFarmUserBCakeWrapperConstants = async (farmsToFetch: Serialize
   const startTimestamp = await publicClient({ chainId }).multicall({
     contracts: farmsToFetch.map((farm) => {
       return {
-        abi: v2BCakeWrapperABI,
-        address: farm?.bCakeWrapperAddress ?? '0x',
+        abi: v2BCometWrapperABI,
+        address: farm?.bveCometWrapperAddress ?? '0x',
         functionName: 'startTimestamp',
       } as const
     }),
@@ -169,8 +169,8 @@ export const fetchFarmUserBCakeWrapperConstants = async (farmsToFetch: Serialize
   const endTimestamp = await publicClient({ chainId }).multicall({
     contracts: farmsToFetch.map((farm) => {
       return {
-        abi: v2BCakeWrapperABI,
-        address: farm?.bCakeWrapperAddress ?? '0x',
+        abi: v2BCometWrapperABI,
+        address: farm?.bveCometWrapperAddress ?? '0x',
         functionName: 'endTimestamp',
       } as const
     }),
@@ -180,8 +180,8 @@ export const fetchFarmUserBCakeWrapperConstants = async (farmsToFetch: Serialize
   const totalBoostedShare = await publicClient({ chainId }).multicall({
     contracts: farmsToFetch.map((farm) => {
       return {
-        abi: v2BCakeWrapperABI,
-        address: farm?.bCakeWrapperAddress ?? '0x',
+        abi: v2BCometWrapperABI,
+        address: farm?.bveCometWrapperAddress ?? '0x',
         functionName: 'totalBoostedShare',
       } as const
     }),
@@ -193,7 +193,7 @@ export const fetchFarmUserBCakeWrapperConstants = async (farmsToFetch: Serialize
         abi: erc20Abi,
         address: farm?.lpAddress ?? '0x',
         functionName: 'balanceOf',
-        args: [farm?.bCakeWrapperAddress ?? '0x'],
+        args: [farm?.bveCometWrapperAddress ?? '0x'],
       } as const
     }),
     allowFailure: false,
@@ -211,15 +211,15 @@ export const fetchFarmUserBCakeWrapperConstants = async (farmsToFetch: Serialize
   }
 }
 
-export const fetchFarmUserBCakeWrapperRewardPerSec = async (
+export const fetchFarmUserBveCometWrapperRewardPerSec = async (
   farmsToFetch: SerializedFarmPublicData[],
   chainId: number,
 ) => {
   const rewardPerSec = await publicClient({ chainId }).multicall({
     contracts: farmsToFetch.map((farm) => {
       return {
-        abi: v2BCakeWrapperABI,
-        address: farm?.bCakeWrapperAddress ?? '0x',
+        abi: v2BCometWrapperABI,
+        address: farm?.bveCometWrapperAddress ?? '0x',
         functionName: 'rewardPerSecond',
       } as const
     }),
@@ -244,7 +244,7 @@ export const fetchFarmUserEarnings = async (
       return {
         abi: masterChefV2ABI,
         address: masterChefAddress,
-        functionName: 'pendingCake',
+        functionName: 'pendingveComet',
         args: [BigInt(farm.pid), userAddress as Address] as const,
       } as const
     }),
@@ -257,7 +257,7 @@ export const fetchFarmUserEarnings = async (
   return parsedEarnings
 }
 
-export const fetchFarmUserBCakeWrapperEarnings = async (
+export const fetchFarmUserBveCometWrapperEarnings = async (
   account: Address,
   farmsToFetch: SerializedFarmPublicData[],
   chainId: number,
@@ -265,8 +265,8 @@ export const fetchFarmUserBCakeWrapperEarnings = async (
   const rawEarnings = await publicClient({ chainId }).multicall({
     contracts: farmsToFetch.map((farm) => {
       return {
-        abi: v2BCakeWrapperABI,
-        address: farm?.bCakeWrapperAddress ?? '0x',
+        abi: v2BCometWrapperABI,
+        address: farm?.bveCometWrapperAddress ?? '0x',
         functionName: 'pendingReward',
         args: [account] as const,
       } as const
@@ -289,3 +289,4 @@ export const fetchCProxyAddress = async (address: Address, chainId: number) => {
     return address
   }
 }
+

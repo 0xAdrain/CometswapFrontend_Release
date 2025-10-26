@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import BigNumber from 'bignumber.js'
 
 export enum FIXED_STAKING_PERIOD {
@@ -51,3 +51,4 @@ export enum UnstakeType {
   WITHDRAW = 'withdraw',
   HARVEST = 'harvest',
 }
+

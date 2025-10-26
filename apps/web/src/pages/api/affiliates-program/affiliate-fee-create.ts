@@ -29,3 +29,4 @@ const affiliateFeeCreate = async (req: NextApiRequest, res: NextApiResponse) => 
 }
 
 export default affiliateFeeCreate
+

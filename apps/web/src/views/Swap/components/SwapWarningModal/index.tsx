@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
-import { Acknowledgement, Box, Heading, Message, ModalBody, ModalContainer, ModalHeader } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { WrappedTokenInfo } from '@cometswap/token-lists'
+import { Acknowledgement, Box, Heading, Message, ModalBody, ModalContainer, ModalHeader } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
@@ -56,3 +56,4 @@ const SwapWarningModal: React.FC<React.PropsWithChildren<SwapWarningModalProps>>
 }
 
 export default SwapWarningModal
+

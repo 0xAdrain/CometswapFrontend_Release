@@ -1,4 +1,4 @@
-import { useIsMounted } from "@pancakeswap/hooks";
+import { useIsMounted } from "@cometswap/hooks";
 import throttle from "lodash/throttle";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { styled } from "styled-components";
@@ -6,7 +6,7 @@ import { AtomBox } from "../../components/AtomBox";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
 import Flex from "../../components/Box/Flex";
-import CakePrice from "../../components/CakePrice/CakePrice";
+import CometPrice from "../../components/CometPrice/CometPrice";
 import Footer from "../../components/Footer";
 import LangSelector from "../../components/LangSelector/LangSelector";
 import MenuItems from "../../components/MenuItems/MenuItems";
@@ -86,8 +86,8 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   activeSubItem,
   activeSubItemChildItem,
   langs,
-  buyCakeLabel,
-  buyCakeLink,
+  buyveCometLabel,
+  buyveCometLink,
   children,
   chainId,
   logoComponent,
@@ -163,18 +163,20 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               </Flex>
               <Flex alignItems="center" height="100%">
                 <AtomBox mr="12px" display={{ xs: "none", xxl: "block" }}>
-                  <CakePrice chainId={chainId} showSkeleton={false} cakePriceUsd={cakePriceUsd} />
+                  <CometPrice chainId={chainId} showSkeleton={false} cakePriceUsd={cakePriceUsd} />
                 </AtomBox>
-                <Box mt="4px">
-                  <LangSelector
-                    currentLang={currentLang}
-                    langs={langs}
-                    setLang={setLang}
-                    buttonScale="xs"
-                    color="textSubtle"
-                    hideLanguage
-                  />
-                </Box>
+                {langs && langs.length > 0 && (
+                  <Box mt="4px">
+                    <LangSelector
+                      currentLang={currentLang}
+                      langs={langs}
+                      setLang={setLang}
+                      buttonScale="xs"
+                      color="textSubtle"
+                      hideLanguage
+                    />
+                  </Box>
+                )}
                 {rightSide}
               </Flex>
             </StyledNav>
@@ -213,8 +215,8 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
         setLang={setLang}
         currentLang={currentLang}
         cakePriceUsd={cakePriceUsd}
-        buyCakeLabel={buyCakeLabel}
-        buyCakeLink={buyCakeLink}
+        buyveCometLabel={buyveCometLabel}
+        buyveCometLink={buyveCometLink}
         mb={[`${MOBILE_MENU_HEIGHT}px`, null, "0px"]}
       />
       <AtomBox display={{ xs: "block", lg: "none" }}>

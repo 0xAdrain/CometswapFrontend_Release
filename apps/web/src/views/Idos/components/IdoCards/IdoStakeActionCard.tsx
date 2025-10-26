@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Card, CardBody, FlexGap, InfoIcon, Text, useTooltip } from '@pancakeswap/uikit'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Card, CardBody, FlexGap, InfoIcon, Text, useTooltip } from '@cometswap/uikit'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
 import ConnectW3WButton from 'components/ConnectW3WButton'
 import useTheme from 'hooks/useTheme'
 import { useMemo } from 'react'
@@ -136,3 +136,4 @@ export const IdoStakeActionCard: React.FC<{
     </Card>
   )
 }
+

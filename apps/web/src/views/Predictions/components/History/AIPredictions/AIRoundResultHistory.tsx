@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { BoxProps, Flex, GlassGlobeIcon, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { BoxProps, Flex, GlassGlobeIcon, Text } from '@cometswap/uikit'
 import { Round } from 'state/types'
 import styled from 'styled-components'
 import { getRoundPosition } from 'views/Predictions/helpers'
@@ -73,3 +73,4 @@ export const AIRoundResultHistory: React.FC<React.PropsWithChildren<AIRoundResul
     </RoundResultBox>
   )
 }
+

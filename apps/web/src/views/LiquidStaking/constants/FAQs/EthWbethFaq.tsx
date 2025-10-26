@@ -1,5 +1,5 @@
-import { Trans } from '@pancakeswap/localization'
-import { LinkExternal, StyledLink } from '@pancakeswap/uikit'
+import { Trans } from '@cometswap/localization'
+import { LinkExternal, StyledLink } from '@cometswap/uikit'
 import NextLink from 'next/link'
 
 export const EthWbethFaq = () => [
@@ -80,10 +80,11 @@ export const EthWbethFaq = () => [
           </StyledLink>
         </NextLink>
         <Trans>
-          PancakeSwap is also working to support a conversion contract on our liquid staking page to convert wBETH back
+          CometSwap is also working to support a conversion contract on our liquid staking page to convert wBETH back
           to ETH seamlessly.
         </Trans>
       </>
     ),
   },
 ]
+

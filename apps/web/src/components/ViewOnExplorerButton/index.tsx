@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, BoxProps, BscScanIcon, LinkExternal, TooltipOptions, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, BoxProps, BscScanIcon, LinkExternal, TooltipOptions, useTooltip } from '@cometswap/uikit'
 import { getBlockExploreLink } from '../../utils'
 
 interface ViewOnExplorerButtonProps extends BoxProps {
@@ -42,3 +42,4 @@ export const ViewOnExplorerButton = ({
     </>
   )
 }
+

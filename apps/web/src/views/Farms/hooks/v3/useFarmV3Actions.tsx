@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/sdk'
-import { useToast } from '@pancakeswap/uikit'
-import { MasterChefV3, NonfungiblePositionManager } from '@pancakeswap/v3-sdk'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId } from '@cometswap/sdk'
+import { useToast } from '@cometswap/uikit'
+import { MasterChefV3, NonfungiblePositionManager } from '@cometswap/v3-sdk'
 import { useQueryClient } from '@tanstack/react-query'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { BOOSTED_FARM_V3_GAS_LIMIT } from 'config'
@@ -193,7 +193,7 @@ const useFarmV3Actions = ({
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={resp.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
         </ToastDescriptionWithTx>,
       )
       queryClient.invalidateQueries({ queryKey: ['mcv3-harvest'] })
@@ -261,7 +261,7 @@ export function useFarmsV3BatchHarvest() {
         toastSuccess(
           `${t('Harvested')}!`,
           <ToastDescriptionWithTx txHash={resp.transactionHash}>
-            {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+            {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
           </ToastDescriptionWithTx>,
         )
         queryClient.invalidateQueries({ queryKey: ['mcv3-harvest'] })
@@ -277,3 +277,4 @@ export function useFarmsV3BatchHarvest() {
 }
 
 export default useFarmV3Actions
+

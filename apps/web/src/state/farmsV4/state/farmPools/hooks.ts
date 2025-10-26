@@ -1,6 +1,6 @@
-import { Protocol, UniversalFarmConfig, fetchAllUniversalFarms, masterChefV3Addresses } from '@pancakeswap/farms'
-import { masterChefAddresses } from '@pancakeswap/farms/src/const'
-import { masterChefV3ABI } from '@pancakeswap/v3-sdk'
+import { Protocol, UniversalFarmConfig, fetchAllUniversalFarms, masterChefV3Addresses } from '@cometswap/farms'
+import { masterChefAddresses } from '@cometswap/farms/src/const'
+import { masterChefV3ABI } from '@cometswap/v3-sdk'
 import { useQuery } from '@tanstack/react-query'
 import { masterChefV2ABI } from 'config/abi/masterchefV2'
 import { QUERY_SETTINGS_IMMUTABLE, SLOW_INTERVAL } from 'config/constants'
@@ -231,13 +231,13 @@ export const useV3PoolStatus = (pool?: PoolInfo | null) => {
   return useMemo(() => (data ? data[0] : []), [data])
 }
 
-export const usePoolTimeFrame = (bCakeWrapperAddress?: Address, chainId?: number) => {
+export const usePoolTimeFrame = (bveCometWrapperAddress?: Address, chainId?: number) => {
   const { data } = useQuery({
-    queryKey: ['usePoolTimeFrame', bCakeWrapperAddress, chainId],
+    queryKey: ['usePoolTimeFrame', bveCometWrapperAddress, chainId],
     queryFn: () => {
-      return fetchPoolsTimeFrame([bCakeWrapperAddress!], chainId!)
+      return fetchPoolsTimeFrame([bveCometWrapperAddress!], chainId!)
     },
-    enabled: !!chainId && !!bCakeWrapperAddress && bCakeWrapperAddress !== zeroAddress,
+    enabled: !!chainId && !!bveCometWrapperAddress && bveCometWrapperAddress !== zeroAddress,
     ...QUERY_SETTINGS_IMMUTABLE,
     refetchInterval: SLOW_INTERVAL,
     staleTime: SLOW_INTERVAL,
@@ -281,10 +281,10 @@ export const useMultiChainPoolsTimeFrame = (pools: UniversalFarmConfig[]) => {
       const results = await Promise.all(
         poolsEntries.map(async ([chainId_, poolList]) => {
           const chainId = Number(chainId_)
-          const bCakeAddresses = poolList.map(({ bCakeWrapperAddress }) => bCakeWrapperAddress ?? zeroAddress)
-          if (bCakeAddresses.length === 0) return { [chainId]: {} }
+          const bveCometAddresses = poolList.map(({ bveCometWrapperAddress }) => bveCometWrapperAddress ?? zeroAddress)
+          if (bveCometAddresses.length === 0) return { [chainId]: {} }
           try {
-            const timeFrameData = await fetchPoolsTimeFrame(bCakeAddresses, chainId)
+            const timeFrameData = await fetchPoolsTimeFrame(bveCometAddresses, chainId)
             return timeFrameData ?? []
           } catch (error) {
             console.error(`Error fetching time frame data for chainId ${chainId}:`, error)
@@ -315,3 +315,4 @@ export const useMultiChainPoolsTimeFrame = (pools: UniversalFarmConfig[]) => {
     [data, isPending],
   )
 }
+

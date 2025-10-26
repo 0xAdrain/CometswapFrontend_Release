@@ -1,6 +1,6 @@
-import { Tag } from "@pancakeswap/uikit";
+import { Tag } from "@cometswap/uikit";
 import styled from "styled-components";
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 import { SpaceProps } from "styled-system";
 
 import {

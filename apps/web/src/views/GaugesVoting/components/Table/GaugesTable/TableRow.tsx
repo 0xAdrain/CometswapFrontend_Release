@@ -1,6 +1,6 @@
-import { GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@pancakeswap/gauges'
-import { useTranslation } from '@pancakeswap/localization'
-import { Percent } from '@pancakeswap/sdk'
+import { GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@cometswap/gauges'
+import { useTranslation } from '@cometswap/localization'
+import { Percent } from '@cometswap/sdk'
 import {
   Button,
   CheckmarkCircleFillIcon,
@@ -12,13 +12,13 @@ import {
   FlexGap,
   Tag,
   Text,
-} from '@pancakeswap/uikit'
-import formatLocalisedCompactNumber, { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import formatLocalisedCompactNumber, { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
 import { useHover } from 'hooks/useHover'
 import { memo, useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Tooltips } from 'views/CakeStaking/components/Tooltips'
+import { Tooltips } from 'views/CometStaking/components/Tooltips'
 import { usePositionManagerName } from 'views/GaugesVoting/hooks/usePositionManagerName'
 import { feeTierPercent } from 'views/V3Info/utils'
 import { GaugeTokenImage } from '../../GaugeTokenImage'
@@ -202,3 +202,4 @@ export const ExpandRow: React.FC<{
     </Flex>
   )
 }
+

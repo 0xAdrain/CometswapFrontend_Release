@@ -1,4 +1,4 @@
-import type { TranslateFunction } from '@pancakeswap/localization'
+import type { TranslateFunction } from '@cometswap/localization'
 
 export type FAQConfig = (t: TranslateFunction) => {
   title: string
@@ -10,3 +10,4 @@ export type FAQConfig = (t: TranslateFunction) => {
   subtitle?: string
 }
 export type ConfigType = 'swap' | 'prediction' | 'buyCrypto'
+

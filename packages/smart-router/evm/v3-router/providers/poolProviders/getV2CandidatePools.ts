@@ -1,5 +1,5 @@
-import { BigintIsh, Currency, CurrencyAmount, Price, ZERO } from '@pancakeswap/sdk'
-import { formatPrice } from '@pancakeswap/utils/formatFractions'
+import { BigintIsh, Currency, CurrencyAmount, Price, ZERO } from '@cometswap/sdk'
+import { formatPrice } from '@cometswap/utils/formatFractions'
 
 import { WithFallbackOptions, createAsyncCallWithFallbacks } from '../../../utils/withFallback'
 import { getPairCombinations } from '../../functions'

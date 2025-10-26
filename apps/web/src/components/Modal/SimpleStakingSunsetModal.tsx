@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { LinkExternal, Text, useModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { LinkExternal, Text, useModal } from '@cometswap/uikit'
 import { useCallback, useEffect, useMemo } from 'react'
 
 import { Trans } from 'components/CustomTrans'
@@ -66,7 +66,7 @@ export function SimpleStakingSunsetModal() {
               bold
               style={{ display: 'inline-flex' }}
               showExternalIcon
-              href="https://blog.pancakeswap.finance/articles/action-required-simple-staking-product-retirement"
+              href="https://blog.cometswap.finance/articles/action-required-simple-staking-product-retirement"
             >
               {t('Learn more here')}
             </LinkExternal>
@@ -95,3 +95,4 @@ export function SimpleStakingSunsetModal() {
 
   return null
 }
+

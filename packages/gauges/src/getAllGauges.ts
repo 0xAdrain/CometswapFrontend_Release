@@ -1,4 +1,4 @@
-import { cacheByLRU } from '@pancakeswap/utils/cacheByLRU'
+import { cacheByLRU } from '@cometswap/utils/cacheByLRU'
 import keyBy from 'lodash/keyBy'
 import { PublicClient } from 'viem'
 import { getGauges } from './constants/config/getGauges'

@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic'
 import { memo, useCallback, useMemo, useRef } from 'react'
 
-import { AutoColumn, Button, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { AutoColumn, Button, useMatchBreakpoints } from '@cometswap/uikit'
 
-import { useTranslation } from '@pancakeswap/localization'
-import replaceBrowserHistoryMultiple from '@pancakeswap/utils/replaceBrowserHistoryMultiple'
+import { useTranslation } from '@cometswap/localization'
+import replaceBrowserHistoryMultiple from '@cometswap/utils/replaceBrowserHistoryMultiple'
 
 import { AutoRow } from 'components/Layout/Row'
 import { Field } from 'state/swap/actions'
@@ -12,8 +12,8 @@ import { useSwapState } from 'state/swap/hooks'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 import { keyframes, styled } from 'styled-components'
 
-import { useTheme } from '@pancakeswap/hooks'
-import { SwapUIV2 } from '@pancakeswap/widgets-internal'
+import { useTheme } from '@cometswap/hooks'
+import { SwapUIV2 } from '@cometswap/widgets-internal'
 import { LottieRefCurrentProps } from 'lottie-react'
 import { useAllowRecipient } from '../../Swap/V3Swap/hooks'
 
@@ -123,3 +123,4 @@ export const AssignRecipientButton: React.FC = memo(() => {
     </Button>
   )
 })
+

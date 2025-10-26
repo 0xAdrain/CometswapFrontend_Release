@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 const WhiteBunny: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -41,3 +41,4 @@ const WhiteBunny: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
 }
 
 export default WhiteBunny
+

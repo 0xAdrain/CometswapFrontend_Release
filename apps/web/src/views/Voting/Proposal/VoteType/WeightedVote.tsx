@@ -1,4 +1,4 @@
-import { AddIcon, Box, Flex, IconButton, Input, MinusIcon, Text } from '@pancakeswap/uikit'
+import { AddIcon, Box, Flex, IconButton, Input, MinusIcon, Text } from '@cometswap/uikit'
 import { Dispatch, useCallback, useMemo } from 'react'
 import { Proposal, ProposalState } from 'state/types'
 import { styled } from 'styled-components'
@@ -77,7 +77,7 @@ interface WeightedVoteProps {
   proposal: Proposal
   hasAccountVoted: boolean
   vote: WeightedVoteState
-  notEnoughVeCake: boolean
+  notEnoughComet: boolean
   setVote: Dispatch<WeightedVoteState>
 }
 
@@ -85,7 +85,7 @@ export const WeightedVote: React.FC<WeightedVoteProps> = ({
   proposal,
   hasAccountVoted,
   vote,
-  notEnoughVeCake,
+  notEnoughComet,
   setVote,
 }) => {
   const totalVote = useMemo(() => Object.values(vote).reduce((acc, value) => acc + value, 0), [vote])
@@ -148,13 +148,13 @@ export const WeightedVote: React.FC<WeightedVoteProps> = ({
                     pattern="^[0-9]+$"
                     inputMode="numeric"
                     value={inputValue}
-                    disabled={notEnoughVeCake}
+                    disabled={notEnoughComet}
                     onChange={(e) => handleInput(e, choiceIndex)}
                   />
                   <IconButtonStyle
                     variant="subtle"
                     scale="sm"
-                    disabled={notEnoughVeCake}
+                    disabled={notEnoughComet}
                     onClick={() => handleButton(choiceIndex, inputValue + 1)}
                   >
                     <AddIcon color="currentColor" width="14px" />
@@ -168,3 +168,4 @@ export const WeightedVote: React.FC<WeightedVoteProps> = ({
     </>
   )
 }
+

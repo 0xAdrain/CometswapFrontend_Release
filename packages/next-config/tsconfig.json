@@ -1,5 +1,5 @@
 {
-  "extends": "@pancakeswap/tsconfig/base",
+  "extends": "../tsconfig/base.json",
   "include": ["./**/*.ts"],
   "exclude": ["**/*.test.ts", "dist"],
   "compilerOptions": {
@@ -8,6 +8,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "moduleResolution": "node"
   }
 }
+

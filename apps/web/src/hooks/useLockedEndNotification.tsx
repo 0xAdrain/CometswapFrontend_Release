@@ -1,14 +1,14 @@
-import { useToast, Text, StyledLink } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useToast, Text, StyledLink } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { useEffect } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { useTranslation } from '@cometswap/localization'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { useAtom } from 'jotai'
 import { useAccount } from 'wagmi'
 import atomWithStorageWithErrorCatch from 'utils/atomWithStorageWithErrorCatch'
 import { useQueryClient } from '@tanstack/react-query'
-import { useUserCakeLockStatus } from './useUserCakeLockStatus'
+import { useUserCometLockStatus } from './useUserCometLockStatus'
 
 const lockedNotificationShowAtom = atomWithStorageWithErrorCatch('lockedNotificationShow', true, () => sessionStorage)
 function useLockedNotificationShow() {
@@ -32,7 +32,7 @@ const useLockedEndNotification = () => {
   const { toastInfo } = useToast()
   const queryClient = useQueryClient()
   const { address: account } = useAccount()
-  const isUserLockedEnd = useUserCakeLockStatus()
+  const isUserLockedEnd = useUserCometLockStatus()
   const [lockedNotificationShow, setLockedNotificationShow] = useLockedNotificationShow()
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const useLockedEndNotification = () => {
       if (!isUndefinedOrNull(isUserLockedEnd)) {
         setLockedNotificationShow(true)
         queryClient.invalidateQueries({
-          queryKey: ['userCakeLockStatus', account],
+          queryKey: ['userveCometLockStatus', account],
         })
       }
     } else {
@@ -50,10 +50,11 @@ const useLockedEndNotification = () => {
 
   useEffect(() => {
     if (toastInfo && isUserLockedEnd && lockedNotificationShow) {
-      toastInfo(t('Cake Syrup Pool'), <LockedEndDescription />)
+      toastInfo(t('veComet Syrup Pool'), <LockedEndDescription />)
       setLockedNotificationShow(false) // show once
     }
   }, [isUserLockedEnd, toastInfo, lockedNotificationShow, setLockedNotificationShow, t])
 }
 
 export default useLockedEndNotification
+

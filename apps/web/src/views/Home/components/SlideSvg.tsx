@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 export const SlideSvgLight: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -35,3 +35,4 @@ export const SlideSvgDark: React.FC<React.PropsWithChildren<SvgProps>> = (props)
     </Svg>
   )
 }
+

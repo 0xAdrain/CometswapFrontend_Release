@@ -1,8 +1,8 @@
-import { ChainId, getChainName as defaultGetChainName } from "@pancakeswap/chains";
-import { useTheme } from "@pancakeswap/hooks";
-import { Currency, ERC20Token } from "@pancakeswap/sdk";
-import { getTokenByAddress } from "@pancakeswap/tokens";
-import { Column, IMultiSelectChangeEvent, IMultiSelectProps, ISelectItem, MultiSelect } from "@pancakeswap/uikit";
+import { ChainId, getChainName as defaultGetChainName } from "@cometswap/chains";
+import { useTheme } from "@cometswap/hooks";
+import { Currency, ERC20Token } from "@cometswap/sdk";
+import { getTokenByAddress } from "@cometswap/tokens";
+import { Column, IMultiSelectChangeEvent, IMultiSelectProps, ISelectItem, MultiSelect } from "@cometswap/uikit";
 import { useCallback, useMemo } from "react";
 import styled from "styled-components";
 import { Address } from "viem";

@@ -1,9 +1,9 @@
-import { Protocol } from '@pancakeswap/farms'
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { LegacyRouter } from '@pancakeswap/smart-router/legacy-router'
-import { Button, Flex, MoreIcon, SubMenu } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { Protocol } from '@cometswap/farms'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { LegacyRouter } from '@cometswap/smart-router/legacy-router'
+import { Button, Flex, MoreIcon, SubMenu } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { PERSIST_CHAIN_KEY } from 'config/constants'
@@ -147,3 +147,4 @@ export const ActionItems = ({ pool, icon }: { pool: PoolInfo; icon?: React.React
     </Flex>
   )
 }
+

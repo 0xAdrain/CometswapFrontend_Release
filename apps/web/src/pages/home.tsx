@@ -24,3 +24,4 @@ IndexPage.chains = []
 IndexPage.isShowV4IconButton = true
 
 export default IndexPage
+

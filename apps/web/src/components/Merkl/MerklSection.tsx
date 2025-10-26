@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoRow,
   Button,
@@ -10,14 +10,14 @@ import {
   Text,
   TooltipText,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
 import { LightGreyCard } from 'components/Card'
 
-import { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
 import { useMemo } from 'react'
 import { getMerklLink } from 'utils/getMerklLink'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import useMerkl from '../../hooks/useMerkl'
 
 function TextWarning({ tokenAmount }: { tokenAmount: CurrencyAmount<Currency> }) {
@@ -125,7 +125,7 @@ export function MerklSection({
               external
               color="currentColor"
               style={{ display: 'inline-flex' }}
-              href={merklLink ?? 'https://merkl.angle.money/?search=PancakeSwap&status=live%2Csoon'}
+              href={merklLink ?? 'https://merkl.angle.money/?search=CometSwap&status=live%2Csoon'}
             >
               {t('here')}
             </Link>
@@ -137,3 +137,4 @@ export function MerklSection({
     </Column>
   )
 }
+

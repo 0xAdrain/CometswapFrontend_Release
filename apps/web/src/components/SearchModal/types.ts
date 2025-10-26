@@ -11,3 +11,4 @@ export enum CommonBasesType {
 }
 
 export default CurrencyModalView
+

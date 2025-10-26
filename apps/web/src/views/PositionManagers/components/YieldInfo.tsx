@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { Box, Flex, RowBetween, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { Box, Flex, RowBetween, Text } from '@cometswap/uikit'
 import { memo, useMemo } from 'react'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
 import { AprResult } from '../hooks'
 import { AprButton } from './AprButton'
 import { RewardPerDay } from './RewardPerDay'
@@ -48,11 +48,11 @@ export const YieldInfo = memo(function YieldInfo({
 }: Props) {
   const { t } = useTranslation()
   const earning = useMemo(
-    () => (apr.isInCakeRewardDateRange ? `${rewardToken?.symbol ?? ''} + ${t('Fees')}` : t('Fees')),
-    [t, apr.isInCakeRewardDateRange, rewardToken?.symbol],
+    () => (apr.isInCometRewardDateRange ? `${rewardToken?.symbol ?? ''} + ${t('Fees')}` : t('Fees')),
+    [t, apr.isInCometRewardDateRange, rewardToken?.symbol],
   )
 
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { locked } = useBCometBoostLimitAndLockInfo()
   return (
     <Box>
       <RowBetween>
@@ -70,7 +70,7 @@ export const YieldInfo = memo(function YieldInfo({
           lpTokenDecimals={lpTokenDecimals}
           aprTimeWindow={aprTimeWindow}
           rewardToken={rewardToken}
-          isBooster={isBooster && apr?.isInCakeRewardDateRange}
+          isBooster={isBooster && apr?.isInCometRewardDateRange}
           boosterMultiplier={totalAssetsInUsd === 0 || !locked ? 3 : boosterMultiplier === 0 ? 3 : boosterMultiplier}
         />
       </RowBetween>
@@ -81,7 +81,7 @@ export const YieldInfo = memo(function YieldInfo({
           {autoCompound && <AutoCompoundTag ml="0.5em" />}
         </Flex>
       </RowBetween>
-      {apr.isInCakeRewardDateRange && (
+      {apr.isInCometRewardDateRange && (
         <RowBetween>
           <Text>{t('Reward/Day')}:</Text>
           <Flex flexDirection="row" justifyContent="flex-end" alignItems="center">
@@ -92,3 +92,4 @@ export const YieldInfo = memo(function YieldInfo({
     </Box>
   )
 })
+

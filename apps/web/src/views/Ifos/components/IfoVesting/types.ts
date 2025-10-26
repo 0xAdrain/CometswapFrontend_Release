@@ -3,3 +3,4 @@ export enum VestingStatus {
   HAS_TOKENS_CLAIM = 'HAS_TOKENS_CLAIM',
   ENDED = 'ENDED',
 }
+

@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Box, Button, Card, Heading, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Box, Button, Card, Heading, Text } from '@cometswap/uikit'
 import Page from 'components/Layout/Page'
 import dayjs from 'dayjs'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useTheme from 'hooks/useTheme'
 import { useEffect, useMemo, useState } from 'react'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import BarChart from './components/BarChart/alt'
 import { DarkGreyCard } from './components/Card'
 import LineChart from './components/LineChart/alt'
@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <Page>
       <Heading scale="lg" mb="16px">
-        {t('PancakeSwap Info & Analytics')}
+        {t('CometSwap Info & Analytics')}
       </Heading>
       <ChartCardsContainer>
         <Card>
@@ -241,3 +241,4 @@ export default function Home() {
     </Page>
   )
 }
+

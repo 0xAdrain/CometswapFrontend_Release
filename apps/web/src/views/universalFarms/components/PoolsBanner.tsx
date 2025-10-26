@@ -1,8 +1,8 @@
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Column, LinkExternal, PageHeader, Row, Text } from '@pancakeswap/uikit'
-import { VerticalDivider } from '@pancakeswap/widgets-internal'
-import { BCakeBoosterCard } from 'views/Farms/components/YieldBooster/components/bCakeV3/BCakeBoosterCard'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Column, LinkExternal, PageHeader, Row, Text } from '@cometswap/uikit'
+import { VerticalDivider } from '@cometswap/widgets-internal'
+import { BCometBoosterCard } from 'views/Farms/components/YieldBooster/components/bCometV3/BCometBoosterCard'
 import { FarmFlexWrapper, FarmH1, FarmH2 } from 'views/Farms/styled'
 
 export const PoolsBanner = ({ additionLink }: { additionLink?: React.ReactNode }) => {
@@ -22,7 +22,7 @@ export const PoolsBanner = ({ additionLink }: { additionLink?: React.ReactNode }
             </FarmH2>
             <Row flexWrap="wrap" gap="16px">
               <LinkExternal
-                href="https://docs.pancakeswap.finance/products/yield-farming/how-to-use-farms"
+                href="https://docs.cometswap.finance/products/yield-farming/how-to-use-farms"
                 showExternalIcon={false}
               >
                 <Button p="0" variant="text">
@@ -40,10 +40,11 @@ export const PoolsBanner = ({ additionLink }: { additionLink?: React.ReactNode }
             </Row>
           </Box>
           <Box>
-            <BCakeBoosterCard />
+            <BCometBoosterCard />
           </Box>
         </FarmFlexWrapper>
       </Column>
     </PageHeader>
   )
 }
+

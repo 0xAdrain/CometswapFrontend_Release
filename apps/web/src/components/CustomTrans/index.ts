@@ -12,3 +12,4 @@ export function Trans({ text, data = {} }: { text: string; data?: { [key: string
     return data[key] || p
   })
 }
+

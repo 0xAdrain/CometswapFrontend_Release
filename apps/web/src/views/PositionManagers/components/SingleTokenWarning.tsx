@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Message, MessageText, Text, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Message, MessageText, Text, Link } from '@cometswap/uikit'
 import { memo } from 'react'
 
 export const SingleTokenWarning: React.FC<{ strategyInfoUrl?: string }> = memo(({ strategyInfoUrl }) => {
@@ -31,3 +31,4 @@ export const SingleTokenWarning: React.FC<{ strategyInfoUrl?: string }> = memo((
     </Message>
   )
 })
+

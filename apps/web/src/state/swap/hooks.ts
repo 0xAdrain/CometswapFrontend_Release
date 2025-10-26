@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Price, Trade, TradeType } from '@pancakeswap/sdk'
-import { CAKE, STABLE_COIN, USDC, USDT } from '@pancakeswap/tokens'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Price, Trade, TradeType } from '@cometswap/sdk'
+import { COMET, STABLE_COIN, USDC, USDT } from '@cometswap/tokens'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { useQuery } from '@tanstack/react-query'
 import { DEFAULT_INPUT_CURRENCY } from 'config/constants/exchange'
 import dayjs from 'dayjs'
@@ -20,7 +20,7 @@ import { isAddressEqual, safeGetAddress } from 'utils'
 import { computeSlippageAdjustedAmounts } from 'utils/exchange'
 import { getTokenAddress } from 'views/Swap/components/Chart/utils'
 import { useAccount } from 'wagmi'
-import { PairDataTimeWindowEnum } from '@pancakeswap/uikit'
+import { PairDataTimeWindowEnum } from '@cometswap/uikit'
 import { useCurrencyBalances } from '../wallet/hooks'
 import { Field, replaceSwapState } from './actions'
 import { SwapState, swapReducerAtom } from './reducer'
@@ -264,7 +264,7 @@ export function useDefaultsFromURLSearch():
     const parsed = queryParametersToSwapState(
       query,
       native.symbol,
-      CAKE[chainId]?.address ?? STABLE_COIN[chainId]?.address ?? USDC[chainId]?.address ?? USDT[chainId]?.address,
+      COMET[chainId]?.address ?? STABLE_COIN[chainId]?.address ?? USDC[chainId]?.address ?? USDT[chainId]?.address,
     )
 
     dispatch(
@@ -363,3 +363,4 @@ export const usePairRate = ({
     ),
   })
 }
+

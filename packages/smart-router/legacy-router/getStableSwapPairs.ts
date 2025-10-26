@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { CurrencyAmount } from '@pancakeswap/sdk'
-import { getStableSwapPools } from '@pancakeswap/stable-swap-sdk'
-import { deserializeToken } from '@pancakeswap/token-lists'
+import { ChainId } from '@cometswap/chains'
+import { CurrencyAmount } from '@cometswap/sdk'
+import { getStableSwapPools } from '@cometswap/stable-swap-sdk'
+import { deserializeToken } from '@cometswap/token-lists'
 
 import { createStableSwapPair } from './stableSwap'
 import { StableSwapPair } from './types'

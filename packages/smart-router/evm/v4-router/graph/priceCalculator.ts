@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Price, Native } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Price, Native } from '@cometswap/sdk'
 import invariant from 'tiny-invariant'
 
 import { Edge, Graph, Vertice } from '../types'

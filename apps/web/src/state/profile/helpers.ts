@@ -1,11 +1,9 @@
-import { ChainId } from '@pancakeswap/chains'
-import { pancakeProfileABI } from 'config/abi/pancakeProfile'
+import { ChainId } from '@cometswap/chains'
+import { cometProfileABI } from 'config/abi/cometProfile'
 import { API_PROFILE } from 'config/constants/endpoints'
-import { getNftApi } from 'state/nftMarket/helpers'
-import { NftToken } from 'state/nftMarket/types'
 import { getTeam } from 'state/teams/helpers'
 import { Profile } from 'state/types'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getCometProfileAddress } from 'utils/addressHelpers'
 import { publicClient } from 'utils/wagmi'
 import { Address } from 'viem'
 
@@ -50,14 +48,14 @@ export const getProfile = async (address: string): Promise<GetProfileResponse | 
     const profileCallsResult = await client.multicall({
       contracts: [
         {
-          address: getPancakeProfileAddress(),
-          abi: pancakeProfileABI,
+          address: getCometProfileAddress(),
+          abi: cometProfileABI,
           functionName: 'hasRegistered',
           args: [address as Address],
         },
         {
-          address: getPancakeProfileAddress(),
-          abi: pancakeProfileABI,
+          address: getCometProfileAddress(),
+          abi: cometProfileABI,
           functionName: 'getUserProfile',
           args: [address as Address],
         },
@@ -70,35 +68,10 @@ export const getProfile = async (address: string): Promise<GetProfileResponse | 
     }
 
     const { userId, points, teamId, tokenId, collectionAddress, isActive } = transformProfileResponse(profileResponse)
-    const [team, username, nftRes] = await Promise.all([
+    const [team, username] = await Promise.all([
       teamId ? getTeam(teamId) : Promise.resolve(null),
       getUsername(address),
-      isActive && collectionAddress && tokenId
-        ? getNftApi(collectionAddress, tokenId.toString())
-        : Promise.resolve(null),
     ])
-    let nftToken: NftToken | undefined
-
-    // If the profile is not active the tokenId returns 0, which is still a valid token id
-    // so only fetch the nft data if active
-    if (nftRes && collectionAddress) {
-      nftToken = {
-        tokenId: nftRes.tokenId,
-        name: nftRes.name,
-        collectionName: nftRes.collection.name,
-        collectionAddress,
-        description: nftRes.description,
-        attributes: nftRes.attributes,
-        createdAt: nftRes.createdAt,
-        updatedAt: nftRes.updatedAt,
-        image: {
-          original: nftRes.image?.original,
-          thumbnail: nftRes.image?.thumbnail,
-        },
-      }
-    } else {
-      nftToken = undefined
-    }
 
     const profile = {
       userId,
@@ -108,7 +81,6 @@ export const getProfile = async (address: string): Promise<GetProfileResponse | 
       username,
       collectionAddress,
       isActive,
-      nft: nftToken,
       team,
     } as Profile
 
@@ -118,3 +90,4 @@ export const getProfile = async (address: string): Promise<GetProfileResponse | 
     return null
   }
 }
+

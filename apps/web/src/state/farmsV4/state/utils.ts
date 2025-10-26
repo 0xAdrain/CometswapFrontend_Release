@@ -1,7 +1,7 @@
-import { Protocol, fetchAllUniversalFarms } from '@pancakeswap/farms'
-import { LegacyRouter } from '@pancakeswap/smart-router/legacy-router'
-import { Token } from '@pancakeswap/swap-sdk-core'
-import { getTokenByAddress } from '@pancakeswap/tokens'
+import { Protocol, fetchAllUniversalFarms } from '@cometswap/farms'
+import { LegacyRouter } from '@cometswap/smart-router/legacy-router'
+import { Token } from '@cometswap/swap-sdk-core'
+import { getTokenByAddress } from '@cometswap/tokens'
 import BN from 'bignumber.js'
 import { paths } from 'state/info/api/schema'
 import { safeGetAddress } from 'utils'
@@ -86,3 +86,4 @@ export const getPoolMultiplier = (allocPoint: bigint) => {
   }
   return `${+new BN(allocPoint.toString()).div(10).toString()}X`
 }
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text } from '@cometswap/uikit'
 
 const NFPWarning = () => {
   const { t } = useTranslation()
@@ -14,3 +14,4 @@ const NFPWarning = () => {
 }
 
 export default NFPWarning
+

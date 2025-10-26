@@ -20,3 +20,4 @@ export const requiresApproval = async (
     return true
   }
 }
+

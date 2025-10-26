@@ -1,5 +1,5 @@
 import { PropsWithChildren, memo } from 'react'
-import { Column } from '@pancakeswap/uikit'
+import { Column } from '@cometswap/uikit'
 import { Wrapper } from '../styles'
 
 export const FormContainer = memo(function FormContainer({ children }: PropsWithChildren) {
@@ -11,3 +11,4 @@ export const FormContainer = memo(function FormContainer({ children }: PropsWith
     </Wrapper>
   )
 })
+

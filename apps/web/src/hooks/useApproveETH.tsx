@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { WETH9 } from '@pancakeswap/sdk'
-import { MaxUint256 } from '@pancakeswap/swap-sdk-core'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { WETH9 } from '@cometswap/sdk'
+import { MaxUint256 } from '@cometswap/swap-sdk-core'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -36,3 +36,4 @@ export const useApproveETH = (spender: string) => {
 
   return { isPending, onApprove }
 }
+

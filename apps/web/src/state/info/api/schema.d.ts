@@ -1129,7 +1129,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        protocol: 'pancake-v3' | 'uniswap-v3'
+        protocol: 'comet-v3' | 'uniswap-v3'
         chainId: '1' | '56'
       }
       cookie?: never
@@ -4452,3 +4452,4 @@ export interface operations {
     }
   }
 }
+

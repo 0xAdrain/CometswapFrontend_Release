@@ -1,12 +1,38 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Price, Token } from '@pancakeswap/sdk'
-import { FlexGap } from '@pancakeswap/uikit'
-import { priceToClosestTick } from '@pancakeswap/v3-sdk'
-import { Bound } from 'config/constants/types'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Button, FlexGap, RowBetween, Text } from '@cometswap/uikit'
+import { Currency } from '@cometswap/sdk'
+import { FeeAmount, nearestUsableTick, TICK_SPACINGS, tickToPrice } from '@cometswap/v3-sdk'
 import { useMemo } from 'react'
-import StepCounter from './StepCounter'
+import { Bound } from 'config/constants/types'
+import { StyledInput } from '@cometswap/widgets-internal'
+import { LockIcon } from './LockIcon'
 
-// currencyA is the base token
+interface RangeSelectorProps {
+  priceLower?: Price<Currency, Currency>
+  priceUpper?: Price<Currency, Currency>
+  onLeftRangeInput: (typedValue: string) => void
+  onRightRangeInput: (typedValue: string) => void
+  getDecrementLower: () => string
+  getIncrementLower: () => string
+  getDecrementUpper: () => string
+  getIncrementUpper: () => string
+  currencyA?: Currency | null
+  currencyB?: Currency | null
+  feeAmount?: FeeAmount
+  ticksAtLimit: { [bound in Bound]?: boolean | undefined }
+}
+
+const getTickToPrice = (tick: number, currencyA?: Currency | null, currencyB?: Currency | null) => {
+  if (!currencyA || !currencyB) {
+    return undefined
+  }
+  return tickToPrice(currencyA, currencyB, tick)
+}
+
+const priceToClosestTick = (price: Price<Currency, Currency>): number => {
+  return nearestUsableTick(price.quotient, TICK_SPACINGS[FeeAmount.MEDIUM])
+}
+
 export default function RangeSelector({
   priceLower,
   priceUpper,
@@ -20,46 +46,28 @@ export default function RangeSelector({
   currencyB,
   feeAmount,
   ticksAtLimit,
-  tickSpaceLimits,
-}: {
-  priceLower?: Price<Token, Token>
-  priceUpper?: Price<Token, Token>
-  getDecrementLower: () => Price<Token, Token> | undefined
-  getIncrementLower: () => Price<Token, Token> | undefined
-  getDecrementUpper: () => Price<Token, Token> | undefined
-  getIncrementUpper: () => Price<Token, Token> | undefined
-  onLeftRangeInput: (typedValue: Price<Token, Token> | undefined) => void
-  onRightRangeInput: (typedValue: Price<Token, Token> | undefined) => void
-  currencyA?: Currency | undefined | null
-  currencyB?: Currency | undefined | null
-  feeAmount?: number
-  ticksAtLimit: { [bound in Bound]?: boolean | undefined }
-  tickSpaceLimits?: { [bound in Bound]?: number | undefined }
-}) {
+}: RangeSelectorProps) {
   const { t } = useTranslation()
-  const tokenA = (currencyA ?? undefined)?.wrapped
-  const tokenB = (currencyB ?? undefined)?.wrapped
-  const isSorted = tokenA && tokenB && tokenA.sortsBefore(tokenB)
+
+  const isSorted = currencyA && currencyB && currencyA.wrapped.sortsBefore(currencyB.wrapped)
 
   const leftPrice = isSorted ? priceLower : priceUpper?.invert()
   const rightPrice = isSorted ? priceUpper : priceLower?.invert()
 
+  const tickSpaceLimits = useMemo(
+    () => ({
+      [Bound.LOWER]: feeAmount && getTickToPrice(-887272, currencyA, currencyB),
+      [Bound.UPPER]: feeAmount && getTickToPrice(887272, currencyA, currencyB),
+    }),
+    [currencyA, currencyB, feeAmount],
+  )
+
   const leftValue = useMemo(() => {
-    if (ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]) return '0'
-
-    if (
-      tickSpaceLimits?.[Bound.LOWER] !== undefined &&
-      leftPrice &&
-      priceToClosestTick(leftPrice) <= tickSpaceLimits[Bound.LOWER]
-    ) {
-      return '0'
-    }
-
     return leftPrice?.toSignificant(5) ?? ''
-  }, [isSorted, leftPrice, tickSpaceLimits, ticksAtLimit])
+  }, [leftPrice])
 
   const rightValue = useMemo(() => {
-    if (ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]) return '∞'
+    if (ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]) return 'Infinity'
 
     if (
       tickSpaceLimits?.[Bound.LOWER] !== undefined &&
@@ -74,7 +82,7 @@ export default function RangeSelector({
       rightPrice &&
       priceToClosestTick(rightPrice) >= tickSpaceLimits[Bound.UPPER]
     ) {
-      return '∞'
+      return 'Infinity'
     }
 
     return rightPrice?.toSignificant(5) ?? ''
@@ -82,34 +90,73 @@ export default function RangeSelector({
 
   return (
     <FlexGap gap="16px" width="100%">
-      <StepCounter
-        value={leftValue}
-        onUserInput={onLeftRangeInput}
-        width="48%"
-        decrement={isSorted ? getDecrementLower : getIncrementUpper}
-        increment={isSorted ? getIncrementLower : getDecrementUpper}
-        decrementDisabled={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]}
-        incrementDisabled={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]}
-        feeAmount={feeAmount}
-        label={leftPrice ? `${currencyB?.symbol}` : '-'}
-        title={t('Min Price')}
-        tokenA={currencyA}
-        tokenB={currencyB}
-      />
-      <StepCounter
-        value={rightValue}
-        onUserInput={onRightRangeInput}
-        width="48%"
-        decrement={isSorted ? getDecrementUpper : getIncrementLower}
-        increment={isSorted ? getIncrementUpper : getDecrementLower}
-        incrementDisabled={ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]}
-        decrementDisabled={ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]}
-        feeAmount={feeAmount}
-        label={rightPrice ? `${currencyB?.symbol}` : '-'}
-        tokenA={currencyA}
-        tokenB={currencyB}
-        title={t('Max Price')}
-      />
+      <AutoColumn gap="8px" style={{ flex: '1' }}>
+        <RowBetween>
+          <Text fontSize="12px" textTransform="uppercase" color="secondary" fontWeight={600}>
+            {t('Min Price')}
+          </Text>
+          <LockIcon locked={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]} />
+        </RowBetween>
+        <RowBetween>
+          <Button
+            onClick={getDecrementLower}
+            variant="secondary"
+            scale="sm"
+            disabled={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]}
+          >
+            -
+          </Button>
+          <StyledInput
+            value={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER] ? '0' : leftValue}
+            onUserInput={onLeftRangeInput}
+            width="100%"
+            placeholder="0.00"
+            disabled={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]}
+          />
+          <Button
+            onClick={getIncrementLower}
+            variant="secondary"
+            scale="sm"
+            disabled={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]}
+          >
+            +
+          </Button>
+        </RowBetween>
+      </AutoColumn>
+
+      <AutoColumn gap="8px" style={{ flex: '1' }}>
+        <RowBetween>
+          <Text fontSize="12px" textTransform="uppercase" color="secondary" fontWeight={600}>
+            {t('Max Price')}
+          </Text>
+          <LockIcon locked={ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]} />
+        </RowBetween>
+        <RowBetween>
+          <Button
+            onClick={getDecrementUpper}
+            variant="secondary"
+            scale="sm"
+            disabled={ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]}
+          >
+            -
+          </Button>
+          <StyledInput
+            value={rightValue}
+            onUserInput={onRightRangeInput}
+            width="100%"
+            placeholder="0.00"
+            disabled={ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]}
+          />
+          <Button
+            onClick={getIncrementUpper}
+            variant="secondary"
+            scale="sm"
+            disabled={ticksAtLimit[isSorted ? Bound.UPPER : Bound.LOWER]}
+          >
+            +
+          </Button>
+        </RowBetween>
+      </AutoColumn>
     </FlexGap>
   )
 }

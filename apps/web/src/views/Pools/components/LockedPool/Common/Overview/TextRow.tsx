@@ -1,5 +1,5 @@
-import { Text, Flex } from '@pancakeswap/uikit'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { Text, Flex } from '@cometswap/uikit'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import CrossText from './CrossText'
 
 interface DiffTextPropsType {
@@ -45,3 +45,4 @@ const TextRow: React.FC<React.PropsWithChildren<TextRowPropsType>> = ({ title, v
 )
 
 export default TextRow
+

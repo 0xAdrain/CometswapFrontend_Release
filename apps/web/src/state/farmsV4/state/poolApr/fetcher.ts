@@ -1,30 +1,30 @@
-import { ChainId } from '@pancakeswap/chains'
-import { supportedChainIdV4 } from '@pancakeswap/farms'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { masterChefV3ABI, pancakeV3PoolABI } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { supportedChainIdV4 } from '@cometswap/farms'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { masterChefV3ABI, cometV3PoolABI } from '@cometswap/v3-sdk'
 import { create, windowedFiniteBatchScheduler } from '@yornaath/batshit'
 import BigNumber from 'bignumber.js'
 import { SECONDS_PER_YEAR } from 'config'
-import { v2BCakeWrapperABI } from 'config/abi/v2BCakeWrapper'
+import { v2BCometWrapperABI } from 'config/abi/v2BCometWrapper'
 import dayjs from 'dayjs'
 import groupBy from 'lodash/groupBy'
 import set from 'lodash/set'
 import { chainIdToExplorerInfoChainName, explorerApiClient } from 'state/info/api/client'
 import { safeGetAddress } from 'utils'
 import { usdPriceBatcher } from 'utils/batcher'
-import { getMasterChefV3Contract, getV2SSBCakeWrapperContract } from 'utils/contractHelpers'
+import { getMasterChefV3Contract, getV2SSBveCometWrapperContract } from 'utils/contractHelpers'
 import { publicClient } from 'utils/wagmi'
 import { erc20Abi } from 'viem'
 import { PoolInfo, StablePoolInfo, V2PoolInfo, V3PoolInfo } from '../type'
-import { CakeApr, MerklApr } from './atom'
+import { veCometApr, MerklApr } from './atom'
 
-export const getCakeApr = (pool: PoolInfo, cakePrice: BigNumber): Promise<CakeApr> => {
+export const getveCometApr = (pool: PoolInfo, cometPrice: BigNumber): Promise<veCometApr> => {
   switch (pool.protocol) {
     case 'v3':
-      return v3PoolCakeAprBatcher.fetch({ pool, cakePrice })
+      return v3PoolveCometAprBatcher.fetch({ pool, cometPrice })
     case 'v2':
     case 'stable':
-      return v2PoolCakeAprBatcher.fetch({ pool, cakePrice })
+      return v2PoolveCometAprBatcher.fetch({ pool, cometPrice })
     default:
       return Promise.resolve({
         [`${pool.chainId}:${pool.lpAddress}`]: {
@@ -64,11 +64,11 @@ const masterChefV3CacheMap = new Map<
   number,
   {
     totalAllocPoint: bigint
-    latestPeriodCakePerSecond: bigint
+    latestPeriodveCometPerSecond: bigint
   }
 >()
 
-export const getV3PoolCakeApr = async (pool: V3PoolInfo, cakePrice: BigNumber): Promise<CakeApr[keyof CakeApr]> => {
+export const getV3PoolveCometApr = async (pool: V3PoolInfo, cometPrice: BigNumber): Promise<veCometApr[keyof veCometApr]> => {
   const { tvlUsd } = pool
   const client = publicClient({ chainId: pool.chainId })
   const masterChefV3 = getMasterChefV3Contract(undefined, pool.chainId)
@@ -79,9 +79,9 @@ export const getV3PoolCakeApr = async (pool: V3PoolInfo, cakePrice: BigNumber): 
     }
   }
 
-  const [totalAllocPoint, latestPeriodCakePerSecond, poolInfo] = await Promise.all([
+  const [totalAllocPoint, latestPeriodveCometPerSecond, poolInfo] = await Promise.all([
     masterChefV3CacheMap.get(pool.chainId)?.totalAllocPoint ?? masterChefV3.read.totalAllocPoint(),
-    masterChefV3CacheMap.get(pool.chainId)?.latestPeriodCakePerSecond ?? masterChefV3.read.latestPeriodCakePerSecond(),
+    masterChefV3CacheMap.get(pool.chainId)?.latestPeriodveCometPerSecond ?? masterChefV3.read.latestPeriodveCometPerSecond(),
     masterChefV3.read.poolInfo([BigInt(pool.pid)]),
   ])
 
@@ -89,21 +89,21 @@ export const getV3PoolCakeApr = async (pool: V3PoolInfo, cakePrice: BigNumber): 
     masterChefV3CacheMap.set(pool.chainId, {
       ...(masterChefV3CacheMap.get(pool.chainId) ?? {}),
       totalAllocPoint,
-      latestPeriodCakePerSecond,
+      latestPeriodveCometPerSecond,
     })
   }
 
   const cakePerYear = new BigNumber(SECONDS_PER_YEAR)
-    .times(latestPeriodCakePerSecond.toString())
+    .times(latestPeriodveCometPerSecond.toString())
     .dividedBy(1e18)
     .dividedBy(1e12)
-  const cakePerYearUsd = cakePrice.times(cakePerYear.toString())
+  const cakePerYearUsd = cometPrice.times(cakePerYear.toString())
   const [allocPoint, , , , , totalLiquidity, totalBoostLiquidity] = poolInfo
   const poolWeight = new BigNumber(allocPoint.toString()).dividedBy(totalAllocPoint.toString())
   const liquidityBooster = new BigNumber(totalBoostLiquidity.toString()).dividedBy(totalLiquidity.toString())
 
   const baseApr = cakePerYearUsd.times(poolWeight).dividedBy(liquidityBooster.times(pool.tvlUsd ?? 1))
-  const multiplier = DEFAULT_V3_CAKE_APR_BOOST_MULTIPLIER[pool.chainId]
+  const multiplier = DEFAULT_V3_COMET_APR_BOOST_MULTIPLIER[pool.chainId]
 
   return {
     value: baseApr.toString() as `${number}`,
@@ -115,31 +115,31 @@ export const getV3PoolCakeApr = async (pool: V3PoolInfo, cakePrice: BigNumber): 
 
 const calcV3PoolApr = ({
   pool,
-  cakePrice,
+  cometPrice,
   totalAllocPoint,
-  latestPeriodCakePerSecond,
+  latestPeriodveCometPerSecond,
   poolInfo,
   liquidity,
 }: {
   pool: V3PoolInfo
-  cakePrice: BigNumber
+  cometPrice: BigNumber
   totalAllocPoint: bigint
-  latestPeriodCakePerSecond: bigint
+  latestPeriodveCometPerSecond: bigint
   poolInfo: readonly [bigint, `0x${string}`, `0x${string}`, `0x${string}`, number, bigint, bigint]
   liquidity: bigint
 }) => {
   const cakePerYear = new BigNumber(SECONDS_PER_YEAR)
-    .times(latestPeriodCakePerSecond.toString())
+    .times(latestPeriodveCometPerSecond.toString())
     .dividedBy(1e18)
     .dividedBy(1e12)
-  const cakePerYearUsd = cakePrice.times(cakePerYear.toString())
+  const cakePerYearUsd = cometPrice.times(cakePerYear.toString())
   const [allocPoint, , , , , totalLiquidity, totalBoostLiquidity] = poolInfo
   const poolWeight = new BigNumber(allocPoint.toString()).dividedBy(totalAllocPoint.toString())
   const liquidityBooster =
     Number(totalLiquidity) === 0
       ? BIG_ZERO
       : new BigNumber(totalBoostLiquidity.toString()).dividedBy(totalLiquidity.toString())
-  // @fixme @ChefJerry use batched https://farms-api.pancakeswap.com/v3/{chainId}/liquidity/{lp}
+  // @fixme @ChefJerry use batched https://farms-api.cometswap.com/v3/{chainId}/liquidity/{lp}
   // to calculate active pool TVL
   const poolTvlUsd = new BigNumber(pool.tvlUsd ?? 0)
 
@@ -148,7 +148,7 @@ const calcV3PoolApr = ({
       ? BIG_ZERO
       : cakePerYearUsd.times(poolWeight).dividedBy(liquidityBooster.times(poolTvlUsd ?? 1))
 
-  const multiplier = DEFAULT_V3_CAKE_APR_BOOST_MULTIPLIER[pool.chainId]
+  const multiplier = DEFAULT_V3_COMET_APR_BOOST_MULTIPLIER[pool.chainId]
 
   return {
     value: liquidity > 0n ? (baseApr.toString() as `${number}`) : '0',
@@ -158,39 +158,39 @@ const calcV3PoolApr = ({
   }
 }
 
-export const DEFAULT_V2_CAKE_APR_BOOST_MULTIPLIER = {
+export const DEFAULT_V2_COMET_APR_BOOST_MULTIPLIER = {
   [ChainId.ETHEREUM]: 2.5,
   [ChainId.BSC]: 2.5,
   [ChainId.ZKSYNC]: 2.5,
   [ChainId.ARBITRUM_ONE]: 2.5,
   [ChainId.BASE]: 2.5,
 }
-export const DEFAULT_V3_CAKE_APR_BOOST_MULTIPLIER = {
+export const DEFAULT_V3_COMET_APR_BOOST_MULTIPLIER = {
   [ChainId.ETHEREUM]: 2,
   [ChainId.BSC]: 2,
   [ChainId.ZKSYNC]: 2,
   [ChainId.ARBITRUM_ONE]: 2,
   [ChainId.BASE]: 2,
 }
-export const getV2PoolCakeApr = async (
+export const getV2PoolveCometApr = async (
   pool: V2PoolInfo | StablePoolInfo,
-  cakePrice: BigNumber,
+  cometPrice: BigNumber,
 ): Promise<{ value: `${number}`; boost?: `${number}` }> => {
-  const { bCakeWrapperAddress } = pool
+  const { bveCometWrapperAddress } = pool
   const client = publicClient({ chainId: pool.chainId })
-  if (!bCakeWrapperAddress || !client) {
+  if (!bveCometWrapperAddress || !client) {
     return {
       value: '0',
       boost: '0',
     }
   }
 
-  const bCakeWrapperContract = getV2SSBCakeWrapperContract(bCakeWrapperAddress, undefined, pool.chainId)
-  const cakePerSecond = await bCakeWrapperContract.read.rewardPerSecond()
-  const cakeOneYearUsd = cakePrice.times((cakePerSecond * BigInt(SECONDS_PER_YEAR)).toString()).dividedBy(1e18)
+  const bveCometWrapperContract = getV2SSBveCometWrapperContract(bveCometWrapperAddress, undefined, pool.chainId)
+  const cakePerSecond = await bveCometWrapperContract.read.rewardPerSecond()
+  const cakeOneYearUsd = cometPrice.times((cakePerSecond * BigInt(SECONDS_PER_YEAR)).toString()).dividedBy(1e18)
 
   const baseApr = cakeOneYearUsd.dividedBy(pool.tvlUsd ?? 1)
-  const multiplier = DEFAULT_V2_CAKE_APR_BOOST_MULTIPLIER[pool.chainId]
+  const multiplier = DEFAULT_V2_COMET_APR_BOOST_MULTIPLIER[pool.chainId]
 
   return {
     value: baseApr.toString() as `${number}`,
@@ -224,18 +224,18 @@ export const getAllNetworkMerklApr = async (signal?: AbortSignal) => {
   )
   if (resp.ok) {
     const result = await resp.json()
-    const pancakeResult = result?.filter(
+    const cometResult = result?.filter(
       (opportunity) =>
-        opportunity?.tokens?.[0]?.symbol?.toLowerCase().startsWith('cake-lp') ||
-        opportunity?.protocol?.id?.toLowerCase().startsWith('pancakeswap'),
+        opportunity?.tokens?.[0]?.symbol?.toLowerCase().startsWith('comet-lp') ||
+        opportunity?.protocol?.id?.toLowerCase().startsWith('cometswap'),
     )
-    const aprs = await Promise.all(supportedChainIdV4.map((chainId) => getMerklApr(pancakeResult, chainId)))
+    const aprs = await Promise.all(supportedChainIdV4.map((chainId) => getMerklApr(cometResult, chainId)))
     return aprs.reduce((acc, apr) => Object.assign(acc, apr), {})
   }
   throw resp
 }
 
-const getV3PoolsCakeAprByChainId = async (pools: V3PoolInfo[], chainId: number, cakePrice: BigNumber) => {
+const getV3PoolsveCometAprByChainId = async (pools: V3PoolInfo[], chainId: number, cometPrice: BigNumber) => {
   const masterChefV3 = getMasterChefV3Contract(undefined, chainId)
   const client = publicClient({ chainId })
 
@@ -247,15 +247,15 @@ const getV3PoolsCakeAprByChainId = async (pools: V3PoolInfo[], chainId: number, 
 
   if (!validPools?.length) return {}
 
-  const [totalAllocPoint, latestPeriodCakePerSecond] = await Promise.all([
+  const [totalAllocPoint, latestPeriodveCometPerSecond] = await Promise.all([
     masterChefV3CacheMap.get(chainId)?.totalAllocPoint ?? masterChefV3.read.totalAllocPoint(),
-    masterChefV3CacheMap.get(chainId)?.latestPeriodCakePerSecond ?? masterChefV3.read.latestPeriodCakePerSecond(),
+    masterChefV3CacheMap.get(chainId)?.latestPeriodveCometPerSecond ?? masterChefV3.read.latestPeriodveCometPerSecond(),
   ])
 
   masterChefV3CacheMap.set(chainId, {
     ...(masterChefV3CacheMap.get(chainId) ?? {}),
     totalAllocPoint,
-    latestPeriodCakePerSecond,
+    latestPeriodveCometPerSecond,
   })
 
   const poolInfoCalls = validPools.map(
@@ -272,7 +272,7 @@ const getV3PoolsCakeAprByChainId = async (pools: V3PoolInfo[], chainId: number, 
     return {
       address: pool.lpAddress,
       functionName: 'liquidity',
-      abi: pancakeV3PoolABI,
+      abi: cometV3PoolABI,
     } as const
   })
 
@@ -297,31 +297,31 @@ const getV3PoolsCakeAprByChainId = async (pools: V3PoolInfo[], chainId: number, 
       key,
       calcV3PoolApr({
         pool,
-        cakePrice,
+        cometPrice,
         totalAllocPoint,
-        latestPeriodCakePerSecond,
+        latestPeriodveCometPerSecond,
         poolInfo,
         liquidity,
       }),
     )
     return acc
-  }, {} as CakeApr)
+  }, {} as veCometApr)
 }
 
-const getV3PoolsCakeApr = async (queries: { pool: V3PoolInfo; cakePrice: BigNumber }[]): Promise<CakeApr> => {
+const getV3PoolsveCometApr = async (queries: { pool: V3PoolInfo; cometPrice: BigNumber }[]): Promise<veCometApr> => {
   const pools = queries.map((query) => query.pool)
-  const cakePrice = queries[0]?.cakePrice
+  const cometPrice = queries[0]?.cometPrice
   const poolsByChainId = groupBy(pools, 'chainId')
   const aprs = await Promise.all(
     Object.keys(poolsByChainId).map((chainId) =>
-      getV3PoolsCakeAprByChainId(poolsByChainId[chainId], Number(chainId), cakePrice),
+      getV3PoolsveCometAprByChainId(poolsByChainId[chainId], Number(chainId), cometPrice),
     ),
   )
   return aprs.reduce((acc, apr) => Object.assign(acc, apr), {})
 }
 
-const v3PoolCakeAprBatcher = create<CakeApr, { pool: V3PoolInfo; cakePrice: BigNumber }, CakeApr>({
-  fetcher: getV3PoolsCakeApr,
+const v3PoolveCometAprBatcher = create<veCometApr, { pool: V3PoolInfo; cometPrice: BigNumber }, veCometApr>({
+  fetcher: getV3PoolsveCometApr,
   resolver: (items, query) => {
     const { pool } = query
     const key = `${pool.chainId}:${pool.lpAddress}`
@@ -335,7 +335,7 @@ const v3PoolCakeAprBatcher = create<CakeApr, { pool: V3PoolInfo; cakePrice: BigN
 
 const calcV2PoolApr = ({
   pool,
-  cakePrice,
+  cometPrice,
   cakePerSecond,
   totalBoostShare,
   totalSupply,
@@ -345,7 +345,7 @@ const calcV2PoolApr = ({
   token1Reserve,
 }: {
   pool: V2PoolInfo | StablePoolInfo
-  cakePrice: BigNumber
+  cometPrice: BigNumber
   cakePerSecond: bigint
   totalBoostShare: bigint
   totalSupply: bigint
@@ -361,7 +361,7 @@ const calcV2PoolApr = ({
     }
   }
   const cakePerYear = new BigNumber(SECONDS_PER_YEAR).times(cakePerSecond.toString()).dividedBy(1e18)
-  const cakeOneYearUsd = cakePrice.times(cakePerYear.toString())
+  const cakeOneYearUsd = cometPrice.times(cakePerYear.toString())
   const poolTvlUsd = new BigNumber(
     new BigNumber(token0Reserve.toString()).times(token0PriceUsd).div(10 ** pool.token0.decimals),
   ).plus(new BigNumber(token1Reserve.toString()).times(token1PriceUsd).div(10 ** pool.token1.decimals))
@@ -371,7 +371,7 @@ const calcV2PoolApr = ({
   const farmingTVLUsd = usdPerShare.times(totalBoostShare.toString() ?? 0)
 
   const baseApr = cakeOneYearUsd.dividedBy((farmingTVLUsd ?? 1).toString())
-  const multiplier = DEFAULT_V2_CAKE_APR_BOOST_MULTIPLIER[pool.chainId]
+  const multiplier = DEFAULT_V2_COMET_APR_BOOST_MULTIPLIER[pool.chainId]
 
   return {
     value: baseApr.toString() as `${number}`,
@@ -382,21 +382,21 @@ const calcV2PoolApr = ({
   }
 }
 
-const getV2PoolsCakeAprByChainId = async (
+const getV2PoolsveCometAprByChainId = async (
   pools: Array<V2PoolInfo | StablePoolInfo>,
   chainId: number,
-  cakePrice: BigNumber,
+  cometPrice: BigNumber,
 ) => {
   const client = publicClient({ chainId })
-  const validPools = pools.filter((p) => p.chainId === chainId && p.bCakeWrapperAddress)
+  const validPools = pools.filter((p) => p.chainId === chainId && p.bveCometWrapperAddress)
 
   if (!validPools?.length) return {}
 
   const rewardPerSecondCalls = validPools.map((pool) => {
     return {
-      address: pool.bCakeWrapperAddress!,
+      address: pool.bveCometWrapperAddress!,
       functionName: 'rewardPerSecond',
-      abi: v2BCakeWrapperABI,
+      abi: v2BCometWrapperABI,
     } as const
   })
 
@@ -427,17 +427,17 @@ const getV2PoolsCakeAprByChainId = async (
 
   const totalBoostedShareCalls = validPools.map((pool) => {
     return {
-      address: pool.bCakeWrapperAddress!,
+      address: pool.bveCometWrapperAddress!,
       functionName: 'totalBoostedShare',
-      abi: v2BCakeWrapperABI,
+      abi: v2BCometWrapperABI,
     } as const
   })
 
   const endTimestampCalls = validPools.map((pool) => {
     return {
-      address: pool.bCakeWrapperAddress!,
+      address: pool.bveCometWrapperAddress!,
       functionName: 'endTimestamp',
-      abi: v2BCakeWrapperABI,
+      abi: v2BCometWrapperABI,
     } as const
   })
 
@@ -489,7 +489,7 @@ const getV2PoolsCakeAprByChainId = async (
       key,
       calcV2PoolApr({
         pool: pool as V2PoolInfo | StablePoolInfo,
-        cakePrice,
+        cometPrice,
         cakePerSecond: rewardPerSecond,
         totalBoostShare,
         totalSupply: totalSupplies[index],
@@ -500,23 +500,23 @@ const getV2PoolsCakeAprByChainId = async (
       }),
     )
     return acc
-  }, {} as CakeApr)
+  }, {} as veCometApr)
 }
-const getV2PoolsCakeApr = async (
-  queries: { pool: V2PoolInfo | StablePoolInfo; cakePrice: BigNumber }[],
-): Promise<CakeApr> => {
+const getV2PoolsveCometApr = async (
+  queries: { pool: V2PoolInfo | StablePoolInfo; cometPrice: BigNumber }[],
+): Promise<veCometApr> => {
   const pools = queries.map((query) => query.pool)
-  const cakePrice = queries[0]?.cakePrice
+  const cometPrice = queries[0]?.cometPrice
   const poolsByChainId = groupBy(pools, 'chainId')
   const aprs = await Promise.all(
     Object.keys(poolsByChainId).map((chainId) =>
-      getV2PoolsCakeAprByChainId(poolsByChainId[chainId], Number(chainId), cakePrice),
+      getV2PoolsveCometAprByChainId(poolsByChainId[chainId], Number(chainId), cometPrice),
     ),
   )
   return aprs.reduce((acc, apr) => Object.assign(acc, apr), {})
 }
-const v2PoolCakeAprBatcher = create<CakeApr, { pool: V2PoolInfo | StablePoolInfo; cakePrice: BigNumber }, CakeApr>({
-  fetcher: getV2PoolsCakeApr,
+const v2PoolveCometAprBatcher = create<veCometApr, { pool: V2PoolInfo | StablePoolInfo; cometPrice: BigNumber }, veCometApr>({
+  fetcher: getV2PoolsveCometApr,
   resolver: (items, query) => {
     const { pool } = query
     const key = `${pool.chainId}:${pool.lpAddress}`
@@ -527,3 +527,4 @@ const v2PoolCakeAprBatcher = create<CakeApr, { pool: V2PoolInfo | StablePoolInfo
     maxBatchSize: 100,
   }),
 })
+

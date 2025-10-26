@@ -1,5 +1,5 @@
 import { isInBinance } from '@binance/w3w-utils'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Button,
   type ButtonProps,
@@ -11,7 +11,7 @@ import {
   Text,
   WalletFilledV2Icon,
   useToast,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useCallback, useState } from 'react'
 import { useChainIdByQuery } from 'state/info/hooks'
 import { binanceWeb3WalletConnector } from 'utils/wagmi'
@@ -139,3 +139,4 @@ export const DisconnectW3WButton: React.FC<ButtonProps> = (props) => {
 }
 
 export default ConnectW3WButton
+

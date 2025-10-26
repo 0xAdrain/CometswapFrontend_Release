@@ -19,3 +19,4 @@ export const withClientId: MiddlewareFactory = (next: NextMiddleware) => {
     return response
   }
 }
+

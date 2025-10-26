@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/swap-sdk-core'
-import { Native, ERC20Token } from '@pancakeswap/swap-sdk-evm'
+import { ChainId } from '@cometswap/chains'
+import { Currency, CurrencyAmount, TradeType } from '@cometswap/swap-sdk-core'
+import { Native, ERC20Token } from '@cometswap/swap-sdk-evm'
 
 import {
   SerializableCurrency,

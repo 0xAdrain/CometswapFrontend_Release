@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { memo, useContext } from 'react'
 
 import AccessRisk from 'components/AccessRisk'
@@ -23,3 +23,4 @@ export const RiskCheck = memo(function RiskCheck({ currency }: Props) {
     </Box>
   )
 })
+

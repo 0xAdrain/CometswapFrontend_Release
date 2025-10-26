@@ -9,3 +9,4 @@ const slugify = (str: string) => {
 }
 
 export default slugify
+

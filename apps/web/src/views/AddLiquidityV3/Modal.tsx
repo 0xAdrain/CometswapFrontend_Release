@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { AutoRow, Box, Modal, ModalV2, UseModalV2Props } from '@pancakeswap/uikit'
-import { FeeAmount, Pool } from '@pancakeswap/v3-sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { AutoRow, Box, Modal, ModalV2, UseModalV2Props } from '@cometswap/uikit'
+import { FeeAmount, Pool } from '@cometswap/v3-sdk'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import { SettingsMode } from 'components/Menu/GlobalSettings/types'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -129,3 +129,4 @@ export function AddLiquidityV3Modal({
     </ModalV2>
   )
 }
+

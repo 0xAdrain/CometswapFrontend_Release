@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import type { AtomBoxProps } from '@pancakeswap/uikit'
-import { AddIcon, Button, Flex, MinusIcon, Row, RowBetween, Text } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
+import type { AtomBoxProps } from '@cometswap/uikit'
+import { AddIcon, Button, Flex, MinusIcon, Row, RowBetween, Text } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
 import { memo, useMemo } from 'react'
 import { styled } from 'styled-components'
 import { useTotalAssetInSingleDepositTokenAmount, useTotalAssetInUsd } from '../hooks'
@@ -132,3 +132,4 @@ export const CurrencyAmountDisplay = memo(function CurrencyAmountDisplay({
     </RowBetween>
   )
 })
+

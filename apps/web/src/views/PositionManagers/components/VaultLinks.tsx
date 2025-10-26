@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { MANAGER } from '@pancakeswap/position-managers'
-import { Flex, FlexProps, ScanLink } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { MANAGER } from '@cometswap/position-managers'
+import { Flex, FlexProps, ScanLink } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { PropsWithChildren, memo, useMemo } from 'react'
 import { styled } from 'styled-components'
@@ -57,7 +57,7 @@ export const VaultLinks = memo(function VaultLinks({
 
   return (
     <LinkContainer flexDirection={layout} {...props}>
-      {/* <StyledScanLink href={`https://pancakeswap.finance/info/v3/pairs/${lpAddress}`}>{t('Pair Info')}</StyledScanLink> */}
+      {/* <StyledScanLink href={`https://cometswap.finance/info/v3/pairs/${lpAddress}`}>{t('Pair Info')}</StyledScanLink> */}
       <StyledScanLink href={managerInfoUrl}>{t('Manager Info')}</StyledScanLink>
       <StyledScanLink href={strategyInfoUrl}>{t('Strategy Info')}</StyledScanLink>
       <StyledScanLink
@@ -81,3 +81,4 @@ export const VaultLinks = memo(function VaultLinks({
     </LinkContainer>
   )
 })
+

@@ -1,5 +1,5 @@
-import { useDebounce } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useDebounce } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoColumn,
   AutoRow,
@@ -11,8 +11,8 @@ import {
   Row,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { Swap as SwapUI } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Swap as SwapUI } from '@cometswap/widgets-internal'
 import { FiatOnRampModalButton } from 'components/FiatOnRampModal/FiatOnRampModal'
 import {
   Suspense,
@@ -31,7 +31,6 @@ import { Field } from 'state/swap/actions'
 import { useTheme } from 'styled-components'
 import { v4 } from 'uuid'
 import { OnRampUnit, type OnRampProviderQuote } from 'views/BuyCrypto/types'
-import OnBoardingView from 'views/Notifications/containers/OnBoardingView'
 import { useBuyCryptoFormState } from 'state/buyCrypto/reducer'
 import { BuyCryptoSelector } from '../components/OnRampCurrencySelect'
 import { OnRampFlipButton } from '../components/OnRampFlipButton/OnRampFlipButton'
@@ -263,7 +262,7 @@ export function BuyCryptoForm({ providerAvailabilities }: { providerAvailabiliti
               style={{ color: `${theme.colors.primary}` }}
               display="flex"
               fontSize="14px"
-              href="https://pancakeswap.finance/terms-of-service"
+              href="https://cometswap.finance/terms-of-service"
               external
             >
               {t('terms of service')}
@@ -292,7 +291,6 @@ const NotificationsOnboardPopover = ({
           </IconButton>
         </AutoRow>
 
-        <OnBoardingView onExternalDismiss={showProvidersOnClick} />
       </Box>
     </PopOverScreenContainer>
   )
@@ -386,3 +384,4 @@ const BitcoinAddressInput = ({
     </Row>
   )
 }
+

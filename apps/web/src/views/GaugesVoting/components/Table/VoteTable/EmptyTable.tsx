@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text, useMatchBreakpoints } from '@cometswap/uikit'
 
 export const EmptyTable = () => {
   const { t } = useTranslation()
@@ -10,3 +10,4 @@ export const EmptyTable = () => {
     </Text>
   )
 }
+

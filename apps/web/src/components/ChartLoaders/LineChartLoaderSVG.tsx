@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 const LineChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -57,3 +57,4 @@ const LineChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = (props) 
 }
 
 export default LineChartLoaderSVG
+

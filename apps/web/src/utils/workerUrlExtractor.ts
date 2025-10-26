@@ -5,3 +5,4 @@ export class WorkerUrlExtractor {
     this.url = url
   }
 }
+

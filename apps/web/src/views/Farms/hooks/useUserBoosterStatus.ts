@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { useBCakeFarmBoosterContract } from 'hooks/useContract'
+import { useBCometFarmBoosterContract } from 'hooks/useContract'
 import { Address } from 'viem'
 
 export const useUserBoosterStatus = (account?: Address) => {
-  const farmBoosterContract = useBCakeFarmBoosterContract()
+  const farmBoosterContract = useBCometFarmBoosterContract()
   const { data: MAX_BOOST_POOL, status: maxBoostStatus } = useQuery({
     queryKey: ['maxBoostFarm'],
     queryFn: () => farmBoosterContract.read.MAX_BOOST_POOL(),
@@ -29,3 +29,4 @@ export const useUserBoosterStatus = (account?: Address) => {
     refreshActivePools: refetch,
   }
 }
+

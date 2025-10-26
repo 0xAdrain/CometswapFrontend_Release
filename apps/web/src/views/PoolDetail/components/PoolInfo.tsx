@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Percent } from '@pancakeswap/swap-sdk-core'
-import { AutoColumn, AutoRow, Box, Column, Flex, FlexGap, Grid, Spinner, Text } from '@pancakeswap/uikit'
-import { ChainLogo, DoubleCurrencyLogo, FeatureStack, FeeTierTooltip } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Percent } from '@cometswap/swap-sdk-core'
+import { AutoColumn, AutoRow, Box, Column, Flex, FlexGap, Grid, Spinner, Text } from '@cometswap/uikit'
+import { ChainLogo, DoubleCurrencyLogo, FeatureStack, FeeTierTooltip } from '@cometswap/widgets-internal'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { NextSeo } from 'next-seo'
 import { useMemo } from 'react'
@@ -123,3 +123,4 @@ export const PoolInfo = () => {
     </Column>
   )
 }
+

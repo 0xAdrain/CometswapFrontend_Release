@@ -1,5 +1,5 @@
 import { ChainId as ChainIdType, GelatoLimitOrders } from '@gelatonetwork/limit-orders-lib'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useQuery } from '@tanstack/react-query'
 import { GELATO_HANDLER } from 'config/constants/exchange'
 import { useAccount } from 'wagmi'
@@ -36,3 +36,4 @@ const useGelatoLimitOrdersLib = (): GelatoLimitOrders | undefined => {
 }
 
 export default useGelatoLimitOrdersLib
+

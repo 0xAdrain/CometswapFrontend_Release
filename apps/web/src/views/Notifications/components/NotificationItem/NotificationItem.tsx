@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, ChevronDownIcon, ChevronUpIcon, Flex, FlexGap, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, ChevronDownIcon, ChevronUpIcon, Flex, FlexGap, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import type { NotifyClientTypes } from '@walletconnect/notify-client'
 import { useNotificationTypes } from '@web3inbox/react'
 import Image from 'next/image'
@@ -176,3 +176,4 @@ const NotificationContainer = ({ notifications, subscriptionId, importantAlertsO
 }
 
 export default NotificationContainer
+

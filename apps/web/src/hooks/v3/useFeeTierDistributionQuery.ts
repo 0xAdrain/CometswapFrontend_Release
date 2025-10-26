@@ -38,3 +38,4 @@ export function useFeeTierDistributionQuery(token0: string | undefined, token1: 
     refetchOnWindowFocus: false,
   })
 }
+

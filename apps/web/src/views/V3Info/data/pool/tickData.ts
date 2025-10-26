@@ -1,5 +1,5 @@
-import { TickMath, tickToPrice } from '@pancakeswap/v3-sdk'
-import { Token } from '@pancakeswap/sdk'
+import { TickMath, tickToPrice } from '@cometswap/v3-sdk'
+import { Token } from '@cometswap/sdk'
 import { Address } from 'viem'
 import { explorerApiClient } from 'state/info/api/client'
 import { components } from 'state/info/api/schema'
@@ -262,3 +262,4 @@ export const fetchTicksSurroundingPrice = async (
     return { error: true }
   }
 }
+

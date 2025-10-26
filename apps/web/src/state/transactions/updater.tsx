@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import { FAST_INTERVAL } from 'config/constants'
+// Cross-chain farm constants removed
 import forEach from 'lodash/forEach'
 import merge from 'lodash/merge'
 import pickBy from 'lodash/pickBy'
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useAppDispatch } from 'state'
 import {
   BlockNotFoundError,
@@ -15,18 +15,13 @@ import {
 } from 'viem'
 import { usePublicClient } from 'wagmi'
 import { retry, RetryableError } from 'state/multicall/retry'
-import { useQuery } from '@tanstack/react-query'
-import { AVERAGE_CHAIN_BLOCK_TIMES } from '@pancakeswap/chains'
+import { AVERAGE_CHAIN_BLOCK_TIMES } from '@cometswap/chains'
 import { BSC_BLOCK_TIME } from 'config'
-import { useFetchBlockData } from '@pancakeswap/wagmi'
+import { useFetchBlockData } from '@cometswap/wagmi'
 import {
-  FarmTransactionStatus,
-  MsgStatus,
-  CrossChainFarmStepType,
-  CrossChainFarmTransactionStep,
   finalizeTransaction,
 } from './actions'
-import { fetchCelerApi } from './fetchCelerApi'
+// Cross-chain farm functionality removed
 import { useAllChainTransactions } from './hooks'
 import { TransactionDetails } from './reducer'
 
@@ -109,118 +104,10 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
     )
   }, [chainId, provider, transactions, dispatch, toastSuccess, toastError, t, refetchBlockData])
 
-  const crossChainFarmPendingTxns = useMemo(
-    () =>
-      Object.keys(transactions).filter(
-        (hash) =>
-          transactions[hash].receipt?.status === 1 &&
-          transactions[hash].type === 'cross-chain-farm' &&
-          transactions[hash].crossChainFarm?.status === FarmTransactionStatus.PENDING,
-      ),
-    [transactions],
-  )
-
-  useQuery({
-    queryKey: ['checkCrossChainFarmTransaction', FAST_INTERVAL, chainId],
-
-    queryFn: () => {
-      crossChainFarmPendingTxns.forEach((hash) => {
-        const steps = transactions[hash]?.crossChainFarm?.steps || []
-        if (steps.length) {
-          const pendingStep = steps.findIndex(
-            (step: CrossChainFarmTransactionStep) => step.status === FarmTransactionStatus.PENDING,
-          )
-          const previousIndex = pendingStep - 1
-
-          if (previousIndex >= 0) {
-            const previousHash = steps[previousIndex]
-            const checkHash = previousHash.tx || hash
-
-            fetchCelerApi(checkHash)
-              .then((response) => {
-                const transaction = transactions[hash]
-                const { destinationTxHash, messageStatus } = response
-                const status =
-                  messageStatus === MsgStatus.MS_COMPLETED
-                    ? FarmTransactionStatus.SUCCESS
-                    : messageStatus === MsgStatus.MS_FAIL
-                    ? FarmTransactionStatus.FAIL
-                    : FarmTransactionStatus.PENDING
-                const isFinalStepComplete = status === FarmTransactionStatus.SUCCESS && steps.length === pendingStep + 1
-
-                const newSteps = transaction?.crossChainFarm?.steps?.map((step, index) => {
-                  let newObj = {}
-                  if (index === pendingStep) {
-                    newObj = { ...step, status, tx: destinationTxHash }
-                  }
-                  return { ...step, ...newObj }
-                })
-
-                const newStatus = isFinalStepComplete
-                  ? FarmTransactionStatus.SUCCESS
-                  : transaction?.crossChainFarm?.status
-
-                dispatch(
-                  finalizeTransaction({
-                    chainId,
-                    hash: transaction.hash,
-                    receipt: { ...transaction.receipt! },
-                    crossChainFarm: {
-                      ...transaction.crossChainFarm!,
-                      ...(newSteps && { steps: newSteps }),
-                      ...(newStatus && { status: newStatus }),
-                    },
-                  }),
-                )
-
-                const isStakeType = transactions[hash]?.crossChainFarm?.type === CrossChainFarmStepType.STAKE
-                if (isFinalStepComplete) {
-                  const toastTitle = isStakeType ? t('Staked!') : t('Unstaked!')
-                  toastSuccess(
-                    toastTitle,
-                    <ToastDescriptionWithTx txHash={destinationTxHash} txChainId={steps[pendingStep].chainId}>
-                      {isStakeType
-                        ? t('Your LP Token have been staked in the Farm!')
-                        : t('Your LP Token have been unstaked in the Farm!')}
-                    </ToastDescriptionWithTx>,
-                  )
-                } else if (status === FarmTransactionStatus.FAIL) {
-                  const toastTitle = isStakeType ? t('Stake Error') : t('Unstake Error')
-                  const errorText = isStakeType ? t('Token fail to stake.') : t('Token fail to unstake.')
-                  toastError(
-                    toastTitle,
-                    <ToastDescriptionWithTx txHash={destinationTxHash} txChainId={steps[pendingStep].chainId}>
-                      <Box>
-                        <Text
-                          as="span"
-                          bold
-                        >{`${transaction?.crossChainFarm?.amount} ${transaction?.crossChainFarm?.lpSymbol}`}</Text>
-                        <Text as="span" ml="4px">
-                          {errorText}
-                        </Text>
-                      </Box>
-                    </ToastDescriptionWithTx>,
-                  )
-                }
-              })
-              .catch((error) => {
-                console.error(`Failed to check harvest transaction hash: ${hash}`, error)
-              })
-          }
-        }
-      })
-    },
-
-    enabled: Boolean(chainId && crossChainFarmPendingTxns?.length),
-    refetchInterval: FAST_INTERVAL,
-    retryDelay: FAST_INTERVAL,
-
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
-  })
+  // Cross-chain farm functionality removed - no cross-chain farming supported
 
   return null
 }
 
 export default Updater
+

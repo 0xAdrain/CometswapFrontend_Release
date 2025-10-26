@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { zeroAddress } from 'viem'
 import { describe, it, expect } from 'vitest'
 import { getGaugeHash } from './utils'
@@ -10,3 +10,4 @@ describe('GaugesVoting/utils', async () => {
     )
   })
 })
+

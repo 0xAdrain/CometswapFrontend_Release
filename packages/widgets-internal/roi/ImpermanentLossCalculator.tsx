@@ -1,10 +1,10 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 import { useCallback, useEffect, useState, useMemo, memo } from "react";
-import { Currency, CurrencyAmount, ONE_HUNDRED_PERCENT, ZERO_PERCENT } from "@pancakeswap/sdk";
-import { FeeCalculator, encodeSqrtRatioX96 } from "@pancakeswap/v3-sdk";
+import { Currency, CurrencyAmount, ONE_HUNDRED_PERCENT, ZERO_PERCENT } from "@cometswap/sdk";
+import { FeeCalculator, encodeSqrtRatioX96 } from "@cometswap/v3-sdk";
 import { styled } from "styled-components";
-import { CAKE } from "@pancakeswap/tokens";
-import { Box, Row, AutoColumn, Toggle, RowBetween, Message } from "@pancakeswap/uikit";
+import { COMET} from "@cometswap/tokens";
+import { Box, Row, AutoColumn, Toggle, RowBetween, Message } from "@cometswap/uikit";
 import { DoubleCurrencyLogo } from "../components/CurrencyLogo";
 
 import { Section } from "./Section";
@@ -37,19 +37,19 @@ interface Props {
   tickUpper?: number;
   sqrtRatioX96?: bigint;
   lpReward?: number;
-  cakeReward?: number;
+  cometReward?: number;
   isFarm?: boolean;
-  cakePrice?: string;
-  setEditCakePrice: (cakePrice: number) => void;
+  cometPrice?: string;
+  setEditCometPrice: (cometPrice: number) => void;
 }
 
-const getCakeAssetsByReward = (chainId: number, cakeRewardAmount = 0, cakePrice: string) => {
+const getveCometAssetsByReward = (chainId: number, cometRewardAmount = 0, cometPrice: string) => {
   return {
-    currency: CAKE[chainId as keyof typeof CAKE],
-    amount: cakeRewardAmount,
-    price: cakePrice,
-    value: Number.isFinite(cakeRewardAmount) ? +cakeRewardAmount * +cakePrice : Infinity,
-    key: "CAKE_ASSET_BY_APY",
+    currency: COMET[chainId as keyof typeof COMET],
+    amount: cometRewardAmount,
+    price: cometPrice,
+    value: Number.isFinite(cometRewardAmount) ? +cometRewardAmount * +cometPrice : Infinity,
+    key: "COMET_ASSET_BY_APY",
   };
 };
 
@@ -62,10 +62,10 @@ export const ImpermanentLossCalculator = memo(function ImpermanentLossCalculator
   currencyAUsdPrice,
   currencyBUsdPrice,
   lpReward = 0,
-  cakeReward = 0,
+  cometReward = 0,
   isFarm,
-  cakePrice = "0",
-  setEditCakePrice,
+  cometPrice = "0",
+  setEditCometPrice,
 }: Props) {
   const { t } = useTranslation();
   const [on, setOn] = useState(false);
@@ -93,9 +93,9 @@ export const ImpermanentLossCalculator = memo(function ImpermanentLossCalculator
         : undefined,
     [valueA, currencyA, valueB, currencyB, currencyAUsdPrice, currencyBUsdPrice]
   );
-  const cakeRewardAmount = useMemo(
-    () => (Number.isFinite(cakeReward) ? +cakeReward / +cakePrice : Infinity),
-    [cakeReward, cakePrice]
+  const cometRewardAmount = useMemo(
+    () => (Number.isFinite(cometReward) ? +cometReward / +cometPrice : Infinity),
+    [cometReward, cometPrice]
   );
   const liquidity = useMemo(
     () =>
@@ -110,13 +110,13 @@ export const ImpermanentLossCalculator = memo(function ImpermanentLossCalculator
   );
 
   const exitAssets = useMemo<Asset[] | undefined>(() => {
-    if (assets && isFarm && currencyA && currencyA.chainId in CAKE && cakePrice) {
-      const cakePriceToUse =
-        assets.find((a) => a.currency.equals(CAKE[currencyA.chainId as keyof typeof CAKE]))?.price ?? cakePrice;
-      return [...assets, getCakeAssetsByReward(currencyA.chainId, cakeRewardAmount, cakePriceToUse)];
+    if (assets && isFarm && currencyA && currencyA.chainId in COMET&& cometPrice) {
+      const cometPriceToUse =
+        assets.find((a) => a.currency.equals(COMET[currencyA.chainId as keyof typeof COMET]))?.price ?? cometPrice;
+      return [...assets, getveCometAssetsByReward(currencyA.chainId, cometRewardAmount, cometPriceToUse)];
     }
     return assets;
-  }, [assets, cakeRewardAmount, cakePrice, currencyA, isFarm]);
+  }, [assets, cometRewardAmount, cometPrice, currencyA, isFarm]);
 
   const [entry, setEntry] = useState<Asset[] | undefined>(assets);
   const [exit, setExit] = useState<Asset[] | undefined>(exitAssets);
@@ -190,7 +190,7 @@ export const ImpermanentLossCalculator = memo(function ImpermanentLossCalculator
       ) {
         return newAssets;
       }
-      const [assetA, assetB, maybeAssetCake] = newAssets;
+      const [assetA, assetB, maybeAssetveComet] = newAssets;
       const { price: priceA, currency: assetCurrencyA } = assetA;
       const { price: priceB, currency: assetCurrencyB } = assetB;
       const token0Price = toToken0Price(
@@ -221,23 +221,23 @@ export const ImpermanentLossCalculator = memo(function ImpermanentLossCalculator
         { ...assetA, amount: amountAStr, value: parseFloat(amountAStr) * parseFloat(priceA) },
         { ...assetB, amount: amountBStr, value: parseFloat(amountBStr) * parseFloat(priceB) },
       ];
-      if (maybeAssetCake) {
+      if (maybeAssetveComet) {
         adjusted = [
           ...adjusted,
           {
-            ...maybeAssetCake,
-            ...getCakeAssetsByReward(assetCurrencyA.chainId, cakeRewardAmount, String(maybeAssetCake.price)),
+            ...maybeAssetveComet,
+            ...getveCometAssetsByReward(assetCurrencyA.chainId, cometRewardAmount, String(maybeAssetveComet.price)),
           },
         ];
 
-        setEditCakePrice(+maybeAssetCake.price);
+        setEditCometPrice(+maybeAssetveComet.price);
       }
 
       return adjusted;
     },
-    // setEditCakePrice is not a dependency because it's setState
+    // setEditCometPrice is not a dependency because it's setState
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [amountA, amountB, tickLower, tickUpper, sqrtRatioX96, cakeRewardAmount, liquidity]
+    [amountA, amountB, tickLower, tickUpper, sqrtRatioX96, cometRewardAmount, liquidity]
   );
 
   const updateEntry = useCallback(

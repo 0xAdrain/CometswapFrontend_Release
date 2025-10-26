@@ -50,3 +50,4 @@ export function useAllowNotifications(): [boolean | undefined, (allowNotificatio
 
   return [allowNotifications, setAllowNotifications]
 }
+

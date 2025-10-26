@@ -1,7 +1,7 @@
 import { useState, memo, ReactNode, useCallback, useEffect, useRef } from "react";
 import { styled } from "styled-components";
-import { useDelayedUnmount } from "@pancakeswap/hooks";
-import { useMatchBreakpoints } from "@pancakeswap/uikit";
+import { useDelayedUnmount } from "@cometswap/hooks";
+import { useMatchBreakpoints } from "@cometswap/uikit";
 
 import { ExpandActionCell } from "../Cells/ExpandActionCell";
 

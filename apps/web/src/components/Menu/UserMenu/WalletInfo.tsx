@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { WNATIVE } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { WNATIVE } from '@cometswap/sdk'
 import {
   Box,
   Button,
@@ -16,15 +16,15 @@ import {
   Text,
   TooltipText,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { ChainLogo } from 'components/Logo/ChainLogo'
 import { FetchStatus } from 'config/constants/types'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useAuth from 'hooks/useAuth'
 import useNativeCurrency from 'hooks/useNativeCurrency'
-import useTokenBalance, { useBSCCakeBalance } from 'hooks/useTokenBalance'
+import useTokenBalance, { useBSCveCometBalance } from 'hooks/useTokenBalance'
 
-import { formatBigInt, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { formatBigInt, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import InternalLink from 'components/Links'
 import { useDomainNameForAddress } from 'hooks/useDomain'
 import { useState } from 'react'
@@ -56,7 +56,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
   const wBNBToken = WNATIVE[ChainId.BSC]
   const { balance: wNativeBalance, fetchStatus: wNativeFetchStatus } = useTokenBalance(wNativeToken?.address as Address)
   const { balance: wBNBBalance, fetchStatus: wBNBFetchStatus } = useTokenBalance(wBNBToken?.address, true)
-  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useBSCCakeBalance()
+  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useBSCveCometBalance()
   const [mobileTooltipShow, setMobileTooltipShow] = useState(false)
   const { logout } = useAuth()
 
@@ -230,7 +230,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           </Flex>
         )}
         <Flex alignItems="center" justifyContent="space-between">
-          <Text color="textSubtle">{t('CAKE Balance')}</Text>
+          <Text color="textSubtle">{t('COMETBalance')}</Text>
           {cakeFetchStatus !== FetchStatus.Fetched ? (
             <Skeleton height="22px" width="60px" />
           ) : (
@@ -246,3 +246,4 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
 }
 
 export default WalletInfo
+

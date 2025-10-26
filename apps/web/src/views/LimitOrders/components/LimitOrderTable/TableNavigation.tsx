@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback, ReactElement, memo, useEffect } from 'react'
-import { Text, Flex, Box, Grid, ArrowBackIcon, ArrowForwardIcon } from '@pancakeswap/uikit'
+import { Text, Flex, Box, Grid, ArrowBackIcon, ArrowForwardIcon } from '@cometswap/uikit'
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import NoOrdersMessage from './NoOrdersMessage'
 import { ORDER_CATEGORY } from '../../types'
 import LoadingTable from './LoadingTable'
@@ -90,3 +90,4 @@ const TableNavigation: React.FC<TableNavigationProps> = ({
 }
 
 export default memo(TableNavigation)
+

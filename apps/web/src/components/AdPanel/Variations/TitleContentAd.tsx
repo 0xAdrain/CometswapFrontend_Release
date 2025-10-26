@@ -15,3 +15,4 @@ export const TitleContentAd = (props: AdPlayerProps) => {
     </AdCard>
   )
 }
+

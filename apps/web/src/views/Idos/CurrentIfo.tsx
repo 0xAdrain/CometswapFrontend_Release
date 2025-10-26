@@ -28,3 +28,4 @@ const CurrentIdo: React.FC<React.PropsWithChildren<TypeProps>> = ({ idoConfig })
 }
 
 export default CurrentIdo
+

@@ -1,5 +1,5 @@
-import { ModalV2, useModalV2, ChevronRightIcon, Text, FlexGap } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { ModalV2, useModalV2, ChevronRightIcon, Text, FlexGap } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { useCurrency } from 'hooks/Tokens'
 import { useMemo } from 'react'
 import { formatUnits } from 'viem'
@@ -10,8 +10,8 @@ import {
   TransactionListItemDesc,
   TransactionListItemTitle,
   TransactionStatus,
-} from '@pancakeswap/widgets-internal'
-import { useCountdown } from '@pancakeswap/hooks'
+} from '@cometswap/widgets-internal'
+import { useCountdown } from '@cometswap/hooks'
 import dayjs from 'dayjs'
 
 export function XTransaction({ order }: { order: GetXOrderReceiptResponseOrder }) {
@@ -48,7 +48,7 @@ export function XTransaction({ order }: { order: GetXOrderReceiptResponseOrder }
       <TransactionListItem
         onClick={modal.onOpen}
         status={status}
-        title={<TransactionListItemTitle>PancakeSwap X</TransactionListItemTitle>}
+        title={<TransactionListItemTitle>CometSwap X</TransactionListItemTitle>}
         action={
           <FlexGap gap="0.25rem" justifyContent="flex-end">
             {status === TransactionStatus.Pending ? <Countdown to={order.deadline} /> : null}
@@ -84,3 +84,4 @@ function Countdown({ to }: { to?: number | string }) {
     </Text>
   )
 }
+

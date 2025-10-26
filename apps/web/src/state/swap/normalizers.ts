@@ -42,3 +42,4 @@ export const normalizeDerivedPairDataByActiveToken = ({
         ? pairPrice.token0DerivedUSD / pairPrice.token1DerivedUSD
         : pairPrice.token1DerivedUSD / pairPrice.token0DerivedUSD,
   }))
+

@@ -1,4 +1,4 @@
-import { SerializedWrappedToken } from '@pancakeswap/token-lists'
+import { SerializedWrappedToken } from '@cometswap/token-lists'
 import { createAction } from '@reduxjs/toolkit'
 
 export interface SerializedPair {
@@ -59,3 +59,4 @@ export const addWatchlistToken = createAction<{ address: string }>('user/addWatc
 export const addWatchlistPool = createAction<{ address: string }>('user/addWatchlistPool')
 
 export const setSubgraphHealthIndicatorDisplayed = createAction<boolean>('user/setSubgraphHealthIndicatorDisplayed')
+

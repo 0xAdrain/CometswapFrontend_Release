@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Grid, Link, Modal, ModalV2, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Grid, Link, Modal, ModalV2, Text } from '@cometswap/uikit'
 import { useQuery } from '@tanstack/react-query'
 import { WALLET_API } from 'config/constants/endpoints'
 import { UpdatePositionsReminder } from 'views/Farms/components/UpdatePositionsReminder'
@@ -53,14 +53,14 @@ export function Blocklist() {
             <Text style={{ wordBreak: 'break-word' }}>{address}</Text>
             <Text>
               {t('We have detected that this address is associated with a Prohibited Activity')}{' '}
-              <Link style={{ display: 'inline-block' }} href="https://pancakeswap.finance/terms-of-service" external>
+              <Link style={{ display: 'inline-block' }} href="https://cometswap.finance/terms-of-service" external>
                 {t('Learn more')}
               </Link>
             </Text>
             <Text>
               {t('If you believe that your address has been misclassified, please email')}{' '}
-              <Link style={{ display: 'inline-block' }} href="mailto:info@pancakeswap.com">
-                info@pancakeswap.com
+              <Link style={{ display: 'inline-block' }} href="mailto:info@cometswap.com">
+                info@cometswap.com
               </Link>
             </Text>
           </Grid>
@@ -71,3 +71,4 @@ export function Blocklist() {
 
   return null
 }
+

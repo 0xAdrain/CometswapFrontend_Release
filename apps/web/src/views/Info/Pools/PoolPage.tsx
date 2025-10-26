@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Breadcrumbs,
@@ -16,10 +16,10 @@ import {
   Text,
   useMatchBreakpoints,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
-import { getLegacyFarmConfig } from '@pancakeswap/farms'
+import { getLegacyFarmConfig } from '@cometswap/farms'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import Page from 'components/Layout/Page'
@@ -333,3 +333,4 @@ const PoolPage: React.FC<React.PropsWithChildren<{ address: string }>> = ({ addr
 }
 
 export default PoolPage
+

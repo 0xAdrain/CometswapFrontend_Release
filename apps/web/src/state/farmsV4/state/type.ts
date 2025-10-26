@@ -1,5 +1,5 @@
-import { Protocol } from '@pancakeswap/farms'
-import { Currency, Token } from '@pancakeswap/swap-sdk-core'
+import { Protocol } from '@cometswap/farms'
+import { Currency, Token } from '@cometswap/swap-sdk-core'
 import { Address } from 'viem'
 
 type Prettify<T> = {
@@ -40,14 +40,14 @@ export type V3PoolInfo = BasePoolInfo & {
 
 export type V2PoolInfo = BasePoolInfo & {
   protocol: Protocol.V2
-  // V2 farming pools should have a bCakeWrapperAddress
-  bCakeWrapperAddress?: Address
+  // V2 farming pools should have a bveCometWrapperAddress
+  bveCometWrapperAddress?: Address
 }
 
 export type StablePoolInfo = BasePoolInfo & {
   protocol: Protocol.STABLE
-  // Stable farming pools should have a bCakeWrapperAddress
-  bCakeWrapperAddress?: Address
+  // Stable farming pools should have a bveCometWrapperAddress
+  bveCometWrapperAddress?: Address
 }
 
 export type V4BinPoolInfo = BasePoolInfo & {
@@ -55,3 +55,4 @@ export type V4BinPoolInfo = BasePoolInfo & {
 }
 
 export type ChainIdAddressKey = `${number}:${Address}`
+

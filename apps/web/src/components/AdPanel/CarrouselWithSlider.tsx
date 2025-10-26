@@ -1,4 +1,4 @@
-import { appearAnimation } from '@pancakeswap/uikit'
+import { appearAnimation } from '@cometswap/uikit'
 import { keyframes, styled } from 'styled-components'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
@@ -61,3 +61,4 @@ export const StyledSwiper = styled(Swiper)<{ $showPagination?: boolean }>`
     }
   }
 `
+

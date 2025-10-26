@@ -1,5 +1,5 @@
 import { encodeFunctionData, Hex } from 'viem'
-import { BigintIsh, Currency, CurrencyAmount, Percent, TradeType, validateAndParseAddress } from '@pancakeswap/sdk'
+import { BigintIsh, Currency, CurrencyAmount, Percent, TradeType, validateAndParseAddress } from '@cometswap/sdk'
 
 import invariant from 'tiny-invariant'
 import { swapRouterABI } from './abi/SwapRouter'
@@ -47,7 +47,7 @@ export interface SwapOptions {
 }
 
 /**
- * Represents the Pancake V3 SwapRouter, and has static methods for helping execute trades.
+ * Represents the Comet V3 SwapRouter, and has static methods for helping execute trades.
  */
 export abstract class SwapRouter {
   // public static INTERFACE: Interface = new Interface(ISwapRouter)

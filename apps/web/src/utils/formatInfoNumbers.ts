@@ -3,4 +3,5 @@ export {
   type formatAmountNotation,
   getFirstThreeNonZeroDecimals,
   type tokenPrecisionStyle,
-} from '@pancakeswap/utils/formatInfoNumbers'
+} from '@cometswap/utils/formatInfoNumbers'
+

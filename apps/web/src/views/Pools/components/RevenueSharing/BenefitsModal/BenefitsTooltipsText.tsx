@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { Flex, TooltipText, useTooltip, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Flex, TooltipText, useTooltip, useMatchBreakpoints } from '@cometswap/uikit'
 
 interface BenefitsTooltipsTextProps {
   title: string
@@ -33,3 +33,4 @@ const BenefitsTooltipsText: React.FC<React.PropsWithChildren<BenefitsTooltipsTex
 }
 
 export default BenefitsTooltipsText
+

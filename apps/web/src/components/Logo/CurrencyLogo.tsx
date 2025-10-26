@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useHttpLocations } from '@pancakeswap/hooks'
-import { Currency } from '@pancakeswap/sdk'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
-import { BinanceIcon, TokenLogo } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useHttpLocations } from '@cometswap/hooks'
+import { Currency } from '@cometswap/sdk'
+import { WrappedTokenInfo } from '@cometswap/token-lists'
+import { BinanceIcon, TokenLogo } from '@cometswap/uikit'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { useMemo } from 'react'
 import { styled } from 'styled-components'
@@ -61,3 +61,4 @@ export default function CurrencyLogo({ currency, size = '24px', style }: LogoPro
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
 }
+

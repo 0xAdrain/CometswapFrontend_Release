@@ -48,3 +48,4 @@ export const usePoolChartFeeData = (address?: string) => {
     ...QUERY_SETTINGS_WITHOUT_INTERVAL_REFETCH,
   })
 }
+

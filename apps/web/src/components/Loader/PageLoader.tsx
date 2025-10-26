@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Spinner } from '@pancakeswap/uikit'
+import { Spinner } from '@cometswap/uikit'
 import Page from '../Layout/Page'
 
 const Wrapper = styled(Page)`
@@ -17,3 +17,4 @@ const PageLoader: React.FC<React.PropsWithChildren<unknown>> = () => {
 }
 
 export default PageLoader
+

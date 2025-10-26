@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Box, Flex, Text } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Box, Flex, Text } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { GreyCard } from 'components/Card'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -11,7 +11,7 @@ import { useLatestVaultAddress, usePotteryData } from 'state/pottery/hook'
 import { PotteryDepositStatus } from 'state/types'
 import { styled } from 'styled-components'
 import { weeksToSeconds } from 'views/Pools/components/utils/formatSecondsToWeeks'
-import { calculateCakeAmount } from 'views/Pottery/helpers'
+import { calculateCometAmount } from 'views/Pottery/helpers'
 import { useAccount } from 'wagmi'
 import WinRate from '../WinRate'
 import YourDeposit from '../YourDeposit'
@@ -34,7 +34,7 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
   const { getLockedApy } = useVaultApy()
   const { publicData, userData } = usePotteryData()
   const lastVaultAddress = useLatestVaultAddress()
-  const { totalSupply, totalLockCake, getStatus, totalLockedValue, maxTotalDeposit } = publicData
+  const { totalSupply, totalLockComet, getStatus, totalLockedValue, maxTotalDeposit } = publicData
 
   const apyDisplay = useMemo(() => {
     const apy = getLockedApy(weeksToSeconds(10))
@@ -43,10 +43,10 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
 
   const totalValueLocked = useMemo(() => {
     if (getStatus === PotteryDepositStatus.LOCK) {
-      return getBalanceNumber(totalLockCake)
+      return getBalanceNumber(totalLockComet)
     }
     return getBalanceNumber(totalLockedValue)
-  }, [getStatus, totalLockCake, totalLockedValue])
+  }, [getStatus, totalLockComet, totalLockedValue])
 
   const currentDeposit = userData.withdrawAbleData.find(
     (data) => data.potteryVaultAddress.toLowerCase() === lastVaultAddress?.toLowerCase(),
@@ -60,11 +60,11 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
 
     if (currentDeposit) {
       const { previewRedeem, shares, status } = currentDeposit
-      return calculateCakeAmount({ status, previewRedeem, shares, totalSupply, totalLockCake })
+      return calculateCometAmount({ status, previewRedeem, shares, totalSupply, totalLockComet })
     }
 
     return BIG_ZERO
-  }, [userData, getStatus, currentDeposit, totalSupply, totalLockCake])
+  }, [userData, getStatus, currentDeposit, totalSupply, totalLockComet])
 
   return (
     <Box>
@@ -81,11 +81,11 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
         </Flex>
         <Flex justifyContent="space-between">
           <Text color="textSubtle">{t('Total Value Locked')}</Text>
-          <Balance bold decimals={2} value={totalValueLocked} unit=" CAKE" />
+          <Balance bold decimals={2} value={totalValueLocked} unit=" COMET" />
         </Flex>
         <Flex justifyContent="space-between">
           <Text color="textSubtle">{t('Max. deposit cap')}</Text>
-          <Balance bold decimals={2} value={getBalanceNumber(maxTotalDeposit)} unit=" CAKE" />
+          <Balance bold decimals={2} value={getBalanceNumber(maxTotalDeposit)} unit=" COMET" />
         </Flex>
       </Container>
       <CardAction>
@@ -96,3 +96,4 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default Deposit
+

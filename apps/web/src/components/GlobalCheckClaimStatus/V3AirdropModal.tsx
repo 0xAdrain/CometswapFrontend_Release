@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Box, Button, Flex, Modal, ModalV2, Text, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRenewIcon, Box, Button, Flex, Modal, ModalV2, Text, useToast } from '@cometswap/uikit'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import confetti from 'canvas-confetti'
 import Dots from 'components/Loader/Dots'
@@ -53,7 +53,7 @@ export interface WhitelistType {
   }
 }
 
-const GITHUB_ENDPOINT = 'https://raw.githubusercontent.com/pancakeswap/airdrop-v3-users/master'
+const GITHUB_ENDPOINT = 'https://raw.githubusercontent.com/cometswap/airdrop-v3-users/master'
 
 const V3AirdropModal: React.FC = () => {
   const { t } = useTranslation()
@@ -155,16 +155,16 @@ const V3AirdropModal: React.FC = () => {
   const textDisplay = (): string => {
     if (hasPart1 && hasPart2) {
       return t(
-        'You have received an exclusive v3 Legendary and v3 Early Supporter NFT, as well as a CAKE airdrop for participating in the PancakeSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
+        'You have received an exclusive v3 Legendary and v3 Early Supporter NFT, as well as a COMETairdrop for participating in the CometSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
       )
     }
     if (hasPart1) {
       return t(
-        'You have received an exclusive v3 Legendary NFT and CAKE airdrop for participating in the PancakeSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
+        'You have received an exclusive v3 Legendary NFT and COMETairdrop for participating in the CometSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
       )
     }
     return t(
-      'You have received an exclusive v3 Early Supporter NFT and CAKE airdrop for participating in the PancakeSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
+      'You have received an exclusive v3 Early Supporter NFT and COMETairdrop for participating in the CometSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
     )
   }
 
@@ -253,3 +253,4 @@ const V3AirdropModal: React.FC = () => {
 }
 
 export default V3AirdropModal
+

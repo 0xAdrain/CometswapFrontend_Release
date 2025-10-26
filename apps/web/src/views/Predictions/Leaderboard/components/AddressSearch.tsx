@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { useModal } from '@pancakeswap/uikit'
+import { Token } from '@cometswap/sdk'
+import { useModal } from '@cometswap/uikit'
 import AddressInputSelect from 'components/AddressInputSelect'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useCallback } from 'react'
@@ -55,3 +55,4 @@ const AddressSearch: React.FC<React.PropsWithChildren<AddressSearchProps>> = ({ 
 }
 
 export default AddressSearch
+

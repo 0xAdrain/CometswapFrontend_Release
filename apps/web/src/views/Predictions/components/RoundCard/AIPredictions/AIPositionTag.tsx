@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { Flex, FlexProps, InfoIcon, SwapVertIcon, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { Flex, FlexProps, InfoIcon, SwapVertIcon, Text, TooltipText, useTooltip } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
@@ -60,7 +60,7 @@ export const AIPositionTag: React.FC<React.PropsWithChildren<AIPositionTagProps>
       </Text>
       <Text>
         {t(
-          'The Locked Price & Closed Price are exactly the same (within 8 decimals), so neither side wins. All funds entered into FOLLOW and AGAINST positions will go to the weekly CAKE burn.',
+          'The Locked Price & Closed Price are exactly the same (within 8 decimals), so neither side wins. All funds entered into FOLLOW and AGAINST positions will go to the weekly COMETburn.',
         )}
       </Text>
     </>,
@@ -87,3 +87,4 @@ export const AIPositionTag: React.FC<React.PropsWithChildren<AIPositionTagProps>
     </Tag>
   )
 }
+

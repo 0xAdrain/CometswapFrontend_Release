@@ -101,3 +101,4 @@ class XMLHttpRequestWithFetch {
 
 // @ts-expect-error partial polyfill for @datadog/browser-logs
 globalThis.XMLHttpRequest = XMLHttpRequestWithFetch
+

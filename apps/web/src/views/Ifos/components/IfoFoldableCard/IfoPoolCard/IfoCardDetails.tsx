@@ -1,9 +1,9 @@
-import { Ifo, PoolIds } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { CAKE } from '@pancakeswap/tokens'
-import { Box, Flex, IfoSkeletonCardDetails, Skeleton, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
-import { BIG_ONE_HUNDRED } from '@pancakeswap/utils/bigNumber'
-import { formatNumber, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { Ifo, PoolIds } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { COMET} from '@cometswap/tokens'
+import { Box, Flex, IfoSkeletonCardDetails, Skeleton, Text, TooltipText, useTooltip } from '@cometswap/uikit'
+import { BIG_ONE_HUNDRED } from '@cometswap/utils/bigNumber'
+import { formatNumber, getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useStablecoinPrice } from 'hooks/useStablecoinPrice'
 import { ReactNode, useMemo } from 'react'
@@ -74,41 +74,41 @@ const MaxTokenEntry = ({
   poolId: PoolIds
   basicSale?: boolean
 }) => {
-  const cake = CAKE[ifo.chainId]
-  const isCurrencyCake = cake && ifo.currency.wrapped?.equals(cake)
+  const comet = COMET[ifo.chainId]
+  const isCurrencyComet = comet && ifo.currency.wrapped?.equals(comet)
   const isV3 = ifo.version >= 3
   const { t } = useTranslation()
 
   const basicTooltipContent =
     ifo.version >= 3.1 && !basicSale
       ? t(
-          'For the private sale, each eligible participant will be able to commit any amount of CAKE up to the maximum commit limit, which is published along with the IFO voting proposal.',
+          'For the private sale, each eligible participant will be able to commit any amount of COMETup to the maximum commit limit, which is published along with the IFO voting proposal.',
         )
       : t(
-          'For the basic sale, Max CAKE entry is capped by minimum between your average CAKE balance in the iCAKE, or the pool’s hard cap. To increase the max entry, Stake more CAKE into the iCAKE',
+          'For the basic sale, Max COMETentry is capped by minimum between your average COMETbalance in the iCOMET, or the pool’s hard cap. To increase the max entry, Stake more COMETinto the iCOMET',
         )
 
   const unlimitedToolipContent =
     ifo.version >= 3.1 ? (
       <Box>
-        <Text display="inline">{t('For the public sale, Max CAKE entry is capped by')} </Text>
+        <Text display="inline">{t('For the public sale, Max COMETentry is capped by')} </Text>
         <Text bold display="inline">
-          {t('the number of iCAKE.')}
+          {t('the number of iCOMET.')}
         </Text>
         <Text display="inline" ml="0.25rem">
-          {t('Lock more CAKE for longer durations to increase the maximum number of CAKE you can commit to the sale.')}
+          {t('Lock more COMETfor longer durations to increase the maximum number of COMETyou can commit to the sale.')}
         </Text>
       </Box>
     ) : (
       t(
-        'For the unlimited sale, Max CAKE entry is capped by your average CAKE balance in the iCake. To increase the max entry, Stake more CAKE into the iCake',
+        'For the unlimited sale, Max COMETentry is capped by your average COMETbalance in the iComet. To increase the max entry, Stake more COMETinto the iComet',
       )
     )
 
   const tooltipContent = poolId === PoolIds.poolBasic ? basicTooltipContent : unlimitedToolipContent
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
-  const label = isCurrencyCake ? t('Max. CAKE entry') : t('Max. token entry')
+  const label = isCurrencyComet ? t('Max. COMETentry') : t('Max. token entry')
   const price = useStablecoinPrice(ifo.currency)
 
   const dollarValueOfToken = multiplyPriceByAmount(price, maxToken, ifo.currency.decimals)
@@ -128,7 +128,7 @@ const MaxTokenEntry = ({
         }
         value={
           <Text small textAlign="right" color={maxToken > 0 ? 'text' : 'failure'}>
-            {`${formatNumber(maxToken, 3, 3)} ${!isCurrencyCake ? ifo.currency.symbol : ''} ${` ~($${formatNumber(
+            {`${formatNumber(maxToken, 3, 3)} ${!isCurrencyComet ? ifo.currency.symbol : ''} ${` ~($${formatNumber(
               dollarValueOfToken,
               0,
               0,
@@ -246,7 +246,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
         <>
           {tokenEntry}
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId]?.raiseAmount} />
-          {raisingTokenToBurn ? <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} /> : null}
+          {raisingTokenToBurn ? <FooterEntry label={t('COMETto burn:')} value={raisingTokenToBurn} /> : null}
           <FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice}`}
@@ -273,7 +273,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
           )}
           <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId]?.raiseAmount} />
-          {raisingTokenToBurn ? <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} /> : null}
+          {raisingTokenToBurn ? <FooterEntry label={t('COMETto burn:')} value={raisingTokenToBurn} /> : null}
           {ifo.version >= 3.2 &&
           poolCharacteristic?.vestingInformation?.percentage &&
           poolCharacteristic.vestingInformation.percentage > 0 ? (
@@ -311,7 +311,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
           {hasTax && <FooterEntry label={t('Additional fee:')} value={taxRate} />}
           <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId]?.raiseAmount} />
-          {raisingTokenToBurn ? <FooterEntry label={t('CAKE to burn:')} value={raisingTokenToBurn} /> : null}
+          {raisingTokenToBurn ? <FooterEntry label={t('COMETto burn:')} value={raisingTokenToBurn} /> : null}
           {ifo.version > 1 ? (
             <FooterEntry
               label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
@@ -334,3 +334,4 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
 }
 
 export default IfoCardDetails
+

@@ -20,3 +20,4 @@ export const formatTime = (unix: string, buffer?: number) => {
   }
   return `less than 1m ago`
 }
+

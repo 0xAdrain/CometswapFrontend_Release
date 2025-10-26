@@ -62,7 +62,7 @@ export const crossFarmingProxyABI = [
   },
   {
     inputs: [],
-    name: 'CAKE',
+    name: 'COMET',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -191,3 +191,4 @@ export const crossFarmingProxyABI = [
     type: 'function',
   },
 ] as const
+

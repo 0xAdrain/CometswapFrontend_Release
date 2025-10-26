@@ -1,5 +1,5 @@
-import { Tag, Text, TagVariant } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Tag, Text, TagVariant } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import React from 'react'
 import { FormattedOrderData } from 'views/LimitOrders/hooks/useFormattedOrderData'
 
@@ -52,3 +52,4 @@ const OrderStatus: React.FC<
 }
 
 export default OrderStatus
+

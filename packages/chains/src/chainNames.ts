@@ -21,6 +21,7 @@ export const chainNames: Record<ChainId, string> = {
   [ChainId.SEPOLIA]: 'sepolia',
   [ChainId.ARBITRUM_SEPOLIA]: 'arbSepolia',
   [ChainId.BASE_SEPOLIA]: 'baseSepolia',
+  [ChainId.XLAYER_TESTNET]: 'xlayerTestnet',
 }
 
 export const chainNamesInKebabCase = {
@@ -44,6 +45,7 @@ export const chainNamesInKebabCase = {
   [ChainId.SEPOLIA]: 'sepolia',
   [ChainId.ARBITRUM_SEPOLIA]: 'arbitrum-sepolia',
   [ChainId.BASE_SEPOLIA]: 'base-sepolia',
+  [ChainId.XLAYER_TESTNET]: 'xlayer-testnet',
 } as const
 
 export const mainnetChainNamesInKebabCase = {
@@ -66,6 +68,7 @@ export const mainnetChainNamesInKebabCase = {
   [ChainId.SEPOLIA]: 'ethereum',
   [ChainId.ARBITRUM_SEPOLIA]: 'arbitrum',
   [ChainId.BASE_SEPOLIA]: 'base',
+  [ChainId.XLAYER_TESTNET]: 'xlayer',
 } as const
 
 export const chainNameToChainId = Object.entries(chainNames).reduce((acc, [chainId, chainName]) => {
@@ -98,4 +101,5 @@ export const defiLlamaChainNames: Record<ChainId, string> = {
   [ChainId.SEPOLIA]: '',
   [ChainId.ARBITRUM_SEPOLIA]: '',
   [ChainId.BASE_SEPOLIA]: '',
+  [ChainId.XLAYER_TESTNET]: '',
 }

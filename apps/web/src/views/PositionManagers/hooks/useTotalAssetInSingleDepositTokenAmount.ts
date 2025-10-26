@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
 import BigNumber from 'bignumber.js'
 
 export const useTotalAssetInSingleDepositTokenAmount = (
@@ -36,3 +36,4 @@ export const useTotalAssetInSingleDepositTokenAmount = (
   }, [singleDepositTokenInfo, otherTokenInfo])
   return totalAssetInSingleDepositTokenAmount
 }
+

@@ -1,4 +1,4 @@
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 export const ControlsContainer = styled(Flex).attrs({
@@ -35,3 +35,4 @@ export const ControlGroup = styled(Flex)`
     margin-bottom: 0;
   }
 `
+

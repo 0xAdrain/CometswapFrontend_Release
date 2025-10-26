@@ -29,3 +29,4 @@ const StyledModalAction = styled.div`
 `
 
 export default ModalActions
+

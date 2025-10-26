@@ -1,4 +1,4 @@
-import { InjectedModalProps } from '@pancakeswap/uikit'
+import { InjectedModalProps } from '@cometswap/uikit'
 import { Proposal, ProposalTypeName } from 'state/types'
 import { VoteState } from 'views/Voting/Proposal/VoteType/types'
 
@@ -15,3 +15,4 @@ export interface CastVoteModalProps extends InjectedModalProps {
   block?: number
   voteType: ProposalTypeName
 }
+

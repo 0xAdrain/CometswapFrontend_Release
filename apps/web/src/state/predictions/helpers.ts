@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import {
   BetPosition,
   PredictionStatus,
@@ -6,7 +6,7 @@ import {
   ROUNDS_PER_PAGE,
   aiPredictionsABI,
   predictionsV2ABI,
-} from '@pancakeswap/prediction'
+} from '@cometswap/prediction'
 import { gql, request } from 'graphql-request'
 import {
   Bet,
@@ -24,8 +24,8 @@ import { publicClient } from 'utils/wagmi'
 import { Address } from 'viem'
 import { BetResponseBNB } from './bnbQueries'
 import { transformBetResponseBNB, transformUserResponseBNB } from './bnbTransformers'
-import { BetResponseCAKE } from './cakeQueries'
-import { transformBetResponseCAKE, transformUserResponseCAKE } from './cakeTransformers'
+import { BetResponseCOMET} from './cometQueries'
+import { transformBetResponseCOMET, transformUserResponseCOMET} from './cometTransformers'
 import { newTransformBetResponse, newTransformUserResponse } from './newTransformers'
 import { getBetBaseFields, getRoundBaseFields, getUserBaseFields } from './queries'
 import { BetResponse, UserResponse } from './responseType'
@@ -53,9 +53,9 @@ export enum Result {
 }
 
 export const transformBetResponse = (tokenSymbol: string, chainId: ChainId | undefined) => {
-  // BSC CAKE
-  if (tokenSymbol === PredictionSupportedSymbol.CAKE && chainId === ChainId.BSC) {
-    return transformBetResponseCAKE
+  // BSC COMET
+  if (tokenSymbol === PredictionSupportedSymbol.COMET&& chainId === ChainId.BSC) {
+    return transformBetResponseCOMET
   }
   // BSC BNB
   if (tokenSymbol === PredictionSupportedSymbol.BNB && chainId === ChainId.BSC) {
@@ -66,9 +66,9 @@ export const transformBetResponse = (tokenSymbol: string, chainId: ChainId | und
 }
 
 export const transformUserResponse = (tokenSymbol: string, chainId: ChainId | undefined) => {
-  // BSC CAKE
-  if (tokenSymbol === PredictionSupportedSymbol.CAKE && chainId === ChainId.BSC) {
-    return transformUserResponseCAKE
+  // BSC COMET
+  if (tokenSymbol === PredictionSupportedSymbol.COMET&& chainId === ChainId.BSC) {
+    return transformUserResponseCOMET
   }
   // BSC BNB
   if (tokenSymbol === PredictionSupportedSymbol.BNB && chainId === ChainId.BSC) {
@@ -140,7 +140,7 @@ export const getBetHistory = async (
   skip = 0,
   api: string,
   tokenSymbol: string,
-): Promise<Array<BetResponseBNB | BetResponseCAKE>> => {
+): Promise<Array<BetResponseBNB | BetResponseCOMET>> => {
   const response = await request(
     api,
     gql`
@@ -532,3 +532,4 @@ export const fetchUserRounds = async (
     return null
   }
 }
+

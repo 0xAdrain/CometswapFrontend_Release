@@ -1,5 +1,5 @@
-import { Currency } from "@pancakeswap/sdk";
-import { ArrowUpIcon, AutoColumn, Box, ColumnCenter, Text } from "@pancakeswap/uikit";
+import { Currency } from "@cometswap/sdk";
+import { ArrowUpIcon, AutoColumn, Box, ColumnCenter, Text } from "@cometswap/uikit";
 import { ReactNode, useRef } from "react";
 import { ConfirmModalState, StepTitleAnimationContainer } from "./ApproveModalContent";
 import { FadePresence, PendingSwapConfirmationIcon } from "./Logos";

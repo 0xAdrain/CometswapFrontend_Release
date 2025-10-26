@@ -1,11 +1,11 @@
 import { BOOSTED_FARM_V3_GAS_LIMIT } from 'config'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
-import { useMasterchef, useCrossFarmingVault, useV2SSBCakeWrapperContract } from 'hooks/useContract'
+import { useMasterchef, useCrossFarmingVault, useV2SSBCometWrapperContract } from 'hooks/useContract'
 import { useCallback } from 'react'
 import { useFeeDataWithGasPrice } from 'state/user/hooks'
-import { bCakeUnStakeFarm, crossChainUnstakeFarm, unstakeFarm } from 'utils/calls'
+import { bCometUnStakeFarm, crossChainUnstakeFarm, unstakeFarm } from 'utils/calls'
 import { useOraclePrice } from 'views/Farms/hooks/useFetchOraclePrice'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 const useUnstakeFarms = (pid?: number, vaultPid?: number) => {
   const { account, chainId } = useAccountActiveChain()
@@ -40,18 +40,19 @@ const useUnstakeFarms = (pid?: number, vaultPid?: number) => {
   return { onUnstake: vaultPid ? handleUnstakeCrossChain : handleUnstake }
 }
 
-export const useBCakeUnstakeFarms = (bCakeWrapperAddress) => {
+export const useBCometUnstakeFarms = (bCometWrapperAddress) => {
   const { gasPrice } = useFeeDataWithGasPrice()
-  const V2SSBCakeContract = useV2SSBCakeWrapperContract(bCakeWrapperAddress)
+  const V2SSBCometContract = useV2SSBCometWrapperContract(bCometWrapperAddress)
 
   const handleUnstake = useCallback(
     async (amount: string) => {
-      return bCakeUnStakeFarm(V2SSBCakeContract, amount, gasPrice, BOOSTED_FARM_V3_GAS_LIMIT)
+      return bCometUnStakeFarm(V2SSBCometContract, amount, gasPrice, BOOSTED_FARM_V3_GAS_LIMIT)
     },
-    [V2SSBCakeContract, gasPrice],
+    [V2SSBCometContract, gasPrice],
   )
 
   return { onUnstake: handleUnstake }
 }
 
 export default useUnstakeFarms
+

@@ -1,10 +1,10 @@
 /* eslint-disable react/no-array-index-key */
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Box, CardBody, CardRibbon, Flex, ScanLink, Skeleton, Text } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Box, CardBody, CardRibbon, Flex, ScanLink, Skeleton, Text } from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import Divider from 'components/Divider'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useMemo } from 'react'
 import { PotteryRoundInfo } from 'state/types'
 import { styled } from 'styled-components'
@@ -58,11 +58,11 @@ const PreviousRoundCardBody: React.FC<React.PropsWithChildren<PreviousRoundCardB
     currentLanguage: { locale },
   } = useTranslation()
   const { isFetched, roundId, prizePot, totalPlayers, txid, winners, lockDate } = finishedRoundInfo
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const prizeAsBn = new BigNumber(prizePot)
   const prize = getBalanceNumber(prizeAsBn)
-  const prizeInBusd = new BigNumber(prize).times(cakePrice).toNumber()
+  const prizeInBusd = new BigNumber(prize).times(cometPrice).toNumber()
 
   const isLatest = useMemo(
     () => latestRoundId && new BigNumber(latestRoundId).minus(1).eq(roundId),
@@ -104,7 +104,7 @@ const PreviousRoundCardBody: React.FC<React.PropsWithChildren<PreviousRoundCardB
           value={prizeInBusd}
         />
         <Balance
-          unit=" CAKE"
+          unit=" COMET"
           mb="18px"
           fontSize="14px"
           color="textSubtle"
@@ -138,3 +138,4 @@ const PreviousRoundCardBody: React.FC<React.PropsWithChildren<PreviousRoundCardB
 }
 
 export default PreviousRoundCardBody
+

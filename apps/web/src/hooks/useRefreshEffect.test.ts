@@ -102,3 +102,4 @@ describe('useRefreshEffect', () => {
     expect(result.current.callbackResult).toBe(1)
   })
 })
+

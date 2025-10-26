@@ -4,9 +4,9 @@ import {
   Permit2ABI,
   generatePermitTypedData,
   getPermit2Address,
-} from '@pancakeswap/permit2-sdk'
-import { Token } from '@pancakeswap/swap-sdk-core'
-import { Permit2Signature } from '@pancakeswap/universal-router-sdk'
+} from '@cometswap/permit2-sdk'
+import { Token } from '@cometswap/swap-sdk-core'
+import { Permit2Signature } from '@cometswap/universal-router-sdk'
 import { useCallback } from 'react'
 import { publicClient } from 'utils/viem'
 import { Address, isHex } from 'viem'
@@ -88,3 +88,4 @@ export const useWritePermit = (token?: Token, spender?: Address, nonce?: number)
     }
   }, [account, chainId, isSC, nonce, scWritePermit, signTypedDataAsync, spender, token])
 }
+

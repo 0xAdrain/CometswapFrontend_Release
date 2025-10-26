@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { Message, MessageText, Text, Flex, Box, Link } from '@pancakeswap/uikit'
-import { MANAGER, baseManagers, BaseManager } from '@pancakeswap/position-managers'
+import { useTranslation } from '@cometswap/localization'
+import { Message, MessageText, Text, Flex, Box, Link } from '@cometswap/uikit'
+import { MANAGER, baseManagers, BaseManager } from '@cometswap/position-managers'
 
 interface DYORWarningProps {
   manager: {
@@ -50,3 +50,4 @@ export const DYORWarning: React.FC<DYORWarningProps> = ({ manager }) => {
     </Message>
   )
 }
+

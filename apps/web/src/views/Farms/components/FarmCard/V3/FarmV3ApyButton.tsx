@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoRow,
   CalculateIcon,
@@ -14,17 +14,17 @@ import {
   useMatchBreakpoints,
   useModalV2,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Position, TickMath, encodeSqrtRatioX96 } from '@pancakeswap/v3-sdk'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
-import { RoiCalculatorModalV2, useRoi } from '@pancakeswap/widgets-internal/roi'
+} from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { Position, TickMath, encodeSqrtRatioX96 } from '@cometswap/v3-sdk'
+import { FarmWidget } from '@cometswap/widgets-internal'
+import { RoiCalculatorModalV2, useRoi } from '@cometswap/widgets-internal/roi'
 import BigNumber from 'bignumber.js'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useContext, useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { Bound } from 'config/constants/types'
 import { usePoolAvgInfo } from 'hooks/usePoolAvgInfo'
 import { usePairTokensPrice } from 'hooks/v3/usePairTokensPrice'
@@ -37,8 +37,8 @@ import LiquidityFormProvider from 'views/AddLiquidityV3/formViews/V3FormView/for
 import { useV3FormState } from 'views/AddLiquidityV3/formViews/V3FormView/form/reducer'
 import { FarmsV3Context } from 'views/Farms'
 import { getActiveTick } from 'utils/getActiveTick'
-import { USER_ESTIMATED_MULTIPLIER, useUserPositionInfo } from '../../YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { BoostStatus, useBoostStatus } from '../../YieldBooster/hooks/bCakeV3/useBoostStatus'
+import { USER_ESTIMATED_MULTIPLIER, useUserPositionInfo } from '../../YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { BoostStatus, useBoostStatus } from '../../YieldBooster/hooks/bCometV3/useBoostStatus'
 import { getDisplayApr } from '../../getDisplayApr'
 
 const ApyLabelContainer = styled(Flex)`
@@ -128,7 +128,7 @@ function FarmV3ApyButton_({
     enabled: roiModal.isOpen,
   })
 
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const { [Bound.LOWER]: tickLower, [Bound.UPPER]: tickUpper } = ticks
   const { [Bound.LOWER]: priceLower, [Bound.UPPER]: priceUpper } = pricesAtTicks
@@ -179,7 +179,7 @@ function FarmV3ApyButton_({
       new BigNumber(farm.poolWeight)
         .times(farmV3.cakePerSecond)
         .times(365 * 60 * 60 * 24)
-        .times(cakePrice)
+        .times(cometPrice)
         .div(
           new BigNumber(farm.lmPoolLiquidity).plus(
             isPositionStaked ? BIG_ZERO : existingPosition?.liquidity?.toString() ?? BIG_ZERO,
@@ -187,7 +187,7 @@ function FarmV3ApyButton_({
         )
         .times(100),
     [
-      cakePrice,
+      cometPrice,
       existingPosition?.liquidity,
       farm.lmPoolLiquidity,
       farm.poolWeight,
@@ -196,7 +196,7 @@ function FarmV3ApyButton_({
     ],
   )
 
-  const positionCakeApr = useMemo(
+  const positionCometApr = useMemo(
     () =>
       existingPosition
         ? outOfRange
@@ -228,7 +228,7 @@ function FarmV3ApyButton_({
 
   const displayApr = getDisplayApr(cakeApr, lpApr, additionAprInfo?.aprValue)
   const cakeAprDisplay = cakeApr.toFixed(2)
-  const positionCakeAprDisplay = positionCakeApr.toFixed(2)
+  const positionCometAprDisplay = positionCometApr.toFixed(2)
   const lpAprDisplay = lpApr.toFixed(2)
   const additionalAprDisplay = (additionAprInfo?.aprValue ?? 0).toFixed(2)
   const { isDesktop } = useMatchBreakpoints()
@@ -247,8 +247,8 @@ function FarmV3ApyButton_({
   }, [cakeAprDisplay, lpAprDisplay, additionAprInfo])
   const canBoosted = useMemo(() => boostedStatus !== BoostStatus.CanNotBoost, [boostedStatus])
   const isBoosted = useMemo(() => boostedStatus === BoostStatus.Boosted, [boostedStatus])
-  const positionDisplayApr = getDisplayApr(+positionCakeApr, lpApr)
-  const positionBoostedDisplayApr = getDisplayApr(boostMultiplier * positionCakeApr, lpApr)
+  const positionDisplayApr = getDisplayApr(+positionCometApr, lpApr)
+  const positionBoostedDisplayApr = getDisplayApr(boostMultiplier * positionCometApr, lpApr)
 
   const aprTooltip = useTooltip(
     <>
@@ -284,11 +284,11 @@ function FarmV3ApyButton_({
       </ul>
       <br />
       <Text>
-        {t('Calculated using the total active liquidity staked versus the CAKE reward emissions for the farm.')}
+        {t('Calculated using the total active liquidity staked versus the COMETreward emissions for the farm.')}
       </Text>
       {canBoosted && (
         <Text mt="15px">
-          {t('bCAKE only boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
+          {t('bCOMETonly boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
         </Text>
       )}
       <Text mt="15px">{t('APRs for individual positions may vary depending on the configs.')}</Text>
@@ -303,13 +303,13 @@ function FarmV3ApyButton_({
         <li>
           {t('Farm APR')}:{' '}
           <b>
-            {isBoosted && <>{(positionCakeApr * boostMultiplier).toFixed(2)}% </>}
+            {isBoosted && <>{(positionCometApr * boostMultiplier).toFixed(2)}% </>}
             <Text
               display="inline-block"
               bold={!isBoosted}
               style={{ textDecoration: isBoosted ? 'line-through' : 'none' }}
             >
-              {positionCakeAprDisplay}%
+              {positionCometAprDisplay}%
             </Text>
           </b>
         </li>
@@ -343,7 +343,7 @@ function FarmV3ApyButton_({
           <ApyLabelContainer alignItems="center" style={{ textDecoration: 'initial' }} onClick={roiModal.onOpen}>
             {outOfRange ? (
               <TooltipText decorationColor="failure" color="failure" fontSize="14px">
-                {positionCakeApr.toLocaleString('en-US', { maximumFractionDigits: 2 })}%
+                {positionCometApr.toLocaleString('en-US', { maximumFractionDigits: 2 })}%
               </TooltipText>
             ) : (
               <>
@@ -402,7 +402,7 @@ function FarmV3ApyButton_({
           {aprTooltip.tooltipVisible && aprTooltip.tooltip}
         </>
       )}
-      {cakePrice && cakeAprFactor && (
+      {cometPrice && cakeAprFactor && (
         <RoiCalculatorModalV2
           {...roiModal}
           isFarm
@@ -424,8 +424,8 @@ function FarmV3ApyButton_({
           volume24H={volume24H}
           priceUpper={priceUpper}
           priceLower={priceLower}
-          cakePrice={cakePrice.toFixed(3)}
-          cakeAprFactor={cakeAprFactor.times(isBoosted ? boostMultiplier : 1)}
+          cometPrice={cometPrice.toFixed(3)}
+          cometAprFactor={cakeAprFactor.times(isBoosted ? boostMultiplier : 1)}
           prices={prices}
           priceSpan={priceTimeWindow}
           onPriceSpanChange={setPriceTimeWindow}
@@ -435,3 +435,4 @@ function FarmV3ApyButton_({
     </>
   )
 }
+

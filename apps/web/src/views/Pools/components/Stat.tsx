@@ -1,8 +1,8 @@
-import { Flex, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Flex, Text, TooltipText, useTooltip } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import BigNumber from 'bignumber.js'
 import Apr from './Apr'
 import useAvgLockDuration from './LockedPool/hooks/useAvgLockDuration'
@@ -61,3 +61,4 @@ export const AprInfo: React.FC<
     </Flex>
   )
 }
+

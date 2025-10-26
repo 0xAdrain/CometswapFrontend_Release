@@ -1,5 +1,5 @@
-import { TranslateFunction } from '@pancakeswap/localization'
-import { ManagerFeeType } from '@pancakeswap/position-managers'
+import { TranslateFunction } from '@cometswap/localization'
+import { ManagerFeeType } from '@cometswap/position-managers'
 
 export function getReadableManagerFeeType(t: TranslateFunction, feeType: ManagerFeeType) {
   switch (feeType) {
@@ -9,3 +9,4 @@ export function getReadableManagerFeeType(t: TranslateFunction, feeType: Manager
       return ''
   }
 }
+

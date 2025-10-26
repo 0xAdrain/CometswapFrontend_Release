@@ -70,3 +70,4 @@ const CardFlip: React.FC<React.PropsWithChildren<CardFlipProps>> = ({ isFlipped,
 }
 
 export default CardFlip
+

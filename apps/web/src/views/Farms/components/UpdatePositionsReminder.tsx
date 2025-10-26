@@ -1,7 +1,7 @@
-import { useIsMounted } from '@pancakeswap/hooks'
-import { Trans, useTranslation } from '@pancakeswap/localization'
-import { AtomBox, Button, LinkExternal, Modal, ModalV2, Text, useModalV2, useToast } from '@pancakeswap/uikit'
-import { MasterChefV3, Multicall } from '@pancakeswap/v3-sdk'
+import { useIsMounted } from '@cometswap/hooks'
+import { Trans, useTranslation } from '@cometswap/localization'
+import { AtomBox, Button, LinkExternal, Modal, ModalV2, Text, useModalV2, useToast } from '@cometswap/uikit'
+import { MasterChefV3, Multicall } from '@cometswap/v3-sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useMasterchefV3 } from 'hooks/useContract'
@@ -225,7 +225,7 @@ export function UpdatePositionsReminder_() {
           )}
           <LinkExternal
             m="auto"
-            href="https://docs.pancakeswap.finance/products/yield-farming/faq#why-am-i-seeing-an-update-positions-pop-up"
+            href="https://docs.cometswap.finance/products/yield-farming/faq#why-am-i-seeing-an-update-positions-pop-up"
           >
             <Trans>Learn More</Trans>
           </LinkExternal>
@@ -244,3 +244,4 @@ export function UpdatePositionsReminder_() {
     </ModalV2>
   )
 }
+

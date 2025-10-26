@@ -1,10 +1,10 @@
-# @pancakeswap/pcsx-sdk
+# @cometswap/pcsx-sdk
 
 ## 1.0.2
 
 ### Patch Changes
 
-- @pancakeswap/permit2-sdk@1.0.12
+- @cometswap/permit2-sdk@1.0.12
 
 ## 1.0.1
 
@@ -12,8 +12,8 @@
 
 - Updated dependencies [176eb10]
 - Updated dependencies [176eb10]
-  - @pancakeswap/swap-sdk-core@1.3.0
-  - @pancakeswap/permit2-sdk@1.0.11
+  - @cometswap/swap-sdk-core@1.3.0
+  - @cometswap/permit2-sdk@1.0.11
 
 ## 1.0.0
 
@@ -32,8 +32,8 @@
 ### Patch Changes
 
 - Updated dependencies [f551e5e]
-  - @pancakeswap/swap-sdk-core@1.2.0
-  - @pancakeswap/permit2-sdk@1.0.10
+  - @cometswap/swap-sdk-core@1.2.0
+  - @cometswap/permit2-sdk@1.0.10
 
 ## 0.0.11
 
@@ -46,16 +46,16 @@
 ### Patch Changes
 
 - Updated dependencies [9a16780]
-  - @pancakeswap/chains@0.4.6
-  - @pancakeswap/permit2-sdk@1.0.9
+  - @cometswap/chains@0.4.6
+  - @cometswap/permit2-sdk@1.0.9
 
 ## 0.0.9
 
 ### Patch Changes
 
 - Updated dependencies [b9c91d1]
-  - @pancakeswap/chains@0.4.5
-  - @pancakeswap/permit2-sdk@1.0.8
+  - @cometswap/chains@0.4.5
+  - @cometswap/permit2-sdk@1.0.8
 
 ## 0.0.8
 
@@ -63,21 +63,21 @@
 
 - edc3f30: Upgrade viem and wagmi
 - Updated dependencies [edc3f30]
-  - @pancakeswap/permit2-sdk@1.0.7
+  - @cometswap/permit2-sdk@1.0.7
 
 ## 0.0.7
 
 ### Patch Changes
 
 - Updated dependencies [edf4640]
-  - @pancakeswap/chains@0.4.4
-  - @pancakeswap/permit2-sdk@1.0.6
+  - @cometswap/chains@0.4.4
+  - @cometswap/permit2-sdk@1.0.6
 
 ## 0.0.6
 
 ### Patch Changes
 
-- @pancakeswap/permit2-sdk@1.0.5
+- @cometswap/permit2-sdk@1.0.5
 
 ## 0.0.5
 
@@ -85,8 +85,8 @@
 
 - Updated dependencies [0f4281c]
 - Updated dependencies [63a63d8]
-  - @pancakeswap/chains@0.4.3
-  - @pancakeswap/permit2-sdk@1.0.4
+  - @cometswap/chains@0.4.3
+  - @cometswap/permit2-sdk@1.0.4
 
 ## 0.0.4
 
@@ -101,8 +101,8 @@
 - 72c834c: Upgrade viem and wagmi v2
 - Updated dependencies [72c834c]
 - Updated dependencies [d4283e5]
-  - @pancakeswap/permit2-sdk@1.0.3
-  - @pancakeswap/chains@0.4.2
+  - @cometswap/permit2-sdk@1.0.3
+  - @cometswap/chains@0.4.2
 
 ## 0.0.2
 

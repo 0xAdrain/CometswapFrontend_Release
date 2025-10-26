@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, FlexGap, MultiSelector, StarFillIcon, Tag, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, FlexGap, MultiSelector, StarFillIcon, Tag, useMatchBreakpoints } from '@cometswap/uikit'
 import { useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 import { HookCard } from 'views/LandingV4/components/ExploreHooks/HookCard'
@@ -231,3 +231,4 @@ export const AllHooks = () => {
     </Box>
   )
 }
+

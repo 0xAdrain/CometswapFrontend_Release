@@ -8,3 +8,4 @@ export function useStableSwapPairs() {
 
   return useMemo(() => pairs || [], [pairs])
 }
+

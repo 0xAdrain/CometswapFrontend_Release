@@ -1,5 +1,5 @@
-import { Gauge } from '@pancakeswap/gauges'
-import { Box, Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Gauge } from '@cometswap/gauges'
+import { Box, Flex, useMatchBreakpoints } from '@cometswap/uikit'
 import type { ChartData, ChartDataset, TooltipModel } from 'chart.js'
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
@@ -228,3 +228,4 @@ export const WeightsPieChart: React.FC<{
     </>
   )
 }
+

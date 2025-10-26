@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
-import type { Pool, Route } from '@pancakeswap/routing-sdk'
+import { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
+import type { Pool, Route } from '@cometswap/routing-sdk'
 import type { PublicClient } from 'viem'
 
 export type QuoteRoute<P extends Pool = Pool> = Pick<Route<P>, 'path' | 'pools'> & {

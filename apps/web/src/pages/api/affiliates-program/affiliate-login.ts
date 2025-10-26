@@ -39,3 +39,4 @@ const affiliateLogin = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default affiliateLogin
+

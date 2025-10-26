@@ -90,7 +90,7 @@ export const UniversalRouterABI = [
           },
           {
             internalType: 'address',
-            name: 'pancakeNFTMarket',
+            name: 'cometNFTMarket',
             type: 'address',
           },
         ],
@@ -109,7 +109,7 @@ export const UniversalRouterABI = [
   },
   {
     inputs: [],
-    name: 'BuyPancakeNFTFailed',
+    name: 'BuyCometNFTFailed',
     type: 'error',
   },
   {
@@ -563,7 +563,7 @@ export const UniversalRouterABI = [
         type: 'bytes',
       },
     ],
-    name: 'pancakeV3SwapCallback',
+    name: 'cometV3SwapCallback',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',

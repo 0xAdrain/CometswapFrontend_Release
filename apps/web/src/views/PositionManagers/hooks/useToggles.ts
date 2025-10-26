@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
-import { updateQuery } from '@pancakeswap/utils/clientRouter'
+import { updateQuery } from '@cometswap/utils/clientRouter'
 
 function toggleHookFactory(queryName: string) {
   return function useToggle(): [boolean, () => void] {
@@ -21,3 +21,4 @@ function toggleHookFactory(queryName: string) {
 }
 
 export const useStakeOnly = toggleHookFactory('stakeOnly')
+

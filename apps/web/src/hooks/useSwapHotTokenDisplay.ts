@@ -1,4 +1,4 @@
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useMatchBreakpoints } from '@cometswap/uikit'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import atomWithStorageWithErrorCatch from 'utils/atomWithStorageWithErrorCatch'
 
@@ -13,3 +13,4 @@ export const useSwapHotTokenDisplay = () => {
 export const useIsSwapHotTokenDisplayFlag = () => {
   return useAtomValue(isSwapHotTokenDisplay)
 }
+

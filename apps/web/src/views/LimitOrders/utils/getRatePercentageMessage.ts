@@ -1,5 +1,5 @@
-import { TranslateFunction } from '@pancakeswap/localization'
-import { Percent } from '@pancakeswap/sdk'
+import { TranslateFunction } from '@cometswap/localization'
+import { Percent } from '@cometswap/sdk'
 
 export enum PercentageDirection {
   ABOVE = 'above',
@@ -27,3 +27,4 @@ export const getRatePercentageMessage = (
   }
   return [null, null]
 }
+

@@ -1,5 +1,5 @@
-import { BigintIsh, Currency, Token } from '@pancakeswap/swap-sdk-core'
-import { DEPLOYER_ADDRESSES, FeeAmount, Pool, computePoolAddress } from '@pancakeswap/v3-sdk'
+import { BigintIsh, Currency, Token } from '@cometswap/swap-sdk-core'
+import { DEPLOYER_ADDRESSES, FeeAmount, Pool, computePoolAddress } from '@cometswap/v3-sdk'
 import { v3PoolStateABI } from 'config/abi/v3PoolState'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
@@ -285,3 +285,4 @@ export function usePoolByChainId(
 
   return usePoolsWithMultiChains(poolKeys)[0]
 }
+

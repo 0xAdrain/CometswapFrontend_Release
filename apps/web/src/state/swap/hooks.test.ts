@@ -1,6 +1,6 @@
 /* eslint-disable no-var */
 /* eslint-disable vars-on-top */
-import { Currency } from '@pancakeswap/swap-sdk-core'
+import { Currency } from '@cometswap/swap-sdk-core'
 import { renderHook } from '@testing-library/react-hooks'
 import { useCurrency } from 'hooks/Tokens'
 import { useAtom } from 'jotai'
@@ -247,3 +247,4 @@ describe('#useDerivedSwapInfo', () => {
     expect(result.current.swapInfo.parsedAmount).toBeUndefined()
   })
 })
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, InfoFilledIcon, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, InfoFilledIcon, Text } from '@cometswap/uikit'
 import { useSubscription } from '@web3inbox/react'
 import { useInitializeNotifications } from 'hooks/useInitializeNotifications'
 import { useCallback, useMemo } from 'react'
@@ -45,7 +45,7 @@ const EnableNotificationsTooltip = ({
         tooltipContent={
           <Text as="p">
             {t(
-              'By Subscribing to PancakeSwap Notifications you will be able to receive updates on your buy crypto purchases',
+              'By Subscribing to CometSwap Notifications you will be able to receive updates on your buy crypto purchases',
             )}
           </Text>
         }
@@ -56,3 +56,4 @@ const EnableNotificationsTooltip = ({
 }
 
 export default EnableNotificationsTooltip
+

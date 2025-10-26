@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from '@reduxjs/toolkit'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { toggleFarmTransactionModal, pickFarmTransactionTx } from './actions'
 
 export interface GlobalState {
@@ -29,3 +29,4 @@ export default createReducer(initialState, (builder) =>
       state.showFarmTransactionModal = true
     }),
 )
+

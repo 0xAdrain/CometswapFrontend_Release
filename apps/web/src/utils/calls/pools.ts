@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { SerializedPool, getPoolsConfig } from '@pancakeswap/pools'
+import { ChainId } from '@cometswap/chains'
+import { SerializedPool, getPoolsConfig } from '@cometswap/pools'
 
 import chunk from 'lodash/chunk'
 import { publicClient } from 'utils/wagmi'
@@ -88,3 +88,4 @@ export const getActivePools = async (chainId: ChainId, block?: number): Promise<
     return [...accum, poolCheck]
   }, [])
 }
+

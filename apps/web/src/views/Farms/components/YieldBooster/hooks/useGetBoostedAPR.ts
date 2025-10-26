@@ -1,23 +1,23 @@
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import { useMemo } from 'react'
-import { useCakeVaultPublicData, useCakeVaultUserData } from 'state/pools/hooks'
-import { getBCakeMultiplier } from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
-import { useUserLockedCakeStatus } from 'views/Farms/hooks/useUserLockedCakeStatus'
+import { useCometVaultPublicData, useCometVaultUserData } from 'state/pools/hooks'
+import { getBCometMultiplier } from 'views/Farms/components/YieldBooster/components/BCometCalculator'
+import { useUserLockedCometStatus } from 'views/Farms/hooks/useUserLockedCometStatus'
 import useAvgLockDuration from 'views/Pools/components/LockedPool/hooks/useAvgLockDuration'
 import { secondsToDays } from 'views/Pools/components/utils/formatSecondsToWeeks'
 import useFarmBoosterConstants from './useFarmBoosterConstants'
 
 export const useGetBoostedMultiplier = (userBalanceInFarm: BigNumber, lpTokenStakedAmount: BigNumber) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useCometVaultPublicData()
+  useCometVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
-  const { isLoading, lockedAmount, totalLockedAmount, lockedStart, lockedEnd } = useUserLockedCakeStatus()
+  const { isLoading, lockedAmount, totalLockedAmount, lockedStart, lockedEnd } = useUserLockedCometStatus()
   const { constants, isLoading: isFarmConstantsLoading } = useFarmBoosterConstants()
-  const bCakeMultiplier = useMemo(() => {
+  const bCometMultiplier = useMemo(() => {
     const result =
       !isLoading && !isFarmConstantsLoading && lockedAmount && totalLockedAmount
-        ? getBCakeMultiplier(
+        ? getBCometMultiplier(
             userBalanceInFarm, // userBalanceInFarm,
             lockedAmount, // userLockAmount
             secondsToDays(_toNumber(lockedEnd) - _toNumber(lockedStart)), // userLockDuration
@@ -41,7 +41,7 @@ export const useGetBoostedMultiplier = (userBalanceInFarm: BigNumber, lpTokenSta
     isFarmConstantsLoading,
     constants,
   ])
-  return _toNumber(bCakeMultiplier)
+  return _toNumber(bCometMultiplier)
 }
 
 export const useGetCalculatorMultiplier = (
@@ -50,15 +50,15 @@ export const useGetCalculatorMultiplier = (
   lockedAmount: BigNumber,
   userLockDuration: number,
 ) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useCometVaultPublicData()
+  useCometVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
-  const { isLoading, totalLockedAmount } = useUserLockedCakeStatus()
+  const { isLoading, totalLockedAmount } = useUserLockedCometStatus()
   const { constants, isLoading: isFarmConstantsLoading } = useFarmBoosterConstants()
-  const bCakeMultiplier = useMemo(() => {
+  const bCometMultiplier = useMemo(() => {
     const result =
       !isLoading && !isFarmConstantsLoading && lockedAmount && totalLockedAmount
-        ? getBCakeMultiplier(
+        ? getBCometMultiplier(
             userBalanceInFarm, // userBalanceInFarm,
             lockedAmount, // userLockAmount
             secondsToDays(userLockDuration), // userLockDuration
@@ -81,7 +81,7 @@ export const useGetCalculatorMultiplier = (
     userLockDuration,
     constants,
   ])
-  return _toNumber(bCakeMultiplier)
+  return _toNumber(bCometMultiplier)
 }
 
 const useGetBoostedAPR = (
@@ -90,8 +90,9 @@ const useGetBoostedAPR = (
   apr: number,
   lpRewardsApr: number,
 ) => {
-  const bCakeMultiplier = useGetBoostedMultiplier(userBalanceInFarm, lpTokenStakedAmount)
-  return (apr * bCakeMultiplier + lpRewardsApr).toFixed(2)
+  const bCometMultiplier = useGetBoostedMultiplier(userBalanceInFarm, lpTokenStakedAmount)
+  return (apr * bCometMultiplier + lpRewardsApr).toFixed(2)
 }
 
 export default useGetBoostedAPR
+

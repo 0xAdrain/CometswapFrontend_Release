@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import { Box, ICakeIcon, LogoRoundIcon } from '@pancakeswap/uikit'
-import { ChainLogo } from '@pancakeswap/widgets-internal'
-import { ChainId } from '@pancakeswap/sdk'
+import { Box, ICometIcon, LogoRoundIcon } from '@cometswap/uikit'
+import { ChainLogo } from '@cometswap/widgets-internal'
+import { ChainId } from '@cometswap/sdk'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
 
@@ -43,19 +43,20 @@ type IfoIconProps = {
 export function IfoIcon({ chainId, ...props }: IfoIconProps) {
   return (
     <DoubleIcon
-      iconBottom={<ICakeIcon width="24px" height="24px" />}
+      iconBottom={<ICometIcon width="24px" height="24px" />}
       iconTop={<ChainLogo chainId={chainId} width={16} height={16} />}
       {...props}
     />
   )
 }
 
-export function ICakeLogo(props: SpaceProps) {
+export function ICometLogo(props: SpaceProps) {
   return (
     <DoubleIcon
       iconBottom={<LogoRoundIcon width="32px" height="32px" />}
-      iconTop={<ICakeIcon width="24px" height="24px" />}
+      iconTop={<ICometIcon width="24px" height="24px" />}
       {...props}
     />
   )
 }
+

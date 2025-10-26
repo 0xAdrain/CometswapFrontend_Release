@@ -1,6 +1,6 @@
-import { bscTokens } from '@pancakeswap/tokens'
-import { ERC20Token } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { bscTokens } from '@cometswap/tokens'
+import { ERC20Token } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 
 export const WALLCHAIN_ENABLED = true
 
@@ -16,3 +16,4 @@ export const WallchainTokens = [
   bscTokens.link,
   bscTokens.xrp,
 ]
+

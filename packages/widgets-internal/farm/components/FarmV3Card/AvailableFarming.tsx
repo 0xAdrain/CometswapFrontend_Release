@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { useTranslation } from "@pancakeswap/localization";
-import { PositionDetails } from "@pancakeswap/farms";
-import { PreTitle, Text, Button, Flex, Box } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { PositionDetails } from "@cometswap/farms";
+import { PreTitle, Text, Button, Flex, Box } from "@cometswap/uikit";
 
 const LightGreyCard = styled("div")`
   padding: 0;

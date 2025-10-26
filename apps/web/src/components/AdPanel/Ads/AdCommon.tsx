@@ -1,4 +1,4 @@
-import { Link } from '@pancakeswap/uikit'
+import { Link } from '@cometswap/uikit'
 import { BodyText } from '../BodyText'
 import { AdButton } from '../Button'
 import { AdCard } from '../Card'
@@ -36,3 +36,4 @@ const TextRender = (props: { config: AdTextConfig }) => {
   }
   return <>{config.text}</>
 }
+

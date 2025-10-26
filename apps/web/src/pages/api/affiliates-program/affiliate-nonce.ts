@@ -26,3 +26,4 @@ const affiliateNonce = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default affiliateNonce
+

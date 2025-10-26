@@ -1,6 +1,6 @@
-import { useDebouncedChangeHandler } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Percent, WNATIVE } from '@pancakeswap/sdk'
+import { useDebouncedChangeHandler } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Percent, WNATIVE } from '@cometswap/sdk'
 import {
   AddIcon,
   ArrowDownIcon,
@@ -19,8 +19,8 @@ import {
   useModal,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+} from '@cometswap/uikit'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { CommitButton } from 'components/CommitButton'
 import { formattedCurrencyAmount } from 'components/FormattedCurrencyAmount/FormattedCurrencyAmount'
 import { V2_ROUTER_ADDRESS } from 'config/constants/exchange'
@@ -167,7 +167,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
     //   { name: 'verifyingContract', type: 'address' },
     // ]
     // const domain = {
-    //   name: 'Pancake LPs',
+    //   name: 'Comet LPs',
     //   version: '1',
     //   chainId,
     //   verifyingContract: pair.liquidityToken.address as `0x${string}`,
@@ -784,3 +784,4 @@ export const RemoveLiquidityLayout = ({ currencyA, currencyB, children, pair, is
     </Page>
   )
 }
+

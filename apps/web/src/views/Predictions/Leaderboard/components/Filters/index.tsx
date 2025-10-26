@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { PredictionConfig, PredictionSupportedSymbol, targetChains } from '@pancakeswap/prediction'
-import { Box, Flex, OptionProps, Select, Text } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { PredictionConfig, PredictionSupportedSymbol, targetChains } from '@cometswap/prediction'
+import { Box, Flex, OptionProps, Select, Text } from '@cometswap/uikit'
 import Container from 'components/Layout/Container'
 import { getImageUrlFromToken } from 'components/TokenImage'
 import { ASSET_CDN } from 'config/constants/endpoints'
@@ -61,7 +61,7 @@ const Filters: React.FC<React.PropsWithChildren<FiltersProps>> = ({
   const orderByOptions = useMemo(() => {
     const isOldPrediction =
       (pickedChainId === ChainId.BSC && pickedTokenSymbol === PredictionSupportedSymbol.BNB) ||
-      (pickedChainId === ChainId.BSC && pickedTokenSymbol === PredictionSupportedSymbol.CAKE)
+      (pickedChainId === ChainId.BSC && pickedTokenSymbol === PredictionSupportedSymbol.COMET)
     const netAmount = isOldPrediction ? `net${pickedTokenSymbol}` : 'netAmount'
     const totalAmount = isOldPrediction ? `total${pickedTokenSymbol}` : 'totalAmount'
 
@@ -186,3 +186,4 @@ const Filters: React.FC<React.PropsWithChildren<FiltersProps>> = ({
 }
 
 export default Filters
+

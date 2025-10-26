@@ -34,3 +34,4 @@ export function useCheckInsufficientError(order?: InterfaceOrder | null | undefi
 
   return balanceIn && amountIn && balanceIn.lessThan(amountIn) ? inputCurrency : undefined
 }
+

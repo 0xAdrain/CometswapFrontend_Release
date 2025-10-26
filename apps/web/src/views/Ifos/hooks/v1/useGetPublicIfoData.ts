@@ -1,11 +1,11 @@
 import { useState, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { BSC_BLOCK_TIME } from 'config'
-import { Ifo, IfoStatus, PoolIds } from '@pancakeswap/ifos'
+import { Ifo, IfoStatus, PoolIds } from '@cometswap/ifos'
 import { useLpTokenPrice } from 'state/farms/hooks'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { publicClient } from 'utils/wagmi'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { ifoV1ABI } from 'config/abi/ifoV1'
 import { PublicIfoData } from '../../types'
 import { getStatus } from '../helpers'
@@ -97,3 +97,4 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
 }
 
 export default useGetPublicIfoData
+

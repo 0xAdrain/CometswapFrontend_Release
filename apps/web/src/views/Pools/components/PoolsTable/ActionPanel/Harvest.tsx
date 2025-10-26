@@ -1,13 +1,13 @@
-import { Button, Text, useModal, Flex, Skeleton, Heading, Balance } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Button, Text, useModal, Flex, Skeleton, Heading, Balance } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
 import BigNumber from 'bignumber.js'
 import { useAccount } from 'wagmi'
 import { PoolCategory } from 'config/constants/types'
-import { formatNumber, getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Token } from '@pancakeswap/sdk'
+import { formatNumber, getBalanceNumber, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { Token } from '@cometswap/sdk'
 
 import { ActionContainer, ActionTitles, ActionContent } from './styles'
 import CollectModal from '../../Modals/CollectModal'
@@ -119,3 +119,4 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.Deseri
 }
 
 export default HarvestAction
+

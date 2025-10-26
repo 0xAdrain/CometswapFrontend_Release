@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/swap-sdk-core'
+import { Currency } from '@cometswap/swap-sdk-core'
 import { useCurrency } from 'hooks/Tokens'
 import { Field } from 'state/swap/actions'
 import { useSwapState } from 'state/swap/hooks'
@@ -20,3 +20,4 @@ export const useSwapCurrency = (): [Currency | undefined, Currency | undefined] 
 
   return [inputCurrency, outputCurrency]
 }
+

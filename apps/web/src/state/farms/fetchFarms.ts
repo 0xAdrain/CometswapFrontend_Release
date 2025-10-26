@@ -1,6 +1,6 @@
-import { SerializedFarm } from '@pancakeswap/farms'
-import { BIG_TWO, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+import { SerializedFarm } from '@cometswap/farms'
+import { BIG_TWO, BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getFullDecimalMultiplier } from '@cometswap/utils/getFullDecimalMultiplier'
 import BigNumber from 'bignumber.js'
 import { SerializedFarmConfig } from 'config/constants/types'
 import { PoolInfo, TotalRegularAllocPoint, fetchMasterChefData } from './fetchMasterChefData'
@@ -77,3 +77,4 @@ const fetchFarms = async (farmsToFetch: SerializedFarmConfig[], chainId: number)
 }
 
 export default fetchFarms
+

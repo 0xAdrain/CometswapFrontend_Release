@@ -1,6 +1,6 @@
-import { Native } from '@pancakeswap/sdk'
-import type { Currency } from '@pancakeswap/swap-sdk-core'
-import { arbitrumTokens, baseTokens, bscTokens, ethereumTokens, lineaTokens } from '@pancakeswap/tokens'
+import { Native } from '@cometswap/sdk'
+import type { Currency } from '@cometswap/swap-sdk-core'
+import { arbitrumTokens, baseTokens, bscTokens, ethereumTokens, lineaTokens } from '@cometswap/tokens'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { Field } from 'state/buyCrypto/actions'
 import { OnRampUnit } from './types'
@@ -43,15 +43,15 @@ export enum ONRAMP_PROVIDERS {
 export enum FeeTypes {
   NetworkingFees = 'Networking Fees',
   ProviderFees = 'Provider Fees',
-  PancakeFees = 'Pancake Fees',
+  CometFees = 'Comet Fees',
 }
 
 export enum WidgetTheme {
   Dark = 'dark',
   Light = 'light',
 }
-const DEFAULT_FEE_TYPES = [FeeTypes.NetworkingFees, FeeTypes.ProviderFees, FeeTypes.PancakeFees]
-const MERCURYO_FEE_TYPES = [FeeTypes.ProviderFees, FeeTypes.PancakeFees]
+const DEFAULT_FEE_TYPES = [FeeTypes.NetworkingFees, FeeTypes.ProviderFees, FeeTypes.CometFees]
+const MERCURYO_FEE_TYPES = [FeeTypes.ProviderFees, FeeTypes.CometFees]
 
 export const getIsNetworkEnabled = (network: OnRampChainId | undefined) => {
   if (typeof network === 'undefined') return false
@@ -248,7 +248,7 @@ export const onRampCurrenciesMap: { [tokenSymbol: string]: Currency } = {
   ETH_59144: Native.onChain(OnRampChainId.LINEA),
   ETH_8453: Native.onChain(OnRampChainId.BASE),
   // Add more entries for other currencies as needed
-  CAKE_56: bscTokens.cake,
+  COMET_56: bscTokens.comet,
   USDT_1: ethereumTokens.usdt,
   USDT_56: bscTokens.usdt,
   USDC_56: bscTokens.usdc,
@@ -260,3 +260,4 @@ export const onRampCurrenciesMap: { [tokenSymbol: string]: Currency } = {
   WBTC_1: ethereumTokens.wbtc,
   // 'USDC.e_42161': arbitrumTokens.usdce,
 }
+

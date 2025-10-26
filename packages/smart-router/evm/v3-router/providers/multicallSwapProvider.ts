@@ -1,10 +1,10 @@
 /* eslint-disable camelcase, @typescript-eslint/no-non-null-assertion */
-import { ChainId } from '@pancakeswap/chains'
-import { multicallByGasLimit } from '@pancakeswap/multicall'
-import { BigintIsh } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { multicallByGasLimit } from '@cometswap/multicall'
+import { BigintIsh } from '@cometswap/sdk'
 import stats from 'stats-lite'
 import { PublicClient, decodeFunctionResult, encodeFunctionData } from 'viem'
-import { AbortControl } from '@pancakeswap/utils/abortControl'
+import { AbortControl } from '@cometswap/utils/abortControl'
 
 import IMulticallABI from '../../abis/InterfaceMulticall'
 import {
@@ -15,7 +15,7 @@ import {
   Result,
 } from './multicallProvider'
 
-export type PancakeMulticallConfig = {
+export type CometMulticallConfig = {
   gasLimitPerCall?: BigintIsh
 
   // Total gas limit of the multicall happens in a single rpc call
@@ -27,15 +27,15 @@ export type PancakeMulticallConfig = {
 } & AbortControl
 
 /**
- * The PancakeswapMulticall contract has added functionality for limiting the amount of gas
+ * The CometswapMulticall contract has added functionality for limiting the amount of gas
  * that each call within the multicall can consume. This is useful for operations where
  * a call could consume such a large amount of gas that it causes the node to error out
  * with an out of gas error.
  *
  * @export
- * @class PancakeMulticallProvider
+ * @class CometMulticallProvider
  */
-export class PancakeMulticallProvider extends IMulticallProvider<PancakeMulticallConfig> {
+export class CometMulticallProvider extends IMulticallProvider<CometMulticallConfig> {
   static abi = IMulticallABI
 
   constructor(
@@ -127,7 +127,7 @@ export class PancakeMulticallProvider extends IMulticallProvider<PancakeMultical
   }
 
   public async callSameFunctionOnContractWithMultipleParams<TFunctionParams extends any[] | undefined, TReturn>(
-    params: CallSameFunctionOnContractWithMultipleParams<TFunctionParams, PancakeMulticallConfig>,
+    params: CallSameFunctionOnContractWithMultipleParams<TFunctionParams, CometMulticallConfig>,
   ): Promise<{
     blockNumber: bigint
     results: Result<TReturn>[]
@@ -204,7 +204,7 @@ export class PancakeMulticallProvider extends IMulticallProvider<PancakeMultical
   }
 
   public async callMultipleFunctionsOnSameContract<TFunctionParams extends any[] | undefined, TReturn>(
-    params: CallMultipleFunctionsOnSameContractParams<TFunctionParams, PancakeMulticallConfig>,
+    params: CallMultipleFunctionsOnSameContractParams<TFunctionParams, CometMulticallConfig>,
   ): Promise<{
     blockNumber: bigint
     results: Result<TReturn>[]

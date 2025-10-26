@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { BSC_BLOCK_TIME } from 'config'
 import { useEffect, useRef, useState } from 'react'
 import { publicClient } from 'utils/wagmi'
@@ -50,3 +50,4 @@ const useBlockCountdown = (blockNumber: number) => {
 }
 
 export default useBlockCountdown
+

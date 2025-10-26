@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, ButtonMenu, NotificationDot, ButtonMenuItem } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, ButtonMenu, NotificationDot, ButtonMenuItem } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import { usePositionManagerStatus, PositionManagerStatus } from '../hooks'
 
@@ -42,3 +42,4 @@ export const LiveSwitch = memo(function LiveSwitch({ notifyFinished }: Props) {
     </Wrapper>
   )
 })
+

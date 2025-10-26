@@ -24,3 +24,4 @@ export const getTokenNameAlias = (
   }
   return subgraphTokenName[chainId]?.[addr] ?? defaultName
 }
+

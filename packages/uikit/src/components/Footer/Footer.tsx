@@ -1,4 +1,4 @@
-import { useIsMounted } from "@pancakeswap/hooks";
+import { useIsMounted } from "@cometswap/hooks";
 import React from "react";
 import { useMatchBreakpoints } from "../../contexts";
 import { Box, Flex } from "../Box";
@@ -15,7 +15,7 @@ import {
 
 import { vars } from "../../css/vars.css";
 import { Button } from "../Button";
-import CakePrice from "../CakePrice/CakePrice";
+import CometPrice from "../CometPrice/CometPrice";
 import LangSelector from "../LangSelector/LangSelector";
 import { ArrowForwardIcon, LogoIcon, LogoWithTextIcon } from "../Svg";
 import { ThemeSwitcher } from "../ThemeSwitcher";
@@ -29,8 +29,8 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   langs,
   setLang,
   cakePriceUsd,
-  buyCakeLabel,
-  buyCakeLink,
+  buyveCometLabel,
+  buyveCometLink,
   chainId,
   ...props
 }) => {
@@ -98,19 +98,23 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             />
           </Flex>
           <Flex order={[1, null, 2]} mb={["24px", null, "0"]} justifyContent="space-between" alignItems="center">
-            <Box mr="20px">
-              <CakePrice chainId={chainId} cakePriceUsd={cakePriceUsd} color="textSubtle" />
-            </Box>
-            <Button
-              data-theme="dark"
-              as="a"
-              href={buyCakeLink}
-              target="_blank"
-              scale="sm"
-              endIcon={<ArrowForwardIcon color="backgroundAlt" />}
-            >
-              {buyCakeLabel}
-            </Button>
+            {cakePriceUsd && (
+              <Box mr="20px">
+                <CometPrice chainId={chainId} cakePriceUsd={cakePriceUsd} color="textSubtle" />
+              </Box>
+            )}
+            {buyveCometLabel && buyveCometLink && (
+              <Button
+                data-theme="dark"
+                as="a"
+                href={buyveCometLink}
+                target="_blank"
+                scale="sm"
+                endIcon={<ArrowForwardIcon color="backgroundAlt" />}
+              >
+                {buyveCometLabel}
+              </Button>
+            )}
           </Flex>
         </StyledToolsContainer>
       </Flex>

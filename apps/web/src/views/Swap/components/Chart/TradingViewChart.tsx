@@ -1,6 +1,6 @@
-import { useDebounce } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, BunnyPlaceholderIcon, Flex, Text } from '@pancakeswap/uikit'
+import { useDebounce } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Box, BunnyPlaceholderIcon, Flex, Text } from '@cometswap/uikit'
 import { BarChartLoader } from 'components/ChartLoaders'
 import TradingView, { useTradingViewEvent } from 'components/TradingView'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
@@ -33,7 +33,7 @@ const LoadingWrapper = styled.div<{ $isDark: boolean }>`
 const bnbToWBNBSymbol = (sym: string) => (sym === 'BNB' ? 'WBNB' : sym)
 
 const ID = 'TV_SWAP_CHART'
-const SYMBOL_PREFIX = 'PANCAKESWAP:'
+const SYMBOL_PREFIX = 'COMETSWAP:'
 
 const TradingViewChart = ({ outputSymbol, inputSymbol, isDark, onTwChartSymbol }: TradingViewChartProps) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -104,3 +104,4 @@ const TradingViewChart = ({ outputSymbol, inputSymbol, isDark, onTwChartSymbol }
 }
 
 export default memo(TradingViewChart)
+

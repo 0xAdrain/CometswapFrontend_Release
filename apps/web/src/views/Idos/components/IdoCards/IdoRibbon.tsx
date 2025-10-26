@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Heading, Progress, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Heading, Progress, Text } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
-import { IfoStatus } from '@pancakeswap/ifos'
+import { IfoStatus } from '@cometswap/ifos'
 import useTheme from 'hooks/useTheme'
 import { PublicIfoData } from '../../types'
 import LiveTimer, { SoonTimer } from './Timer'
@@ -197,3 +197,4 @@ const IfoRibbonLive = ({ ifoStatus, dark, endTime }: { endTime: number; ifoStatu
     </>
   )
 }
+

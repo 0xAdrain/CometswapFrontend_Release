@@ -1,7 +1,7 @@
 import { styled, DefaultTheme, css } from "styled-components";
 
-import { Input } from "@pancakeswap/uikit";
-import getThemeValue from "@pancakeswap/uikit/util/getThemeValue";
+import { Input } from "@cometswap/uikit";
+import getThemeValue from "@cometswap/uikit/util/getThemeValue";
 
 interface ThemedProps {
   theme: DefaultTheme;

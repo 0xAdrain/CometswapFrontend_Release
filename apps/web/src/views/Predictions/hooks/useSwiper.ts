@@ -12,3 +12,4 @@ const useSwiper = () => {
 }
 
 export default useSwiper
+

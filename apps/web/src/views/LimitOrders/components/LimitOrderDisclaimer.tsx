@@ -1,5 +1,5 @@
-import { Message, MessageText } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Message, MessageText } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 const LimitOrderDisclaimer = () => {
   const { t } = useTranslation()
@@ -31,3 +31,4 @@ const LimitOrderDisclaimer = () => {
 }
 
 export default LimitOrderDisclaimer
+

@@ -1,4 +1,4 @@
-import type { Language } from "@pancakeswap/localization";
+import type { Language } from "@cometswap/localization";
 import { ElementType, ReactElement, ReactNode } from "react";
 import { FooterLinkType } from "../../components/Footer/types";
 import { MenuItemsType } from "../../components/MenuItems/types";
@@ -24,8 +24,8 @@ export interface NavProps {
   toggleTheme: (isDark: boolean) => void;
   cakePriceUsd?: number;
   currentLang: string;
-  buyCakeLabel: string;
-  buyCakeLink: string;
+  buyveCometLabel: string;
+  buyveCometLink: string;
   langs: Language[];
   chainId: number;
   setLang: (lang: Language) => void;

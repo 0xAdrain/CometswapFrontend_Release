@@ -1,8 +1,8 @@
 import { ChangeEvent, useState, useEffect } from 'react'
-import { Box, BoxProps, Text, Input } from '@pancakeswap/uikit'
+import { Box, BoxProps, Text, Input } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import { isAddress } from 'viem'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import CircleLoader from 'components/Loader/CircleLoader'
 
 enum ResultStatus {
@@ -132,3 +132,4 @@ const AddressInputSelect: React.FC<React.PropsWithChildren<AddressInputSelectPro
 }
 
 export default AddressInputSelect
+

@@ -9,3 +9,4 @@ const TradingView = () => {
 }
 
 export default TradingView
+

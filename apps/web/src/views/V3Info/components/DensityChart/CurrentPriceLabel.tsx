@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Box, Text } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 import { DensityChartEntry, PoolData } from '../../types'
@@ -65,3 +65,4 @@ export function CurrentPriceLabel({ data, chartProps, poolData }: CurrentPriceLa
   }
   return null
 }
+

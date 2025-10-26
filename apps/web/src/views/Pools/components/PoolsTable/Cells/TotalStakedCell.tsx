@@ -1,8 +1,8 @@
-import { Balance, Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Balance, Flex, Skeleton, Text } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import BigNumber from 'bignumber.js'
 
 interface TotalStakedCellProps {
@@ -37,3 +37,4 @@ const TotalStakedCell: React.FC<React.PropsWithChildren<TotalStakedCellProps>> =
 }
 
 export default TotalStakedCell
+

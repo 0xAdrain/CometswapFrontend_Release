@@ -12,3 +12,4 @@ export interface ExtendedNextReq extends NextRequest {
   userIp?: string | null
   clientId?: string | undefined
 }
+

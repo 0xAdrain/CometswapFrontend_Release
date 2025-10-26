@@ -1,20 +1,20 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Link, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Link, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
+import { Pool } from '@cometswap/widgets-internal'
 import { memo, useCallback, useMemo } from 'react'
 import { useDeserializedPoolByVaultKey, usePool, useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
-import { VeCakeBenefitCard } from 'views/CakeStaking/components/SyrupPool/VeCakeCard'
+import { CometBenefitCard } from 'views/CometStaking/components/SyrupPool/CometCard'
 
-import { Token } from '@pancakeswap/swap-sdk-core'
-import { bscTokens } from '@pancakeswap/tokens'
+import { Token } from '@cometswap/swap-sdk-core'
+import { bscTokens } from '@cometswap/tokens'
 import { GiftTooltip } from 'components/GiftTooltip/GiftTooltip'
 import styled from 'styled-components'
 import { isAddressEqual } from 'utils'
 import { Address } from 'viem'
 import { bsc } from 'viem/chains'
-import { useIsUserDelegated } from 'views/CakeStaking/hooks/useIsUserDelegated'
+import { useIsUserDelegated } from 'views/CometStaking/hooks/useIsUserDelegated'
 import { useChainId } from 'wagmi'
 import ActionPanel from './ActionPanel/ActionPanel'
 import AprCell from './Cells/AprCell'
@@ -43,14 +43,14 @@ export const VaultPoolRow: React.FC<
   const isLargerScreen = isLg || isXl || isXxl
   const isXLargerScreen = isXl || isXxl
   const pool = useDeserializedPoolByVaultKey(vaultKey) as Pool.DeserializedPoolLockedVault<Token>
-  const { totalCakeInVault } = useVaultPoolByKey(vaultKey)
+  const { totalCometInVault } = useVaultPoolByKey(vaultKey)
   const isUserDelegated = useIsUserDelegated()
 
   const { stakingToken, totalStaked } = pool
 
   const totalStakedBalance = useMemo(() => {
-    return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
-  }, [stakingToken.decimals, totalCakeInVault])
+    return getBalanceNumber(totalCometInVault, stakingToken.decimals)
+  }, [stakingToken.decimals, totalCometInVault])
 
   return (
     <Pool.ExpandRow initialActivity={initialActivity} panel={<ActionPanel account={account} pool={pool} expanded />}>
@@ -62,7 +62,7 @@ export const VaultPoolRow: React.FC<
               {t('This product have been upgraded!')}
             </Text>
           ) : (
-            <VeCakeBenefitCard isTableView />
+            <CometBenefitCard isTableView />
           )}
         </MigrateCell>
       ) : null}
@@ -108,7 +108,7 @@ const PoolRow: React.FC<React.PropsWithChildren<{ sousId: number; account: strin
     chainId === bsc.id &&
     stakingToken &&
     earningToken &&
-    isAddressEqual(stakingToken.address as Address, bscTokens.cake.address) &&
+    isAddressEqual(stakingToken.address as Address, bscTokens.comet.address) &&
     isAddressEqual(earningToken.address as Address, bscTokens.pepe.address) ? (
       <GiftTooltip>
         <Box>
@@ -140,3 +140,4 @@ const PoolRow: React.FC<React.PropsWithChildren<{ sousId: number; account: strin
 }
 
 export default memo(PoolRow)
+

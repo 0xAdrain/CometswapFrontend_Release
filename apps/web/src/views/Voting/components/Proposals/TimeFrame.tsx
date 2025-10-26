@@ -1,5 +1,5 @@
-import { Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { ProposalState } from 'state/types'
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
@@ -36,3 +36,4 @@ const TimeFrame: React.FC<React.PropsWithChildren<TimeFrameProps>> = ({ startDat
 }
 
 export default TimeFrame
+

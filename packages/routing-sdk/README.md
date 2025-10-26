@@ -1,3 +1,3 @@
-# Pancakeswap Routing SDK
+# Cometswap Routing SDK
 
 An SDK for AMM routing.

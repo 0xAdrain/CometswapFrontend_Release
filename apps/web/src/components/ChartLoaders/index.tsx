@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { Box, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import LineChartLoaderSVG from './LineChartLoaderSVG'
 import BarChartLoaderSVG from './BarChartLoaderSVG'
 import CandleChartLoaderSVG from './CandleChartLoaderSVG'
@@ -61,3 +61,4 @@ export const CandleChartLoader: React.FC<React.PropsWithChildren> = () => {
     </LoadingIndicator>
   )
 }
+

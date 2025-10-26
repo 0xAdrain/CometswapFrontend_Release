@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { PredictionSupportedSymbol } from '@pancakeswap/prediction'
+import { ChainId } from '@cometswap/chains'
+import { PredictionSupportedSymbol } from '@cometswap/prediction'
 import LocalReduxProvider from 'contexts/LocalRedux/Provider'
 import makeStore from 'contexts/LocalRedux/makeStore'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -89,3 +89,4 @@ const PredictionConfigProviders = ({ children }) => {
 }
 
 export default PredictionConfigProviders
+

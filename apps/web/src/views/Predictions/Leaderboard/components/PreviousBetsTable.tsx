@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Skeleton, Table, Td, Th } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Skeleton, Table, Td, Th } from '@cometswap/uikit'
 import orderBy from 'lodash/orderBy'
 import times from 'lodash/times'
 import { useEffect, useState } from 'react'
@@ -107,3 +107,4 @@ const PreviousBetsTable: React.FC<React.PropsWithChildren<PreviousBetsTableProps
 }
 
 export default PreviousBetsTable
+

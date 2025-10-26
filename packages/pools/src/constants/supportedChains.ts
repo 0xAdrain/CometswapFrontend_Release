@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 export const SUPPORTED_CHAIN_IDS = [
   ChainId.BSC,
@@ -8,14 +8,15 @@ export const SUPPORTED_CHAIN_IDS = [
   ChainId.ARBITRUM_GOERLI,
   ChainId.ZKSYNC,
   ChainId.ZKSYNC_TESTNET,
+  ChainId.BASE,
   ChainId.LINEA_TESTNET,
   ChainId.BASE_TESTNET,
-  ChainId.POLYGON_ZKEVM_TESTNET,
   ChainId.OPBNB,
+  ChainId.BASE,
 ] as const
 
 export type SupportedChainId = (typeof SUPPORTED_CHAIN_IDS)[number]
 
-export const CAKE_VAULT_SUPPORTED_CHAINS = [ChainId.BSC, ChainId.BSC_TESTNET] as const
+export const COMET_VAULT_SUPPORTED_CHAINS = [ChainId.BSC, ChainId.BSC_TESTNET] as const
 
-export type CakeVaultSupportedChainId = (typeof CAKE_VAULT_SUPPORTED_CHAINS)[number]
+export type CometVaultSupportedChainId = (typeof COMET_VAULT_SUPPORTED_CHAINS)[number]

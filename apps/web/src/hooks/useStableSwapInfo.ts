@@ -1,9 +1,9 @@
-import { Percent } from '@pancakeswap/sdk'
+import { Percent } from '@cometswap/sdk'
 
 import { lpTokenABI } from 'config/abi/lpTokenAbi'
 import { stableSwapABI } from 'config/abi/stableSwapAbi'
 import { Address } from 'viem'
-import { useReadContracts } from '@pancakeswap/wagmi'
+import { useReadContracts } from '@cometswap/wagmi'
 import { useActiveChainId } from './useActiveChainId'
 
 export function useStableSwapInfo(stableSwapAddress: Address | undefined, lpAddress: Address | undefined) {
@@ -67,3 +67,4 @@ export function useStableSwapInfo(stableSwapAddress: Address | undefined, lpAddr
     loading: isLoading,
   }
 }
+

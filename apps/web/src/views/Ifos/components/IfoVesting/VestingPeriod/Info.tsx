@@ -1,6 +1,6 @@
-import { PoolIds } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Progress, Tag, Text } from '@pancakeswap/uikit'
+import { PoolIds } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Progress, Tag, Text } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import { useCurrentBlock } from 'state/block/hooks'
 import { styled } from 'styled-components'
@@ -136,3 +136,4 @@ const Info: React.FC<React.PropsWithChildren<InfoProps>> = ({
 }
 
 export default Info
+

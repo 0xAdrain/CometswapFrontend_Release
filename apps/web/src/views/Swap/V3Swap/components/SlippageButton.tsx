@@ -1,6 +1,6 @@
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, PencilIcon, RiskAlertIcon, useMatchBreakpoints, useTooltip, WarningIcon } from '@pancakeswap/uikit'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Button, PencilIcon, RiskAlertIcon, useMatchBreakpoints, useTooltip, WarningIcon } from '@cometswap/uikit'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import { SettingsMode } from 'components/Menu/GlobalSettings/types'
 import { ReactElement } from 'react'
@@ -75,3 +75,4 @@ export const SlippageButton = ({ slippage }: SlippageButtonProps) => {
     </>
   )
 }
+

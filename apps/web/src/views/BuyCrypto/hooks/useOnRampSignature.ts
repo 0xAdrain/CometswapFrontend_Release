@@ -1,4 +1,4 @@
-import { useTheme } from '@pancakeswap/hooks'
+import { useTheme } from '@cometswap/hooks'
 import type { UseQueryResult } from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
 import { ONRAMP_API_BASE_URL } from 'config/constants/endpoints'
@@ -83,3 +83,4 @@ export const useOnRampSignature = <selectData = GetOnRampSignatureReturnType>(
     ...query,
   })
 }
+

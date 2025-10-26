@@ -1,10 +1,10 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import {
   defineFarmV3ConfigsFromUniversalFarm,
   fetchUniversalFarms,
   Protocol,
   UniversalFarmConfigV3,
-} from '@pancakeswap/farms'
+} from '@cometswap/farms'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
@@ -30,3 +30,4 @@ export const useV3FarmAPI = (chainId: ChainId) => {
     farms,
   }
 }
+

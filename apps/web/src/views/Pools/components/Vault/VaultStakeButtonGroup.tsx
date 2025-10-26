@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, FlexGap, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, FlexGap, TooltipText, useTooltip } from '@cometswap/uikit'
 
 export const VaultStakeButtonGroup = ({
   onFlexibleClick,
@@ -38,3 +38,4 @@ export const VaultStakeButtonGroup = ({
     </Box>
   )
 }
+

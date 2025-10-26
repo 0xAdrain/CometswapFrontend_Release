@@ -22,3 +22,4 @@ const Dots = styled.span`
 `
 
 export default Dots
+

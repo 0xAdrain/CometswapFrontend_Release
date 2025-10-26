@@ -1,6 +1,6 @@
-import { SerializedFarmsState } from '@pancakeswap/farms'
-import { SerializedPoolWithInfo } from '@pancakeswap/pools'
-import { BetPosition, PredictionStatus, PredictionsChartView } from '@pancakeswap/prediction'
+import { SerializedFarmsState } from '@cometswap/farms'
+import { SerializedPoolWithInfo } from '@cometswap/pools'
+import { BetPosition, PredictionStatus, PredictionsChartView } from '@cometswap/prediction'
 import BigNumber from 'bignumber.js'
 import {
   CampaignType,
@@ -11,7 +11,6 @@ import {
   TranslatableText,
 } from 'config/constants/types'
 import { Address, parseEther } from 'viem'
-import { NftToken } from './nftMarket/types'
 
 export enum GAS_PRICE {
   default = '5',
@@ -36,10 +35,9 @@ export interface BigNumberToJson {
 export type SerializedBigNumber = string
 
 export enum VaultKey {
-  CakeVaultV1 = 'cakeVaultV1',
-  CakeVault = 'cakeVault',
-  CakeFlexibleSideVault = 'cakeFlexibleSideVault',
+  veCometVault = 'cometVault',
   IfoPool = 'ifoPool',
+  // Removed legacy versions and side vault
 }
 
 export type SerializedPool = SerializedPoolWithInfo & {
@@ -54,7 +52,6 @@ export interface Profile {
   tokenId: number
   isActive: boolean
   username: string
-  nft?: NftToken
   team?: Team
   hasRegistered: boolean
 }
@@ -91,14 +88,14 @@ export interface SerializedLockedVaultUser extends SerializedVaultUser {
 export interface DeserializedVaultUser {
   isLoading: boolean
   userShares: BigNumber
-  cakeAtLastUserAction: BigNumber
+  cometAtLastUserAction: BigNumber
   lastDepositedTime: string
   lastUserActionTime: string
   lockedAmount: BigNumber
   balance: {
-    cakeAsNumberBalance: number
-    cakeAsBigNumber: BigNumber
-    cakeAsDisplayBalance: string
+    cometAsNumberBalance: number
+    cometAsBigNumber: BigNumber
+    cometAsDisplayBalance: string
   }
 }
 
@@ -115,29 +112,29 @@ export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   currentOverdueFee: BigNumber
 }
 
-export interface DeserializedCakeVault {
+export interface DeserializedCometVault {
   totalShares?: BigNumber
   totalLockedAmount?: BigNumber
   pricePerFullShare?: BigNumber
-  totalCakeInVault?: BigNumber
+  totalveCometInVault?: BigNumber
   fees?: DeserializedVaultFees
   userData?: DeserializedVaultUser
 }
 
-export interface DeserializedLockedCakeVault extends Omit<DeserializedCakeVault, 'userData'> {
+export interface DeserializedLockedCometVault extends Omit<DeserializedCometVault, 'userData'> {
   totalLockedAmount?: BigNumber
   userData?: DeserializedLockedVaultUser
 }
 
-export interface SerializedLockedCakeVault extends Omit<SerializedCakeVault, 'userData'> {
+export interface SerializedLockedveCometVault extends Omit<SerializedveCometVault, 'userData'> {
   totalLockedAmount?: SerializedBigNumber
   userData: SerializedLockedVaultUser
 }
 
-export interface SerializedCakeVault {
+export interface SerializedveCometVault {
   totalShares?: SerializedBigNumber
   pricePerFullShare?: SerializedBigNumber
-  totalCakeInVault?: SerializedBigNumber
+  totalveCometInVault?: SerializedBigNumber
   fees: SerializedVaultFees
   userData: SerializedVaultUser
 }
@@ -154,8 +151,8 @@ export interface PublicIfoData {
 export interface PoolsState {
   data: SerializedPool[]
   ifo: IfoState
-  cakeVault: SerializedLockedCakeVault
-  cakeFlexibleSideVault: SerializedCakeVault
+  cometVault: SerializedLockedveCometVault
+  cometFlexibleSideVault: SerializedveCometVault
   userDataLoaded: boolean
 }
 
@@ -450,19 +447,19 @@ interface LotteryRoundGenerics {
 
 export interface LotteryRound extends LotteryRoundGenerics {
   userTickets?: LotteryRoundUserTickets
-  priceTicketInCake: BigNumber
+  priceTicketInveComet: BigNumber
   discountDivisor: BigNumber
-  amountCollectedInCake: BigNumber
-  cakePerBracket: string[]
+  amountCollectedInveComet: BigNumber
+  cometPerBracket: string[]
   countWinnersPerBracket: string[]
   rewardsBreakdown: string[]
 }
 
 export interface LotteryResponse extends LotteryRoundGenerics {
-  priceTicketInCake: SerializedBigNumber
+  priceTicketInveComet: SerializedBigNumber
   discountDivisor: SerializedBigNumber
-  amountCollectedInCake: SerializedBigNumber
-  cakePerBracket: SerializedBigNumber[]
+  amountCollectedInveComet: SerializedBigNumber
+  cometPerBracket: SerializedBigNumber[]
   countWinnersPerBracket: SerializedBigNumber[]
   rewardsBreakdown: SerializedBigNumber[]
 }
@@ -490,7 +487,7 @@ export interface LotteryRoundGraphEntity {
 
 export interface LotteryUserGraphEntity {
   account: string
-  totalCake: string
+  totalveComet: string
   totalTickets: string
   rounds: UserRound[]
 }
@@ -516,7 +513,7 @@ export interface SerializedPotteryPublicData {
   lastDrawId: string
   totalPrize: string
   getStatus: PotteryDepositStatus
-  totalLockCake: string
+  totalLockveComet: string
   totalSupply: string
   lockStartTime: string
   lockTime: number
@@ -529,7 +526,7 @@ export interface DeserializedPublicData {
   lastDrawId: string
   totalPrize: BigNumber
   getStatus: PotteryDepositStatus
-  totalLockCake: BigNumber
+  totalLockveComet: BigNumber
   totalSupply: BigNumber
   lockStartTime: string
   lockTime: number
@@ -583,7 +580,7 @@ export interface PotteryWithdrawAbleData {
   status: PotteryDepositStatus
   potteryVaultAddress: Address
   totalSupply: string
-  totalLockCake: string
+  totalLockveComet: string
   lockedDate: string
   balanceOf: string
 }
@@ -598,3 +595,4 @@ export interface State {
   lottery: LotteryState
   pottery: PotteryState
 }
+

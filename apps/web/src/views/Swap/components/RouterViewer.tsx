@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { LegacyRouter, LegacyPair as Pair } from '@pancakeswap/smart-router/legacy-router'
-import { AtomBox, Box, Flex, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { LegacyRouter, LegacyPair as Pair } from '@cometswap/smart-router/legacy-router'
+import { AtomBox, Box, Flex, Text, useTooltip } from '@cometswap/uikit'
 import { CurrencyLogo } from 'components/Logo'
 import { styled } from 'styled-components'
 
@@ -126,3 +126,4 @@ export const RouterViewer: React.FC<RouterViewerProps> = ({ pairs, path, inputCu
     </RouterBox>
   )
 }
+

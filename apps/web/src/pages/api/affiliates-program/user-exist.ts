@@ -33,3 +33,4 @@ const userExist = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default userExist
+

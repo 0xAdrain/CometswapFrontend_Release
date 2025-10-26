@@ -1,4 +1,4 @@
-import { CurrencyAmount, Currency } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount, Currency } from '@cometswap/swap-sdk-core'
 
 const PRECISION = 10n ** 18n
 

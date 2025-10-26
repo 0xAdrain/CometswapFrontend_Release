@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Pair, Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Pair, Token } from '@cometswap/sdk'
 import {
   Box,
   Button,
@@ -12,13 +12,13 @@ import {
   Text,
   useMatchBreakpoints,
   useModal,
-} from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { CurrencyLogo, DoubleCurrencyLogo, SwapUIV2 } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { CurrencyLogo, DoubleCurrencyLogo, SwapUIV2 } from '@cometswap/widgets-internal'
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import { useStablecoinPriceAmount } from 'hooks/useStablecoinPrice'
 import { StablePair } from 'views/AddLiquidity/AddStableLiquidity/hooks/useStableLPDerivedMintInfo'
 
@@ -368,3 +368,4 @@ const CurrencyInputPanelSimplify = memo(function CurrencyInputPanel({
 })
 
 export default CurrencyInputPanelSimplify
+

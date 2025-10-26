@@ -15,3 +15,4 @@ export const replaceBuyCryptoState = createAction<{
   recipient: string | undefined
 }>('swap/replaceBuyCryptoState')
 export const switchCurrencies = createAction<void>('buyCrypto/switchCurrencies')
+

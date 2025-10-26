@@ -1,11 +1,11 @@
-import { Currency } from '@pancakeswap/swap-sdk-core'
-import { AutoColumn, Box, Button, Dots, Message, MessageText, Text, useModal } from '@pancakeswap/uikit'
+import { Currency } from '@cometswap/swap-sdk-core'
+import { AutoColumn, Box, Button, Dots, Message, MessageText, Text, useModal } from '@cometswap/uikit'
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
-import { getUniversalRouterAddress } from '@pancakeswap/universal-router-sdk'
-import { ConfirmModalState } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { PriceOrder } from '@cometswap/price-api-sdk'
+import { getUniversalRouterAddress } from '@cometswap/universal-router-sdk'
+import { ConfirmModalState } from '@cometswap/widgets-internal'
 import { GreyCard } from 'components/Card'
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -342,3 +342,4 @@ const ResetRoutesButton = () => {
     </AutoColumn>
   )
 }
+

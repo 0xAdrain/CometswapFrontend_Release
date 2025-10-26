@@ -28,3 +28,4 @@ export const erc20Bytes32ABI = [
     type: 'function',
   },
 ] as const
+

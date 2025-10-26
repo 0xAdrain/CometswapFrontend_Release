@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowBackIcon, AutoColumn, Box, CircleLoader, FlexGap, IconButton, Text, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowBackIcon, AutoColumn, Box, CircleLoader, FlexGap, IconButton, Text, useToast } from '@cometswap/uikit'
 import { CommitButton } from 'components/CommitButton'
 import _isEqual from 'lodash/isEqual'
 
@@ -124,3 +124,4 @@ const NotificationSettingsView = ({
 }
 
 export default NotificationSettingsView
+

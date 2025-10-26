@@ -1,13 +1,13 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Currency, Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { Currency, Token } from '@cometswap/sdk'
 import {
   ImageProps,
   TokenImage as UIKitTokenImage,
   TokenPairImage as UIKitTokenPairImage,
   TokenPairImageProps as UIKitTokenPairImageProps,
   TokenPairLogo as UIKitTokenPairLogo,
-} from '@pancakeswap/uikit'
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
+} from '@cometswap/uikit'
+import uriToHttp from '@cometswap/utils/uriToHttp'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { useMemo } from 'react'
 
@@ -34,7 +34,7 @@ export const getImageUrlFromToken = (token: Currency) => {
   return token
     ? token.isNative && token.chainId !== ChainId.BSC
       ? `${ASSET_CDN}/web/native/${token.chainId}.png`
-      : `https://tokens.pancakeswap.finance/images/${tokenImageChainNameMapping[token.chainId]}${address}.png`
+      : `https://tokens.cometswap.finance/images/${tokenImageChainNameMapping[token.chainId]}${address}.png`
     : ''
 }
 
@@ -90,3 +90,4 @@ interface TokenImageProps extends ImageProps {
 export const TokenImage: React.FC<React.PropsWithChildren<TokenImageProps>> = ({ token, ...props }) => {
   return <UIKitTokenImage src={getImageUrlFromToken(token)} {...props} />
 }
+

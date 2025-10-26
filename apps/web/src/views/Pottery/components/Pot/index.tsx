@@ -1,9 +1,9 @@
 import { styled } from 'styled-components'
 import { useState, useCallback, useMemo } from 'react'
-import { Flex, Box, Card, Text, useMatchBreakpoints, Balance, ButtonTabMenu } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useCakePrice } from 'hooks/useCakePrice'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { Flex, Box, Card, Text, useMatchBreakpoints, Balance, ButtonTabMenu } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { useCometPrice } from 'hooks/useCometPrice'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { usePotteryData } from 'state/pottery/hook'
 import Deposit from './Deposit/index'
 import Claim from './Claim/index'
@@ -66,14 +66,14 @@ const BalanceStyle = styled(Balance)`
 
 const Pot: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const { isMobile } = useMatchBreakpoints()
   const { publicData } = usePotteryData()
 
   const [activeTab, setIndex] = useState<POT_CATEGORY>(POT_CATEGORY.Deposit)
   const handleClick = useCallback((tabType: POT_CATEGORY) => setIndex(tabType), [])
 
-  const prizeInBusd = publicData.totalPrize.times(cakePrice)
+  const prizeInBusd = publicData.totalPrize.times(cometPrice)
   const prizeTotal = getBalanceNumber(prizeInBusd)
 
   const tabMenuItems = useMemo(() => {
@@ -105,8 +105,8 @@ const Pot: React.FC<React.PropsWithChildren> = () => {
               <Box>
                 <CardHeader
                   title={t('Pottery')}
-                  subTitle={t('Stake CAKE, Earn CAKE, Win CAKE')}
-                  primarySrc="https://tokens.pancakeswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
+                  subTitle={t('Stake COMET, Earn COMET, Win COMET')}
+                  primarySrc="https://tokens.cometswap.finance/images/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
                   secondarySrc="/images/pot-icon.svg"
                 />
                 {activeTab === POT_CATEGORY.Deposit ? <Deposit /> : <Claim />}
@@ -121,3 +121,4 @@ const Pot: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default Pot
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Toggle, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Toggle, useToast } from '@cometswap/uikit'
 import { useSubscribe, useUnsubscribe } from '@web3inbox/react'
 import { useCallback } from 'react'
 import { useAllowNotifications } from 'state/notifications/hooks'
@@ -48,3 +48,4 @@ function WebNotiToggle({ enabled }) {
 }
 
 export default WebNotiToggle
+

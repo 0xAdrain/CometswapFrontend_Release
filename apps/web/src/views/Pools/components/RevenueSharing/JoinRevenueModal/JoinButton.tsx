@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { useVCakeContract } from 'hooks/useContract'
+import { useVCometContract } from 'hooks/useContract'
 import { useCallback } from 'react'
 
 interface JoinButtonProps {
@@ -15,12 +15,12 @@ const JoinButton: React.FunctionComponent<React.PropsWithChildren<JoinButtonProp
   const { t } = useTranslation()
   const { toastSuccess } = useToast()
   const { chainId } = useAccountActiveChain()
-  const vCakeContract = useVCakeContract({ chainId })
+  const vCometContract = useVCometContract({ chainId })
   const { fetchWithCatchTxError, loading: isPending } = useCatchTxError()
 
   const handleJoinButton = useCallback(async () => {
     try {
-      const receipt = await fetchWithCatchTxError(() => vCakeContract.write.syncFromCakePool([] as any))
+      const receipt = await fetchWithCatchTxError(() => vCometContract.write.syncFromCometPool([] as any))
 
       if (receipt?.status) {
         toastSuccess(
@@ -33,9 +33,9 @@ const JoinButton: React.FunctionComponent<React.PropsWithChildren<JoinButtonProp
         onDismiss?.()
       }
     } catch (error) {
-      console.error('[ERROR] Submit vCake syncFromCakePool', error)
+      console.error('[ERROR] Submit vComet syncFromCometPool', error)
     }
-  }, [fetchWithCatchTxError, onDismiss, refresh, t, toastSuccess, vCakeContract.write])
+  }, [fetchWithCatchTxError, onDismiss, refresh, t, toastSuccess, vCometContract.write])
 
   return (
     <Button width="100%" m="24px 0 8px 0" disabled={isPending} onClick={handleJoinButton}>
@@ -45,3 +45,4 @@ const JoinButton: React.FunctionComponent<React.PropsWithChildren<JoinButtonProp
 }
 
 export default JoinButton
+

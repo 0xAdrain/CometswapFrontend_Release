@@ -1,4 +1,4 @@
-import { ContextApi } from '@pancakeswap/localization'
+import { ContextApi } from '@cometswap/localization'
 import dayjs from 'dayjs'
 import { MINIMUM_CHOICES } from './Choices'
 import { FormState } from './types'
@@ -74,3 +74,4 @@ export const getFormErrors = (formData: FormState, t: ContextApi['t']) => {
 
   return errors
 }
+

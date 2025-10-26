@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getPermit2Address } from '@pancakeswap/permit2-sdk'
-import { CurrencyAmount, ERC20Token, Pair, Percent } from '@pancakeswap/sdk'
-import { PoolType, SmartRouter, StablePool, V2Pool, V3Pool } from '@pancakeswap/smart-router'
+import { ChainId } from '@cometswap/chains'
+import { getPermit2Address } from '@cometswap/permit2-sdk'
+import { CurrencyAmount, ERC20Token, Pair, Percent } from '@cometswap/sdk'
+import { PoolType, SmartRouter, StablePool, V2Pool, V3Pool } from '@cometswap/smart-router'
 import {
   DEPLOYER_ADDRESSES,
   FeeAmount,
@@ -11,17 +11,17 @@ import {
   computePoolAddress,
   encodeSqrtRatioX96,
   nearestUsableTick,
-} from '@pancakeswap/v3-sdk'
+} from '@cometswap/v3-sdk'
 import { getUniversalRouterAddress } from '../../src'
 import { Provider } from './clients'
-import { BUSD, CAKE, ETHER, USDC, USDT, WBNB, WETH9 } from './constants/tokens'
+import { BUSD, COMET, ETHER, USDC, USDT, WBNB, WETH9 } from './constants/tokens'
 
 const fixtureTokensAddresses = (chainId: ChainId) => {
   return {
     ETHER: ETHER.on(chainId),
     USDC: USDC[chainId],
     USDT: USDT[chainId],
-    CAKE: CAKE[chainId],
+    COMET: COMET[chainId],
     WETH: WETH9[chainId],
     BUSD: BUSD[chainId],
     WBNB: WBNB[chainId],

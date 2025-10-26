@@ -1,4 +1,4 @@
-import { ChainId, getChainName } from '@pancakeswap/chains'
+import { ChainId, getChainName } from '@cometswap/chains'
 
 import { ASSET_CDN } from 'config/constants/endpoints'
 
@@ -10,3 +10,4 @@ type GetUrlOptions = {
 export function getChainBasedImageUrl({ chainId = ChainId.BSC, name }: GetUrlOptions) {
   return `${ASSET_CDN}/web/ifos/${name}/${getChainName(chainId)}.png`
 }
+

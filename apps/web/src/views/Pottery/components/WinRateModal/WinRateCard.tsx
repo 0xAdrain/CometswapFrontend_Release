@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Text, Input, CheckmarkIcon, PencilIcon, IconButton } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Text, Input, CheckmarkIcon, PencilIcon, IconButton } from '@cometswap/uikit'
 import { WinRateCalculatorState } from 'views/Pottery/hooks/useWinRateCalculator'
 import { CalculatorMode } from '../../types'
 
@@ -122,3 +122,4 @@ const WinRateCard: React.FC<React.PropsWithChildren<WinRateCardProps>> = ({
 }
 
 export default WinRateCard
+

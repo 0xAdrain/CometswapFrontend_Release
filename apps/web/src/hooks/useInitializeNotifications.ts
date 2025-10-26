@@ -12,3 +12,4 @@ export const useInitializeNotifications = () => {
 
   return { isReady, isRegistered }
 }
+

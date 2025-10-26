@@ -7,13 +7,13 @@ export const OVER = 'OVER'
 export const CompetitionPhases = {
   REGISTRATION: {
     state: REGISTRATION,
-    // 2022â€“05â€“17 07:59 AM UTC
+    // 2022â€?5â€?7 07:59 AM UTC
     ends: 1652774399000,
     step: { index: 0, text: 'Entry' },
   },
   LIVE: {
     state: LIVE,
-    // 2022â€“05â€“24 07:59 AM UTC
+    // 2022â€?5â€?4 07:59 AM UTC
     ends: 1653379199000,
     step: { index: 1, text: 'Live' },
   },
@@ -47,3 +47,4 @@ export const SmartContractPhases = {
   3: CompetitionPhases.CLAIM,
   4: CompetitionPhases.OVER,
 }
+

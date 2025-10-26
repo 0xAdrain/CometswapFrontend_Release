@@ -1,5 +1,5 @@
-import { BottomDrawer, Button, ChevronRightIcon, Column, MoreIcon } from '@pancakeswap/uikit'
-import { TokenOverview } from '@pancakeswap/widgets-internal'
+import { BottomDrawer, Button, ChevronRightIcon, Column, MoreIcon } from '@cometswap/uikit'
+import { TokenOverview } from '@cometswap/widgets-internal'
 import { TokenPairImage } from 'components/TokenImage'
 import { memo, ReactNode, useCallback, useState } from 'react'
 import { PoolInfo } from 'state/farmsV4/state/type'
@@ -188,3 +188,4 @@ const ListItemDetails: React.FC<IListItemDetailsProps> = memo(({ data }) => {
     </ItemDetailContainer>
   )
 })
+

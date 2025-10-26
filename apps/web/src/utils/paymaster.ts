@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { PCS_ACCOUNT_IN_ZYFI_VAULT, ZYFI_VAULT } from 'config/paymaster'
 import { formatUnits, parseAbi } from 'viem'
 import { getViemClients } from './viem'
@@ -29,3 +29,4 @@ export const getGasSponsorship = async (): Promise<{
     return { balance: 0n, formattedBalance: '0', isEnoughGasBalance: false }
   }
 }
+

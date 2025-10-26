@@ -1,6 +1,6 @@
-import { GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@pancakeswap/gauges'
-import { Percent } from '@pancakeswap/swap-sdk-core'
-import { Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@cometswap/gauges'
+import { Percent } from '@cometswap/swap-sdk-core'
+import { Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { useMemo } from 'react'
 import styled from 'styled-components'
 import { feeTierPercent } from 'views/V3Info/utils'
@@ -101,3 +101,4 @@ export const ChartTooltip: React.FC<{
     </Tooltip>
   )
 }
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ChevronLeftIcon, ChevronRightIcon, Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ChevronLeftIcon, ChevronRightIcon, Flex, Text } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 import { useRef, useCallback } from 'react'
@@ -157,3 +157,4 @@ export const NewsSection: React.FC = () => {
     </Flex>
   )
 }
+

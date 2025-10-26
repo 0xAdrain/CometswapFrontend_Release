@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { type Address, zeroAddress } from 'viem'
-import { ERC20Token, Currency, NativeCurrency, Token } from '@pancakeswap/sdk'
+import { ERC20Token, Currency, NativeCurrency, Token } from '@cometswap/sdk'
 
-import { TokenAddressMap } from '@pancakeswap/token-lists'
-import { useReadContracts } from '@pancakeswap/wagmi'
+import { TokenAddressMap } from '@cometswap/token-lists'
+import { useReadContracts } from '@cometswap/wagmi'
 import { GELATO_NATIVE } from 'config/constants'
 import { UnsafeCurrency } from 'config/constants/types'
 import { useAtomValue } from 'jotai'
@@ -305,3 +305,4 @@ export function useOnRampCurrency(currencyId: string | undefined): NativeCurrenc
 
   return isNative ? native : token
 }
+

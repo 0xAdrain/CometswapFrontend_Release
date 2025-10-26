@@ -1,16 +1,16 @@
-import { Protocol } from '@pancakeswap/farms'
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Token } from '@pancakeswap/swap-sdk-core'
-import { FeeTier, Flex, Row, Skeleton, Tag, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import { DoubleCurrencyLogo, FiatNumberDisplay } from '@pancakeswap/widgets-internal'
+import { Protocol } from '@cometswap/farms'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Token } from '@cometswap/swap-sdk-core'
+import { FeeTier, Flex, Row, Skeleton, Tag, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import { DoubleCurrencyLogo, FiatNumberDisplay } from '@cometswap/widgets-internal'
 import { RangeTag } from 'components/RangeTag'
 import React, { memo, useMemo } from 'react'
 import { PositionDetail, StableLPDetail, V2LPDetail } from 'state/farmsV4/state/accountPositions/type'
 import { PoolInfo } from 'state/farmsV4/state/type'
 import styled from 'styled-components'
-import { useV2CakeEarning, useV3CakeEarning } from 'views/universalFarms/hooks/useCakeEarning'
+import { useV2CometEarning, useV3CometEarning } from 'views/universalFarms/hooks/useVeCometEarning'
 import { MerklTag } from 'components/Merkl/MerklTag'
 import { PoolGlobalAprButton, V2PoolPositionAprButton, V3PoolPositionAprButton } from '../PoolAprButton'
 
@@ -179,7 +179,7 @@ const Earnings: React.FC<{ earningsAmount?: number; earningsBusd?: number }> = (
     earningsBusd > 0 && (
       <Row gap="8px">
         <DetailInfoLabel>
-          {t('CAKE earned')}: {earningsAmount} (~${formatNumber(earningsBusd)})
+          {t('COMETearned')}: {earningsAmount} (~${formatNumber(earningsBusd)})
         </DetailInfoLabel>
       </Row>
     )
@@ -187,12 +187,12 @@ const Earnings: React.FC<{ earningsAmount?: number; earningsBusd?: number }> = (
 }
 
 const V2Earnings = ({ pool }: { pool: PoolInfo | null | undefined }) => {
-  const { earningsAmount, earningsBusd } = useV2CakeEarning(pool)
+  const { earningsAmount, earningsBusd } = useV2CometEarning(pool)
   return <Earnings earningsAmount={earningsAmount} earningsBusd={earningsBusd} />
 }
 
 const V3Earnings = ({ tokenId, chainId }: { tokenId?: bigint; chainId: number }) => {
-  const { earningsAmount, earningsBusd } = useV3CakeEarning(
+  const { earningsAmount, earningsBusd } = useV3CometEarning(
     useMemo(() => (tokenId ? [tokenId] : []), [tokenId]),
     chainId,
   )
@@ -227,3 +227,4 @@ const DetailInfoLabel = styled(Text)`
   font-weight: 600;
   font-size: 12px;
 `
+

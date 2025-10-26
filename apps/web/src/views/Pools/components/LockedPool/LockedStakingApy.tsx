@@ -1,16 +1,16 @@
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Pool } from '@cometswap/widgets-internal'
 import { memo } from 'react'
 
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import { LightGreyCard } from 'components/Card'
-import { useIsUserDelegated } from 'views/CakeStaking/hooks/useIsUserDelegated'
+import { useIsUserDelegated } from 'views/CometStaking/hooks/useIsUserDelegated'
 import LockDurationRow from './Common/LockDurationRow'
 import LockedStaking from './LockedStaking'
 import useUserDataInVaultPresenter from './hooks/useUserDataInVaultPresenter'
 import { LockedStakingApyPropsType } from './types'
 
 interface LockedStakingApyProps extends LockedStakingApyPropsType {
-  showICake?: boolean
+  showIComet?: boolean
   pool?: Pool.DeserializedPool<Token>
   account?: string
 }
@@ -37,8 +37,8 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
 
   // earningTokenBalance includes overdue fee if any
   // const earningTokenBalance = useMemo(() => {
-  //   return getBalanceNumber(userData?.balance?.cakeAsBigNumber.minus(userData?.cakeAtLastUserAction))
-  // }, [userData?.balance?.cakeAsBigNumber, userData?.cakeAtLastUserAction])
+  //   return getBalanceNumber(userData?.balance?.cometAsBigNumber.minus(userData?.cakeAtLastUserAction))
+  // }, [userData?.balance?.cometAsBigNumber, userData?.cakeAtLastUserAction])
 
   return (
     <LightGreyCard>
@@ -62,7 +62,7 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
         {tagTooltipVisibleOfRecentProfit && tagTooltipOfRecentProfit}
         <TooltipText>
           <Text ref={tagTargetRefOfRecentProfit} color="textSubtle" textTransform="uppercase" bold fontSize="12px">
-            {t('Recent CAKE profit')}
+            {t('Recent COMETprofit')}
           </Text>
         </TooltipText>
         <BalanceWithLoading color="text" bold fontSize="16px" value={earningTokenBalance} decimals={5} />
@@ -95,9 +95,10 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
         </Text>
         <BalanceWithLoading color="text" bold fontSize="16px" value={originalLockedAmount} decimals={2} />
       </Flex>
-      {showICake && <IfoCakeRow />} */}
+      {showIComet && <IfoCometRow />} */}
     </LightGreyCard>
   )
 }
 
 export default memo(LockedStakingApy)
+

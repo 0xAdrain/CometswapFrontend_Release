@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { memo, useMemo } from 'react'
-import { Box, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Box, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 
 import { useChainName } from '../hooks/useChainNames'
 import { getChainBasedImageUrl } from '../helpers'
@@ -60,3 +60,4 @@ export const IfoChainBoard = memo(function IfoChainBoard({ chainId }: Props) {
     </Container>
   )
 })
+

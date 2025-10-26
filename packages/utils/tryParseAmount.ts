@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
 import { parseUnits } from './viem/parseUnits'
 
 // try to parse a user entered amount for a given token

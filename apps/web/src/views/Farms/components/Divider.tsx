@@ -6,3 +6,4 @@ export default styled.div`
   margin: 0 auto 32px;
   width: 100%;
 `
+

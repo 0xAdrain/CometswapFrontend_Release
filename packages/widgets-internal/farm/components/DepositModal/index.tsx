@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 import {
   AutoRenewIcon,
   Box,
@@ -19,11 +19,11 @@ import {
   Skeleton,
   Text,
   WarningIcon,
-} from "@pancakeswap/uikit";
-import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
-import { getInterestBreakdown } from "@pancakeswap/utils/compoundApyHelpers";
-import { formatNumber, getDecimalAmount, getFullDisplayBalance } from "@pancakeswap/utils/formatBalance";
-import { trimTrailZero } from "@pancakeswap/utils/trimTrailZero";
+} from "@cometswap/uikit";
+import { BIG_ZERO } from "@cometswap/utils/bigNumber";
+import { getInterestBreakdown } from "@cometswap/utils/compoundApyHelpers";
+import { formatNumber, getDecimalAmount, getFullDisplayBalance } from "@cometswap/utils/formatBalance";
+import { trimTrailZero } from "@cometswap/utils/trimTrailZero";
 import BigNumber from "bignumber.js";
 import _toNumber from "lodash/toNumber";
 import { useCallback, useMemo, useState } from "react";
@@ -55,10 +55,10 @@ interface DepositModalProps {
   lpRewardsApr?: number;
   displayApr?: string;
   addLiquidityUrl?: string;
-  cakePrice?: BigNumber;
+  cometPrice?: BigNumber;
   showActiveBooster?: boolean;
   lpTotalSupply: BigNumber;
-  bCakeMultiplier?: number | null;
+  bveCometMultiplier?: number | null;
   showCrossChainFarmWarning?: boolean;
   crossChainWarningText?: string;
   decimals: number;
@@ -66,13 +66,13 @@ interface DepositModalProps {
   enablePendingTx?: boolean;
   showTopMessageText?: null | string;
   dualTokenRewardApr?: number;
-  farmCakePerSecond?: string;
+  farmveCometPerSecond?: string;
   totalMultipliers?: string;
-  rewardCakePerSecond?: boolean;
+  rewardveCometPerSecond?: boolean;
   onDismiss?: () => void;
   onConfirm: (amount: string) => void;
   handleApprove?: () => void;
-  bCakeCalculatorSlot?: (stakingTokenBalance: string) => React.ReactNode;
+  bveCometCalculatorSlot?: (stakingTokenBalance: string) => React.ReactNode;
   isBooster?: boolean;
   boosterMultiplier?: number;
 }
@@ -89,9 +89,9 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
   lpLabel = "",
   apr = 0,
   addLiquidityUrl = "",
-  cakePrice = BIG_ZERO,
+  cometPrice = BIG_ZERO,
   showActiveBooster,
-  bCakeMultiplier,
+  bveCometMultiplier,
   showCrossChainFarmWarning,
   crossChainWarningText,
   decimals,
@@ -99,14 +99,14 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
   enablePendingTx,
   showTopMessageText,
   dualTokenRewardApr,
-  farmCakePerSecond,
+  farmveCometPerSecond,
   totalMultipliers,
-  rewardCakePerSecond,
+  rewardveCometPerSecond,
   lpRewardsApr,
   onConfirm,
   onDismiss,
   handleApprove,
-  bCakeCalculatorSlot,
+  bveCometCalculatorSlot,
   isBooster,
   boosterMultiplier,
 }) => {
@@ -137,12 +137,12 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
       getInterestBreakdown({
         principalInUSD: !lpTokensToStake.isNaN() ? usdToStake.toNumber() : 0,
         apr,
-        earningTokenPrice: cakePrice.toNumber(),
+        earningTokenPrice: cometPrice.toNumber(),
       }),
-    [lpTokensToStake, usdToStake, cakePrice, apr]
+    [lpTokensToStake, usdToStake, cometPrice, apr]
   );
 
-  const annualRoi = useMemo(() => cakePrice.times(interestBreakdown[3]), [cakePrice, interestBreakdown]);
+  const annualRoi = useMemo(() => cometPrice.times(interestBreakdown[3]), [cometPrice, interestBreakdown]);
   const annualRoiAsNumber = useMemo(() => annualRoi.toNumber(), [annualRoi]);
   const formattedAnnualRoi = useMemo(
     () => formatNumber(annualRoiAsNumber, annualRoi.gt(10000) ? 0 : 2, annualRoi.gt(10000) ? 0 : 2),
@@ -191,7 +191,7 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
           stakingTokenDecimals={decimals}
           stakingTokenSymbol={tokenName}
           stakingTokenPrice={lpPrice.toNumber()}
-          earningTokenPrice={cakePrice.toNumber()}
+          earningTokenPrice={cometPrice.toNumber()}
           apr={isBooster ? apr * (boosterMultiplier ?? 1) : apr}
           multiplier={multiplier}
           displayApr={
@@ -201,12 +201,12 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
           isFarm
           initialValue={val}
           dualTokenRewardApr={dualTokenRewardApr}
-          farmCakePerSecond={farmCakePerSecond}
+          farmveCometPerSecond={farmveCometPerSecond}
           totalMultipliers={totalMultipliers}
-          rewardCakePerSecond={rewardCakePerSecond}
+          rewardveCometPerSecond={rewardveCometPerSecond}
           lpRewardsApr={lpRewardsApr}
           onBack={() => setShowRoiCalculator(false)}
-          bCakeCalculatorSlot={bCakeCalculatorSlot}
+          bveCometCalculatorSlot={bveCometCalculatorSlot}
         />
       </ModalV2>
     );

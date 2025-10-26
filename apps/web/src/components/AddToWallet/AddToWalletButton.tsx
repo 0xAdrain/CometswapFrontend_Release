@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   BinanceChainIcon,
   Button,
@@ -11,7 +11,7 @@ import {
   TooltipOptions,
   TrustWalletIcon,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { Address } from 'viem'
 import { watchAsset } from 'viem/actions'
 import { useAccount, useWalletClient } from 'wagmi'
@@ -177,3 +177,4 @@ const AddToWalletButton: React.FC<AddToWalletButtonProps & ButtonProps> = ({
 }
 
 export default AddToWalletButton
+

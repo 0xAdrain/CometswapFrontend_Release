@@ -9,3 +9,4 @@ export const useWebNotifications = () => {
 
   return { enabled }
 }
+

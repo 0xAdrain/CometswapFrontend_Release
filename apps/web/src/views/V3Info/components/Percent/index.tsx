@@ -1,44 +1,33 @@
-import { Text } from '@pancakeswap/uikit'
+import { Text, TextProps } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
-const Wrapper = styled(Text)<{ fontWeight: number; fontSize: string; negative: boolean }>`
-  font-size: ${({ fontSize }) => fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight};
+const Wrapper = styled(Text)<{ negative: boolean }>`
   color: ${({ theme, negative }) => (negative ? theme.colors.failure : theme.colors.success)};
+  font-weight: 500;
 `
 
-export interface LogoProps {
-  value: number | undefined
+interface PercentProps extends TextProps {
+  value: number
   decimals?: number
   fontSize?: string
   fontWeight?: number
   wrap?: boolean
-  simple?: boolean
 }
 
-export default function Percent({
+const Percent: React.FC<React.PropsWithChildren<PercentProps>> = ({
   value,
   decimals = 2,
   fontSize = '16px',
   fontWeight = 500,
   wrap = false,
-  simple = false,
   ...rest
-}: LogoProps) {
-  if (value === undefined || value === null) {
-    return (
-      <Text fontWeight={fontWeight} fontSize={fontSize}>
-        -
-      </Text>
-    )
-  }
-
+}) => {
   const truncated = parseFloat(value.toFixed(decimals))
 
-  if (simple) {
+  if (truncated === 0) {
     return (
       <Wrapper {...rest} fontWeight={fontWeight} fontSize={fontSize} negative={false}>
-        {Math.abs(value).toFixed(decimals)}%
+        0%
       </Wrapper>
     )
   }
@@ -46,9 +35,11 @@ export default function Percent({
   return (
     <Wrapper {...rest} fontWeight={fontWeight} fontSize={fontSize} negative={truncated < 0}>
       {wrap && '('}
-      {truncated < 0 && '↓'}
-      {truncated > 0 && '↑'}
+      {truncated < 0 && '-'}
+      {truncated > 0 && '+'}
       {Math.abs(value).toFixed(decimals)}%{wrap && ')'}
     </Wrapper>
   )
 }
+
+export default Percent

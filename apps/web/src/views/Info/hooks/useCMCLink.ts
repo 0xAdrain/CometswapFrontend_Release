@@ -32,3 +32,4 @@ const useCMCLink = (address: string): string | undefined => {
 }
 
 export default useCMCLink
+

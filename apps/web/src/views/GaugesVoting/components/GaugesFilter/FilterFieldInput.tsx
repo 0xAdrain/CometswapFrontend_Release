@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, InputGroup, SearchIcon, SearchInput, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, InputGroup, SearchIcon, SearchInput, Text } from '@cometswap/uikit'
 import React from 'react'
 
 type FilterInputProps = {
@@ -25,3 +25,4 @@ export const FilterFieldInput: React.FC<FilterInputProps> = ({ placeholder, init
     </AutoColumn>
   )
 }
+

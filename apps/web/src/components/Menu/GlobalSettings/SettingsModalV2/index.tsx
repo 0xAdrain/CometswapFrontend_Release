@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AtomBox,
   Box,
@@ -13,8 +13,8 @@ import {
   Text,
   useMatchBreakpoints,
   useModalV2,
-} from '@pancakeswap/uikit'
-import { useExpertMode, useUserExpertModeAcknowledgement } from '@pancakeswap/utils/user'
+} from '@cometswap/uikit'
+import { useExpertMode, useUserExpertModeAcknowledgement } from '@cometswap/utils/user'
 
 import { ReactNode, useCallback, useId, useState } from 'react'
 import { useRoutingSettingChanged } from 'state/user/smartRouter'
@@ -231,3 +231,4 @@ export const withCustomOnDismiss =
 
     return <Component {...props} mode={mode} onDismiss={handleDismiss} />
   }
+

@@ -1,16 +1,16 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { MANAGER } from '@pancakeswap/position-managers'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import type { AtomBoxProps } from '@pancakeswap/uikit'
-import { Box, Button, Flex, ModalV2, RowBetween, Text, useToast } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
-import { useWeb3React } from '@pancakeswap/wagmi'
-import { ConfirmationPendingContent, CurrencyLogo } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { MANAGER } from '@cometswap/position-managers'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
+import type { AtomBoxProps } from '@cometswap/uikit'
+import { Box, Button, Flex, ModalV2, RowBetween, Text, useToast } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { FeeAmount } from '@cometswap/v3-sdk'
+import { useWeb3React } from '@cometswap/wagmi'
+import { ConfirmationPendingContent, CurrencyLogo } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { usePositionManagerBCakeWrapperContract, usePositionManagerWrapperContract } from 'hooks/useContract'
+import { usePositionManagerBCometWrapperContract, usePositionManagerWrapperContract } from 'hooks/useContract'
 import { memo, useCallback, useMemo, useState } from 'react'
 import { SpaceProps } from 'styled-system'
 import { Address, encodePacked } from 'viem'
@@ -43,7 +43,7 @@ interface Props {
     amountB: CurrencyAmount<Currency>
     liquidity: bigint
   }) => Promise<void>
-  bCakeWrapper?: Address
+  bCometWrapper?: Address
 }
 
 export const RemoveLiquidity = memo(function RemoveLiquidity({
@@ -59,43 +59,43 @@ export const RemoveLiquidity = memo(function RemoveLiquidity({
   feeTier,
   contractAddress,
   refetch,
-  bCakeWrapper,
+  bCometWrapper,
   manager,
 }: Props) {
   const { t } = useTranslation()
   const { account, chain } = useWeb3React()
   const [percent, setPercent] = useState(0)
   const tokenPairName = useMemo(() => `${currencyA.symbol}-${currencyB.symbol}`, [currencyA, currencyB])
-  const bCakeWrapperContract = usePositionManagerBCakeWrapperContract(bCakeWrapper ?? '0x')
+  const bCometWrapperContract = usePositionManagerBCometWrapperContract(bCometWrapper ?? '0x')
   const wrapperContract = usePositionManagerWrapperContract(contractAddress)
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const { toastSuccess } = useToast()
 
   const amountA = useMemo(() => staked0Amount?.multiply(percent)?.divide(100), [staked0Amount, percent])
   const amountB = useMemo(() => staked1Amount?.multiply(percent)?.divide(100), [staked1Amount, percent])
-  const slippage = usePMSlippage(bCakeWrapper)
+  const slippage = usePMSlippage(bCometWrapper)
 
   const withdrawThenBurn = useCallback(async () => {
     const receipt = await fetchWithCatchTxError(
-      bCakeWrapper
+      bCometWrapper
         ? async () => {
-            const bCakeUserInfoAmount = await bCakeWrapperContract.read.userInfo([account ?? '0x'], {})
+            const bCometUserInfoAmount = await bCometWrapperContract.read.userInfo([account ?? '0x'], {})
 
             const message =
               manager.id === MANAGER.TEAHOUSE ? slippage : encodePacked(['uint256', 'uint256'], [BigInt(0), BigInt(0)])
-            const withdrawAmount = new BigNumber(bCakeUserInfoAmount?.[0]?.toString() ?? 0)
+            const withdrawAmount = new BigNumber(bCometUserInfoAmount?.[0]?.toString() ?? 0)
               .multipliedBy(percent)
               .div(100)
               .toNumber()
             const avoidDecimalsProblem =
-              percent === 100 ? BigInt(bCakeUserInfoAmount?.[0]) : BigInt(Math.floor(withdrawAmount))
-            const estGas = await bCakeWrapperContract.estimateGas.withdrawThenBurn(
+              percent === 100 ? BigInt(bCometUserInfoAmount?.[0]) : BigInt(Math.floor(withdrawAmount))
+            const estGas = await bCometWrapperContract.estimateGas.withdrawThenBurn(
               [avoidDecimalsProblem, false, message],
               {
                 account: account ?? '0x',
               },
             )
-            return bCakeWrapperContract.write.withdrawThenBurn([avoidDecimalsProblem, false, message], {
+            return bCometWrapperContract.write.withdrawThenBurn([avoidDecimalsProblem, false, message], {
               account: account ?? '0x',
               chain,
               gas: BigInt(new BigNumber(estGas.toString()).times(1.5).toNumber().toFixed(0)),
@@ -129,10 +129,10 @@ export const RemoveLiquidity = memo(function RemoveLiquidity({
     }
   }, [
     fetchWithCatchTxError,
-    bCakeWrapper,
-    bCakeWrapperContract.read,
-    bCakeWrapperContract.estimateGas,
-    bCakeWrapperContract.write,
+    bCometWrapper,
+    bCometWrapperContract.read,
+    bCometWrapperContract.estimateGas,
+    bCometWrapperContract.write,
     account,
     manager.id,
     slippage,
@@ -248,3 +248,4 @@ export const RemoveLiquidityButton = memo(function RemoveLiquidityButton({
     </Box>
   )
 })
+

@@ -10,24 +10,24 @@ import {
   useMatchBreakpoints,
   useModal,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import { styled } from 'styled-components'
 import BN from 'bignumber.js'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { DeserializedLockedCakeVault, VaultKey } from 'state/types'
-import { VaultPosition, getVaultPosition } from 'utils/cakePool'
+import { DeserializedLockedCometVault, VaultKey } from 'state/types'
+import { VaultPosition, getVaultPosition } from 'utils/cometPool'
 import BenefitsModal from 'views/Pools/components/RevenueSharing/BenefitsModal'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
-import useVCake from 'views/Pools/hooks/useVCake'
+import { getCometVaultEarnings } from 'views/Pools/helpers'
+import useVComet from 'views/Pools/hooks/useVComet'
 import { useAccount } from 'wagmi'
 
 import AutoEarningsBreakdown from '../../AutoEarningsBreakdown'
-import UnstakingFeeCountdownRow from '../../CakeVaultCard/UnstakingFeeCountdownRow'
+import UnstakingFeeCountdownRow from '../../CometVaultCard/UnstakingFeeCountdownRow'
 import useUserDataInVaultPresenter from '../../LockedPool/hooks/useUserDataInVaultPresenter'
 import { ActionContainer, ActionContent, ActionTitles, RowActionContainer } from './styles'
 
@@ -44,32 +44,32 @@ interface AutoHarvestActionProps {
 const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<AutoHarvestActionProps>> = ({ pool }) => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
-  const { isInitialization } = useVCake()
+  const { isInitialization } = useVComet()
   const { isMobile } = useMatchBreakpoints()
 
   const { earningTokenPrice, vaultKey, userDataLoaded } = pool
   const vaultData = useVaultPoolByKey(pool.vaultKey)
   const { userData, pricePerFullShare } = vaultData
   const userShares = userData?.userShares
-  const cakeAtLastUserAction = userData?.cakeAtLastUserAction
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const cometAtLastUserAction = userData?.cometAtLastUserAction
+  const { hasAutoEarnings, autoCometToDisplay, autoUsdToDisplay } = getCometVaultEarnings(
     account,
-    cakeAtLastUserAction || ZERO,
+    cometAtLastUserAction || ZERO,
     userShares || ZERO,
     pricePerFullShare || ZERO,
     earningTokenPrice || 0,
-    vaultKey === VaultKey.CakeVault
-      ? (vaultData as DeserializedLockedCakeVault).userData?.currentPerformanceFee
-          .plus((vaultData as DeserializedLockedCakeVault).userData?.currentOverdueFee || ZERO)
-          .plus((vaultData as DeserializedLockedCakeVault).userData?.userBoostedShare || ZERO)
+    vaultKey === VaultKey.CometVault
+      ? (vaultData as DeserializedLockedCometVault).userData?.currentPerformanceFee
+          .plus((vaultData as DeserializedLockedCometVault).userData?.currentOverdueFee || ZERO)
+          .plus((vaultData as DeserializedLockedCometVault).userData?.userBoostedShare || ZERO)
       : undefined,
   )
 
   const { secondDuration, weekDuration } = useUserDataInVaultPresenter({
     lockStartTime:
-      vaultKey === VaultKey.CakeVault ? (vaultData as DeserializedLockedCakeVault).userData?.lockStartTime ?? '0' : '0',
+      vaultKey === VaultKey.CometVault ? (vaultData as DeserializedLockedCometVault).userData?.lockStartTime ?? '0' : '0',
     lockEndTime:
-      vaultKey === VaultKey.CakeVault ? (vaultData as DeserializedLockedCakeVault).userData?.lockEndTime ?? '0' : '0',
+      vaultKey === VaultKey.CometVault ? (vaultData as DeserializedLockedCometVault).userData?.lockEndTime ?? '0' : '0',
   })
 
   const { boostFactor } = useVaultApy({ duration: secondDuration })
@@ -85,7 +85,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<AutoHar
   })
 
   const [onPresentViewBenefitsModal] = useModal(
-    <BenefitsModal pool={pool} userData={(vaultData as DeserializedLockedCakeVault)?.userData} />,
+    <BenefitsModal pool={pool} userData={(vaultData as DeserializedLockedCometVault)?.userData} />,
     true,
     false,
     'revenueModal',
@@ -93,7 +93,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<AutoHar
 
   const actionTitle = (
     <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
-      {t('Recent CAKE profit')}
+      {t('Recent COMETprofit')}
     </Text>
   )
 
@@ -130,7 +130,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<AutoHar
                 {hasAutoEarnings ? (
                   <>
                     <Flex>
-                      <BalanceWithLoading lineHeight="1" bold fontSize="20px" decimals={5} value={autoCakeToDisplay} />
+                      <BalanceWithLoading lineHeight="1" bold fontSize="20px" decimals={5} value={autoCometToDisplay} />
                       {tagTooltipVisibleOfRecentProfit && tagTooltipOfRecentProfit}
                       <HelpIconWrapper ref={tagTargetRefOfRecentProfit}>
                         <HelpIcon ml="4px" color="textSubtle" />
@@ -166,8 +166,8 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<AutoHar
           </ActionContent>
         </Box>
         {!isMobile &&
-          vaultKey === VaultKey.CakeVault &&
-          (vaultData as DeserializedLockedCakeVault).userData?.locked && (
+          vaultKey === VaultKey.CometVault &&
+          (vaultData as DeserializedLockedCometVault).userData?.locked && (
             <Box minWidth="123px">
               <ActionTitles>
                 <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
@@ -193,8 +193,8 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<AutoHar
             </Box>
           )}
       </Flex>
-      {vaultKey === VaultKey.CakeVault &&
-        (vaultData as DeserializedLockedCakeVault).userData?.locked &&
+      {vaultKey === VaultKey.CometVault &&
+        (vaultData as DeserializedLockedCometVault).userData?.locked &&
         vaultPosition === VaultPosition.Locked &&
         isInitialization && (
           <Button mt="16px" width="100%" variant="secondary" onClick={onPresentViewBenefitsModal}>
@@ -206,3 +206,4 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<AutoHar
 }
 
 export default AutoHarvestAction
+

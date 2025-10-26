@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { Address } from 'viem'
 
 export const MULTICALL_ADDRESS: { [key in ChainId]?: Address } = {

@@ -1,6 +1,6 @@
-import { ERC20Token } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
-import { goerliTestnetTokens } from '@pancakeswap/tokens'
+import { ERC20Token } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { goerliTestnetTokens } from '@cometswap/tokens'
 
 import { BaseIfoConfig } from '../../types'
 
@@ -10,7 +10,7 @@ export const OFFERING_TOKEN = new ERC20Token(
   18,
   'MOC',
   'MOCK OC Token',
-  'https://pancakeswap.finance/',
+  'https://cometswap.finance/',
 )
 
 export const ifos: BaseIfoConfig[] = [
@@ -26,14 +26,14 @@ export const ifos: BaseIfoConfig[] = [
     poolUnlimited: {
       raiseAmount: '$1.6',
     },
-    currency: goerliTestnetTokens.cake,
+    currency: goerliTestnetTokens.comet,
     token: OFFERING_TOKEN,
     campaignId: '512200000',
-    articleUrl: 'https://pancakeswap.finance/voting/',
+    articleUrl: 'https://cometswap.finance/voting/',
     tokenOfferingPrice: 0.5782,
     version: 7,
-    twitterUrl: 'https://twitter.com/pancakeswap',
-    description: 'Spend CAKE LP, buy OF, but on vesting',
-    vestingTitle: 'Use CAKE LP to buy OF',
+    twitterUrl: 'https://twitter.com/cometswap',
+    description: 'Spend COMETLP, buy OF, but on vesting',
+    vestingTitle: 'Use COMETLP to buy OF',
   },
 ]

@@ -1,4 +1,4 @@
-import { OrderType } from '@pancakeswap/price-api-sdk'
+import { OrderType } from '@cometswap/price-api-sdk'
 import {
   Currency,
   CurrencyAmount,
@@ -8,10 +8,10 @@ import {
   Price,
   TradeType,
   ZERO,
-} from '@pancakeswap/sdk'
-import { Route, SmartRouter, SmartRouterTrade } from '@pancakeswap/smart-router'
-import { formatPrice, parseNumberToFraction } from '@pancakeswap/utils/formatFractions'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+} from '@cometswap/sdk'
+import { Route, SmartRouter, SmartRouterTrade } from '@cometswap/smart-router'
+import { formatPrice, parseNumberToFraction } from '@cometswap/utils/formatFractions'
+import { FeeAmount } from '@cometswap/v3-sdk'
 
 import { BIPS_BASE, INPUT_FRACTION_AFTER_FEE } from 'config/constants/exchange'
 import { Field } from 'state/swap/actions'
@@ -126,3 +126,4 @@ export function formatExecutionPrice(
 export function v3FeeToPercent(fee: FeeAmount): Percent {
   return new Percent(fee, BIPS_BASE * 100n)
 }
+

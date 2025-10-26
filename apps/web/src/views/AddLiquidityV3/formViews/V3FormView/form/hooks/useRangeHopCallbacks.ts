@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { FeeAmount, Pool, TICK_SPACINGS, nearestUsableTick, tickToPrice } from '@pancakeswap/v3-sdk'
+import { Currency } from '@cometswap/sdk'
+import { FeeAmount, Pool, TICK_SPACINGS, nearestUsableTick, tickToPrice } from '@cometswap/v3-sdk'
 import { useCallback, useMemo } from 'react'
 import { setFullRange } from 'views/AddLiquidityV3/formViews/V3FormView/form/actions'
 import { useV3FormDispatch } from '../reducer'
@@ -99,3 +99,4 @@ export function useRangeHopCallbacks(
 
   return { getDecrementLower, getIncrementLower, getDecrementUpper, getIncrementUpper, getSetFullRange }
 }
+

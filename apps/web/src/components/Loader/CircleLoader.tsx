@@ -1,3 +1,4 @@
-import { CircleLoader } from '@pancakeswap/uikit'
+import { CircleLoader } from '@cometswap/uikit'
 
 export default CircleLoader
+

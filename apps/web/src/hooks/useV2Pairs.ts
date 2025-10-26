@@ -1,4 +1,4 @@
-import { Pair } from '@pancakeswap/sdk'
+import { Pair } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import { toV2LiquidityToken, useTrackedTokenPairs } from 'state/user/hooks'
 import { useTokenBalancesWithLoadingIndicator } from 'state/wallet/hooks'
@@ -49,3 +49,4 @@ export default function useV2PairsByAccount(account: string | undefined) {
     }
   }, [fetchingV2PairBalances, liquidityTokensWithBalances.length, v2Pairs])
 }
+

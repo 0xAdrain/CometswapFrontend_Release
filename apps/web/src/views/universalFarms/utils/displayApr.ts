@@ -12,3 +12,4 @@ export const displayApr = (
 
   return `${formatAmount(apr * 100)}${suffix}`
 }
+

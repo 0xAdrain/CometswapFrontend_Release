@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowForwardIcon, Column, Flex, Link, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowForwardIcon, Column, Flex, Link, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import NextLink from 'next/link'
 import styled from 'styled-components'
@@ -21,13 +21,13 @@ export const FeeRefund: ICampaignBanner = () => {
         <MobileImage src={`${ASSET_CDN}/web/banners/fee-refund/bg-stripe-mobile.png`} alt="fee-refund-campaign" />
         <Column>
           <Text bold as="span" color="warning" fontSize={['12px', '12px', '14px']} style={{ whiteSpace: 'pre-wrap' }}>
-            {t('Get up to $8M USD in interface fees refunded on PancakeSwap')}
+            {t('Get up to $8M USD in interface fees refunded on CometSwap')}
           </Text>
           <Link
             external
             fontSize={['12px', '12px', '14px']}
             style={{ display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap' }}
-            href="https://blog.pancakeswap.finance/articles/get-your-uniswap-interface-fees-refunded-on-pancake-swap-up-to-8-m?utm_source=infostripe&utm_medium=Ethereum&utm_campaign=Swap&utm_id=InterfacefeeRefund"
+            href="https://blog.cometswap.finance/articles/get-your-uniswap-interface-fees-refunded-on-comet-swap-up-to-8-m?utm_source=infostripe&utm_medium=Ethereum&utm_campaign=Swap&utm_id=InterfacefeeRefund"
           >
             {t('Learn More')}
             <ArrowForwardIcon width="14px" mt="2px" color="primary" />
@@ -40,7 +40,7 @@ export const FeeRefund: ICampaignBanner = () => {
   return (
     <Flex mr={['6px']} alignItems="center" flexWrap="wrap">
       <Text bold as="span" color="white" fontSize={['12px', '12px', '14px']}>
-        {t('Match your Uni volume on PancakeSwap to get a refund of up to')}
+        {t('Match your Uni volume on CometSwap to get a refund of up to')}
       </Text>
       <Text bold as="span" color="warning" fontSize={['12px', '12px', '14px']}>
         {t('$8M USD')}
@@ -68,7 +68,7 @@ export const FeeRefund: ICampaignBanner = () => {
         external
         fontSize={['12px', '12px', '14px']}
         style={{ display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap' }}
-        href="https://blog.pancakeswap.finance/articles/get-your-uniswap-interface-fees-refunded-on-pancake-swap-up-to-8-m?utm_source=infostripe&utm_medium=Ethereum&utm_campaign=Swap&utm_id=InterfacefeeRefund"
+        href="https://blog.cometswap.finance/articles/get-your-uniswap-interface-fees-refunded-on-comet-swap-up-to-8-m?utm_source=infostripe&utm_medium=Ethereum&utm_campaign=Swap&utm_id=InterfacefeeRefund"
       >
         {t('Learn More')}
       </Link>
@@ -81,3 +81,4 @@ FeeRefund.stripeImageWidth = '120px'
 FeeRefund.stripeImageAlt = 'fee refund campaign'
 FeeRefund.background =
   'linear-gradient(64deg, rgba(214, 126, 10, 0.26) 44.37%, rgba(255, 235, 55, 0.00) 102.8%), radial-gradient(113.12% 140.14% at 26.47% 0%, #F5DF8E 0%, #FCC631 33.21%, #FF9D00 79.02%)'
+

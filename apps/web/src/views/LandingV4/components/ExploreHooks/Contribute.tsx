@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Card, Flex, LibraryIcon, OpenNewIcon, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Card, Flex, LibraryIcon, OpenNewIcon, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { styled } from 'styled-components'
 
@@ -39,15 +39,15 @@ export const Contribute = () => {
               lineHeight={['28px', '28px', '28px', '28px', '32px']}
               textAlign={['center', 'center', 'center', 'center', 'left']}
             >
-              {t('Contribute to PancakeSwap v4')}
+              {t('Contribute to CometSwap v4')}
             </Text>
             <Text lineHeight="24px" textAlign={['center', 'center', 'center', 'center', 'left']} m={['16px 0 32px 0']}>
-              {t(`Build Hooks with us and participate in PancakeSwap's 500k USD Developer Program`)}
+              {t(`Build Hooks with us and participate in CometSwap's 500k USD Developer Program`)}
             </Text>
             <Flex flexDirection={['column', 'column', 'row']} margin={['auto', 'auto', 'auto', '0']}>
               <NextLinkFromReactRouter
                 target="_blank"
-                to="https://pancakeswapforms.fillout.com/PancakeSwap_Hooks_Submission"
+                to="https://cometswapforms.fillout.com/CometSwap_Hooks_Submission"
               >
                 <Button display="flex" margin="auto">
                   <Text color="white" bold fontSize={['12px', '16px']} mr="4px">
@@ -58,7 +58,7 @@ export const Contribute = () => {
               </NextLinkFromReactRouter>
               <NextLinkFromReactRouter
                 target="_blank"
-                to="https://blog.pancakeswap.finance/articles/introducing-pancake-swap-s-500-k-developer-program-and-cake-emissions-grant-program?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage"
+                to="https://blog.cometswap.finance/articles/introducing-comet-swap-s-500-k-developer-program-and-comet-emissions-grant-program?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage"
               >
                 <Button variant="secondary" display="flex" m={['8px auto 0 auto', '8px auto 0 auto', '0 0 0 8px']}>
                   <Text color="primary" bold fontSize={['12px', '16px']} mr="4px">
@@ -79,3 +79,4 @@ export const Contribute = () => {
     </Box>
   )
 }
+

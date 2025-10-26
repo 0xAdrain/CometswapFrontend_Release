@@ -12,3 +12,4 @@ const FarmsPage = () => {
 FarmsPage.chains = SUPPORT_FARMS
 
 export default FarmsPage
+

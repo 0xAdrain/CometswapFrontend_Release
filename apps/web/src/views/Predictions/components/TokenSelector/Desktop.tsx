@@ -1,5 +1,5 @@
-import { PredictionConfig } from '@pancakeswap/prediction'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { PredictionConfig } from '@cometswap/prediction'
+import { Flex, Text } from '@cometswap/uikit'
 import { TokenImage } from 'components/TokenImage'
 import { styled } from 'styled-components'
 import { Price } from 'views/Predictions/components/TokenSelector/Price'
@@ -68,3 +68,4 @@ export const DesktopPredictionTokenSelector: React.FC<React.PropsWithChildren<De
     </>
   )
 }
+

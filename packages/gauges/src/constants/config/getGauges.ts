@@ -1,4 +1,4 @@
-import { cacheByLRU } from '@pancakeswap/utils/cacheByLRU'
+import { cacheByLRU } from '@cometswap/utils/cacheByLRU'
 import { GaugeConfig } from '../../types'
 import { GAUGES_API } from './endpoint'
 

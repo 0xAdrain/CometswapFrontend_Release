@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Grid, Box, Flex } from '@pancakeswap/uikit'
+import { Grid, Box, Flex } from '@cometswap/uikit'
 
 export const AddressColumn = styled(Flex).attrs({ alignItems: 'center' })`
   grid-area: address;
@@ -32,3 +32,4 @@ const Row = styled(Grid)`
 `
 
 export default Row
+

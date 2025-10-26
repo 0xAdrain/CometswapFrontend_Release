@@ -5,8 +5,9 @@ export const BSCMevGuardChain = {
   ...bsc,
   rpcUrls: {
     default: {
-      http: ['https://bscrpc.pancakeswap.finance'],
+      http: ['https://bscrpc.cometswap.finance'],
     },
   },
-  name: 'PancakeSwap MEV Guard',
+  name: 'CometSwap MEV Guard',
 } satisfies Chain
+

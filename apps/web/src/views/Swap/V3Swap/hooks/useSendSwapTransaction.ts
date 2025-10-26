@@ -1,10 +1,10 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { TradeType } from '@pancakeswap/sdk'
-import { SmartRouter } from '@pancakeswap/smart-router'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import truncateHash from '@pancakeswap/utils/truncateHash'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { TradeType } from '@cometswap/sdk'
+import { SmartRouter } from '@cometswap/smart-router'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import truncateHash from '@cometswap/utils/truncateHash'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { INITIAL_ALLOWED_SLIPPAGE } from 'config/constants'
 import { useMemo } from 'react'
 import { useSwapState } from 'state/swap/hooks'
@@ -25,7 +25,7 @@ import {
 import { useSendTransaction } from 'wagmi'
 
 import { usePaymaster } from 'hooks/usePaymaster'
-import { ClassicOrder } from '@pancakeswap/price-api-sdk'
+import { ClassicOrder } from '@cometswap/price-api-sdk'
 import { logger } from 'utils/datadog'
 import { viemClients } from 'utils/viem'
 import { isZero } from '../utils/isZero'
@@ -292,3 +292,4 @@ export const userRejectedError = (error: unknown): boolean => {
     (typeof error !== 'string' && isUserRejected(error))
   )
 }
+

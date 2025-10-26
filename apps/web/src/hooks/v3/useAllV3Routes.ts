@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { Pool, Route } from '@pancakeswap/v3-sdk'
+import { Currency } from '@cometswap/sdk'
+import { Pool, Route } from '@cometswap/v3-sdk'
 import { useMemo } from 'react'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useV3SwapPools } from './useV3SwapPools'
@@ -73,3 +73,4 @@ export function useAllV3Routes(
     return { loading: false, routes }
   }, [chainId, currencyIn, currencyOut, pools, poolsLoading])
 }
+

@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Card, Flex, Message, MessageText, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Card, Flex, Message, MessageText, Text, TooltipText, useTooltip } from '@cometswap/uikit'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import BigNumber from 'bignumber.js'
 import { GreyCard } from 'components/Card'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -72,7 +72,7 @@ const TotalPeriod: React.FC<React.PropsWithChildren<TotalPeriodProps>> = ({
             new BigNumber(campaign.canClaim).gt(0) &&
             new BigNumber(campaign.totalEstimateRewardUSD).gt(0)
 
-          if (type === RewardType.CAKE_STAKERS && claimedRebate && isValid) {
+          if (type === RewardType.COMET_STAKERS && claimedRebate && isValid) {
             return campaign
           }
 
@@ -105,20 +105,20 @@ const TotalPeriod: React.FC<React.PropsWithChildren<TotalPeriodProps>> = ({
     (userCampaignInfoDetail: UserCampaignInfoDetail) => {
       const currentReward = rewardInfo?.[userCampaignInfoDetail?.campaignId]
       if (currentReward) {
-        if (type === RewardType.CAKE_STAKERS) {
+        if (type === RewardType.COMET_STAKERS) {
           return userCampaignInfoDetail.totalEstimateRewardUSD
         }
 
-        const rewardCakeUSDPriceAsBg = getBalanceAmount(
+        const rewardCometUSDPriceAsBg = getBalanceAmount(
           new BigNumber(currentReward.rewardPrice),
           currentReward.rewardTokenDecimal,
         )
 
-        const rewardCakeAmount = getBalanceAmount(
+        const rewardCometAmount = getBalanceAmount(
           new BigNumber(userCampaignInfoDetail?.canClaim),
           currentReward.rewardTokenDecimal,
         )
-        return rewardCakeAmount.times(rewardCakeUSDPriceAsBg).toNumber() || 0
+        return rewardCometAmount.times(rewardCometUSDPriceAsBg).toNumber() || 0
       }
       return 0
     },
@@ -131,13 +131,17 @@ const TotalPeriod: React.FC<React.PropsWithChildren<TotalPeriodProps>> = ({
       .reduce((a, b) => new BigNumber(a).plus(b).toNumber(), 0)
   }, [getUSDValue, unclaimData])
 
-  const totalUnclaimInCake = useMemo(() => {
+  const totalUnclaimInComet = useMemo(() => {
     return unclaimData
       .map((available) => {
         const currentReward = rewardInfo?.[available.campaignId]
         if (currentReward) {
           const reward = getBalanceAmount(new BigNumber(available.canClaim))
-          return reward.toNumber()
+          const rewardCometPrice = getBalanceAmount(
+            new BigNumber(currentReward.rewardPrice ?? '0'),
+            currentReward.rewardTokenDecimal ?? 0,
+          )
+          return reward.div(rewardCometPrice).isNaN() ? 0 : reward.div(rewardCometPrice).toNumber()
         }
         return 0
       })
@@ -176,7 +180,7 @@ const TotalPeriod: React.FC<React.PropsWithChildren<TotalPeriodProps>> = ({
                   {minAmountDisplay({ amount: totalUnclaimInUSD, prefix: '$' })}
                 </Text>
                 <Text fontSize={['14px']} color="textSubtle">
-                  {minAmountDisplay({ amount: totalUnclaimInCake, prefix: '~', unit: ' CAKE' })}
+                  {minAmountDisplay({ amount: totalUnclaimInComet, prefix: '~', unit: ' COMET' })}
                 </Text>
               </Box>
               <Button
@@ -251,7 +255,7 @@ const TotalPeriod: React.FC<React.PropsWithChildren<TotalPeriodProps>> = ({
                 {minAmountDisplay({ amount: totalTradingReward, prefix: '$' })}
               </Text>
             </Box>
-            {type === RewardType.CAKE_STAKERS && (
+            {type === RewardType.COMET_STAKERS && (
               <Box mt="24px">
                 <Text color="textSubtle" textTransform="uppercase" fontSize="12px" bold>
                   {t('Your TOTAL VOLUME Traded')}

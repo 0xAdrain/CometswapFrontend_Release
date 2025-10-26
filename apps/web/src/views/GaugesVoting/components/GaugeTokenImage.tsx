@@ -5,10 +5,10 @@ import {
   GaugeType,
   GaugeV2Config,
   GaugeV3Config,
-} from '@pancakeswap/gauges'
-import { Token } from '@pancakeswap/swap-sdk-core'
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/gauges'
+import { Token } from '@cometswap/swap-sdk-core'
+import { useMatchBreakpoints } from '@cometswap/uikit'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 import styled from 'styled-components'
 import { Address } from 'viem'
@@ -16,8 +16,8 @@ import { Address } from 'viem'
 const GaugeSingleTokenImage = ({ size = 32 }) => {
   return (
     <img
-      src="/images/cake-staking/token-vecake.png"
-      alt="ve-cake"
+      src="/images/comet-staking/token-Comet.png"
+      alt="ve-comet"
       width={size}
       height={size}
       style={{ maxHeight: `${size}px` }}
@@ -102,9 +102,10 @@ export const GaugeTokenImage: React.FC<{
 }> = ({ gauge, size }) => {
   if (!gauge) return null
 
-  if (gauge?.type === GaugeType.VeCakePool) {
+  if (gauge?.type === GaugeType.CometPool) {
     return <GaugeSingleTokenImage size={size} />
   }
 
   return <GaugeDoubleTokenImage gaugeConfig={gauge} />
 }
+

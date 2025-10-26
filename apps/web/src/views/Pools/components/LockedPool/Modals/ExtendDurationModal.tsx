@@ -1,13 +1,13 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { MAX_LOCK_DURATION } from '@pancakeswap/pools'
-import { Box, Modal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { MAX_LOCK_DURATION } from '@cometswap/pools'
+import { Box, Modal } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import useTheme from 'hooks/useTheme'
 import _noop from 'lodash/noop'
 import { useCallback, useMemo } from 'react'
 import { useIfoCeiling } from 'state/pools/hooks'
 
-import { getBalanceAmount, getBalanceNumber, getDecimalAmount } from '@pancakeswap/utils/formatBalance'
+import { getBalanceAmount, getBalanceNumber, getDecimalAmount } from '@cometswap/utils/formatBalance'
 import { ENABLE_EXTEND_LOCK_AMOUNT } from '../../../helpers'
 import LockedBodyModal from '../Common/LockedModalBody'
 import Overview from '../Common/Overview'
@@ -138,3 +138,4 @@ const ExtendDurationModal: React.FC<ExtendDurationModal> = ({
 }
 
 export default ExtendDurationModal
+

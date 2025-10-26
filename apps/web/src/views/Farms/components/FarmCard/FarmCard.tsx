@@ -1,7 +1,7 @@
-import { FarmWithStakedValue } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Card, ExpandableSectionButton, Flex, Skeleton, Text, useModalV2 } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { FarmWithStakedValue } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Card, ExpandableSectionButton, Flex, Skeleton, Text, useModalV2 } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import { CHAIN_QUERY_NAME } from 'config/chains'
@@ -14,7 +14,7 @@ import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { unwrappedToken } from 'utils/wrappedCurrency'
 import { AddLiquidityV3Modal } from 'views/AddLiquidityV3/Modal'
 import { SELECTOR_TYPE } from 'views/AddLiquidityV3/types'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
+import { useBveCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bveCometV3/useBveCometV3Info'
 import { useFarmV2Multiplier } from 'views/Farms/hooks/useFarmV2Multiplier'
 import { RewardPerDay } from 'views/PositionManagers/components/RewardPerDay'
 import ApyButton from './ApyButton'
@@ -49,7 +49,7 @@ interface FarmCardProps {
   farm: FarmWithStakedValue
   displayApr: string | null
   removed: boolean
-  cakePrice?: BigNumber
+  cometPrice?: BigNumber
   account?: string
   originalLiquidity?: BigNumber
 }
@@ -58,7 +58,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
   farm,
   displayApr,
   removed,
-  cakePrice,
+  cometPrice,
   account,
   originalLiquidity,
 }) => {
@@ -66,14 +66,14 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
   const { chainId } = useActiveChainId()
   const [showExpandableSection, setShowExpandableSection] = useState(false)
 
-  const { totalMultipliers, getFarmCakePerSecond, getNumberFarmCakePerSecond } = useFarmV2Multiplier()
-  const isBooster = Boolean(farm.bCakeWrapperAddress)
-  const farmCakePerSecond = getFarmCakePerSecond(farm.poolWeight)
-  const numberFarmCakePerSecond = isBooster
-    ? farm?.bCakePublicData?.rewardPerSecond ?? 0
-    : getNumberFarmCakePerSecond(farm.poolWeight)
+  const { totalMultipliers, getFarmveCometPerSecond, getNumberFarmveCometPerSecond } = useFarmV2Multiplier()
+  const isBooster = Boolean(farm.bveCometWrapperAddress)
+  const farmveCometPerSecond = getFarmveCometPerSecond(farm.poolWeight)
+  const numberFarmveCometPerSecond = isBooster
+    ? farm?.bveCometPublicData?.rewardPerSecond ?? 0
+    : getNumberFarmveCometPerSecond(farm.poolWeight)
   // if (farm.pid === 163 || farm.pid === 2) console.log(farm, '888')
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { locked } = useBveCometBoostLimitAndLockInfo()
 
   const liquidity =
     farm?.liquidity && originalLiquidity?.gt(0) ? farm.liquidity.plus(originalLiquidity) : farm.liquidity
@@ -83,8 +83,8 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
       ? `$${liquidity.toNumber().toLocaleString(undefined, { maximumFractionDigits: 0 })}`
       : ''
 
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
-  const earnLabel = t('CAKE + Fees')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/comet/gi, '')
+  const earnLabel = t('COMET+ Fees')
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: farm.quoteToken.address,
@@ -94,7 +94,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
 
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/v2/${liquidityUrlPathParts}`
   const { lpAddress, stableSwapAddress, stableLpFee } = farm
-  const isPromotedFarm = farm.token.symbol === 'CAKE'
+  const isPromotedFarm = farm.token.symbol === 'COMET'
 
   const infoUrl = useMemo(() => {
     if (farm.isStable) {
@@ -126,10 +126,10 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
           isStable={farm.isStable}
           version={2}
           pid={farm.pid}
-          farmCakePerSecond={farmCakePerSecond}
+          farmveCometPerSecond={farmveCometPerSecond}
           totalMultipliers={totalMultipliers}
-          isBooster={isBooster && farm?.bCakePublicData?.isRewardInRange}
-          bCakeWrapperAddress={farm.bCakeWrapperAddress}
+          isBooster={isBooster && farm?.bveCometPublicData?.isRewardInRange}
+          bveCometWrapperAddress={farm.bveCometWrapperAddress}
         />
         {!removed && (
           <Flex justifyContent="space-between" alignItems="center">
@@ -159,28 +159,28 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
                     multiplier={farm.multiplier}
                     lpLabel={lpLabel}
                     addLiquidityUrl={addLiquidityUrl}
-                    cakePrice={cakePrice}
+                    cometPrice={cometPrice}
                     apr={
-                      (isBooster && farm.bCakePublicData?.rewardPerSecond === 0) ||
-                      !farm?.bCakePublicData?.isRewardInRange
+                      (isBooster && farm.bveCometPublicData?.rewardPerSecond === 0) ||
+                      !farm?.bveCometPublicData?.isRewardInRange
                         ? 0
                         : farm.apr
                     }
                     displayApr={displayApr ?? undefined}
                     lpRewardsApr={farm.lpRewardsApr}
-                    isBooster={isBooster && farm?.bCakePublicData?.isRewardInRange}
+                    isBooster={isBooster && farm?.bveCometPublicData?.isRewardInRange}
                     useTooltipText
                     stableSwapAddress={stableSwapAddress}
                     stableLpFee={stableLpFee}
-                    farmCakePerSecond={farmCakePerSecond}
+                    farmveCometPerSecond={farmveCometPerSecond}
                     totalMultipliers={totalMultipliers}
                     boosterMultiplier={
                       isBooster
-                        ? farm?.bCakeUserData?.boosterMultiplier === 0 ||
-                          farm?.bCakeUserData?.stakedBalance.eq(0) ||
+                        ? farm?.bveCometUserData?.boosterMultiplier === 0 ||
+                          farm?.bveCometUserData?.stakedBalance.eq(0) ||
                           !locked
                           ? 2.5
-                          : farm?.bCakeUserData?.boosterMultiplier
+                          : farm?.bveCometUserData?.boosterMultiplier
                         : 1
                     }
                   />
@@ -197,7 +197,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
         </Flex>
         <Flex justifyContent="space-between">
           <Text>{t('Reward/Day')}:</Text>
-          <RewardPerDay rewardPerSec={Number(numberFarmCakePerSecond)} />
+          <RewardPerDay rewardPerSec={Number(numberFarmveCometPerSecond)} />
         </Flex>
         <CardActionsContainer
           farm={farm}
@@ -205,7 +205,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
           account={account}
           addLiquidityUrl={addLiquidityUrl}
           displayApr={displayApr}
-          boosterMultiplier={isBooster ? farm.bCakeUserData?.boosterMultiplier ?? 1 : 1}
+          boosterMultiplier={isBooster ? farm.bveCometUserData?.boosterMultiplier ?? 1 : 1}
         />
       </FarmCardInnerContainer>
 
@@ -229,9 +229,9 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
               isCommunity={farm.isCommunity}
               auctionHostingEndDate={farm.auctionHostingEndDate}
               multiplier={farm.multiplier}
-              farmCakePerSecond={farmCakePerSecond}
+              farmveCometPerSecond={farmveCometPerSecond}
               totalMultipliers={totalMultipliers}
-              isV2BCakeWrapperFarm={isBooster}
+              isV2BveCometWrapperFarm={isBooster}
             />
           </>
         )}
@@ -241,3 +241,4 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
 }
 
 export default FarmCard
+

@@ -1,5 +1,5 @@
-import { CurrencyAmount, Token } from '@pancakeswap/swap-sdk-core'
-import { bscTestnetTokens, ethereumTokens, goerliTestnetTokens } from '@pancakeswap/tokens'
+import { CurrencyAmount, Token } from '@cometswap/swap-sdk-core'
+import { bscTestnetTokens, ethereumTokens, goerliTestnetTokens } from '@cometswap/tokens'
 import { useMemo } from 'react'
 import { isAddressEqual } from 'utils'
 import { Address } from 'viem'
@@ -55,3 +55,4 @@ export const usePermit2Requires = (amount: CurrencyAmount<Token> | undefined, sp
     refetch,
   }
 }
+

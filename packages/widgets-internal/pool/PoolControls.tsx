@@ -2,11 +2,11 @@ import { useCallback, useEffect, useMemo, useRef, useState, ReactElement } from 
 import { styled } from "styled-components";
 import BigNumber from "bignumber.js";
 import partition from "lodash/partition";
-import { useTranslation } from "@pancakeswap/localization";
-import { useIntersectionObserver } from "@pancakeswap/hooks";
-import latinise from "@pancakeswap/utils/latinise";
+import { useTranslation } from "@cometswap/localization";
+import { useIntersectionObserver } from "@cometswap/hooks";
+import latinise from "@cometswap/utils/latinise";
 import { useRouter } from "next/router";
-import { Flex, Text, SearchInput, Select, OptionProps, ViewMode } from "@pancakeswap/uikit";
+import { Flex, Text, SearchInput, Select, OptionProps, ViewMode } from "@cometswap/uikit";
 
 import { sortPools } from "./helpers";
 import PoolTabButtons from "./PoolTabButtons";

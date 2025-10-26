@@ -1,5 +1,5 @@
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker'
-import { Input, InputProps } from '@pancakeswap/uikit'
+import { Input, InputProps } from '@cometswap/uikit'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -14,3 +14,4 @@ const DatePicker: React.FC<React.PropsWithChildren<DatePickerProps>> = ({ inputP
 }
 
 export default DatePicker
+

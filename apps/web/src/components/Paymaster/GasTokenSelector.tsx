@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ArrowDropDownIcon,
   ArrowForwardIcon,
@@ -24,9 +24,9 @@ import {
   WarningIcon,
   useModalV2,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { CurrencyLogo, NumberDisplay } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { CurrencyLogo, NumberDisplay } from '@cometswap/widgets-internal'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import memoize from 'lodash/memoize'
 import { useCallback, useEffect, useMemo } from 'react'
@@ -36,7 +36,7 @@ import styled from 'styled-components'
 import { Address } from 'viem'
 import { useAccount, useConfig } from 'wagmi'
 
-import { Currency } from '@pancakeswap/swap-sdk-core'
+import { Currency } from '@cometswap/swap-sdk-core'
 import { watchAccount } from '@wagmi/core'
 import { DEFAULT_PAYMASTER_TOKEN, paymasterInfo, paymasterTokens } from 'config/paymaster'
 import { useGasToken } from 'hooks/useGasToken'
@@ -400,3 +400,4 @@ export const GasTokenSelector = ({ inputCurrency, ...props }: GasTokenSelectorPr
     </>
   )
 }
+

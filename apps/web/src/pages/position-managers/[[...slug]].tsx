@@ -1,4 +1,4 @@
-import { SUPPORTED_CHAIN_IDS } from '@pancakeswap/position-managers'
+import { SUPPORTED_CHAIN_IDS } from '@cometswap/position-managers'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import { PositionManagers } from 'views/PositionManagers'

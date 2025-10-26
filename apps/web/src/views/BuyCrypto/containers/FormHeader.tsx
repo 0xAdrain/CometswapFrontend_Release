@@ -11,3 +11,4 @@ export const FormHeader: FC<{
     <AppHeader backTo={backTo} title={title} subtitle={subTitle} shouldCenter={shouldCenter} borderHidden noConfig />
   )
 }
+

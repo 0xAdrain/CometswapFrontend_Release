@@ -15,3 +15,4 @@ export const getLpFeesAndApr = (volumeUSD: number, volumeUSDWeek: number, liquid
     lpApr7d: lpApr7d !== Infinity ? lpApr7d : 0,
   }
 }
+

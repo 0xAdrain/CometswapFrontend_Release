@@ -1,9 +1,9 @@
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { PERSIST_CHAIN_KEY } from 'config/constants'
 import { useRouter } from 'next/router'
-import { Protocol } from '@pancakeswap/farms'
-import { Currency, CurrencyAmount, Token } from '@pancakeswap/swap-sdk-core'
-import { Column, Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Protocol } from '@cometswap/farms'
+import { Currency, CurrencyAmount, Token } from '@cometswap/swap-sdk-core'
+import { Column, Flex, useMatchBreakpoints } from '@cometswap/uikit'
 import { TokenPairLogo } from 'components/TokenImage'
 import { PositionDetail, StableLPDetail, V2LPDetail } from 'state/farmsV4/state/accountPositions/type'
 import React, { PropsWithChildren, useCallback, useMemo } from 'react'
@@ -112,3 +112,4 @@ const DetailsContainer = styled(Flex)`
     flex-direction: row;
   }
 `
+

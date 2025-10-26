@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Token } from '@pancakeswap/swap-sdk-core'
-import { Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { ChainId } from '@cometswap/chains'
+import { Token } from '@cometswap/swap-sdk-core'
+import { Flex, Skeleton, Text } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { TokenPairImage } from 'components/TokenImage'
 import { styled } from 'styled-components'
 

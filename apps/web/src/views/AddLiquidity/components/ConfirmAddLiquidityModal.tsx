@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Fraction, Percent, Token } from '@pancakeswap/sdk'
-import { Button, InjectedModalProps } from '@pancakeswap/uikit'
-import { ConfirmationModalContent } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Fraction, Percent, Token } from '@cometswap/sdk'
+import { Button, InjectedModalProps } from '@cometswap/uikit'
+import { ConfirmationModalContent } from '@cometswap/widgets-internal'
 import TransactionConfirmationModal from 'components/TransactionConfirmationModal'
 import _toNumber from 'lodash/toNumber'
 import React, { useCallback } from 'react'
@@ -119,3 +119,4 @@ const ConfirmAddLiquidityModal: React.FC<
 }
 
 export default ConfirmAddLiquidityModal
+

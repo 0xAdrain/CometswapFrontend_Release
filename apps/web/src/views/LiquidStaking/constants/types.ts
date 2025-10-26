@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { Token } from '@cometswap/swap-sdk-core'
 import { ReactNode } from 'react'
 import { Abi, Address } from 'viem'
 
@@ -42,3 +42,4 @@ export interface LiquidStakingList {
   FAQs: FAQType[]
   requestWithdrawFn: string
 }
+

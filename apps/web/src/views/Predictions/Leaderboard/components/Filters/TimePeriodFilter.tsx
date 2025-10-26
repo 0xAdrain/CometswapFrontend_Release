@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ButtonMenu, ButtonMenuItem } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ButtonMenu, ButtonMenuItem } from '@cometswap/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { setLeaderboardFilter } from 'state/predictions'
 import { useGetLeaderboardFilters } from 'state/predictions/hooks'
@@ -32,3 +32,4 @@ const TimePeriodFilter = () => {
 }
 
 export default TimePeriodFilter
+

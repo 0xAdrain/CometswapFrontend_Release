@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign, no-await-in-loop */
-import { ChainId, getMainnetChainNameInKebabCase } from '@pancakeswap/chains'
-import { masterChefV3Addresses } from '@pancakeswap/farms'
-import { ERC20Token } from '@pancakeswap/sdk'
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
-import { PositionMath } from '@pancakeswap/v3-sdk'
+import { ChainId, getMainnetChainNameInKebabCase } from '@cometswap/chains'
+import { masterChefV3Addresses } from '@cometswap/farms'
+import { ERC20Token } from '@cometswap/sdk'
+import { CurrencyAmount } from '@cometswap/swap-sdk-core'
+import { PositionMath } from '@cometswap/v3-sdk'
 import { Request } from 'itty-router'
 import { error, json } from 'itty-router-extras'
 import { Address } from 'viem'
@@ -87,7 +87,7 @@ const masterchefV3Abi = [
     name: 'poolInfo',
     outputs: [
       { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
-      { internalType: 'contract IPancakeV3Pool', name: 'v3Pool', type: 'address' },
+      { internalType: 'contract ICometV3Pool', name: 'v3Pool', type: 'address' },
       { internalType: 'address', name: 'token0', type: 'address' },
       { internalType: 'address', name: 'token1', type: 'address' },
       { internalType: 'uint24', name: 'fee', type: 'uint24' },

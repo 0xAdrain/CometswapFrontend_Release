@@ -5,16 +5,16 @@ export const shadowRealm: GameType = {
   projectName: 'ChainzStudios',
   title: 'Shadow Realms',
   subTitle: 'Embark on Your Adventure in Shadow Realms',
-  description: `Join the epic RPG experience crafted by ChainZ Studios on PancakeSwap. Conquer invaders and become the ultimate Awakener. Begin your journey now!`,
+  description: `Join the epic RPG experience crafted by ChainZ Studios on CometSwap. Conquer invaders and become the ultimate Awakener. Begin your journey now!`,
   publishDate: 1711612800,
   genre: GenreType.MMORPG,
   trendingTags: [
     TrendingTagType.MMORPG,
     TrendingTagType.Strategy,
-    TrendingTagType.PancakeSquadNFT,
-    TrendingTagType.PancakeBunniesNFT,
+    TrendingTagType.CometSquadNFT,
+    TrendingTagType.CometBunniesNFT,
     TrendingTagType.Multiplayer,
-    TrendingTagType.CakeToken,
+    TrendingTagType.veCometToken,
   ],
   headerImage: 'https://shadow-realm.chainzstudios.com/overview/header.png',
   headerIconImage: {
@@ -68,7 +68,7 @@ export const shadowRealm: GameType = {
   },
   playlist: [],
   socialMedia: {
-    telegram: 'https://t.me/PancakeSwap/',
-    discord: 'https://discord.gg/pancakeswap',
+    telegram: 'https://t.me/CometSwap/',
+    discord: 'https://discord.gg/cometswap',
   },
 }

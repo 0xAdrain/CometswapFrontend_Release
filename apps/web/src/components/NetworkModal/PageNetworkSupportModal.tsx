@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Grid, Message, MessageText, Modal, Text } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Grid, Message, MessageText, Modal, Text } from '@cometswap/uikit'
 import { useMenuItems } from 'components/Menu/hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuItem } from 'components/Menu/utils'
 import { useHistory } from 'contexts/HistoryContext'
@@ -89,3 +89,4 @@ export function PageNetworkSupportModal() {
     </Modal>
   )
 }
+

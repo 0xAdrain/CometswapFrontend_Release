@@ -1,8 +1,8 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@cometswap/sdk'
 
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { YEAR_IN_SECONDS } from '@pancakeswap/utils/getTimePeriods'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
+import { YEAR_IN_SECONDS } from '@cometswap/utils/getTimePeriods'
 import BigNumber from 'bignumber.js'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
 import { useMemo } from 'react'
@@ -25,14 +25,14 @@ interface AprProps {
   rewardStartTime: number
   farmRewardAmount?: number
   adapterAddress?: Address
-  bCakeWrapperAddress?: Address
+  bCometWrapperAddress?: Address
 }
 
 export interface AprResult {
   combinedApr: string
   lpApr: string
   cakeYieldApr: string
-  isInCakeRewardDateRange: boolean
+  isInCometRewardDateRange: boolean
 }
 
 const ONE_YEAR = 365
@@ -52,13 +52,13 @@ export const useApr = ({
   rewardStartTime,
   farmRewardAmount,
   adapterAddress,
-  bCakeWrapperAddress,
+  bCometWrapperAddress,
 }: AprProps): AprResult => {
   const { data: rewardUsdPrice } = useCurrencyUsdPrice(earningToken ?? undefined)
-  const { boostedLiquidityX } = useBoosterLiquidityX(bCakeWrapperAddress, adapterAddress)
+  const { boostedLiquidityX } = useBoosterLiquidityX(bCometWrapperAddress, adapterAddress)
 
-  const isInCakeRewardDateRange = useMemo(
-    // () =>  true // mock cake in range to see the booster changes
+  const isInCometRewardDateRange = useMemo(
+    // () =>  true // mock comet in range to see the booster changes
     () => Date.now() / 1000 < rewardEndTime && Date.now() / 1000 >= rewardStartTime,
     [rewardEndTime, rewardStartTime],
   )
@@ -96,7 +96,7 @@ export const useApr = ({
   ])
 
   const cakeYieldApr = useMemo(() => {
-    if (!isInCakeRewardDateRange) {
+    if (!isInCometRewardDateRange) {
       return BIG_ZERO
     }
 
@@ -105,7 +105,7 @@ export const useApr = ({
       .times(rewardUsdPrice ?? 0)
       .div(totalStakedInUsd * (boostedLiquidityX ?? 1))
       .times(100)
-  }, [isInCakeRewardDateRange, earningToken, rewardPerSecond, rewardUsdPrice, totalStakedInUsd, boostedLiquidityX])
+  }, [isInCometRewardDateRange, earningToken, rewardPerSecond, rewardUsdPrice, totalStakedInUsd, boostedLiquidityX])
 
   const totalApr = useMemo(() => cakeYieldApr.plus(totalLpApr), [cakeYieldApr, totalLpApr])
 
@@ -114,9 +114,10 @@ export const useApr = ({
       combinedApr: !totalApr.isNaN() ? totalApr.toFixed(2) ?? '-' : '0.00',
       lpApr: !totalLpApr.isNaN() ? totalLpApr.toFixed(2) ?? '-' : '0.00',
       cakeYieldApr: !cakeYieldApr.isNaN() ? cakeYieldApr.toFixed(2) ?? '-' : '0.00',
-      isInCakeRewardDateRange,
+      isInCometRewardDateRange,
     }
-  }, [totalApr, totalLpApr, cakeYieldApr, isInCakeRewardDateRange])
+  }, [totalApr, totalLpApr, cakeYieldApr, isInCometRewardDateRange])
 
   return aprData
 }
+

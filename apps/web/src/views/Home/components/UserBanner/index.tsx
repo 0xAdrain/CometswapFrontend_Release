@@ -1,4 +1,4 @@
-import { Box, Flex } from '@pancakeswap/uikit'
+import { Box, Flex } from '@cometswap/uikit'
 import { useCallback } from 'react'
 import { styled } from 'styled-components'
 import { useSwiper } from 'swiper/react'
@@ -43,3 +43,4 @@ const UserBanner = () => {
 }
 
 export default UserBanner
+

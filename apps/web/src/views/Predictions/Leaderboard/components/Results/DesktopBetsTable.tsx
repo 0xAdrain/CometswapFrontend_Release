@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Box, Card, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Box, Card, Text } from '@cometswap/uikit'
 import PreviousBetsTable from '../PreviousBetsTable'
 
 interface DesktopBetsTableProps {
@@ -23,3 +23,4 @@ const DesktopBetsTable: React.FC<React.PropsWithChildren<DesktopBetsTableProps>>
 }
 
 export default DesktopBetsTable
+

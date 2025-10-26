@@ -24,3 +24,4 @@ export interface OrderState {
 
   readonly rateType: Rate
 }
+

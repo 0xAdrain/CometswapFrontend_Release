@@ -1,4 +1,4 @@
-import { ArrowForwardIcon } from '@pancakeswap/uikit'
+import { ArrowForwardIcon } from '@cometswap/uikit'
 import { useEffect, useRef } from 'react'
 import { styled } from 'styled-components'
 
@@ -82,3 +82,4 @@ export const Countdown = ({ step, duration, onClick }: { step: number; duration:
     </CountdownContainer>
   )
 }
+

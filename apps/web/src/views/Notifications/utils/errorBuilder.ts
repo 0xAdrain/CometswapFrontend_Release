@@ -4,3 +4,4 @@ export const parseErrorMessage = (subscriptionEvent: EventInformation, error: an
   error instanceof Error && error?.message
     ? subscriptionEvent.message?.(error.message)
     : subscriptionEvent.message?.(JSON.stringify(error))
+

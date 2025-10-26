@@ -1,5 +1,5 @@
-import { Protocol } from '@pancakeswap/farms'
-import { NFT_POSITION_MANAGER_ADDRESSES, nonfungiblePositionManagerABI } from '@pancakeswap/v3-sdk'
+import { Protocol } from '@cometswap/farms'
+import { NFT_POSITION_MANAGER_ADDRESSES, nonfungiblePositionManagerABI } from '@cometswap/v3-sdk'
 import BigNumber from 'bignumber.js'
 import { getMasterChefV3Contract } from 'utils/contractHelpers'
 import { publicClient } from 'utils/viem'
@@ -95,3 +95,4 @@ export const getAccountV3Positions = async (chainId: number, account: Address): 
 
   return positions
 }
+

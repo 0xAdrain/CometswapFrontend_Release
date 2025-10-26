@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Button,
   ButtonProps,
@@ -10,7 +10,7 @@ import {
   TooltipText,
   useMatchBreakpoints,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import _isEmpty from 'lodash/isEmpty'
 import { ReactNode } from 'react'
 import { styled } from 'styled-components'
@@ -31,10 +31,10 @@ const BoosterTooltip = () => {
   return (
     <>
       {t(
-        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term CAKE syrup pool and will be automatically updated upon user actions.`,
+        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term COMETsyrup pool and will be automatically updated upon user actions.`,
       )}
       <LinkExternal
-        href="https://docs.pancakeswap.finance/products/yield-farming/bcake/faq#how-are-the-bcake-multipliers-calculated"
+        href="https://docs.cometswap.finance/products/yield-farming/bcomet/faq#how-are-the-bcomet-multipliers-calculated"
         external
       >
         {t('Learn More')}
@@ -79,3 +79,4 @@ const ActionButton: React.FC<ActionButtonPropsType> = ({ title, description, but
 }
 
 export default ActionButton
+

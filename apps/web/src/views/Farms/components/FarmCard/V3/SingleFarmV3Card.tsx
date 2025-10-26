@@ -1,6 +1,6 @@
-import { IPendingCakeByTokenId, PositionDetails } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { IPendingCometByTokenId, PositionDetails } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/swap-sdk-core'
 import {
   AtomBox,
   AtomBoxProps,
@@ -13,17 +13,17 @@ import {
   StyledTooltip,
   Text,
   useModalV2,
-} from '@pancakeswap/uikit'
-import { formatBigInt } from '@pancakeswap/utils/formatBalance'
-import { isPositionOutOfRange } from '@pancakeswap/utils/isPositionOutOfRange'
-import { Pool } from '@pancakeswap/v3-sdk'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { formatBigInt } from '@cometswap/utils/formatBalance'
+import { isPositionOutOfRange } from '@cometswap/utils/isPositionOutOfRange'
+import { Pool } from '@cometswap/v3-sdk'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { BigNumber } from 'bignumber.js'
 import { LightCard } from 'components/Card'
 import { RangeTag } from 'components/RangeTag'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -32,15 +32,15 @@ import { type V3Farm } from 'state/farms/types'
 import { styled, useTheme } from 'styled-components'
 import { logGTMClickStakeFarmEvent } from 'utils/customGTMEventTracking'
 import useFarmV3Actions from 'views/Farms/hooks/v3/useFarmV3Actions'
-import { BCakeV3CardView } from '../../YieldBooster/components/bCakeV3/CardView'
+import { BCometV3CardView } from '../../YieldBooster/components/bCometV3/CardView'
 import {
   useBakeV3farmCanBoost,
   useIsBoostedPool,
   useUserBoostedPoolsTokenId,
   useUserPositionInfo,
-  useVeCakeUserMultiplierBeforeBoosted,
-} from '../../YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { useBoostStatus } from '../../YieldBooster/hooks/bCakeV3/useBoostStatus'
+  useCometUserMultiplierBeforeBoosted,
+} from '../../YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { useBoostStatus } from '../../YieldBooster/hooks/bCometV3/useBoostStatus'
 import FarmV3StakeAndUnStake, { FarmV3LPPosition, FarmV3LPPositionDetail, FarmV3LPTitle } from './FarmV3StakeAndUnStake'
 
 const { FarmV3HarvestAction } = FarmWidget.FarmV3Table
@@ -88,7 +88,7 @@ interface SingleFarmV3CardProps {
   positionType: PositionType
   token: Token
   quoteToken: Token
-  pendingCakeByTokenIds: IPendingCakeByTokenId
+  pendingCometByTokenIds: IPendingCometByTokenId
   onDismiss?: () => void
   direction?: 'row' | 'column'
   harvesting?: boolean
@@ -104,7 +104,7 @@ const SingleFarmV3Card: React.FunctionComponent<
   token,
   quoteToken,
   positionType,
-  pendingCakeByTokenIds,
+  pendingCometByTokenIds,
   onDismiss,
   direction = 'column',
   harvesting,
@@ -112,14 +112,14 @@ const SingleFarmV3Card: React.FunctionComponent<
 }) => {
   const { chainId } = useActiveChainId()
   const { t } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const { tokenId } = position
   const { isDark, colors } = useTheme()
 
   const title = `${lpSymbol} (#${tokenId.toString()})`
   const liquidityUrl = `/liquidity/${tokenId.toString()}?chain=${CHAIN_QUERY_NAME[chainId ?? -1] ?? ''}`
 
-  const { updatedUserMultiplierBeforeBoosted } = useVeCakeUserMultiplierBeforeBoosted()
+  const { updatedUserMultiplierBeforeBoosted } = useCometUserMultiplierBeforeBoosted()
   const { mutate: updateIsBoostedPool } = useIsBoostedPool(tokenId.toString())
   const { updateUserPositionInfo } = useUserPositionInfo(tokenId.toString())
   const { updateBoostedPoolsTokenId } = useUserBoostedPoolsTokenId()
@@ -180,13 +180,13 @@ const SingleFarmV3Card: React.FunctionComponent<
   const outOfRangeUnstaked = outOfRange && positionType === 'unstaked'
 
   const totalEarnings = useMemo(
-    () => +formatBigInt(pendingCakeByTokenIds[position.tokenId.toString()] || 0n, 4),
-    [pendingCakeByTokenIds, position.tokenId],
+    () => +formatBigInt(pendingCometByTokenIds[position.tokenId.toString()] || 0n, 4),
+    [pendingCometByTokenIds, position.tokenId],
   )
 
   const earningsBusd = useMemo(() => {
-    return new BigNumber(totalEarnings).times(cakePrice.toString()).toNumber()
-  }, [cakePrice, totalEarnings])
+    return new BigNumber(totalEarnings).times(cometPrice.toString()).toNumber()
+  }, [cometPrice, totalEarnings])
 
   const router = useRouter()
   const isHistory = useMemo(() => router.pathname.includes('history'), [router])
@@ -248,7 +248,7 @@ const SingleFarmV3Card: React.FunctionComponent<
                         <>
                           {t('Inactive positions will')}
                           <b> {t('NOT')} </b>
-                          {t('earn CAKE rewards from farm.')}
+                          {t('earn COMETrewards from farm.')}
                         </>
                       ) : (
                         t('You may add or remove liquidity on the position detail page without unstake')
@@ -332,7 +332,7 @@ const SingleFarmV3Card: React.FunctionComponent<
                 earnings={totalEarnings}
                 earningsBusd={earningsBusd}
                 pendingTx={attemptingTxn || (harvesting ?? false)}
-                disabled={!pendingCakeByTokenIds?.[position.tokenId.toString()]}
+                disabled={!pendingCometByTokenIds?.[position.tokenId.toString()]}
                 userDataReady
                 handleHarvest={handleHarvest}
               />
@@ -349,7 +349,7 @@ const SingleFarmV3Card: React.FunctionComponent<
               style={{ borderLeft: dividerBorderStyle, borderTop: dividerBorderStyle }}
             />
             <RowBetween flexDirection="column" alignItems="flex-start" flex={1} width="100%">
-              <BCakeV3CardView
+              <BCometV3CardView
                 tokenId={position.tokenId.toString()}
                 pid={farm.pid}
                 isFarmStaking={positionType === 'staked'}
@@ -363,3 +363,4 @@ const SingleFarmV3Card: React.FunctionComponent<
 }
 
 export default SingleFarmV3Card
+

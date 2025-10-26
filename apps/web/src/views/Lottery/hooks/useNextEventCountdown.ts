@@ -37,3 +37,4 @@ const useNextEventCountdown = (nextEventTime: number): number | null => {
 }
 
 export default useNextEventCountdown
+

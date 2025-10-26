@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Box, Button, Flex, Modal, ModalV2, Text, useToast } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRenewIcon, Box, Button, Flex, Modal, ModalV2, Text, useToast } from '@cometswap/uikit'
 import confetti from 'canvas-confetti'
 import Dots from 'components/Loader/Dots'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -173,3 +173,4 @@ const AnniversaryAchievementModal: React.FC<AnniversaryModalProps> = ({ excludeL
 }
 
 export default AnniversaryAchievementModal
+

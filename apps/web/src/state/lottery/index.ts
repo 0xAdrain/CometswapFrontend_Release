@@ -22,13 +22,13 @@ const initialState: LotteryState = {
     status: LotteryStatus.PENDING,
     startTime: '',
     endTime: '',
-    priceTicketInCake: '',
+    priceTicketInveComet: '',
     discountDivisor: '',
     treasuryFee: '',
     firstTicketId: '',
-    amountCollectedInCake: '',
+    amountCollectedInveComet: '',
     finalNumber: 0,
-    cakePerBracket: [],
+    cometPerBracket: [],
     countWinnersPerBracket: [],
     rewardsBreakdown: [],
     userTickets: {
@@ -37,7 +37,7 @@ const initialState: LotteryState = {
     },
   },
   lotteriesData: [],
-  userLotteryData: { account: '', totalCake: '', totalTickets: '', rounds: [] },
+  userLotteryData: { account: '', totalveComet: '', totalTickets: '', rounds: [] },
 }
 
 export const fetchCurrentLottery = createAsyncThunk<LotteryResponse, { currentLotteryId: string }>(
@@ -147,3 +147,4 @@ export const LotterySlice = createSlice({
 })
 
 export default LotterySlice.reducer
+

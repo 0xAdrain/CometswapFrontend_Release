@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ArrowDropDownIcon,
   Box,
@@ -8,9 +8,9 @@ import {
   Flex,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
+} from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import { formatAmount } from '@cometswap/utils/formatFractions'
 import CurrencySearchModal, { CurrencySearchModalProps } from 'components/SearchModal/CurrencySearchModal'
 import { useStablecoinPrice } from 'hooks/useStablecoinPrice'
 import { useCurrencyBalance } from 'state/wallet/hooks'
@@ -98,3 +98,4 @@ export const CurrencySelect = ({
     </Box>
   )
 }
+

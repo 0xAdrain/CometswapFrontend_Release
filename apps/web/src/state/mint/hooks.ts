@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Pair, Percent, Price, Token } from '@pancakeswap/sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Pair, Percent, Price, Token } from '@cometswap/sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 import { BIG_INT_ZERO } from 'config/constants/exchange'
 import { PairState, useV2Pair } from 'hooks/usePairs'
 import useTotalSupply from 'hooks/useTotalSupply'
@@ -243,3 +243,4 @@ export function useDerivedMintInfo(
     addError,
   }
 }
+

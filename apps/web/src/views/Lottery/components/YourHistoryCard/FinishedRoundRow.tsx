@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Flex, ChevronRightIcon, Box, SmallDotIcon, PrizeIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text, Flex, ChevronRightIcon, Box, SmallDotIcon, PrizeIcon } from '@cometswap/uikit'
 import { dateOptions, timeOptions } from '../../helpers'
 
 interface FinishedRoundRowProps {
@@ -69,3 +69,4 @@ const FinishedRoundRow: React.FC<React.PropsWithChildren<FinishedRoundRowProps>>
 }
 
 export default FinishedRoundRow
+

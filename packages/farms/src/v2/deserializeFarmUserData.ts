@@ -1,8 +1,8 @@
-import { bscTestnetTokens } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { bscTestnetTokens } from '@cometswap/tokens'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
-import { DeserializedBCakeWrapperUserData, DeserializedFarmUserData, SerializedFarm } from '../types'
+import { DeserializedBveCometWrapperUserData, DeserializedFarmUserData, SerializedFarm } from '../types'
 
 export const deserializeFarmUserData = (farm?: SerializedFarm): DeserializedFarmUserData => {
   return {
@@ -19,50 +19,50 @@ export const deserializeFarmUserData = (farm?: SerializedFarm): DeserializedFarm
   }
 }
 
-export const deserializeFarmBCakeUserData = (farm?: SerializedFarm): DeserializedBCakeWrapperUserData => {
+export const deserializeFarmBveCometUserData = (farm?: SerializedFarm): DeserializedBveCometWrapperUserData => {
   return {
-    allowance: farm?.bCakeUserData ? new BigNumber(farm.bCakeUserData.allowance) : BIG_ZERO,
-    tokenBalance: farm?.bCakeUserData ? new BigNumber(farm.bCakeUserData.tokenBalance) : BIG_ZERO,
-    stakedBalance: farm?.bCakeUserData ? new BigNumber(farm.bCakeUserData.stakedBalance) : BIG_ZERO,
-    earnings: farm?.bCakeUserData ? new BigNumber(farm.bCakeUserData.earnings) : BIG_ZERO,
-    boosterMultiplier: farm?.bCakeUserData?.boosterMultiplier ?? 1,
-    boostedAmounts: farm?.bCakeUserData?.boostedAmounts ? new BigNumber(farm.bCakeUserData.boostedAmounts) : BIG_ZERO,
-    boosterContractAddress: farm?.bCakeUserData?.boosterContractAddress,
-    rewardPerSecond: farm?.bCakeUserData?.rewardPerSecond
-      ? getBalanceAmount(new BigNumber(farm?.bCakeUserData?.rewardPerSecond), bscTestnetTokens.cake.decimals).toNumber()
+    allowance: farm?.bveCometUserData ? new BigNumber(farm.bveCometUserData.allowance) : BIG_ZERO,
+    tokenBalance: farm?.bveCometUserData ? new BigNumber(farm.bveCometUserData.tokenBalance) : BIG_ZERO,
+    stakedBalance: farm?.bveCometUserData ? new BigNumber(farm.bveCometUserData.stakedBalance) : BIG_ZERO,
+    earnings: farm?.bveCometUserData ? new BigNumber(farm.bveCometUserData.earnings) : BIG_ZERO,
+    boosterMultiplier: farm?.bveCometUserData?.boosterMultiplier ?? 1,
+    boostedAmounts: farm?.bveCometUserData?.boostedAmounts ? new BigNumber(farm.bveCometUserData.boostedAmounts) : BIG_ZERO,
+    boosterContractAddress: farm?.bveCometUserData?.boosterContractAddress,
+    rewardPerSecond: farm?.bveCometUserData?.rewardPerSecond
+      ? getBalanceAmount(new BigNumber(farm?.bveCometUserData?.rewardPerSecond), bscTestnetTokens.comet.decimals).toNumber()
       : 0,
-    startTimestamp: farm?.bCakeUserData?.startTimestamp,
-    endTimestamp: farm?.bCakeUserData?.endTimestamp,
+    startTimestamp: farm?.bveCometUserData?.startTimestamp,
+    endTimestamp: farm?.bveCometUserData?.endTimestamp,
   }
 }
 
-export const deserializeFarmBCakePublicData = (farm?: SerializedFarm): DeserializedBCakeWrapperUserData => {
+export const deserializeFarmBveCometPublicData = (farm?: SerializedFarm): DeserializedBveCometWrapperUserData => {
   // const isRewardInRange = true
   const isRewardInRange =
-    farm?.bCakePublicData?.startTimestamp &&
-    farm?.bCakePublicData?.endTimestamp &&
-    Date.now() / 1000 >= farm.bCakePublicData.startTimestamp &&
-    Date.now() / 1000 < farm.bCakePublicData.endTimestamp
+    farm?.bveCometPublicData?.startTimestamp &&
+    farm?.bveCometPublicData?.endTimestamp &&
+    Date.now() / 1000 >= farm.bveCometPublicData.startTimestamp &&
+    Date.now() / 1000 < farm.bveCometPublicData.endTimestamp
   return {
-    allowance: farm?.bCakePublicData ? new BigNumber(farm.bCakePublicData.allowance) : BIG_ZERO,
-    tokenBalance: farm?.bCakePublicData ? new BigNumber(farm.bCakePublicData.tokenBalance) : BIG_ZERO,
-    stakedBalance: farm?.bCakePublicData ? new BigNumber(farm.bCakePublicData.stakedBalance) : BIG_ZERO,
-    earnings: farm?.bCakePublicData ? new BigNumber(farm.bCakePublicData.earnings) : BIG_ZERO,
-    boosterMultiplier: isRewardInRange ? farm?.bCakePublicData?.boosterMultiplier ?? 1 : 1,
-    boostedAmounts: farm?.bCakePublicData?.boostedAmounts
-      ? new BigNumber(farm.bCakePublicData.boostedAmounts)
+    allowance: farm?.bveCometPublicData ? new BigNumber(farm.bveCometPublicData.allowance) : BIG_ZERO,
+    tokenBalance: farm?.bveCometPublicData ? new BigNumber(farm.bveCometPublicData.tokenBalance) : BIG_ZERO,
+    stakedBalance: farm?.bveCometPublicData ? new BigNumber(farm.bveCometPublicData.stakedBalance) : BIG_ZERO,
+    earnings: farm?.bveCometPublicData ? new BigNumber(farm.bveCometPublicData.earnings) : BIG_ZERO,
+    boosterMultiplier: isRewardInRange ? farm?.bveCometPublicData?.boosterMultiplier ?? 1 : 1,
+    boostedAmounts: farm?.bveCometPublicData?.boostedAmounts
+      ? new BigNumber(farm.bveCometPublicData.boostedAmounts)
       : BIG_ZERO,
-    boosterContractAddress: farm?.bCakePublicData?.boosterContractAddress,
+    boosterContractAddress: farm?.bveCometPublicData?.boosterContractAddress,
     rewardPerSecond:
-      farm?.bCakePublicData?.rewardPerSecond && isRewardInRange
+      farm?.bveCometPublicData?.rewardPerSecond && isRewardInRange
         ? getBalanceAmount(
-            new BigNumber(farm?.bCakePublicData?.rewardPerSecond),
-            bscTestnetTokens.cake.decimals,
+            new BigNumber(farm?.bveCometPublicData?.rewardPerSecond),
+            bscTestnetTokens.comet.decimals,
           ).toNumber()
         : 0,
-    startTimestamp: farm?.bCakePublicData?.startTimestamp,
-    endTimestamp: farm?.bCakePublicData?.endTimestamp,
+    startTimestamp: farm?.bveCometPublicData?.startTimestamp,
+    endTimestamp: farm?.bveCometPublicData?.endTimestamp,
     isRewardInRange: Boolean(isRewardInRange),
-    totalLiquidityX: farm?.bCakePublicData?.totalLiquidityX ?? 1,
+    totalLiquidityX: farm?.bveCometPublicData?.totalLiquidityX ?? 1,
   }
 }

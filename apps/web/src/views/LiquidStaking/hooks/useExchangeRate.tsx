@@ -1,5 +1,5 @@
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -74,3 +74,4 @@ export const useExchangeRate = ({ decimals }: UseExchangeRateProps): UseExchange
     refresh: refetch,
   }
 }
+

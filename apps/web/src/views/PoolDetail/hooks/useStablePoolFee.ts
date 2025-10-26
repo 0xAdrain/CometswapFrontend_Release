@@ -1,7 +1,7 @@
-import { Protocol } from '@pancakeswap/farms'
-import { Percent } from '@pancakeswap/swap-sdk-core'
-import { pancakeV3PoolABI } from '@pancakeswap/v3-sdk'
-import { useReadContract } from '@pancakeswap/wagmi'
+import { Protocol } from '@cometswap/farms'
+import { Percent } from '@cometswap/swap-sdk-core'
+import { cometV3PoolABI } from '@cometswap/v3-sdk'
+import { useReadContract } from '@cometswap/wagmi'
 import { stableSwapABI } from 'config/abi/stableSwapAbi'
 import { useMemo } from 'react'
 import { useChainIdByQuery } from 'state/info/hooks'
@@ -21,7 +21,7 @@ export const usePoolFee = (poolAddress: Address | undefined, poolProtocol?: Prot
       enabled,
     },
     chainId,
-    abi: enabled ? pancakeV3PoolABI : stableSwapABI,
+    abi: enabled ? cometV3PoolABI : stableSwapABI,
     address: poolAddress!,
     functionName: 'fee',
   })
@@ -37,3 +37,4 @@ export const usePoolFee = (poolAddress: Address | undefined, poolProtocol?: Prot
     isLoading,
   }
 }
+

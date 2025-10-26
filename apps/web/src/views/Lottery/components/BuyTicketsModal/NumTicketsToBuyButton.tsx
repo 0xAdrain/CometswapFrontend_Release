@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Button } from '@pancakeswap/uikit'
+import { Button } from '@cometswap/uikit'
 
 interface NumTicketsToBuyButtonProps {
   onClick: () => void
@@ -23,3 +23,4 @@ const NumTicketsToBuyButton: React.FC<React.PropsWithChildren<NumTicketsToBuyBut
 }
 
 export default NumTicketsToBuyButton
+

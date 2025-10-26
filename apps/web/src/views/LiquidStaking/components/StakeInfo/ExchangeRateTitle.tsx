@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, QuestionHelper, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, QuestionHelper, Text } from '@cometswap/uikit'
 
 interface ExchangeRateTitleProps {
   tokenOSymbol?: string
@@ -24,3 +24,4 @@ export const ExchangeRateTitle: React.FC<ExchangeRateTitleProps> = ({ tokenOSymb
     </Flex>
   )
 }
+

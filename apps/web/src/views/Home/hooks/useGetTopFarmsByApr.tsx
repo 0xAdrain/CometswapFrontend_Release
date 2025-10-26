@@ -1,7 +1,7 @@
-import { getLegacyFarmConfig } from '@pancakeswap/farms'
+import { getLegacyFarmConfig } from '@cometswap/farms'
 import { useQuery } from '@tanstack/react-query'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import orderBy from 'lodash/orderBy'
 import { fetchV3FarmsAvgInfo } from 'queries/farms'
 import { useEffect, useState } from 'react'
@@ -13,7 +13,7 @@ import { getFarmApr } from 'utils/apr'
 
 const useGetTopFarmsByApr = (isIntersecting: boolean) => {
   const dispatch = useAppDispatch()
-  const { data: farms, regularCakePerBlock } = useFarms()
+  const { data: farms, regularCometPerBlock } = useFarms()
   const { data: farmsV3, isLoading } = useFarmsV3()
   const [topFarms, setTopFarms] = useState<
     ({
@@ -23,7 +23,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
       version: 2 | 3
     } | null)[]
   >(() => [null, null, null, null, null])
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const { chainId } = useActiveChainId()
 
   const { status: fetchStatus, isFetching } = useQuery({
@@ -77,10 +77,10 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
         const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
           chainId,
           farm.poolWeight,
-          cakePrice,
+          cometPrice,
           totalLiquidity,
           farm.lpAddress,
-          regularCakePerBlock,
+          regularCometPerBlock,
           farm.lpRewardsApr,
         )
         return { ...farm, apr: cakeRewardsApr, lpRewardsApr, version: 2 as const }
@@ -102,8 +102,9 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
       )
       setTopFarms(sortedByApr.slice(0, 5))
     }
-  }, [cakePrice, chainId, farms, farmsV3.farmsWithPrice, fetchStatus, isLoading, regularCakePerBlock, farmsV3Aprs])
+  }, [cometPrice, chainId, farms, farmsV3.farmsWithPrice, fetchStatus, isLoading, regularCometPerBlock, farmsV3Aprs])
   return { topFarms, fetched: fetchStatus === 'success' && !isFetching, chainId }
 }
 
 export default useGetTopFarmsByApr
+

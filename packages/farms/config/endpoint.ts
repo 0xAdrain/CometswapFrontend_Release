@@ -1,1 +1,1 @@
-export const FARMS_API = 'https://configs.pancakeswap.com/api/data/cached/farms'
+export const FARMS_API = 'https://configs.cometswap.com/api/data/cached/farms'

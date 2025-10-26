@@ -1,6 +1,6 @@
 import { CommonBasesType } from 'components/SearchModal/types'
 
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
 import {
   AutoColumn,
   AutoRow,
@@ -14,14 +14,14 @@ import {
   RowBetween,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import {
   ConfirmationModalContent,
   LiquidityChartRangeInput,
   NumericalInput,
   ZOOM_LEVELS,
   ZoomLevels,
-} from '@pancakeswap/widgets-internal'
+} from '@cometswap/widgets-internal'
 
 import { tryParsePrice } from 'hooks/v3/utils'
 import {
@@ -30,8 +30,8 @@ import {
   logGTMClickAddLiquidityEvent,
 } from 'utils/customGTMEventTracking'
 
-import { useIsExpertMode, useUserSlippage } from '@pancakeswap/utils/user'
-import { FeeAmount, NonfungiblePositionManager, Pool } from '@pancakeswap/v3-sdk'
+import { useIsExpertMode, useUserSlippage } from '@cometswap/utils/user'
+import { FeeAmount, NonfungiblePositionManager, Pool } from '@cometswap/v3-sdk'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { useTransactionDeadline } from 'hooks/useTransactionDeadline'
 import useV3DerivedInfo from 'hooks/v3/useV3DerivedInfo'
@@ -42,7 +42,7 @@ import { CurrencyField as Field } from 'utils/types'
 import { basisPointsToPercent } from 'utils/exchange'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import TransactionConfirmationModal from 'components/TransactionConfirmationModal'
 import { Bound } from 'config/constants/types'
 import { useIsTransactionUnsupported, useIsTransactionWarning } from 'hooks/Trades'
@@ -835,3 +835,4 @@ export default function V3FormView({
     </>
   )
 }
+

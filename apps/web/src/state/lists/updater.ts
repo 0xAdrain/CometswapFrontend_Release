@@ -1,5 +1,5 @@
-import { getVersionUpgrade, VersionUpgrade } from '@pancakeswap/token-lists'
-import { acceptListUpdate, updateListVersion, useFetchListCallback } from '@pancakeswap/token-lists/react'
+import { getVersionUpgrade, VersionUpgrade } from '@cometswap/token-lists'
+import { acceptListUpdate, updateListVersion, useFetchListCallback } from '@cometswap/token-lists/react'
 import { useQuery } from '@tanstack/react-query'
 import { EXCHANGE_PAGE_PATHS, UNIVERSAL_PAGE_PATHS } from 'config/constants/exchange'
 import { UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
@@ -114,3 +114,4 @@ export function UpdaterByChainId({ chainId }: { chainId: number }): null {
 
   return null
 }
+

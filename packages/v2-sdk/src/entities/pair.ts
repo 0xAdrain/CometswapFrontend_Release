@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import {
   _10000,
   _9975,
@@ -12,8 +12,8 @@ import {
   Price,
   sqrt,
   ZERO,
-} from '@pancakeswap/swap-sdk-core'
-import { ERC20Token } from '@pancakeswap/swap-sdk-evm'
+} from '@cometswap/swap-sdk-core'
+import { ERC20Token } from '@cometswap/swap-sdk-evm'
 import invariant from 'tiny-invariant'
 import {
   Address,
@@ -95,7 +95,7 @@ export class Pair {
 
   public static getAddress(tokenA: ERC20Token, tokenB: ERC20Token): Address {
     return computePairAddress({
-      factoryAddress: FACTORY_ADDRESS_MAP[tokenA.chainId as keyof typeof FACTORY_ADDRESS_MAP],
+      factoryAddress: FACTORY_ADDRESS_MAP[tokenA.chainId as keyof typeof FACTORY_ADDRESS_MAP] as Address,
       tokenA,
       tokenB,
     })
@@ -109,8 +109,8 @@ export class Pair {
       tokenAmounts[0].currency.chainId,
       Pair.getAddress(tokenAmounts[0].currency, tokenAmounts[1].currency),
       18,
-      'Cake-LP',
-      'Pancake LPs',
+      'veComet-LP',
+      'Comet LPs',
     )
     this.tokenAmounts = tokenAmounts as [CurrencyAmount<ERC20Token>, CurrencyAmount<ERC20Token>]
   }
@@ -259,7 +259,7 @@ export class Pair {
       totalSupplyAdjusted = totalSupply
     } else {
       invariant(!!kLast, 'K_LAST')
-      const kLastParsed = BigInt(kLast)
+      const kLastParsed = BigInt(kLast!)
       if (!(kLastParsed === ZERO)) {
         const rootK = sqrt(this.reserve0.quotient * this.reserve1.quotient)
         const rootKLast = sqrt(kLastParsed)

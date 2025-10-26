@@ -1,17 +1,17 @@
-import { DeserializedPool } from '@pancakeswap/pools'
-import { Token } from '@pancakeswap/sdk'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { DeserializedPool } from '@cometswap/pools'
+import { Token } from '@cometswap/sdk'
+import { deserializeToken } from '@cometswap/token-lists'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import {
-  DeserializedCakeVault,
-  SerializedCakeVault,
-  SerializedLockedCakeVault,
+  DeserializedCometVault,
+  SerializedveCometVault,
+  SerializedLockedveCometVault,
   SerializedPool,
   VaultKey,
 } from 'state/types'
 import { safeGetAddress } from 'utils'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { convertSharesToComet } from 'views/Pools/helpers'
 
 type UserData =
   | DeserializedPool<Token>['userData']
@@ -68,7 +68,7 @@ export const transformPool = (pool: SerializedPool): DeserializedPool<Token> => 
   }
 }
 
-export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): DeserializedCakeVault => {
+export const transformVault = (vaultKey: VaultKey, vault: SerializedveCometVault): DeserializedCometVault => {
   const {
     totalShares: totalSharesAsString,
     pricePerFullShare: pricePerFullShareAsString,
@@ -76,7 +76,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
     userData: {
       isLoading,
       userShares: userSharesAsString,
-      cakeAtLastUserAction: cakeAtLastUserActionAsString,
+      cometAtLastUserAction: cometAtLastUserActionAsString,
       lastDepositedTime,
       lastUserActionTime,
     },
@@ -85,12 +85,12 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
   const totalShares = totalSharesAsString ? new BigNumber(totalSharesAsString) : BIG_ZERO
   const pricePerFullShare = pricePerFullShareAsString ? new BigNumber(pricePerFullShareAsString) : BIG_ZERO
   const userShares = new BigNumber(userSharesAsString)
-  const cakeAtLastUserAction = new BigNumber(cakeAtLastUserActionAsString)
+  const cometAtLastUserAction = new BigNumber(cometAtLastUserActionAsString)
   let userDataExtra
   let publicDataExtra
-  if (vaultKey === VaultKey.CakeVault) {
+  if (vaultKey === VaultKey.veCometVault) {
     const {
-      totalCakeInVault: totalCakeInVaultAsString,
+      totalCometInVault: totalCometInVaultAsString,
       totalLockedAmount: totalLockedAmountAsString,
       userData: {
         userBoostedShare: userBoostedShareAsString,
@@ -101,9 +101,9 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
         currentOverdueFee: currentOverdueFeeAsString,
         currentPerformanceFee: currentPerformanceFeeAsString,
       },
-    } = vault as SerializedLockedCakeVault
+    } = vault as SerializedLockedveCometVault
 
-    const totalCakeInVault = new BigNumber(totalCakeInVaultAsString || '0')
+    const totalCometInVault = new BigNumber(totalCometInVaultAsString || '0')
     const totalLockedAmount = new BigNumber(totalLockedAmountAsString || '0')
     const lockedAmount = new BigNumber(lockedAmountAsString)
     const userBoostedShare = new BigNumber(userBoostedShareAsString)
@@ -112,7 +112,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
       ? new BigNumber(currentPerformanceFeeAsString)
       : BIG_ZERO
 
-    const balance = convertSharesToCake(
+    const balance = convertSharesToComet(
       userShares,
       pricePerFullShare,
       undefined,
@@ -129,12 +129,12 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
       currentPerformanceFee,
       balance,
     }
-    publicDataExtra = { totalLockedAmount, totalCakeInVault }
+    publicDataExtra = { totalLockedAmount, totalCometInVault }
   } else {
-    const balance = convertSharesToCake(userShares, pricePerFullShare)
-    const { cakeAsBigNumber } = convertSharesToCake(totalShares, pricePerFullShare)
+    const balance = convertSharesToComet(userShares, pricePerFullShare)
+    const { cometAsBigNumber } = convertSharesToComet(totalShares, pricePerFullShare)
     userDataExtra = { balance }
-    publicDataExtra = { totalCakeInVault: cakeAsBigNumber }
+    publicDataExtra = { totalCometInVault: cometAsBigNumber }
   }
 
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
@@ -147,7 +147,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
     userData: {
       isLoading,
       userShares,
-      cakeAtLastUserAction,
+      cometAtLastUserAction,
       lastDepositedTime,
       lastUserActionTime,
       ...userDataExtra,
@@ -177,3 +177,4 @@ export const getTokenPricesFromFarm = (
     return prices
   }, {})
 }
+

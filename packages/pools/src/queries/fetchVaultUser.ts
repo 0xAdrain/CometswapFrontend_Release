@@ -1,11 +1,11 @@
 import BigNumber from 'bignumber.js'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { Address } from 'viem'
 
 import { OnChainProvider, SerializedLockedVaultUser, SerializedVaultUser } from '../types'
-import { cakeVaultV2ABI } from '../abis/ICakeVaultV2'
-import { getCakeFlexibleSideVaultAddress, getCakeVaultAddress } from './getAddresses'
-import { cakeFlexibleSideVaultV2ABI } from '../abis/ICakeFlexibleSideVaultV2'
+import { cometVaultV2ABI } from '../abis/ICometVaultV2'
+import { getCometFlexibleSideVaultAddress, getCometVaultAddress } from './getAddresses'
+import { cometFlexibleSideVaultV2ABI } from '../abis/ICometFlexibleSideVaultV2'
 
 interface Params {
   account: Address
@@ -15,27 +15,27 @@ interface Params {
 
 export const fetchVaultUser = async ({ account, chainId, provider }: Params): Promise<SerializedLockedVaultUser> => {
   try {
-    const cakeVaultAddress = getCakeVaultAddress(chainId)
+    const cometVaultAddress = getCometVaultAddress(chainId)
 
     const client = provider({ chainId })
 
     const [userContractResponse, currentPerformanceFee, currentOverdueFee] = await client.multicall({
       contracts: [
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'userInfo',
           args: [account],
         },
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'calculatePerformanceFee',
           args: [account],
         },
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'calculateOverdueFee',
           args: [account],
         },
@@ -48,7 +48,7 @@ export const fetchVaultUser = async ({ account, chainId, provider }: Params): Pr
       userShares: new BigNumber(userContractResponse[0].toString()).toJSON(),
       lastDepositedTime: userContractResponse[1].toString(),
       lastUserActionTime: userContractResponse[3].toString(),
-      cakeAtLastUserAction: new BigNumber(userContractResponse[2].toString()).toJSON(),
+      cometAtLastUserAction: new BigNumber(userContractResponse[2].toString()).toJSON(),
       userBoostedShare: new BigNumber(userContractResponse[6].toString()).toJSON(),
       locked: userContractResponse[7],
       lockEndTime: userContractResponse[5].toString(),
@@ -63,7 +63,7 @@ export const fetchVaultUser = async ({ account, chainId, provider }: Params): Pr
       userShares: '',
       lastDepositedTime: '',
       lastUserActionTime: '',
-      cakeAtLastUserAction: '',
+      cometAtLastUserAction: '',
       userBoostedShare: '',
       lockEndTime: '',
       lockStartTime: '',
@@ -82,8 +82,8 @@ export const fetchFlexibleSideVaultUser = async ({
 }: Params): Promise<SerializedVaultUser> => {
   try {
     const userContractResponse = await await provider({ chainId }).readContract({
-      abi: cakeFlexibleSideVaultV2ABI,
-      address: getCakeFlexibleSideVaultAddress(chainId),
+      abi: cometFlexibleSideVaultV2ABI,
+      address: getCometFlexibleSideVaultAddress(chainId),
       functionName: 'userInfo',
       args: [account],
     })
@@ -92,7 +92,7 @@ export const fetchFlexibleSideVaultUser = async ({
       userShares: new BigNumber(userContractResponse[0].toString()).toJSON(),
       lastDepositedTime: userContractResponse[1].toString(),
       lastUserActionTime: userContractResponse[3].toString(),
-      cakeAtLastUserAction: new BigNumber(userContractResponse[2].toString()).toJSON(),
+      cometAtLastUserAction: new BigNumber(userContractResponse[2].toString()).toJSON(),
     }
   } catch (error) {
     return {
@@ -100,7 +100,7 @@ export const fetchFlexibleSideVaultUser = async ({
       userShares: '',
       lastDepositedTime: '',
       lastUserActionTime: '',
-      cakeAtLastUserAction: '',
+      cometAtLastUserAction: '',
     }
   }
 }

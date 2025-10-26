@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 import { styled } from "styled-components";
-import { AutoColumn, ErrorIcon, Text, Flex, Button } from "@pancakeswap/uikit";
+import { AutoColumn, ErrorIcon, Text, Flex, Button } from "@cometswap/uikit";
 import { StepTitleAnimationContainer } from "./ApproveModalContent";
 import { FadePresence } from "./Logos";
 

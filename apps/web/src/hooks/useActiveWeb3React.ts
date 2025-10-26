@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { ChainId } from '@cometswap/chains'
+import { useWeb3React } from '@cometswap/wagmi'
 import { CHAIN_QUERY_NAME, getChainId } from 'config/chains'
 import { PERSIST_CHAIN_KEY } from 'config/constants'
 import { EXCHANGE_PAGE_PATHS } from 'config/constants/exchange'
@@ -72,3 +72,4 @@ const useActiveWeb3React = () => {
 }
 
 export default useActiveWeb3React
+

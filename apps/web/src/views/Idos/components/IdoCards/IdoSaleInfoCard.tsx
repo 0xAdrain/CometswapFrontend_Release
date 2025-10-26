@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Card, CardBody, FlexGap, Text } from '@pancakeswap/uikit'
-import { CurrencyLogo, NumberDisplay } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Card, CardBody, FlexGap, Text } from '@cometswap/uikit'
+import { CurrencyLogo, NumberDisplay } from '@cometswap/widgets-internal'
 import dayjs from 'dayjs'
 import useTheme from 'hooks/useTheme'
 import { useIDOConfig } from 'views/Idos/hooks/ido/useIDOConfig'
@@ -67,3 +67,4 @@ export const IdoSaleInfoCard: React.FC = () => {
     </Card>
   )
 }
+

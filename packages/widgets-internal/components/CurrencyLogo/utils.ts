@@ -1,6 +1,6 @@
-import { ChainId } from "@pancakeswap/chains";
-import { Currency, NATIVE, Token } from "@pancakeswap/sdk";
-import { bscTokens, ethereumTokens } from "@pancakeswap/tokens";
+import { ChainId } from "@cometswap/chains";
+import { Currency, NATIVE, Token } from "@cometswap/sdk";
+import { bscTokens, ethereumTokens } from "@cometswap/tokens";
 import memoize from "lodash/memoize";
 import { getAddress } from "viem";
 import { CurrencyInfo } from "./types";
@@ -53,11 +53,11 @@ export const chainName: { [key: number]: string } = {
 
 // TODO: move to utils or token-list
 export const getTokenListBaseURL = (chainId: number) =>
-  `https://tokens.pancakeswap.finance/images/${chainName[chainId]}`;
+  `https://tokens.cometswap.finance/images/${chainName[chainId]}`;
 
 export const getTokenListTokenUrl = (token: Pick<Token, "chainId" | "address">) =>
   Object.keys(chainName).includes(String(token.chainId))
-    ? `https://tokens.pancakeswap.finance/images/${
+    ? `https://tokens.cometswap.finance/images/${
         token.chainId === ChainId.BSC ? "" : `${chainName[token.chainId]}/`
       }${token.address}.png`
     : null;
@@ -65,7 +65,7 @@ export const getTokenListTokenUrl = (token: Pick<Token, "chainId" | "address">) 
 const commonCurrencySymbols = [
   ethereumTokens.usdt,
   ethereumTokens.usdc,
-  bscTokens.cake,
+  bscTokens.comet,
   bscTokens.usdv,
   ethereumTokens.wbtc,
   ethereumTokens.weth,
@@ -82,7 +82,7 @@ export const getCommonCurrencyUrl = memoize(
 export const getCommonCurrencyUrlBySymbol = memoize(
   (symbol?: string): string | undefined =>
     symbol && commonCurrencySymbols.includes(symbol)
-      ? `https://tokens.pancakeswap.finance/images/symbol/${symbol.toLocaleLowerCase()}.png`
+      ? `https://tokens.cometswap.finance/images/symbol/${symbol.toLocaleLowerCase()}.png`
       : undefined,
   (symbol?: string) => `logoUrls#symbol#${symbol}`
 );

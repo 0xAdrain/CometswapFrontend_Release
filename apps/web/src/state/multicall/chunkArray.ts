@@ -9,3 +9,4 @@ export default function chunkArray<T>(items: T[], maxChunkSize: number): T[][] {
 
   return [...Array(numChunks).keys()].map((ix) => items.slice(ix * chunkSize, ix * chunkSize + chunkSize))
 }
+

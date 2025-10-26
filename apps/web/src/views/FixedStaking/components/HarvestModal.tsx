@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Card, Flex, InfoFilledIcon, Modal, ModalV2, PreTitle, Text, useModalV2 } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Card, Flex, InfoFilledIcon, Modal, ModalV2, PreTitle, Text, useModalV2 } from '@cometswap/uikit'
 
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
 import { LightGreyCard } from 'components/Card'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
@@ -141,7 +141,7 @@ export function HarvestModal({
                   {boostAPR?.greaterThan(0) ? (
                     <Flex alignItems="center" justifyContent="space-between">
                       <Text fontSize={12} textTransform="uppercase" color="textSubtle" bold>
-                        {t('Locked Cake Boost')}
+                        {t('Locked Comet Boost')}
                       </Text>
                       <Text bold>{boostAPR.divide(lockAPR).divide(100).toSignificant(2)}x</Text>
                     </Flex>
@@ -191,3 +191,4 @@ export function HarvestModal({
     <ConnectWalletButton />
   )
 }
+

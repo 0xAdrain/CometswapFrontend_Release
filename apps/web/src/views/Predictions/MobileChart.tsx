@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PredictionsChartView } from '@pancakeswap/prediction'
-import { Flex } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { PredictionsChartView } from '@cometswap/prediction'
+import { Flex } from '@cometswap/uikit'
 import { TabToggle, TabToggleGroup } from 'components/TabToggle'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import dynamic from 'next/dynamic'
@@ -77,3 +77,4 @@ const MobileChart = () => {
 }
 
 export default MobileChart
+

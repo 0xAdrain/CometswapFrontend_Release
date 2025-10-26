@@ -1,11 +1,11 @@
 import BigNumber from 'bignumber.js'
 import { BOOSTED_FARM_GAS_LIMIT, DEFAULT_GAS_LIMIT, DEFAULT_TOKEN_DECIMAL } from 'config'
-import { getCrossFarmingVaultContract, getMasterChefContract, getV2SSBCakeWrapperContract } from 'utils/contractHelpers'
+import { getCrossFarmingVaultContract, getMasterChefContract, getV2SSBveCometWrapperContract } from 'utils/contractHelpers'
 import { logGTMClickStakeFarmEvent, logGTMClickUnStakeFarmEvent } from 'utils/customGTMEventTracking'
 import { MessageTypes, getCrossFarmingVaultContractFee } from 'views/Farms/hooks/getCrossFarmingVaultFee'
 
 export type MasterChefContractType = ReturnType<typeof getMasterChefContract>
-type V2SSBCakeContractType = ReturnType<typeof getV2SSBCakeWrapperContract>
+type V2SSBveCometContractType = ReturnType<typeof getV2SSBveCometWrapperContract>
 
 export const stakeFarm = async (
   masterChefContract: MasterChefContractType,
@@ -27,8 +27,8 @@ export const stakeFarm = async (
   })
 }
 
-export const bCakeStakeFarm = async (
-  v2SSContract: V2SSBCakeContractType,
+export const bveCometStakeFarm = async (
+  v2SSContract: V2SSBveCometContractType,
   amount,
   gasPrice,
   gasLimit?: bigint,
@@ -62,7 +62,7 @@ export const unstakeFarm = async (
   })
 }
 
-export const bCakeUnStakeFarm = async (v2SSContract: V2SSBCakeContractType, amount, gasPrice, gasLimit?: bigint) => {
+export const bveCometUnStakeFarm = async (v2SSContract: V2SSBveCometContractType, amount, gasPrice, gasLimit?: bigint) => {
   const value = new BigNumber(amount).times(DEFAULT_TOKEN_DECIMAL).toString()
   logGTMClickUnStakeFarmEvent()
   return v2SSContract.write.withdraw([BigInt(value), false], {
@@ -84,7 +84,7 @@ export const harvestFarm = async (masterChefContract: MasterChefContractType, pi
   })
 }
 
-export const bCakeHarvestFarm = async (v2SSContract: V2SSBCakeContractType, gasPrice, gasLimit?: bigint) => {
+export const bveCometHarvestFarm = async (v2SSContract: V2SSBveCometContractType, gasPrice, gasLimit?: bigint) => {
   return v2SSContract.write.deposit([0n, false], {
     gas: gasLimit || BOOSTED_FARM_GAS_LIMIT,
     gasPrice,
@@ -152,3 +152,4 @@ export const crossChainUnstakeFarm = async (
     chain: contract.chain,
   })
 }
+

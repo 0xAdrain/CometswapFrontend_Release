@@ -31,3 +31,4 @@ export const useRefreshBlockNumber = () => {
 }
 
 export default useRefreshBlockNumber
+

@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { AutoRow, BottomDrawer, Box, Flex, StyledLink, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { AutoRow, BottomDrawer, Box, Flex, StyledLink, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { useCurrency } from 'hooks/Tokens'
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import Link from 'next/link'
@@ -153,3 +153,4 @@ export const StyledInputCurrencyWrapper = styled(Box)`
     width: 400px;
   }
 `
+

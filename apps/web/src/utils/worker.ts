@@ -1,4 +1,4 @@
-import { V4Router } from '@pancakeswap/smart-router'
+import { V4Router } from '@cometswap/smart-router'
 
 import type { WorkerGetBestTradeEvent, WorkerGetBestTradeOffchainEvent, WorkerMultiChunkEvent } from 'quote-worker'
 import type { FetchChunkResult } from 'state/multicall/fetchChunk'
@@ -131,3 +131,4 @@ function createWorkerCreator() {
 export const createWorker = createWorkerCreator()
 
 export type WorkerInstance = Awaited<ReturnType<typeof createWorker>>
+

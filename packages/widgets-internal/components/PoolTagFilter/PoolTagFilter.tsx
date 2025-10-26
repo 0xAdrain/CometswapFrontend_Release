@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { styled } from "styled-components";
 import isEmpty from "lodash/isEmpty";
-import { Box, TreeSelect } from "@pancakeswap/uikit";
-import type { TreeNode, TreeSelectChangeEvent, TreeSelectProps } from "@pancakeswap/uikit/components/TreeSelect";
-import { useTheme } from "@pancakeswap/hooks";
+import { Box, TreeSelect } from "@cometswap/uikit";
+import type { TreeNode, TreeSelectChangeEvent, TreeSelectProps } from "@cometswap/uikit/components/TreeSelect";
+import { useTheme } from "@cometswap/hooks";
 
 const Container = styled(Box)<{ isShow: boolean }>`
   ${({ isShow, theme }) =>

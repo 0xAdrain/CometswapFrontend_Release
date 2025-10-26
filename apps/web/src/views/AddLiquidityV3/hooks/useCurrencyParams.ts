@@ -1,5 +1,5 @@
-import { CAKE, STABLE_COIN, USDC, USDT } from '@pancakeswap/tokens'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { COMET, STABLE_COIN, USDC, USDT } from '@cometswap/tokens'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useRouter } from 'next/router'
@@ -17,7 +17,7 @@ export function useCurrencyParams(): {
     router.isReady && chainId
       ? router.query.currency || [
           native.symbol,
-          CAKE[chainId]?.address || STABLE_COIN[chainId]?.address || USDC[chainId]?.address || USDT[chainId]?.address,
+          COMET[chainId]?.address || STABLE_COIN[chainId]?.address || USDC[chainId]?.address || USDT[chainId]?.address,
         ]
       : [undefined, undefined, undefined]
 
@@ -28,3 +28,4 @@ export function useCurrencyParams(): {
 
   return { currencyIdA, currencyIdB, feeAmount }
 }
+

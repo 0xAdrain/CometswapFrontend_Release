@@ -1,4 +1,4 @@
-import { PositionDetails } from '@pancakeswap/farms'
+import { PositionDetails } from '@cometswap/farms'
 import { atom } from 'jotai'
 import { ChainIdAddressKey } from '../type'
 
@@ -26,14 +26,15 @@ type PositionInfo = {
 }
 
 type V2PositionInfo = {
-  pendingCakeReward: bigint
+  pendingveCometReward: bigint
   balance: bigint
 }
 
 type V3FarmingPosition = PositionDetails & {
-  pendingCakeReward: bigint
+  pendingveCometReward: bigint
 }
 
 type V3NonFarmingPosition = PositionDetails
 
 type V3PositionInfo = V3FarmingPosition | V3NonFarmingPosition
+

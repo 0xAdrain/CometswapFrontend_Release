@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text, Box } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text, Box } from '@cometswap/uikit'
 
 import { LightGreyCard } from 'components/Card'
 
@@ -7,7 +7,7 @@ import { ReactNode, useMemo } from 'react'
 import TextRow from 'views/Pools/components/LockedPool/Common/Overview/TextRow'
 import { formatUnixTime } from 'utils/formatTime'
 
-import { CurrencyAmount, Percent, Currency } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount, Percent, Currency } from '@cometswap/swap-sdk-core'
 import { AmountWithUSDSub } from './AmountWithUSDSub'
 import { StakedLimitEndOn } from './StakedLimitEndOn'
 import { useCurrentDay } from '../hooks/useStakedPools'
@@ -118,7 +118,7 @@ export default function FixedStakingOverview({
       {boostAPR && lockAPR ? (
         <Flex alignItems="center" justifyContent="space-between">
           <Text fontSize={12} textTransform="uppercase" color="textSubtle" bold>
-            {t('Locked Cake Boost')}
+            {t('Locked Comet Boost')}
           </Text>
           <Text bold>{boostAPR.divide(lockAPR).divide(100).toSignificant(2)}x</Text>
         </Flex>
@@ -149,3 +149,4 @@ export default function FixedStakingOverview({
     </LightGreyCard>
   )
 }
+

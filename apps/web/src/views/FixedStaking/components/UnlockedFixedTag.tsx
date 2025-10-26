@@ -1,4 +1,4 @@
-import { Tag, UnlockIcon } from '@pancakeswap/uikit'
+import { Tag, UnlockIcon } from '@cometswap/uikit'
 import { CSSProperties, ReactNode } from 'react'
 
 export function UnlockedFixedTag({ children, style }: { children: ReactNode; style?: CSSProperties }) {
@@ -13,3 +13,4 @@ export function UnlockedFixedTag({ children, style }: { children: ReactNode; sty
     </Tag>
   )
 }
+

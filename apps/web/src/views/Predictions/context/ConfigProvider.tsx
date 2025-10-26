@@ -1,4 +1,4 @@
-import { PredictionConfig } from '@pancakeswap/prediction'
+import { PredictionConfig } from '@cometswap/prediction'
 import { createContext, useContext } from 'react'
 
 export const ConfigContext = createContext<PredictionConfig | undefined>(undefined)
@@ -10,3 +10,4 @@ export function useConfig() {
 export default function ConfigProvider({ children, config }) {
   return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
 }
+

@@ -1,15 +1,15 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 
-import { AtomBox, Button, Flex, RowBetween, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { AtomBox, Button, Flex, RowBetween, useMatchBreakpoints } from '@cometswap/uikit'
 import { memo, useCallback, useMemo, useState } from 'react'
 import { useCurrencyBalances } from 'state/wallet/hooks'
 
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { styled, useTheme } from 'styled-components'
-import { StatusView } from 'views/Farms/components/YieldBooster/components/bCakeV3/StatusView'
-import { StatusViewButtons } from 'views/Farms/components/YieldBooster/components/bCakeV3/StatusViewButtons'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { useBoostStatusPM } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBoostStatus'
+import { StatusView } from 'views/Farms/components/YieldBooster/components/bCometV3/StatusView'
+import { StatusViewButtons } from 'views/Farms/components/YieldBooster/components/bCometV3/StatusViewButtons'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { useBoostStatusPM } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBoostStatus'
 import { useAccount } from 'wagmi'
 import { usePMV2SSMaxBoostMultiplier, useWrapperBooster } from '../../hooks'
 import { useOnStake } from '../../hooks/useOnStake'
@@ -77,7 +77,7 @@ export const LiquidityManagement = memo(function LiquidityManagement({
   learnMoreAboutUrl,
   lpTokenDecimals,
   aprTimeWindow,
-  bCakeWrapper,
+  bCometWrapper,
   minDepositUSD,
   boosterMultiplier,
   isBooster,
@@ -108,14 +108,14 @@ export const LiquidityManagement = memo(function LiquidityManagement({
   const dividerBorderStyle = useMemo(() => `1px solid ${colors.input}`, [colors.input])
   const isSingleDepositToken0 = isSingleDepositToken && allowDepositToken0
 
-  const { status } = useBoostStatusPM(Boolean(bCakeWrapper), boosterMultiplier, refetch)
-  const { shouldUpdate, veCakeUserMultiplierBeforeBoosted } = useWrapperBooster(
+  const { status } = useBoostStatusPM(Boolean(bCometWrapper), boosterMultiplier, refetch)
+  const { shouldUpdate, vecometUserMultiplierBeforeBoosted } = useWrapperBooster(
     boosterContractAddress ?? '0x',
     boosterMultiplier ?? 1,
-    bCakeWrapper,
+    bCometWrapper,
   )
-  const { isTxLoading, onStake, onUpdate } = useOnStake(manager.id, contractAddress, bCakeWrapper)
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { isTxLoading, onStake, onUpdate } = useOnStake(manager.id, contractAddress, bCometWrapper)
+  const { locked } = useBCometBoostLimitAndLockInfo()
   const { isDesktop } = useMatchBreakpoints()
   return (
     <>
@@ -167,7 +167,7 @@ export const LiquidityManagement = memo(function LiquidityManagement({
               >
                 <RewardAssets
                   contractAddress={contractAddress}
-                  bCakeWrapper={bCakeWrapper}
+                  bCometWrapper={bCometWrapper}
                   pendingReward={pendingReward}
                   earningToken={earningToken}
                   refetch={refetch}
@@ -195,7 +195,7 @@ export const LiquidityManagement = memo(function LiquidityManagement({
                         boostedMultiplier={boosterMultiplier}
                         maxBoostMultiplier={maxBoostMultiplier}
                         shouldUpdate={shouldUpdate}
-                        expectMultiplier={veCakeUserMultiplierBeforeBoosted}
+                        expectMultiplier={vecometUserMultiplierBeforeBoosted}
                       />
                       <StatusViewButtons
                         updateButton={
@@ -279,7 +279,7 @@ export const LiquidityManagement = memo(function LiquidityManagement({
         learnMoreAboutUrl={learnMoreAboutUrl}
         lpTokenDecimals={lpTokenDecimals}
         aprTimeWindow={aprTimeWindow}
-        bCakeWrapper={bCakeWrapper}
+        bCometWrapper={bCometWrapper}
         minDepositUSD={minDepositUSD}
         boosterMultiplier={boosterMultiplier}
         isBooster={isBooster}
@@ -301,8 +301,9 @@ export const LiquidityManagement = memo(function LiquidityManagement({
         contractAddress={contractAddress}
         refetch={refetch}
         manager={manager}
-        bCakeWrapper={bCakeWrapper}
+        bCometWrapper={bCometWrapper}
       />
     </>
   )
 })
+

@@ -5,3 +5,4 @@ export default function useCurrentBlockTimestamp(): bigint | undefined {
   const timestamp = useBlockTimestamp()
   return timestamp ? BigInt(timestamp) : undefined
 }
+

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { CHAINS } from 'config/chains'
 import { SERVER_NODES } from 'config/nodes'
 import { createPublicClient, fallback, http, PublicClient } from 'viem'
@@ -29,3 +29,4 @@ export const viemServerClients = CHAINS.reduce((prev, cur) => {
 export const getViemClients = ({ chainId }: { chainId: ChainId }) => {
   return viemServerClients[chainId]
 }
+

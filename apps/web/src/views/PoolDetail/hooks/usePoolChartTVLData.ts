@@ -1,4 +1,4 @@
-import { Protocol } from '@pancakeswap/farms'
+import { Protocol } from '@cometswap/farms'
 import { useQuery } from '@tanstack/react-query'
 import { QUERY_SETTINGS_IMMUTABLE, QUERY_SETTINGS_WITHOUT_INTERVAL_REFETCH } from 'config/constants'
 import dayjs from 'dayjs'
@@ -58,3 +58,4 @@ export const usePoolChartTVLData = (
     ...QUERY_SETTINGS_WITHOUT_INTERVAL_REFETCH,
   })
 }
+

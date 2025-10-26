@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useDebounce } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, BscScanIcon, FlexGap, Link, SwapCSS, Text } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useDebounce } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, BscScanIcon, FlexGap, Link, SwapCSS, Text } from '@cometswap/uikit'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useGetENSAddressByName } from 'hooks/useGetENSAddressByName'
@@ -161,3 +161,4 @@ export default function AddressInputPanel({
     </InputPanel>
   )
 }
+

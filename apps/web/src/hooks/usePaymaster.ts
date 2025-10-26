@@ -1,9 +1,9 @@
-import isZero from '@pancakeswap/utils/isZero'
+import isZero from '@cometswap/utils/isZero'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
 import { Address, Hex, hexToBigInt, isAddress, stringify } from 'viem'
 
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { ZyfiResponse } from 'config/paymaster'
 import { publicClient } from 'utils/viem'
 import { eip712WalletActions } from 'viem/zksync'
@@ -108,3 +108,4 @@ export const usePaymaster = () => {
     sendPaymasterTransaction,
   }
 }
+

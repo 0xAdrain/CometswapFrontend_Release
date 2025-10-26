@@ -1,11 +1,11 @@
-import { Currency, CurrencyAmount, Pair, Percent, Token } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Pair, Percent, Token } from '@cometswap/sdk'
 import { useCallback, useMemo } from 'react'
 import { wrappedCurrency } from 'utils/wrappedCurrency'
 import { useV2Pair } from 'hooks/usePairs'
 import useTotalSupply from 'hooks/useTotalSupply'
 
-import { useTranslation } from '@pancakeswap/localization'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { useTranslation } from '@cometswap/localization'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 import { useRemoveLiquidityV2FormDispatch, useRemoveLiquidityV2FormState } from 'state/burn/reducer'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useTokenBalances } from '../wallet/hooks'
@@ -143,3 +143,4 @@ export function useBurnActionHandlers(): {
     onUserInput,
   }
 }
+

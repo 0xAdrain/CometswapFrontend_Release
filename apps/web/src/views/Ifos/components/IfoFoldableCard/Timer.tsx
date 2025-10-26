@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { styled } from 'styled-components'
-import { Flex, Heading, PocketWatchIcon, Text, Skeleton, Link, TimerIcon } from '@pancakeswap/uikit'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { Flex, Heading, PocketWatchIcon, Text, Skeleton, Link, TimerIcon } from '@cometswap/uikit'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import { getBlockExploreLink } from 'utils'
 import { PublicIfoData } from 'views/Ifos/types'
@@ -173,3 +173,4 @@ const LiveTimer: React.FC<React.PropsWithChildren<Props>> = ({ publicIfoData }) 
 }
 
 export default LiveTimer
+

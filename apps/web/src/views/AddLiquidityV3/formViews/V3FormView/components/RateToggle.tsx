@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { Button, Flex, SyncAltIcon, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { Button, Flex, SyncAltIcon, Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const RateToggleButton = styled(Button)`
@@ -34,3 +34,4 @@ export default function RateToggle({
     </Flex>
   ) : null
 }
+

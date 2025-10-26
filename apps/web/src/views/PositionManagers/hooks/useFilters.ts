@@ -1,4 +1,4 @@
-import { updateQuery } from '@pancakeswap/utils/clientRouter'
+import { updateQuery } from '@cometswap/utils/clientRouter'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
 
@@ -34,3 +34,4 @@ export const useSortBy = filterHookFactory('sortBy')
 
 export const useSearch = filterHookFactory('search')
 export const usePreview = filterHookFactory('preview')
+

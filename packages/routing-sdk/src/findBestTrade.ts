@@ -1,5 +1,5 @@
-import { formatFraction } from '@pancakeswap/utils/formatFractions'
-import { Token, Currency, CurrencyAmount, Fraction, TradeType } from '@pancakeswap/swap-sdk-core'
+import { formatFraction } from '@cometswap/utils/formatFractions'
+import { Token, Currency, CurrencyAmount, Fraction, TradeType } from '@cometswap/swap-sdk-core'
 import invariant from 'tiny-invariant'
 
 import { PriceCalculator, createGraph, createPriceCalculator, getNeighbour } from './graph'

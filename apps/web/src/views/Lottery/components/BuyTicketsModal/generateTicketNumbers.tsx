@@ -40,3 +40,4 @@ const generateTicketNumbers = (
 }
 
 export default generateTicketNumbers
+

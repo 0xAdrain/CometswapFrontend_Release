@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { bscTokens } from '@pancakeswap/tokens'
-import { Flex, FlexLayout, Heading, PageHeader, ToggleView, ViewMode } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { bscTokens } from '@cometswap/tokens'
+import { Flex, FlexLayout, Heading, PageHeader, ToggleView, ViewMode } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import Page from 'components/Layout/Page'
 import max from 'lodash/max'
@@ -69,7 +69,7 @@ const FixedStaking = () => {
   // Put WBNB on top
   const sortedPoolGroup = useMemo(() => {
     const [first, last] = partition(Object.keys(poolGroup), (poolAddress) =>
-      [bscTokens.wbnb.address, bscTokens.cake.address].includes(poolAddress as Address),
+      [bscTokens.wbnb.address, bscTokens.comet.address].includes(poolAddress as Address),
     )
 
     return [...first, ...last]
@@ -124,3 +124,4 @@ const FixedStaking = () => {
 }
 
 export default FixedStaking
+

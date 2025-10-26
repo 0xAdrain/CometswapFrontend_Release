@@ -1,11 +1,11 @@
-import { Percent } from '@pancakeswap/sdk'
-import formatLocalisedCompactNumber, { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { Percent } from '@cometswap/sdk'
+import formatLocalisedCompactNumber, { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
-import { useVeCakeBalance } from 'hooks/useTokenBalance'
+import { useVeCometBalance } from 'hooks/useTokenBalance'
 import { useEffect, useMemo } from 'react'
 import { Hex } from 'viem'
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
-import { useProxyVeCakeBalance } from 'views/CakeStaking/hooks/useProxyVeCakeBalance'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
+import { useProxyCometBalance } from 'views/CometStaking/hooks/useProxyCometBalance'
 import { useEpochVotePower } from 'views/GaugesVoting/hooks/useEpochVotePower'
 import { useUserVote } from 'views/GaugesVoting/hooks/useUserVote'
 import { DEFAULT_VOTE, RowProps } from '../types'
@@ -13,8 +13,8 @@ import { DEFAULT_VOTE, RowProps } from '../types'
 export const useRowVoteState = ({ data, vote, onChange }: RowProps) => {
   const userVote = useUserVote(data)
   const voteLocked = userVote?.voteLocked
-  const { balance: veCakeBalance } = useVeCakeBalance()
-  const { balance: proxyVeCakeBalance } = useProxyVeCakeBalance()
+  const { balance: vecometBalance } = useVeCometBalance()
+  const { balance: proxyCometBalance } = useProxyCometBalance()
   const currentTimestamp = useCurrentBlockTimestamp()
   const { data: epochVotePower, isLoading: isLoadingEpochVotePower } = useEpochVotePower()
   const willUnlock = useMemo(
@@ -62,16 +62,16 @@ export const useRowVoteState = ({ data, vote, onChange }: RowProps) => {
   const previewVoteWeightAmount = useMemo(() => {
     const p = Number(voteValue || 0) * 100
     // const powerBN = new BN(epochVotePower.toString())
-    let balance = veCakeBalance
+    let balance = vecometBalance
     if (userVote?.ignoredSide === 'proxy') {
-      balance = veCakeBalance.minus(proxyVeCakeBalance)
+      balance = vecometBalance.minus(proxyCometBalance)
     }
     if (userVote?.ignoredSide === 'native') {
-      balance = proxyVeCakeBalance
+      balance = proxyCometBalance
     }
     const amount = getBalanceNumber(balance.times(p).div(10000))
     return amount
-  }, [proxyVeCakeBalance, userVote?.ignoredSide, veCakeBalance, voteValue])
+  }, [proxyCometBalance, userVote?.ignoredSide, vecometBalance, voteValue])
   const previewVoteWeight = useMemo(() => {
     if (previewVoteWeightAmount === 0) return 0
     if (previewVoteWeightAmount < 1) return previewVoteWeightAmount.toPrecision(2)
@@ -105,7 +105,8 @@ export const useRowVoteState = ({ data, vote, onChange }: RowProps) => {
     voteValue,
     voteLocked,
     willUnlock,
-    proxyVeCakeBalance,
+    proxyCometBalance,
     changeHighlight,
   }
 }
+

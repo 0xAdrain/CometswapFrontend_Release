@@ -111,3 +111,4 @@ export async function fetchTokenChartData(
     error,
   }
 }
+

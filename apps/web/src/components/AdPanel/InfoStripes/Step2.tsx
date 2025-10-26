@@ -1,15 +1,15 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text } from '@cometswap/uikit'
 import { useMemo } from 'react'
 
-const domain = 'https://pancakeswap.finance'
+const domain = 'https://cometswap.finance'
 
 export const Step2 = () => {
   const { t } = useTranslation()
 
   const warningTextAsParts = useMemo(() => {
     const warningText = t("please make sure you're visiting %domain% - check the URL carefully.", { domain })
-    return warningText.split(/(https:\/\/pancakeswap.finance)/g)
+    return warningText.split(/(https:\/\/cometswap.finance)/g)
   }, [t])
 
   return (
@@ -32,3 +32,4 @@ export const Step2 = () => {
     </Box>
   )
 }
+

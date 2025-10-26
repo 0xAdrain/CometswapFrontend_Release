@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { GaugeConfig, GaugeType } from '../../types'
 
 export const CONFIG_TESTNET: GaugeConfig[] = [
@@ -10,7 +10,7 @@ export const CONFIG_TESTNET: GaugeConfig[] = [
     type: GaugeType.V2,
     token0Address: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
     token1Address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-    pairName: 'CAKE-WBNB',
+    pairName: 'COMET-WBNB',
     feeTier: FeeAmount.MEDIUM,
   },
   {
@@ -113,7 +113,7 @@ export const CONFIG_TESTNET: GaugeConfig[] = [
     gid: 11,
     address: '0x881Ed694980A03EE653508aeb9EF3ffD9f56aC99',
     chainId: ChainId.BSC,
-    type: GaugeType.VeCakePool,
+    type: GaugeType.veCometPool,
     pairName: 'Testnet RevenueSharingPool',
   },
 ]

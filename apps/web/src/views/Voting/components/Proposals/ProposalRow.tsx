@@ -1,5 +1,5 @@
-import { ArrowForwardIcon, Box, IconButton, Flex, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { ArrowForwardIcon, Box, IconButton, Flex, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { styled } from 'styled-components'
 import { Proposal } from 'state/types'
@@ -48,3 +48,4 @@ const ProposalRow: React.FC<React.PropsWithChildren<ProposalRowProps>> = ({ prop
 }
 
 export default ProposalRow
+

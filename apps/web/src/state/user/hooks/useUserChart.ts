@@ -7,3 +7,4 @@ const mobileUserChartAtom = atom(false)
 export function useUserChart(isMobile: boolean) {
   return useAtom(isMobile ? mobileUserChartAtom : userChartAtom)
 }
+

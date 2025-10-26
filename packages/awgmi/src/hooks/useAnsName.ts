@@ -1,4 +1,4 @@
-import { fetchAnsName, FetchAnsNameArgs, FetchAnsNameResult } from '@pancakeswap/awgmi/core'
+import { fetchAnsName, FetchAnsNameArgs, FetchAnsNameResult } from '@cometswap/awgmi/core'
 import { QueryFunction, useQuery } from '@tanstack/react-query'
 import { QueryConfig } from '../types'
 import { useNetwork } from './useNetwork'

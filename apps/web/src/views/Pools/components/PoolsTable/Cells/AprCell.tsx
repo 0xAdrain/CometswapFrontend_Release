@@ -1,9 +1,9 @@
-import { Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import BigNumber from 'bignumber.js'
 
 import Apr from '../../Apr'
@@ -31,3 +31,4 @@ const AprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) => {
 }
 
 export default AprCell
+

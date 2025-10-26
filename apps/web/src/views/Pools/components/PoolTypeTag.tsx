@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { useTooltip } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { useTooltip } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 
 const { CompoundingPoolTag, ManualPoolTag, LockedPoolTag, LockedOrAutoPoolTag } = FarmWidget.Tags
 
@@ -47,3 +47,4 @@ const PoolTypeTag = ({ account, vaultKey, isLocked, children }) => {
 }
 
 export default PoolTypeTag
+

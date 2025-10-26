@@ -1,4 +1,4 @@
-import type { BigintIsh, Currency } from '@pancakeswap/swap-sdk-core'
+import type { BigintIsh, Currency } from '@cometswap/swap-sdk-core'
 
 import type { OnChainProvider } from '../../v3-router/types'
 

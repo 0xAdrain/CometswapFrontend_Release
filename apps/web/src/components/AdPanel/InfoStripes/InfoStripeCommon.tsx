@@ -1,5 +1,5 @@
-import { Box, Link } from '@pancakeswap/uikit'
-import { VerticalDivider } from '@pancakeswap/widgets-internal'
+import { Box, Link } from '@cometswap/uikit'
+import { VerticalDivider } from '@cometswap/widgets-internal'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { AdsIds, useAdsConfig } from '../hooks/useAdsConfig'
 import { AdTextConfig } from '../types'
@@ -56,3 +56,4 @@ export const InfoStripeCommon = (props: { id: AdsIds }) => {
 const RenderText = ({ config }: { config: AdTextConfig }) => {
   return <TextHighlight text={config.text} highlights={config.highlights || []} />
 }
+

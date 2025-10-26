@@ -1,4 +1,4 @@
-import { Text, TextProps } from '@pancakeswap/uikit'
+import { Text, TextProps } from '@cometswap/uikit'
 import { PropsWithChildren } from 'react'
 
 interface TitleProps extends TextProps, PropsWithChildren {}
@@ -9,3 +9,4 @@ export const Title = ({ children }: TitleProps) => {
     </Text>
   )
 }
+

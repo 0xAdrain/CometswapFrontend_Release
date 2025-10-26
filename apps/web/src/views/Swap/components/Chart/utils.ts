@@ -1,4 +1,4 @@
-import { NATIVE, WNATIVE } from '@pancakeswap/sdk'
+import { NATIVE, WNATIVE } from '@cometswap/sdk'
 
 const MIN_VALUE_DISPLAYED = 0.001
 
@@ -36,3 +36,4 @@ export const getTokenAddress = (chainId: number | undefined, tokenAddress: strin
 
   return lowerCaseAddress
 }
+

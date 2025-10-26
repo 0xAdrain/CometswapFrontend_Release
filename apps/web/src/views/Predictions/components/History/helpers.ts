@@ -1,6 +1,6 @@
 import { Bet } from 'state/types'
-import { BetPosition } from '@pancakeswap/prediction'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { BetPosition } from '@cometswap/prediction'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 
 export const formatUsd = (usd: number | undefined, displayedDecimals: number) => {
   return `$${formatNumber(usd || 0, displayedDecimals, displayedDecimals)}`
@@ -44,3 +44,4 @@ export const getNetPayout = (bet: Bet, rewardRate = 1): number => {
   const payout = getPayout(bet, rewardRate)
   return payout - bet.amount
 }
+

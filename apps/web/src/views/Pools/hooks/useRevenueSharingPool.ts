@@ -4,11 +4,11 @@ import { useRevenueSharingPoolContract } from 'hooks/useContract'
 import { getRevenueSharingPoolAddress } from 'utils/addressHelpers'
 import { Address } from 'viem'
 import { revenueSharingPoolABI } from 'config/abi/revenueSharingPool'
-import { ONE_WEEK_DEFAULT } from '@pancakeswap/pools'
+import { ONE_WEEK_DEFAULT } from '@cometswap/pools'
 import BigNumber from 'bignumber.js'
 import { useInitialBlockTimestamp } from 'state/block/hooks'
 import { useQuery } from '@tanstack/react-query'
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
 
 interface RevenueSharingPool {
   balanceOfAt: string
@@ -87,3 +87,4 @@ const useRevenueSharingPool = (): RevenueSharingPool => {
 }
 
 export default useRevenueSharingPool
+

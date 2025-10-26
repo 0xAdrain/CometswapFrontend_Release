@@ -6,3 +6,4 @@ export const usePoolInfoByQuery = (): PoolInfo | undefined | null => {
   const { id, chainId } = useRouterQuery()
   return usePoolInfo({ poolAddress: id as `0x${string}`, chainId })
 }
+

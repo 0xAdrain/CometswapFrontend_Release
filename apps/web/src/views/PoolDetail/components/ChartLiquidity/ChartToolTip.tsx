@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/swap-sdk-core'
-import { AutoColumn, RowBetween, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/swap-sdk-core'
+import { AutoColumn, RowBetween, Text } from '@cometswap/uikit'
 import { LightCard } from 'components/Card'
 import useTheme from 'hooks/useTheme'
 import React, { useMemo } from 'react'
@@ -95,3 +95,4 @@ export const ChartToolTip: React.FC<CustomToolTipProps> = ({
     </TooltipWrapper>
   )
 }
+

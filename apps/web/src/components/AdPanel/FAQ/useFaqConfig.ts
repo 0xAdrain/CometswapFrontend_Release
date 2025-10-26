@@ -14,3 +14,4 @@ export const useFaqConfig = (): FAQConfig => {
     return faqConfig[faqTypeByPage[router.pathname]] ?? ((() => ({})) as unknown as FAQConfig)
   }, [router])
 }
+

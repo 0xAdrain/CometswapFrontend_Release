@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, Percent, Token, TradeType } from '@pancakeswap/swap-sdk-core'
-import { validateAndParseAddress } from '@pancakeswap/swap-sdk-evm'
+import { Currency, CurrencyAmount, Percent, Token, TradeType } from '@cometswap/swap-sdk-core'
+import { validateAndParseAddress } from '@cometswap/swap-sdk-evm'
 import invariant from 'tiny-invariant'
 import { Address, Hex } from 'viem'
 
@@ -39,11 +39,11 @@ export interface TradeOptionsDeadline extends Omit<TradeOptions, 'ttl'> {
 }
 
 /**
- * The parameters to use in the call to the Pancake Router to execute a trade.
+ * The parameters to use in the call to the Comet Router to execute a trade.
  */
 export interface SwapParameters {
   /**
-   * The method to call on the Pancake Router.
+   * The method to call on the Comet Router.
    */
   methodName: string
   /**
@@ -63,7 +63,7 @@ function toHex(currencyAmount: CurrencyAmount<Currency>): Hex {
 const ZERO_HEX = '0x0'
 
 /**
- * Represents the Pancake Router, and has static methods for helping execute trades.
+ * Represents the Comet Router, and has static methods for helping execute trades.
  */
 export abstract class Router {
   /**

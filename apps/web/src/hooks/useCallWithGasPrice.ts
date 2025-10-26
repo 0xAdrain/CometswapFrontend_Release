@@ -67,3 +67,4 @@ export function useCallWithGasPrice() {
 
   return { callWithGasPrice: callWithGasPriceWithSimulate }
 }
+

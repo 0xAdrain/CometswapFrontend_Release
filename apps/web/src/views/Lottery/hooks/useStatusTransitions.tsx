@@ -1,6 +1,6 @@
 import { useAccount } from 'wagmi'
 import { LotteryStatus } from 'config/constants/types'
-import { usePreviousValue } from '@pancakeswap/hooks'
+import { usePreviousValue } from '@cometswap/hooks'
 import { useEffect } from 'react'
 import { useAppDispatch } from 'state'
 import { useLottery } from 'state/lottery/hooks'
@@ -54,3 +54,4 @@ const useStatusTransitions = () => {
 }
 
 export default useStatusTransitions
+

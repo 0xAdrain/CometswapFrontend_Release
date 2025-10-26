@@ -1,18 +1,18 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { checkIsBoostedPool } from '@pancakeswap/pools'
-import { Token } from '@pancakeswap/sdk'
-import { Box, Flex, Skeleton, Text, TokenPairImage as UITokenPairImage, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { FarmWidget, Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { checkIsBoostedPool } from '@cometswap/pools'
+import { Token } from '@cometswap/sdk'
+import { Box, Flex, Skeleton, Text, TokenPairImage as UITokenPairImage, useMatchBreakpoints } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { FarmWidget, Pool } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { TokenPairImage } from 'components/TokenImage'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { ReactNode, memo, useMemo } from 'react'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { DeserializedLockedCakeVault, VaultKey } from 'state/types'
+import { DeserializedLockedCometVault, VaultKey } from 'state/types'
 import { styled } from 'styled-components'
-import { VaultPosition, VaultPositionParams, getVaultPosition } from 'utils/cakePool'
+import { VaultPosition, VaultPositionParams, getVaultPosition } from 'utils/cometPool'
 
 const { AlpBoostedTag } = FarmWidget.Tags
 
@@ -36,8 +36,8 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool, tool
   const { chainId } = useActiveChainId()
   const { isMobile } = useMatchBreakpoints()
   const { sousId, stakingToken, earningToken, userData, isFinished, vaultKey, totalStaked } = pool
-  const vaultData = useVaultPoolByKey(pool?.vaultKey || VaultKey.CakeVault)
-  const { totalCakeInVault } = vaultData
+  const vaultData = useVaultPoolByKey(pool?.vaultKey || VaultKey.CometVault)
+  const { totalCometInVault } = vaultData
   const userShares = vaultData?.userData?.userShares ?? BIG_ZERO
   const hasVaultShares = userShares.gt(0)
 
@@ -60,10 +60,10 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool, tool
 
   const isLoaded = useMemo(() => {
     if (pool.vaultKey) {
-      return totalCakeInVault && totalCakeInVault.gte(0)
+      return totalCometInVault && totalCometInVault.gte(0)
     }
     return totalStaked && totalStaked.gte(0)
-  }, [pool.vaultKey, totalCakeInVault, totalStaked])
+  }, [pool.vaultKey, totalCometInVault, totalStaked])
 
   const isBoostedPool = useMemo(
     () => Boolean(!isFinished && chainId && checkIsBoostedPool(pool.contractAddress, chainId)),
@@ -94,11 +94,11 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool, tool
           )}
           <Pool.CellContent>
             {showStakedTag &&
-              (vaultKey === VaultKey.CakeVault ? (
-                <StakedCakeStatus
+              (vaultKey === VaultKey.CometVault ? (
+                <StakedCometStatus
                   userShares={userShares}
-                  locked={(vaultData as DeserializedLockedCakeVault)?.userData?.locked}
-                  lockEndTime={(vaultData as DeserializedLockedCakeVault)?.userData?.lockEndTime}
+                  locked={(vaultData as DeserializedLockedCometVault)?.userData?.locked}
+                  lockEndTime={(vaultData as DeserializedLockedCometVault)?.userData?.lockEndTime}
                 />
               ) : (
                 <Text fontSize="12px" bold color={isFinished ? 'failure' : 'secondary'} textTransform="uppercase">
@@ -146,7 +146,7 @@ const stakedStatus = {
   [VaultPosition.Flexible]: { text: 'Flexible', color: 'success' },
 }
 
-export const StakedCakeStatus: React.FC<React.PropsWithChildren<VaultPositionParams>> = memo(
+export const StakedCometStatus: React.FC<React.PropsWithChildren<VaultPositionParams>> = memo(
   ({ userShares, locked, lockEndTime }) => {
     const vaultPosition = getVaultPosition({ userShares, locked, lockEndTime })
     const { t } = useTranslation()
@@ -157,3 +157,4 @@ export const StakedCakeStatus: React.FC<React.PropsWithChildren<VaultPositionPar
     )
   },
 )
+

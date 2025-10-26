@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, AutoRow, Card, CardBody, Column, Text } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, AutoRow, Card, CardBody, Column, Text } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
 import { useStableSwapPairsByChainId } from 'state/farmsV4/state/accountPositions/hooks'
@@ -101,3 +101,4 @@ export const PoolStatus: React.FC<PoolStatusProps> = ({ poolInfo }) => {
     </Card>
   )
 }
+

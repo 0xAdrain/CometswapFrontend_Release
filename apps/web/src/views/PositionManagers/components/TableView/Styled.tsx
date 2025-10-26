@@ -31,3 +31,4 @@ export const AprMobileCell = styled.td`
 export const FarmMobileCell = styled.td`
   padding-top: 24px;
 `
+

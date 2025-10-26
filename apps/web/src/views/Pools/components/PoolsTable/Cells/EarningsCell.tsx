@@ -1,13 +1,13 @@
 import { styled } from 'styled-components'
-import { Skeleton, Text, Flex, Box, useModal, useMatchBreakpoints, Balance } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Skeleton, Text, Flex, Box, useModal, useMatchBreakpoints, Balance } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
 import BigNumber from 'bignumber.js'
 import { PoolCategory } from 'config/constants/types'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { formatNumber, getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { formatNumber, getBalanceNumber, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import CollectModal from '../../Modals/CollectModal'
 
 interface EarningsCellProps {
@@ -108,3 +108,4 @@ const EarningsCell: React.FC<React.PropsWithChildren<EarningsCellProps>> = ({ po
 }
 
 export default EarningsCell
+

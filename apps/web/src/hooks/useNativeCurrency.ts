@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Native, NativeCurrency } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { Native, NativeCurrency } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import { useActiveChainId } from './useActiveChainId'
 
@@ -13,3 +13,4 @@ export default function useNativeCurrency(overrideChainId?: ChainId): NativeCurr
     }
   }, [overrideChainId, chainId])
 }
+

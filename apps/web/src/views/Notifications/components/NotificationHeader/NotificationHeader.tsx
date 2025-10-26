@@ -1,4 +1,4 @@
-import { Heading } from '@pancakeswap/uikit'
+import { Heading } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import { ModalHeader, ModalTitle } from 'views/Notifications/styles'
 
@@ -21,3 +21,4 @@ export const NotificationHeader = ({ leftIcon, rightIcon, text }: INotifyHeaderp
     </ModalHeader>
   )
 }
+

@@ -1,6 +1,6 @@
-import { ChainId, Currency, CurrencyAmount, ERC20Token } from '@pancakeswap/sdk'
-import { DAI, USDC, USDT } from '@pancakeswap/tokens'
-import { parseNumberToFraction } from '@pancakeswap/utils/formatFractions'
+import { ChainId, Currency, CurrencyAmount, ERC20Token } from '@cometswap/sdk'
+import { DAI, USDC, USDT } from '@cometswap/tokens'
+import { parseNumberToFraction } from '@cometswap/utils/formatFractions'
 import { BigNumber } from 'bignumber.js'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
 import { useStablecoinPrice } from 'hooks/useStablecoinPrice'
@@ -57,3 +57,4 @@ export const useFeeSaved = (inputAmount?: CurrencyAmount<Currency>, outputAmount
     feeSavedUsdValue,
   }
 }
+

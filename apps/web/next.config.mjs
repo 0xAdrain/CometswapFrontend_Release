@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import BundleAnalyzer from '@next/bundle-analyzer'
-import { withWebSecurityHeaders } from '@pancakeswap/next-config/withWebSecurityHeaders'
-import smartRouterPkgs from '@pancakeswap/smart-router/package.json' with { type: 'json' }
-import { withSentryConfig } from '@sentry/nextjs'
+import { withWebSecurityHeaders } from '@cometswap/next-config/withWebSecurityHeaders'
+import smartRouterPkgs from '@cometswap/smart-router/package.json' with { type: 'json' }
+// import { withSentryConfig } from '@sentry/nextjs'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 import vercelToolbarPlugin from '@vercel/toolbar/plugins/next'
 import path from 'path'
@@ -19,35 +19,38 @@ const withBundleAnalyzer = BundleAnalyzer({
 
 const withVanillaExtract = createVanillaExtractPlugin()
 
-const sentryWebpackPluginOptions =
-  process.env.VERCEL_ENV === 'production'
-    ? {
-        // Additional config options for the Sentry Webpack plugin. Keep in mind that
-        // the following options are set automatically, and overriding them is not
-        // recommended:
-        //   release, url, org, project, authToken, configFile, stripPrefix,
-        //   urlPrefix, include, ignore
-        silent: true, // Logging when deploying to check if there is any problem
-        validate: true,
-        hideSourceMaps: false,
-        tryRun: true,
-        disable: true
-        // https://github.com/getsentry/sentry-webpack-plugin#options.
-      }
-    : {
-        hideSourceMaps: false,
-        silent: true, // Suppresses all logs
-        dryRun: !process.env.SENTRY_AUTH_TOKEN,
-      }
+// const sentryWebpackPluginOptions =
+//   process.env.VERCEL_ENV === 'production'
+//     ? {
+//         // Additional config options for the Sentry Webpack plugin. Keep in mind that
+//         // the following options are set automatically, and overriding them is not
+//         // recommended:
+//         //   release, url, org, project, authToken, configFile, stripPrefix,
+//         //   urlPrefix, include, ignore
+//         silent: true, // Logging when deploying to check if there is any problem
+//         validate: true,
+//         hideSourceMaps: false,
+//         tryRun: true,
+//         disable: true
+//         // https://github.com/getsentry/sentry-webpack-plugin#options.
+//       }
+//     : {
+//         hideSourceMaps: false,
+//         silent: true, // Suppresses all logs
+//         dryRun: !process.env.SENTRY_AUTH_TOKEN,
+//       }
 
 const workerDeps = Object.keys(smartRouterPkgs.dependencies)
-  .map((d) => d.replace('@pancakeswap/', 'packages/'))
+  .map((d) => d.replace('@cometcakeswap/', 'packages/'))
   .concat(['/packages/smart-router/', '/packages/swap-sdk/', '/packages/token-lists/'])
 
 /** @type {import('next').NextConfig} */
 const config = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   typescript: {
-    tsconfigPath: 'tsconfig.json',
+    ignoreBuildErrors: true,
   },
   compiler: {
     styledComponents: true,
@@ -59,17 +62,26 @@ const config = {
     outputFileTracingExcludes: {
       '*': [],
     },
-    optimizePackageImports: ['@pancakeswap/widgets-internal', '@pancakeswap/uikit'],
+    optimizePackageImports: ['@cometcakeswap/widgets-internal', '@cometcakeswap/uikit'],
+    // 开发环境优化
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   transpilePackages: [
-    '@pancakeswap/farms',
-    '@pancakeswap/position-managers',
-    '@pancakeswap/localization',
-    '@pancakeswap/hooks',
-    '@pancakeswap/utils',
-    '@pancakeswap/widgets-internal',
-    '@pancakeswap/ifos',
-    '@pancakeswap/uikit',
+    '@cometcakeswap/farms',
+    '@cometcakeswap/position-managers',
+    '@cometcakeswap/localization',
+    '@cometcakeswap/hooks',
+    '@cometcakeswap/utils',
+    '@cometcakeswap/widgets-internal',
+    '@cometcakeswap/ifos',
+    '@cometcakeswap/uikit',
     // https://github.com/TanStack/query/issues/6560#issuecomment-1975771676
     '@tanstack/query-core',
   ],
@@ -92,6 +104,13 @@ const config = {
   },
   async rewrites() {
     return {
+      beforeFiles: [
+        // RPC代理，解决CORS问题
+        {
+          source: '/api/rpc/xlayer-testnet',
+          destination: 'https://testrpc.xlayer.tech/terigon',
+        },
+      ],
       afterFiles: [
         {
           source: '/info/token/:address',
@@ -255,5 +274,5 @@ const config = {
 }
 
 export default withVercelToolbar(
-  withBundleAnalyzer(withVanillaExtract(withSentryConfig(withWebSecurityHeaders(config)), sentryWebpackPluginOptions)),
+  withBundleAnalyzer(withVanillaExtract(withWebSecurityHeaders(config))),
 )

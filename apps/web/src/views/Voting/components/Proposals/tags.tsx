@@ -1,5 +1,5 @@
-import { TagProps } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { TagProps } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { ProposalState } from 'state/types'
 
 const { ClosedTag, CommunityTag, CoreTag, SoonTag, VoteNowTag } = FarmWidget.Tags
@@ -37,3 +37,4 @@ export const ProposalTypeTag: React.FC<React.PropsWithChildren<ProposalTypeTagPr
 
   return <CommunityTag {...props} />
 }
+

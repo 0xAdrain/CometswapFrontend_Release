@@ -6,3 +6,4 @@ const Divider = styled.hr`
 `
 
 export default Divider
+

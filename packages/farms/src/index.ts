@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import BigNumber from 'bignumber.js'
 import { PublicClient, formatEther } from 'viem'
 import {
@@ -6,7 +6,7 @@ import {
   FarmV2SupportedChainId,
   FarmV3SupportedChainId,
   FarmV4SupportedChainId,
-  bCakeSupportedChainId,
+  bveCometSupportedChainId,
   masterChefAddresses,
   masterChefV3Addresses,
   supportedChainId,
@@ -21,13 +21,13 @@ import {
   fetchCommonTokenUSDValue,
   fetchMasterChefV3Data,
   fetchTokenUSDValues,
-  getCakeApr,
+  getveCometApr,
 } from './fetchFarmsV3'
 import { ComputedFarmConfigV3, FarmV3DataWithPrice } from './types'
 import { FetchFarmsParams, farmV2FetchFarms, fetchMasterChefV2Data } from './v2/fetchFarmsV2'
 
 export {
-  bCakeSupportedChainId,
+  bveCometSupportedChainId,
   supportedChainId,
   supportedChainIdV2,
   supportedChainIdV3,
@@ -50,7 +50,7 @@ export function createFarmFetcher(provider: ({ chainId }: { chainId: FarmV2Suppo
       provider,
       masterChefAddress,
     })
-    const regularCakePerBlock = formatEther(cakePerBlock)
+    const regularveCometPerBlock = formatEther(cakePerBlock)
     const farmsWithPrice = await farmV2FetchFarms({
       provider,
       masterChefAddress,
@@ -64,7 +64,7 @@ export function createFarmFetcher(provider: ({ chainId }: { chainId: FarmV2Suppo
     return {
       farmsWithPrice,
       poolLength: Number(poolLength),
-      regularCakePerBlock: +regularCakePerBlock,
+      regularveCometPerBlock: +regularveCometPerBlock,
       totalRegularAllocPoint: totalRegularAllocPoint.toString(),
     }
   }
@@ -93,13 +93,13 @@ export function createFarmFetcherV3(provider: ({ chainId }: { chainId: number })
     }
 
     try {
-      const { poolLength, totalAllocPoint, latestPeriodCakePerSecond } = await fetchMasterChefV3Data({
+      const { poolLength, totalAllocPoint, latestPeriodveCometPerSecond } = await fetchMasterChefV3Data({
         provider,
         masterChefAddress,
         chainId,
       })
 
-      const cakePerSecond = new BigNumber(latestPeriodCakePerSecond.toString()).div(1e18).div(1e12).toString()
+      const cakePerSecond = new BigNumber(latestPeriodveCometPerSecond.toString()).div(1e18).div(1e12).toString()
 
       const farmsWithPrice = await farmV3FetchFarms({
         farms,
@@ -123,10 +123,10 @@ export function createFarmFetcherV3(provider: ({ chainId }: { chainId: number })
     }
   }
 
-  const getCakeAprAndTVL = (
+  const getveCometAprAndTVL = (
     farm: FarmV3DataWithPrice,
     lpTVL: LPTvl,
-    cakePrice: string,
+    cometPrice: string,
     cakePerSecond: string,
     boosterLiquidityX?: number,
   ) => {
@@ -135,7 +135,7 @@ export function createFarmFetcherV3(provider: ({ chainId }: { chainId: number })
       : [farm.quoteTokenPriceBusd, farm.tokenPriceBusd]
     const tvl = new BigNumber(token0Price).times(lpTVL.token0).plus(new BigNumber(token1Price).times(lpTVL.token1))
 
-    const cakeApr = getCakeApr(farm.poolWeight, tvl.times(boosterLiquidityX ?? 1), cakePrice, cakePerSecond)
+    const cakeApr = getveCometApr(farm.poolWeight, tvl.times(boosterLiquidityX ?? 1), cometPrice, cakePerSecond)
 
     return {
       activeTvlUSD: tvl.toString(),
@@ -146,7 +146,7 @@ export function createFarmFetcherV3(provider: ({ chainId }: { chainId: number })
 
   return {
     fetchFarms,
-    getCakeAprAndTVL,
+    getveCometAprAndTVL,
     isChainSupported: (chainId: number): chainId is FarmV3SupportedChainId => supportedChainIdV3.includes(chainId),
     supportedChainId: supportedChainIdV3,
     isTestnet: (chainId: number) => ![ChainId.BSC, ChainId.ETHEREUM].includes(chainId),
@@ -168,3 +168,6 @@ export * from './v2/farmsPriceHelpers'
 export * from './v2/filterFarmsByQuery'
 
 export { fetchCommonTokenUSDValue, fetchTokenUSDValues, masterChefV3Addresses }
+
+// Export ABIs
+export { bveCometFarmBoosterveCometABI } from '../constants/v3/abi/bveCometFarmBoosterveComet'

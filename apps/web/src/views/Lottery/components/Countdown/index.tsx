@@ -1,5 +1,5 @@
-import { Flex, Heading, Skeleton } from '@pancakeswap/uikit'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { Flex, Heading, Skeleton } from '@cometswap/uikit'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import useNextEventCountdown from '../../hooks/useNextEventCountdown'
 import Timer from './Timer'
 
@@ -41,3 +41,4 @@ const Countdown: React.FC<React.PropsWithChildren<CountdownProps>> = ({
 }
 
 export default Countdown
+

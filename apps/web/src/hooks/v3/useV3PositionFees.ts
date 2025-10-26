@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/v3-sdk'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
+import { Pool } from '@cometswap/v3-sdk'
 import { useV3NFTPositionManagerContract } from 'hooks/useContract'
 import { useEffect, useMemo, useState } from 'react'
 import { useCurrentBlock } from 'state/block/hooks'
@@ -55,3 +55,4 @@ export function useV3PositionFees(
   }
   return [undefined, undefined]
 }
+

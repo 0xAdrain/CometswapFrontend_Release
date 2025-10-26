@@ -1,14 +1,14 @@
-import { Currency } from '@pancakeswap/sdk'
-import { BottomDrawer, Box, Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Currency } from '@cometswap/sdk'
+import { BottomDrawer, Box, Flex, useMatchBreakpoints } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 
-import { AdPanel } from 'components/AdPanel'
 import { useCurrency } from 'hooks/Tokens'
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { Field } from 'state/swap/actions'
 import { useSingleTokenSwapInfo, useSwapState } from 'state/swap/hooks'
 import { styled } from 'styled-components'
+import InteractiveBackground from 'components/InteractiveBackground'
 import Page from '../Page'
 import PriceChartContainer from '../Swap/components/Chart/PriceChartContainer'
 import { StyledSwapContainer } from '../Swap/styles'
@@ -72,6 +72,7 @@ export default function V4Swap() {
 
   return (
     <Page removePadding hideFooterOnDesktop={isChartExpanded || false} showExternalLink={false} showHelpLink={false}>
+      <InteractiveBackground />
       <Flex
         width="100%"
         height="100%"
@@ -134,7 +135,8 @@ export default function V4Swap() {
         </Flex>
       </Flex>
 
-      <AdPanel.MobileCard />
     </Page>
   )
 }
+
+

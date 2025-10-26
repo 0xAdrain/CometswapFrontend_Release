@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import SwapWarningTokensConfig from 'config/constants/swapWarningTokens'
 import USDPlusWarning from './USDPlusWarning'
 
@@ -12,3 +12,4 @@ const ZKSYNC_WARNING_LIST = {
 }
 
 export default ZKSYNC_WARNING_LIST
+

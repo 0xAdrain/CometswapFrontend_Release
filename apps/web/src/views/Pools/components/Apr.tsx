@@ -1,6 +1,6 @@
-import { getBoostedPoolConfig } from '@pancakeswap/pools'
-import { Token } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { getBoostedPoolConfig } from '@cometswap/pools'
+import { Token } from '@cometswap/sdk'
+import { Pool } from '@cometswap/widgets-internal'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useCurrentBlock } from 'state/block/hooks'
@@ -38,3 +38,4 @@ const withShownApr = (AprComp) => (props) => {
 }
 
 export default withShownApr(Pool.Apr<Token>)
+

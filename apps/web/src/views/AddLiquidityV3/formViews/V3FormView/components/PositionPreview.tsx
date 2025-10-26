@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { AutoColumn, Heading, RowBetween, RowFixed, Text } from '@pancakeswap/uikit'
-import { Position } from '@pancakeswap/v3-sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { AutoColumn, Heading, RowBetween, RowFixed, Text } from '@cometswap/uikit'
+import { Position } from '@cometswap/v3-sdk'
 import { LightGreyCard } from 'components/Card'
 import Divider from 'components/Divider'
 import FormattedCurrencyAmount from 'components/FormattedCurrencyAmount/FormattedCurrencyAmount'
@@ -163,3 +163,4 @@ export const PositionPreview = ({
     </AutoColumn>
   )
 }
+

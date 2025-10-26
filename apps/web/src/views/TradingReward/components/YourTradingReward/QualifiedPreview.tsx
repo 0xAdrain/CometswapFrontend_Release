@@ -8,20 +8,20 @@ import {
   TooltipText,
   WarningIcon,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
-import { VeCakePreviewTextInfo } from 'views/TradingReward/components/YourTradingReward/VeCake/VeCakePreviewTextInfo'
+import { VeCometPreviewTextInfo } from 'views/TradingReward/components/YourTradingReward/VeComet/VeCometPreviewTextInfo'
 import { timeFormat } from 'views/TradingReward/utils/timeFormat'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { useTranslation } from '@cometswap/localization'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import { GreyCard } from 'components/Card'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { RewardInfo } from 'views/TradingReward/hooks/useAllTradingRewardPair'
 import { UserCampaignInfoDetail } from 'views/TradingReward/hooks/useAllUserCampaignInfo'
-import useRewardInCake from 'views/TradingReward/hooks/useRewardInCake'
+import useRewardInComet from 'views/TradingReward/hooks/useRewardInComet'
 import useRewardInUSD from 'views/TradingReward/hooks/useRewardInUSD'
 
 interface QualifiedPreviewProps {
@@ -53,7 +53,7 @@ const QualifiedPreview: React.FC<React.PropsWithChildren<QualifiedPreviewProps>>
 
   const timeUntil = getTimePeriods(timeRemaining)
 
-  const cakePrice = useCakePrice()
+  const cometPriceBusd = useCometPrice()
 
   const rewardInUSD = useRewardInUSD({
     timeRemaining,
@@ -63,11 +63,11 @@ const QualifiedPreview: React.FC<React.PropsWithChildren<QualifiedPreviewProps>>
     rewardTokenDecimal: currentRewardInfo?.rewardTokenDecimal ?? 0,
   })
 
-  const rewardInCake = useRewardInCake({
+  const rewardInComet = useRewardInComet({
     timeRemaining,
     totalEstimateRewardUSD: currentUserCampaignInfo?.totalEstimateRewardUSD ?? 0,
     totalReward: currentUserCampaignInfo?.canClaim ?? '0',
-    cakePrice,
+    cometPriceBusd,
     rewardPrice: currentRewardInfo?.rewardPrice ?? '0',
     rewardTokenDecimal: currentRewardInfo?.rewardTokenDecimal ?? 0,
   })
@@ -78,9 +78,9 @@ const QualifiedPreview: React.FC<React.PropsWithChildren<QualifiedPreviewProps>>
     [tradingFeeArr],
   )
 
-  const totalMapCapCovertCakeAmount = useMemo(
-    () => new BigNumber(totalMapCap).dividedBy(cakePrice).toNumber() ?? 0,
-    [totalMapCap, cakePrice],
+  const totalMapCapCovertCometAmount = useMemo(
+    () => new BigNumber(totalMapCap).dividedBy(cometPriceBusd).toNumber() ?? 0,
+    [totalMapCap, cometPriceBusd],
   )
 
   const additionalAmount = useMemo(() => {
@@ -93,16 +93,16 @@ const QualifiedPreview: React.FC<React.PropsWithChildren<QualifiedPreviewProps>>
     <Box>
       <Box mb="12px">
         <Text lineHeight="110%" as="span">
-          {t('The maximum amount of CAKE reward you may earn is capped at')}
+          {t('The maximum amount of COMET reward you may earn is capped at')}
         </Text>
         <Text lineHeight="110%" as="span" bold m="0 4px">
           0.1%
         </Text>
         <Text lineHeight="110%" as="span">
-          {t('of your veCAKE balance at the snapshot time.')}
+          {t('of your veCOMET balance at the snapshot time.')}
         </Text>
       </Box>
-      <Text lineHeight="110%">{t('Increase your veCAKE to continue earning.')}</Text>
+      <Text lineHeight="110%">{t('Increase your veCOMET to continue earning.')}</Text>
     </Box>,
     {
       placement: 'top',
@@ -119,7 +119,7 @@ const QualifiedPreview: React.FC<React.PropsWithChildren<QualifiedPreviewProps>>
           <Text bold fontSize="40px">{`$${formatNumber(rewardInUSD)}`}</Text>
           {isAdditionalAmountHit && <WarningIcon ml="10px" width={24} color="warning" />}
         </Flex>
-        <Text fontSize="14px" color="textSubtle">{`~${formatNumber(rewardInCake)} CAKE`}</Text>
+        <Text fontSize="14px" color="textSubtle">{`~${formatNumber(rewardInComet)} COMET`}</Text>
 
         <Box>
           <Text as="span" fontSize="12px" color="textSubtle" lineHeight="110%">
@@ -166,7 +166,7 @@ const QualifiedPreview: React.FC<React.PropsWithChildren<QualifiedPreviewProps>>
                 {t('at')}
               </Text>
               <Text color="warning" as="span" bold mr="4px" fontSize={14}>
-                {`$${formatNumber(totalMapCap)} (~${formatNumber(totalMapCapCovertCakeAmount)} CAKE).`}
+                {`$${formatNumber(totalMapCap)} (~${formatNumber(totalMapCapCovertCometAmount)} COMET).`}
               </Text>
               <Text as="span" mr="4px" fontSize={14}>
                 {t('An additional amount of reward of')}
@@ -183,7 +183,7 @@ const QualifiedPreview: React.FC<React.PropsWithChildren<QualifiedPreviewProps>>
       </GreyCard>
 
       {isAdditionalAmountHit && (
-        <VeCakePreviewTextInfo
+        <VeCometPreviewTextInfo
           mt="24px"
           showIncreaseButton
           endTime={campaignClaimTime}

@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getDefaultGasLimit, getGasLimitOnChain } from '@pancakeswap/multicall'
+import { ChainId } from '@cometswap/chains'
+import { getDefaultGasLimit, getGasLimitOnChain } from '@cometswap/multicall'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
@@ -32,3 +32,4 @@ export function useMulticallGasLimit(chainId?: ChainId) {
     [gasLimitOnChain, shouldUseDefault, defaultGasLimit],
   )
 }
+

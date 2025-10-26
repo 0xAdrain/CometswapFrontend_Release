@@ -1,6 +1,6 @@
-import { Token } from '@pancakeswap/sdk'
-import { Flex, Message, MessageText, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Flex, Message, MessageText, useMatchBreakpoints } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { memo } from 'react'
 import { useVaultApy } from 'hooks/useVaultApy'
 
@@ -57,3 +57,4 @@ const ConvertToLock: React.FC<React.PropsWithChildren<ConvertToLockProps>> = ({
 }
 
 export default memo(ConvertToLock)
+

@@ -16,3 +16,4 @@ export function usePMSlippage(address?: Address) {
     return encodePacked(['uint256'], [slippage])
   }, [address])
 }
+

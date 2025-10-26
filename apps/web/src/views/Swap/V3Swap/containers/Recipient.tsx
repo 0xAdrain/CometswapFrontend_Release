@@ -1,5 +1,5 @@
-import { ArrowDownIcon, Button } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { ArrowDownIcon, Button } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { memo } from 'react'
 
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
@@ -39,3 +39,4 @@ export const Recipient = memo(function Recipient() {
     </>
   )
 })
+

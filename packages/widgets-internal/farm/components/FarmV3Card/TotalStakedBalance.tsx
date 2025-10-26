@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { useTranslation } from "@pancakeswap/localization";
-import { PositionDetails } from "@pancakeswap/farms";
-import { PreTitle, Text, Button, Flex, Box, Heading, Balance } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { PositionDetails } from "@cometswap/farms";
+import { PreTitle, Text, Button, Flex, Box, Heading, Balance } from "@cometswap/uikit";
 
 const LightGreyCard = styled("div")`
   padding: 0;
@@ -35,7 +35,7 @@ const TotalStakedBalance: React.FunctionComponent<React.PropsWithChildren<TotalS
           <Flex flexDirection="column">
             <Flex>
               <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px" pr="4px">
-                CAKE
+                COMET
               </Text>
               <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
                 {t("Earned")}

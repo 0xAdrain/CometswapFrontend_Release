@@ -1,4 +1,4 @@
-import type { Pool } from '@pancakeswap/routing-sdk'
+import type { Pool } from '@cometswap/routing-sdk'
 
 type Route<P extends Pool> = {
   pools: P[]

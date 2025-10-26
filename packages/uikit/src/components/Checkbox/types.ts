@@ -1,4 +1,4 @@
-import { PancakeTheme } from "../../theme";
+import { CometTheme } from "../../theme";
 
 export const scales = {
   XS: "xs",
@@ -11,10 +11,10 @@ export type Scales = (typeof scales)[keyof typeof scales];
 export interface CheckboxProps {
   scale?: Scales | string;
   colors?: {
-    background?: keyof PancakeTheme["colors"];
-    checkedBackground?: keyof PancakeTheme["colors"];
-    checkedColor?: keyof PancakeTheme["colors"];
-    border?: keyof PancakeTheme["colors"];
+    background?: keyof CometTheme["colors"];
+    checkedBackground?: keyof CometTheme["colors"];
+    checkedColor?: keyof CometTheme["colors"];
+    border?: keyof CometTheme["colors"];
   };
   indeterminate?: boolean;
 }

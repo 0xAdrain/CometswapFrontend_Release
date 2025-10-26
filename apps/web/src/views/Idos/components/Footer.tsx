@@ -1,4 +1,4 @@
-import { BscScanIcon, CardBody, FlexGap, LanguageIcon, Link, Text } from '@pancakeswap/uikit'
+import { BscScanIcon, CardBody, FlexGap, LanguageIcon, Link, Text } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { useCurrentIDOConfig } from '../hooks/ido/useCurrentIDOConfig'
 import { useIDOContract } from '../hooks/ido/useIDOContract'
@@ -25,3 +25,4 @@ export const Footer: React.FC = () => {
     </CardBody>
   )
 }
+

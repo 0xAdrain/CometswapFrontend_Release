@@ -156,3 +156,4 @@ export const XmasEffect: React.FC = memo(() => {
     </SnowflakesWrapper>
   )
 })
+

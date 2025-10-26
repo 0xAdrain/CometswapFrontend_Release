@@ -1057,7 +1057,7 @@ export const stableSwapABI = [
     name: 'token',
     outputs: [
       {
-        internalType: 'contract PancakeStableSwapLP',
+        internalType: 'contract CometStableSwapLP',
         name: '',
         type: 'address',
       },
@@ -1093,3 +1093,4 @@ export const stableSwapABI = [
     type: 'function',
   },
 ] as const
+

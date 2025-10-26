@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ArrowBackIcon,
   Box,
@@ -10,7 +10,7 @@ import {
   Heading,
   Skeleton,
   Text,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { LotteryStatus } from 'config/constants/types'
 import { useCallback, useState } from 'react'
@@ -173,3 +173,4 @@ const YourHistoryCard: React.FC<React.PropsWithChildren<YourHistoryCardProps>> =
 }
 
 export default YourHistoryCard
+

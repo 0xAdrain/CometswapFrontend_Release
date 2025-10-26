@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Box, Flex, Text } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Box, Flex, Text } from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { useMemo } from 'react'
@@ -28,7 +28,7 @@ const CardFooter: React.FC<React.PropsWithChildren<CardFooterProps>> = ({ accoun
   const boostFactor = useMemo(() => getBoostFactor(weeksToSeconds(10)), [getBoostFactor])
   const boostFactorDisplay = useMemo(() => `X${Number(boostFactor).toFixed(2)}`, [boostFactor])
 
-  const totalValueLocked = getBalanceNumber(publicData.totalLockCake)
+  const totalValueLocked = getBalanceNumber(publicData.totalLockComet)
 
   const daysRemaining = useMemo(() => {
     const timerUntil = new BigNumber(publicData.lockStartTime).plus(weeksToSeconds(10)).times(1000).toNumber()
@@ -64,7 +64,7 @@ const CardFooter: React.FC<React.PropsWithChildren<CardFooterProps>> = ({ accoun
                 <Flex>
                   <Balance bold decimals={2} value={totalValueLocked} />
                   <Text ml="4px" color="textSubtle" as="span">
-                    CAKE
+                    COMET
                   </Text>
                 </Flex>
               ) : (
@@ -113,3 +113,4 @@ const CardFooter: React.FC<React.PropsWithChildren<CardFooterProps>> = ({ accoun
 }
 
 export default CardFooter
+

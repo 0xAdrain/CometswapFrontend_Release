@@ -1,7 +1,7 @@
-import { Currency, Token } from "@pancakeswap/sdk";
-import { Flex, Skeleton, Text } from "@pancakeswap/uikit";
+import { Currency, Token } from "@cometswap/sdk";
+import { Flex, Skeleton, Text } from "@cometswap/uikit";
 import { styled } from "styled-components";
-import { getChainName as defaultGetChainName } from "@pancakeswap/chains";
+import { getChainName as defaultGetChainName } from "@cometswap/chains";
 import { ChainLogo, DoubleCurrencyLogo } from "../CurrencyLogo";
 
 export interface ITokenInfoProps {

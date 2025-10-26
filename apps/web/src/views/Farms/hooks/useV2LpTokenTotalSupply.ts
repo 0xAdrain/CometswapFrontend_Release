@@ -25,3 +25,4 @@ export const useV2LpTokenTotalSupply = (lpAddress?: Address, chainId?: number) =
     enabled: !!lpAddress && !!chainId,
   })
 }
+

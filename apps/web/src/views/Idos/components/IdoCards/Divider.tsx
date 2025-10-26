@@ -6,3 +6,4 @@ export const Divider = styled.div`
   background-color: ${({ theme }) => theme.colors.cardBorder};
   margin: 8px 0 0 0;
 `
+

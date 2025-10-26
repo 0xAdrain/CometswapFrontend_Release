@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/sdk'
-import { IconButton, SwapLoading } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/sdk'
+import { IconButton, SwapLoading } from '@cometswap/uikit'
 
 import RefreshIcon from 'components/Svg/RefreshIcon'
 import { CHAIN_REFRESH_TIME } from 'config/constants/exchange'
@@ -33,3 +33,4 @@ export const RefreshButton: React.FC<{
     </IconButton>
   )
 }
+

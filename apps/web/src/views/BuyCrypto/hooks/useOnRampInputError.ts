@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import type { Currency } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import type { Currency } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import formatLocaleNumber from 'utils/formatLocaleNumber'
 import { isFiat, type OnRampChainId } from '../constants'
@@ -64,3 +64,4 @@ export const useLimitsAndInputError = ({ typedValue, cryptoCurrency, fiatCurrenc
 
   return { limitsData, inputError, amountError }
 }
+

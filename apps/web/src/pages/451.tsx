@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, LogoIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text, LogoIcon } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const StyledNotFound = styled.div`
@@ -30,3 +30,4 @@ const NotSupport = () => {
 NotSupport.pure = true
 
 export default NotSupport
+

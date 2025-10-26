@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { LinkExternal, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { LinkExternal, Text } from '@cometswap/uikit'
 import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { displayApr } from '../../utils/displayApr'
@@ -93,7 +93,7 @@ export const AprTooltipContent: React.FC<PropsWithChildren<AprTooltipContentProp
           <br />
           {cakeApr?.boost && (
             <Text>
-              {/* {t('Calculated using the total active liquidity staked versus the CAKE reward emissions for the farm.')} */}
+              {/* {t('Calculated using the total active liquidity staked versus the COMETreward emissions for the farm.')} */}
               {t(
                 'Calculated using the total liquidity in the pool versus the total reward amount. Actual APR may be higher as some liquidity is not staked or not in-range.',
               )}
@@ -107,11 +107,12 @@ export const AprTooltipContent: React.FC<PropsWithChildren<AprTooltipContentProp
   )
 }
 
-export const BCakeWrapperFarmAprTipContent = () => {
+export const BCometWrapperFarmAprTipContent = () => {
   const { t } = useTranslation()
   return (
     <Text mt="15px">
-      {t('bCAKE only boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
+      {t('bCOMETonly boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
     </Text>
   )
 }
+

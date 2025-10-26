@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/sdk'
 import { Address } from 'viem'
 
 import { ProfileSupportedChainId, SupportedChainId } from './supportedChains'
@@ -7,7 +7,7 @@ export type ContractAddresses<T extends ChainId = SupportedChainId> = {
   [chainId in T]: Address
 }
 
-export const ICAKE = {
+export const ICOMET= {
   [ChainId.BSC]: '0xd68A31C3f2b61C621a7619b6F4667a2aee959132',
   [ChainId.BSC_TESTNET]: '0x5FB0b7a782c2f192493d86922dD3873b6392C8e8',
   [ChainId.GOERLI]: '0x45A33F911F9E2ea404303920E9775467518a4ed7',

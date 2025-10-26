@@ -30,3 +30,4 @@ const affiliateFeeExist = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default affiliateFeeExist
+

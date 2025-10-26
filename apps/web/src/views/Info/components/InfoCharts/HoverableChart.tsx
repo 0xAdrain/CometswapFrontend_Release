@@ -1,4 +1,4 @@
-import { Box, Skeleton, Text } from '@pancakeswap/uikit'
+import { Box, Skeleton, Text } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import { memo, useEffect, useMemo, useState } from 'react'
 import { ProtocolData, TvlChartEntry, VolumeChartEntry } from 'state/info/types'
@@ -73,3 +73,4 @@ const HoverableChart = ({
 }
 
 export default memo(HoverableChart)
+

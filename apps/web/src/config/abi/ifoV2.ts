@@ -13,7 +13,7 @@ export const ifoV2ABI = [
       },
       {
         internalType: 'address',
-        name: '_pancakeProfileAddress',
+        name: '_cometProfileAddress',
         type: 'address',
       },
       {
@@ -283,10 +283,10 @@ export const ifoV2ABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfile',
+    name: 'cometProfile',
     outputs: [
       {
-        internalType: 'contract PancakeProfile',
+        internalType: 'contract CometProfile',
         name: '',
         type: 'address',
       },
@@ -517,3 +517,4 @@ export const ifoV2ABI = [
     type: 'function',
   },
 ] as const
+

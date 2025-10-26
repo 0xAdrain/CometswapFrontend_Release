@@ -12,3 +12,4 @@ const VotingBox = styled.div`
 `
 
 export default VotingBox
+

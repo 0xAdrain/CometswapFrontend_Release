@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowForwardIcon, Box, Button, Flex, Image, OpenNewIcon, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowForwardIcon, Box, Button, Flex, Image, OpenNewIcon, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 import { useFeaturesConfig } from 'views/LandingV4/hooks/useFeaturesConfig'
@@ -315,7 +315,7 @@ export const Features = () => {
           <Box display={['none', 'none', 'none', 'none', 'block']}>
             <NextLinkFromReactRouter
               target="_blank"
-              to="https://developer.pancakeswap.finance/?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage"
+              to="https://developer.cometswap.finance/?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4landingpage"
             >
               <Button width="fit-content" mt={['32px', '32px', '32px', '32px', '32px', '56px']}>
                 <Text color="white" bold mr="4px">
@@ -357,3 +357,4 @@ export const Features = () => {
     </FeaturesContainer>
   )
 }
+

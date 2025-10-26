@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Box, Text, lightColors, useMatchBreakpoints, BoxProps } from '@pancakeswap/uikit'
+import { Box, Text, lightColors, useMatchBreakpoints, BoxProps } from '@cometswap/uikit'
 import CountUp from 'react-countup'
 import useTheme from 'hooks/useTheme'
 
@@ -57,3 +57,4 @@ export const MetricsCard: React.FC<MetricsCardProps> = ({ title, value, descript
     </Box>
   )
 }
+

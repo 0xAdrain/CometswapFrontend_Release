@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, ExpandableSectionButton, Flex, Text, TooltipText, useModalV2, useTooltip } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, ExpandableSectionButton, Flex, Text, TooltipText, useModalV2, useTooltip } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -15,10 +15,10 @@ import { getMerklLink, useMerklUserLink } from 'utils/getMerklLink'
 import { unwrappedToken } from 'utils/wrappedCurrency'
 import { AddLiquidityV3Modal } from 'views/AddLiquidityV3/Modal'
 import { useFarmV3Multiplier } from 'views/Farms/hooks/v3/useFarmV3Multiplier'
-import { StatusView } from '../../YieldBooster/components/bCakeV3/StatusView'
-import { useUserBoostedPoolsTokenId } from '../../YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { BoostStatus, useBoostStatus } from '../../YieldBooster/hooks/bCakeV3/useBoostStatus'
-import { useIsSomePositionBoosted } from '../../YieldBooster/hooks/bCakeV3/useIsSomePositionBoosted'
+import { StatusView } from '../../YieldBooster/components/bCometV3/StatusView'
+import { useUserBoostedPoolsTokenId } from '../../YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { BoostStatus, useBoostStatus } from '../../YieldBooster/hooks/bCometV3/useBoostStatus'
+import { useIsSomePositionBoosted } from '../../YieldBooster/hooks/bCometV3/useIsSomePositionBoosted'
 import CardHeading from '../CardHeading'
 import CardActionsContainer from './CardActionsContainer'
 import { FarmV3ApyButton } from './FarmV3ApyButton'
@@ -50,7 +50,7 @@ const ExpandingWrapper = styled.div`
 interface FarmCardProps {
   farm: V3Farm
   removed: boolean
-  cakePrice?: BigNumber
+  cometPrice?: BigNumber
   account?: string
 }
 
@@ -59,14 +59,14 @@ export const FarmV3Card: React.FC<React.PropsWithChildren<FarmCardProps>> = ({ f
   const { chainId } = useActiveChainId()
   const [showExpandableSection, setShowExpandableSection] = useState(false)
 
-  const { totalMultipliers, getFarmCakePerSecond } = useFarmV3Multiplier()
+  const { totalMultipliers, getFarmCometPerSecond } = useFarmV3Multiplier()
 
-  const farmCakePerSecond = getFarmCakePerSecond(farm.poolWeight)
+  const farmCometPerSecond = getFarmCometPerSecond(farm.poolWeight)
 
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
-  const earnLabel = t('CAKE + Fees')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/comet/gi, '')
+  const earnLabel = t('COMET+ Fees')
   const { lpAddress } = farm
-  const isPromotedFarm = farm.token.symbol === 'CAKE'
+  const isPromotedFarm = farm.token.symbol === 'COMET'
   const { status: boostStatus } = useBoostStatus(farm.pid)
   const merklUserLink = useMerklUserLink()
   const merklLink = getMerklLink({ chainId, lpAddress })
@@ -87,7 +87,7 @@ export const FarmV3Card: React.FC<React.PropsWithChildren<FarmCardProps>> = ({ f
     <>
       <Text>
         {t(
-          'Global APR calculated using the total amount of active & staked liquidity with the pool CAKE reward emissions.',
+          'Global APR calculated using the total amount of active & staked liquidity with the pool COMETreward emissions.',
         )}
       </Text>
       <br />
@@ -112,7 +112,7 @@ export const FarmV3Card: React.FC<React.PropsWithChildren<FarmCardProps>> = ({ f
           quoteToken={farm.quoteToken}
           version={3}
           feeAmount={farm.feeAmount}
-          farmCakePerSecond={farmCakePerSecond}
+          farmCometPerSecond={farmCometPerSecond}
           totalMultipliers={totalMultipliers}
           isCommunityFarm={farm.isCommunity}
           boosted={boostStatus !== BoostStatus.CanNotBoost}
@@ -171,7 +171,7 @@ export const FarmV3Card: React.FC<React.PropsWithChildren<FarmCardProps>> = ({ f
               onAddLiquidity={addLiquidityModal.onOpen}
               isCommunity={farm.isCommunity}
               multiplier={farm.multiplier}
-              farmCakePerSecond={farmCakePerSecond}
+              farmCometPerSecond={farmCometPerSecond}
               totalMultipliers={totalMultipliers}
             />
           </>
@@ -180,3 +180,4 @@ export const FarmV3Card: React.FC<React.PropsWithChildren<FarmCardProps>> = ({ f
     </StyledCard>
   )
 }
+

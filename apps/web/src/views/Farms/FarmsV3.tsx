@@ -1,13 +1,13 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import {
   FarmWithStakedValue,
-  bCakeSupportedChainId,
+  bCometSupportedChainId,
   filterFarmsByQuery,
   supportedChainIdV2,
   supportedChainIdV3,
-} from '@pancakeswap/farms'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@cometswap/farms'
+import { useIntersectionObserver } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Flex,
@@ -22,33 +22,32 @@ import {
   Text,
   Toggle,
   ToggleView,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import partition from 'lodash/partition'
 
-import { BIG_ONE, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { FarmWidget, NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { BIG_ONE, BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { FarmWidget, NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import Page from 'components/Layout/Page'
-import { V2_BCAKE_MIGRATION_SUPPORTED_CHAINS, V3_MIGRATION_SUPPORTED_CHAINS } from 'config/constants/supportChains'
+import { V2_BCOMET_MIGRATION_SUPPORTED_CHAINS, V3_MIGRATION_SUPPORTED_CHAINS } from 'config/constants/supportChains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import orderBy from 'lodash/orderBy'
 import { useRouter } from 'next/router'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useFarms, usePollFarmsAvgInfo, usePollFarmsWithUserData } from 'state/farms/hooks'
 import { V2FarmWithoutStakedValue, V3FarmWithoutStakedValue, type V3Farm } from 'state/farms/types'
 import { useFarmsV3WithPositionsAndBooster } from 'state/farmsV3/hooks'
-import { useCakeVaultUserData } from 'state/pools/hooks'
+import { useCometVaultUserData } from 'state/pools/hooks'
 import { ViewMode } from 'state/user/actions'
 import { useUserFarmStakedOnly, useUserFarmsViewMode } from 'state/user/hooks'
 import { styled } from 'styled-components'
 import { getFarmApr } from 'utils/apr'
 import { getStakedFarms } from 'views/Farms/utils/getStakedFarms'
-import { BCakeMigrationBanner } from 'views/Home/components/Banners/BCakeMigrationBanner'
 import { useAccount } from 'wagmi'
 import Table from './components/FarmTable/FarmTable'
 import { FarmTypesFilter } from './components/FarmTypesFilter'
-import { BCakeBoosterCard } from './components/YieldBooster/components/bCakeV3/BCakeBoosterCard'
+import { BCometBoosterCard } from './components/YieldBooster/components/bCometV3/BCometBoosterCard'
 import { FarmsV3Context } from './context'
 import { FarmFlexWrapper, FarmH1, FarmH2 } from './styled'
 
@@ -165,7 +164,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const mockApr = Boolean(urlQuery.mockApr)
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
-  const { data: farmsV2, userDataLoaded: v2UserDataLoaded, poolLength: v2PoolLength, regularCakePerBlock } = useFarms()
+  const { data: farmsV2, userDataLoaded: v2UserDataLoaded, poolLength: v2PoolLength, regularCometPerBlock } = useFarms()
   const {
     farmsWithPositions: farmsV3,
     poolLength: v3PoolLength,
@@ -197,7 +196,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
     ]
   }, [farmsV2, farmsV3, chainId])
 
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const [_query, setQuery] = useState('')
   const normalizedUrlSearch = useMemo(() => (typeof urlQuery?.search === 'string' ? urlQuery.search : ''), [urlQuery])
@@ -213,7 +212,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isInactive = pathname.includes('history')
   const isActive = !isInactive && !isArchived
 
-  useCakeVaultUserData()
+  useCometVaultUserData()
 
   usePollFarmsWithUserData()
 
@@ -239,7 +238,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         (farm) =>
           farm.pid !== 0 &&
           (farm.multiplier !== '0X' ||
-            Boolean(farm.version === 2 && farm?.bCakeWrapperAddress && farm?.bCakePublicData?.isRewardInRange)) &&
+            Boolean(farm.version === 2 && farm?.bCometWrapperAddress && farm?.bCometPublicData?.isRewardInRange)) &&
           (farm.version === 3 ? !v3PoolLength || v3PoolLength >= farm.pid : !v2PoolLength || v2PoolLength > farm.pid),
       ),
     [farmsLP, v2PoolLength, v3PoolLength],
@@ -274,12 +273,12 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             ? getFarmApr(
                 chainId,
                 new BigNumber(farm?.poolWeight ?? 0),
-                cakePrice,
-                totalLiquidity.times(farm.bCakePublicData?.totalLiquidityX ?? 1),
+                cometPrice,
+                totalLiquidity.times(farm.bCometPublicData?.totalLiquidityX ?? 1),
                 farm.lpAddress,
-                regularCakePerBlock,
+                regularCometPerBlock,
                 farm.lpRewardsApr,
-                farm.bCakePublicData?.rewardPerSecond,
+                farm.bCometPublicData?.rewardPerSecond,
               )
             : { cakeRewardsApr: 0, lpRewardsApr: 0 }
         return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
@@ -287,7 +286,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
       return filterFarmsByQuery(farmsToDisplayWithAPR, query)
     },
-    [query, isActive, chainId, cakePrice, regularCakePerBlock, mockApr],
+    [query, isActive, chainId, cometPrice, regularCometPerBlock, mockApr],
   )
 
   const [numberOfFarmsVisible, setNumberOfFarmsVisible] = useState(NUMBER_OF_FARMS_VISIBLE)
@@ -309,7 +308,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         (farm) =>
           (v3FarmOnly && farm.version === 3) ||
           (v2FarmOnly && farm.version === 2 && !farm.isStable) ||
-          (boostedOnly && ((farm.boosted && farm.version === 3) || (farm.version === 2 && farm.bCakeWrapperAddress))) ||
+          (boostedOnly && ((farm.boosted && farm.version === 3) || (farm.version === 2 && farm.bCometWrapperAddress))) ||
           (stableSwapOnly && farm.version === 2 && farm.isStable),
       )
 
@@ -349,7 +348,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               if (farm.version === 2) {
                 return farm.userData ? Number(farm.userData.earnings) : 0
               }
-              const totalEarned = Object.values(farm.pendingCakeByTokenIds)
+              const totalEarned = Object.values(farm.pendingCometByTokenIds)
                 .reduce((a, b) => a + b, 0n)
                 .toString()
               return account ? totalEarned : 0
@@ -407,9 +406,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <FarmsV3Context.Provider value={providerValue}>
       <PageHeader>
-        <Box mb="32px" mt="16px">
-          <BCakeMigrationBanner />
-        </Box>
         <Flex flexDirection="column">
           <FarmFlexWrapper>
             <Box style={{ flex: '1 1 100%' }}>
@@ -420,7 +416,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                 {t('Stake LP tokens to earn.')}
               </FarmH2>
             </Box>
-            <Box>{bCakeSupportedChainId.includes(chainId) && <BCakeBoosterCard />}</Box>
+            <Box>{bCometSupportedChainId.includes(chainId) && <BCometBoosterCard />}</Box>
           </FarmFlexWrapper>
         </Flex>
       </PageHeader>
@@ -504,18 +500,18 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                   external
                   color="failure"
                   fontSize={['16px', null, '20px']}
-                  href="https://v1-farms.pancakeswap.finance/farms/history"
+                  href="https://v1-farms.cometswap.finance/farms/history"
                 >
                   {t('check out v1 farms')}.
                 </FinishedExternalTextLink>
               </FinishedTextContainer>
             )}
-            {chainId && V2_BCAKE_MIGRATION_SUPPORTED_CHAINS.includes(chainId) && (
+            {chainId && V2_BCOMET_MIGRATION_SUPPORTED_CHAINS.includes(chainId) && (
               <FinishedTextContainer>
                 <Text fontSize={['16px', null, '20px']} color="failure" pr="4px">
                   {t("Don't see the farm you are staking?")}
                 </Text>
-                <FinishedTextLink to="/migration/bcake">{t('Migrate to new v2 bCake here')}.</FinishedTextLink>
+                <FinishedTextLink to="/migration/bcomet">{t('Migrate to new v2 bComet here')}.</FinishedTextLink>
               </FinishedTextContainer>
             )}
             {chainId && V3_MIGRATION_SUPPORTED_CHAINS.includes(chainId) && (
@@ -531,7 +527,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
         {!isLoading && // FarmV3 initial data will be slower, wait for it loads for now to prevent showing the v2 farm from config and then v3 pop up later
           (viewMode === ViewMode.TABLE ? (
-            <Table farms={chosenFarmsMemoized} cakePrice={cakePrice} userDataReady={userDataReady} />
+            <Table farms={chosenFarmsMemoized} cometPrice={cometPrice} userDataReady={userDataReady} />
           ) : (
             <FlexLayout>{children}</FlexLayout>
           ))}
@@ -541,10 +537,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </Flex>
         )}
         {chosenFarms.length > 0 && <div ref={observerRef} />}
-        <StyledImage src="/images/decorations/3dpan.png" alt="Pancake illustration" width={120} height={103} />
+        <StyledImage src="/images/decorations/3dpan.png" alt="Comet illustration" width={120} height={103} />
       </Page>
     </FarmsV3Context.Provider>
   )
 }
 
 export default Farms
+

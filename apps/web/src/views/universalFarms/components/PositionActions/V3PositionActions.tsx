@@ -1,12 +1,12 @@
 import { useLatestTxReceipt } from 'state/farmsV4/state/accountPositions/hooks/useLatestTxReceipt'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, IconButton, MinusIcon, useModalV2 } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, Flex, IconButton, MinusIcon, useModalV2 } from '@cometswap/uikit'
 import { useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 import { logGTMClickStakeFarmEvent } from 'utils/customGTMEventTracking'
 import useFarmV3Actions from 'views/Farms/hooks/v3/useFarmV3Actions'
 import { useCheckShouldSwitchNetwork } from 'views/universalFarms/hooks'
-import { useV3CakeEarning } from 'views/universalFarms/hooks/useCakeEarning'
+import { useV3CometEarning } from 'views/universalFarms/hooks/useVeCometEarning'
 import { V3StakeModal } from '../Modals/V3StakeModal'
 import { StopPropagation } from '../StopPropagation'
 
@@ -143,7 +143,7 @@ export const V3PositionActions = ({
     [detailMode, isSwitchingNetwork, handleUnStake, isStaked, modalContent, t, outOfRange, stakeModal, attemptingTxn],
   )
 
-  const { earningsBusd } = useV3CakeEarning(
+  const { earningsBusd } = useV3CometEarning(
     useMemo(() => (isStaked && tokenId ? [tokenId] : []), [tokenId, isStaked]),
     chainId,
   )
@@ -176,3 +176,4 @@ const ActionPanelContainer = styled(Flex)`
     flex: 1;
   }
 `
+

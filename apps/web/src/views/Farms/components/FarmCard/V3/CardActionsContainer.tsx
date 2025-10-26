@@ -1,5 +1,5 @@
-import { useModalV2 } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useModalV2 } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useMemo } from 'react'
 import { type V3Farm } from 'state/farms/types'
@@ -56,3 +56,4 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({ 
 }
 
 export default CardActions
+

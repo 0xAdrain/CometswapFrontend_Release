@@ -1,5 +1,5 @@
-import { PoolKey, encodePoolKey } from '@pancakeswap/v4-sdk'
-import { getCurrencyAddress } from '@pancakeswap/swap-sdk-core'
+import { PoolKey, encodePoolKey } from '@cometswap/v4-sdk'
+import { getCurrencyAddress } from '@cometswap/swap-sdk-core'
 import { Hex, encodeAbiParameters, parseAbiParameters } from 'viem'
 
 import { BaseRoute } from '../types'

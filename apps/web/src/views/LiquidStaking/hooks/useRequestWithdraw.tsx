@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, ERC20Token } from '@pancakeswap/sdk'
-import { useToast } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getDecimalAmount } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, ERC20Token } from '@cometswap/sdk'
+import { useToast } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getDecimalAmount } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
@@ -70,3 +70,4 @@ export function useRequestWithdraw({ inputCurrency, currentAmount, selectedList 
     [loading, requestWithdraw],
   )
 }
+

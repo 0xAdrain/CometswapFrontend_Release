@@ -1,16 +1,16 @@
 {
-  "name": "@pancakeswap/v4-sdk",
+  "name": "@cometswap/v4-sdk",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "version": "0.1.6",
-  "description": "⚒️ An SDK for building applications on top of Pancakeswap V4",
+  "description": "⚒️ An SDK for building applications on top of Cometswap V4",
   "files": [
     "dist"
   ],
   "keywords": [
-    "pancakeswap",
+    "cometswap",
     "v4"
   ],
   "sideEffects": false,
@@ -26,13 +26,13 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@pancakeswap/swap-sdk-core": "workspace:*",
-    "@pancakeswap/v3-sdk": "workspace:*",
+    "@cometswap/swap-sdk-core": "workspace:*",
+    "@cometswap/v3-sdk": "workspace:*",
     "tiny-invariant": "^1.3.3",
     "viem": "catalog:"
   },
   "devDependencies": {
-    "@pancakeswap/sdk": "workspace:*",
+    "@cometswap/sdk": "workspace:*",
     "tsup": "^6.7.0"
   },
   "engines": {

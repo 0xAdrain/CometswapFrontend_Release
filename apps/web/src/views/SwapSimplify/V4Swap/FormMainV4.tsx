@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
-import { Text } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import replaceBrowserHistoryMultiple from '@pancakeswap/utils/replaceBrowserHistoryMultiple'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
+import { Text } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import replaceBrowserHistoryMultiple from '@cometswap/utils/replaceBrowserHistoryMultiple'
 import { ReactNode, useCallback, useMemo } from 'react'
 
 import CurrencyInputPanelSimplify from 'components/CurrencyInputPanelSimplify'
@@ -164,3 +164,4 @@ export function FormMain({ inputAmount, outputAmount, tradeLoading, isUserInsuff
     </FormContainer>
   )
 }
+

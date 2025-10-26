@@ -1,6 +1,6 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { SwapCSS } from "@pancakeswap/uikit";
-import { escapeRegExp } from "@pancakeswap/utils/escapeRegExp";
+import { useTranslation } from "@cometswap/localization";
+import { SwapCSS } from "@cometswap/uikit";
+import { escapeRegExp } from "@cometswap/utils/escapeRegExp";
 import clsx from "clsx";
 import { memo } from "react";
 

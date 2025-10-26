@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { QueryObserverResult, useQuery } from '@tanstack/react-query'
 import { FetchStatus } from 'config/constants/types'
 import { getAchievements } from 'state/achievements/helpers'
@@ -92,3 +92,4 @@ export const useProfile = (): {
 
   return { profile, hasProfile, hasActiveProfile, isInitialized, isLoading, refresh: refetch }
 }
+

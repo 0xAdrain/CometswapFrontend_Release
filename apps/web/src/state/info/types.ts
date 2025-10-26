@@ -1,4 +1,4 @@
-import { ComputedFarmConfigV3, Protocol } from '@pancakeswap/farms'
+import { ComputedFarmConfigV3, Protocol } from '@cometswap/farms'
 
 export interface Block {
   number: number
@@ -132,3 +132,4 @@ export enum InfoDataSource {
   V3,
   V2,
 }
+

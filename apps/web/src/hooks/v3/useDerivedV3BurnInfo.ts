@@ -1,12 +1,12 @@
-import { PositionDetails } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
-import { Position } from '@pancakeswap/v3-sdk'
+import { PositionDetails } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
+import { Position, TICK_SPACINGS } from '@cometswap/v3-sdk'
 import { useToken } from 'hooks/Tokens'
 import { ReactNode, useMemo } from 'react'
 import { unwrappedToken } from 'utils/wrappedCurrency'
 import { useAccount } from 'wagmi'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { usePool } from './usePools'
 import { useV3PositionFees } from './useV3PositionFees'
 
@@ -32,21 +32,64 @@ export function useDerivedV3BurnInfo(
 
   const [, pool] = usePool(token0 ?? undefined, token1 ?? undefined, position?.fee)
 
-  const positionSDK = useMemo(
-    () =>
+  const positionSDK = useMemo(() => {
+    if (
       pool &&
-      typeof position?.liquidity === 'bigint' &&
-      typeof position?.tickLower === 'number' &&
-      typeof position?.tickUpper === 'number'
-        ? new Position({
-            pool,
-            liquidity: position.liquidity.toString(),
-            tickLower: position.tickLower,
-            tickUpper: position.tickUpper,
-          })
-        : undefined,
-    [pool, position],
-  )
+      position &&
+      typeof position.liquidity === 'bigint' &&
+      typeof position.tickLower === 'number' &&
+      typeof position.tickUpper === 'number'
+    ) {
+      // 验证fee和tick值的有效性，避免TICK_LOWER/TICK_UPPER错误
+      const validFeeAmounts = [100, 500, 2500, 10000]
+      const isValidFeeAmount = position.isValidFee !== false && validFeeAmounts.includes(position.fee)
+      
+      if (!isValidFeeAmount) {
+        console.warn('Skipping Position creation for invalid fee in useDerivedV3BurnInfo:', { 
+          fee: position.fee,
+          tokenId: position.tokenId?.toString() 
+        })
+        return undefined
+      }
+      
+      // 验证tick值是否符合tickSpacing要求
+      const tickSpacing = TICK_SPACINGS[position.fee]
+      const tickLowerValid = Number.isInteger(position.tickLower) && position.tickLower % tickSpacing === 0
+      const tickUpperValid = Number.isInteger(position.tickUpper) && position.tickUpper % tickSpacing === 0
+      
+      if (!tickLowerValid || !tickUpperValid) {
+        console.warn('Skipping Position creation for invalid tick values in useDerivedV3BurnInfo:', { 
+          fee: position.fee,
+          tickLower: position.tickLower,
+          tickUpper: position.tickUpper,
+          tickSpacing,
+          tickLowerValid,
+          tickUpperValid,
+          tokenId: position.tokenId?.toString()
+        })
+        return undefined
+      }
+      
+      try {
+        return new Position({
+          pool,
+          liquidity: position.liquidity.toString(),
+          tickLower: position.tickLower,
+          tickUpper: position.tickUpper,
+        })
+      } catch (error) {
+        console.error('Failed to create Position in useDerivedV3BurnInfo:', { 
+          fee: position.fee,
+          tickLower: position.tickLower,
+          tickUpper: position.tickUpper,
+          tokenId: position.tokenId?.toString(),
+          error: error instanceof Error ? error.message : String(error)
+        })
+        return undefined
+      }
+    }
+    return undefined
+  }, [pool, position])
 
   const liquidityPercentage = !isUndefinedOrNull(percent) ? new Percent(percent!, 100) : undefined
 
@@ -91,3 +134,4 @@ export function useDerivedV3BurnInfo(
     error,
   }
 }
+

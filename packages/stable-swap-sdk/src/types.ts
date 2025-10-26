@@ -1,4 +1,4 @@
-import type { SerializedWrappedToken } from '@pancakeswap/token-lists'
+import type { SerializedWrappedToken } from '@cometswap/token-lists'
 
 type Address = `0x${string}`
 

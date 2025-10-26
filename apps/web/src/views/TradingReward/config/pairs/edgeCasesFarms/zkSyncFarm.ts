@@ -1,6 +1,6 @@
-import { defineFarmV3Configs } from '@pancakeswap/farms/src/defineFarmV3Configs'
-import { zksyncTokens } from '@pancakeswap/tokens'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { defineFarmV3Configs } from '@cometswap/farms/src/defineFarmV3Configs'
+import { zksyncTokens } from '@cometswap/tokens'
+import { FeeAmount } from '@cometswap/v3-sdk'
 
 export const tradingRewardZkSyncV3Pair = defineFarmV3Configs([
   {

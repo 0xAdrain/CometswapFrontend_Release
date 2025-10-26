@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { CHAINS } from 'config/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
@@ -30,3 +30,4 @@ export const useGetENSAddressByName = (ensNameOrAddress?: string) => {
   })
   return recipientENSAddress
 }
+

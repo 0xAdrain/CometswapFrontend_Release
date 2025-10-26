@@ -1,6 +1,6 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Balance, Skeleton, TooltipText, useTooltip } from "@pancakeswap/uikit";
-import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
+import { useTranslation } from "@cometswap/localization";
+import { Balance, Skeleton, TooltipText, useTooltip } from "@cometswap/uikit";
+import { getBalanceNumber } from "@cometswap/utils/formatBalance";
 import BigNumber from "bignumber.js";
 import { StatWrapper } from "./StatWrapper";
 

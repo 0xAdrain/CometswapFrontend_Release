@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Button,
@@ -9,13 +9,13 @@ import {
   Text,
   UnlockIcon,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { CurrencyLogo, Pool } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { CurrencyLogo, Pool } from '@cometswap/widgets-internal'
 import Divider from 'components/Divider'
 import React from 'react'
 import { StyledCell } from 'views/Pools/components/PoolsTable/Cells/NameCell'
 
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount } from '@cometswap/swap-sdk-core'
 import { LightGreyCard } from 'components/Card'
 import {
   ActionContainer,
@@ -257,3 +257,4 @@ const FixedStakingRow = ({ pool, stakedPositions }: { pool: PoolGroup; stakedPos
 }
 
 export default FixedStakingRow
+

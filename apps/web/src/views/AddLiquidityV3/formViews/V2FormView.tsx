@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Pair, Percent } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Pair, Percent } from '@cometswap/sdk'
 import {
   AutoColumn,
   Box,
@@ -12,8 +12,8 @@ import {
   MessageText,
   ScanLink,
   Text,
-} from '@pancakeswap/uikit'
-import { useIsExpertMode } from '@pancakeswap/utils/user'
+} from '@cometswap/uikit'
+import { useIsExpertMode } from '@cometswap/utils/user'
 import { ReactNode, useCallback, useMemo } from 'react'
 import { ChainLinkSupportChains } from 'state/info/constant'
 
@@ -29,7 +29,7 @@ import { getBlockExploreLink } from 'utils'
 import { logGTMClickAddLiquidityEvent } from 'utils/customGTMEventTracking'
 import { LP2ChildrenProps } from 'views/AddLiquidity'
 
-import { InfoBox } from '@pancakeswap/widgets-internal'
+import { InfoBox } from '@cometswap/widgets-internal'
 import ApproveLiquidityTokens from 'views/AddLiquidityV3/components/ApproveLiquidityTokens'
 import { HideMedium, MediumOnly, RightContainer } from './V3FormView'
 import RangeSelector from './V3FormView/components/RangeSelector'
@@ -104,11 +104,11 @@ export default function V2FormView({
             <Flex flexDirection="column">
               <MessageText>
                 {t(
-                  'Adding liquidity to this V2 pair is currently not available on PancakeSwap UI. Please follow the instructions to resolve it using blockchain explorer.',
+                  'Adding liquidity to this V2 pair is currently not available on CometSwap UI. Please follow the instructions to resolve it using blockchain explorer.',
                 )}
               </MessageText>
               <LinkExternal
-                href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/faq#why-cant-i-add-liquidity-to-a-pair-i-just-created"
+                href="https://docs.cometswap.finance/products/cometswap-exchange/faq#why-cant-i-add-liquidity-to-a-pair-i-just-created"
                 mt="0.25rem"
               >
                 {t('Learn more how to fix')}
@@ -219,3 +219,4 @@ export default function V2FormView({
     </>
   )
 }
+

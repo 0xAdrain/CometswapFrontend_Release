@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
-import { getPathWithQueryPreserved } from '@pancakeswap/utils/clientRouter'
+import { getPathWithQueryPreserved } from '@cometswap/utils/clientRouter'
 
 export enum PositionManagerStatus {
   LIVE,
@@ -40,3 +40,4 @@ export function usePositionManagerStatus() {
     setStatus,
   }
 }
+

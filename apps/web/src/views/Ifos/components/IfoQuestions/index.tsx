@@ -1,12 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 import { styled } from 'styled-components'
-import { Text, Heading, Card, CardHeader, CardBody, Flex, Image, Container } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Heading, Card, CardHeader, CardBody, Flex, Image, Container } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import FoldableText from 'components/FoldableSection/FoldableText'
 import { useMemo } from 'react'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { isIfoSupported } from '@pancakeswap/ifos'
-import { ChainId } from '@pancakeswap/sdk'
+import { isIfoSupported } from '@cometswap/ifos'
+import { ChainId } from '@cometswap/sdk'
 
 import { getChainBasedImageUrl } from 'views/Ifos/helpers'
 
@@ -79,3 +79,4 @@ const IfoQuestions = () => {
 }
 
 export default IfoQuestions
+

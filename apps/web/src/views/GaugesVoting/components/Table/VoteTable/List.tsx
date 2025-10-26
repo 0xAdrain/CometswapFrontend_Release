@@ -1,13 +1,13 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ErrorIcon, Flex, FlexGap, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ErrorIcon, Flex, FlexGap, Text } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import { CSSProperties, useMemo } from 'react'
 import styled from 'styled-components'
-import { Tooltips } from 'views/CakeStaking/components/Tooltips'
+import { Tooltips } from 'views/CometStaking/components/Tooltips'
 import { useUserVote } from 'views/GaugesVoting/hooks/useUserVote'
 
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
-import { useCakeLockStatus } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
+import { useVeCometLockStatus } from 'views/CometStaking/hooks/useVeCometUserInfo'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { GaugeIdentifierDetails } from '../GaugesTable/List'
 import { PercentInput } from './PercentInput'
@@ -29,8 +29,8 @@ export function VoteListItem({ style, data, submitted, vote = { ...DEFAULT_VOTE 
   const { t } = useTranslation()
   const currentTimestamp = useCurrentBlockTimestamp()
   const userVote = useUserVote(data, submitted)
-  const { cakeLockedAmount } = useCakeLockStatus()
-  const cakeLocked = useMemo(() => cakeLockedAmount > 0n, [cakeLockedAmount])
+  const { cometLockedAmount } = useVeCometLockStatus()
+  const cometLocked = useMemo(() => cometLockedAmount > 0n, [cometLockedAmount])
   const { currentVoteWeight, previewVoteWeight, voteValue, voteLocked, willUnlock, changeHighlight } = useRowVoteState({
     data,
     vote,
@@ -63,9 +63,9 @@ export function VoteListItem({ style, data, submitted, vote = { ...DEFAULT_VOTE 
           ) : null}
           <Text
             bold={changeHighlight}
-            color={voteLocked || willUnlock || !cakeLocked ? (changeHighlight ? 'textSubtle' : 'textDisabled') : ''}
+            color={voteLocked || willUnlock || !cometLocked ? (changeHighlight ? 'textSubtle' : 'textDisabled') : ''}
           >
-            {voteLocked ? currentVoteWeight : previewVoteWeight} veCAKE
+            {voteLocked ? currentVoteWeight : previewVoteWeight} veCOMET
           </Text>
         </FlexGap>
       </Flex>
@@ -82,3 +82,4 @@ export function VoteListItem({ style, data, submitted, vote = { ...DEFAULT_VOTE 
     </ListItemContainer>
   )
 }
+

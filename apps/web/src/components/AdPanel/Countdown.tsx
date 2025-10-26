@@ -1,6 +1,6 @@
-import { useCountdown } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, BoxProps } from '@pancakeswap/uikit'
+import { useCountdown } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Box, BoxProps } from '@cometswap/uikit'
 import styled from 'styled-components'
 
 const CountDownWrapper = styled(Box)`
@@ -61,3 +61,4 @@ export const Countdown: React.FC<CountdownProps> = ({ targetTime, subtleColor, .
     </CountDownWrapper>
   )
 }
+

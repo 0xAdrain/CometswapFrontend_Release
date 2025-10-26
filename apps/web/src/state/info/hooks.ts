@@ -3,7 +3,7 @@ import duration from 'dayjs/plugin/duration'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { STABLE_SUPPORTED_CHAIN_IDS } from '@pancakeswap/stable-swap-sdk'
+import { STABLE_SUPPORTED_CHAIN_IDS } from '@cometswap/stable-swap-sdk'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { fetchAllTokenDataByAddresses } from 'state/info/queries/tokens/tokenData'
@@ -1071,3 +1071,4 @@ export const useMultiChainPath = () => {
 export const useStableSwapPath = () => {
   return checkIsStableSwap() ? '?type=stableSwap' : ''
 }
+

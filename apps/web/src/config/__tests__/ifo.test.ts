@@ -1,7 +1,7 @@
-import { getIfoConfig } from '@pancakeswap/ifos'
-import { ChainId } from '@pancakeswap/sdk'
+import { getIfoConfig } from '@cometswap/ifos'
+import { ChainId } from '@cometswap/sdk'
 
-import { campaigns } from '@pancakeswap/achievements'
+import { campaigns } from '@cometswap/achievements'
 
 // TODO: multichain support
 describe('Config IFOs', async () => {
@@ -23,3 +23,4 @@ describe('Config IFOs', async () => {
     expect(campaign).not.toBeUndefined()
   })
 })
+

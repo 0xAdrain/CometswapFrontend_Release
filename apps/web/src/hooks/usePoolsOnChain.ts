@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow, no-await-in-loop, no-constant-condition, no-console */
-import { BigintIsh, Currency } from '@pancakeswap/sdk'
-import { OnChainProvider, Pool, SmartRouter } from '@pancakeswap/smart-router'
+import { BigintIsh, Currency } from '@cometswap/sdk'
+import { OnChainProvider, Pool, SmartRouter } from '@cometswap/smart-router'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
@@ -96,3 +96,4 @@ function candidatePoolsOnChainHookFactory<TPool extends Pool>(
     }
   }
 }
+

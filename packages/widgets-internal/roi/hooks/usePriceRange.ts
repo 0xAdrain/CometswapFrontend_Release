@@ -1,5 +1,5 @@
-import { Currency, ERC20Token, Price, Token } from "@pancakeswap/sdk";
-import { formatPrice } from "@pancakeswap/utils/formatFractions";
+import { Currency, ERC20Token, Price, Token } from "@cometswap/sdk";
+import { formatPrice } from "@cometswap/utils/formatFractions";
 import {
   FeeAmount,
   TICK_SPACINGS,
@@ -7,7 +7,7 @@ import {
   nearestUsableTick,
   priceToClosestTick,
   tickToPrice,
-} from "@pancakeswap/v3-sdk";
+} from "@cometswap/v3-sdk";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Bound } from "../../swap/LiquidityChartRangeInput";

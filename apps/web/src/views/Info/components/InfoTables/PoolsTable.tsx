@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowBackIcon, ArrowForwardIcon, Box, Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowBackIcon, ArrowForwardIcon, Flex, Skeleton, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { ITEMS_PER_INFO_TABLE_PAGE } from 'config/constants/info'
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
@@ -8,16 +8,14 @@ import { useChainIdByQuery, useChainNameByQuery, useMultiChainPath, useStableSwa
 import { PoolData } from 'state/info/types'
 import { styled } from 'styled-components'
 import { formatAmount } from 'utils/formatInfoNumbers'
-import { getTokenSymbolAlias } from 'utils/getTokenAlias'
-import { DoubleCurrencyLogo } from 'views/Info/components/CurrencyLogo'
-import { Arrow, Break, ClickableColumnHeader, PageButtons, TableWrapper } from './shared'
+import { ClickableColumnHeader, TableWrapper, PageButtons, Arrow, Break } from './shared'
 
 /**
  *  Columns on different layouts
  *  5 = | # | Pool | TVL | Volume 24H | Volume 7D |
- *  4 = | # | Pool |     | Volume 24H | Volume 7D |
- *  3 = | # | Pool |     | Volume 24H |           |
- *  2 = |   | Pool |     | Volume 24H |           |
+ *  4 = | # | Pool | TVL | Volume 24H |
+ *  3 = | # | Pool | TVL |
+ *  2 = | # | Pool |
  */
 const ResponsiveGrid = styled.div`
   display: grid;
@@ -28,20 +26,30 @@ const ResponsiveGrid = styled.div`
   padding: 0 24px;
   @media screen and (max-width: 900px) {
     grid-template-columns: 20px 1.5fr repeat(3, 1fr);
-    & :nth-child(4),
+    & :nth-child(4) {
+      display: none;
+    }
     & :nth-child(5) {
       display: none;
     }
   }
+
   @media screen and (max-width: 500px) {
     grid-template-columns: 20px 1.5fr repeat(1, 1fr);
-    & :nth-child(4),
-    & :nth-child(5),
-    & :nth-child(6),
+    & :nth-child(4) {
+      display: none;
+    }
+    & :nth-child(5) {
+      display: none;
+    }
+    & :nth-child(6) {
+      display: none;
+    }
     & :nth-child(7) {
       display: none;
     }
   }
+
   @media screen and (max-width: 480px) {
     grid-template-columns: 2.5fr repeat(1, 1fr);
     > *:nth-child(1) {
@@ -52,7 +60,7 @@ const ResponsiveGrid = styled.div`
 
 const LinkWrapper = styled(NextLinkFromReactRouter)`
   text-decoration: none;
-  &:hover {
+  :hover {
     cursor: pointer;
     opacity: 0.7;
   }
@@ -60,10 +68,9 @@ const LinkWrapper = styled(NextLinkFromReactRouter)`
 
 const SORT_FIELD = {
   volumeUSD: 'volumeUSD',
-  liquidityUSD: 'liquidityUSD',
+  totalValueLockedUSD: 'totalValueLockedUSD',
   volumeUSDWeek: 'volumeUSDWeek',
   lpFees24h: 'lpFees24h',
-  lpApr7d: 'lpApr7d',
 }
 
 const LoadingRow: React.FC<React.PropsWithChildren> = () => (
@@ -87,73 +94,77 @@ const TableLoader: React.FC<React.PropsWithChildren> = () => (
 )
 
 const DataRow = ({ poolData, index }: { poolData: PoolData; index: number }) => {
-  const chainName = useChainNameByQuery()
-  const chainId = useChainIdByQuery()
+  // const chainName = useChainNameByQuery() // Unused
   const chainPath = useMultiChainPath()
   const stableSwapPath = useStableSwapPath()
-  const token0symbol = getTokenSymbolAlias(poolData.token0.address, chainId, poolData.token0.symbol)
-  const token1symbol = getTokenSymbolAlias(poolData.token1.address, chainId, poolData.token1.symbol)
 
   return (
-    <LinkWrapper to={`/info${chainPath}/pairs/${poolData.address}${stableSwapPath}`}>
+    <LinkWrapper to={`${chainPath}/info${stableSwapPath}/pools/${poolData.address}`}>
       <ResponsiveGrid>
-        <Text>{index + 1}</Text>
         <Flex>
-          <DoubleCurrencyLogo
-            address0={poolData.token0.address}
-            address1={poolData.token1.address}
-            chainName={chainName}
-          />
-          <Text ml="8px">
-            {token0symbol}/{token1symbol}
-          </Text>
+          <Text>{index + 1}</Text>
         </Flex>
+        <Flex alignItems="center">
+          <Text>{`${poolData.token0.symbol}/${poolData.token1.symbol}`}</Text>
+        </Flex>
+        <Text>${formatAmount(poolData.totalValueLockedUSD)}</Text>
         <Text>${formatAmount(poolData.volumeUSD)}</Text>
         <Text>${formatAmount(poolData.volumeUSDWeek)}</Text>
         <Text>${formatAmount(poolData.lpFees24h)}</Text>
-        <Text>{formatAmount(poolData.lpApr7d)}%</Text>
-        <Text>${formatAmount(poolData.liquidityUSD)}</Text>
       </ResponsiveGrid>
     </LinkWrapper>
   )
 }
 
+  // const SORT_FIELD_NAMES = { // Unused
+  //   [SORT_FIELD.volumeUSD]: 'Volume 24H',
+  //   [SORT_FIELD.totalValueLockedUSD]: 'TVL',
+  //   [SORT_FIELD.volumeUSDWeek]: 'Volume 7D',
+  //   [SORT_FIELD.lpFees24h]: 'LP reward fees 24H',
+  // }
+
 interface PoolTableProps {
-  poolDatas: (PoolData | undefined)[]
-  loading?: boolean // If true shows indication that SOME pools are loading, but the ones already fetched will be shown
+  poolDatas: PoolData[]
+  loading?: boolean
+  maxItems?: number
 }
 
-const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolDatas, loading }) => {
-  // for sorting
-  const [sortField, setSortField] = useState(SORT_FIELD.volumeUSD)
+const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({
+  poolDatas,
+  loading = false,
+  maxItems = ITEMS_PER_INFO_TABLE_PAGE,
+}) => {
+  const [sortField, setSortField] = useState(SORT_FIELD.totalValueLockedUSD)
   const [sortDirection, setSortDirection] = useState<boolean>(true)
   const { t } = useTranslation()
 
-  // pagination
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
+
+    // const chainId = useChainIdByQuery() // Unused
+
   useEffect(() => {
     let extraPages = 1
-    if (poolDatas.length % ITEMS_PER_INFO_TABLE_PAGE === 0) {
+    if (poolDatas.length % maxItems === 0) {
       extraPages = 0
     }
-    setMaxPage(Math.floor(poolDatas.length / ITEMS_PER_INFO_TABLE_PAGE) + extraPages)
-  }, [poolDatas])
+    setMaxPage(Math.floor(poolDatas.length / maxItems) + extraPages)
+  }, [maxItems, poolDatas])
+
   const sortedPools = useMemo(() => {
     return poolDatas
       ? poolDatas
           .sort((a, b) => {
             if (a && b) {
-              const aElement = a[sortField as keyof PoolData]
-              const bElement = b[sortField as keyof PoolData]
-              const predicate = aElement !== undefined && bElement !== undefined ? aElement > bElement : false
-              return predicate ? (sortDirection ? -1 : 1) * 1 : (sortDirection ? -1 : 1) * -1
+              return a[sortField as keyof PoolData] > b[sortField as keyof PoolData]
+                ? (sortDirection ? -1 : 1) * 1
+                : (sortDirection ? -1 : 1) * -1
             }
             return -1
           })
-          .slice(ITEMS_PER_INFO_TABLE_PAGE * (page - 1), page * ITEMS_PER_INFO_TABLE_PAGE)
+          .slice(maxItems * (page - 1), page * maxItems)
       : []
-  }, [page, poolDatas, sortDirection, sortField])
+  }, [poolDatas, maxItems, page, sortDirection, sortField])
 
   const handleSort = useCallback(
     (newField: string) => {
@@ -171,15 +182,34 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
     [sortDirection, sortField],
   )
 
+  if (!poolDatas) {
+    return <Skeleton />
+  }
+
   return (
     <TableWrapper>
       <ResponsiveGrid>
         <Text color="secondary" fontSize="12px" bold>
           #
         </Text>
-        <Text color="secondary" fontSize="12px" bold textTransform="uppercase">
-          {t('Pair')}
-        </Text>
+        <ClickableColumnHeader
+          color="secondary"
+          fontSize="12px"
+          bold
+          onClick={() => handleSort(SORT_FIELD.volumeUSD)}
+          textTransform="uppercase"
+        >
+          {t('Pool')} {arrow(SORT_FIELD.volumeUSD)}
+        </ClickableColumnHeader>
+        <ClickableColumnHeader
+          color="secondary"
+          fontSize="12px"
+          bold
+          onClick={() => handleSort(SORT_FIELD.totalValueLockedUSD)}
+          textTransform="uppercase"
+        >
+          {t('TVL')} {arrow(SORT_FIELD.totalValueLockedUSD)}
+        </ClickableColumnHeader>
         <ClickableColumnHeader
           color="secondary"
           fontSize="12px"
@@ -207,66 +237,42 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
         >
           {t('LP reward fees 24H')} {arrow(SORT_FIELD.lpFees24h)}
         </ClickableColumnHeader>
-        <ClickableColumnHeader
-          color="secondary"
-          fontSize="12px"
-          bold
-          onClick={() => handleSort(SORT_FIELD.lpApr7d)}
-          textTransform="uppercase"
-        >
-          {t('LP reward APR')} {arrow(SORT_FIELD.lpApr7d)}
-        </ClickableColumnHeader>
-        <ClickableColumnHeader
-          color="secondary"
-          fontSize="12px"
-          bold
-          onClick={() => handleSort(SORT_FIELD.liquidityUSD)}
-          textTransform="uppercase"
-        >
-          {t('Liquidity')} {arrow(SORT_FIELD.liquidityUSD)}
-        </ClickableColumnHeader>
       </ResponsiveGrid>
+
       <Break />
-      {sortedPools.length > 0 ? (
-        <>
-          {sortedPools.map((poolData, i) => {
-            if (poolData) {
-              return (
-                <Fragment key={poolData.address}>
-                  <DataRow index={(page - 1) * ITEMS_PER_INFO_TABLE_PAGE + i} poolData={poolData} />
-                  <Break />
-                </Fragment>
-              )
-            }
-            return null
-          })}
-          {loading && <LoadingRow />}
-          <PageButtons>
-            <Arrow
-              onClick={() => {
-                setPage(page === 1 ? page : page - 1)
-              }}
-            >
-              <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
-            </Arrow>
+      {loading && <TableLoader />}
+      {!loading &&
+        sortedPools.map((poolData, i) => {
+          if (poolData) {
+            return (
+              <Fragment key={poolData.address}>
+                <DataRow index={(page - 1) * maxItems + i} poolData={poolData} />
+                <Break />
+              </Fragment>
+            )
+          }
+          return null
+        })}
+      {!loading && (
+        <PageButtons>
+          <Arrow
+            onClick={() => {
+              setPage(page === 1 ? page : page - 1)
+            }}
+          >
+            <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
+          </Arrow>
 
-            <Text>{t('Page %page% of %maxPage%', { page, maxPage })}</Text>
+          <Text>{t('Page %page% of %maxPage%', { page, maxPage })}</Text>
 
-            <Arrow
-              onClick={() => {
-                setPage(page === maxPage ? page : page + 1)
-              }}
-            >
-              <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
-            </Arrow>
-          </PageButtons>
-        </>
-      ) : (
-        <>
-          <TableLoader />
-          {/* spacer */}
-          <Box />
-        </>
+          <Arrow
+            onClick={() => {
+              setPage(page === maxPage ? page : page + 1)
+            }}
+          >
+            <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
+          </Arrow>
+        </PageButtons>
       )}
     </TableWrapper>
   )

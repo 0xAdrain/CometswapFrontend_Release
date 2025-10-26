@@ -1,5 +1,5 @@
-import { Box, Button, Flex, InputProps } from '@pancakeswap/uikit'
-import { scales } from '@pancakeswap/uikit/components/PancakeToggle/types'
+import { Box, Button, Flex, InputProps } from '@cometswap/uikit'
+import { scales } from '@cometswap/uikit/components/CometToggle/types'
 import { AppBody } from 'components/App'
 import { DefaultTheme, css, styled } from 'styled-components'
 
@@ -8,6 +8,15 @@ interface StyledInputProps extends InputProps {
 }
 export const StyledAppBody = styled(AppBody)`
   max-width: 375px;
+  
+  // CometSwap: PC端居中显�?  ${({ theme }) => theme.mediaQueries.sm} {
+    margin: 0 auto;
+    max-width: 420px;
+  }
+  
+  ${({ theme }) => theme.mediaQueries.md} {
+    max-width: 480px;
+  }
 `
 
 export const Wrapper = styled(Flex)`
@@ -279,3 +288,5 @@ InputExtended.defaultProps = {
 }
 
 export default InputExtended
+
+

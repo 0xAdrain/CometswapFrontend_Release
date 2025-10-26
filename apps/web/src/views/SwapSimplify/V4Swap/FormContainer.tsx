@@ -1,7 +1,7 @@
-import { Column } from '@pancakeswap/uikit'
+import { Column } from '@cometswap/uikit'
 import { PropsWithChildren, memo } from 'react'
 
-import { SwapUIV2 } from '@pancakeswap/widgets-internal'
+import { SwapUIV2 } from '@cometswap/widgets-internal'
 
 export const FormContainer = memo(function FormContainer({ children }: PropsWithChildren) {
   return (
@@ -10,3 +10,4 @@ export const FormContainer = memo(function FormContainer({ children }: PropsWith
     </SwapUIV2.InputPanelWrapper>
   )
 })
+

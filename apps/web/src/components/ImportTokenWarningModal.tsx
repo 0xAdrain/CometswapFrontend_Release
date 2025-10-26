@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Box, InjectedModalProps, Modal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Box, InjectedModalProps, Modal } from '@cometswap/uikit'
 import ImportToken from 'components/SearchModal/ImportToken'
 import { useUnsupportedTokens } from 'hooks/Tokens'
 import { useMemo } from 'react'
@@ -42,3 +42,4 @@ const ImportTokenWarningModal: React.FC<React.PropsWithChildren<Props>> = ({ tok
 }
 
 export default ImportTokenWarningModal
+

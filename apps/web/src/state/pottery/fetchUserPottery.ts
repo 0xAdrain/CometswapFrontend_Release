@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { bscTokens } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { bscTokens } from '@cometswap/tokens'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { potteryVaultABI } from 'config/abi/potteryVaultAbi'
 import { GRAPH_API_POTTERY } from 'config/constants/endpoints'
@@ -14,7 +14,7 @@ const potteryDrawContract = getPotteryDrawContract()
 
 export const fetchPotterysAllowance = async (account: Address, potteryVaultAddress: Address) => {
   try {
-    const contract = getBep20Contract(bscTokens.cake.address)
+    const contract = getBep20Contract(bscTokens.comet.address)
     const allowances = await contract.read.allowance([account, potteryVaultAddress])
     return new BigNumber(allowances.toString()).toJSON()
   } catch (error) {
@@ -82,7 +82,7 @@ export const fetchWithdrawAbleData = async (account: Address) => {
 
     const withdrawalsData = await Promise.all(
       response.withdrawals.map(async ({ id, shares, depositDate, vault }) => {
-        const [previewRedeem, totalSupply, totalLockCake, balanceOf] = await bscClient.multicall({
+        const [previewRedeem, totalSupply, totalLockveComet, balanceOf] = await bscClient.multicall({
           allowFailure: false,
           contracts: [
             {
@@ -99,7 +99,7 @@ export const fetchWithdrawAbleData = async (account: Address) => {
             {
               address: vault.id,
               abi: potteryVaultABI,
-              functionName: 'totalLockCake',
+              functionName: 'totalLockveComet',
             },
             {
               address: vault.id,
@@ -118,7 +118,7 @@ export const fetchWithdrawAbleData = async (account: Address) => {
           status: PotteryDepositStatus[vault.status],
           potteryVaultAddress: vault.id,
           totalSupply: new BigNumber(totalSupply.toString()).toJSON(),
-          totalLockCake: new BigNumber(totalLockCake.toString()).toJSON(),
+          totalLockveComet: new BigNumber(totalLockveComet.toString()).toJSON(),
           lockedDate: vault.lockDate,
           balanceOf: new BigNumber(balanceOf.toString()).toJSON(),
         }
@@ -139,3 +139,4 @@ export const fetchWithdrawAbleData = async (account: Address) => {
     return []
   }
 }
+

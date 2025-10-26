@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
-import { Currency, CurrencyAmount, Pair, Percent, Token } from '@pancakeswap/sdk'
-import { AddIcon, Button, InjectedModalProps, Text, AutoColumn } from '@pancakeswap/uikit'
-import { ConfirmationModalContent } from '@pancakeswap/widgets-internal'
+import { Currency, CurrencyAmount, Pair, Percent, Token } from '@cometswap/sdk'
+import { AddIcon, Button, InjectedModalProps, Text, AutoColumn } from '@cometswap/uikit'
+import { ConfirmationModalContent } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import TransactionConfirmationModal from 'components/TransactionConfirmationModal'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { Field } from 'state/burn/actions'
@@ -157,3 +157,4 @@ const ConfirmRemoveLiquidityModal: React.FC<
 }
 
 export default ConfirmRemoveLiquidityModal
+

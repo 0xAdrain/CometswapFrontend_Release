@@ -1,6 +1,6 @@
-import { toBigInt } from '@pancakeswap/utils/toBigInt'
-import { AbortControl, AbortError, abortInvariant } from '@pancakeswap/utils/abortControl'
-import { isViemAbortError } from '@pancakeswap/utils/viem/isAbortError'
+import { toBigInt } from '@cometswap/utils/toBigInt'
+import { AbortControl, AbortError, abortInvariant } from '@cometswap/utils/abortControl'
+import { isViemAbortError } from '@cometswap/utils/viem/isAbortError'
 
 import { GetGasLimitParams, getDefaultGasBuffer, getGasLimit } from './getGasLimit'
 import { MulticallRequestWithGas } from './types'

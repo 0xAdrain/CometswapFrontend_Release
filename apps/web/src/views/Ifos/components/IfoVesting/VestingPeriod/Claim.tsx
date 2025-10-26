@@ -1,7 +1,7 @@
-import { PoolIds } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button, useToast } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { PoolIds } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRenewIcon, Button, useToast } from '@cometswap/uikit'
+import { useWeb3React } from '@cometswap/wagmi'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useIfoV3Contract } from 'hooks/useContract'
@@ -96,3 +96,4 @@ const ClaimButton: React.FC<React.PropsWithChildren<Props>> = ({
 }
 
 export default ClaimButton
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, QuestionHelper, RowBetween, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, QuestionHelper, RowBetween, Text } from '@cometswap/uikit'
 import { useMemo } from 'react'
 import formatLocaleNumber from 'utils/formatLocaleNumber'
 import { useLiquidStakingApr } from 'views/LiquidStaking/hooks/useLiquidStakingApr'
@@ -35,3 +35,4 @@ export const LiquidStakingApr: React.FC<LiquidStakingAprProps> = ({ contract, to
     </RowBetween>
   )
 }
+

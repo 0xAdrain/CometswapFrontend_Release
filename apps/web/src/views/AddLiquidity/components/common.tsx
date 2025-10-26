@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Fraction, Percent, Token } from '@pancakeswap/sdk'
-import { AutoColumn, Box, Flex, Svg, SvgProps, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Fraction, Percent, Token } from '@cometswap/sdk'
+import { AutoColumn, Box, Flex, Svg, SvgProps, Text, TooltipText, useTooltip } from '@cometswap/uikit'
 import { GreyCard } from 'components/Card'
 import { AutoRow, RowBetween } from 'components/Layout/Row'
 import { CurrencyLogo, DoubleCurrencyLogo } from 'components/Logo'
@@ -206,3 +206,4 @@ export const AddLiquidityModalHeader = ({
     </AutoColumn>
   )
 }
+

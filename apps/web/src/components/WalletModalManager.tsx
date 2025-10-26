@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { WalletModalV2 } from '@pancakeswap/ui-wallets'
+import { useTranslation } from '@cometswap/localization'
+import { WalletModalV2 } from '@cometswap/ui-wallets'
 import { createWallets, getDocLink } from 'config/wallet'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useAuth from 'hooks/useAuth'
 
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useMemo } from 'react'
 import { logGTMWalletConnectEvent } from 'utils/customGTMEventTracking'
 import { useConnect } from 'wagmi'
@@ -36,3 +36,4 @@ const WalletModalManager: React.FC<{ isOpen: boolean; onDismiss?: () => void }> 
 }
 
 export default WalletModalManager
+

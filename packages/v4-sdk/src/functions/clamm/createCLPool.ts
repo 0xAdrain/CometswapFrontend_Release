@@ -1,1 +1,1 @@
-export { getPool as createCLPool } from '@pancakeswap/v3-sdk'
+export { getPool as createCLPool } from '@cometswap/v3-sdk'

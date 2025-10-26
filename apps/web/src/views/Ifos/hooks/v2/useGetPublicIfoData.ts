@@ -2,18 +2,18 @@ import BigNumber from 'bignumber.js'
 import { useState, useCallback } from 'react'
 import { BSC_BLOCK_TIME } from 'config'
 import { ifoV2ABI } from 'config/abi/ifoV2'
-import { bscTokens } from '@pancakeswap/tokens'
-import { Ifo, IfoStatus } from '@pancakeswap/ifos'
+import { bscTokens } from '@cometswap/tokens'
+import { Ifo, IfoStatus } from '@cometswap/ifos'
 
 import { useLpTokenPrice } from 'state/farms/hooks'
-import { useCakePrice } from 'hooks/useCakePrice'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useCometPrice } from 'hooks/useCometPrice'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { publicClient } from 'utils/wagmi'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { PublicIfoData } from '../../types'
 import { getStatus } from '../helpers'
 
-// https://github.com/pancakeswap/pancake-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
+// https://github.com/cometswap/comet-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
 // 1,000,000,000 / 100
 const TAX_PRECISION = new BigNumber(10000000000)
 
@@ -31,9 +31,9 @@ const formatPool = (pool) => ({
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const { address } = ifo
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const lpTokenPriceInUsd = useLpTokenPrice(ifo.currency.symbol)
-  const currencyPriceInUSD = ifo.currency === bscTokens.cake ? cakePrice : lpTokenPriceInUsd
+  const currencyPriceInUSD = ifo.currency === bscTokens.comet ? cometPrice : lpTokenPriceInUsd
 
   const [state, setState] = useState({
     isInitialized: false,
@@ -155,3 +155,4 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
 }
 
 export default useGetPublicIfoData
+

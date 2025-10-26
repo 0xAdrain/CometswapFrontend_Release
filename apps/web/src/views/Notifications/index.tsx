@@ -1,11 +1,10 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { useSubscription } from '@web3inbox/react'
 import { useInitializeNotifications } from 'hooks/useInitializeNotifications'
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import NotificationMenu from './components/NotificationDropdown/NotificationMenu'
 import NotificationSettings from './containers/NotificationSettings'
 import NotificationView from './containers/NotificationView'
-import OnBoardingView from './containers/OnBoardingView'
 import { ViewContainer } from './styles'
 import { PAGE_VIEW } from './types'
 import { disableGlobalScroll, enableGlobalScroll } from './utils/toggleEnableScroll'
@@ -43,7 +42,6 @@ const NotificationsWidget = memo(() => {
     <NotificationMenu viewIndex={viewIndex} subscriptionId={subscription?.topic}>
       <Box tabIndex={-1} onMouseEnter={disableGlobalScroll} onMouseLeave={enableGlobalScroll}>
         <ViewContainer $viewIndex={viewIndex}>
-          <OnBoardingView />
 
           <NotificationView toggleSettings={toggleSettings} subscription={subscription} />
 
@@ -55,3 +53,4 @@ const NotificationsWidget = memo(() => {
 })
 
 export default Notifications
+

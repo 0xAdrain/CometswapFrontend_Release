@@ -32,3 +32,4 @@ const userClaimList = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default userClaimList
+

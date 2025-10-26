@@ -1,6 +1,6 @@
-import { useIsWindowVisible } from '@pancakeswap/hooks'
-import { Ifo, PoolIds } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
+import { useIsWindowVisible } from '@cometswap/hooks'
+import { Ifo, PoolIds } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Card,
@@ -11,7 +11,7 @@ import {
   ExpandableLabel,
   useMatchBreakpoints,
   useToast,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useQuery } from '@tanstack/react-query'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { FAST_INTERVAL } from 'config/constants'
@@ -330,3 +330,4 @@ const IfoCard: React.FC<React.PropsWithChildren<IfoFoldableCardProps>> = ({ ifo,
 }
 
 export default IfoFoldableCard
+

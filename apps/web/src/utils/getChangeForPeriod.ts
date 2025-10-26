@@ -18,3 +18,4 @@ export const getChangeForPeriod = (
   const percentageChange = getPercentChange(currentPeriodAmount, previousPeriodAmount)
   return [currentPeriodAmount, percentageChange]
 }
+

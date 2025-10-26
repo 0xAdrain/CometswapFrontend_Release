@@ -1,4 +1,4 @@
-import { getBoostedPoolApr } from '@pancakeswap/pools'
+import { getBoostedPoolApr } from '@cometswap/pools'
 import { useQuery } from '@tanstack/react-query'
 import { getViemClients } from 'utils/viem'
 import { Address } from 'viem'
@@ -32,3 +32,4 @@ export const useBoostedPoolApr = ({ contractAddress, chainId, enabled }: UseBoos
 
   return data ?? 0
 }
+

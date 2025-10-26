@@ -1,5 +1,5 @@
-import { CurrencyAmount, Price } from '@pancakeswap/swap-sdk-core'
-import { Pair } from '@pancakeswap/v2-sdk'
+import { CurrencyAmount, Price } from '@cometswap/swap-sdk-core'
+import { Pair } from '@cometswap/v2-sdk'
 
 import type { V2Pool, V2PoolData } from './types'
 import { BASE_SWAP_COST_V2, COST_PER_EXTRA_HOP_V2, V2_POOL_TYPE } from './constants'

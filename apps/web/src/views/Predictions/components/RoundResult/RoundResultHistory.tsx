@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { BoxProps, Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { BoxProps, Flex, Text } from '@cometswap/uikit'
 import { Round } from 'state/types'
 import { useConfig } from '../../context/ConfigProvider'
 import { formatUsd } from '../History/helpers'
@@ -46,3 +46,4 @@ const RoundResult: React.FC<React.PropsWithChildren<RoundResultProps>> = ({ roun
 }
 
 export default RoundResult
+

@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { tickToPrice } from '@pancakeswap/v3-sdk'
+import { Currency } from '@cometswap/sdk'
+import { tickToPrice } from '@cometswap/v3-sdk'
 import { useCallback, useMemo, useState } from 'react'
 
 interface PositionInfo {
@@ -78,3 +78,4 @@ export function usePositionPrices({
     inverted: invert,
   }
 }
+

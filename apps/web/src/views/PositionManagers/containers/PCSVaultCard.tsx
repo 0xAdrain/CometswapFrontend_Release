@@ -1,6 +1,6 @@
-import { FarmV3DataWithPriceAndUserInfo } from '@pancakeswap/farms'
-import { PCSDuoTokenVaultConfig } from '@pancakeswap/position-managers'
-import { CurrencyAmount } from '@pancakeswap/sdk'
+import { FarmV3DataWithPriceAndUserInfo } from '@cometswap/farms'
+import { PCSDuoTokenVaultConfig } from '@cometswap/position-managers'
+import { CurrencyAmount } from '@cometswap/sdk'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { usePositionManagerAdapterContract } from 'hooks/useContract'
@@ -54,7 +54,7 @@ export const ThirdPartyVaultCard = memo(function PCSVaultCard({
     projectVaultUrl,
     learnMoreAboutUrl,
     aprTimeWindow,
-    bCakeWrapperAddress,
+    bCometWrapperAddress,
     minDepositUSD,
   } = vault
 
@@ -76,7 +76,7 @@ export const ThirdPartyVaultCard = memo(function PCSVaultCard({
     gcTime: 6000,
   }).data
 
-  const info = usePositionInfo(bCakeWrapperAddress ?? address, adapterAddress ?? '0x', Boolean(bCakeWrapperAddress))
+  const info = usePositionInfo(bCometWrapperAddress ?? address, adapterAddress ?? '0x', Boolean(bCometWrapperAddress))
 
   const { data: token0USDPrice } = useCurrencyUsdPrice(currencyA)
   const { data: token1USDPrice } = useCurrencyUsdPrice(currencyB)
@@ -148,7 +148,7 @@ export const ThirdPartyVaultCard = memo(function PCSVaultCard({
     rewardStartTime: info.startTimestamp,
     farmRewardAmount: aprDataInfo?.info?.rewardAmount ?? 0,
     adapterAddress,
-    bCakeWrapperAddress,
+    bCometWrapperAddress,
   })
 
   const staked0Amount = info?.userToken0Amounts
@@ -225,7 +225,7 @@ export const ThirdPartyVaultCard = memo(function PCSVaultCard({
       totalStakedInUsd={totalStakedInUsd}
       learnMoreAboutUrl={learnMoreAboutUrl}
       lpTokenDecimals={info?.lpTokenDecimals}
-      bCakeWrapper={bCakeWrapperAddress}
+      bCometWrapper={bCometWrapperAddress}
       minDepositUSD={minDepositUSD}
       boosterMultiplier={info?.boosterMultiplier}
       boosterContractAddress={info?.boosterContractAddress}
@@ -235,3 +235,4 @@ export const ThirdPartyVaultCard = memo(function PCSVaultCard({
     </DuoTokenVaultCard>
   )
 })
+

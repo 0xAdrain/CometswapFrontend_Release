@@ -1,4 +1,4 @@
-# @pancakeswap/awgmi
+# @cometswap/awgmi
 
 ## 1.0.1
 
@@ -35,88 +35,88 @@
 ### Patch Changes
 
 - Updated dependencies [a784ca6ed]
-  - @pancakeswap/utils@5.0.2
+  - @cometswap/utils@5.0.2
 
 ## 0.1.13
 
 ### Patch Changes
 
-- @pancakeswap/utils@5.0.1
+- @cometswap/utils@5.0.1
 
 ## 0.1.12
 
 ### Patch Changes
 
-- @pancakeswap/utils@5.0.0
+- @cometswap/utils@5.0.0
 
 ## 0.1.11
 
 ### Patch Changes
 
-- @pancakeswap/utils@4.0.1
+- @cometswap/utils@4.0.1
 
 ## 0.1.10
 
 ### Patch Changes
 
-- @pancakeswap/utils@4.0.0
+- @cometswap/utils@4.0.0
 
 ## 0.1.9
 
 ### Patch Changes
 
 - 299cf46b7: Upgrade blocto sdk version
-  - @pancakeswap/utils@3.0.3
+  - @cometswap/utils@3.0.3
 
 ## 0.1.8
 
 ### Patch Changes
 
-- @pancakeswap/utils@3.0.2
+- @cometswap/utils@3.0.2
 
 ## 0.1.7
 
 ### Patch Changes
 
-- @pancakeswap/utils@3.0.1
+- @cometswap/utils@3.0.1
 
 ## 0.1.6
 
 ### Patch Changes
 
-- @pancakeswap/utils@3.0.0
+- @cometswap/utils@3.0.0
 
 ## 0.1.5
 
 ### Patch Changes
 
-- @pancakeswap/utils@2.0.3
+- @cometswap/utils@2.0.3
 
 ## 0.1.4
 
 ### Patch Changes
 
-- @pancakeswap/utils@2.0.2
+- @cometswap/utils@2.0.2
 
 ## 0.1.3
 
 ### Patch Changes
 
 - Updated dependencies [e31475e6b]
-  - @pancakeswap/utils@2.0.1
+  - @cometswap/utils@2.0.1
 
 ## 0.1.2
 
 ### Patch Changes
 
 - Updated dependencies [938aa75f5]
-  - @pancakeswap/utils@2.0.0
+  - @cometswap/utils@2.0.0
 
 ## 0.1.1
 
 ### Patch Changes
 
-- @pancakeswap/utils@1.0.0
+- @cometswap/utils@1.0.0
 
 ## 0.1.0
 

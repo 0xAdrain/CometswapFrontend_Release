@@ -49,3 +49,4 @@ export const fetchPotteryFinishedRound = async (potteryRoundId: number) => {
     }
   }
 }
+

@@ -1,7 +1,7 @@
-import { ViewMode } from '@pancakeswap/uikit'
+import { ViewMode } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
-import { updateQuery } from '@pancakeswap/utils/clientRouter'
+import { updateQuery } from '@cometswap/utils/clientRouter'
 
 export function useViewMode() {
   const router = useRouter()
@@ -30,3 +30,4 @@ export function useViewMode() {
     setViewMode,
   }
 }
+

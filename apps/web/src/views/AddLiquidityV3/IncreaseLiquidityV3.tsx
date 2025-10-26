@@ -1,11 +1,11 @@
 import { CommonBasesType } from 'components/SearchModal/types'
 
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
-import { AutoColumn, Box, Button, CardBody, useModal } from '@pancakeswap/uikit'
-import { ConfirmationModalContent } from '@pancakeswap/widgets-internal'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
+import { AutoColumn, Box, Button, CardBody, useModal } from '@cometswap/uikit'
+import { ConfirmationModalContent } from '@cometswap/widgets-internal'
 
-import { useIsExpertMode, useUserSlippage } from '@pancakeswap/utils/user'
-import { FeeAmount, MasterChefV3, NonfungiblePositionManager, Pool } from '@pancakeswap/v3-sdk'
+import { useIsExpertMode, useUserSlippage } from '@cometswap/utils/user'
+import { FeeAmount, MasterChefV3, NonfungiblePositionManager, Pool } from '@cometswap/v3-sdk'
 import { useTransactionDeadline } from 'hooks/useTransactionDeadline'
 import { useDerivedPositionInfo } from 'hooks/v3/useDerivedPositionInfo'
 import useV3DerivedInfo from 'hooks/v3/useV3DerivedInfo'
@@ -14,7 +14,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { CurrencyField as Field } from 'utils/types'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { AppHeader } from 'components/App'
 import { useIsTransactionUnsupported, useIsTransactionWarning } from 'hooks/Trades'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -490,3 +490,4 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
     </Page>
   )
 }
+

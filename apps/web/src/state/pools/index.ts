@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getFarmsPrices } from '@pancakeswap/farms/farmPrices'
-import { fetchPublicIfoData, fetchUserIfoCredit } from '@pancakeswap/ifos'
+import { ChainId } from '@cometswap/chains'
+import { getFarmsPrices } from '@cometswap/farms/farmPrices'
+import { fetchPublicIfoData, fetchUserIfoCredit } from '@cometswap/ifos'
 import {
   fetchFlexibleSideVaultUser,
   fetchPoolsAllowance,
@@ -15,30 +15,30 @@ import {
   fetchUserStakeBalances,
   fetchVaultFees,
   fetchVaultUser,
-  getCakeFlexibleSideVaultAddress,
-  getCakeVaultAddress,
+  getveCometFlexibleSideVaultAddress,
+  getveCometVaultAddress,
   getPoolAprByTokenPerBlock,
   getPoolAprByTokenPerSecond,
   getPoolsConfig,
   isLegacyPool,
-} from '@pancakeswap/pools'
-import { getCurrencyUsdPrice } from '@pancakeswap/price-api-sdk'
-import { bscTokens } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/pools'
+import { getCurrencyUsdPrice } from '@cometswap/price-api-sdk'
+import { bscTokens } from '@cometswap/tokens'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { PayloadAction, createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
 import keyBy from 'lodash/keyBy'
 import orderBy from 'lodash/orderBy'
 
 import { getPoolsPriceHelperLpFiles } from 'config/constants/priceHelperLps'
-import { getCakePriceFromOracle } from 'hooks/useCakePrice'
+import { getCometPriceFromOracle } from 'hooks/useCometPrice'
 import { farmV3ApiFetch } from 'state/farmsV3/hooks'
 import {
   PoolsState,
   PublicIfoData,
-  SerializedCakeVault,
-  SerializedLockedCakeVault,
+  SerializedveCometVault,
+  SerializedLockedveCometVault,
   SerializedLockedVaultUser,
   SerializedPool,
   SerializedVaultFees,
@@ -59,7 +59,7 @@ export const initialPoolVaultState = Object.freeze({
   totalShares: null,
   totalLockedAmount: null,
   pricePerFullShare: null,
-  totalCakeInVault: null,
+  totalveCometInVault: null,
   fees: {
     performanceFee: null,
     withdrawalFee: null,
@@ -91,16 +91,16 @@ export const initialIfoState = Object.freeze({
 const initialState: PoolsState = {
   data: [],
   userDataLoaded: false,
-  cakeVault: initialPoolVaultState as any,
+  cometVault: initialPoolVaultState as any,
   ifo: initialIfoState as any,
-  cakeFlexibleSideVault: initialPoolVaultState as any,
+  cometFlexibleSideVault: initialPoolVaultState as any,
 }
 
-export const fetchCakePoolPublicDataAsync = () => async (dispatch) => {
-  const cakePrice = parseFloat(await getCakePriceFromOracle())
+export const fetchveCometPoolPublicDataAsync = () => async (dispatch) => {
+  const cometPrice = parseFloat(await getCometPriceFromOracle())
 
-  const stakingTokenPrice = cakePrice
-  const earningTokenPrice = cakePrice
+  const stakingTokenPrice = cometPrice
+  const earningTokenPrice = cometPrice
 
   dispatch(
     setPoolPublicData({
@@ -113,7 +113,7 @@ export const fetchCakePoolPublicDataAsync = () => async (dispatch) => {
   )
 }
 
-export const fetchCakePoolUserDataAsync =
+export const fetchveCometPoolUserDataAsync =
   ({ account, chainId }: { account: string; chainId: ChainId }) =>
   async (dispatch) => {
     const client = publicClient({ chainId: ChainId.BSC })
@@ -121,13 +121,13 @@ export const fetchCakePoolUserDataAsync =
       contracts: [
         {
           abi: erc20Abi,
-          address: bscTokens.cake.address,
+          address: bscTokens.comet.address,
           functionName: 'allowance',
-          args: [account as Address, getCakeVaultAddress(chainId)],
+          args: [account as Address, getveCometVaultAddress(chainId)],
         },
         {
           abi: erc20Abi,
-          address: bscTokens.cake.address,
+          address: bscTokens.comet.address,
           functionName: 'balanceOf',
           args: [account as Address],
         },
@@ -350,50 +350,50 @@ export const updateUserPendingReward = createAsyncThunk<
   return { sousId, field: 'pendingReward', value: pendingRewards[sousId] }
 })
 
-export const fetchCakeVaultPublicData = createAsyncThunk<SerializedLockedCakeVault, ChainId>(
-  'cakeVault/fetchPublicData',
+export const fetchveCometVaultPublicData = createAsyncThunk<SerializedLockedveCometVault, ChainId>(
+  'cometVault/fetchPublicData',
   async (chainId: any): Promise<any> => {
     const publicVaultInfo = await fetchPublicVaultData({ chainId, provider: getViemClients })
     return publicVaultInfo
   },
 )
 
-export const fetchCakeFlexibleSideVaultPublicData = createAsyncThunk<SerializedCakeVault, ChainId>(
-  'cakeFlexibleSideVault/fetchPublicData',
+export const fetchveCometFlexibleSideVaultPublicData = createAsyncThunk<SerializedveCometVault, ChainId>(
+  'cometFlexibleSideVault/fetchPublicData',
   async (chainId: any): Promise<any> => {
     const publicVaultInfo = await fetchPublicFlexibleSideVaultData({ chainId, provider: getViemClients })
     return publicVaultInfo
   },
 )
 
-export const fetchCakeVaultFees = createAsyncThunk<SerializedVaultFees, ChainId>(
-  'cakeVault/fetchFees',
+export const fetchveCometVaultFees = createAsyncThunk<SerializedVaultFees, ChainId>(
+  'cometVault/fetchFees',
   async (chainId: any): Promise<any> => {
     const vaultFees = await fetchVaultFees({
       chainId,
       provider: getViemClients,
-      cakeVaultAddress: getCakeVaultAddress(chainId),
+      cakeVaultAddress: getveCometVaultAddress(chainId),
     })
     return vaultFees
   },
 )
 
-export const fetchCakeFlexibleSideVaultFees = createAsyncThunk<SerializedVaultFees, ChainId>(
-  'cakeFlexibleSideVault/fetchFees',
+export const fetchveCometFlexibleSideVaultFees = createAsyncThunk<SerializedVaultFees, ChainId>(
+  'cometFlexibleSideVault/fetchFees',
   async (chainId: any): Promise<any> => {
     const vaultFees = await fetchVaultFees({
       chainId,
       provider: getViemClients,
-      cakeVaultAddress: getCakeFlexibleSideVaultAddress(chainId),
+      cakeVaultAddress: getveCometFlexibleSideVaultAddress(chainId),
     })
     return vaultFees
   },
 )
 
-export const fetchCakeVaultUserData = createAsyncThunk<
+export const fetchveCometVaultUserData = createAsyncThunk<
   SerializedLockedVaultUser,
   { account: Address; chainId: ChainId }
->('cakeVault/fetchUser', async ({ account, chainId }) => {
+>('cometVault/fetchUser', async ({ account, chainId }): Promise<SerializedLockedVaultUser> => {
   const userData = await fetchVaultUser({ account, chainId, provider: getViemClients })
   return userData
 })
@@ -416,10 +416,10 @@ export const fetchUserIfoCreditDataAsync =
       console.error('[Ifo Credit Action] Error fetching user Ifo credit data', error)
     }
   }
-export const fetchCakeFlexibleSideVaultUserData = createAsyncThunk<
+export const fetchveCometFlexibleSideVaultUserData = createAsyncThunk<
   SerializedVaultUser,
   { account: Address; chainId: ChainId }
->('cakeFlexibleSideVault/fetchUser', async ({ account, chainId }) => {
+>('cometFlexibleSideVault/fetchUser', async ({ account, chainId }) => {
   const userData = await fetchFlexibleSideVaultUser({ chainId, account, provider: getViemClients })
   return userData
 })
@@ -471,9 +471,9 @@ export const PoolsSlice = createSlice({
     builder.addCase(fetchPoolsConfigAsync.fulfilled, (state, action) => {
       state.data = [...action.payload]
       state.userDataLoaded = false
-      state.cakeVault = initialPoolVaultState as any
+      state.cometVault = initialPoolVaultState as any
       state.ifo = initialIfoState as any
-      state.cakeFlexibleSideVault = initialPoolVaultState as any
+      state.cometFlexibleSideVault = initialPoolVaultState as any
     })
     builder.addCase(resetUserState, (state) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -481,8 +481,8 @@ export const PoolsSlice = createSlice({
         return { ...pool }
       })
       state.userDataLoaded = false
-      state.cakeVault = { ...state.cakeVault, userData: initialPoolVaultState.userData as any }
-      state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, userData: initialPoolVaultState.userData as any }
+      state.cometVault = { ...state.cometVault, userData: initialPoolVaultState.userData as any }
+      state.cometFlexibleSideVault = { ...state.cometFlexibleSideVault, userData: initialPoolVaultState.userData as any }
     })
     builder.addCase(
       fetchPoolsUserDataAsync.fulfilled,
@@ -506,28 +506,28 @@ export const PoolsSlice = createSlice({
       console.error('[Pools Action] Error fetching pool user data', action.payload)
     })
     // Vault public data that updates frequently
-    builder.addCase(fetchCakeVaultPublicData.fulfilled, (state, action: PayloadAction<SerializedLockedCakeVault>) => {
-      state.cakeVault = { ...state.cakeVault, ...action.payload }
+    builder.addCase(fetchveCometVaultPublicData.fulfilled, (state, action: PayloadAction<SerializedLockedveCometVault>) => {
+      state.cometVault = { ...state.cometVault, ...action.payload }
     })
     builder.addCase(
-      fetchCakeFlexibleSideVaultPublicData.fulfilled,
-      (state, action: PayloadAction<SerializedCakeVault>) => {
-        state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, ...action.payload }
+      fetchveCometFlexibleSideVaultPublicData.fulfilled,
+      (state, action: PayloadAction<SerializedveCometVault>) => {
+        state.cometFlexibleSideVault = { ...state.cometFlexibleSideVault, ...action.payload }
       },
     )
     // Vault fees
-    builder.addCase(fetchCakeVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
+    builder.addCase(fetchveCometVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
       const fees = action.payload
-      state.cakeVault = { ...state.cakeVault, fees }
+      state.cometVault = { ...state.cometVault, fees }
     })
-    builder.addCase(fetchCakeFlexibleSideVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
+    builder.addCase(fetchveCometFlexibleSideVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
       const fees = action.payload
-      state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, fees }
+      state.cometFlexibleSideVault = { ...state.cometFlexibleSideVault, fees }
     })
     // Vault user data
-    builder.addCase(fetchCakeVaultUserData.fulfilled, (state, action: PayloadAction<SerializedLockedVaultUser>) => {
+    builder.addCase(fetchveCometVaultUserData.fulfilled, (state, action: PayloadAction<SerializedLockedVaultUser>) => {
       const userData = action.payload
-      state.cakeVault = { ...state.cakeVault, userData }
+      state.cometVault = { ...state.cometVault, userData }
     })
     // IFO
     builder.addCase(fetchIfoPublicDataAsync.fulfilled, (state, action: PayloadAction<PublicIfoData>) => {
@@ -535,10 +535,10 @@ export const PoolsSlice = createSlice({
       state.ifo = { ...state.ifo, ceiling }
     })
     builder.addCase(
-      fetchCakeFlexibleSideVaultUserData.fulfilled,
+      fetchveCometFlexibleSideVaultUserData.fulfilled,
       (state, action: PayloadAction<SerializedVaultUser>) => {
         const userData = action.payload
-        state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, userData }
+        state.cometFlexibleSideVault = { ...state.cometFlexibleSideVault, userData }
       },
     )
     builder.addMatcher(
@@ -567,3 +567,4 @@ export const PoolsSlice = createSlice({
 export const { setPoolsPublicData, setPoolPublicData, setPoolUserData, setIfoUserCreditData } = PoolsSlice.actions
 
 export default PoolsSlice.reducer
+

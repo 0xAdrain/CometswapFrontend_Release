@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BoxProps, Button, Card, Flex, FlexGap, Link, OpenNewIcon, Tag, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BoxProps, Button, Card, Flex, FlexGap, Link, OpenNewIcon, Tag, Text } from '@cometswap/uikit'
 import { useState } from 'react'
 import { styled } from 'styled-components'
 import { useSelectorConfig } from 'views/LandingV4/config/filterOptions'
@@ -115,3 +115,4 @@ export const HookCard: React.FC<React.PropsWithChildren<HookCardProps>> = ({ hoo
     </StyledBlogCard>
   )
 }
+

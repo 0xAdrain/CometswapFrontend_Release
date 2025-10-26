@@ -14,8 +14,8 @@ import {
   getAddress,
   ByteArray,
 } from 'viem'
-import { Token } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { Token } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 import { FeeAmount, POOL_INIT_CODE_HASHES } from '../constants'
 
 function getCreate2Address(
@@ -42,7 +42,7 @@ function getCreate2AddressZkSync(from: Address, salt: `0x${string}`, initCodeHas
 
 /**
  * Computes a pool address
- * @param deployerAddress The Pancake V3 deployer address
+ * @param deployerAddress The Comet V3 deployer address
  * @param tokenA The first token of the pair, irrespective of sort order
  * @param tokenB The second token of the pair, irrespective of sort order
  * @param fee The fee tier of the pool

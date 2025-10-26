@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Modal, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Modal, useToast } from '@cometswap/uikit'
 import snapshot from '@snapshot-labs/snapshot.js'
 import { useState } from 'react'
 import { ProposalTypeName } from 'state/types'
-import { PANCAKE_SPACE } from 'views/Voting/config'
-import { VECAKE_VOTING_POWER_BLOCK } from 'views/Voting/helpers'
+import { COMET_SPACE } from 'views/Voting/config'
+import { VECOMET_VOTING_POWER_BLOCK } from 'views/Voting/helpers'
 import { SingleVoteState, WeightedVoteState } from 'views/Voting/Proposal/VoteType/types'
 import { useAccount, useWalletClient } from 'wagmi'
 import useGetVotingPower from '../../hooks/useGetVotingPower'
@@ -34,15 +34,15 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
     isLoading,
     isError,
     total,
-    cakeBalance,
-    cakeVaultBalance,
-    cakePoolBalance,
+    cometBalance,
+    cometVaultBalance,
+    cometPoolBalance,
     poolsBalance,
-    cakeBnbLpBalance,
+    cometBnbLpBalance,
     ifoPoolBalance,
-    lockedCakeBalance,
+    lockedCometBalance,
     lockedEndTime,
-    veCakeBalance,
+    vecometBalance,
   } = useGetVotingPower(block)
 
   const isStartView = view === ConfirmVoteView.MAIN
@@ -81,7 +81,7 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
       }
 
       await client.vote(web3 as any, account, {
-        space: PANCAKE_SPACE,
+        space: COMET_SPACE,
         choice:
           voteType === ProposalTypeName.SINGLE_CHOICE ? (vote as SingleVoteState).value : (vote as WeightedVoteState),
         reason: '',
@@ -111,7 +111,7 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
     >
       <Box mb="24px">
         {view === ConfirmVoteView.MAIN &&
-          (block && BigInt(block) >= VECAKE_VOTING_POWER_BLOCK ? (
+          (block && BigInt(block) >= VECOMET_VOTING_POWER_BLOCK ? (
             <VeMainView
               block={block}
               vote={vote}
@@ -121,7 +121,7 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
               isPending={isPending}
               isLoading={isLoading}
               isError={isError}
-              veCakeBalance={veCakeBalance}
+              vecometBalance={vecometBalance}
               onConfirm={handleConfirmVote}
               onDismiss={handleDismiss}
             />
@@ -134,7 +134,7 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
               isLoading={isLoading}
               isPending={isPending}
               total={total}
-              lockedCakeBalance={Number(lockedCakeBalance)}
+              lockedCometBalance={Number(lockedCometBalance)}
               lockedEndTime={Number(lockedEndTime)}
               onConfirm={handleConfirmVote}
               onViewDetails={handleViewDetails}
@@ -144,14 +144,14 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
         {view === ConfirmVoteView.DETAILS && block && (
           <DetailsView
             total={total}
-            cakeBalance={cakeBalance}
+            cometBalance={cometBalance}
             ifoPoolBalance={ifoPoolBalance}
-            cakeVaultBalance={cakeVaultBalance}
-            cakePoolBalance={cakePoolBalance}
+            cometVaultBalance={cometVaultBalance}
+            cometPoolBalance={cometPoolBalance}
             poolsBalance={poolsBalance}
-            cakeBnbLpBalance={cakeBnbLpBalance}
+            cometBnbLpBalance={cometBnbLpBalance}
             block={block}
-            lockedCakeBalance={lockedCakeBalance}
+            lockedCometBalance={lockedCometBalance}
             lockedEndTime={lockedEndTime}
           />
         )}
@@ -161,3 +161,4 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
 }
 
 export default CastVoteModal
+

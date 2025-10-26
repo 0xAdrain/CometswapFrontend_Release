@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Token } from '@pancakeswap/sdk'
-import { ArrowForwardIcon, Column, QuestionHelper, Text } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Token } from '@cometswap/sdk'
+import { ArrowForwardIcon, Column, QuestionHelper, Text } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
 import { LightGreyCard } from 'components/Card'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
@@ -223,3 +223,4 @@ export default function CurrencyList({
     </FixedSizeList>
   )
 }
+

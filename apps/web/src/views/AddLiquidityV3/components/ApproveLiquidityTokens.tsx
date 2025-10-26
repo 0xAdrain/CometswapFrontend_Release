@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
-import { ethereumTokens } from '@pancakeswap/tokens'
-import { Button, Dots, Link, Message, MessageText, RowBetween } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
+import { ethereumTokens } from '@cometswap/tokens'
+import { Button, Dots, Link, Message, MessageText, RowBetween } from '@cometswap/uikit'
 import { ApprovalState } from 'hooks/useApproveCallback'
 import { useMemo } from 'react'
 import { CurrencyField as Field } from 'utils/types'
@@ -76,7 +76,7 @@ export default function ApproveLiquidityTokens({
               <InlineLink
                 external
                 fontSize={14}
-                href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/faq#why-do-i-need-to-reset-approval-on-usdt-before-enabling-approving"
+                href="https://docs.cometswap.finance/products/cometswap-exchange/faq#why-do-i-need-to-reset-approval-on-usdt-before-enabling-approving"
               >
                 {' '}
                 {t('Learn More')}
@@ -125,3 +125,4 @@ export default function ApproveLiquidityTokens({
     </RowBetween>
   ) : null
 }
+

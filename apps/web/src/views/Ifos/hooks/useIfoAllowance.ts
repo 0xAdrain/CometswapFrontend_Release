@@ -1,4 +1,4 @@
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { useERC20, useTokenContract } from 'hooks/useContract'
 import { useEffect, useState } from 'react'
@@ -33,3 +33,4 @@ const useIfoAllowance = (
 }
 
 export default useIfoAllowance
+

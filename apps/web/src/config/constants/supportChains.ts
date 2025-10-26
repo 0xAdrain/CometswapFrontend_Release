@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { supportedChainId } from '@pancakeswap/farms'
+import { ChainId } from '@cometswap/chains'
+import { supportedChainId } from '@cometswap/farms'
 
 export const SUPPORT_ONLY_BSC = [ChainId.BSC]
 export const SUPPORT_FARMS = supportedChainId
@@ -12,6 +12,7 @@ export const LIQUID_STAKING_SUPPORTED_CHAINS = [
 export const FIXED_STAKING_SUPPORTED_CHAINS = [ChainId.BSC]
 
 export const V3_MIGRATION_SUPPORTED_CHAINS = [ChainId.BSC, ChainId.ETHEREUM]
-export const V2_BCAKE_MIGRATION_SUPPORTED_CHAINS = [ChainId.BSC]
+export const V2_BCOMET_MIGRATION_SUPPORTED_CHAINS = [ChainId.BSC]
 
-export const SUPPORT_CAKE_STAKING = [ChainId.BSC, ChainId.BSC_TESTNET]
+export const SUPPORT_COMET_STAKING = [ChainId.BSC, ChainId.BSC_TESTNET]
+

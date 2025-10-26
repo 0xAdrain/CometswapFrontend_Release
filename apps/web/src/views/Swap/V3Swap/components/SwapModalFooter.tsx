@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, TradeType } from '@pancakeswap/sdk'
-import { SmartRouter } from '@pancakeswap/smart-router'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent, TradeType } from '@cometswap/sdk'
+import { SmartRouter } from '@cometswap/smart-router'
 import {
   AutoColumn,
   BackForwardIcon,
@@ -12,9 +12,9 @@ import {
   Text,
   WarningIcon,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { CurrencyLogo as CurrencyLogoWidget } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { CurrencyLogo as CurrencyLogoWidget } from '@cometswap/widgets-internal'
 import { AutoRow, RowBetween, RowFixed } from 'components/Layout/Row'
 import { useGasToken } from 'hooks/useGasToken'
 import { memo, useMemo, useState } from 'react'
@@ -185,7 +185,7 @@ export const SwapModalFooter = memo(function SwapModalFooter({
                 <>
                   <Text>
                     {t(
-                      'Fee ranging from 0.1% to 0.01% depending on the pool fee tier. You can check the fee tier by clicking the magnifier icon under the “Route” section.',
+                      'Fee ranging from 0.1% to 0.01% depending on the pool fee tier. You can check the fee tier by clicking the magnifier icon under the “Route�?section.',
                     )}
                   </Text>
                   <Text mt="12px">
@@ -193,7 +193,7 @@ export const SwapModalFooter = memo(function SwapModalFooter({
                       style={{ display: 'inline' }}
                       ml="4px"
                       external
-                      href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/faq#what-will-be-the-trading-fee-breakdown-for-v3-exchange"
+                      href="https://docs.cometswap.finance/products/cometswap-exchange/faq#what-will-be-the-trading-fee-breakdown-for-v3-exchange"
                     >
                       {t('Fee Breakdown and Tokenomics')}
                     </Link>
@@ -287,3 +287,4 @@ export const SwapModalFooter = memo(function SwapModalFooter({
     </>
   )
 })
+

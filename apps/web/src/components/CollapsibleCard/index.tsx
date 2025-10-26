@@ -8,7 +8,7 @@ import {
   IconButton,
   ChevronUpIcon,
   ChevronDownIcon,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 
 interface CollapsibleCardProps extends CardProps {
   initialOpenState?: boolean
@@ -41,3 +41,4 @@ const CollapsibleCard: React.FC<React.PropsWithChildren<CollapsibleCardProps>> =
 }
 
 export default CollapsibleCard
+

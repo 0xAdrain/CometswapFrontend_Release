@@ -1,6 +1,6 @@
-# PancakeSwap V4 SDK
+# CometSwap V4 SDK
 
-PancakeSwap V4 Official SDK, used for PancakeSwap Interface and interacting with [PancakeSwap V4 smart contracts](https://github.com/pancakeswap/pancake-v4-core).
+CometSwap V4 Official SDK, used for CometSwap Interface and interacting with [CometSwap V4 smart contracts](https://github.com/cometswap/comet-v4-core).
 
 ## Usage
 

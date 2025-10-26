@@ -15,3 +15,4 @@ export default function formatRoi(roiArgs: FormatRoiArgs): string {
     maximumFractionDigits: roiFractionDigits,
   })
 }
+

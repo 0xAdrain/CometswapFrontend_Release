@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Svg, SvgProps, Text, Flex } from '@pancakeswap/uikit'
+import { Svg, SvgProps, Text, Flex } from '@cometswap/uikit'
 
 export const PinkBall: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -292,3 +292,4 @@ export const BallWithNumber: React.FC<React.PropsWithChildren<BallWithNumberProp
     </Flex>
   )
 }
+

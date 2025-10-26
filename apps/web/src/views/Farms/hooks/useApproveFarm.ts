@@ -1,4 +1,4 @@
-import { MaxUint256 } from '@pancakeswap/swap-sdk-core'
+import { MaxUint256 } from '@cometswap/swap-sdk-core'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useERC20 } from 'hooks/useContract'
 import { useCallback } from 'react'
@@ -6,10 +6,10 @@ import { getMasterChefV2Address, getCrossFarmingVaultAddress } from 'utils/addre
 import { verifyBscNetwork } from 'utils/verifyBscNetwork'
 import { Address } from 'viem'
 
-const useApproveFarm = (lpContract: ReturnType<typeof useERC20>, chainId: number, bCakeWrapperAddress?: Address) => {
+const useApproveFarm = (lpContract: ReturnType<typeof useERC20>, chainId: number, bCometWrapperAddress?: Address) => {
   const isBscNetwork = verifyBscNetwork(chainId)
-  const contractAddress = bCakeWrapperAddress
-    ? bCakeWrapperAddress ?? '0x'
+  const contractAddress = bCometWrapperAddress
+    ? bCometWrapperAddress ?? '0x'
     : isBscNetwork
     ? getMasterChefV2Address(chainId)!
     : getCrossFarmingVaultAddress(chainId)
@@ -32,3 +32,4 @@ export const useApproveBoostProxyFarm = (lpContract: ReturnType<typeof useERC20>
 
   return { onApprove: proxyAddress ? handleApprove : undefined }
 }
+

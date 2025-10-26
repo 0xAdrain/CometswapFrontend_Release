@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 
 import { tryParsePrice } from './index'
 
@@ -59,3 +59,4 @@ describe('hooks', () => {
     })
   })
 })
+

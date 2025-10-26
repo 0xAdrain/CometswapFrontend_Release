@@ -11,3 +11,4 @@ export function addQueryToPath(path: string, queryParams: { [key: string]: strin
 
   return `${pathname}?${searchParams.toString()}`
 }
+

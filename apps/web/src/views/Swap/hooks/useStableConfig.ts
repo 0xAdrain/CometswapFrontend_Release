@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, ERC20Token } from '@pancakeswap/sdk'
-import { LegacyStableSwapPair } from '@pancakeswap/smart-router/legacy-router'
+import { Currency, CurrencyAmount, ERC20Token } from '@cometswap/sdk'
+import { LegacyStableSwapPair } from '@cometswap/smart-router/legacy-router'
 import { createContext, useContext, useMemo } from 'react'
 
 import { infoStableSwapABI } from 'config/abi/infoStableSwap'
@@ -118,3 +118,4 @@ export default function useStableConfig({
     [stablePair, stableSwapContract, stableSwapInfoContract, stableSwapLPContract],
   )
 }
+

@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
 import { AppHeader } from 'components/App'
 import { BodyWrapper } from 'components/App/AppBody'
 import { useRouter } from 'next/router'

@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { ConfirmationModalContent } from '@pancakeswap/widgets-internal'
+import { Currency, CurrencyAmount, TradeType } from '@cometswap/sdk'
+import { ConfirmationModalContent } from '@cometswap/widgets-internal'
 import { memo, useCallback, useMemo } from 'react'
 import { Field } from 'state/swap/actions'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
@@ -137,3 +137,4 @@ export const TransactionConfirmSwapContent = memo<TransactionConfirmSwapContentP
     return <ConfirmationModalContent topContent={modalHeader} bottomContent={modalBottom} />
   },
 )
+

@@ -1,5 +1,5 @@
-import { Gauge } from '@pancakeswap/gauges'
-import { usePreviousValue } from '@pancakeswap/hooks'
+import { Gauge } from '@cometswap/gauges'
+import { usePreviousValue } from '@cometswap/hooks'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
@@ -8,9 +8,9 @@ import { useEffect, useMemo } from 'react'
 import { isAddressEqual } from 'utils'
 import { publicClient as getPublicClient } from 'utils/viem'
 import { Address, Hex, zeroAddress } from 'viem'
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
-import { useVeCakeUserInfo } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
-import { CakePoolType } from 'views/CakeStaking/types'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
+import { useVeCometUserInfo } from 'views/CometStaking/hooks/useVeCometUserInfo'
+import { CometPoolType } from 'views/CometStaking/types'
 import { useCurrentEpochStart, useNextEpochStart } from './useEpochTime'
 
 export type VotedSlope = {
@@ -44,7 +44,7 @@ const sum = (a: bigint, b: bigint) => a + b
 export const useUserVote = (gauge: Gauge | undefined, submitted?: boolean, useProxyPool: boolean = true) => {
   const { account, chainId } = useAccountActiveChain()
   const contract = useGaugesVotingContract()
-  const { data: userInfo } = useVeCakeUserInfo()
+  const { data: userInfo } = useVeCometUserInfo()
   const currentTimestamp = useCurrentBlockTimestamp()
   const currentEpochStart = useCurrentEpochStart()
   const nextEpochStart = useNextEpochStart()
@@ -52,10 +52,10 @@ export const useUserVote = (gauge: Gauge | undefined, submitted?: boolean, usePr
   const prevSubmittedStatus = usePreviousValue(submitted)
 
   const { data, refetch } = useQuery({
-    queryKey: ['/vecake/userVoteSlopes', contract.address, gauge?.hash, account],
+    queryKey: ['/Comet/userVoteSlopes', contract.address, gauge?.hash, account],
 
     queryFn: async (): Promise<VotedSlope> => {
-      const delegated = userInfo?.cakePoolType === CakePoolType.DELEGATED
+      const delegated = userInfo?.cakePoolType === CometPoolType.DELEGATED
       const hasProxy =
         useProxyPool && userInfo?.cakePoolProxy && !isAddressEqual(userInfo?.cakePoolProxy, zeroAddress) && !delegated
       const calls = [
@@ -237,3 +237,4 @@ export const useUserVote = (gauge: Gauge | undefined, submitted?: boolean, usePr
 
   return data
 }
+

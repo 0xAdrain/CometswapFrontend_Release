@@ -1,5 +1,5 @@
-import { Currency, Token } from '@pancakeswap/sdk'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { Currency, Token } from '@cometswap/sdk'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { useMemo } from 'react'
 import { PoolState } from './types'
 import { useFeeTierDistributionQuery } from './useFeeTierDistributionQuery'
@@ -150,3 +150,4 @@ function usePoolTVL(token0: Token | undefined, token1: Token | undefined) {
     }
   }, [data, isPending, error])
 }
+

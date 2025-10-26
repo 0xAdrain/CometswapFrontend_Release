@@ -89,3 +89,4 @@ export function useWaitForXOrderReceipt<selectData = GetXOrderReceiptReturnType>
     enabled: enabled && Boolean(chainId && hash),
   })
 }
+

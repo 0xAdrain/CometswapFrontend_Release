@@ -6,7 +6,7 @@ export const useVotedPower = () => {
   const { account } = useAccountActiveChain()
   const contract = useGaugesVotingContract()
   const { data } = useQuery({
-    queryKey: ['/vecake/vote-power', contract.address, account],
+    queryKey: ['/Comet/vote-power', contract.address, account],
 
     queryFn: async (): Promise<number> => {
       const power = (await contract.read.voteUserPower([account!])) ?? 0n
@@ -18,3 +18,4 @@ export const useVotedPower = () => {
   })
   return data
 }
+

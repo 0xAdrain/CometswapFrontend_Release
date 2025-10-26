@@ -1,9 +1,9 @@
-import { ChainId } from '@pancakeswap/chains'
-import { RowType } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { formatBigInt, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import latinise from '@pancakeswap/utils/latinise'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { ChainId } from '@cometswap/chains'
+import { RowType } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { formatBigInt, getBalanceNumber } from '@cometswap/utils/formatBalance'
+import latinise from '@cometswap/utils/latinise'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useRouter } from 'next/router'
@@ -22,7 +22,7 @@ export interface ITableProps {
   header?: ReactNode
   farms: V2StakeValueAndV3Farm[]
   userDataReady: boolean
-  cakePrice: BigNumber
+  cometPrice: BigNumber
   sortColumn?: string
 }
 
@@ -74,8 +74,8 @@ const TableContainer = styled.div`
 
 const getV2FarmEarnings = (farm: V2Farm) => {
   let existingEarnings = farm.userData?.earnings ? new BigNumber(farm.userData?.earnings) : BIG_ZERO
-  if (farm.bCakeWrapperAddress)
-    existingEarnings = farm.bCakeUserData?.earnings ? new BigNumber(farm.bCakeUserData?.earnings) : BIG_ZERO
+  if (farm.bCometWrapperAddress)
+    existingEarnings = farm.bCometUserData?.earnings ? new BigNumber(farm.bCometUserData?.earnings) : BIG_ZERO
   let earnings: BigNumber = existingEarnings
 
   if (farm.boosted) {
@@ -147,7 +147,7 @@ const generateSortedRow = (row: RowProps) => {
   return newRow
 }
 
-const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cakePrice, userDataReady, header }) => {
+const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cometPrice, userDataReady, header }) => {
   const tableWrapperEl = useRef<HTMLDivElement>(null)
   const { query } = useRouter()
   const { chainId } = useActiveChainId()
@@ -160,17 +160,17 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
       const { token, quoteToken } = farm
       const tokenAddress = token.address
       const quoteTokenAddress = quoteToken.address
-      const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
+      const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/comet/gi, '')
       const lowercaseQuery = latinise(typeof query?.search === 'string' ? query.search.toLowerCase() : '')
       const initialActivity = latinise(lpLabel?.toLowerCase()) === lowercaseQuery
 
       if (farm.version === 2) {
-        const isBooster = Boolean(farm?.bCakeWrapperAddress)
+        const isBooster = Boolean(farm?.bCometWrapperAddress)
         const row: RowProps = {
           apr: {
             value:
               getDisplayApr(
-                (isBooster && farm?.bCakePublicData?.rewardPerSecond === 0) || !farm?.bCakePublicData?.isRewardInRange
+                (isBooster && farm?.bCometPublicData?.rewardPerSecond === 0) || !farm?.bCometPublicData?.isRewardInRange
                   ? 0
                   : farm.apr,
                 farm.lpRewardsApr,
@@ -182,10 +182,10 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
             lpTokenPrice: farm.lpTokenPrice ?? BIG_ZERO,
             tokenAddress,
             quoteTokenAddress,
-            cakePrice,
+            cometPrice,
             lpRewardsApr: farm.lpRewardsApr ?? 0,
             originalValue:
-              (isBooster && farm?.bCakePublicData?.rewardPerSecond === 0) || !farm?.bCakePublicData?.isRewardInRange
+              (isBooster && farm?.bCometPublicData?.rewardPerSecond === 0) || !farm?.bCometPublicData?.isRewardInRange
                 ? 0
                 : farm.apr ?? 0,
             stableSwapAddress: farm.stableSwapAddress,
@@ -202,9 +202,9 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
             isStaking:
               farm.userData?.proxy?.stakedBalance.gt(0) ||
               farm.userData?.stakedBalance.gt(0) ||
-              farm.bCakeUserData?.stakedBalance.gt(0),
-            rewardCakePerSecond:
-              farm?.bCakePublicData?.rewardPerSecond ?? farmV2Multiplier.getNumberFarmCakePerSecond(farm.poolWeight),
+              farm.bCometUserData?.stakedBalance.gt(0),
+            rewardCometPerSecond:
+              farm?.bCometPublicData?.rewardPerSecond ?? farmV2Multiplier.getNumberFarmCometPerSecond(farm.poolWeight),
           },
           earned: {
             earnings: getV2FarmEarnings(farm),
@@ -215,7 +215,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
           },
           multiplier: {
             multiplier: farm.multiplier ?? '',
-            farmCakePerSecond: farmV2Multiplier.getFarmCakePerSecond(farm.poolWeight ?? BIG_ZERO),
+            farmCometPerSecond: farmV2Multiplier.getFarmCometPerSecond(farm.poolWeight ?? BIG_ZERO),
             totalMultipliers: farmV2Multiplier.totalMultipliers,
           },
           type: farm.isCommunity ? 'community' : 'v2',
@@ -251,7 +251,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
         details: farm,
         multiplier: {
           multiplier: farm.multiplier,
-          farmCakePerSecond: farmV3Multiplier.getFarmCakePerSecond(farm.poolWeight),
+          farmCometPerSecond: farmV3Multiplier.getFarmCometPerSecond(farm.poolWeight),
           totalMultipliers: farmV3Multiplier.totalMultipliers,
         },
         stakedLiquidity: {
@@ -261,7 +261,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
         },
         earned: {
           earnings: +formatBigInt(
-            Object.values(farm.pendingCakeByTokenIds).reduce((total, vault) => total + vault, 0n),
+            Object.values(farm.pendingCometByTokenIds).reduce((total, vault) => total + vault, 0n),
             4,
           ),
           pid: farm.pid,
@@ -276,7 +276,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
         },
       }
     },
-    [query.search, farmV3Multiplier, cakePrice, farmV2Multiplier, chainId],
+    [query.search, farmV3Multiplier, cometPrice, farmV2Multiplier, chainId],
   )
 
   const sortedRows = useMemo(() => {
@@ -311,3 +311,4 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
 }
 
 export default FarmTable
+

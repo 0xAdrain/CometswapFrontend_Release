@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import { chains } from 'utils/wagmi'
 
@@ -24,3 +24,4 @@ export function useChainNames(chainIds?: readonly ChainId[] | ChainId[]) {
     [chainIds],
   )
 }
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
 import {
   Box,
   Button,
@@ -14,8 +14,8 @@ import {
   RowBetween,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { ChainLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { ChainLogo } from '@cometswap/widgets-internal'
 import isArray from 'lodash/isArray'
 import Image from 'next/image'
 import { useCallback, useMemo, useRef, useState } from 'react'
@@ -236,3 +236,4 @@ export default function OnRampCurrencySearchModal({
     </StyledModalContainer>
   )
 }
+

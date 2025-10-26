@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { polygonRpcProvider } from 'utils/providers'
@@ -50,3 +50,4 @@ export const useUnsNameForAddress = (address: Address, fetchData = true) => {
     return { unsName: unsName?.name, isLoading: status !== 'success' }
   }, [unsName, status])
 }
+

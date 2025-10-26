@@ -92,3 +92,4 @@ export const fetchTokenAddresses = async (chainName: MultiChainNameExtend) => {
 
   return addresses
 }
+

@@ -4,3 +4,4 @@ export function usePoolAvgTradingVolume(params: UsePoolAvgInfoParams) {
   const { volumeUSD } = usePoolAvgInfo(params)
   return volumeUSD
 }
+

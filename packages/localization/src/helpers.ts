@@ -1,8 +1,9 @@
 import { EN } from './config/languages'
 
-const publicUrl = 'https://locales.pancakeswap.finance'
+// CometSwap: 使用本地翻译文件
+const publicUrl = '/locales'
 
-export const LS_KEY = 'pancakeswap_language'
+export const LS_KEY = 'cometswap_language'
 
 export const fetchLocale = async (locale: string) => {
   const response = await fetch(`${publicUrl}/${locale}.json`)
@@ -24,3 +25,4 @@ export const getLanguageCodeFromLS = () => {
     return EN.locale
   }
 }
+

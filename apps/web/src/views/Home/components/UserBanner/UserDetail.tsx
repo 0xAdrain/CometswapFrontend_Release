@@ -9,13 +9,12 @@ import {
   VisibilityOff,
   VisibilityOn,
   ProfileAvatar,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useAccount } from 'wagmi'
 import { styled } from 'styled-components'
 import { useProfile } from 'state/profile/hooks'
-import ProfileAvatarWithTeam from 'components/ProfileAvatarWithTeam'
-import { useTranslation } from '@pancakeswap/localization'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@cometswap/localization'
+import truncateHash from '@cometswap/utils/truncateHash'
 import useGetUsernameWithVisibility from 'hooks/useUsernameWithVisibility'
 import { useDomainNameForAddress } from 'hooks/useDomain'
 
@@ -70,7 +69,7 @@ const UserDetail = () => {
           <Box mr="24px">
             <Sticker>
               {profile ? (
-                <ProfileAvatarWithTeam profile={profile} />
+                <ProfileAvatar src={profile?.nft?.image?.thumbnail} width={32} height={32} mr="16px" />
               ) : avatar ? (
                 <ProfileAvatar src={avatar} width={32} height={32} mr="16px" />
               ) : (
@@ -118,3 +117,4 @@ const UserDetail = () => {
 }
 
 export default UserDetail
+

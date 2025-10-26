@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Container, Flex, FlexGap, Heading, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Container, Flex, FlexGap, Heading, Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import { useCurrentIDOConfig } from '../hooks/ido/useCurrentIDOConfig'
 
@@ -64,3 +64,4 @@ const Hero = () => {
 }
 
 export default Hero
+

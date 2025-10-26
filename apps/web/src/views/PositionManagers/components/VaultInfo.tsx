@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BaseAssets } from '@pancakeswap/position-managers'
-import { Currency, Percent, Price } from '@pancakeswap/sdk'
-import { Box, RowBetween, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BaseAssets } from '@cometswap/position-managers'
+import { Currency, Percent, Price } from '@cometswap/sdk'
+import { Box, RowBetween, Text } from '@cometswap/uikit'
 import { memo, useMemo } from 'react'
 import { styled } from 'styled-components'
 import { SpaceProps } from 'styled-system'
@@ -34,7 +34,7 @@ export interface VaultInfoProps extends SpaceProps {
   token0PriceUSD?: number
   token1PriceUSD?: number
   earningToken: Currency
-  isInCakeRewardDateRange: boolean
+  isInCometRewardDateRange: boolean
   tokenPerSecond?: number
   isTableView?: boolean
 }
@@ -52,7 +52,7 @@ export const VaultInfo = memo(function VaultInfo({
   tokenPerSecond = 0,
   earningToken,
   managerFee,
-  isInCakeRewardDateRange,
+  isInCometRewardDateRange,
   isTableView,
   ...props
 }: VaultInfoProps) {
@@ -68,8 +68,8 @@ export const VaultInfo = memo(function VaultInfo({
   })
 
   const earning = useMemo(
-    () => (isInCakeRewardDateRange ? `${earningToken?.symbol ?? ''} + ${t('Fees')}` : t('Fees')),
-    [t, isInCakeRewardDateRange, earningToken?.symbol],
+    () => (isInCometRewardDateRange ? `${earningToken?.symbol ?? ''} + ${t('Fees')}` : t('Fees')),
+    [t, isInCometRewardDateRange, earningToken?.symbol],
   )
 
   return (
@@ -87,7 +87,7 @@ export const VaultInfo = memo(function VaultInfo({
           <InfoText>{earning}</InfoText>
         </RowBetween>
       )}
-      {isInCakeRewardDateRange && isTableView && (
+      {isInCometRewardDateRange && isTableView && (
         <RowBetween style={{ padding: '2px 0px' }}>
           <InfoText>{t('Reward Per Day')}:</InfoText>
           <InfoText>
@@ -102,7 +102,7 @@ export const VaultInfo = memo(function VaultInfo({
           maximumFractionDigits: 2,
         })}`}</InfoText>
       </RowBetween>
-      {isInCakeRewardDateRange && (
+      {isInCometRewardDateRange && (
         <RowBetween>
           <InfoText>{t('Farming Rewards')}:</InfoText>
           <InfoText>{`~${tokenPerSecond.toLocaleString(undefined, {
@@ -118,3 +118,4 @@ export const VaultInfo = memo(function VaultInfo({
     </Box>
   )
 })
+

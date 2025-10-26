@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
-import { BOOST_WEIGHT, DURATION_FACTOR } from '@pancakeswap/pools'
+import { BOOST_WEIGHT, DURATION_FACTOR } from '@cometswap/pools'
 import BigNumber from 'bignumber.js'
-import { useCakeVault } from 'state/pools/hooks'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+import { useVeCometVault } from 'state/pools/hooks'
+import { getFullDecimalMultiplier } from '@cometswap/utils/getFullDecimalMultiplier'
 
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import formatSecondsToWeeks, { secondsToWeeks } from '../../utils/formatSecondsToWeeks'
@@ -11,14 +11,14 @@ const ZERO = new BigNumber(0)
 const ONE = new BigNumber(1)
 
 export default function useAvgLockDuration() {
-  const { totalLockedAmount, totalShares, totalCakeInVault, pricePerFullShare } = useCakeVault()
+  const { totalLockedAmount, totalShares, totalCometInVault, pricePerFullShare } = useVeCometVault()
 
   const avgLockDurationsInSeconds = useMemo(() => {
-    const flexibleCakeAmount = totalCakeInVault?.minus(totalLockedAmount || ZERO)
-    const flexibleCakeShares = flexibleCakeAmount?.div(pricePerFullShare || ONE).times(DEFAULT_TOKEN_DECIMAL)
-    const lockedCakeBoostedShares = totalShares?.minus(flexibleCakeShares || ZERO)
-    const lockedCakeOriginalShares = totalLockedAmount?.div(pricePerFullShare || ONE).times(DEFAULT_TOKEN_DECIMAL)
-    const avgBoostRatio = lockedCakeBoostedShares?.div(lockedCakeOriginalShares || ONE)
+    const flexibleCometAmount = totalCometInVault?.minus(totalLockedAmount || ZERO)
+    const flexibleCometShares = flexibleCometAmount?.div(pricePerFullShare || ONE).times(DEFAULT_TOKEN_DECIMAL)
+    const lockedCometBoostedShares = totalShares?.minus(flexibleCometShares || ZERO)
+    const lockedCometOriginalShares = totalLockedAmount?.div(pricePerFullShare || ONE).times(DEFAULT_TOKEN_DECIMAL)
+    const avgBoostRatio = lockedCometBoostedShares?.div(lockedCometOriginalShares || ONE)
 
     return (
       Math.round(
@@ -29,7 +29,7 @@ export default function useAvgLockDuration() {
           .toNumber() ?? 0,
       ) || 0
     )
-  }, [totalCakeInVault, totalLockedAmount, pricePerFullShare, totalShares])
+  }, [totalCometInVault, totalLockedAmount, pricePerFullShare, totalShares])
 
   const avgLockDurationsInWeeks = useMemo(
     () => formatSecondsToWeeks(avgLockDurationsInSeconds),
@@ -47,3 +47,4 @@ export default function useAvgLockDuration() {
     avgLockDurationsInSeconds,
   }
 }
+

@@ -1,10 +1,10 @@
-import { Flex, LinkExternal, ScanLink, Skeleton, Text } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Flex, LinkExternal, ScanLink, Skeleton, Text } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { DeserializedLockedCakeVault } from '@pancakeswap/pools'
-import { Token } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useTranslation } from '@cometswap/localization'
+import { DeserializedLockedCometVault } from '@cometswap/pools'
+import { Token } from '@cometswap/sdk'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import AddToWalletButton, { AddToWalletTextOptions } from 'components/AddToWallet/AddToWalletButton'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { memo, useMemo } from 'react'
@@ -52,9 +52,9 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
 
   const stakedBalance = poolUserData?.stakedBalance ? poolUserData.stakedBalance : BIG_ZERO
 
-  const { totalCakeInVault, totalLockedAmount } = useVaultPoolByKey(
+  const { totalCometInVault, totalLockedAmount } = useVaultPoolByKey(
     vaultKey as Pool.VaultKey,
-  ) as DeserializedLockedCakeVault
+  ) as DeserializedLockedCometVault
 
   const tokenAddress = earningToken.address || ''
   const poolContractAddress = contractAddress
@@ -75,7 +75,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
         <Flex mb="8px" justifyContent="space-between">
           <Text small>{t('Requirement')}:</Text>
           <Text small textAlign="right">
-            {profileRequirement.required && t('Pancake Profile')}{' '}
+            {profileRequirement.required && t('Comet Profile')}{' '}
             {profileRequirement.thresholdPoints.gt(0) && (
               <Text small>
                 {profileRequirement.thresholdPoints.toNumber()} {t('Profile Points')}
@@ -87,16 +87,16 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       {!vaultKey && <AprInfo pool={pool} stakedBalance={stakedBalance} />}
       {showTotalStaked && (
         <Pool.TotalStaked
-          totalStaked={(vaultKey ? totalCakeInVault : totalStaked) || BIG_ZERO}
+          totalStaked={(vaultKey ? totalCometInVault : totalStaked) || BIG_ZERO}
           tokenDecimals={stakingToken.decimals}
           symbol={stakingToken.symbol}
           decimalsToShow={0}
         />
       )}
-      {vaultKey === VaultKey.CakeVault && (
+      {vaultKey === VaultKey.CometVault && (
         <TotalLocked totalLocked={totalLockedAmount || BIG_ZERO} lockedToken={stakingToken} />
       )}
-      {vaultKey === VaultKey.CakeVault && <DurationAvg />}
+      {vaultKey === VaultKey.CometVault && <DurationAvg />}
       {!isFinished && stakingLimit && stakingLimit.gt(0) && (
         <MaxStakeRow
           small
@@ -132,7 +132,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       )}
       {vaultKey && (
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <LinkExternal href="https://docs.pancakeswap.finance/products/vecake/how-to-get-vecake" bold={false} small>
+          <LinkExternal href="https://docs.cometswap.finance/products/Comet/how-to-get-Comet" bold={false} small>
             {t('View Tutorial')}
           </LinkExternal>
         </Flex>
@@ -164,7 +164,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             tokenAddress={tokenAddress}
             tokenSymbol={earningToken.symbol}
             tokenDecimals={earningToken.decimals}
-            tokenLogo={`https://tokens.pancakeswap.finance/images/${tokenAddress}.png`}
+            tokenLogo={`https://tokens.cometswap.finance/images/${tokenAddress}.png`}
           />
         </Flex>
       )}
@@ -173,3 +173,4 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
 }
 
 export default memo(PoolStatsInfo)
+

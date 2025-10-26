@@ -53,3 +53,4 @@ export const VHeader = styled(THeader)`
 export const VRow = styled(TRow)`
   grid-template-columns: repeat(2, 1.8fr) repeat(3, 1.5fr);
 `
+

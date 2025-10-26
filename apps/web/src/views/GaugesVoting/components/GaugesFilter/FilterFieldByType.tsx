@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Button, FlexGap, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Button, FlexGap, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { FilterModal } from './FilterModal'
@@ -50,3 +50,4 @@ export const FilterFieldByType: React.FC<FilterButtonGroupProps> = ({ onFilterCh
     </>
   )
 }
+

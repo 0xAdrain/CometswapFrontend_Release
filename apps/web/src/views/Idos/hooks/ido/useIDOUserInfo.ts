@@ -37,3 +37,4 @@ export const useIDOUserInfo = () => {
     enabled: !!account && !!idoContract,
   })
 }
+

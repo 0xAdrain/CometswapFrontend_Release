@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { Text, Box, Flex, Button } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Box, Flex, Button } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { LotteryStatus } from 'config/constants/types'
 import { useGetUserLotteriesGraphData } from 'state/lottery/hooks'
 import FinishedRoundRow from './FinishedRoundRow'
@@ -71,3 +71,4 @@ const FinishedRoundTable: React.FC<React.PropsWithChildren<FinishedRoundTablePro
 }
 
 export default FinishedRoundTable
+

@@ -1,5 +1,5 @@
 import { parseUnits } from 'viem'
-import { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
 
 /**
  * Parses a CurrencyAmount from the passed string.
@@ -23,3 +23,4 @@ export default function tryParseCurrencyAmount<T extends Currency>(
   }
   return undefined
 }
+

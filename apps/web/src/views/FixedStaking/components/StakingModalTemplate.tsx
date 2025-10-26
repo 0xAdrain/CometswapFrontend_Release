@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/sdk'
 import {
   BalanceInput,
   Box,
@@ -14,9 +14,9 @@ import {
   Text,
   Toggle,
   useToast,
-} from '@pancakeswap/uikit'
-import { getDecimalAmount, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+} from '@cometswap/uikit'
+import { getDecimalAmount, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
+import { getFullDecimalMultiplier } from '@cometswap/utils/getFullDecimalMultiplier'
 import BigNumber from 'bignumber.js'
 import Divider from 'components/Divider'
 import { CurrencyLogo } from 'components/Logo'
@@ -466,3 +466,4 @@ export function StakingModalTemplate({
     </Modal>
   )
 }
+

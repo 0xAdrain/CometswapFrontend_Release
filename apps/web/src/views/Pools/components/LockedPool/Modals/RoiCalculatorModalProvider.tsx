@@ -1,5 +1,5 @@
 import React, { useState, createContext, Dispatch, SetStateAction } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { usePool } from 'state/pools/hooks'
 import _toString from 'lodash/toString'
 
@@ -21,7 +21,7 @@ const RoiCalculatorModalProvider: React.FC<
     return (
       <VaultRoiCalculatorModal
         pool={pool}
-        linkLabel={t('Get %symbol%', { symbol: 'CAKE' })}
+        linkLabel={t('Get %symbol%', { symbol: 'COMET' })}
         linkHref={stakingTokenAddress ? `/swap?outputCurrency=${stakingTokenAddress}` : '/swap'}
         stakingTokenBalance={pool?.userData?.stakingTokenBalance}
         onBack={() => setShowRoiCalculator(false)}
@@ -37,3 +37,4 @@ const RoiCalculatorModalProvider: React.FC<
 }
 
 export default RoiCalculatorModalProvider
+

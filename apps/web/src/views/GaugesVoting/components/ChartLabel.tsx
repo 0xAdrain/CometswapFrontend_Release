@@ -1,8 +1,8 @@
-import { Gauge } from '@pancakeswap/gauges'
-import { getLanguageCodeFromLS, useTranslation } from '@pancakeswap/localization'
-import { Percent } from '@pancakeswap/swap-sdk-core'
-import { AutoColumn, Text } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { Gauge } from '@cometswap/gauges'
+import { getLanguageCodeFromLS, useTranslation } from '@cometswap/localization'
+import { Percent } from '@cometswap/swap-sdk-core'
+import { AutoColumn, Text } from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
 import { useMemo } from 'react'
 
@@ -35,7 +35,7 @@ export const ChartLabel: React.FC<{
         {t('total')}
       </Text>
       <Text bold fontSize={16}>
-        {`${format(weight)} veCAKE`}
+        {`${format(weight)} veCOMET`}
       </Text>
       {gauge?.weight ? (
         <Text fontSize={14} color="textSubtle">
@@ -45,3 +45,4 @@ export const ChartLabel: React.FC<{
     </AutoColumn>
   )
 }
+

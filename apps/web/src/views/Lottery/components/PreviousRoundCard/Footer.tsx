@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { CardFooter, ExpandableLabel, Flex } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { CardFooter, ExpandableLabel, Flex } from '@cometswap/uikit'
 import { useEffect, useState } from 'react'
 import { LotteryRound } from 'state/types'
 import FooterExpanded from './FooterExpanded'
@@ -42,3 +42,4 @@ const PreviousRoundCardFooter: React.FC<React.PropsWithChildren<PreviousRoundCar
 }
 
 export default PreviousRoundCardFooter
+

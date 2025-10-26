@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { REWARD_RATE } from '@pancakeswap/prediction'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { REWARD_RATE } from '@cometswap/prediction'
+import { Token } from '@cometswap/sdk'
 import {
   AutoRenewIcon,
   Box,
@@ -17,8 +17,8 @@ import {
   Text,
   TrophyGoldIcon,
   useToast,
-} from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -192,3 +192,4 @@ const CollectRoundWinningsModal: React.FC<React.PropsWithChildren<CollectRoundWi
 }
 
 export default CollectRoundWinningsModal
+

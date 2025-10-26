@@ -5,18 +5,18 @@ import {
   CalculatorMode,
   RoiCalculatorModal,
   RoiCalculatorModalProps,
-} from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { getRoi } from '@pancakeswap/utils/compoundApyHelpers'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { getRoi } from '@cometswap/utils/compoundApyHelpers'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { useEffect, useMemo, useState } from 'react'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
 
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { useAccount } from 'wagmi'
 import LockDurationField from '../LockedPool/Common/LockDurationField'
 import { weeksToSeconds } from '../utils/formatSecondsToWeeks'
@@ -28,12 +28,12 @@ export const VaultRoiCalculatorModal = ({
 }: { pool: Pool.DeserializedPool<Token>; initialView?: number } & Partial<RoiCalculatorModalProps>) => {
   const { userData } = useVaultPoolByKey(pool.vaultKey)
 
-  const cakeAsBigNumber = userData?.balance?.cakeAsBigNumber
+  const cometAsBigNumber = userData?.balance?.cometAsBigNumber
   const { getLockedApy, flexibleApy } = useVaultApy()
   const { t } = useTranslation()
   const { address: account } = useAccount()
 
-  const [cakeVaultView, setCakeVaultView] = useState(initialView || 0)
+  const [cakeVaultView, setCometVaultView] = useState(initialView || 0)
 
   const [duration, setDuration] = useState(() => weeksToSeconds(1))
 
@@ -68,8 +68,8 @@ export const VaultRoiCalculatorModal = ({
       stakingTokenPrice={pool.stakingTokenPrice ?? 0}
       stakingTokenBalance={
         (pool.userData?.stakingTokenBalance
-          ? cakeAsBigNumber?.plus(pool.userData?.stakingTokenBalance)
-          : cakeAsBigNumber) ?? BIG_ZERO
+          ? cometAsBigNumber?.plus(pool.userData?.stakingTokenBalance)
+          : cometAsBigNumber) ?? BIG_ZERO
       }
       stakingTokenDecimals={pool.stakingToken.decimals}
       autoCompoundFrequency={1}
@@ -87,14 +87,14 @@ export const VaultRoiCalculatorModal = ({
           : null
       }
       header={
-        pool.vaultKey === VaultKey.CakeVault ? (
+        pool.vaultKey === VaultKey.CometVault ? (
           <ButtonMenu
             mb="24px"
             fullWidth
             scale="sm"
             variant="subtle"
             activeIndex={cakeVaultView}
-            onItemClick={setCakeVaultView}
+            onItemClick={setCometVaultView}
           >
             {buttonMenuItems}
           </ButtonMenu>
@@ -174,3 +174,4 @@ function LockedRoiStrategy({ state, dispatch, earningTokenPrice, duration, staki
 
   return null
 }
+

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
 
 export const useTotalAssetInUsd = (
   staked0Amount?: CurrencyAmount<Currency>,
@@ -16,3 +16,4 @@ export const useTotalAssetInUsd = (
   }, [staked0Amount, staked1Amount, token0PriceUSD, token1PriceUSD])
   return totalAssetsInUsd
 }
+

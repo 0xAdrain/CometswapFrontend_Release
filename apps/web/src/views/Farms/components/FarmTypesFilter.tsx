@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Button,
@@ -10,7 +10,7 @@ import {
   Text,
   Toggle,
   TradeIcon,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 
@@ -189,3 +189,4 @@ export const FarmTypesFilter: React.FC<FarmTypesFilterProps> = ({
     </>
   )
 }
+

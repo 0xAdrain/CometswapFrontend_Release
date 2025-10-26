@@ -1,4 +1,4 @@
-import { MotionBox, Text, WalletFilledV2Icon } from "@pancakeswap/uikit";
+import { MotionBox, Text, WalletFilledV2Icon } from "@cometswap/uikit";
 import { memo } from "react";
 import { styled } from "styled-components";
 

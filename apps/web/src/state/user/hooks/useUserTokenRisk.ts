@@ -8,3 +8,4 @@ const userTokenRiskAtom = atomWithStorageWithErrorCatch<boolean>(USER_TOKEN_RISK
 export function useUserTokenRisk() {
   return useAtom(userTokenRiskAtom)
 }
+

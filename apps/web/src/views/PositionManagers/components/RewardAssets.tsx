@@ -1,18 +1,18 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { Balance, Box, Button, Flex, Text, useToast } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { Balance, Box, Button, Flex, Text, useToast } from '@cometswap/uikit'
+import { useWeb3React } from '@cometswap/wagmi'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { usePositionManagerBCakeWrapperContract, usePositionManagerWrapperContract } from 'hooks/useContract'
+import { usePositionManagerBCometWrapperContract, usePositionManagerWrapperContract } from 'hooks/useContract'
 import { useCallback, useMemo } from 'react'
 import { Address } from 'viem'
 import { useEarningTokenPriceInfo } from '../hooks'
 
 interface RewardAssetsProps {
   contractAddress: Address
-  bCakeWrapper?: Address
+  bCometWrapper?: Address
   earningToken: Currency
   pendingReward: bigint | undefined
   refetch?: () => void
@@ -23,24 +23,24 @@ export const RewardAssets: React.FC<RewardAssetsProps> = ({
   pendingReward,
   earningToken,
   refetch,
-  bCakeWrapper,
+  bCometWrapper,
 }) => {
   const { t } = useTranslation()
   const { account, chain } = useWeb3React()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const { earningUsdValue, earningsBalance } = useEarningTokenPriceInfo(earningToken, pendingReward)
-  const bCakeWrapperAddress = bCakeWrapper ?? '0x'
-  const bCakeWrapperContract = usePositionManagerBCakeWrapperContract(bCakeWrapperAddress)
+  const bCometWrapperAddress = bCometWrapper ?? '0x'
+  const bCometWrapperContract = usePositionManagerBCometWrapperContract(bCometWrapperAddress)
   const wrapperContract = usePositionManagerWrapperContract(contractAddress)
 
   const isDisabled = useMemo(() => pendingTx || new BigNumber(earningsBalance).lte(0), [pendingTx, earningsBalance])
 
   const onClickHarvest = useCallback(async () => {
     const receipt = await fetchWithCatchTxError(
-      bCakeWrapper
+      bCometWrapper
         ? () =>
-            bCakeWrapperContract.write.deposit([BigInt(0), false], {
+            bCometWrapperContract.write.deposit([BigInt(0), false], {
               account: account ?? '0x',
               chain,
             })
@@ -62,8 +62,8 @@ export const RewardAssets: React.FC<RewardAssetsProps> = ({
     }
   }, [
     fetchWithCatchTxError,
-    bCakeWrapper,
-    bCakeWrapperContract.write,
+    bCometWrapper,
+    bCometWrapperContract.write,
     account,
     chain,
     wrapperContract.write,
@@ -100,3 +100,4 @@ export const RewardAssets: React.FC<RewardAssetsProps> = ({
     </Flex>
   )
 }
+

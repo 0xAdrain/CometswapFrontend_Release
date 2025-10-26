@@ -1,6 +1,6 @@
-import { Currency } from '@pancakeswap/sdk'
-import { Box, Flex, Text } from '@pancakeswap/uikit'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { Currency } from '@cometswap/sdk'
+import { Box, Flex, Text } from '@cometswap/uikit'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { ReactNode, memo, useMemo } from 'react'
 
 import BoostedTag from 'views/Farms/components/YieldBooster/components/BoostedTag'
@@ -82,3 +82,4 @@ export const CardTitle = memo(function CardTitle({
     </CardHeader>
   )
 })
+

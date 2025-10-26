@@ -1,4 +1,4 @@
-import { Button, ButtonProps, useModal } from '@pancakeswap/uikit'
+import { Button, ButtonProps, useModal } from '@cometswap/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { fetchNodeHistory } from 'state/predictions'
@@ -57,3 +57,4 @@ const CollectWinningsButton: React.FC<React.PropsWithChildren<CollectWinningsBut
 }
 
 export default CollectWinningsButton
+

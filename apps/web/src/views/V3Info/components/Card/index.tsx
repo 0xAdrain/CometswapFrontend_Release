@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const Card = styled(Box)<{ width?: string; padding?: string; border?: string; borderRadius?: string }>`
@@ -72,3 +72,4 @@ export const GreyBadge = styled(Card)`
   padding: 4px 6px;
   font-weight: 400;
 `
+

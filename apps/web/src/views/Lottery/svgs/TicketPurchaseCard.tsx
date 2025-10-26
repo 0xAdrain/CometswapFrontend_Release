@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 const TicketPurchaseCard: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -54,3 +54,4 @@ const TicketPurchaseCard: React.FC<React.PropsWithChildren<SvgProps>> = (props) 
 }
 
 export default TicketPurchaseCard
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, useToast } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
@@ -54,3 +54,4 @@ const ClaimButton: React.FunctionComponent<React.PropsWithChildren<ClaimButtonPr
 }
 
 export default ClaimButton
+

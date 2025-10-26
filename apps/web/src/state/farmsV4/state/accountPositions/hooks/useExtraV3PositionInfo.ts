@@ -1,5 +1,5 @@
-import { unwrappedToken } from '@pancakeswap/tokens'
-import { Position } from '@pancakeswap/v3-sdk'
+import { unwrappedToken } from '@cometswap/tokens'
+import { Position } from '@cometswap/v3-sdk'
 import { useTokenByChainId } from 'hooks/Tokens'
 import useIsTickAtLimit from 'hooks/v3/useIsTickAtLimit'
 import { usePoolByChainId } from 'hooks/v3/usePools'
@@ -19,12 +19,53 @@ export const useExtraV3PositionInfo = (positionDetail?: PositionDetail) => {
 
   const position = useMemo(() => {
     if (pool && positionDetail) {
-      return new Position({
-        pool,
-        liquidity: positionDetail.liquidity.toString(),
-        tickLower: positionDetail.tickLower,
-        tickUpper: positionDetail.tickUpper,
-      })
+      // 验证fee和tick值的有效性，避免TICK_LOWER/TICK_UPPER错误
+      const validFeeAmounts = [100, 500, 2500, 10000]
+      const isValidFeeAmount = positionDetail.fee && validFeeAmounts.includes(positionDetail.fee)
+      
+      if (!isValidFeeAmount) {
+        console.warn('Skipping Position creation for invalid fee in useExtraV3PositionInfo:', { 
+          fee: positionDetail.fee,
+          tokenId: positionDetail.tokenId?.toString() 
+        })
+        return undefined
+      }
+      
+      // 验证tick值是否符合tickSpacing要求
+      const tickSpacing = pool.tickSpacing
+      const tickLowerValid = Number.isInteger(positionDetail.tickLower) && positionDetail.tickLower % tickSpacing === 0
+      const tickUpperValid = Number.isInteger(positionDetail.tickUpper) && positionDetail.tickUpper % tickSpacing === 0
+      
+      if (!tickLowerValid || !tickUpperValid) {
+        console.warn('Skipping Position creation for invalid tick values in useExtraV3PositionInfo:', { 
+          fee: positionDetail.fee,
+          tickLower: positionDetail.tickLower,
+          tickUpper: positionDetail.tickUpper,
+          tickSpacing,
+          tickLowerValid,
+          tickUpperValid,
+          tokenId: positionDetail.tokenId?.toString()
+        })
+        return undefined
+      }
+      
+      try {
+        return new Position({
+          pool,
+          liquidity: positionDetail.liquidity.toString(),
+          tickLower: positionDetail.tickLower,
+          tickUpper: positionDetail.tickUpper,
+        })
+      } catch (error) {
+        console.error('Failed to create Position in useExtraV3PositionInfo:', { 
+          fee: positionDetail.fee,
+          tickLower: positionDetail.tickLower,
+          tickUpper: positionDetail.tickUpper,
+          tokenId: positionDetail.tokenId?.toString(),
+          error: error instanceof Error ? error.message : String(error)
+        })
+        return undefined
+      }
     }
     return undefined
   }, [pool, positionDetail])
@@ -74,3 +115,4 @@ export const useExtraV3PositionInfo = (positionDetail?: PositionDetail) => {
     base,
   }
 }
+

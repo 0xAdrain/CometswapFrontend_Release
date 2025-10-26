@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   ButtonMenu,
@@ -8,7 +8,7 @@ import {
   PaginationButton,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import DesktopView from 'views/TradingReward/components/RewardsBreakdown/DesktopView'
 import MobileView from 'views/TradingReward/components/RewardsBreakdown/MobileView'
@@ -16,12 +16,14 @@ import { AllTradingRewardPairDetail, RewardType } from 'views/TradingReward/hook
 import { UserCampaignInfoDetail } from 'views/TradingReward/hooks/useAllUserCampaignInfo'
 import useRewardBreakdown, { RewardBreakdownDetail } from 'views/TradingReward/hooks/useRewardBreakdown'
 import { timeFormat } from 'views/TradingReward/utils/timeFormat'
+import { FarmV3DataWithPrice } from '@cometswap/farms'
 
 interface RewardsBreakdownProps {
   type: RewardType
   allUserCampaignInfo: UserCampaignInfoDetail[]
   allTradingRewardPairData: AllTradingRewardPairDetail
   campaignPairs: { [campaignId in string]: { [chainId in string]: Array<string> } }
+  farms: FarmV3DataWithPrice[]
 }
 
 const MAX_PER_PAGE = 1
@@ -38,6 +40,7 @@ const RewardsBreakdown: React.FC<React.PropsWithChildren<RewardsBreakdownProps>>
   allUserCampaignInfo,
   allTradingRewardPairData,
   campaignPairs,
+  farms,
 }) => {
   const {
     t,
@@ -53,6 +56,7 @@ const RewardsBreakdown: React.FC<React.PropsWithChildren<RewardsBreakdownProps>>
     allUserCampaignInfo,
     allTradingRewardPairData,
     campaignPairs,
+    farms,
   })
 
   const sortData = useMemo(() => data.sort((a, b) => Number(b.campaignId) - Number(a.campaignId)), [data])

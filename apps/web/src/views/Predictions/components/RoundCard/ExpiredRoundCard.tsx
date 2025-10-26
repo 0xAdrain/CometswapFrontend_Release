@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { BlockIcon, Box, Card, CardBody } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { BlockIcon, Box, Card, CardBody } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { getHasRoundFailed } from 'state/predictions/helpers'
 import { useGetBufferSeconds } from 'state/predictions/hooks'
@@ -105,3 +105,4 @@ const ExpiredRoundCard: React.FC<React.PropsWithChildren<ExpiredRoundCardProps>>
 }
 
 export default ExpiredRoundCard
+

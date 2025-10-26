@@ -25,3 +25,4 @@ export function StakedLimitEndOn({ lockPeriod, poolEndDay }: { lockPeriod?: numb
 
   return <>{formatUnixTime(endTime * 86400 + 43200)}</>
 }
+

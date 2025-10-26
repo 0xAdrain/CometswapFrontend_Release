@@ -4,6 +4,13 @@ export { darkColors, lightColors, additionalColors, baseColors };
 
 export const shadows = {
   level1: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
+  // CometSwap: 增加现代化阴影层级
+  level2: "0px 4px 16px -4px rgba(25, 19, 38, 0.12), 0px 2px 4px rgba(25, 19, 38, 0.08)",
+  level3: "0px 8px 24px -6px rgba(25, 19, 38, 0.15), 0px 4px 8px rgba(25, 19, 38, 0.1)",
+  button: "0px 2px 8px -2px rgba(25, 19, 38, 0.1), 0px 1px 2px rgba(25, 19, 38, 0.06)",
+  buttonHover: "0px 4px 12px -2px rgba(25, 19, 38, 0.15), 0px 2px 4px rgba(25, 19, 38, 0.1)",
+  card: "0px 1px 3px rgba(25, 19, 38, 0.1), 0px 1px 2px rgba(25, 19, 38, 0.06)",
+  cardHover: "0px 4px 16px -4px rgba(25, 19, 38, 0.12), 0px 2px 8px rgba(25, 19, 38, 0.08)",
   active: "0px 0px 0px 1px #0098A1, 0px 0px 4px 8px rgba(31, 199, 212, 0.4)",
   success: "0px 0px 0px 1px #31D0AA, 0px 0px 0px 4px rgba(49, 208, 170, 0.2)",
   warning: "0px 0px 0px 1px #D67E0A, 0px 0px 0px 4px rgba(214, 126, 10, 0.2)",
@@ -52,8 +59,8 @@ export const tokens = {
     "20px": "20px",
     "32px": "32px",
     small: "4px",
-    default: "16px",
-    card: "24px",
+    default: "8px", // CometSwap: 减少按钮圆角，更专业 16px → 8px
+    card: "12px", // CometSwap: 减少卡片圆角，更现代 24px → 12px
     circle: "50%",
   },
   fontSizes: {

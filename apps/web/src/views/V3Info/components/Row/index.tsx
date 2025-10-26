@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const Row = styled(Box)<{
@@ -51,3 +51,4 @@ export const ResponsiveRow = styled(RowBetween)`
 `
 
 export default Row
+

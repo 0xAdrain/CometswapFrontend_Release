@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { Skeleton, Table, Td } from '@pancakeswap/uikit'
+import { Skeleton, Table, Td } from '@cometswap/uikit'
 
 const LoadingTable = () => (
   <Table>
@@ -42,3 +42,4 @@ const LoadingTable = () => (
 )
 
 export default memo(LoadingTable)
+

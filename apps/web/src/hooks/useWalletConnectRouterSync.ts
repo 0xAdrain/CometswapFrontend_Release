@@ -61,3 +61,4 @@ export const useWalletConnectRouterSync = () => {
     }
   }, [router, isWalletConnect])
 }
+

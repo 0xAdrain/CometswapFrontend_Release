@@ -5,3 +5,4 @@ export const typeInput = createAction<{ field: CurrencyField; typedValue: string
   'mint/typeInputMint',
 )
 export const resetMintState = createAction<void>('mint/resetMintState')
+

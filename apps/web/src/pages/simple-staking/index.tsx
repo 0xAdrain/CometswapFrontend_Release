@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import FixedStaking from 'views/FixedStaking'
 
 const FixedStakingPage = () => {
@@ -8,3 +8,4 @@ const FixedStakingPage = () => {
 FixedStakingPage.chains = [ChainId.BSC]
 
 export default FixedStakingPage
+

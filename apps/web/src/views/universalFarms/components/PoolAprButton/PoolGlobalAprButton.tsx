@@ -1,4 +1,4 @@
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { useEffect, useMemo } from 'react'
 import { usePoolApr } from 'state/farmsV4/hooks'
@@ -34,3 +34,4 @@ export const PoolGlobalAprButton: React.FC<PoolGlobalAprButtonProps> = ({ pool, 
     <PoolAprButton pool={pool} lpApr={parseFloat(lpApr) ?? 0} cakeApr={cakeApr} merklApr={parseFloat(merklApr) ?? 0} />
   )
 }
+

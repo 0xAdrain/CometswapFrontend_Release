@@ -12,3 +12,4 @@ export const polygonRpcProvider = createPublicClient({
   },
   pollingInterval: 6_000,
 })
+

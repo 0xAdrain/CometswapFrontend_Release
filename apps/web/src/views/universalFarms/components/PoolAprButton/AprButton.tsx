@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { FlexGap, Skeleton, Text, TooltipText } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { FlexGap, Skeleton, Text, TooltipText } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { forwardRef, MouseEvent, useCallback } from 'react'
 import { displayApr } from 'views/universalFarms/utils/displayApr'
 
@@ -82,3 +82,4 @@ const AprButtonText = forwardRef<HTMLElement, Pick<ApyButtonProps, 'baseApr' | '
     )
   },
 )
+

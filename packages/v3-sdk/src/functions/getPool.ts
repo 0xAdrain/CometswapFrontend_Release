@@ -1,4 +1,4 @@
-import { BigintIsh, Currency, sortCurrencies } from '@pancakeswap/swap-sdk-core'
+import { BigintIsh, Currency, sortCurrencies } from '@cometswap/swap-sdk-core'
 import invariant from 'tiny-invariant'
 import { NoTickDataProvider, Tick, TickConstructorArgs, TickDataProvider, TickListDataProvider } from '../entities'
 

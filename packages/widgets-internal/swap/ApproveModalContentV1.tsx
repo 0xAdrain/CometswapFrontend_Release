@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { AutoColumn, Box, ColumnCenter, Flex, Spinner, Text, TooltipText, useTooltip } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { AutoColumn, Box, ColumnCenter, Flex, Spinner, Text, TooltipText, useTooltip } from "@cometswap/uikit";
 
 interface ApproveModalContentProps {
   title: string;
@@ -10,7 +10,7 @@ interface ApproveModalContentProps {
 export const ApproveModalContentV1: React.FC<ApproveModalContentProps> = ({ title, isBonus, isX }) => {
   const { t } = useTranslation();
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
-    <Text>{t("Pancakeswap AMM includes V3, V2 and stable swap.")}</Text>,
+    <Text>{t("Cometswap AMM includes V3, V2 and stable swap.")}</Text>,
     { placement: "top" }
   );
 
@@ -29,7 +29,7 @@ export const ApproveModalContentV1: React.FC<ApproveModalContentProps> = ({ titl
           <Text fontSize="14px">{t("Swapping thru:")}</Text>
           {isX ? (
             <Text ml="4px" fontSize="14px">
-              PancakeSwap X
+              CometSwap X
             </Text>
           ) : isBonus ? (
             <Text ml="4px" fontSize="14px">
@@ -38,7 +38,7 @@ export const ApproveModalContentV1: React.FC<ApproveModalContentProps> = ({ titl
           ) : (
             <>
               <TooltipText ml="4px" fontSize="14px" color="textSubtle" ref={targetRef}>
-                {t("Pancakeswap AMM")}
+                {t("Cometswap AMM")}
               </TooltipText>
               {tooltipVisible && tooltip}
             </>

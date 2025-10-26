@@ -19,3 +19,4 @@ describe('getAddress', () => {
     expect(getAddressFromMap(address, 31337)).toEqual(expected)
   })
 })
+

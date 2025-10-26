@@ -3,11 +3,11 @@ import {
   DeserializedFarmUserData,
   getLegacyFarmConfig,
   supportedChainIdV2,
-} from '@pancakeswap/farms'
+} from '@cometswap/farms'
 import { useQuery } from '@tanstack/react-query'
 import { SLOW_INTERVAL } from 'config/constants'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useBCakeProxyContractAddress } from 'hooks/useBCakeProxyContractAddress'
+import { useBveCometProxyContractAddress } from 'hooks/useBveCometProxyContractAddress'
 import { fetchV3FarmsAvgInfo } from 'queries/farms'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
@@ -17,8 +17,8 @@ import { getMasterChefContract } from 'utils/contractHelpers'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { V2FarmWithoutStakedValue, V3FarmWithoutStakedValue } from 'state/farms/types'
 import {
-  fetchBCakeWrapperDataAsync,
-  fetchBCakeWrapperUserDataAsync,
+  fetchBveCometWrapperDataAsync,
+  fetchBveCometWrapperUserDataAsync,
   fetchFarmsPublicDataAsync,
   fetchFarmUserDataAsync,
 } from '.'
@@ -57,7 +57,7 @@ export function useFarmV2PublicAPI() {
     queryKey: ['farm-v2-pubic-api', chainId],
 
     queryFn: async () => {
-      return fetch(`https://farms-api.pancakeswap.com/${chainId}`)
+      return fetch(`https://farms-api.cometswap.com/${chainId}`)
         .then((res) => res.json())
         .then((res) => res.data)
     },
@@ -120,7 +120,7 @@ export const usePollFarmsWithUserData = () => {
     proxyAddress,
     proxyCreated,
     isLoading: isProxyContractLoading,
-  } = useBCakeProxyContractAddress(account, chainId)
+  } = useBveCometProxyContractAddress(account, chainId)
 
   useQuery({
     queryKey: ['publicFarmData', chainId],
@@ -135,8 +135,8 @@ export const usePollFarmsWithUserData = () => {
         throw new Error('Failed to fetch farm config')
       }
       const pids = farmsConfig.map((farmToFetch) => farmToFetch.pid)
-      const bCakePids = farmsConfig.filter((d) => Boolean(d.bCakeWrapperAddress)).map((farmToFetch) => farmToFetch.pid)
-      dispatch(fetchBCakeWrapperDataAsync({ pids: bCakePids, chainId }))
+      const bveCometPids = farmsConfig.filter((d) => Boolean(d.bveCometWrapperAddress)).map((farmToFetch) => farmToFetch.pid)
+      dispatch(fetchBveCometWrapperDataAsync({ pids: bveCometPids, chainId }))
       dispatch(fetchFarmsPublicDataAsync({ pids, chainId }))
       return null
     },
@@ -161,9 +161,9 @@ export const usePollFarmsWithUserData = () => {
       if (!chainId || !farmsConfig || !account) return
       const pids = farmsConfig.map((farmToFetch) => farmToFetch.pid)
       const params = proxyCreated ? { account, pids, proxyAddress, chainId } : { account, pids, chainId }
-      const bCakePids = farmsConfig.filter((d) => Boolean(d.bCakeWrapperAddress)).map((farmToFetch) => farmToFetch.pid)
-      const bCakeParams = { account, pids: bCakePids, chainId }
-      dispatch(fetchBCakeWrapperUserDataAsync(bCakeParams))
+      const bveCometPids = farmsConfig.filter((d) => Boolean(d.bveCometWrapperAddress)).map((farmToFetch) => farmToFetch.pid)
+      const bveCometParams = { account, pids: bveCometPids, chainId }
+      dispatch(fetchBveCometWrapperUserDataAsync(bveCometParams))
       dispatch(fetchFarmUserDataAsync(params))
     },
     enabled: Boolean(account && chainId && !isProxyContractLoading),
@@ -193,3 +193,4 @@ export const useLpTokenPrice = (symbol: string) => {
   const lpTokenPriceFromLpSymbol = useMemo(() => makeLpTokenPriceFromLpSymbolSelector(symbol), [symbol])
   return useSelector(lpTokenPriceFromLpSymbol)
 }
+

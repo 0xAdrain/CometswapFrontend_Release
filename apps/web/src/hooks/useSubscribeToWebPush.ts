@@ -52,3 +52,4 @@ const useSubscribeToWebPushNotifications = (): IUseSendNotification => {
 }
 
 export default useSubscribeToWebPushNotifications
+

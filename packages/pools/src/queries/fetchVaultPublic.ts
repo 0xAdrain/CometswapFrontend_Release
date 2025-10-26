@@ -1,15 +1,15 @@
 import BigNumber from 'bignumber.js'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { ChainId } from '@pancakeswap/chains'
-import { CAKE } from '@pancakeswap/tokens'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { COMET } from '@cometswap/tokens'
 import { Address } from 'viem'
 
-import { cakeVaultV2ABI } from '../abis/ICakeVaultV2'
+import { cometVaultV2ABI } from '../abis/ICometVaultV2'
 import { OnChainProvider } from '../types'
-import { getCakeFlexibleSideVaultAddress, getCakeVaultAddress } from './getAddresses'
+import { getCometFlexibleSideVaultAddress, getCometVaultAddress } from './getAddresses'
 
 interface Params {
-  cakeVaultAddress?: Address
+  cometVaultAddress?: Address
   chainId: ChainId
   provider: OnChainProvider
 }
@@ -26,34 +26,34 @@ const balanceOfAbi = [
 
 export const fetchPublicVaultData = async ({
   chainId,
-  cakeVaultAddress = getCakeVaultAddress(chainId),
+  cometVaultAddress = getCometVaultAddress(chainId),
   provider,
 }: Params) => {
   try {
     const client = provider({ chainId })
 
-    const [sharePrice, shares, totalLockedAmount, totalCakeInVault] = await client.multicall({
+    const [sharePrice, shares, totalLockedAmount, totalCometInVault] = await client.multicall({
       contracts: [
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'getPricePerFullShare',
         },
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'totalShares',
         },
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'totalLockedAmount',
         },
         {
           abi: balanceOfAbi,
-          address: CAKE[ChainId.BSC].address,
+          address: COMET[ChainId.BSC].address,
           functionName: 'balanceOf',
-          args: [cakeVaultAddress],
+          args: [cometVaultAddress],
         },
       ],
       allowFailure: true,
@@ -72,43 +72,43 @@ export const fetchPublicVaultData = async ({
       totalShares: totalSharesAsBigNumber.toJSON(),
       totalLockedAmount: totalLockedAmountAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: totalCakeInVault.result ? new BigNumber(totalCakeInVault.result.toString()).toJSON() : '0',
+      totalCometInVault: totalCometInVault.result ? new BigNumber(totalCometInVault.result.toString()).toJSON() : '0',
     }
   } catch (error) {
     return {
       totalShares: null,
       totalLockedAmount: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
+      totalCometInVault: null,
     }
   }
 }
 
 export const fetchPublicFlexibleSideVaultData = async ({
   chainId,
-  cakeVaultAddress = getCakeFlexibleSideVaultAddress(chainId),
+  cometVaultAddress = getCometFlexibleSideVaultAddress(chainId),
   provider,
 }: Params) => {
   try {
     const client = provider({ chainId })
 
-    const [sharePrice, shares, totalCakeInVault] = await client.multicall({
+    const [sharePrice, shares, totalCometInVault] = await client.multicall({
       contracts: [
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'getPricePerFullShare',
         },
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'totalShares',
         },
         {
           abi: balanceOfAbi,
-          address: CAKE[ChainId.BSC].address,
+          address: COMET[ChainId.BSC].address,
           functionName: 'balanceOf',
-          args: [cakeVaultAddress],
+          args: [cometVaultAddress],
         },
       ],
       allowFailure: true,
@@ -120,20 +120,20 @@ export const fetchPublicFlexibleSideVaultData = async ({
     return {
       totalShares: totalSharesAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: new BigNumber((totalCakeInVault.result || '0').toString()).toJSON(),
+      totalCometInVault: new BigNumber((totalCometInVault.result || '0').toString()).toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
+      totalCometInVault: null,
     }
   }
 }
 
 export const fetchVaultFees = async ({
   chainId,
-  cakeVaultAddress = getCakeVaultAddress(chainId),
+  cometVaultAddress = getCometVaultAddress(chainId),
   provider,
 }: Params) => {
   try {
@@ -142,18 +142,18 @@ export const fetchVaultFees = async ({
     const [performanceFee, withdrawalFee, withdrawalFeePeriod] = await client.multicall({
       contracts: [
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'performanceFee',
         },
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'withdrawFee',
         },
         {
-          abi: cakeVaultV2ABI,
-          address: cakeVaultAddress,
+          abi: cometVaultV2ABI,
+          address: cometVaultAddress,
           functionName: 'withdrawFeePeriod',
         },
       ],

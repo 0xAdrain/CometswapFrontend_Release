@@ -2,7 +2,7 @@ export const zapABI = [
   {
     inputs: [
       { internalType: 'address', name: '_WBNBAddress', type: 'address' },
-      { internalType: 'address', name: '_pancakeRouter', type: 'address' },
+      { internalType: 'address', name: '_cometRouter', type: 'address' },
       { internalType: 'uint256', name: '_maxZapReverseRatio', type: 'uint256' },
     ],
     stateMutability: 'nonpayable',
@@ -154,8 +154,8 @@ export const zapABI = [
   },
   {
     inputs: [],
-    name: 'pancakeRouter',
-    outputs: [{ internalType: 'contract IPancakeRouter02', name: '', type: 'address' }],
+    name: 'cometRouter',
+    outputs: [{ internalType: 'contract ICometRouter02', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -263,3 +263,4 @@ export const zapABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+

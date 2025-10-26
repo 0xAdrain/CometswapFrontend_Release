@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
+import { useCometPrice } from 'hooks/useCometPrice'
 import Link from 'next/link'
 import { useMemo } from 'react'
 import { styled } from 'styled-components'
@@ -10,7 +10,7 @@ import TextComponent from 'views/TradingReward/components/TopTraders/YourTrading
 import TimeText from 'views/TradingReward/components/TopTraders/YourTradingReward/TimeText'
 import { Incentives, RewardInfo } from 'views/TradingReward/hooks/useAllTradingRewardPair'
 import { CampaignIdInfoDetail } from 'views/TradingReward/hooks/useCampaignIdInfo'
-import useRewardInCake from 'views/TradingReward/hooks/useRewardInCake'
+import useRewardInComet from 'views/TradingReward/hooks/useRewardInComet'
 import { timeFormat } from 'views/TradingReward/utils/timeFormat'
 
 const Container = styled(Flex)`
@@ -95,7 +95,7 @@ const CurrentRewardPool: React.FC<React.PropsWithChildren<CurrentRewardPoolProps
     currentLanguage: { locale },
   } = useTranslation()
   const { isDesktop } = useMatchBreakpoints()
-  const cakePrice = useCakePrice()
+  const cometPriceBusd = useCometPrice()
   const { totalReward, campaignClaimTime } = incentives ?? { totalReward: '0', campaignClaimTime: 0 }
 
   const currentDate = Date.now() / 1000
@@ -104,11 +104,11 @@ const CurrentRewardPool: React.FC<React.PropsWithChildren<CurrentRewardPoolProps
 
   const currentRewardInfo = useMemo(() => rewardInfo?.[campaignId], [rewardInfo, campaignId])
 
-  const rewardInCake = useRewardInCake({
+  const rewardInComet = useRewardInComet({
     timeRemaining,
     totalEstimateRewardUSD: campaignInfoData?.totalEstimateRewardUSD ?? 0,
     totalReward,
-    cakePrice,
+    cometPriceBusd,
     rewardPrice: currentRewardInfo?.rewardPrice ?? '0',
     rewardTokenDecimal: currentRewardInfo?.rewardTokenDecimal ?? 0,
   })
@@ -149,10 +149,10 @@ const CurrentRewardPool: React.FC<React.PropsWithChildren<CurrentRewardPoolProps
           <TextComponent text={t('Total reward to distribute')} />
           <Flex>
             <Text bold color="white" fontSize={['14px', '14px', '14px', '20px']}>
-              {formatNumber(rewardInCake, 0, 0)}
+              {formatNumber(rewardInComet, 0, 0)}
             </Text>
             <Text ml="4px" bold color="white" fontSize={['14px', '14px', '14px', '20px']}>
-              {t('in CAKE')}
+              {t('in COMET')}
             </Text>
           </Flex>
         </Flex>

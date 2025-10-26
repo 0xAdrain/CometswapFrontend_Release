@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { CurrencyParams, getCurrencyKey, getCurrencyListUsdPrice } from '@pancakeswap/price-api-sdk'
-import { BIG_ONE, BIG_TWO, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { CurrencyParams, getCurrencyKey, getCurrencyListUsdPrice } from '@cometswap/price-api-sdk'
+import { BIG_ONE, BIG_TWO, BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BN from 'bignumber.js'
 import { Address, PublicClient, formatUnits } from 'viem'
 import { FarmV2SupportedChainId, supportedChainIdV2 } from '../const'
@@ -184,7 +184,7 @@ const masterChefV2Abi = [
     inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     name: 'poolInfo',
     outputs: [
-      { internalType: 'uint256', name: 'accCakePerShare', type: 'uint256' },
+      { internalType: 'uint256', name: 'accveCometPerShare', type: 'uint256' },
       { internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
       { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
       { internalType: 'uint256', name: 'totalBoostedShare', type: 'uint256' },
@@ -264,7 +264,7 @@ export const fetchMasterChefData = async (
       const data = masterChefMultiCallResult[masterChefChunkedResultCounter]
       masterChefChunkedResultCounter++
       return {
-        accCakePerShare: data[0],
+        accveCometPerShare: data[0],
         lastRewardBlock: data[1],
         allocPoint: data[2],
         totalBoostedShare: data[3],

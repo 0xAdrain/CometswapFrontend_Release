@@ -1,7 +1,7 @@
 {
-  "name": "@pancakeswap/universal-router-sdk",
+  "name": "@cometswap/universal-router-sdk",
   "version": "1.0.42",
-  "description": "🛠 An SDK for building applications on top of Pancakeswap.",
+  "description": "🛠 An SDK for building applications on top of Cometswap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.mjs",
@@ -18,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "https://github.com/cometswap/comet-frontend.git",
     "directory": "packages/universal-router-sdk"
   },
   "keywords": [
-    "pancakeswap"
+    "cometswap"
   ],
   "scripts": {
     "build": "tsup",
@@ -35,18 +35,18 @@
     "lint": "eslint '{src,test}/**/*.{js,jsx,ts,json}'"
   },
   "devDependencies": {
-    "@pancakeswap/stable-swap-sdk": "workspace:*",
-    "@pancakeswap/tokens": "workspace:*",
+    "@cometswap/stable-swap-sdk": "workspace:*",
+    "@cometswap/tokens": "workspace:*",
     "@types/node": "^15.12.2",
     "tslib": "^2.3.0",
     "tsup": "^6.7.0"
   },
   "dependencies": {
-    "@pancakeswap/chains": "workspace:*",
-    "@pancakeswap/permit2-sdk": "workspace:*",
-    "@pancakeswap/sdk": "workspace:*",
-    "@pancakeswap/smart-router": "workspace:*",
-    "@pancakeswap/v3-sdk": "workspace:*",
+    "@cometswap/chains": "workspace:*",
+    "@cometswap/permit2-sdk": "workspace:*",
+    "@cometswap/sdk": "workspace:*",
+    "@cometswap/smart-router": "workspace:*",
+    "@cometswap/v3-sdk": "workspace:*",
     "abitype": "^0.9.8",
     "tiny-invariant": "^1.1.0",
     "viem": "catalog:"

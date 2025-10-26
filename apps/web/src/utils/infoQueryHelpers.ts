@@ -41,3 +41,4 @@ export const multiQuery = async (
     return null
   }
 }
+

@@ -12,7 +12,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    if: github.repository == 'pancakeswap/pancake-frontend'
+    if: github.repository == 'cometswap/comet-frontend'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

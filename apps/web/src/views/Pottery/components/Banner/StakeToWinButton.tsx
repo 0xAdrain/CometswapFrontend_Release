@@ -1,6 +1,6 @@
 import { styled, keyframes } from 'styled-components'
-import { Flex, Button, Link } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Button, Link } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { TicketCard } from '../../svgs'
 
 const mainTicketAnimation = keyframes`
@@ -74,3 +74,4 @@ const StakeToWinButton: React.FC<React.PropsWithChildren<StakeToWinButtonProps>>
 }
 
 export default StakeToWinButton
+

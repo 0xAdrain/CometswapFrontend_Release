@@ -3,7 +3,7 @@ export const nftSaleABI = [
     inputs: [
       {
         internalType: 'address',
-        name: '_pancakeSquad',
+        name: '_cometSquad',
         type: 'address',
       },
       {
@@ -23,7 +23,7 @@ export const nftSaleABI = [
       },
       {
         internalType: 'address',
-        name: '_pancakeProfile',
+        name: '_cometProfile',
         type: 'address',
       },
       {
@@ -334,7 +334,7 @@ export const nftSaleABI = [
         type: 'address',
       },
     ],
-    name: 'changeOwnershipPancakeSquad',
+    name: 'changeOwnershipCometSquad',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -556,10 +556,10 @@ export const nftSaleABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfile',
+    name: 'cometProfile',
     outputs: [
       {
-        internalType: 'contract IPancakeProfile',
+        internalType: 'contract ICometProfile',
         name: '',
         type: 'address',
       },
@@ -569,10 +569,10 @@ export const nftSaleABI = [
   },
   {
     inputs: [],
-    name: 'pancakeSquad',
+    name: 'cometSquad',
     outputs: [
       {
-        internalType: 'contract PancakeSquad',
+        internalType: 'contract CometSquad',
         name: '',
         type: 'address',
       },
@@ -861,3 +861,4 @@ export const nftSaleABI = [
     type: 'function',
   },
 ] as const
+

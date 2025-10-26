@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, FlexGap, LinkExternal, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, FlexGap, LinkExternal, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { useMemo } from 'react'
 import { styled } from 'styled-components'
@@ -110,7 +110,7 @@ export const InfoSection: React.FC<{ walletCount: number }> = ({ walletCount }) 
             <Button
               onClick={() => {
                 window.open(
-                  'https://docs.pancakeswap.finance/products/pancakeswap-private-rpc/faq',
+                  'https://docs.cometswap.finance/products/cometswap-private-rpc/faq',
                   '_blank',
                   'noopener noreferrer',
                 )
@@ -125,3 +125,4 @@ export const InfoSection: React.FC<{ walletCount: number }> = ({ walletCount }) 
     </InfoSectionWrapper>
   )
 }
+

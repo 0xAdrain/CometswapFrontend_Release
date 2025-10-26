@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import SwapWarningTokensConfig from 'config/constants/swapWarningTokens'
 import ALETHWarning from './ALETHWarning'
 
@@ -12,3 +12,4 @@ const ETH_WARNING_LIST = {
 }
 
 export default ETH_WARNING_LIST
+

@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Box, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { Box, useMatchBreakpoints } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useScrollToHash from 'hooks/useScrollToHash'
 import { useMemo } from 'react'
@@ -67,7 +67,7 @@ const TradingRewardTopTraders = () => {
           campaignClaimEndTime: tradingRewardPair?.campaignClaimEndTime,
         }
       })
-      .filter((item) => currentTime > Number(item?.campaignClaimTime ?? 0))
+      .filter((item) => currentTime > Number(item?.campaignClaimTime) ?? 0)
   }, [allTradingRewardPairData, allUserCampaignInfo])
 
   if (chainId !== ChainId.BSC) {

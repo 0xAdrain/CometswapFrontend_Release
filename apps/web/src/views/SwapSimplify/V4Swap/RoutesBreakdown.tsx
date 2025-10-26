@@ -1,7 +1,7 @@
-import { useDebounce } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Route } from '@pancakeswap/smart-router'
-import { Box, IconButton, InfoIcon, QuestionHelperV2, SkeletonV2, Text, useModalV2 } from '@pancakeswap/uikit'
+import { useDebounce } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Route } from '@cometswap/smart-router'
+import { Box, IconButton, InfoIcon, QuestionHelperV2, SkeletonV2, Text, useModalV2 } from '@cometswap/uikit'
 import { memo } from 'react'
 import { styled } from 'styled-components'
 
@@ -95,7 +95,7 @@ export const XRoutesBreakdown = memo(function XRoutesBreakdown({ wrapperStyle, l
           <SkeletonV2 width="120px" height="16px" borderRadius="8px" minHeight="auto" isDataReady={!loading}>
             <span style={{ display: 'flex', alignItems: 'center' }}>
               <Text color="primary" fontSize="14px">
-                PancakeSwap X
+                CometSwap X
               </Text>
             </span>
           </SkeletonV2>
@@ -118,3 +118,4 @@ function RouteComp({ route }: RouteProps) {
     </RowBetween>
   )
 }
+

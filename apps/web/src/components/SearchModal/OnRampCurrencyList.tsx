@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Token } from '@pancakeswap/sdk'
-import { ArrowForwardIcon, Column, Flex, QuestionHelper, Text, Toggle } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Token } from '@cometswap/sdk'
+import { ArrowForwardIcon, Column, Flex, QuestionHelper, Text, Toggle } from '@cometswap/uikit'
 import { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { useAllowBtcPurchases } from 'state/buyCrypto/hooks'
@@ -182,3 +182,4 @@ export default function OnRampCurrencyList({
     </FixedSizeList>
   )
 }
+

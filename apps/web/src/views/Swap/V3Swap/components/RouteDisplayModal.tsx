@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { Route, SmartRouter } from '@pancakeswap/smart-router'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { Route, SmartRouter } from '@cometswap/smart-router'
 import {
   AtomBox,
   AutoColumn,
@@ -11,8 +11,8 @@ import {
   Text,
   UseModalV2Props,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
 import { memo, useMemo } from 'react'
 
 import { RoutingSettingsButton } from 'components/Menu/GlobalSettings/SettingsModalV2'
@@ -199,3 +199,4 @@ function PairNode({
     </RouterPoolBox>
   )
 }
+

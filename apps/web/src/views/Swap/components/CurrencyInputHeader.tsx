@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ChartDisableIcon,
   ChartIcon,
@@ -12,9 +12,9 @@ import {
   TooltipText,
   useModal,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { useExpertMode } from '@pancakeswap/utils/user'
-import { Swap } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { useExpertMode } from '@cometswap/utils/user'
+import { Swap } from '@cometswap/widgets-internal'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import InternalLink from 'components/Links'
 import GlobalSettings from 'components/Menu/GlobalSettings'
@@ -206,3 +206,4 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
 )
 
 export default CurrencyInputHeader
+

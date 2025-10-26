@@ -1,15 +1,15 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRow, Balance, Box, ErrorIcon, FlexGap, Text, TooltipText, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRow, Balance, Box, ErrorIcon, FlexGap, Text, TooltipText, useMatchBreakpoints } from '@cometswap/uikit'
 import {
   formatNumber,
   getBalanceNumber,
   getDecimalAmount,
   getFullDisplayBalance,
-} from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
 import dayjs from 'dayjs'
-import { Tooltips } from 'views/CakeStaking/components/Tooltips'
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
+import { Tooltips } from 'views/CometStaking/components/Tooltips'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useCurrentEpochEnd, useEpochOnTally, useNextEpochStart } from '../hooks/useEpochTime'
 import { useGaugesTotalWeight } from '../hooks/useGaugesTotalWeight'
@@ -94,11 +94,11 @@ export const CurrentEpoch = () => {
         <AutoRow justifyContent="space-between">
           <Tooltips
             content={t(
-              'The total amount of CAKE rewards to distribute to all the gauges according to the final vote results.',
+              'The total amount of COMETrewards to distribute to all the gauges according to the final vote results.',
             )}
           >
             <TooltipText fontSize={14} color="textSubtle">
-              {t('CAKE rewards')}
+              {t('COMETrewards')}
             </TooltipText>
           </Tooltips>
 
@@ -107,23 +107,23 @@ export const CurrentEpoch = () => {
               {formatNumber(getBalanceNumber(new BN(weeklyRewards)), 0)}
             </Text>
             <Text fontSize={14}>
-              ({getFullDisplayBalance(new BN(weeklyRewards).div(2 * 7 * 24 * 60 * 60), 18, 3)} CAKE/sec){' '}
+              ({getFullDisplayBalance(new BN(weeklyRewards).div(2 * 7 * 24 * 60 * 60), 18, 3)} COMET/sec){' '}
             </Text>
           </FlexGap>
         </AutoRow>
         <AutoRow justifyContent="space-between">
-          <Tooltips content={t('The total number of veCAKE votes being casted.')}>
+          <Tooltips content={t('The total number of veCOMETvotes being casted.')}>
             <TooltipText fontSize={14} color="textSubtle">
               {t('Total votes')}
             </TooltipText>
           </Tooltips>
-          <Balance bold fontSize={16} value={getBalanceNumber(new BN(totalWeight.toString()))} unit=" veCAKE" />
+          <Balance bold fontSize={16} value={getBalanceNumber(new BN(totalWeight.toString()))} unit=" veCOMET" />
         </AutoRow>
         <AutoRow alignItems="center" flexDirection="row" justifyContent="flex-start" flexWrap="nowrap" mt="16px">
           <ErrorIcon color="#7A6EAA" width="24px" mr="8px" />
           <Text color="textSubtle" fontSize={12}>
             {t(
-              'Results are updated weekly. Vote numbers are estimations based on the veCAKE balance at 00:00 UTC on the upcoming Thursday.',
+              'Results are updated weekly. Vote numbers are estimations based on the veCOMETbalance at 00:00 UTC on the upcoming Thursday.',
             )}
           </Text>
         </AutoRow>
@@ -131,3 +131,4 @@ export const CurrentEpoch = () => {
     </Box>
   )
 }
+

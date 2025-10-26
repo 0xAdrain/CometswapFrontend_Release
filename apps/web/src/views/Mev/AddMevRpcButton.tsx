@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, CheckmarkCircleFillIcon, SwapLoading } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, CheckmarkCircleFillIcon, SwapLoading } from '@cometswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useTheme from 'hooks/useTheme'
@@ -47,3 +47,4 @@ export const AddMevRpcButton: React.FC = () => {
     </Button>
   )
 }
+

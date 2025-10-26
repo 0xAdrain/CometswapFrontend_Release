@@ -26,3 +26,4 @@ export const useThrottleFn = <T extends F>(fn: T, delay: number) => {
 
   return throttled
 }
+

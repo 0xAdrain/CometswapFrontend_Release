@@ -1,7 +1,7 @@
-import { isIfoSupported } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/sdk'
-import { Card, CardBody, CardHeader, Container, Flex, Heading, Image, Text } from '@pancakeswap/uikit'
+import { isIfoSupported } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId } from '@cometswap/sdk'
+import { Card, CardBody, CardHeader, Container, Flex, Heading, Image, Text } from '@cometswap/uikit'
 import FoldableText from 'components/FoldableSection/FoldableText'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
@@ -79,3 +79,4 @@ const IdoQuestions = () => {
 }
 
 export default IdoQuestions
+

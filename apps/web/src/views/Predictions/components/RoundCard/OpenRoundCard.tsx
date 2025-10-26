@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition, TRANSACTION_BUFFER_BLOCKS } from '@pancakeswap/prediction'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition, TRANSACTION_BUFFER_BLOCKS } from '@cometswap/prediction'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -9,7 +9,7 @@ import {
   PlayCircleOutlineIcon,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -21,7 +21,7 @@ import { getNowInSeconds } from 'utils/getNowInSeconds'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 import { useAccount } from 'wagmi'
 import { logGTMPredictionBetEvent, logGTMPredictionBetPlacedEvent } from 'utils/customGTMEventTracking'
-import { AVERAGE_CHAIN_BLOCK_TIMES } from '@pancakeswap/chains'
+import { AVERAGE_CHAIN_BLOCK_TIMES } from '@cometswap/chains'
 import { formatTokenv2 } from '../../helpers'
 import CardFlip from '../CardFlip'
 import { PrizePoolRow, RoundResultBox } from '../RoundResult'
@@ -237,3 +237,4 @@ const OpenRoundCard: React.FC<React.PropsWithChildren<OpenRoundCardProps>> = ({
 }
 
 export default OpenRoundCard
+

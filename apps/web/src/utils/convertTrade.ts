@@ -1,15 +1,15 @@
-import { type Pool, type Route, type Trade, toSerializableTrade } from '@pancakeswap/routing-sdk'
-import { createStablePool, isStablePool, toSerializableStablePool } from '@pancakeswap/routing-sdk-addon-stable-swap'
-import { createV2Pool, isV2Pool, toSerializableV2Pool } from '@pancakeswap/routing-sdk-addon-v2'
-import { createV3Pool, isV3Pool, toSerializableV3Pool } from '@pancakeswap/routing-sdk-addon-v3'
+import { type Pool, type Route, type Trade, toSerializableTrade } from '@cometswap/routing-sdk'
+import { createStablePool, isStablePool, toSerializableStablePool } from '@cometswap/routing-sdk-addon-stable-swap'
+import { createV2Pool, isV2Pool, toSerializableV2Pool } from '@cometswap/routing-sdk-addon-v2'
+import { createV3Pool, isV3Pool, toSerializableV3Pool } from '@cometswap/routing-sdk-addon-v3'
 import {
   type V4Router,
   getRouteTypeByPools,
   PoolType,
   SmartRouter,
   Pool as SmartRouterPool,
-} from '@pancakeswap/smart-router'
-import type { TradeType } from '@pancakeswap/swap-sdk-core'
+} from '@cometswap/smart-router'
+import type { TradeType } from '@cometswap/swap-sdk-core'
 
 export function toRoutingSDKPool(p: SmartRouterPool): Pool {
   if (SmartRouter.isV3Pool(p)) {
@@ -104,3 +104,4 @@ export function toSerializableV4Trade(trade: Trade<TradeType>): V4Router.Transfo
     })),
   }
 }
+

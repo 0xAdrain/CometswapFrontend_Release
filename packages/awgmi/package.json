@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/awgmi",
+  "name": "@cometswap/awgmi",
   "license": "MIT",
   "version": "1.0.1",
   "main": "./dist/index.js",
@@ -13,7 +13,7 @@
     "zustand": "^4.1.1"
   },
   "keywords": [
-    "pancakeswap",
+    "cometswap",
     "aptos",
     "wallets"
   ],
@@ -27,14 +27,15 @@
   "devDependencies": {
     "@aptos-labs/ts-sdk": "catalog:",
     "@blocto/sdk": "^0.5.4",
+    "@cometswap/tsconfig": "workspace:*",
+    "@cometswap/utils": "workspace:*",
     "@msafe/aptos-wallet": "^3.0.6",
-    "@pancakeswap/tsconfig": "workspace:*",
-    "@pancakeswap/utils": "workspace:*",
     "@tanstack/react-query": "^5.52.1",
     "@types/react": "^18.2.21",
     "@types/use-sync-external-store": "^0.0.3",
     "aptos": "1.21.0",
     "happy-dom": "^13.3.8",
+    "rimraf": "^6.0.1",
     "tsup": "^6.7.0"
   },
   "files": [
@@ -44,7 +45,7 @@
   ],
   "scripts": {
     "dev": "tsup --watch",
-    "build": "rm -rf dist && tsup",
+    "build": "rimraf dist && tsup",
     "test:u": "vitest -u --run",
     "test": "vitest --run"
   },

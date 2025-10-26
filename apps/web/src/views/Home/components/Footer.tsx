@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { keyframes, styled } from 'styled-components'
@@ -31,7 +31,7 @@ const ImageWrapper = styled.div`
   > * {
     will-change: transform;
   }
-  .pancake {
+  .comet {
     position: absolute;
     width: 120px;
     top: 20px;
@@ -55,7 +55,7 @@ const ImageWrapper = styled.div`
       left: calc(50% - 60px + 240px);
     }
   }
-  .big-pancake {
+  .big-comet {
     width: 160px;
     position: absolute;
     bottom: 10px;
@@ -80,9 +80,9 @@ const ImageWrapper = styled.div`
 const ImageBox: React.FC = () => {
   return (
     <ImageWrapper>
-      <Image className="pancake" src={`${ASSET_CDN}/web/landing/cta-pancake.png`} alt="pancake" />
+      <Image className="comet" src={`${ASSET_CDN}/web/landing/cta-comet.png`} alt="comet" />
       <Image className="rock" src={`${ASSET_CDN}/web/landing/cta-rock.png`} alt="rock" />
-      <Image className="big-pancake" src={`${ASSET_CDN}/web/landing/cta-pancake-big.png`} alt="big-pancake" />
+      <Image className="big-comet" src={`${ASSET_CDN}/web/landing/cta-comet-big.png`} alt="big-comet" />
       <Image className="rock2" src={`${ASSET_CDN}/web/landing/cta-rock-2.png`} alt="rock2" />
     </ImageWrapper>
   )
@@ -150,3 +150,4 @@ const Footer = () => {
 }
 
 export default Footer
+

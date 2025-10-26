@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PreTitle, Flex, Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { PreTitle, Flex, Box, Text } from '@cometswap/uikit'
 import { GreyCard } from 'components/Card'
-import { CurrencyAmount, Percent } from '@pancakeswap/sdk'
-import { Currency } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount, Percent } from '@cometswap/sdk'
+import { Currency } from '@cometswap/swap-sdk-core'
 
 import FixedStakingOverview from './FixedStakingOverview'
 import { AmountWithUSDSub } from './AmountWithUSDSub'
@@ -74,3 +74,4 @@ export function StakeConfirmModal({
     </>
   )
 }
+

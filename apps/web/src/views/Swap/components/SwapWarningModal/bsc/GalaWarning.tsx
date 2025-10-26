@@ -1,5 +1,5 @@
-import { Box, LinkExternal, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, LinkExternal, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 const GalaWarning = () => {
   const { t } = useTranslation()
@@ -15,3 +15,4 @@ const GalaWarning = () => {
 }
 
 export default GalaWarning
+

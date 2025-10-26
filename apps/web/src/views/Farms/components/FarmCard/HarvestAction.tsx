@@ -1,18 +1,17 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Button, Flex, Heading, TooltipText, useModal, useToast, useTooltip } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Button, Flex, Heading, TooltipText, useModal, useToast, useTooltip } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { Address } from 'viem'
 import { useAccount } from 'wagmi'
 
-import { SerializedBCakeUserData } from '@pancakeswap/farms'
-import { Token } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { useCakePrice } from 'hooks/useCakePrice'
-import MultiChainHarvestModal from 'views/Farms/components/MultiChainHarvestModal'
+import { SerializedBCometUserData } from '@cometswap/farms'
+import { Token } from '@cometswap/sdk'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
+import { useCometPrice } from 'hooks/useCometPrice'
 
 interface FarmCardActionsProps {
   pid?: number
@@ -20,12 +19,12 @@ interface FarmCardActionsProps {
   quoteToken?: Token
   earnings?: BigNumber
   vaultPid?: number
-  proxyCakeBalance?: number
+  proxyCometBalance?: number
   lpSymbol?: string
   onReward: <SendTransactionResult>() => Promise<SendTransactionResult>
   onDone?: () => void
-  bCakeWrapperAddress?: Address
-  bCakeUserData?: SerializedBCakeUserData
+  bCometWrapperAddress?: Address
+  bCometUserData?: SerializedBComet
 }
 
 const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
@@ -34,31 +33,31 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
   quoteToken,
   vaultPid,
   earnings = BIG_ZERO,
-  proxyCakeBalance,
+  proxyCometBalance,
   lpSymbol,
   onReward,
   onDone,
-  bCakeWrapperAddress,
-  bCakeUserData,
+  bCometWrapperAddress,
+  bCometUserData,
 }) => {
   const { address: account } = useAccount()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const { t } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const rawEarningsBalance = account
-    ? bCakeWrapperAddress
-      ? getBalanceAmount(new BigNumber(bCakeUserData?.earnings ?? '0'))
+    ? bCometWrapperAddress
+      ? getBalanceAmount(new BigNumber(bCometUserData?.earnings ?? '0'))
       : getBalanceAmount(earnings)
     : BIG_ZERO
   const displayBalance = rawEarningsBalance.toFixed(5, BigNumber.ROUND_DOWN)
-  const earningsBusd = rawEarningsBalance ? rawEarningsBalance.multipliedBy(cakePrice).toNumber() : 0
+  const earningsBusd = rawEarningsBalance ? rawEarningsBalance.multipliedBy(cometPrice).toNumber() : 0
   const tooltipBalance = rawEarningsBalance.isGreaterThan(FarmWidget.FARMS_SMALL_AMOUNT_THRESHOLD)
     ? displayBalance
     : '< 0.00001'
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     `${tooltipBalance} ${t(
-      `CAKE has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`,
+      `COMEThas been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`,
     )}`,
     {
       placement: 'bottom',
@@ -66,11 +65,8 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
   )
 
   const onClickHarvestButton = () => {
-    if (vaultPid) {
-      onPresentCrossChainHarvestModal()
-    } else {
-      handleHarvest()
-    }
+    // Cross-chain harvest removed - always use direct harvest
+    handleHarvest()
   }
 
   const handleHarvest = async () => {
@@ -81,30 +77,19 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
         </ToastDescriptionWithTx>,
       )
       onDone?.()
     }
   }
 
-  const [onPresentCrossChainHarvestModal] = useModal(
-    pid && token && lpSymbol && quoteToken ? (
-      <MultiChainHarvestModal
-        pid={pid}
-        token={token}
-        lpSymbol={lpSymbol}
-        quoteToken={quoteToken}
-        earningsBigNumber={earnings}
-        earningsBusd={earningsBusd}
-      />
-    ) : null,
-  )
+  // Cross-chain harvest modal removed - single chain only
 
   return (
     <Flex mb="8px" justifyContent="space-between" alignItems="center" width="100%">
       <Flex flexDirection="column" alignItems="flex-start">
-        {proxyCakeBalance ? (
+        {proxyCometBalance ? (
           <>
             <TooltipText ref={targetRef} decorationColor="secondary">
               <Heading color={rawEarningsBalance.eq(0) ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
@@ -126,3 +111,4 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
 }
 
 export default HarvestAction
+

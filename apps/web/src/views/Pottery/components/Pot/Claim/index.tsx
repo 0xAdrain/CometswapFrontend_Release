@@ -1,13 +1,13 @@
 import { styled } from 'styled-components'
-import { Flex, Box } from '@pancakeswap/uikit'
+import { Flex, Box } from '@cometswap/uikit'
 import { GreyCard } from 'components/Card'
 import { usePotteryData } from 'state/pottery/hook'
-import { calculateCakeAmount } from 'views/Pottery/helpers'
+import { calculateCometAmount } from 'views/Pottery/helpers'
 import BigNumber from 'bignumber.js'
-import { BIG_ONE } from '@pancakeswap/utils/bigNumber'
+import { BIG_ONE } from '@cometswap/utils/bigNumber'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
 import { useAccount } from 'wagmi'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 import { GRAPH_API_POTTERY } from 'config/constants/endpoints'
 
@@ -28,13 +28,13 @@ const Claim: React.FC<React.PropsWithChildren> = () => {
 
   const allDeposit = userData.withdrawAbleData
     .map((data) => {
-      const { status, shares, previewRedeem, totalSupply, totalLockCake } = data
-      return calculateCakeAmount({
+      const { status, shares, previewRedeem, totalSupply, totalLockComet } = data
+      return calculateCometAmount({
         status,
         previewRedeem,
         shares,
         totalSupply: new BigNumber(totalSupply),
-        totalLockCake: new BigNumber(totalLockCake),
+        totalLockComet: new BigNumber(totalLockComet),
       })
     })
     .reduce((previousValue, currentValue) => previousValue.plus(currentValue), BIG_ONE)
@@ -63,3 +63,4 @@ const Claim: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default Claim
+

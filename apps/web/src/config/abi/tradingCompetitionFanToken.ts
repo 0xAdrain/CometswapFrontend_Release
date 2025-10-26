@@ -3,7 +3,7 @@ export const tradingCompetitionFanTokenABI = [
     inputs: [
       {
         internalType: 'address',
-        name: '_pancakeProfileAddress',
+        name: '_cometProfileAddress',
         type: 'address',
       },
       {
@@ -213,7 +213,7 @@ export const tradingCompetitionFanTokenABI = [
         type: 'uint256',
       },
     ],
-    name: 'claimCakeRemainder',
+    name: 'claimveCometRemainder',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -390,10 +390,10 @@ export const tradingCompetitionFanTokenABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfile',
+    name: 'cometProfile',
     outputs: [
       {
-        internalType: 'contract IPancakeProfile',
+        internalType: 'contract ICometProfile',
         name: '',
         type: 'address',
       },
@@ -657,3 +657,4 @@ export const tradingCompetitionFanTokenABI = [
     type: 'function',
   },
 ] as const
+

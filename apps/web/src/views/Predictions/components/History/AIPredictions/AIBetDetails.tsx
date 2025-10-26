@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Heading, Link, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Heading, Link, Text } from '@cometswap/uikit'
 import { Result } from 'state/predictions/helpers'
 import { Bet } from 'state/types'
 import { styled } from 'styled-components'
@@ -62,3 +62,4 @@ export const AIBetDetails: React.FC<React.PropsWithChildren<AIBetDetailsProps>> 
     </StyledBetDetails>
   )
 }
+

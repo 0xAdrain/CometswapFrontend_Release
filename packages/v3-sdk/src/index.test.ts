@@ -75,7 +75,7 @@ test('exports', () => {
       "SelfPermit",
       "Staker",
       "SwapRouter",
-      "pancakeV3PoolABI",
+      "cometV3PoolABI",
       "masterChefV3ABI",
       "nonfungiblePositionManagerABI",
       "peripheryPaymentsWithFeeABI",

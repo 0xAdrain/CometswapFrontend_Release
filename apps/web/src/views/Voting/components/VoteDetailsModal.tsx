@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Flex, InjectedModalProps, Modal, Spinner } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Flex, InjectedModalProps, Modal, Spinner } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
-import { VECAKE_VOTING_POWER_BLOCK } from '../helpers'
+import { VECOMET_VOTING_POWER_BLOCK } from '../helpers'
 import useGetVotingPower from '../hooks/useGetVotingPower'
 import DetailsView from './CastVoteModal/DetailsView'
 import { VeMainView } from './CastVoteModal/MainView'
@@ -15,15 +15,15 @@ const VoteDetailsModal: React.FC<React.PropsWithChildren<VoteDetailsModalProps>>
   const {
     isLoading,
     total,
-    cakeBalance,
-    cakeVaultBalance,
-    cakePoolBalance,
+    cometBalance,
+    cometVaultBalance,
+    cometPoolBalance,
     poolsBalance,
-    cakeBnbLpBalance,
+    cometBnbLpBalance,
     ifoPoolBalance,
-    lockedCakeBalance,
+    lockedCometBalance,
     lockedEndTime,
-    veCakeBalance,
+    vecometBalance,
   } = useGetVotingPower(block)
   const { theme } = useTheme()
 
@@ -40,18 +40,18 @@ const VoteDetailsModal: React.FC<React.PropsWithChildren<VoteDetailsModalProps>>
           </Flex>
         ) : (
           <>
-            {!block || BigInt(block) >= VECAKE_VOTING_POWER_BLOCK ? (
-              <VeMainView block={block} total={total} veCakeBalance={veCakeBalance} />
+            {!block || BigInt(block) >= VECOMET_VOTING_POWER_BLOCK ? (
+              <VeMainView block={block} total={total} vecometBalance={vecometBalance} />
             ) : (
               <DetailsView
                 total={total}
-                cakeBalance={cakeBalance}
-                cakeVaultBalance={cakeVaultBalance}
-                cakePoolBalance={cakePoolBalance}
+                cometBalance={cometBalance}
+                cometVaultBalance={cometVaultBalance}
+                cometPoolBalance={cometPoolBalance}
                 poolsBalance={poolsBalance}
                 ifoPoolBalance={ifoPoolBalance}
-                cakeBnbLpBalance={cakeBnbLpBalance}
-                lockedCakeBalance={lockedCakeBalance}
+                cometBnbLpBalance={cometBnbLpBalance}
+                lockedCometBalance={lockedCometBalance}
                 lockedEndTime={lockedEndTime}
                 block={block}
               />
@@ -67,3 +67,4 @@ const VoteDetailsModal: React.FC<React.PropsWithChildren<VoteDetailsModalProps>>
 }
 
 export default VoteDetailsModal
+

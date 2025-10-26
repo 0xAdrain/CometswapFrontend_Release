@@ -16,3 +16,4 @@ export const checkWalletCanRegisterToken = async (connector: Connector) => {
     return false
   }
 }
+

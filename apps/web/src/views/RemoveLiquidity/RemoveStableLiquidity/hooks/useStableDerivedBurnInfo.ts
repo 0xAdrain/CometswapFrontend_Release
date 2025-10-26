@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Percent, Token } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Percent, Token } from '@cometswap/sdk'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useQuery } from '@tanstack/react-query'
 import { useInfoStableSwapContract } from 'hooks/useContract'
 import { useContext, useMemo } from 'react'
@@ -124,3 +124,4 @@ export function useStableDerivedBurnInfo(
 
   return { pair, parsedAmounts, error }
 }
+

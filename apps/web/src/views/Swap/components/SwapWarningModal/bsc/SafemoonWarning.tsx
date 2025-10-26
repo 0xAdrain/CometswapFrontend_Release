@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text, Link } from '@cometswap/uikit'
 
 const SafemoonWarning = () => {
   const { t } = useTranslation()
@@ -28,3 +28,4 @@ const SafemoonWarning = () => {
 }
 
 export default SafemoonWarning
+

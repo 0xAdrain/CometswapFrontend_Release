@@ -1,26 +1,26 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
-import { useVCakeContract } from 'hooks/useContract'
+import { useVCometContract } from 'hooks/useContract'
 import { useQuery } from '@tanstack/react-query'
 
-interface UseVCake {
+interface UseVComet {
   isInitialization?: boolean
   refresh: () => void
 }
 
-const useVCake = (): UseVCake => {
+const useVComet = (): UseVComet => {
   const { account, chainId } = useAccountActiveChain()
-  const vCakeContract = useVCakeContract({ chainId })
+  const vCometContract = useVCometContract({ chainId })
 
   const { data, refetch } = useQuery({
-    queryKey: ['/v-cake-initialization', account, chainId],
+    queryKey: ['/v-comet-initialization', account, chainId],
 
     queryFn: async () => {
       if (!account) return undefined
       try {
-        return await vCakeContract.read.initialization([account])
+        return await vCometContract.read.initialization([account])
       } catch (error) {
-        console.error('[ERROR] Fetching vCake initialization', error)
+        console.error('[ERROR] Fetching vComet initialization', error)
         return undefined
       }
     },
@@ -34,4 +34,5 @@ const useVCake = (): UseVCake => {
   }
 }
 
-export default useVCake
+export default useVComet
+

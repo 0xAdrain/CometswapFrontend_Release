@@ -1,12 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, RocketIcon, RoiCalculatorModal, Text, TooltipText, useModal, useTooltip } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, RocketIcon, RoiCalculatorModal, Text, TooltipText, useModal, useTooltip } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { MouseEvent, useCallback, useMemo } from 'react'
 
 import { useFarmFromPid, useFarmUser } from 'state/farms/hooks'
 
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { useAccount } from 'wagmi'
 import { V2FarmWithoutStakedValue, V3FarmWithoutStakedValue } from 'state/farms/types'
 
@@ -17,7 +17,7 @@ export interface ApyButtonProps {
   lpTokenPrice?: BigNumber
   lpLabel?: string
   multiplier?: string
-  cakePrice?: BigNumber
+  cometPrice?: BigNumber
   apr?: number
   displayApr?: string
   lpRewardsApr?: number
@@ -26,7 +26,7 @@ export interface ApyButtonProps {
   hideButton?: boolean
   stableSwapAddress?: string
   stableLpFee?: number
-  farmCakePerSecond?: string
+  farmCometPerSecond?: string
   totalMultipliers?: string
   boosterMultiplier?: number
   isBooster?: boolean
@@ -38,7 +38,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
   lpLabel,
   lpTokenPrice = BIG_ZERO,
   lpSymbol,
-  cakePrice,
+  cometPrice,
   apr = 0,
   multiplier,
   displayApr,
@@ -48,7 +48,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
   hideButton,
   stableSwapAddress,
   stableLpFee,
-  farmCakePerSecond,
+  farmCometPerSecond,
   totalMultipliers,
   boosterMultiplier = 1,
   isBooster,
@@ -69,9 +69,9 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       }
     }
     if (farm?.version !== 3) {
-      const bCakeBalance = new BigNumber(farm?.bCakeUserData?.stakedBalance ?? '0')
-      if (bCakeBalance.gt(0)) {
-        return bCakeBalance.plus(tokenBalance)
+      const bCometBalance = new BigNumber(farm?.bCometUserData?.stakedBalance ?? '0')
+      if (bCometBalance.gt(0)) {
+        return bCometBalance.plus(tokenBalance)
       }
     }
     return BIG_ZERO
@@ -87,7 +87,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       stakingTokenDecimals={18}
       stakingTokenSymbol={lpSymbol}
       stakingTokenPrice={lpTokenPrice.toNumber()}
-      earningTokenPrice={cakePrice?.toNumber() ?? 0}
+      earningTokenPrice={cometPrice?.toNumber() ?? 0}
       apr={isBooster ? apr * boosterMultiplier + lpRewardsApr : apr + lpRewardsApr}
       multiplier={multiplier}
       displayApr={isBooster ? (apr * boosterMultiplier + lpRewardsApr).toFixed(2) : displayApr}
@@ -96,9 +96,9 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       isFarm
       stableSwapAddress={stableSwapAddress}
       stableLpFee={stableLpFee}
-      farmCakePerSecond={farmCakePerSecond}
+      farmCometPerSecond={farmCometPerSecond}
       totalMultipliers={totalMultipliers}
-      isBCakeBooster={isBooster}
+      isBCometBooster={isBooster}
     />,
     false,
     true,
@@ -137,11 +137,11 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       </ul>
       <br />
       <Text>
-        {t('Calculated using the total active liquidity staked versus the CAKE reward emissions for the farm.')}
+        {t('Calculated using the total active liquidity staked versus the COMETreward emissions for the farm.')}
       </Text>
       {isBooster && (
         <Text mt="15px">
-          {t('bCAKE only boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
+          {t('bCOMETonly boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
         </Text>
       )}
       <Text mt="15px">{t('APRs for individual positions may vary depending on the configs.')}</Text>
@@ -188,3 +188,4 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
 }
 
 export default ApyButton
+

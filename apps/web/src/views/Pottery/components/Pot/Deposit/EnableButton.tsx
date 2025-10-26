@@ -1,5 +1,5 @@
-import { Button, AutoRenewIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Button, AutoRenewIcon } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { useApprovePottery } from 'views/Pottery/hooks/useApprovePottery'
 
 interface Props {
@@ -23,3 +23,4 @@ const EnableButton: React.FC<React.PropsWithChildren<Props>> = ({ potteryVaultAd
 }
 
 export default EnableButton
+

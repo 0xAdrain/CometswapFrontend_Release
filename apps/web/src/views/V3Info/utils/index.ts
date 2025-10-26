@@ -59,3 +59,4 @@ export function transformTransaction(transaction: ApiTransaction): Transaction {
     amountToken1: parseFloat(transaction.amount1),
   }
 }
+

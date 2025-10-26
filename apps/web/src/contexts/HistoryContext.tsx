@@ -38,3 +38,4 @@ function useHistoryManager() {
     return { history, canGoBack: () => history.length > 1 }
   }, [history])
 }
+

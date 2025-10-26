@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useMatchBreakpoints } from '@cometswap/uikit'
 import { ACCESS_TOKEN_SUPPORT_CHAIN_IDS } from 'components/AccessRisk/config/supportedChains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import React, { createContext, useMemo, useState } from 'react'
@@ -85,3 +85,4 @@ export const SwapFeaturesProvider: React.FC<React.PropsWithChildren> = ({ childr
 
   return <SwapFeaturesContext.Provider value={value}>{children}</SwapFeaturesContext.Provider>
 }
+

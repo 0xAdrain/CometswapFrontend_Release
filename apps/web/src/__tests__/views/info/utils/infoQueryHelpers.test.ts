@@ -16,3 +16,4 @@ describe('info/utils/infoQueryHelpers', () => {
     expect(getDeltaTimestamps()).toStrictEqual([t24hExpected, t48hExpected, t7dExpected, t14dExpected])
   })
 })
+

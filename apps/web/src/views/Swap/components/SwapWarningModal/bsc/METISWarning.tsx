@@ -1,5 +1,5 @@
-import { Box, Link, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Link, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 const METISWarning = () => {
   const { t } = useTranslation()
@@ -29,3 +29,4 @@ const METISWarning = () => {
 }
 
 export default METISWarning
+

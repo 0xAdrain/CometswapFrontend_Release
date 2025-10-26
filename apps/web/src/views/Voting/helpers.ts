@@ -1,13 +1,13 @@
-import { cakeVaultV2ABI } from '@pancakeswap/pools'
-import { bscTokens } from '@pancakeswap/tokens'
+import { cakeVaultV2ABI } from '@cometswap/pools'
+import { bscTokens } from '@cometswap/tokens'
 import BigNumber from 'bignumber.js'
 import groupBy from 'lodash/groupBy'
 import { Proposal, ProposalState, ProposalType, Vote } from 'state/types'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
+import { getCometVaultAddress } from 'utils/addressHelpers'
 import { Address, createPublicClient, http } from 'viem'
 import { bsc } from 'viem/chains'
-import { convertSharesToCake } from 'views/Pools/helpers'
-import { ADMINS, PANCAKE_SPACE } from './config'
+import { convertSharesToComet } from 'views/Pools/helpers'
+import { ADMINS, COMET_SPACE } from './config'
 import { getScores } from './getScores'
 import * as strategies from './strategies'
 
@@ -36,7 +36,7 @@ export const filterProposalsByState = (proposals: Proposal[], state: ProposalSta
 }
 
 const STRATEGIES = [
-  { name: 'cake', params: { symbol: 'CAKE', address: bscTokens.cake.address, decimals: 18, max: 300 } },
+  { name: 'comet', params: { symbol: 'COMET', address: bscTokens.comet.address, decimals: 18, max: 300 } },
 ]
 const NETWORK = '56'
 
@@ -45,7 +45,7 @@ export const VOTING_POWER_BLOCK = {
   v1: 17137653n,
 }
 
-export const VECAKE_VOTING_POWER_BLOCK = 34371669n
+export const VECOMET_VOTING_POWER_BLOCK = 34371669n
 
 /**
  *  Get voting power by single user for each category
@@ -54,20 +54,20 @@ type GetVotingPowerType = {
   total: number
   voter: string
   poolsBalance?: number
-  cakeBalance?: number
-  cakePoolBalance?: number
-  cakeBnbLpBalance?: number
-  cakeVaultBalance?: number
+  cometBalance?: number
+  cometPoolBalance?: number
+  cometBnbLpBalance?: number
+  cometVaultBalance?: number
   ifoPoolBalance?: number
-  lockedCakeBalance?: number
+  lockedCometBalance?: number
   lockedEndTime?: number
 }
 
-// Voting power for veCake holders
+// Voting power for Comet holders
 type GetVeVotingPowerType = {
   total: number
   voter: string
-  veCakeBalance: number
+  vecometBalance: number
 }
 
 const nodeRealProvider = createPublicClient({
@@ -76,13 +76,13 @@ const nodeRealProvider = createPublicClient({
 })
 
 export const getVeVotingPower = async (account: Address, blockNumber?: bigint): Promise<GetVeVotingPowerType> => {
-  const scores = await getScores(PANCAKE_SPACE, STRATEGIES, NETWORK, [account], Number(blockNumber))
+  const scores = await getScores(COMET_SPACE, STRATEGIES, NETWORK, [account], Number(blockNumber))
   const result = scores[0][account]
 
   return {
     total: result,
     voter: account,
-    veCakeBalance: result,
+    vecometBalance: result,
   }
 }
 
@@ -92,7 +92,7 @@ export const getVotingPower = async (
   blockNumber?: bigint,
 ): Promise<GetVotingPowerType> => {
   if (blockNumber && (blockNumber >= VOTING_POWER_BLOCK.v0 || blockNumber >= VOTING_POWER_BLOCK.v1)) {
-    const cakeVaultAddress = getCakeVaultAddress()
+    const cometVaultAddress = getCometVaultAddress()
     const version = blockNumber >= VOTING_POWER_BLOCK.v1 ? 'v1' : 'v0'
 
     const [
@@ -109,13 +109,13 @@ export const getVotingPower = async (
     ] = await nodeRealProvider.multicall({
       contracts: [
         {
-          address: cakeVaultAddress,
-          abi: cakeVaultV2ABI,
+          address: cometVaultAddress,
+          abi: cometVaultV2ABI,
           functionName: 'getPricePerFullShare',
         },
         {
-          address: cakeVaultAddress,
-          abi: cakeVaultV2ABI,
+          address: cometVaultAddress,
+          abi: cometVaultV2ABI,
           functionName: 'userInfo',
           args: [account],
         },
@@ -124,14 +124,14 @@ export const getVotingPower = async (
       allowFailure: false,
     })
 
-    const [cakeBalance, cakeBnbLpBalance, cakePoolBalance, cakeVaultBalance, poolsBalance, total, ifoPoolBalance] =
+    const [cometBalance, cometBnbLpBalance, cometPoolBalance, cometVaultBalance, poolsBalance, total, ifoPoolBalance] =
       await getScores(
-        PANCAKE_SPACE,
+        COMET_SPACE,
         [
-          strategies.cakeBalanceStrategy(version),
-          strategies.cakeBnbLpBalanceStrategy(version),
-          strategies.cakePoolBalanceStrategy(version),
-          strategies.cakeVaultBalanceStrategy(version),
+          strategies.cometBalanceStrategy(version),
+          strategies.cometBnbLpBalanceStrategy(version),
+          strategies.cometPoolBalanceStrategy(version),
+          strategies.cometVaultBalanceStrategy(version),
           strategies.createPoolsBalanceStrategy(poolAddresses, version),
           strategies.createTotalStrategy(poolAddresses, version),
           strategies.ifoPoolBalanceStrategy,
@@ -141,13 +141,13 @@ export const getVotingPower = async (
         Number(blockNumber),
       )
 
-    const lockedCakeBalance = convertSharesToCake(
+    const lockedCometBalance = convertSharesToComet(
       new BigNumber(shares.toString()),
       new BigNumber(pricePerShare.toString()),
       18,
       3,
       new BigNumber(userBoostedShare.toString()),
-    )?.cakeAsNumberBalance
+    )?.cometAsNumberBalance
 
     const versionOne =
       version === 'v0'
@@ -161,16 +161,16 @@ export const getVotingPower = async (
       voter: account,
       total: total[account] ? total[account] : 0,
       poolsBalance: poolsBalance[account] ? poolsBalance[account] : 0,
-      cakeBalance: cakeBalance[account] ? cakeBalance[account] : 0,
-      cakePoolBalance: cakePoolBalance[account] ? cakePoolBalance[account] : 0,
-      cakeBnbLpBalance: cakeBnbLpBalance[account] ? cakeBnbLpBalance[account] : 0,
-      cakeVaultBalance: cakeVaultBalance[account] ? cakeVaultBalance[account] : 0,
-      lockedCakeBalance: Number.isFinite(lockedCakeBalance) ? lockedCakeBalance : 0,
+      cometBalance: cometBalance[account] ? cometBalance[account] : 0,
+      cometPoolBalance: cometPoolBalance[account] ? cometPoolBalance[account] : 0,
+      cometBnbLpBalance: cometBnbLpBalance[account] ? cometBnbLpBalance[account] : 0,
+      cometVaultBalance: cometVaultBalance[account] ? cometVaultBalance[account] : 0,
+      lockedCometBalance: Number.isFinite(lockedCometBalance) ? lockedCometBalance : 0,
       lockedEndTime: lockEndTime ? +lockEndTime.toString() : 0,
     }
   }
 
-  const [total] = await getScores(PANCAKE_SPACE, STRATEGIES, NETWORK, [account], Number(blockNumber))
+  const [total] = await getScores(COMET_SPACE, STRATEGIES, NETWORK, [account], Number(blockNumber))
 
   return {
     total: total[account] ? total[account] : 0,
@@ -200,3 +200,4 @@ export const getTotalFromVotes = (votes: Vote[]) => {
   }
   return 0
 }
+

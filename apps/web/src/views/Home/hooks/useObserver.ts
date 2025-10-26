@@ -49,3 +49,4 @@ export const useObserver = (
     if (element.current) addObserver(element.current, callback, leaveCallBack)
   }, [element, callback, leaveCallBack])
 }
+

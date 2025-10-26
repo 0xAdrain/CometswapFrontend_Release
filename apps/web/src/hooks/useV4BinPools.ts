@@ -1,5 +1,5 @@
-import { Currency, getCurrencyAddress, sortCurrencies } from '@pancakeswap/swap-sdk-core'
-import { V4Router } from '@pancakeswap/smart-router'
+import { Currency, getCurrencyAddress, sortCurrencies } from '@cometswap/swap-sdk-core'
+import { V4Router } from '@cometswap/smart-router'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
@@ -71,3 +71,4 @@ export function useV4BinCandidatePoolsWithoutBins(currencyA?: Currency, currency
     error,
   }
 }
+

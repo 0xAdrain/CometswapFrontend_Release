@@ -1,14 +1,14 @@
-import { getChainNameInKebabCase } from '@pancakeswap/chains'
+import { getChainNameInKebabCase } from '@cometswap/chains'
 import {
   FarmV4SupportedChainId,
   fetchAllUniversalFarms,
   masterChefV3Addresses,
   Protocol,
   supportedChainIdV4,
-} from '@pancakeswap/farms'
-import { smartChefABI } from '@pancakeswap/pools'
-import { getStableSwapPools } from '@pancakeswap/stable-swap-sdk'
-import { FeeAmount, masterChefV3ABI } from '@pancakeswap/v3-sdk'
+} from '@cometswap/farms'
+import { smartChefABI } from '@cometswap/pools'
+import { getStableSwapPools } from '@cometswap/stable-swap-sdk'
+import { FeeAmount, masterChefV3ABI } from '@cometswap/v3-sdk'
 import { explorerApiClient } from 'state/info/api/client'
 import { isAddressEqual } from 'utils'
 import { publicClient } from 'utils/viem'
@@ -102,7 +102,7 @@ export const fetchFarmPools = async (
           pid: farm.pid,
           feeTierBase: 1_000_000,
           ...(farm.protocol === 'v2' || farm.protocol === 'stable'
-            ? { bCakeWrapperAddress: farm.bCakeWrapperAddress }
+            ? { bveCometWrapperAddress: farm.bveCometWrapperAddress }
             : {}),
         } satisfies PoolInfo
       }
@@ -158,13 +158,13 @@ export const fetchV3PoolsStatusByChainId = async (chainId: number, pools: { pid?
   return resp
 }
 
-export const fetchPoolsTimeFrame = async (bCakeAddresses: Address[], chainId: number) => {
-  if (!bCakeAddresses.length) {
+export const fetchPoolsTimeFrame = async (bveCometAddresses: Address[], chainId: number) => {
+  if (!bveCometAddresses.length) {
     return []
   }
 
   const client = publicClient({ chainId })
-  const calls = bCakeAddresses.flatMap((address) => {
+  const calls = bveCometAddresses.flatMap((address) => {
     return [
       {
         abi: smartChefABI,
@@ -194,7 +194,7 @@ export const fetchPoolsTimeFrame = async (bCakeAddresses: Address[], chainId: nu
     return acc
   }, [])
 
-  return bCakeAddresses.map((_, index) => {
+  return bveCometAddresses.map((_, index) => {
     const [startTimestamp, endTimestamp] = poolTimeFrame[index]
     return {
       startTimestamp: Number(startTimestamp),
@@ -202,3 +202,4 @@ export const fetchPoolsTimeFrame = async (bCakeAddresses: Address[], chainId: nu
     }
   })
 }
+

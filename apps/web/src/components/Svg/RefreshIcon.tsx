@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 // NOTE: Temporary save icon here. Will move to uikit when the feature is done
 
@@ -108,3 +108,4 @@ const Icon = ({
   )
 
 export default Icon
+

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useParticleBurst } from '@pancakeswap/uikit'
+import { useParticleBurst } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 
 const disableWhenNotChristmas = () => {
@@ -34,3 +34,4 @@ const useMerryChristmas = () => {
 }
 
 export default useMerryChristmas
+

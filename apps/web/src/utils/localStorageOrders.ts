@@ -135,3 +135,4 @@ export const getUniqueOrders = (allOrders: Order[]): Order[] => [
     orderBy(allOrders, (order) => parseFloat(order.updatedAt), 'desc').map((order) => [order.id, order]),
   ).values(),
 ]
+

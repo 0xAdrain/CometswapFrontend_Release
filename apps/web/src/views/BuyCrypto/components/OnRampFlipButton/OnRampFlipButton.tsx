@@ -1,4 +1,4 @@
-import { Box, IconButton, RefreshIcon } from '@pancakeswap/uikit'
+import { Box, IconButton, RefreshIcon } from '@cometswap/uikit'
 
 import { memo } from 'react'
 
@@ -11,3 +11,4 @@ export const OnRampFlipButton = memo(function FlipButton({ refetch }: { refetch:
     </Box>
   )
 })
+

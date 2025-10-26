@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, ProfileAvatar, Text } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, ProfileAvatar, Text } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import truncateHash from '@cometswap/utils/truncateHash'
 import BigNumber from 'bignumber.js'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useDomainNameForAddress } from 'hooks/useDomain'
 import { useMemo } from 'react'
 import { useProfileForAddress } from 'state/profile/hooks'
@@ -26,13 +26,13 @@ interface MobileResultProps {
 
 const MobileResult: React.FC<React.PropsWithChildren<MobileResultProps>> = ({ isMyRank, rank }) => {
   const { t } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPriceBusd = useCometPrice()
   const { profile, isLoading: isProfileLoading } = useProfileForAddress(rank.origin)
   const { domainName, avatar } = useDomainNameForAddress(rank.origin, !profile && !isProfileLoading)
 
-  const cakeAmount = useMemo(
-    () => new BigNumber(rank?.estimateRewardUSD).div(cakePrice).toNumber(),
-    [cakePrice, rank?.estimateRewardUSD],
+  const cometAmount = useMemo(
+    () => new BigNumber(rank?.estimateRewardUSD).div(cometPriceBusd).toNumber(),
+    [cometPriceBusd, rank?.estimateRewardUSD],
   )
 
   return (
@@ -66,7 +66,7 @@ const MobileResult: React.FC<React.PropsWithChildren<MobileResultProps>> = ({ is
             {`$${formatNumber(rank.estimateRewardUSD)}`}
           </Text>
           <Text fontSize="12px" color="textSubtle" textAlign="right" lineHeight="110%">
-            {`~${formatNumber(cakeAmount)} CAKE`}
+            {`~${formatNumber(cometAmount)} COMET`}
           </Text>
         </Box>
       </Flex>

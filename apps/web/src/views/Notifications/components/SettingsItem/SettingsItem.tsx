@@ -1,4 +1,4 @@
-import { Box, Flex, FlexGap, Text, Toggle, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Box, Flex, FlexGap, Text, Toggle, useMatchBreakpoints } from '@cometswap/uikit'
 import { NotifyClientTypes } from '@walletconnect/notify-client'
 import Image from 'next/image'
 import React, { Dispatch, ReactNode, SetStateAction, useCallback } from 'react'
@@ -106,3 +106,4 @@ const SettingsContainer = ({ scopes, setScopes }: ISettingsContainerProps) => {
 }
 
 export default SettingsContainer
+

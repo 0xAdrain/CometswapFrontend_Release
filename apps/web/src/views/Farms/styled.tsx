@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@pancakeswap/uikit'
+import { Flex, Heading } from '@cometswap/uikit'
 import styled from 'styled-components'
 
 export const FarmFlexWrapper = styled(Flex)`
@@ -27,3 +27,4 @@ export const FarmH2 = styled(Heading)`
     margin-bottom: 18px;
   }
 `
+

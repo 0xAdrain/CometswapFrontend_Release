@@ -1,4 +1,4 @@
-import { BigintIsh, MaxUint256, Percent, Price, CurrencyAmount, Token } from '@pancakeswap/sdk'
+import { BigintIsh, MaxUint256, Percent, Price, CurrencyAmount, Token } from '@cometswap/sdk'
 import invariant from 'tiny-invariant'
 import { ZERO } from '../internalConstants'
 import { maxLiquidityForAmounts } from '../utils/maxLiquidityForAmounts'
@@ -17,7 +17,7 @@ interface PositionConstructorArgs {
 }
 
 /**
- * Represents a position on a Pancake V3 Pool
+ * Represents a position on a Comet V3 Pool
  */
 export class Position {
   public readonly pool: Pool

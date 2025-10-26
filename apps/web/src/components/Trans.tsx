@@ -1,3 +1,4 @@
-import { Trans } from '@pancakeswap/localization'
+import { Trans } from '@cometswap/localization'
 
 export default Trans
+

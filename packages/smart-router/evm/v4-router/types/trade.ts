@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { AbortControl } from '@pancakeswap/utils/abortControl'
+import { Currency, CurrencyAmount, TradeType } from '@cometswap/sdk'
+import { AbortControl } from '@cometswap/utils/abortControl'
 
 import { BaseTradeConfig, Pool, SmartRouterTrade, Route } from '../../v3-router/types'
 import { Graph } from './graph'

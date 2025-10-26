@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
-import { Flex, Box, Text } from '@pancakeswap/uikit'
-import { NumberDisplay } from '@pancakeswap/widgets-internal'
+import { Flex, Box, Text } from '@cometswap/uikit'
+import { NumberDisplay } from '@cometswap/widgets-internal'
 import { TokenImage } from 'components/TokenImage'
 import { LightGreyCard } from 'components/Card'
-import { useTranslation } from '@pancakeswap/localization'
-import { Ifo } from '@pancakeswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { Ifo } from '@cometswap/ifos'
 import BigNumber from 'bignumber.js'
 
 interface TotalAvailableClaimProps {
@@ -40,3 +40,4 @@ const TotalAvailableClaim: React.FC<React.PropsWithChildren<TotalAvailableClaimP
 }
 
 export default TotalAvailableClaim
+

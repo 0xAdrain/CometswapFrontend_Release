@@ -1,4 +1,4 @@
-import { CurrencyAmount, Token } from '@pancakeswap/sdk'
+import { CurrencyAmount, Token } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import { erc20Abi } from 'viem'
 
@@ -74,3 +74,4 @@ export function useTokenAllowanceByChainId({
 }
 
 export default useTokenAllowance
+

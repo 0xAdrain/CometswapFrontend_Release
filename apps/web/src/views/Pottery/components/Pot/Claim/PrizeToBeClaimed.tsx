@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Box, Text, Balance } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Box, Text, Balance } from '@cometswap/uikit'
 import { DeserializedPotteryUserData } from 'state/types'
-import { useCakePrice } from 'hooks/useCakePrice'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useCometPrice } from 'hooks/useCometPrice'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import ClaimButton from './ClaimButton'
 
@@ -12,10 +12,10 @@ interface PrizeToBeClaimedProps {
 
 const PrizeToBeClaimed: React.FC<React.PropsWithChildren<PrizeToBeClaimedProps>> = ({ userData }) => {
   const { t } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const rewardToken = getBalanceNumber(userData.rewards)
-  const rewardInBusd = new BigNumber(rewardToken).times(cakePrice).toNumber()
+  const rewardInBusd = new BigNumber(rewardToken).times(cometPrice).toNumber()
 
   return (
     <Box mt="20px">
@@ -37,3 +37,4 @@ const PrizeToBeClaimed: React.FC<React.PropsWithChildren<PrizeToBeClaimedProps>>
 }
 
 export default PrizeToBeClaimed
+

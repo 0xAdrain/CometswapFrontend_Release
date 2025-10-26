@@ -1,16 +1,17 @@
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 
 import { useMemo } from 'react'
 
-export const useUserEnoughCakeValidator = (cakeAmount: string, stakingTokenBalance: BigNumber) => {
+export const useUserEnoughCometValidator = (cakeAmount: string, stakingTokenBalance: BigNumber) => {
   const { t } = useTranslation()
-  const errorMessage = t('Insufficient CAKE balance')
+  const errorMessage = t('Insufficient COMETbalance')
 
-  const userNotEnoughCake = useMemo(() => {
+  const userNotEnoughComet = useMemo(() => {
     if (new BigNumber(cakeAmount).gt(getBalanceAmount(stakingTokenBalance, 18))) return true
     return false
   }, [cakeAmount, stakingTokenBalance])
-  return { userNotEnoughCake, notEnoughErrorMessage: errorMessage }
+  return { userNotEnoughComet, notEnoughErrorMessage: errorMessage }
 }
+

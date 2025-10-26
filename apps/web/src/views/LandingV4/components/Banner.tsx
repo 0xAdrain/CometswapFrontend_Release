@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Flex, OpenNewIcon, PageSection, Tag, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Flex, OpenNewIcon, PageSection, Tag, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { styled } from 'styled-components'
 import { SlideSvgDark, SlideSvgLight } from 'views/Home/components/SlideSvg'
@@ -101,7 +101,7 @@ export const Banner = () => {
                 '0 0 24px 0',
               ]}
             >
-              <Tag variant="secondary">{t('PancakeSwap v4')}</Tag>
+              <Tag variant="secondary">{t('CometSwap v4')}</Tag>
             </Box>
             <Box>
               <Flex justifyContent={['center', 'center', 'center', 'center', 'left']}>
@@ -154,11 +154,11 @@ export const Banner = () => {
               m={['16px 0', '16px 0', '16px 0', '16px 0', '24px 0']}
               textAlign={['center', 'center', 'center', 'center', 'left']}
             >
-              {t('Empower, Build and Innovate with PancakeSwap v4')}
+              {t('Empower, Build and Innovate with CometSwap v4')}
             </Text>
             <NextLinkFromReactRouter
               target="_blank"
-              to="https://github.com/pancakeswap/pancake-v4-core/blob/main/docs/whitepaper-en.pdf?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4whitepaper"
+              to="https://github.com/cometswap/comet-v4-core/blob/main/docs/whitepaper-en.pdf?utm_source=v4landingpage&utm_medium=banner&utm_campaign=v4landingpage&utm_id=v4whitepaper"
             >
               <Button display="flex" margin={['auto', 'auto', 'auto', 'auto', '0']}>
                 <Text color="white" bold fontSize={['12px', '16px']} mr="4px">
@@ -186,7 +186,7 @@ export const Banner = () => {
               width="100%"
               height="100%"
               disablePictureInPicture
-              src="https://cdn.pancakeswap.com/v4/banner-video.mp4"
+              src="https://cdn.cometswap.com/v4/banner-video.mp4"
               poster={`${ASSET_CDN}/web/v4-landing/video-image.jpg`}
               controlsList="nodownload noplaybackrate noremoteplayback"
             />
@@ -196,3 +196,4 @@ export const Banner = () => {
     </>
   )
 }
+

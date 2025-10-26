@@ -1,13 +1,13 @@
-import { GAUGE_TYPE_NAMES, GaugeType } from '@pancakeswap/gauges'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, ChevronDownIcon, ChevronUpIcon, ErrorIcon, Flex, FlexGap, Tag, Text } from '@pancakeswap/uikit'
+import { GAUGE_TYPE_NAMES, GaugeType } from '@cometswap/gauges'
+import { useTranslation } from '@cometswap/localization'
+import { Button, ChevronDownIcon, ChevronUpIcon, ErrorIcon, Flex, FlexGap, Tag, Text } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useCallback, useMemo, useState } from 'react'
 import { stringify } from 'viem'
-import { DebugTooltips, Tooltips } from 'views/CakeStaking/components/Tooltips'
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
-import { useCakeLockStatus } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
+import { DebugTooltips, Tooltips } from 'views/CometStaking/components/Tooltips'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
+import { useVeCometLockStatus } from 'views/CometStaking/hooks/useVeCometUserInfo'
 import { usePositionManagerName } from 'views/GaugesVoting/hooks/usePositionManagerName'
 import { useUserVote } from 'views/GaugesVoting/hooks/useUserVote'
 import { feeTierPercent } from 'views/V3Info/utils'
@@ -29,9 +29,9 @@ const debugFormat = (unix?: bigint | number) => {
 export const TableRow: React.FC<RowProps> = ({ data, submitted, vote = { ...DEFAULT_VOTE }, onChange }) => {
   const { t } = useTranslation()
   const currentTimestamp = useCurrentBlockTimestamp()
-  const { cakeLockedAmount } = useCakeLockStatus()
+  const { cometLockedAmount } = useVeCometLockStatus()
   const { managerName } = usePositionManagerName(data)
-  const cakeLocked = useMemo(() => cakeLockedAmount > 0n, [cakeLockedAmount])
+  const cometLocked = useMemo(() => cometLockedAmount > 0n, [cometLockedAmount])
   const userVote = useUserVote(data, submitted)
   const {
     currentVoteWeight,
@@ -40,7 +40,7 @@ export const TableRow: React.FC<RowProps> = ({ data, submitted, vote = { ...DEFA
     voteValue,
     voteLocked,
     willUnlock,
-    proxyVeCakeBalance,
+    proxyCometBalance,
     changeHighlight,
   } = useRowVoteState({
     data,
@@ -67,10 +67,10 @@ export const TableRow: React.FC<RowProps> = ({ data, submitted, vote = { ...DEFA
                   end: debugFormat(userVote?.end),
                   proxyEnd: debugFormat(userVote?.proxyEnd),
                   nativeEnd: debugFormat(userVote?.nativeEnd),
-                  proxyVeCakeBalance: proxyVeCakeBalance?.toString(),
+                  proxyCometBalance: proxyCometBalance?.toString(),
                   willUnlock,
                   voteLocked,
-                  cakeLocked,
+                  cometLocked,
                 },
                 undefined,
                 2,
@@ -136,15 +136,15 @@ export const TableRow: React.FC<RowProps> = ({ data, submitted, vote = { ...DEFA
         ) : null}
         <Text
           bold={changeHighlight}
-          color={voteLocked || willUnlock || !cakeLocked ? (changeHighlight ? 'textSubtle' : 'textDisabled') : ''}
+          color={voteLocked || willUnlock || !cometLocked ? (changeHighlight ? 'textSubtle' : 'textDisabled') : ''}
         >
-          {previewVoteWeight} veCAKE
+          {previewVoteWeight} veCOMET
         </Text>
       </Flex>
       <Flex>
         <PercentInput
-          disabled={voteLocked || willUnlock || !cakeLocked}
-          inputProps={{ disabled: voteLocked || willUnlock || !cakeLocked }}
+          disabled={voteLocked || willUnlock || !cometLocked}
+          inputProps={{ disabled: voteLocked || willUnlock || !cometLocked }}
           onMax={onMax}
           value={voteValue}
           onUserInput={(v) => onChange({ ...vote!, power: v })}
@@ -179,3 +179,4 @@ export const ExpandRow: React.FC<{
     </Flex>
   )
 }
+

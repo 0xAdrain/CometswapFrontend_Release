@@ -206,7 +206,7 @@ export const predictionsV3ABI = [
       {
         components: [
           {
-            internalType: 'enum PancakePredictionV3.Position',
+            internalType: 'enum CometPredictionV3.Position',
             name: 'position',
             type: 'uint8',
           },
@@ -221,7 +221,7 @@ export const predictionsV3ABI = [
             type: 'bool',
           },
         ],
-        internalType: 'struct PancakePredictionV3.BetInfo[]',
+        internalType: 'struct CometPredictionV3.BetInfo[]',
         name: '',
         type: 'tuple[]',
       },
@@ -295,7 +295,7 @@ export const predictionsV3ABI = [
     name: 'ledger',
     outputs: [
       {
-        internalType: 'enum PancakePredictionV3.Position',
+        internalType: 'enum CometPredictionV3.Position',
         name: 'position',
         type: 'uint8',
       },

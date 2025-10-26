@@ -9,12 +9,12 @@ import {
   Text,
   ButtonMenu,
   ButtonMenuItem,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { HistoryFilter } from 'state/types'
 import { setHistoryFilter, setHistoryPaneState } from 'state/predictions'
 import { useGetHistoryFilter, useGetIsFetchingHistory } from 'state/predictions/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { styled } from 'styled-components'
 
 const Filter = styled.label`
@@ -131,3 +131,4 @@ const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ activeTab, set
 }
 
 export default Header
+

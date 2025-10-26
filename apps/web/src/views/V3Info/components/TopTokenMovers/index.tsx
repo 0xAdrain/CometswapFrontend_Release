@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, Flex, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, Flex, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { useEffect, useMemo, useRef } from 'react'
 import { useChainNameByQuery, useMultiChainPath } from 'state/info/hooks'
@@ -125,3 +125,4 @@ const TopTokenMovers: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default TopTokenMovers
+

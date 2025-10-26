@@ -1,7 +1,7 @@
 export const tradingCompetitionMoboxABI = [
   {
     inputs: [
-      { internalType: 'address', name: '_pancakeProfileAddress', type: 'address' },
+      { internalType: 'address', name: '_cometProfileAddress', type: 'address' },
       { internalType: 'address', name: '_bunnyStationAddress', type: 'address' },
       { internalType: 'address', name: '_cakeTokenAddress', type: 'address' },
       { internalType: 'address', name: '_moboxTokenAddress', type: 'address' },
@@ -107,7 +107,7 @@ export const tradingCompetitionMoboxABI = [
   },
   {
     inputs: [{ internalType: 'uint256', name: '_amount', type: 'uint256' }],
-    name: 'claimCakeRemainder',
+    name: 'claimveCometRemainder',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -214,8 +214,8 @@ export const tradingCompetitionMoboxABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfile',
-    outputs: [{ internalType: 'contract IPancakeProfile', name: '', type: 'address' }],
+    name: 'cometProfile',
+    outputs: [{ internalType: 'contract ICometProfile', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -326,3 +326,4 @@ export const tradingCompetitionMoboxABI = [
     type: 'function',
   },
 ] as const
+

@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { ChevronRightIcon, Flex, Text } from '@pancakeswap/uikit'
+import { Currency } from '@cometswap/sdk'
+import { ChevronRightIcon, Flex, Text } from '@cometswap/uikit'
 import { Fragment, memo } from 'react'
 import { unwrappedToken } from 'utils/wrappedCurrency'
 
@@ -25,3 +25,4 @@ export default memo(function SwapRoute({ path }: { path?: Currency[] }) {
     </Flex>
   )
 })
+

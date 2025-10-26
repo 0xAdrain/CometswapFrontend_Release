@@ -1,6 +1,6 @@
-import { SmartRouter } from '@pancakeswap/smart-router/evm'
+import { SmartRouter } from '@cometswap/smart-router/evm'
 import { useMemo } from 'react'
-import { OrderType } from '@pancakeswap/price-api-sdk'
+import { OrderType } from '@cometswap/price-api-sdk'
 
 import { logger } from 'utils/datadog'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
@@ -103,3 +103,4 @@ export function V3SwapForm() {
     </>
   )
 }
+

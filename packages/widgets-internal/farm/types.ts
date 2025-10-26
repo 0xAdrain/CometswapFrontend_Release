@@ -1,4 +1,4 @@
-import { Token } from "@pancakeswap/sdk";
+import { Token } from "@cometswap/sdk";
 import BigNumber from "bignumber.js";
 import { ReactNode } from "react";
 import { Address } from "viem";
@@ -20,8 +20,8 @@ export interface FarmTableLiquidityProps {
 
 export interface FarmTableMultiplierProps {
   multiplier: string;
-  rewardCakePerSecond?: boolean;
-  farmCakePerSecond?: string;
+  rewardveCometPerSecond?: boolean;
+  farmveCometPerSecond?: string;
   totalMultipliers?: string;
 }
 
@@ -38,7 +38,7 @@ export interface FarmTableFarmTokenInfoProps {
   hasBothFarmAndMerkl?: boolean;
   lpAddress?: Address;
   merklApr?: number;
-  rewardCakePerSecond?: number;
+  rewardveCometPerSecond?: number;
   merklUserLink?: string;
 }
 

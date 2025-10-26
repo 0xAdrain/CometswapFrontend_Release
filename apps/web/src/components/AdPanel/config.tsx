@@ -1,11 +1,9 @@
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useMatchBreakpoints } from '@cometswap/uikit'
 import { useMemo } from 'react'
-import { AdCakeStaking } from './Ads/AdCakeStaking'
+import { AdveCometStaking } from './Ads/AdCometStaking'
 import { AdCommon } from './Ads/AdCommon'
 import { AdIfo } from './Ads/AdIfo'
 import { AdPCSX } from './Ads/AdPCSX'
-import { AdSpringboard } from './Ads/AdSpringboard'
-import { AdTradingCompetitionAndy } from './Ads/AdTradingCompetition'
 import { ExpandableAd } from './Expandable/ExpandableAd'
 import { AdsIds } from './hooks/useAdsConfig'
 import { shouldRenderOnPages } from './renderConditions'
@@ -44,14 +42,6 @@ export const useAdConfig = () => {
         component: <AdCommon id={AdsIds.TST_PERP} />,
       },
       {
-        id: 'ad-springboard',
-        component: <AdSpringboard />,
-      },
-      {
-        id: 'ad-andy-tc',
-        component: <AdTradingCompetitionAndy />,
-      },
-      {
         id: 'ad-ifo',
         component: <AdIfo />,
         shouldRender: [shouldRenderAdIfo],
@@ -61,8 +51,8 @@ export const useAdConfig = () => {
         component: <AdPCSX />,
       },
       {
-        id: 'cake-staking',
-        component: <AdCakeStaking />,
+        id: 'comet-staking',
+        component: <AdveCometStaking />,
       },
     ],
     [shouldRenderOnPage, shouldRenderAdIfo],
@@ -81,7 +71,7 @@ export const useAdConfig = () => {
 // Array of strings or regex patterns
 const commonLayoutAdIgnoredPages = [
   '/home',
-  '/cake-staking',
+  '/comet-staking',
   // Route matching: /liquidity/pool/<chainName>/<poolAddress>
   /\/liquidity\/pool\/\w+\/\w+/,
 ]
@@ -96,7 +86,7 @@ export const layoutMobileAdIgnoredPages = [
   '/',
   '/prediction',
   '/liquidity/pools',
-  '/migration/bcake',
+  '/migration/bcomet',
 ]
 
 /**
@@ -108,3 +98,4 @@ export const layoutDesktopAdIgnoredPages = [...commonLayoutAdIgnoredPages]
 
 // NOTE: In current phase, we're adding pages to whitelist as well for AdPlayer.
 export const commonLayoutWhitelistedPages = ['/', '/buy-crypto', '/prediction']
+

@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getStableSwapPools } from '@pancakeswap/stable-swap-sdk'
+import { ChainId } from '@cometswap/chains'
+import { getStableSwapPools } from '@cometswap/stable-swap-sdk'
 import {
   ComputedFarmConfigV3,
   FarmV3Data,
@@ -49,7 +49,7 @@ export async function formatUniversalFarmToSerializedFarm(
 const formatStableUniversalFarmToSerializedFarm = async (
   farm: UniversalFarmConfigStableSwap,
 ): Promise<LegacyStableFarmConfig | undefined> => {
-  const { chainId, lpAddress, pid, token0, token1, stableSwapAddress, bCakeWrapperAddress } = farm
+  const { chainId, lpAddress, pid, token0, token1, stableSwapAddress, bveCometWrapperAddress } = farm
 
   try {
     const stablePools = await getStableSwapPools(chainId)
@@ -72,7 +72,7 @@ const formatStableUniversalFarmToSerializedFarm = async (
       stableLpFee: stablePair.stableLpFee,
       stableLpFeeRateOfTotalFee: stablePair.stableLpFeeRateOfTotalFee,
       infoStableSwapAddress: stablePair.infoStableSwapAddress,
-      bCakeWrapperAddress,
+      bveCometWrapperAddress,
       chainId,
       version: 2,
     }
@@ -83,13 +83,13 @@ const formatStableUniversalFarmToSerializedFarm = async (
 }
 
 const formatV2UniversalFarmToSerializedFarm = (farm: UniversalFarmConfigV2): LegacyClassicFarmConfig | undefined => {
-  const { chainId, pid, bCakeWrapperAddress, lpAddress, token0, token1 } = farm
+  const { chainId, pid, bveCometWrapperAddress, lpAddress, token0, token1 } = farm
 
   return {
     pid,
     lpAddress,
     lpSymbol: `${token0.symbol}-${token1.symbol} LP`,
-    bCakeWrapperAddress,
+    bveCometWrapperAddress,
     token: token0,
     quoteToken: token1,
     chainId,

@@ -1,9 +1,9 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Percent, ZERO_PERCENT } from "@pancakeswap/sdk";
-import { Box, ExpandableLabel, Flex, Grid, Text } from "@pancakeswap/uikit";
-import { BulletList, Footer } from "@pancakeswap/uikit/components/RoiCalculatorModal/RoiCalculatorFooter";
-import { formatPercent } from "@pancakeswap/utils/formatFractions";
-import { formatAmount } from "@pancakeswap/utils/formatInfoNumbers";
+import { useTranslation } from "@cometswap/localization";
+import { Percent, ZERO_PERCENT } from "@cometswap/sdk";
+import { Box, ExpandableLabel, Flex, Grid, Text } from "@cometswap/uikit";
+import { BulletList, Footer } from "@cometswap/uikit/components/RoiCalculatorModal/RoiCalculatorFooter";
+import { formatPercent } from "@cometswap/utils/formatFractions";
+import { formatAmount } from "@cometswap/utils/formatInfoNumbers";
 import { ReactNode, memo, useState } from "react";
 import { styled } from "styled-components";
 

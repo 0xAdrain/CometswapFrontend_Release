@@ -1,5 +1,5 @@
-import { campaignMap } from '@pancakeswap/achievements'
-import { TranslateFunction } from '@pancakeswap/localization'
+import { campaignMap } from '@cometswap/achievements'
+import { TranslateFunction } from '@cometswap/localization'
 import { GRAPH_API_PROFILE } from 'config/constants/endpoints'
 import { gql, request } from 'graphql-request'
 import { Achievement } from 'state/types'
@@ -72,3 +72,4 @@ export const getAchievements = async (account: string, t: TranslateFunction): Pr
     return accum
   }, [])
 }
+

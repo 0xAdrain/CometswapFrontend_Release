@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { CurrencyAmount, Percent, Token, TradeType } from '@pancakeswap/swap-sdk-core'
+import { ChainId } from '@cometswap/chains'
+import { CurrencyAmount, Percent, Token, TradeType } from '@cometswap/swap-sdk-core'
 import { describe, expect, it } from 'vitest'
 
 import { Pair, Route, Trade } from '../src/entities'

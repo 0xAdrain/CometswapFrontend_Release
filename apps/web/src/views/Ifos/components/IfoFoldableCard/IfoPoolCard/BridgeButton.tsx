@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { SpaceProps } from 'styled-system'
-import { ChainId, CurrencyAmount, Currency } from '@pancakeswap/sdk'
-import { Button, useModalV2, Loading } from '@pancakeswap/uikit'
+import { ChainId, CurrencyAmount, Currency } from '@cometswap/sdk'
+import { Button, useModalV2, Loading } from '@cometswap/uikit'
 import { useCallback, useEffect, useState } from 'react'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -9,8 +9,8 @@ import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 
 // import { useChainNames } from '../../../hooks/useChainNames'
 import { useIfoSourceChain } from '../../../hooks/useIfoSourceChain'
-import { BRIDGE_STATE, useBridgeICake } from '../../../hooks/useBridgeICake'
-import { BridgeICakeModal } from './BridgeICakeModal'
+import { BRIDGE_STATE, useBridgeIComet } from '../../../hooks/useBridgeIComet'
+import { BridgeICometModal } from './BridgeICometModal'
 
 type Props = {
   ifoId: string
@@ -37,7 +37,7 @@ export function BridgeButton({ ifoChainId, icake, dstIcake, buttonVisible = true
   // const nativeIfoSupported = useMemo(() => isNativeIfoSupported(chainId), [chainId])
   const { t } = useTranslation()
   const { onOpen, onDismiss, isOpen } = useModalV2()
-  const { state, bridge, isBridging, isBridged, clearBridgeHistory } = useBridgeICake({
+  const { state, bridge, isBridging, isBridged, clearBridgeHistory } = useBridgeIComet({
     ifoId,
     icake,
     dstIcake,
@@ -80,7 +80,7 @@ export function BridgeButton({ ifoChainId, icake, dstIcake, buttonVisible = true
 
   return (
     <>
-      <BridgeICakeModal
+      <BridgeICometModal
         icake={icake}
         isOpen={isOpen}
         onDismiss={onModalDismiss}
@@ -90,10 +90,11 @@ export function BridgeButton({ ifoChainId, icake, dstIcake, buttonVisible = true
       />
       {buttonVisible && (
         <Button width="100%" id="bridge-icake" disabled={loading} onClick={onBridgeClick} {...props}>
-          {isCurrentChainSourceChain ? t('Bridge iCAKE') : t('Switch Network to Bridge')}
+          {isCurrentChainSourceChain ? t('Bridge iCOMET') : t('Switch Network to Bridge')}
           {loading && <Loading width="1rem" height="1rem" ml="0.5rem" />}
         </Button>
       )}
     </>
   )
 }
+

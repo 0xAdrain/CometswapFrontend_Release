@@ -50,7 +50,7 @@ export const lotteryV2ABI = [
       { indexed: true, internalType: 'uint256', name: 'lotteryId', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'startTime', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'endTime', type: 'uint256' },
-      { indexed: false, internalType: 'uint256', name: 'priceTicketInCake', type: 'uint256' },
+      { indexed: false, internalType: 'uint256', name: 'priceTicketInveComet', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'firstTicketId', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'injectedAmount', type: 'uint256' },
     ],
@@ -234,14 +234,14 @@ export const lotteryV2ABI = [
   },
   {
     inputs: [],
-    name: 'maxPriceTicketInCake',
+    name: 'maxPriceTicketInveComet',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
-    name: 'minPriceTicketInCake',
+    name: 'minPriceTicketInveComet',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -294,10 +294,10 @@ export const lotteryV2ABI = [
   },
   {
     inputs: [
-      { internalType: 'uint256', name: '_minPriceTicketInCake', type: 'uint256' },
-      { internalType: 'uint256', name: '_maxPriceTicketInCake', type: 'uint256' },
+      { internalType: 'uint256', name: '_minPriceTicketInveComet', type: 'uint256' },
+      { internalType: 'uint256', name: '_maxPriceTicketInveComet', type: 'uint256' },
     ],
-    name: 'setMinAndMaxTicketPriceInCake',
+    name: 'setMinAndMaxTicketPriceInveComet',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -316,7 +316,7 @@ export const lotteryV2ABI = [
   {
     inputs: [
       { internalType: 'uint256', name: '_endTime', type: 'uint256' },
-      { internalType: 'uint256', name: '_priceTicketInCake', type: 'uint256' },
+      { internalType: 'uint256', name: '_priceTicketInveComet', type: 'uint256' },
       { internalType: 'uint256', name: '_discountDivisor', type: 'uint256' },
       { internalType: 'uint256[6]', name: '_rewardsBreakdown', type: 'uint256[6]' },
       { internalType: 'uint256', name: '_treasuryFee', type: 'uint256' },
@@ -353,10 +353,10 @@ export const lotteryV2ABI = [
     outputs: [
       {
         components: [
-          { internalType: 'enum PancakeSwapLottery.Status', name: 'status', type: 'uint8' },
+          { internalType: 'enum CometSwapLottery.Status', name: 'status', type: 'uint8' },
           { internalType: 'uint256', name: 'startTime', type: 'uint256' },
           { internalType: 'uint256', name: 'endTime', type: 'uint256' },
-          { internalType: 'uint256', name: 'priceTicketInCake', type: 'uint256' },
+          { internalType: 'uint256', name: 'priceTicketInveComet', type: 'uint256' },
           { internalType: 'uint256', name: 'discountDivisor', type: 'uint256' },
           { internalType: 'uint256[6]', name: 'rewardsBreakdown', type: 'uint256[6]' },
           { internalType: 'uint256', name: 'treasuryFee', type: 'uint256' },
@@ -364,10 +364,10 @@ export const lotteryV2ABI = [
           { internalType: 'uint256[6]', name: 'countWinnersPerBracket', type: 'uint256[6]' },
           { internalType: 'uint256', name: 'firstTicketId', type: 'uint256' },
           { internalType: 'uint256', name: 'firstTicketIdNextLottery', type: 'uint256' },
-          { internalType: 'uint256', name: 'amountCollectedInCake', type: 'uint256' },
+          { internalType: 'uint256', name: 'amountCollectedInveComet', type: 'uint256' },
           { internalType: 'uint32', name: 'finalNumber', type: 'uint32' },
         ],
-        internalType: 'struct PancakeSwapLottery.Lottery',
+        internalType: 'struct CometSwapLottery.Lottery',
         name: '',
         type: 'tuple',
       },
@@ -414,3 +414,4 @@ export const lotteryV2ABI = [
     type: 'function',
   },
 ] as const
+

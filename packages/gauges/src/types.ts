@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import type { Address, Hash } from 'viem'
 
 export enum GaugeType {
@@ -10,7 +10,7 @@ export enum GaugeType {
   V2 = 0,
   V3 = 1,
   ALM = 2,
-  VeCakePool = 3,
+  veCometPool = 3,
   Aptos = 4,
 }
 
@@ -19,7 +19,7 @@ export const GAUGE_TYPE_NAMES: Record<GaugeType, string> = {
   [GaugeType.V2]: 'V2',
   [GaugeType.V3]: 'V3',
   [GaugeType.ALM]: 'Position Manager',
-  [GaugeType.VeCakePool]: 'VeCakePool',
+  [GaugeType.veCometPool]: 'veCometPool',
   [GaugeType.Aptos]: 'Aptos',
 }
 
@@ -61,12 +61,12 @@ export interface GaugeALMConfig extends GaugeBaseConfig {
   managerName?: string
 }
 
-export interface GaugeVeCakePoolConfig extends GaugeBaseConfig {
-  type: GaugeType.VeCakePool
+export interface GaugeveCometPoolConfig extends GaugeBaseConfig {
+  type: GaugeType.veCometPool
   pairName: string
 }
 
-export type GaugeConfig = GaugeV2Config | GaugeStableSwapConfig | GaugeV3Config | GaugeALMConfig | GaugeVeCakePoolConfig
+export type GaugeConfig = GaugeV2Config | GaugeStableSwapConfig | GaugeV3Config | GaugeALMConfig | GaugeveCometPoolConfig
 
 export type GaugeInfo = {
   gid: number

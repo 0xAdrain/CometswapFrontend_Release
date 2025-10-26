@@ -1,9 +1,10 @@
 {
-  "extends": "@pancakeswap/tsconfig/react-library",
+  "extends": "../tsconfig/react-library.json",
   "compilerOptions": {
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "typeRoots": ["./types", "node_modules/@types"]
   }
 }

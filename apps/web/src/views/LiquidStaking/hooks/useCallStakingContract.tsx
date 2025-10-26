@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
-import { Multicall, toHex } from '@pancakeswap/v3-sdk'
+import { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
+import { Multicall, toHex } from '@cometswap/v3-sdk'
 import { unwrappedEth } from 'config/abi/unwrappedEth'
 import { UNWRAPPED_ETH_ADDRESS } from 'config/constants/liquidStaking'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
@@ -100,3 +100,4 @@ export const useCallClaimContract = (claimedAmount?: CurrencyAmount<Currency>, i
     [isConfirming, onClaim, status],
   )
 }
+

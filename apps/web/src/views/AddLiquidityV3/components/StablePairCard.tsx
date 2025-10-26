@@ -1,4 +1,4 @@
-import { Tag } from '@pancakeswap/uikit'
+import { Tag } from '@cometswap/uikit'
 import { useTokenBalance } from 'state/wallet/hooks'
 import { getTokenSymbolAlias } from 'utils/getTokenAlias'
 import { LiquidityCardRow } from 'views/AddLiquidity/components/LiquidityCardRow'
@@ -35,3 +35,4 @@ export function StablePairCard({ pair, account }: { pair: LPStablePair; account:
     />
   )
 }
+

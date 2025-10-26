@@ -350,7 +350,7 @@ export const fixedStakingABI = [
             type: 'uint128',
           },
         ],
-        internalType: 'struct PancakeFixedStaking.Pool',
+        internalType: 'struct CometFixedStaking.Pool',
         name: '_pool',
         type: 'tuple',
       },
@@ -362,7 +362,7 @@ export const fixedStakingABI = [
   },
   {
     inputs: [],
-    name: 'cakePool',
+    name: 'cometPool',
     outputs: [
       {
         internalType: 'address',
@@ -453,7 +453,7 @@ export const fixedStakingABI = [
             type: 'uint128',
           },
         ],
-        internalType: 'struct PancakeFixedStaking.Pool',
+        internalType: 'struct CometFixedStaking.Pool',
         name: '_pool',
         type: 'tuple',
       },
@@ -679,7 +679,7 @@ export const fixedStakingABI = [
                 type: 'uint128',
               },
             ],
-            internalType: 'struct PancakeFixedStaking.Pool',
+            internalType: 'struct CometFixedStaking.Pool',
             name: 'pool',
             type: 'tuple',
           },
@@ -706,7 +706,7 @@ export const fixedStakingABI = [
                 type: 'bool',
               },
             ],
-            internalType: 'struct PancakeFixedStaking.UserInfo',
+            internalType: 'struct CometFixedStaking.UserInfo',
             name: 'userInfo',
             type: 'tuple',
           },
@@ -716,7 +716,7 @@ export const fixedStakingABI = [
             type: 'uint32',
           },
         ],
-        internalType: 'struct PancakeFixedStaking.InfoFront',
+        internalType: 'struct CometFixedStaking.InfoFront',
         name: 'info',
         type: 'tuple',
       },
@@ -925,11 +925,11 @@ export const fixedStakingABI = [
     inputs: [
       {
         internalType: 'address',
-        name: '_newCakePool',
+        name: '_newveCometPool',
         type: 'address',
       },
     ],
-    name: 'setCakePool',
+    name: 'setveCometPool',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -1103,3 +1103,4 @@ export const fixedStakingABI = [
     type: 'function',
   },
 ]
+

@@ -1,10 +1,10 @@
-import { useDebounce, useSortedTokensByQuery } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useDebounce, useSortedTokensByQuery } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
 /* eslint-disable no-restricted-syntax */
-import { Currency, Token } from '@pancakeswap/sdk'
-import { WrappedTokenInfo, createFilterToken } from '@pancakeswap/token-lists'
-import { AutoColumn, Box, Column, Input, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { useAudioPlay } from '@pancakeswap/utils/user'
+import { Currency, Token } from '@cometswap/sdk'
+import { WrappedTokenInfo, createFilterToken } from '@cometswap/token-lists'
+import { AutoColumn, Box, Column, Input, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { useAudioPlay } from '@cometswap/utils/user'
 import { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FixedSizeList } from 'react-window'
 import { isAddress } from 'viem'
@@ -268,3 +268,4 @@ function CurrencySearch({
 }
 
 export default CurrencySearch
+

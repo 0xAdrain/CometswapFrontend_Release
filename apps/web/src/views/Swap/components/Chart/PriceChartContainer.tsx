@@ -1,4 +1,4 @@
-import { Currency, WNATIVE } from '@pancakeswap/sdk'
+import { Currency, WNATIVE } from '@cometswap/sdk'
 import useTheme from 'hooks/useTheme'
 import { useCallback, useState } from 'react'
 import BnbWbnbNotice from './BnbWbnbNotice'
@@ -68,3 +68,4 @@ const PriceChartContainer: React.FC<React.PropsWithChildren<PriceChartContainerP
 }
 
 export default PriceChartContainer
+

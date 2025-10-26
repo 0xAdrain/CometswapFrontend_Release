@@ -1,8 +1,8 @@
-import { Ifo, isCrossChainIfoSupportedOnly, PoolIds } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, IfoGetTokenModal, useModal, useToast } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { getTokenListTokenUrl, getTokenLogoURLByAddress } from '@pancakeswap/widgets-internal'
+import { Ifo, isCrossChainIfoSupportedOnly, PoolIds } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { Button, IfoGetTokenModal, useModal, useToast } from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
+import { getTokenListTokenUrl, getTokenLogoURLByAddress } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useTokenBalanceByChain } from 'hooks/useTokenBalance'
@@ -10,7 +10,7 @@ import { useCallback, useMemo } from 'react'
 import { useCurrentBlock } from 'state/block/hooks'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
 
-import { useUserVeCakeStatus } from 'components/CrossChainVeCakeModal/hooks/useUserVeCakeStatus'
+import { useUserCometStatus } from 'components/CrossChainCometModal/hooks/useUserCometStatus'
 import { logGTMIfoCommitEvent } from 'utils/customGTMEventTracking'
 import ContributeModal from './ContributeModal'
 
@@ -36,7 +36,7 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
     () => getTokenListTokenUrl(ifo.currency) || getTokenLogoURLByAddress(ifo.currency.address, ifo.currency.chainId),
     [ifo.currency],
   )
-  const { isProfileSynced } = useUserVeCakeStatus(ifo.chainId)
+  const { isProfileSynced } = useUserCometStatus(ifo.chainId)
   const isCrossChainIfo = useMemo(() => isCrossChainIfoSupportedOnly(ifo.chainId), [ifo.chainId])
 
   // Refetch all the data, and display a message when fetching is done
@@ -45,7 +45,7 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
     toastSuccess(
       t('Success!'),
       <ToastDescriptionWithTx txHash={txHash}>
-        {t('You have contributed %amount% CAKE to this IFO!', {
+        {t('You have contributed %amount% COMETto this IFO!', {
           amount: getBalanceNumber(amount),
         })}
       </ToastDescriptionWithTx>,
@@ -87,7 +87,7 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
   )
 
   // In a Cross-Chain Public Sale (poolUnlimited),
-  // the user needs to have credit (iCAKE) available to participate and an active profile
+  // the user needs to have credit (iCOMET) available to participate and an active profile
   const isCrossChainAndNoProfileOrCredit = useMemo(
     () =>
       poolId === PoolIds.poolUnlimited &&
@@ -107,9 +107,10 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
       width="100%"
       disabled={isDisabled}
     >
-      {isMaxCommitted && publicIfoData.status === 'live' ? t('Max. Committed') : t('Commit CAKE')}
+      {isMaxCommitted && publicIfoData.status === 'live' ? t('Max. Committed') : t('Commit COMET')}
     </Button>
   )
 }
 
 export default ContributeButton
+

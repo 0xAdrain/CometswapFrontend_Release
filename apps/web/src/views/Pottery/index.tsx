@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
-import { Box, Message, MessageText, Text, Link } from '@pancakeswap/uikit'
+import { Box, Message, MessageText, Text, Link } from '@cometswap/uikit'
 import { usePotteryFetch } from 'state/pottery/hook'
 import Banner from 'views/Pottery/components/Banner/index'
 import Pot from 'views/Pottery/components/Pot/index'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 import { GRAPH_API_POTTERY } from 'config/constants/endpoints'
 
@@ -33,12 +33,12 @@ const Pottery: React.FC<React.PropsWithChildren> = () => {
       <Box padding="0 16px" margin="10px auto" width={['100%', '100%', '100%', '800px']}>
         <Message variant="warning">
           <MessageText>
-            <Text as="span">{t('Pancakeswap Pottery (BETA) is indefinitely halted. Please refer')}</Text>
+            <Text as="span">{t('Cometswap Pottery (BETA) is indefinitely halted. Please refer')}</Text>
             <Link
               style={{ display: 'inline-block' }}
               m="0 4px"
               external
-              href="https://blog.pancakeswap.finance/articles/idefinitely-halt-of-pancake-swap-pottery-beta-product"
+              href="https://blog.cometswap.finance/articles/idefinitely-halt-of-comet-swap-pottery-beta-product"
             >
               {t('here')}
             </Link>
@@ -65,3 +65,4 @@ const Pottery: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default Pottery
+

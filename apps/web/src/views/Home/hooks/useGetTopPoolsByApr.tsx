@@ -1,13 +1,13 @@
-import { Token } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Token } from '@cometswap/sdk'
+import { Pool } from '@cometswap/widgets-internal'
 import { useQuery } from '@tanstack/react-query'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { useEffect, useState } from 'react'
 import { useAppDispatch } from 'state'
 import {
-  fetchCakeVaultFees,
-  fetchCakeVaultPublicData,
+  fetchCometVaultFees,
+  fetchCometVaultPublicData,
   fetchPoolsConfigAsync,
   fetchPoolsPublicDataAsync,
 } from 'state/pools'
@@ -26,8 +26,8 @@ const useGetTopPoolsByApr = (isIntersecting: boolean, chainId?: number) => {
       if (!chainId) return null
       await dispatch(fetchPoolsConfigAsync({ chainId }))
       return Promise.all([
-        dispatch(fetchCakeVaultFees(chainId!)),
-        dispatch(fetchCakeVaultPublicData(chainId!)),
+        dispatch(fetchCometVaultFees(chainId!)),
+        dispatch(fetchCometVaultPublicData(chainId!)),
         dispatch(fetchPoolsPublicDataAsync(chainId!)),
       ])
     },
@@ -39,10 +39,10 @@ const useGetTopPoolsByApr = (isIntersecting: boolean, chainId?: number) => {
 
   useEffect(() => {
     const [cakePools, otherPools] = partition(pools, (pool) => pool.sousId === 0)
-    const masterCakePool = cakePools.filter((cakePool) => cakePool.vaultKey === VaultKey.CakeVault)
+    const masterCometPool = cakePools.filter((cometPool) => cometPool.vaultKey === VaultKey.CometVault)
     const getTopPoolsByApr = (activePools: (Pool.DeserializedPool<Token> | any)[]) => {
       const sortedByApr = orderBy(activePools, (pool: Pool.DeserializedPool<Token>) => pool.apr || 0, 'desc')
-      setTopPools([...masterCakePool, ...sortedByApr.slice(0, 4)])
+      setTopPools([...masterCometPool, ...sortedByApr.slice(0, 4)])
     }
     if (fetchStatus === 'success' && !isFetching) {
       getTopPoolsByApr(otherPools)
@@ -53,3 +53,4 @@ const useGetTopPoolsByApr = (isIntersecting: boolean, chainId?: number) => {
 }
 
 export default useGetTopPoolsByApr
+

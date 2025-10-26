@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { darkColors, lightColors } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { darkColors, lightColors } from '@cometswap/uikit'
 import { LineChartLoader } from 'components/ChartLoaders'
 import dayjs from 'dayjs'
 import useTheme from 'hooks/useTheme'
@@ -150,3 +150,4 @@ const LineChart = ({ data, setHoverValue, setHoverDate, dateFormat = 'h:mm a' }:
 }
 
 export default LineChart
+

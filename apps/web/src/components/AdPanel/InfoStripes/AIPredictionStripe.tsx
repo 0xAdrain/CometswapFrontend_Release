@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowForwardIcon, Box, Column, Flex, FlexGap, Link, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { VerticalDivider } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowForwardIcon, Box, Column, Flex, FlexGap, Link, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { VerticalDivider } from '@cometswap/widgets-internal'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import styled from 'styled-components'
 
@@ -17,7 +17,7 @@ const stripeImageAlt = 'AI Predictions'
 const defaultCtaLink =
   '/prediction?token=ETH&chain=arb&utm_source=infostripe&utm_medium=website&utm_campaign=Arbitrum&utm_id=PredictionLaunch'
 const defaultLearnMoreLink =
-  'https://blog.pancakeswap.finance/articles/pancake-swap-introduces-ai-powered-prediction-market-on-arbitrum-up-to-100-fund-protection-and-launching-60-000-arb-campaign?utm_source=infostripe&utm_medium=website&utm_campaign=Arbitrum&utm_id=PredictionLaunch'
+  'https://blog.cometswap.finance/articles/comet-swap-introduces-ai-powered-prediction-market-on-arbitrum-up-to-100-fund-protection-and-launching-60-000-arb-campaign?utm_source=infostripe&utm_medium=website&utm_campaign=Arbitrum&utm_id=PredictionLaunch'
 
 interface AIPredictionStripeProps {
   ctaLink?: string
@@ -65,7 +65,7 @@ export const AIPrediction = ({
     <Flex mr={['6px']} alignItems="center" flexWrap="wrap">
       <Box>
         <Text bold as="span" color="white" fontSize={['12px', '12px', '12px']}>
-          {t("PancakeSwap's AI-Prediction Market is now live on Arbitrum.")}
+          {t("CometSwap's AI-Prediction Market is now live on Arbitrum.")}
         </Text>
         <Text bold as="span" color="#FFE238" fontSize={['12px', '12px', '12px']}>
           {t('60,000 ARB')}{' '}
@@ -102,3 +102,4 @@ AIPrediction.stripeImage = stripeImage
 AIPrediction.stripeImageWidth = '120px'
 AIPrediction.stripeImageAlt = stripeImageAlt
 AIPrediction.background = '#213147'
+

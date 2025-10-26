@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/ifos",
+  "name": "@cometswap/ifos",
   "version": "3.0.22",
   "sideEffects": false,
   "private": true,
@@ -9,22 +9,22 @@
   },
   "type": "module",
   "peerDependencies": {
-    "@pancakeswap/sdk": "workspace:*",
-    "@pancakeswap/tokens": "workspace:*",
-    "@pancakeswap/utils": "workspace:*",
+    "@cometswap/sdk": "workspace:*",
+    "@cometswap/tokens": "workspace:*",
+    "@cometswap/utils": "workspace:*",
     "viem": "catalog:",
     "wagmi": "catalog:"
   },
   "dependencies": {
     "@layerzerolabs/scan-client": "^0.0.6",
-    "@pancakeswap/chains": "workspace:*",
+    "@cometswap/chains": "workspace:*",
     "bignumber.js": "^9.0.0"
   },
   "devDependencies": {
-    "@pancakeswap/sdk": "workspace:*",
-    "@pancakeswap/tokens": "workspace:*",
-    "@pancakeswap/tsconfig": "workspace:*",
-    "@pancakeswap/utils": "workspace:*",
+    "@cometswap/sdk": "workspace:*",
+    "@cometswap/tokens": "workspace:*",
+    "@cometswap/tsconfig": "workspace:*",
+    "@cometswap/utils": "workspace:*",
     "viem": "catalog:",
     "wagmi": "catalog:"
   }

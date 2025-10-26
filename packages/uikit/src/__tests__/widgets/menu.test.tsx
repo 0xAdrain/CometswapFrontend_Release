@@ -1,5 +1,5 @@
 import noop from "lodash/noop";
-import type { Language } from "@pancakeswap/localization";
+import type { Language } from "@cometswap/localization";
 import { vi } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 import { renderWithProvider } from "../../testHelpers";
@@ -46,8 +46,8 @@ it("renders correctly", () => {
         footerLinks={footerLinks}
         activeItem="Trade"
         activeSubItem="Exchange"
-        buyCakeLabel="Buy CAKE"
-        buyCakeLink="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+        buyveCometLabel="Buy COMET"
+        buyveCometLink="https://cometswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
       >
         body
       </Menu>

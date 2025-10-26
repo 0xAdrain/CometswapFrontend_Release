@@ -1,26 +1,26 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Button, Text, useMatchBreakpoints } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Button, Text, useMatchBreakpoints } from "@cometswap/uikit";
 import { ActionContent, ActionTitles, StyledActionContainer } from "./styles";
 
 export interface StakeComponentProps {
   lpSymbol: string;
   isStakeReady: boolean;
   onPresentDeposit: () => void;
-  bCakeInfoSlot?: React.ReactElement;
+  bveCometInfoSlot?: React.ReactElement;
 }
 
 const StakeComponent: React.FunctionComponent<React.PropsWithChildren<StakeComponentProps>> = ({
   lpSymbol,
   isStakeReady,
   onPresentDeposit,
-  bCakeInfoSlot,
+  bveCometInfoSlot,
 }) => {
   const { t } = useTranslation();
   const { isMobile } = useMatchBreakpoints();
   return (
     <StyledActionContainer
       style={
-        bCakeInfoSlot
+        bveCometInfoSlot
           ? {
               display: "flex",
               gap: 16,
@@ -31,8 +31,8 @@ const StakeComponent: React.FunctionComponent<React.PropsWithChildren<StakeCompo
           : undefined
       }
     >
-      {(!bCakeInfoSlot || isMobile) && (
-        <ActionTitles style={bCakeInfoSlot && isMobile ? { alignItems: "flex-start", width: "100%" } : undefined}>
+      {(!bveCometInfoSlot || isMobile) && (
+        <ActionTitles style={bveCometInfoSlot && isMobile ? { alignItems: "flex-start", width: "100%" } : undefined}>
           <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px" pr="4px">
             {t("Stake")}
           </Text>
@@ -41,12 +41,12 @@ const StakeComponent: React.FunctionComponent<React.PropsWithChildren<StakeCompo
           </Text>
         </ActionTitles>
       )}
-      <ActionContent style={bCakeInfoSlot ? { flexGrow: 1, width: isMobile ? "100%" : undefined } : undefined}>
+      <ActionContent style={bveCometInfoSlot ? { flexGrow: 1, width: isMobile ? "100%" : undefined } : undefined}>
         <Button width="100%" onClick={onPresentDeposit} variant="secondary" disabled={isStakeReady}>
           {t("Stake LP")}
         </Button>
       </ActionContent>
-      {bCakeInfoSlot}
+      {bveCometInfoSlot}
     </StyledActionContainer>
   );
 };

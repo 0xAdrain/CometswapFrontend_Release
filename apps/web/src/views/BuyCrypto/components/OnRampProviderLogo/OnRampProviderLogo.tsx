@@ -1,5 +1,5 @@
-import type { Token } from '@pancakeswap/swap-sdk-core'
-import { Box, Image, Skeleton, TokenPairImage } from '@pancakeswap/uikit'
+import type { Token } from '@cometswap/swap-sdk-core'
+import { Box, Image, Skeleton, TokenPairImage } from '@cometswap/uikit'
 import { FiatLogo } from 'components/Logo/CurrencyLogo'
 import { getImageUrlFromToken } from 'components/TokenImage'
 import { ASSET_CDN } from 'config/constants/endpoints'
@@ -57,3 +57,4 @@ export const OnRampCurrencyLogo = ({ mode, currency, size = 28 }: { mode: string
 }
 
 export default OnRampProviderLogo
+

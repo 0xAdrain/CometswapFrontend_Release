@@ -1,4 +1,4 @@
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useMatchBreakpoints } from '@cometswap/uikit'
 
 import {
   ControlGroup,
@@ -43,3 +43,4 @@ export function Controls() {
 
   return controls
 }
+

@@ -1,6 +1,6 @@
 import memoize from 'lodash/memoize'
-import { Token } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { Token } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 import { safeGetAddress } from 'utils'
 import { isAddress } from 'viem'
 
@@ -38,3 +38,4 @@ export const getTokenLogoURLByAddress = memoize(
 )
 
 export default getTokenLogoURL
+

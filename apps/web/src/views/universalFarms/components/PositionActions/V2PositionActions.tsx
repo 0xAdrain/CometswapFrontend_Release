@@ -1,17 +1,17 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRow, useModal, useToast } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRow, useModal, useToast } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useTokenAllowanceByChainId } from 'hooks/useTokenAllowance'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { usePoolApr } from 'state/farmsV4/hooks'
-import { getBCakeWrapperAddress } from 'state/farmsV4/state/accountPositions/fetcher'
-import { useAccountV2PendingCakeReward } from 'state/farmsV4/state/accountPositions/hooks/useAccountV2PendingCakeReward'
+import { getBCometWrapperAddress } from 'state/farmsV4/state/accountPositions/fetcher'
+import { useAccountV2PendingCometReward } from 'state/farmsV4/state/accountPositions/hooks/useAccountV2PendingCometReward'
 import { useLatestTxReceipt } from 'state/farmsV4/state/accountPositions/hooks/useLatestTxReceipt'
 import { StableLPDetail, V2LPDetail } from 'state/farmsV4/state/accountPositions/type'
 import { StablePoolInfo, V2PoolInfo } from 'state/farmsV4/state/type'
@@ -19,7 +19,7 @@ import styled from 'styled-components'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { Address, Hash } from 'viem'
 import { useCheckShouldSwitchNetwork } from 'views/universalFarms/hooks'
-import { useV2CakeEarning } from 'views/universalFarms/hooks/useCakeEarning'
+import { useV2CometEarning } from 'views/universalFarms/hooks/useVeCometEarning'
 import { useV2FarmActions } from 'views/universalFarms/hooks/useV2FarmActions'
 import { sumApr } from 'views/universalFarms/utils/sumApr'
 import { StopPropagation } from '../StopPropagation'
@@ -65,7 +65,7 @@ export const V2PositionActions: React.FC<V2PositionActionsProps> = ({ isStaked, 
 const useDepositModal = (props: V2PositionActionsProps) => {
   const { chainId, data, pid, lpAddress, tvlUsd, poolInfo } = props
   const { account } = useAccountActiveChain()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError } = useCatchTxError()
   const { t } = useTranslation()
@@ -75,22 +75,22 @@ const useDepositModal = (props: V2PositionActionsProps) => {
     return sumApr(lpApr, cakeApr.value, merklApr)
   }, [lpApr, cakeApr.value, merklApr])
 
-  const [bCakeAddress, setBCakeAddress] = useState<Address | undefined>()
+  const [bCometAddress, setBCometAddress] = useState<Address | undefined>()
 
   useEffect(() => {
-    const fetchBCakeAddress = async () => {
-      const address = await getBCakeWrapperAddress(lpAddress, chainId)
-      setBCakeAddress(address)
+    const fetchBCometAddress = async () => {
+      const address = await getBCometWrapperAddress(lpAddress, chainId)
+      setBCometAddress(address)
     }
 
-    fetchBCakeAddress()
+    fetchBCometAddress()
   }, [lpAddress, chainId])
 
   const { allowance } = useTokenAllowanceByChainId({
     chainId,
     token: data.pair.liquidityToken,
     owner: account,
-    spender: bCakeAddress,
+    spender: bCometAddress,
   })
 
   const totalSupply = useMemo(() => {
@@ -102,7 +102,7 @@ const useDepositModal = (props: V2PositionActionsProps) => {
   const stakedBalance = useMemo(() => {
     return new BigNumber(data.farmingBalance.quotient.toString())
   }, [data.farmingBalance])
-  const { onStake, onApprove } = useV2FarmActions(lpAddress, poolInfo.bCakeWrapperAddress)
+  const { onStake, onApprove } = useV2FarmActions(lpAddress, poolInfo.bCometWrapperAddress)
   const lpSymbol = useMemo(() => {
     return `${data.pair.token0.symbol}-${data.pair.token1.symbol} LP`
   }, [data.pair.token0.symbol, data.pair.token1.symbol])
@@ -131,7 +131,7 @@ const useDepositModal = (props: V2PositionActionsProps) => {
   )
 
   const handleApprove = useCallback(async () => {
-    if (!poolInfo.bCakeWrapperAddress) return
+    if (!poolInfo.bCometWrapperAddress) return
     const receipt = await fetchWithCatchTxError(() => {
       return onApprove() as Promise<{ hash: Hash }>
     })
@@ -139,7 +139,7 @@ const useDepositModal = (props: V2PositionActionsProps) => {
       setLatestTxReceipt(receipt)
       toastSuccess(t('Contract Enabled'), <ToastDescriptionWithTx txHash={receipt.transactionHash} />)
     }
-  }, [poolInfo.bCakeWrapperAddress, fetchWithCatchTxError, onApprove, setLatestTxReceipt, toastSuccess, t])
+  }, [poolInfo.bCometWrapperAddress, fetchWithCatchTxError, onApprove, setLatestTxReceipt, toastSuccess, t])
 
   const addLiquidityUrl = useMemo(() => {
     const liquidityUrlPathParts = getLiquidityUrlPathParts({
@@ -162,7 +162,7 @@ const useDepositModal = (props: V2PositionActionsProps) => {
       max={nativeBalance}
       stakedBalance={stakedBalance}
       decimals={18}
-      cakePrice={cakePrice}
+      cometPrice={cometPrice}
       allowance={allowance ? new BigNumber(allowance.quotient.toString()) : BIG_ZERO}
       onConfirm={handleStake}
       handleApprove={handleApprove}
@@ -190,11 +190,11 @@ const useDepositModal = (props: V2PositionActionsProps) => {
 const useWithdrawModal = (
   data: V2LPDetail | StableLPDetail,
   lpAddress: Address,
-  bCakeWrapperAddress: Address | undefined,
+  bCometWrapperAddress: Address | undefined,
   tvlUsd?: `${number}` | number | undefined,
 ) => {
   const { t } = useTranslation()
-  const { onUnStake } = useV2FarmActions(lpAddress, bCakeWrapperAddress)
+  const { onUnStake } = useV2FarmActions(lpAddress, bCometWrapperAddress)
   const lpSymbol = useMemo(() => {
     return `${data.pair.token0.symbol}-${data.pair.token1.symbol} LP`
   }, [data.pair.token0.symbol, data.pair.token1.symbol])
@@ -239,7 +239,7 @@ const V2FarmingAction: React.FC<V2PositionActionsProps> = (props) => {
   const { data, chainId, lpAddress, tvlUsd, isFarmLive, poolInfo } = props
   const { switchNetworkIfNecessary } = useCheckShouldSwitchNetwork()
   const onPresentDeposit = useDepositModal(props)
-  const onPresentWithdraw = useWithdrawModal(data, lpAddress, poolInfo.bCakeWrapperAddress, tvlUsd)
+  const onPresentWithdraw = useWithdrawModal(data, lpAddress, poolInfo.bCometWrapperAddress, tvlUsd)
 
   const handleIncrease = useCallback(async () => {
     const shouldSwitch = await switchNetworkIfNecessary(chainId)
@@ -276,15 +276,15 @@ const V2NativeAction: React.FC<V2PositionActionsProps> = (props) => {
 
 const V2HarvestAction: React.FC<V2PositionActionsProps> = ({ chainId, lpAddress, poolInfo }) => {
   const { t } = useTranslation()
-  const { onHarvest } = useV2FarmActions(lpAddress, poolInfo.bCakeWrapperAddress)
+  const { onHarvest } = useV2FarmActions(lpAddress, poolInfo.bCometWrapperAddress)
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const { account } = useAccountActiveChain()
   const { switchNetworkIfNecessary } = useCheckShouldSwitchNetwork()
-  const { data: pendingReward_ } = useAccountV2PendingCakeReward(account, {
+  const { data: pendingReward_ } = useAccountV2PendingCometReward(account, {
     chainId,
     lpAddress,
-    bCakeWrapperAddress: poolInfo.bCakeWrapperAddress,
+    bCometWrapperAddress: poolInfo.bCometWrapperAddress,
   })
   const pendingReward = useMemo(() => {
     return new BigNumber(pendingReward_?.toString() ?? '0')
@@ -301,13 +301,13 @@ const V2HarvestAction: React.FC<V2PositionActionsProps> = ({ chainId, lpAddress,
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
         </ToastDescriptionWithTx>,
       )
     }
   }, [setLatestTxReceipt, chainId, switchNetworkIfNecessary, fetchWithCatchTxError, onHarvest, t, toastSuccess])
 
-  const { earningsBusd } = useV2CakeEarning(poolInfo)
+  const { earningsBusd } = useV2CometEarning(poolInfo)
 
   if (!pendingReward || pendingReward.isZero()) {
     return null
@@ -315,3 +315,4 @@ const V2HarvestAction: React.FC<V2PositionActionsProps> = ({ chainId, lpAddress,
 
   return <HarvestAction onHarvest={handleHarvest} executing={pendingTx} disabled={pendingTx || !earningsBusd} />
 }
+

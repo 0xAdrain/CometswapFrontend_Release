@@ -1,13 +1,13 @@
 export {
-  fetchBCakeWrapperDataAsync,
-  fetchBCakeWrapperUserDataAsync,
+  fetchBveCometWrapperDataAsync,
+  fetchBveCometWrapperUserDataAsync,
   fetchFarmUserDataAsync,
   fetchFarmsPublicDataAsync,
 } from './farms'
 export {
-  fetchCakeVaultFees,
-  fetchCakeVaultPublicData,
-  fetchCakeVaultUserData,
+  fetchveCometVaultFees,
+  fetchveCometVaultPublicData,
+  fetchveCometVaultUserData,
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
   updateUserAllowance,
@@ -15,3 +15,4 @@ export {
   updateUserPendingReward,
   updateUserStakedBalance,
 } from './pools'
+

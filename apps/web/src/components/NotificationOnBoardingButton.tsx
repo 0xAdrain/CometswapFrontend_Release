@@ -1,5 +1,5 @@
-import { TranslateFunction, useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, CircleLoader, Flex, Text, useToast } from '@pancakeswap/uikit'
+import { TranslateFunction, useTranslation } from '@cometswap/localization'
+import { AutoColumn, CircleLoader, Flex, Text, useToast } from '@cometswap/uikit'
 import { usePrepareRegistration, useRegister, useSubscribe, useSubscription } from '@web3inbox/react'
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -32,7 +32,7 @@ const getOnBoardingButtonText = (
 
   if (isStep1) return t('Enable Notifications')
   if (isStep2) return t('Sign In With Wallet')
-  if (isStep3) return t('Subscribe To PancakeSwap')
+  if (isStep3) return t('Subscribe To CometSwap')
   if (isStep4) return t('Continue')
 
   return t('Enable Notifications')
@@ -136,3 +136,4 @@ function NotificationsOnboardingButton({
 }
 
 export default NotificationsOnboardingButton
+

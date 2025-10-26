@@ -1,1 +1,1 @@
-export const STABLE_SWAP_API = 'https://configs.pancakeswap.com/api/data/cached/stableswaps'
+export const STABLE_SWAP_API = 'https://configs.cometswap.com/api/data/cached/stableswaps'

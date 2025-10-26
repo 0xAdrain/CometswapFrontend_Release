@@ -1,7 +1,7 @@
-import { DAY_IN_SECONDS } from '@pancakeswap/utils/getTimePeriods'
-import { WEEK } from 'config/constants/veCake'
+import { DAY_IN_SECONDS } from '@cometswap/utils/getTimePeriods'
+import { WEEK } from 'config/constants/Comet'
 import { useMemo } from 'react'
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
 
 const TWO_WEEKS = WEEK * 2
 
@@ -39,3 +39,4 @@ export const useEpochOnTally = (): boolean => {
 
   return onTally
 }
+

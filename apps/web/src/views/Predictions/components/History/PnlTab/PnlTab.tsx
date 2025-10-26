@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition, REWARD_RATE } from '@pancakeswap/prediction'
-import { Box, BscScanIcon, Button, Flex, Heading, Link, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition, REWARD_RATE } from '@cometswap/prediction'
+import { Box, BscScanIcon, Button, Flex, Heading, Link, Text } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { Result, getRoundResult } from 'state/predictions/helpers'
 import { useGetCurrentEpoch } from 'state/predictions/hooks'
@@ -224,3 +224,4 @@ const PnlTab: React.FC<React.PropsWithChildren<PnlTabProps>> = ({ hasBetHistory,
 }
 
 export default PnlTab
+

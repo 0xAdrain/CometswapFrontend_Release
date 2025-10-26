@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { getAllGauges } from '@pancakeswap/gauges'
+import { ChainId } from '@cometswap/chains'
+import { getAllGauges } from '@cometswap/gauges'
 import { NextApiHandler } from 'next'
 import qs from 'qs'
 import { getViemClients } from 'utils/viem.server'
@@ -64,3 +64,4 @@ const handler: NextApiHandler = async (req, res) => {
 }
 
 export default handler
+

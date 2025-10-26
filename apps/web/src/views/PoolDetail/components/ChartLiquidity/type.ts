@@ -14,3 +14,4 @@ export type V3LiquidityChartData = {
   tvlToken0: number
   tvlToken1: number
 }
+

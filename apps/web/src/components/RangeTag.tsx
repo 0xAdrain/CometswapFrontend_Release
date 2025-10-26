@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { QuestionHelper, Tag, TagProps, Flex } from '@pancakeswap/uikit'
-import { styleVariants } from '@pancakeswap/uikit/components/Tag/theme'
+import { useTranslation } from '@cometswap/localization'
+import { QuestionHelper, Tag, TagProps, Flex } from '@cometswap/uikit'
+import { styleVariants } from '@cometswap/uikit/components/Tag/theme'
 import { ReactNode } from 'react'
 
 type IRangeTagType = {
@@ -42,3 +42,4 @@ export function RangeTag({ removed, outOfRange, children, lowContrast = false, .
     </Tag>
   )
 }
+

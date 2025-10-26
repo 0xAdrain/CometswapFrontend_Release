@@ -18,3 +18,4 @@ export default createReducer<BurnV3State>(initialState, (builder) =>
     }
   }),
 )
+

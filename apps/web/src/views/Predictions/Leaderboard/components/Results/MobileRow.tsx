@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Box, Text } from '@cometswap/uikit'
 import { PredictionUser } from 'state/types'
 import { styled } from 'styled-components'
 import ResultAvatar from './ResultAvatar'
@@ -51,3 +51,4 @@ const MobileRow: React.FC<React.PropsWithChildren<MobileRowProps>> = ({ rank, us
 }
 
 export default MobileRow
+

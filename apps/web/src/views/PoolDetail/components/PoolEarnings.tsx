@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Skeleton, Text } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Skeleton, Text } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import { PoolInfo } from 'state/farmsV4/state/type'
-import { useV2CakeEarning, useV3CakeEarningsByPool } from 'views/universalFarms/hooks/useCakeEarning'
+import { useV2CometEarning, useV3CometEarningsByPool } from 'views/universalFarms/hooks/useVeCometEarning'
 
 type PoolEarningsProps = {
   earningsBusd: number
@@ -29,19 +29,20 @@ const PoolEarnings: React.FC<PoolEarningsProps> = ({ earningsBusd, earningsAmoun
         ${formatNumber(earningsBusd, 0, 4)}
       </Text>
       <Text color="secondary" fontSize={12}>
-        {formatNumber(earningsAmount)} CAKE
+        {formatNumber(earningsAmount)} COMET
       </Text>
     </AutoColumn>
   )
 }
 
 export const V2PoolEarnings: React.FC<{ pool: PoolInfo | null | undefined }> = ({ pool }) => {
-  const { earningsBusd, earningsAmount, isLoading } = useV2CakeEarning(pool)
+  const { earningsBusd, earningsAmount, isLoading } = useV2CometEarning(pool)
 
   return <PoolEarnings earningsAmount={earningsAmount} earningsBusd={earningsBusd} loading={isLoading} />
 }
 
 export const V3PoolEarnings: React.FC<{ pool: PoolInfo | null | undefined }> = ({ pool }) => {
-  const { earningsBusd, earningsAmount, isLoading } = useV3CakeEarningsByPool(pool)
+  const { earningsBusd, earningsAmount, isLoading } = useV3CometEarningsByPool(pool)
   return <PoolEarnings earningsAmount={earningsAmount} earningsBusd={earningsBusd} loading={isLoading} />
 }
+

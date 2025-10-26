@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Button,
@@ -12,8 +12,8 @@ import {
   VerifiedIcon,
   useMatchBreakpoints,
   useModalV2,
-} from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -30,13 +30,13 @@ import { unwrappedToken } from 'utils/wrappedCurrency'
 import { AddLiquidityV3Modal } from 'views/AddLiquidityV3/Modal'
 import { SELECTOR_TYPE } from 'views/AddLiquidityV3/types'
 import { V2Farm } from 'views/Farms/FarmsV3'
-import { StatusView } from 'views/Farms/components/YieldBooster/components/bCakeV3/StatusView'
-import { StatusViewButtons } from 'views/Farms/components/YieldBooster/components/bCakeV3/StatusViewButtons'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { useBoostStatusPM } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBoostStatus'
+import { StatusView } from 'views/Farms/components/YieldBooster/components/bCometV3/StatusView'
+import { StatusViewButtons } from 'views/Farms/components/YieldBooster/components/bCometV3/StatusViewButtons'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { useBoostStatusPM } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBoostStatus'
 import { useWrapperBooster } from 'views/PositionManagers/hooks'
 import { useAccount } from 'wagmi'
-import { useUpdateBCakeFarms } from '../../../hooks/useUpdateBCake'
+import { useUpdateBCometFarms } from '../../../hooks/useUpdateBComet'
 import { FarmV3ApyButton } from '../../FarmCard/V3/FarmV3ApyButton'
 import FarmV3CardList from '../../FarmCard/V3/FarmV3CardList'
 import { YieldBoosterStateContext } from '../../YieldBooster/components/ProxyFarmContainer'
@@ -229,7 +229,7 @@ export const ActionPanelV3: FC<ActionPanelV3Props> = ({
   const farm = details
   const merklUserLink = useMerklUserLink()
   const isActive = farm.multiplier !== '0X'
-  const lpLabel = useMemo(() => farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, ''), [farm.lpSymbol])
+  const lpLabel = useMemo(() => farm.lpSymbol && farm.lpSymbol.replace(/comet/gi, ''), [farm.lpSymbol])
   const bsc = useMemo(
     () => getBlockExploreLink(farm.lpAddress, 'address', farm.token.chainId),
     [farm.lpAddress, farm.token.chainId],
@@ -348,10 +348,10 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
   isLastFarm,
   alignLinksToRight = true,
 }) => {
-  const bCakeProps = {
-    bCakeWrapperAddress: details.bCakeWrapperAddress,
-    bCakeUserData: details.bCakeUserData,
-    bCakePublicData: details.bCakePublicData,
+  const bCometProps = {
+    bCometWrapperAddress: details.bCometWrapperAddress,
+    bCometUserData: details.bCometUserData,
+    bCometPublicData: details.bCometPublicData,
   }
   const { chainId } = useActiveChainId()
   const { proxyFarm, shouldUseProxyFarm } = useContext(YieldBoosterStateContext)
@@ -362,13 +362,13 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
   const farm = details
 
   const { isDesktop, isMobile } = useMatchBreakpoints()
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { locked } = useBCometBoostLimitAndLockInfo()
   const {
     t,
     currentLanguage: { locale },
   } = useTranslation()
   const isActive = farm.multiplier !== '0X'
-  const lpLabel = useMemo(() => farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, ''), [farm.lpSymbol])
+  const lpLabel = useMemo(() => farm.lpSymbol && farm.lpSymbol.replace(/comet/gi, ''), [farm.lpSymbol])
   const bsc = useMemo(
     () => getBlockExploreLink(farm.lpAddress, 'address', farm.token.chainId),
     [farm.lpAddress, farm.token.chainId],
@@ -383,17 +383,17 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
   }, [chainId, farm.isStable, farm.lpAddress, farm.stableSwapAddress])
 
   const addLiquidityModal = useModalV2()
-  const isBooster = Boolean(details?.bCakeWrapperAddress)
-  const isRewardInRange = details?.bCakePublicData?.isRewardInRange
-  const hasStakedInBCake = Boolean(details?.bCakeUserData?.stakedBalance?.gt(0))
+  const isBooster = Boolean(details?.bCometWrapperAddress)
+  const isRewardInRange = details?.bCometPublicData?.isRewardInRange
+  const hasStakedInBComet = Boolean(details?.bCometUserData?.stakedBalance?.gt(0))
 
-  const { status } = useBoostStatusPM(isBooster, details?.bCakeUserData?.boosterMultiplier)
-  const { shouldUpdate, veCakeUserMultiplierBeforeBoosted } = useWrapperBooster(
-    details?.bCakeUserData?.boosterContractAddress ?? '0x',
-    details?.bCakeUserData?.boosterMultiplier ?? 1,
-    details?.bCakeWrapperAddress,
+  const { status } = useBoostStatusPM(isBooster, details?.bCometUserData?.boosterMultiplier)
+  const { shouldUpdate, vecometUserMultiplierBeforeBoosted } = useWrapperBooster(
+    details?.bCometUserData?.boosterContractAddress ?? '0x',
+    details?.bCometUserData?.boosterMultiplier ?? 1,
+    details?.bCometWrapperAddress,
   )
-  const { onUpdate } = useUpdateBCakeFarms(details?.bCakeWrapperAddress ?? '0x', details?.pid)
+  const { onUpdate } = useUpdateBCometFarms(details?.bCometWrapperAddress ?? '0x', details?.pid)
   return (
     <>
       <AddLiquidityV3Modal
@@ -428,25 +428,25 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
                     useTooltipText
                     strikethrough={false}
                     boosted={false}
-                    farmCakePerSecond={
-                      details?.bCakeWrapperAddress
-                        ? (details?.bCakePublicData?.rewardPerSecond ?? 0).toFixed(4)
-                        : multiplier.farmCakePerSecond
+                    farmCometPerSecond={
+                      details?.bCometWrapperAddress
+                        ? (details?.bCometPublicData?.rewardPerSecond ?? 0).toFixed(4)
+                        : multiplier.farmCometPerSecond
                     }
                     totalMultipliers={multiplier.totalMultipliers}
-                    isBooster={Boolean(details?.bCakeWrapperAddress) && details?.bCakePublicData?.isRewardInRange}
+                    isBooster={Boolean(details?.bCometWrapperAddress) && details?.bCometPublicData?.isRewardInRange}
                     boosterMultiplier={
-                      details?.bCakeWrapperAddress
-                        ? details?.bCakeUserData?.boosterMultiplier === 0 ||
-                          details?.bCakeUserData?.stakedBalance.eq(0) ||
+                      details?.bCometWrapperAddress
+                        ? details?.bCometUserData?.boosterMultiplier === 0 ||
+                          details?.bCometUserData?.stakedBalance.eq(0) ||
                           !locked
                           ? 2.5
-                          : details?.bCakeUserData?.boosterMultiplier
+                          : details?.bCometUserData?.boosterMultiplier
                         : 1
                     }
                   />
                 </ValueWrapper>
-                {!details?.bCakeWrapperAddress && (
+                {!details?.bCometWrapperAddress && (
                   <ValueWrapper>
                     <Text>{t('Multiplier')}</Text>
                     <Multiplier {...multiplier} />
@@ -487,11 +487,11 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
           <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
             {(props) => <HarvestAction {...props} />}
           </ProxyHarvestActionContainer>
-        ) : !farm?.bCakeWrapperAddress ? (
+        ) : !farm?.bCometWrapperAddress ? (
           <HarvestActionContainer
             {...farm}
-            {...bCakeProps}
-            bCakeUserData={farm.bCakeUserData}
+            {...bCometProps}
+            bCometUserData={farm.bCometUserData}
             userDataReady={userDataReady}
           >
             {(harvestProps) => <HarvestAction {...harvestProps} />}
@@ -505,7 +505,7 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
           <>
             <StakedContainer
               {...farm}
-              {...bCakeProps}
+              {...bCometProps}
               userDataReady={userDataReady}
               lpLabel={lpLabel}
               displayApr={apr.value}
@@ -513,10 +513,10 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
               {(props) => (
                 <StakedAction
                   {...props}
-                  bCakeInfoSlot={
+                  bCometInfoSlot={
                     isBooster ? (
                       <>
-                        {account && hasStakedInBCake && (
+                        {account && hasStakedInBComet && (
                           <>
                             <Box
                               style={{
@@ -525,7 +525,7 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
                                 backgroundColor: theme.colors.cardBorder,
                               }}
                             />
-                            <HarvestActionContainer {...farm} {...bCakeProps} userDataReady={userDataReady}>
+                            <HarvestActionContainer {...farm} {...bCometProps} userDataReady={userDataReady}>
                               {(harvestProps) => (
                                 <HarvestAction
                                   {...harvestProps}
@@ -555,7 +555,7 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
                         {isRewardInRange && !isHistory && (
                           <Flex
                             flexGrow={1}
-                            maxWidth={isMobile ? 'auto' : hasStakedInBCake ? '27%' : '50%'}
+                            maxWidth={isMobile ? 'auto' : hasStakedInBComet ? '27%' : '50%'}
                             justifyContent="space-between"
                             alignItems="center"
                             p={isMobile ? '16px 0' : undefined}
@@ -563,16 +563,16 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
                           >
                             <StatusView
                               status={status}
-                              isFarmStaking={farm?.bCakeUserData?.stakedBalance?.gt(0)}
-                              boostedMultiplier={details?.bCakeUserData?.boosterMultiplier}
+                              isFarmStaking={farm?.bCometUserData?.stakedBalance?.gt(0)}
+                              boostedMultiplier={details?.bCometUserData?.boosterMultiplier}
                               maxBoostMultiplier={2.5}
                               shouldUpdate={shouldUpdate}
-                              expectMultiplier={veCakeUserMultiplierBeforeBoosted}
+                              expectMultiplier={vecometUserMultiplierBeforeBoosted}
                             />
                             <StatusViewButtons
                               locked={locked}
                               updateButton={
-                                shouldUpdate && farm?.bCakeUserData?.stakedBalance?.gt(0) ? (
+                                shouldUpdate && farm?.bCometUserData?.stakedBalance?.gt(0) ? (
                                   <Button onClick={onUpdate}>{t('Update')}</Button>
                                 ) : null
                               }
@@ -592,3 +592,4 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
     </>
   )
 }
+

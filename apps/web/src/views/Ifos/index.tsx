@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { useModal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { useModal } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { useUserNotUsCitizenAcknowledgement, IdType } from 'hooks/useUserIsUsCitizenAcknowledgement'
 import USCitizenConfirmModal from 'components/Modal/USCitizenConfirmModal'
 import Hero from './components/Hero'
@@ -12,7 +12,7 @@ export const IfoPageLayout = ({ children }) => {
   const [userNotUsCitizenAcknowledgement] = useUserNotUsCitizenAcknowledgement(IdType.IFO)
   const [onUSCitizenModalPresent] = useModal(
     <USCitizenConfirmModal
-      title={t('PancakeSwap IFOs')}
+      title={t('CometSwap IFOs')}
       id={IdType.IFO}
       checks={[
         {
@@ -43,3 +43,4 @@ export const IfoPageLayout = ({ children }) => {
     </IfoProvider>
   )
 }
+

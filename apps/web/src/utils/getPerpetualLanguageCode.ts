@@ -25,3 +25,4 @@ export const perpLangMap = (languageCode: string) => {
   }
   return 'en'
 }
+

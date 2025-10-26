@@ -1,8 +1,8 @@
 /* eslint-disable no-case-declarations */
-import { useDelayedUnmount } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useDelayedUnmount } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, useMatchBreakpoints } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { createElement, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 
@@ -10,11 +10,11 @@ import { useMerklInfo } from 'hooks/useMerkl'
 import { type V3Farm } from 'state/farms/types'
 import { useMerklUserLink } from 'utils/getMerklLink'
 import { V2Farm } from 'views/Farms/FarmsV3'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
 import { RewardPerDay } from 'views/PositionManagers/components/RewardPerDay'
 import { FarmV3ApyButton } from '../FarmCard/V3/FarmV3ApyButton'
-import { useUserBoostedPoolsTokenId } from '../YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { useIsSomePositionBoosted } from '../YieldBooster/hooks/bCakeV3/useIsSomePositionBoosted'
+import { useUserBoostedPoolsTokenId } from '../YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { useIsSomePositionBoosted } from '../YieldBooster/hooks/bCometV3/useIsSomePositionBoosted'
 import { ActionPanelV2, ActionPanelV3 } from './Actions/ActionPanel'
 import Apr, { AprProps } from './Apr'
 import { FarmCell } from './Farm'
@@ -121,7 +121,7 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
 
   const { tokenIds } = useUserBoostedPoolsTokenId()
   const { isBoosted } = useIsSomePositionBoosted(props.type === 'v3' ? props?.details?.stakedPositions : [], tokenIds)
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { locked } = useBCometBoostLimitAndLockInfo()
   const toggleActionPanel = useCallback(() => {
     setActionPanelExpanded(!actionPanelExpanded)
   }, [actionPanelExpanded])
@@ -172,8 +172,8 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                         )
                       ) : null}
                       {props.type === 'v2' &&
-                      props?.details?.bCakeWrapperAddress &&
-                      props?.details?.bCakePublicData?.isRewardInRange ? (
+                      props?.details?.bCometWrapperAddress &&
+                      props?.details?.bCometPublicData?.isRewardInRange ? (
                         <BoostedTag scale="sm" />
                       ) : null}
                       {props.type === 'v3' && <V3FeeTag feeAmount={props.details.feeAmount} scale="sm" />}
@@ -225,24 +225,24 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                           hideButton={isSmallerScreen}
                           strikethrough={false}
                           boosted={false}
-                          farmCakePerSecond={
-                            props?.details?.bCakeWrapperAddress
-                              ? (props?.details?.bCakePublicData?.rewardPerSecond ?? 0).toFixed(4)
-                              : multiplier.farmCakePerSecond
+                          farmCometPerSecond={
+                            props?.details?.bCometWrapperAddress
+                              ? (props?.details?.bCometPublicData?.rewardPerSecond ?? 0).toFixed(4)
+                              : multiplier.farmCometPerSecond
                           }
                           totalMultipliers={multiplier.totalMultipliers}
                           boosterMultiplier={
-                            props?.details?.bCakeWrapperAddress
-                              ? props?.details?.bCakeUserData?.boosterMultiplier === 0 ||
-                                props?.details?.bCakeUserData?.stakedBalance.eq(0) ||
+                            props?.details?.bCometWrapperAddress
+                              ? props?.details?.bCometUserData?.boosterMultiplier === 0 ||
+                                props?.details?.bCometUserData?.stakedBalance.eq(0) ||
                                 !locked
                                 ? 2.5
-                                : props?.details?.bCakeUserData?.boosterMultiplier
+                                : props?.details?.bCometUserData?.boosterMultiplier
                               : 1
                           }
                           isBooster={
-                            Boolean(props?.details?.bCakeWrapperAddress) &&
-                            props?.details?.bCakePublicData?.isRewardInRange
+                            Boolean(props?.details?.bCometWrapperAddress) &&
+                            props?.details?.bCometPublicData?.isRewardInRange
                           }
                         />
                       </CellLayout>
@@ -257,9 +257,9 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                         <CellLayout label={t('Reward Per Day')}>
                           <RewardPerDay
                             rewardPerSec={
-                              props?.details?.bCakeWrapperAddress
-                                ? props?.details?.bCakePublicData?.rewardPerSecond ?? 0
-                                : props.farm.rewardCakePerSecond ?? 0
+                              props?.details?.bCometWrapperAddress
+                                ? props?.details?.bCometPublicData?.rewardPerSecond ?? 0
+                                : props.farm.rewardCometPerSecond ?? 0
                             }
                             scale="sm"
                             style={{ marginTop: 5 }}
@@ -332,8 +332,8 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                     )
                   ) : null}
                   {props.type === 'v2' &&
-                  props?.details?.bCakeWrapperAddress &&
-                  props?.details?.bCakePublicData?.isRewardInRange ? (
+                  props?.details?.bCometWrapperAddress &&
+                  props?.details?.bCometPublicData?.isRewardInRange ? (
                     <BoostedTag scale="sm" />
                   ) : null}
                   {props.type === 'v3' && <V3FeeTag feeAmount={props.details.feeAmount} scale="sm" />}
@@ -370,23 +370,23 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                         hideButton
                         strikethrough={false}
                         boosted={false}
-                        farmCakePerSecond={
-                          props?.details?.bCakeWrapperAddress
-                            ? (props?.details?.bCakePublicData?.rewardPerSecond ?? 0).toFixed(4)
-                            : multiplier.farmCakePerSecond
+                        farmCometPerSecond={
+                          props?.details?.bCometWrapperAddress
+                            ? (props?.details?.bCometPublicData?.rewardPerSecond ?? 0).toFixed(4)
+                            : multiplier.farmCometPerSecond
                         }
                         totalMultipliers={multiplier.totalMultipliers}
                         isBooster={
-                          Boolean(props?.details?.bCakeWrapperAddress) &&
-                          props?.details?.bCakePublicData?.isRewardInRange
+                          Boolean(props?.details?.bCometWrapperAddress) &&
+                          props?.details?.bCometPublicData?.isRewardInRange
                         }
                         boosterMultiplier={
-                          props?.details?.bCakeWrapperAddress
-                            ? props?.details?.bCakeUserData?.boosterMultiplier === 0 ||
-                              props?.details?.bCakeUserData?.stakedBalance.eq(0) ||
+                          props?.details?.bCometWrapperAddress
+                            ? props?.details?.bCometUserData?.boosterMultiplier === 0 ||
+                              props?.details?.bCometUserData?.stakedBalance.eq(0) ||
                               !locked
                               ? 2.5
-                              : props?.details?.bCakeUserData?.boosterMultiplier
+                              : props?.details?.bCometUserData?.boosterMultiplier
                             : 1
                         }
                       />
@@ -430,3 +430,4 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
 }
 
 export default Row
+

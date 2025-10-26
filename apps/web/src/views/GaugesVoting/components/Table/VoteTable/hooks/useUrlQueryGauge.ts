@@ -1,6 +1,6 @@
-import { Gauge } from '@pancakeswap/gauges'
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
+import { Gauge } from '@cometswap/gauges'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
 import { watchAccount } from '@wagmi/core'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useRouter } from 'next/router'
@@ -48,7 +48,7 @@ export const useUrlQueryGauge = (gauges: Gauge[] | undefined) => {
 
   useEffect(() => {
     if (router.isReady && validHashes.length) {
-      document.getElementById('vecake-vote-power')?.scrollIntoView()
+      document.getElementById('Comet-vote-power')?.scrollIntoView()
     }
   }, [router.isReady, validHashes.length])
 
@@ -76,3 +76,4 @@ export const useUrlQueryGauge = (gauges: Gauge[] | undefined) => {
 
   return validHashes
 }
+

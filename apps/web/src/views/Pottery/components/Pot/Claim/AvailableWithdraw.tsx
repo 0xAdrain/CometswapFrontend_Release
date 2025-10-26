@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Box, Text, Balance } from '@pancakeswap/uikit'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Box, Text, Balance } from '@cometswap/uikit'
+import { useCometPrice } from 'hooks/useCometPrice'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { PotteryWithdrawAbleData } from 'state/types'
 import WithdrawButton from 'views/Pottery/components/Pot/Claim/WithdrawButton'
-import { calculateCakeAmount } from 'views/Pottery/helpers'
+import { calculateCometAmount } from 'views/Pottery/helpers'
 import { getDrawnDate } from 'views/Lottery/helpers'
 import dayjs from 'dayjs'
 
@@ -19,21 +19,21 @@ const AvailableWithdraw: React.FC<React.PropsWithChildren<AvailableWithdrawProps
     t,
     currentLanguage: { locale },
   } = useTranslation()
-  const cakePrice = useCakePrice()
-  const { previewRedeem, lockedDate, shares, status, potteryVaultAddress, totalSupply, totalLockCake, balanceOf } =
+  const cometPrice = useCometPrice()
+  const { previewRedeem, lockedDate, shares, status, potteryVaultAddress, totalSupply, totalLockComet, balanceOf } =
     withdrawData
 
   const cakeNumber = useMemo(() => new BigNumber(previewRedeem), [previewRedeem])
-  const amountAsBn = calculateCakeAmount({
+  const amountAsBn = calculateCometAmount({
     status,
     previewRedeem,
     shares,
     totalSupply: new BigNumber(totalSupply),
-    totalLockCake: new BigNumber(totalLockCake),
+    totalLockComet: new BigNumber(totalLockComet),
   })
 
   const amount = getBalanceNumber(amountAsBn)
-  const amountInBusd = new BigNumber(amount).times(cakePrice).toNumber()
+  const amountInBusd = new BigNumber(amount).times(cometPrice).toNumber()
 
   const lockDate = useMemo(() => getDrawnDate(locale, lockedDate?.toString()), [lockedDate, locale])
   const withdrawableDate = dayjs.unix(parseInt(lockedDate, 10)).add(70, 'days').unix()
@@ -75,3 +75,4 @@ const AvailableWithdraw: React.FC<React.PropsWithChildren<AvailableWithdrawProps
 }
 
 export default AvailableWithdraw
+

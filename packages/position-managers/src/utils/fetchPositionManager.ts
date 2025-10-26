@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token } from '@cometswap/sdk'
 import { POSITION_MANAGER_API_V2 } from '../constants/endpoints'
 import { VaultConfig } from '../types'
 

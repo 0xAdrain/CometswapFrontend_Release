@@ -1,4 +1,4 @@
-import { Ifo, SUPPORTED_CHAIN_IDS, getActiveIfo, getIfoConfig, getInActiveIfos } from '@pancakeswap/ifos'
+import { Ifo, SUPPORTED_CHAIN_IDS, getActiveIfo, getIfoConfig, getInActiveIfos } from '@cometswap/ifos'
 import { useQuery } from '@tanstack/react-query'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -75,3 +75,4 @@ export function useActiveIfoConfigAcrossChains() {
     return sortedConfigs?.find((ifo) => ifo.isActive)
   }, [configs])
 }
+

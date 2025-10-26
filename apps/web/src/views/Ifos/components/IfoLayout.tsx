@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const IfoLayout = styled(Box)`
@@ -22,3 +22,4 @@ export const IfoLayoutWrapper = styled(IfoLayout)`
 `
 
 export default IfoLayout
+

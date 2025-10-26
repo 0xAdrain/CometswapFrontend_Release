@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { tradingRewardABI } from 'config/abi/tradingReward'
@@ -51,7 +51,7 @@ interface UseAllUserCampaignInfoProps {
 const useAllUserCampaignInfo = ({ campaignIds, type }: UseAllUserCampaignInfoProps): AllUserCampaignInfo => {
   const { address: account } = useAccount()
   const tradingRewardAddress =
-    type === RewardType.CAKE_STAKERS
+    type === RewardType.COMET_STAKERS
       ? getTradingRewardAddress(ChainId.BSC)
       : getTradingRewardTopTradesAddress(ChainId.BSC)
 
@@ -75,14 +75,14 @@ const useAllUserCampaignInfo = ({ campaignIds, type }: UseAllUserCampaignInfoPro
             const userCampaignInfo: CampaignIdInfoResponse = userCampaignInfoResult.data
             const userInfoQualification: UserCampaignInfoResponse = userInfoQualificationResult.data
 
-            let newCakeStakersTotalEstimateRewardUSD = 0
-            if (type === RewardType.CAKE_STAKERS) {
+            let newCometStakersTotalEstimateRewardUSD = 0
+            if (type === RewardType.COMET_STAKERS) {
               const response = await fetch(
-                `${TRADING_REWARD_API}/campaign/userEstimate/campaignId/${campaignId}/address/${account}/type/${RewardType.CAKE_STAKERS}`,
+                `${TRADING_REWARD_API}/campaign/userEstimate/campaignId/${campaignId}/address/${account}/type/${RewardType.COMET_STAKERS}`,
               )
               const result: RankListResponse = await response.json()
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              newCakeStakersTotalEstimateRewardUSD = new BigNumber(result.data.estimateReward).toNumber()
+              newCometStakersTotalEstimateRewardUSD = new BigNumber(result.data.estimateReward).toNumber()
             }
 
             const totalVolume = userCampaignInfo.tradingFeeArr
@@ -139,7 +139,7 @@ const useAllUserCampaignInfo = ({ campaignIds, type }: UseAllUserCampaignInfoPro
               campaignId,
               totalVolume,
               totalEstimateRewardUSD:
-                type === RewardType.CAKE_STAKERS ? newCakeStakersTotalEstimateRewardUSD : totalEstimateRewardUSD,
+                type === RewardType.COMET_STAKERS ? newCometStakersTotalEstimateRewardUSD : totalEstimateRewardUSD,
               totalTradingFee,
               canClaim: totalCanClaimData,
               userClaimedIncentives,

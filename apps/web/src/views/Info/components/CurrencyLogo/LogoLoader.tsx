@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { HelpIcon } from '@pancakeswap/uikit'
+import { HelpIcon } from '@cometswap/uikit'
 
 const BAD_SRCS: string[] = []
 
@@ -34,3 +34,4 @@ const LogoLoader: React.FC<React.PropsWithChildren<LogoLoaderProps>> = ({ src, a
 }
 
 export default LogoLoader
+

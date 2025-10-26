@@ -1,6 +1,6 @@
-import { PredictionSupportedSymbol } from '@pancakeswap/prediction'
+import { PredictionSupportedSymbol } from '@cometswap/prediction'
 import { betBaseFields as betBaseFieldsBNB, userBaseFields as userBaseFieldsBNB } from './bnbQueries'
-import { betBaseFields as betBaseFieldsCAKE, userBaseFields as userBaseFieldsCAKE } from './cakeQueries'
+import { betBaseFields as betBaseFieldsCOMET, userBaseFields as userBaseFieldsCOMET} from './cometQueries'
 import {
   betBaseFields as newBetBaseFields,
   roundBaseFields as newRoundBaseFields,
@@ -10,9 +10,9 @@ import {
 export const getRoundBaseFields = newRoundBaseFields
 
 export const getBetBaseFields = (tokenSymbol: string) => {
-  // BSC CAKE
-  if (tokenSymbol === PredictionSupportedSymbol.CAKE) {
-    return betBaseFieldsCAKE
+  // BSC COMET
+  if (tokenSymbol === PredictionSupportedSymbol.COMET) {
+    return betBaseFieldsCOMET
   }
   // BSC BNB
   if (tokenSymbol === PredictionSupportedSymbol.BNB) {
@@ -23,9 +23,9 @@ export const getBetBaseFields = (tokenSymbol: string) => {
 }
 
 export const getUserBaseFields = (tokenSymbol: string) => {
-  // BSC CAKE
-  if (tokenSymbol === PredictionSupportedSymbol.CAKE) {
-    return userBaseFieldsCAKE
+  // BSC COMET
+  if (tokenSymbol === PredictionSupportedSymbol.COMET) {
+    return userBaseFieldsCOMET
   }
   // BSC BNB
   if (tokenSymbol === PredictionSupportedSymbol.BNB) {
@@ -34,3 +34,4 @@ export const getUserBaseFields = (tokenSymbol: string) => {
 
   return newUserBaserBaseFields
 }
+

@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { bscTokens } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { bscTokens } from '@cometswap/tokens'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { potteryDrawABI } from 'config/abi/potteryDrawAbi'
 import { potteryVaultABI } from 'config/abi/potteryVaultAbi'
@@ -41,7 +41,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: Address) => {
   try {
     const [
       getStatus,
-      totalLockCake,
+      totalLockveComet,
       totalSupply,
       lockStartTime,
       getLockTime,
@@ -57,7 +57,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: Address) => {
         {
           abi: potteryVaultABI,
           address: potteryVaultAddress,
-          functionName: 'totalLockCake',
+          functionName: 'totalLockveComet',
         },
         {
           abi: potteryVaultABI,
@@ -93,7 +93,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: Address) => {
       lastDrawId: new BigNumber(lastDrawId.toString()).toJSON(),
       totalPrize: new BigNumber(totalPrize.toString()).toJSON(),
       getStatus,
-      totalLockCake: new BigNumber(totalLockCake.toString()).toJSON(),
+      totalLockveComet: new BigNumber(totalLockveComet.toString()).toJSON(),
       totalSupply: new BigNumber(totalSupply.toString()).toJSON(),
       lockStartTime: lockStartTime.toString(),
       lockTime: Number(getLockTime),
@@ -105,7 +105,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: Address) => {
       lastDrawId: BIG_ZERO.toJSON(),
       totalPrize: BIG_ZERO.toJSON(),
       getStatus: PotteryDepositStatus.BEFORE_LOCK,
-      totalLockCake: BIG_ZERO.toJSON(),
+      totalLockveComet: BIG_ZERO.toJSON(),
       totalSupply: BIG_ZERO.toJSON(),
       lockStartTime: BIG_ZERO.toJSON(),
       lockTime: 0,
@@ -116,7 +116,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: Address) => {
 
 export const fetchTotalLockedValue = async (potteryVaultAddress: Address) => {
   try {
-    const contract = getBep20Contract(bscTokens.cake.address)
+    const contract = getBep20Contract(bscTokens.comet.address)
     const totalLocked = await contract.read.balanceOf([potteryVaultAddress])
 
     return {
@@ -157,3 +157,4 @@ export const fetchLatestRoundId = async () => {
     }
   }
 }
+

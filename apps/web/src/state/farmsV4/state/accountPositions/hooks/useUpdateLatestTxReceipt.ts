@@ -46,3 +46,4 @@ export const useUpdateLatestTxReceipt = () => {
     }
   }, [initialBlockTimestamp, allTransactions, latestTxReceipt, setLatestTxReceipt])
 }
+

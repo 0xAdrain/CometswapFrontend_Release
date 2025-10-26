@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Column, Skeleton, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Column, Skeleton, Text } from '@cometswap/uikit'
 import React, { useMemo } from 'react'
 import { usePoolApr } from 'state/farmsV4/hooks'
 import { useAccountV3Position } from 'state/farmsV4/state/accountPositions/hooks/useAccountV3Position'
@@ -87,3 +87,4 @@ const PositionAprCalculator: React.FC<AprCalculatorV2Props & { tokenId: bigint }
     <V3PoolPositionAprButton userPosition={userPosition} pool={pool} />
   )
 }
+

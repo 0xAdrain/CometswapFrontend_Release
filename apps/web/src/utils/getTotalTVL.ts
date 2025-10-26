@@ -1,9 +1,9 @@
 import { gql } from 'graphql-request'
-import { ChainId, testnetChainIds } from '@pancakeswap/chains'
+import { ChainId, testnetChainIds } from '@cometswap/chains'
 import dayjs from 'dayjs'
-import { getCakeContract } from 'utils/contractHelpers'
+import { getveCometContract } from 'utils/contractHelpers'
 import { formatEther } from 'viem'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
+import { getveCometVaultAddress } from 'utils/addressHelpers'
 import addresses from 'config/constants/contracts'
 import { bitQueryServerClient } from 'utils/graphql'
 import { CHAIN_IDS } from 'utils/wagmi'
@@ -34,7 +34,7 @@ export const getTotalTvl = async () => {
       query userCount($since: ISO8601DateTime, $till: ISO8601DateTime) {
         ethereum: ethereum(network: ethereum) {
           dexTrades(
-            exchangeName: { in: ["Pancake", "Pancake v2", "PancakeSwap"] }
+            exchangeName: { in: ["Comet", "Comet v2", "CometSwap"] }
             date: { since: $since, till: $till }
           ) {
             count(uniq: senders)
@@ -42,7 +42,7 @@ export const getTotalTvl = async () => {
         }
         bsc: ethereum(network: bsc) {
           dexTrades(
-            exchangeName: { in: ["Pancake", "Pancake v2", "PancakeSwap"] }
+            exchangeName: { in: ["Comet", "Comet v2", "CometSwap"] }
             date: { since: $since, till: $till }
           ) {
             count(uniq: senders)
@@ -80,14 +80,14 @@ export const getTotalTvl = async () => {
       ChainId.BSC,
     ])
 
-    const cake = await (await fetch('https://farms-api.pancakeswap.com/price/cake')).json()
-    const cakeVaultV2 = getCakeVaultAddress()
-    const cakeContract = getCakeContract()
-    const totalCakeInVault = await cakeContract.read.balanceOf([cakeVaultV2])
-    const totalCakeInVE = await cakeContract.read.balanceOf([addresses.veCake[ChainId.BSC]])
+    const comet = await (await fetch('https://farms-api.cometswap.com/price/comet')).json()
+    const cakeVaultV2 = getveCometVaultAddress()
+    const cakeContract = getveCometContract()
+    const totalveCometInVault = await cakeContract.read.balanceOf([cakeVaultV2])
+    const totalveCometInVE = await cakeContract.read.balanceOf([addresses.vComet[ChainId.BSC]])
     results.tvl =
-      parseFloat(formatEther(totalCakeInVault)) * cake.price +
-      parseFloat(formatEther(totalCakeInVE)) * cake.price +
+      parseFloat(formatEther(totalveCometInVault)) * comet.price +
+      parseFloat(formatEther(totalveCometInVE)) * comet.price +
       v2TotalTvl +
       v3TotalTvl +
       stableTotalTvl
@@ -142,3 +142,4 @@ const getStats = async (type: 'v2' | 'v3' | 'stable', chainIds: number[]) => {
     txCount30d: rawResults.reduce((acc, tvlString) => acc + (tvlString?.data?.txCount30d ?? 0), 0),
   }
 }
+

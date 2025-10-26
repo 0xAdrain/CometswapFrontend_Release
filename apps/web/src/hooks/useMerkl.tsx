@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Token } from '@pancakeswap/sdk'
-import { TokenInfo } from '@pancakeswap/token-lists'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Token } from '@cometswap/sdk'
+import { TokenInfo } from '@cometswap/token-lists'
+import { useToast } from '@cometswap/uikit'
 import { useQuery } from '@tanstack/react-query'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { distributorABI } from 'config/abi/AngleProtocolDistributor'
@@ -19,7 +19,7 @@ import { useWalletClient } from 'wagmi'
 import { useMasterchefV3 } from 'hooks/useContract'
 import { isAddressEqual } from 'utils'
 import { useCurrentBlockTimestamp as useBlockTimestamp } from 'state/block/hooks'
-import { supportedChainIdV4 } from '@pancakeswap/farms'
+import { supportedChainIdV4 } from '@cometswap/farms'
 
 export const MERKL_API_V4 = 'https://api.merkl.xyz/v4'
 
@@ -58,8 +58,8 @@ export function useMerklInfo(poolAddress?: string): {
 
       const opportunities = merklDataV4?.filter(
         (opportunity) =>
-          opportunity?.tokens?.[0]?.symbol?.toLowerCase().startsWith('cake-lp') ||
-          opportunity?.protocol?.id?.toLowerCase().startsWith('pancakeswap'),
+          opportunity?.tokens?.[0]?.symbol?.toLowerCase().startsWith('comet-lp') ||
+          opportunity?.protocol?.id?.toLowerCase().startsWith('cometswap'),
       )
 
       if (!opportunities || !opportunities.length) return undefined
@@ -302,3 +302,4 @@ export default function useMerkl(poolAddress?: string) {
     [claimTokenReward, hasMerkl, isTxPending, rewardsPerToken],
   )
 }
+

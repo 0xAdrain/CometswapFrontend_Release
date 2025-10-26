@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
 
 import { Pool, Route } from '../../v3-router/types'
 

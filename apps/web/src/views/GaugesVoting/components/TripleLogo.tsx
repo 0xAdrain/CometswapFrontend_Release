@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import {
   GaugeALMConfig,
   GaugeConfig,
@@ -6,9 +6,9 @@ import {
   GaugeType,
   GaugeV2Config,
   GaugeV3Config,
-} from '@pancakeswap/gauges'
-import { Native, Token, WNATIVE } from '@pancakeswap/sdk'
-import { ChainLogo, CurrencyLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/gauges'
+import { Native, Token, WNATIVE } from '@cometswap/sdk'
+import { ChainLogo, CurrencyLogo } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 import styled from 'styled-components'
 import { Address } from 'viem'
@@ -37,7 +37,7 @@ function getCurrency(chainId: ChainId, address?: Address) {
 }
 
 const SingleLogo = ({ size = 32 }: { size?: number }) => {
-  return <img src="/images/cake-staking/token-vecake.png" alt="ve-cake" width={size} height={size} />
+  return <img src="/images/comet-staking/token-Comet.png" alt="ve-comet" width={size} height={size} />
 }
 
 const DoubleLogo: React.FC<{
@@ -71,7 +71,7 @@ const DoubleLogo: React.FC<{
 const TokensLogo: React.FC<{ gaugeConfig?: GaugeConfig; size?: number }> = ({ gaugeConfig, size }) => {
   if (!gaugeConfig) return null
 
-  if (gaugeConfig?.type === GaugeType.VeCakePool) {
+  if (gaugeConfig?.type === GaugeType.CometPool) {
     return <SingleLogo size={size} />
   }
 
@@ -92,3 +92,4 @@ export const TripleLogo: React.FC<{
     </StyledDualLogo>
   )
 }
+

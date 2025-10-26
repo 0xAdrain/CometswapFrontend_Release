@@ -1,4 +1,4 @@
-import { Box, Flex } from '@pancakeswap/uikit'
+import { Box, Flex } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 export const StyledSwapContainer = styled(Flex)<{ $isChartExpanded: boolean }>`
@@ -21,3 +21,4 @@ export const StyledSwapContainer = styled(Flex)<{ $isChartExpanded: boolean }>`
 export const StyledInputCurrencyWrapper = styled(Box)`
   width: 328px;
 `
+

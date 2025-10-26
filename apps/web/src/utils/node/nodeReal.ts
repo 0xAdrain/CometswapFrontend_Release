@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 export const getNodeRealUrl = (chainId: number, key?: string) => {
   let host: string | null = null
@@ -55,3 +55,4 @@ export const getNodeRealUrl = (chainId: number, key?: string) => {
   const url = `https://${host}`
   return url
 }
+

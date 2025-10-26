@@ -5,8 +5,8 @@ import { useMemo } from 'react'
 import { isAddressEqual } from 'utils'
 import { publicClient as getPublicClient } from 'utils/viem'
 import { Hex, zeroAddress } from 'viem'
-import { useVeCakeUserInfo } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
-import { CakePoolType } from 'views/CakeStaking/types'
+import { useVeCometUserInfo } from 'views/CometStaking/hooks/useVeCometUserInfo'
+import { CometPoolType } from 'views/CometStaking/types'
 import { useGauges } from './useGauges'
 
 export type VoteSlope = {
@@ -21,14 +21,14 @@ export type VoteSlope = {
 
 export const useUserVoteSlopes = () => {
   const { data: gauges } = useGauges()
-  const { data: userInfo, isLoading: isUserInfoLoading } = useVeCakeUserInfo()
+  const { data: userInfo, isLoading: isUserInfoLoading } = useVeCometUserInfo()
   const gaugesVotingContract = useGaugesVotingContract()
   const { account, chainId } = useAccountActiveChain()
   const publicClient = useMemo(() => getPublicClient({ chainId }), [chainId])
 
   const { data, refetch, isLoading } = useQuery({
     queryKey: [
-      '/vecake/user-vote-slopes',
+      '/Comet/user-vote-slopes',
       gaugesVotingContract.address,
       account,
       gauges?.length,
@@ -38,7 +38,7 @@ export const useUserVoteSlopes = () => {
     queryFn: async (): Promise<VoteSlope[]> => {
       if (!gauges || gauges.length === 0 || !account || !publicClient) return []
 
-      const delegated = userInfo?.cakePoolType === CakePoolType.DELEGATED
+      const delegated = userInfo?.cakePoolType === CometPoolType.DELEGATED
 
       const hasProxy =
         !delegated && userInfo && userInfo.cakePoolProxy && !isAddressEqual(userInfo.cakePoolProxy, zeroAddress)
@@ -121,3 +121,4 @@ export const useUserVoteGauges = () => {
     isLoading: isGaugesLoading || isVoteLoading,
   }
 }
+

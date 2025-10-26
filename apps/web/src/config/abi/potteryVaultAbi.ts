@@ -7,12 +7,12 @@ export const potteryVaultABI = [
         type: 'address',
       },
       {
-        internalType: 'contract ICakePool',
+        internalType: 'contract IveCometPool',
         name: '_cakePool',
         type: 'address',
       },
       {
-        internalType: 'contract IPancakeSwapPotteryDraw',
+        internalType: 'contract ICometSwapPotteryDraw',
         name: '_potteryDraw',
         type: 'address',
       },
@@ -617,7 +617,7 @@ export const potteryVaultABI = [
   },
   {
     inputs: [],
-    name: 'lockCake',
+    name: 'lockveComet',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -953,7 +953,7 @@ export const potteryVaultABI = [
   },
   {
     inputs: [],
-    name: 'totalLockCake',
+    name: 'totalLockveComet',
     outputs: [
       {
         internalType: 'uint256',
@@ -1045,7 +1045,7 @@ export const potteryVaultABI = [
   },
   {
     inputs: [],
-    name: 'unlockCake',
+    name: 'unlockveComet',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -1080,3 +1080,4 @@ export const potteryVaultABI = [
     type: 'function',
   },
 ] as const
+

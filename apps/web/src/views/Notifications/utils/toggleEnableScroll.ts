@@ -9,3 +9,4 @@ export const enableGlobalScroll = () => {
   document.body.style.position = 'static'
   document.body.style.width = 'auto'
 }
+

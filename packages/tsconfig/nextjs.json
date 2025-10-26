@@ -14,8 +14,8 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "paths": {
-      "@pancakeswap/uikit": ["../../packages/uikit/src/index.ts"],
-      "@pancakeswap/uikit/*": ["../../packages/uikit/src/*"]
+      "@cometswap/uikit": ["../../packages/uikit/src/index.ts"],
+      "@cometswap/uikit/*": ["../../packages/uikit/src/*"]
     }
   }
 }

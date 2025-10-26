@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Text, Flex } from '@pancakeswap/uikit'
+import { Text, Flex } from '@cometswap/uikit'
 
 export const ClickableColumnHeader = styled(Text)`
   cursor: pointer;
@@ -44,3 +44,4 @@ export const Break = styled.div`
   background-color: ${({ theme }) => theme.colors.cardBorder};
   width: 100%;
 `
+

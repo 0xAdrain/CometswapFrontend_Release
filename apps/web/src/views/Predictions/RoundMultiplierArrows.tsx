@@ -1,5 +1,5 @@
-import { useTheme } from '@pancakeswap/hooks'
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { useTheme } from '@cometswap/hooks'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 interface MultiplierProps extends SvgProps {
   isActive: boolean
@@ -89,3 +89,4 @@ export const RoundMultiplierUpArrow: React.FC<React.PropsWithChildren<Multiplier
     </Svg>
   )
 }
+

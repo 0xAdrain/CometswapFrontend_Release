@@ -1,5 +1,5 @@
-import { unwrappedToken } from '@pancakeswap/tokens'
-import { Position } from '@pancakeswap/v3-sdk'
+import { unwrappedToken } from '@cometswap/tokens'
+import { Position, TICK_SPACINGS } from '@cometswap/v3-sdk'
 import { useTokenByChainId } from 'hooks/Tokens'
 import { usePoolByChainId } from 'hooks/v3/usePools'
 import { useMemo } from 'react'
@@ -22,15 +22,59 @@ export const useV3Positions = (
 
   return useMemo(() => {
     if (pool && positionDetails && positionDetails.length > 0) {
-      return positionDetails.map((positionDetail) => {
-        return new Position({
-          pool,
-          liquidity: positionDetail.liquidity.toString(),
-          tickLower: positionDetail.tickLower,
-          tickUpper: positionDetail.tickUpper,
+      return positionDetails
+        .map((positionDetail) => {
+          // 验证fee和tick值的有效性，避免TICK_LOWER/TICK_UPPER错误
+          const validFeeAmounts = [100, 500, 2500, 10000]
+          const isValidFeeAmount = fee && validFeeAmounts.includes(fee)
+          
+          if (!isValidFeeAmount) {
+            console.warn('Skipping Position creation for invalid fee in useV3Positions:', { 
+              fee,
+              tokenId: positionDetail.tokenId?.toString() 
+            })
+            return null
+          }
+          
+          // 验证tick值是否符合tickSpacing要求
+          const tickSpacing = pool.tickSpacing
+          const tickLowerValid = Number.isInteger(positionDetail.tickLower) && positionDetail.tickLower % tickSpacing === 0
+          const tickUpperValid = Number.isInteger(positionDetail.tickUpper) && positionDetail.tickUpper % tickSpacing === 0
+          
+          if (!tickLowerValid || !tickUpperValid) {
+            console.warn('Skipping Position creation for invalid tick values in useV3Positions:', { 
+              fee,
+              tickLower: positionDetail.tickLower,
+              tickUpper: positionDetail.tickUpper,
+              tickSpacing,
+              tickLowerValid,
+              tickUpperValid,
+              tokenId: positionDetail.tokenId?.toString()
+            })
+            return null
+          }
+          
+          try {
+            return new Position({
+              pool,
+              liquidity: positionDetail.liquidity.toString(),
+              tickLower: positionDetail.tickLower,
+              tickUpper: positionDetail.tickUpper,
+            })
+          } catch (error) {
+            console.error('Failed to create Position in useV3Positions:', { 
+              fee,
+              tickLower: positionDetail.tickLower,
+              tickUpper: positionDetail.tickUpper,
+              tokenId: positionDetail.tokenId?.toString(),
+              error: error instanceof Error ? error.message : String(error)
+            })
+            return null
+          }
         })
-      })
+        .filter((position): position is Position => position !== null)
     }
     return []
-  }, [pool, positionDetails])
+  }, [pool, positionDetails, fee])
 }
+

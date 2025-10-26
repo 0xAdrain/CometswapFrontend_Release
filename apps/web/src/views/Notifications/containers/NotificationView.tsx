@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   CircleLoader,
@@ -11,7 +11,7 @@ import {
   Text,
   Toggle,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { NotifyClientTypes } from '@walletconnect/notify-client'
 
 import React, { useCallback, useMemo, useState } from 'react'
@@ -152,3 +152,4 @@ const NotificationView = ({
 }
 
 export default NotificationView
+

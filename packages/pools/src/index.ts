@@ -4,8 +4,9 @@ export * from './queries'
 export * from './utils'
 
 // abi
-export * from './abis/ICakeFlexibleSideVaultV2'
-export * from './abis/ICakeVaultV2'
+export * from './abis/ICometFlexibleSideVaultV2'
+export * from './abis/ICometVaultV2'
+export * from './abis/ICometVaultV1'
 export * from './abis/ISmartChef'
 export * from './abis/ISousChef'
 export * from './abis/ISousChefBNB'

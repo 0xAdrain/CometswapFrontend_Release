@@ -1,12 +1,12 @@
 {
-  "extends": "@pancakeswap/tsconfig/react-library",
+  "extends": "../tsconfig/react-library.json",
   "compilerOptions": {
     "resolveJsonModule": true,
     "target": "ES2020",
     "baseUrl": "./",
     "paths": {
-      "@pancakeswap/uikit": ["../../packages/uikit/src/index.ts"],
-      "@pancakeswap/uikit/*": ["../../packages/uikit/src/*"]
+      "@cometswap/uikit": ["../../packages/uikit/src/index.ts"],
+      "@cometswap/uikit/*": ["../../packages/uikit/src/*"]
     }
   }
 }

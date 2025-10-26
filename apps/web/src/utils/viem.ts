@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import first from 'lodash/first'
 import { PublicClient, createPublicClient, fallback, http } from 'viem'
 import { mainnet } from 'viem/chains'
@@ -87,3 +87,4 @@ export const publicClient = ({ chainId }: { chainId?: ChainId }) => {
   const chain = CHAINS.find((c) => c.id === chainId)
   return createPublicClient({ chain, transport: http(httpString), ...CLIENT_CONFIG })
 }
+

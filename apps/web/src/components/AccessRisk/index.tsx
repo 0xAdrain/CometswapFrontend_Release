@@ -1,5 +1,5 @@
-import { Trans, useTranslation } from '@pancakeswap/localization'
-import { ERC20Token, Token } from '@pancakeswap/sdk'
+import { Trans, useTranslation } from '@cometswap/localization'
+import { ERC20Token, Token } from '@cometswap/sdk'
 import {
   AutoRenewIcon,
   Button,
@@ -12,8 +12,8 @@ import {
   Text,
   promotedGradient,
   useTooltip,
-} from '@pancakeswap/uikit'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+} from '@cometswap/uikit'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { useQuery } from '@tanstack/react-query'
 import AccessRiskTooltips from 'components/AccessRisk/AccessRiskTooltips'
 import { ACCESS_TOKEN_SUPPORT_CHAIN_IDS } from 'components/AccessRisk/config/supportedChains'
@@ -247,3 +247,4 @@ const AccessRiskComponent: React.FC<AccessRiskProps> = ({ token }) => {
 }
 
 export default AccessRisk
+

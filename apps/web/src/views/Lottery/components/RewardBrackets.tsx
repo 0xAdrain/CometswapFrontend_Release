@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { useEffect, useState } from 'react'
 import { LotteryRound } from 'state/types'
@@ -50,11 +50,11 @@ const RewardBrackets: React.FC<React.PropsWithChildren<RewardMatchesProps>> = ({
 
   useEffect(() => {
     if (lotteryNodeData) {
-      const { treasuryFee, amountCollectedInCake, rewardsBreakdown, countWinnersPerBracket } = lotteryNodeData
+      const { treasuryFee, amountCollectedInComet, rewardsBreakdown, countWinnersPerBracket } = lotteryNodeData
 
       const feeAsPercentage = new BigNumber(treasuryFee).div(100)
-      const cakeToBurn = feeAsPercentage.div(100).times(new BigNumber(amountCollectedInCake))
-      const amountLessTreasuryFee = new BigNumber(amountCollectedInCake).minus(cakeToBurn)
+      const cakeToBurn = feeAsPercentage.div(100).times(new BigNumber(amountCollectedInComet))
+      const amountLessTreasuryFee = new BigNumber(amountCollectedInComet).minus(cakeToBurn)
       setState({
         isLoading: false,
         cakeToBurn,
@@ -73,7 +73,7 @@ const RewardBrackets: React.FC<React.PropsWithChildren<RewardMatchesProps>> = ({
     }
   }, [lotteryNodeData])
 
-  const getCakeRewards = (bracket: number) => {
+  const getCometRewards = (bracket: number) => {
     if (!state.rewardsBreakdown) return BIG_ZERO
 
     const shareAsPercentage = new BigNumber(state.rewardsBreakdown[bracket]).div(100)
@@ -95,7 +95,7 @@ const RewardBrackets: React.FC<React.PropsWithChildren<RewardMatchesProps>> = ({
           <RewardBracketDetail
             key={bracketIndex}
             rewardBracket={bracketIndex}
-            cakeAmount={!isLoading ? getCakeRewards(bracketIndex) : BIG_ZERO}
+            cakeAmount={!isLoading ? getCometRewards(bracketIndex) : BIG_ZERO}
             numberWinners={
               !isLoading && countWinnersPerBracket !== null ? countWinnersPerBracket[bracketIndex] : undefined
             }
@@ -110,3 +110,4 @@ const RewardBrackets: React.FC<React.PropsWithChildren<RewardMatchesProps>> = ({
 }
 
 export default RewardBrackets
+

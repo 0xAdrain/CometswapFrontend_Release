@@ -14,3 +14,4 @@ export const useGaugesTotalWeight = () => {
 
   return data ?? 0n
 }
+

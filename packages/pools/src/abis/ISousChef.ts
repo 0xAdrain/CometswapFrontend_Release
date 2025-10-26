@@ -53,7 +53,7 @@ export const sousChefABI = [
       { internalType: 'contract IBEP20', name: 'lpToken', type: 'address' },
       { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
       { internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
-      { internalType: 'uint256', name: 'accCakePerShare', type: 'uint256' },
+      { internalType: 'uint256', name: 'accCometPerShare', type: 'uint256' },
     ],
     stateMutability: 'view',
     type: 'function',

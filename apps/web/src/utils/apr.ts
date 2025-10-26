@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { YEAR_IN_SECONDS } from '@pancakeswap/utils/getTimePeriods'
+import { ChainId } from '@cometswap/chains'
+import { YEAR_IN_SECONDS } from '@cometswap/utils/getTimePeriods'
 import BigNumber from 'bignumber.js'
 import { BLOCKS_PER_YEAR } from 'config'
 import lpAprs1 from 'config/constants/lpAprs/1.json'
@@ -21,7 +21,7 @@ const getLpApr = (chainId?: number) => {
  * @param stakingTokenPrice Token price in the same quote currency
  * @param rewardTokenPrice Token price in the same quote currency
  * @param totalStaked Total amount of stakingToken in the pool
- * @param tokenPerBlock Amount of new cake allocated to the pool for each new block
+ * @param tokenPerBlock Amount of new comet allocated to the pool for each new block
  * @returns Null if the APR is NaN or infinite.
  */
 export const getPoolApr = (
@@ -46,10 +46,10 @@ const BIG_NUMBER_NAN = new BigNumber(NaN)
  * Get farm APR value in %
  * @param chainId
  * @param poolWeight allocationPoint / totalAllocationPoint
- * @param cakePriceUsd Cake price in USD
+ * @param cakePriceUsd veComet price in USD
  * @param poolLiquidityUsd Total pool liquidity in USD
  * @param farmAddress Farm Address
- * @param regularCakePerBlock
+ * @param regularveCometPerBlock
  * @returns Farm Apr
  */
 export const getFarmApr = (
@@ -58,16 +58,16 @@ export const getFarmApr = (
   cakePriceUsd: BigNumber | null,
   poolLiquidityUsd: BigNumber | null | undefined,
   farmAddress: string | null,
-  regularCakePerBlock: number,
+  regularveCometPerBlock: number,
   lpRewardsApr?: number,
-  cakePerSecFromBCake?: number,
+  cakePerSecFromBveComet?: number,
 ): { cakeRewardsApr: number | null; lpRewardsApr: number } => {
-  const yearlyCakeRewardAllocation = cakePerSecFromBCake
-    ? new BigNumber(cakePerSecFromBCake).times(YEAR_IN_SECONDS)
+  const yearlyveCometRewardAllocation = cakePerSecFromBveComet
+    ? new BigNumber(cakePerSecFromBveComet).times(YEAR_IN_SECONDS)
     : poolWeight
-    ? poolWeight.times(BLOCKS_PER_YEAR * regularCakePerBlock)
+    ? poolWeight.times(BLOCKS_PER_YEAR * regularveCometPerBlock)
     : new BigNumber(NaN)
-  const cakeRewardsApr = yearlyCakeRewardAllocation
+  const cakeRewardsApr = yearlyveCometRewardAllocation
     .times(cakePriceUsd || BIG_NUMBER_NAN)
     .div(poolLiquidityUsd || BIG_NUMBER_NAN)
     .times(100)
@@ -82,3 +82,4 @@ export const getFarmApr = (
 }
 
 export default null
+

@@ -1,4 +1,4 @@
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
@@ -32,3 +32,4 @@ const Voting = () => {
 }
 
 export default Voting
+

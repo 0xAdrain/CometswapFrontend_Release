@@ -24,3 +24,4 @@ export const CellLayout: React.FC<React.PropsWithChildren<CellLayoutProps>> = ({
     </div>
   )
 }
+

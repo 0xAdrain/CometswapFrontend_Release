@@ -4,7 +4,7 @@ import {
   VestingCharacteristics,
   fetchUserVestingData,
   fetchUserVestingDataV8,
-} from '@pancakeswap/ifos'
+} from '@cometswap/ifos'
 import { Address } from 'viem'
 
 import { getViemClients } from 'utils/viem'
@@ -31,3 +31,4 @@ export const fetchUserWalletIfoData = async (ifo: Ifo, account?: Address): Promi
     userVestingData,
   }
 }
+

@@ -3,9 +3,9 @@ import useTheme from 'hooks/useTheme'
 import { formatAmount } from 'utils/formatInfoNumbers'
 import { BarChartLoader } from 'components/ChartLoaders'
 import { createChart, IChartApi } from 'lightweight-charts'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import dayjs from 'dayjs'
-import { lightColors, darkColors } from '@pancakeswap/uikit'
+import { lightColors, darkColors } from '@cometswap/uikit'
 
 export type LineChartProps = {
   data: any[]
@@ -139,3 +139,4 @@ const Chart = ({ data, setHoverValue, setHoverDate }: LineChartProps) => {
 }
 
 export default Chart
+

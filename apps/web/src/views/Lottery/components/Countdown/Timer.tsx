@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { Flex, Heading } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Heading } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 export interface TimerProps {
   seconds?: number
@@ -71,3 +71,4 @@ const Wrapper: React.FC<React.PropsWithChildren<TimerProps>> = ({
 }
 
 export default Wrapper
+

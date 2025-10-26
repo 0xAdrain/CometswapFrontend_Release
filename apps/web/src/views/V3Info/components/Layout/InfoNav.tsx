@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId } from '@cometswap/chains'
 import {
   Box,
   ButtonMenu,
@@ -9,8 +9,8 @@ import {
   UserMenu,
   UserMenuDivider,
   UserMenuItem,
-} from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { ChainLogo } from 'components/Logo/ChainLogo'
 import { ASSET_CDN } from 'config/constants/endpoints'
@@ -146,3 +146,4 @@ const NetworkSelect: React.FC<{ chainId: ChainId; switchNetwork: (chainId: numbe
 }
 
 export default InfoNav
+

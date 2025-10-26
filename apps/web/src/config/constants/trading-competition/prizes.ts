@@ -727,3 +727,4 @@ export const modPrizes: PrizesConfig = {
     },
   ],
 }
+

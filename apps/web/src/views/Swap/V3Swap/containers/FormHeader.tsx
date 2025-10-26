@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { FC, useCallback } from 'react'
 
 import CurrencyInputHeader from '../../components/CurrencyInputHeader'
@@ -22,3 +22,4 @@ export const FormHeader: FC<{ refreshDisabled: boolean; onRefresh: () => void }>
     />
   )
 }
+

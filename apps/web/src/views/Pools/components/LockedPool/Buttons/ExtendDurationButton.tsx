@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { Button, useModal, ButtonProps } from '@pancakeswap/uikit'
-import { ONE_WEEK_DEFAULT, MAX_LOCK_DURATION } from '@pancakeswap/pools'
+import { Button, useModal, ButtonProps } from '@cometswap/uikit'
+import { ONE_WEEK_DEFAULT, MAX_LOCK_DURATION } from '@cometswap/pools'
 
 import ExtendDurationModal from '../Modals/ExtendDurationModal'
 import { ExtendDurationButtonPropsType } from '../types'
@@ -56,3 +56,4 @@ const ExtendDurationButton: React.FC<React.PropsWithChildren<ExtendDurationButto
 }
 
 export default ExtendDurationButton
+

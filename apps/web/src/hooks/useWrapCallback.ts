@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, WNATIVE } from '@pancakeswap/sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, WNATIVE } from '@cometswap/sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useMemo } from 'react'
 import { useTransactionAdder } from 'state/transactions/hooks'
@@ -115,3 +115,4 @@ export function useIsWrapping(
 
   return wrapType !== WrapType.NOT_APPLICABLE
 }
+

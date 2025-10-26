@@ -112,3 +112,4 @@ export const multicallReducer = createReducer(initialState, (builder) =>
 )
 
 export const multicallReducerAtom = atomWithReducer(initialState, multicallReducer)
+

@@ -24,3 +24,4 @@ const verify = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default verify
+

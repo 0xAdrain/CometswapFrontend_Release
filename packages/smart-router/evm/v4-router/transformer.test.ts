@@ -1,6 +1,6 @@
-import { CurrencyAmount, Native, Percent, TradeType } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
-import { opBnbTokens } from '@pancakeswap/tokens'
+import { CurrencyAmount, Native, Percent, TradeType } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { opBnbTokens } from '@cometswap/tokens'
 import { describe, expect, it } from 'vitest'
 
 import { serializeRoute, serializeTrade } from './transformer'
@@ -9,24 +9,24 @@ import { V4Route, V4Trade } from './types'
 import { createGraph } from './graph'
 
 const BNB = Native.onChain(ChainId.OPBNB)
-const CAKE = opBnbTokens.cake
+const COMET= opBnbTokens.comet
 
 const exampleRoute: V4Route = {
   gasUseEstimate: 82000n,
   gasUseEstimateBase: CurrencyAmount.fromRawAmount(BNB, 820000n),
-  gasUseEstimateQuote: CurrencyAmount.fromRawAmount(CAKE, 103854983n),
+  gasUseEstimateQuote: CurrencyAmount.fromRawAmount(COMET, 103854983n),
   inputAmount: CurrencyAmount.fromRawAmount(BNB, 40000000000000000n),
-  outputAmount: CurrencyAmount.fromRawAmount(CAKE, 4983293793789930646n),
+  outputAmount: CurrencyAmount.fromRawAmount(COMET, 4983293793789930646n),
   inputAmountWithGasAdjusted: CurrencyAmount.fromRawAmount(BNB, 40000000000000000n),
-  outputAmountWithGasAdjusted: CurrencyAmount.fromRawAmount(CAKE, 4983293793686075663n),
-  path: [BNB.wrapped, CAKE],
+  outputAmountWithGasAdjusted: CurrencyAmount.fromRawAmount(COMET, 4983293793686075663n),
+  path: [BNB.wrapped, COMET],
   percent: 100,
   pools: [
     {
       address: '0xC71C9b3d94916630309d67651Ae00A69c47BdF8a',
       fee: 500,
       liquidity: 16884816146554984600n,
-      reserve0: CurrencyAmount.fromRawAmount(CAKE, 34339042604161103151n),
+      reserve0: CurrencyAmount.fromRawAmount(COMET, 34339042604161103151n),
       reserve1: CurrencyAmount.fromRawAmount(BNB.wrapped, 96404341221305485n),
       sqrtRatioX96: 7003297243708108638293279371n,
       tick: -48522,
@@ -37,7 +37,7 @@ const exampleRoute: V4Route = {
           liquidityNet: 14858697659497433931n,
         },
       ],
-      token0: CAKE,
+      token0: COMET,
       token1: BNB.wrapped,
       token0ProtocolFee: new Percent(34, 100),
       token1ProtocolFee: new Percent(34, 100),
@@ -52,11 +52,11 @@ const exampleTrade: V4Trade<TradeType> = {
   routes: [exampleRoute],
   gasUseEstimate: 82000n,
   gasUseEstimateBase: CurrencyAmount.fromRawAmount(BNB, 820000n),
-  gasUseEstimateQuote: CurrencyAmount.fromRawAmount(CAKE, 103854983n),
+  gasUseEstimateQuote: CurrencyAmount.fromRawAmount(COMET, 103854983n),
   inputAmount: CurrencyAmount.fromRawAmount(BNB, 40000000000000000n),
-  outputAmount: CurrencyAmount.fromRawAmount(CAKE, 4983293793789930646n),
+  outputAmount: CurrencyAmount.fromRawAmount(COMET, 4983293793789930646n),
   inputAmountWithGasAdjusted: CurrencyAmount.fromRawAmount(BNB, 40000000000000000n),
-  outputAmountWithGasAdjusted: CurrencyAmount.fromRawAmount(CAKE, 4983293793686075663n),
+  outputAmountWithGasAdjusted: CurrencyAmount.fromRawAmount(COMET, 4983293793686075663n),
   tradeType: TradeType.EXACT_INPUT,
 }
 
@@ -73,7 +73,7 @@ describe('V4 Router Transformer', () => {
         {
           address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
           decimals: 18,
-          symbol: 'CAKE',
+          symbol: 'COMET',
         },
       ],
       pools: [
@@ -82,7 +82,7 @@ describe('V4 Router Transformer', () => {
           token0: {
             address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
             decimals: 18,
-            symbol: 'CAKE',
+            symbol: 'COMET',
           },
           token1: {
             address: '0x4200000000000000000000000000000000000006',
@@ -100,7 +100,7 @@ describe('V4 Router Transformer', () => {
             currency: {
               address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
               decimals: 18,
-              symbol: 'CAKE',
+              symbol: 'COMET',
             },
             value: '34339042604161103151',
           },
@@ -134,7 +134,7 @@ describe('V4 Router Transformer', () => {
         currency: {
           address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
           decimals: 18,
-          symbol: 'CAKE',
+          symbol: 'COMET',
         },
         value: '4983293793789930646',
       },
@@ -150,7 +150,7 @@ describe('V4 Router Transformer', () => {
         currency: {
           address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
           decimals: 18,
-          symbol: 'CAKE',
+          symbol: 'COMET',
         },
         value: '4983293793686075663',
       },
@@ -158,7 +158,7 @@ describe('V4 Router Transformer', () => {
         currency: {
           address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
           decimals: 18,
-          symbol: 'CAKE',
+          symbol: 'COMET',
         },
         value: '103854983',
       },
@@ -188,7 +188,7 @@ describe('V4 Router Transformer', () => {
             {
               address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
               decimals: 18,
-              symbol: 'CAKE',
+              symbol: 'COMET',
             },
           ],
           pools: [
@@ -197,7 +197,7 @@ describe('V4 Router Transformer', () => {
               token0: {
                 address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
                 decimals: 18,
-                symbol: 'CAKE',
+                symbol: 'COMET',
               },
               token1: {
                 address: '0x4200000000000000000000000000000000000006',
@@ -215,7 +215,7 @@ describe('V4 Router Transformer', () => {
                 currency: {
                   address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
                   decimals: 18,
-                  symbol: 'CAKE',
+                  symbol: 'COMET',
                 },
                 value: '34339042604161103151',
               },
@@ -249,7 +249,7 @@ describe('V4 Router Transformer', () => {
             currency: {
               address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
               decimals: 18,
-              symbol: 'CAKE',
+              symbol: 'COMET',
             },
             value: '4983293793789930646',
           },
@@ -265,7 +265,7 @@ describe('V4 Router Transformer', () => {
             currency: {
               address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
               decimals: 18,
-              symbol: 'CAKE',
+              symbol: 'COMET',
             },
             value: '4983293793686075663',
           },
@@ -273,7 +273,7 @@ describe('V4 Router Transformer', () => {
             currency: {
               address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
               decimals: 18,
-              symbol: 'CAKE',
+              symbol: 'COMET',
             },
             value: '103854983',
           },
@@ -301,7 +301,7 @@ describe('V4 Router Transformer', () => {
         currency: {
           address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
           decimals: 18,
-          symbol: 'CAKE',
+          symbol: 'COMET',
         },
         value: '103854983',
       },
@@ -317,7 +317,7 @@ describe('V4 Router Transformer', () => {
         currency: {
           address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
           decimals: 18,
-          symbol: 'CAKE',
+          symbol: 'COMET',
         },
         value: '4983293793686075663',
       },
@@ -334,7 +334,7 @@ describe('V4 Router Transformer', () => {
         currency: {
           address: '0x2779106e4F4A8A28d77A24c18283651a2AE22D1C',
           decimals: 18,
-          symbol: 'CAKE',
+          symbol: 'COMET',
         },
         value: '4983293793789930646',
       },

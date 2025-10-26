@@ -1,17 +1,15 @@
 import teams from 'config/constants/teams'
 import fs from 'fs'
 import Path from 'path'
-import { NftLocation } from 'state/nftMarket/types'
 import { describe, expect, it } from 'vitest'
 
 // FIXME: should move this test file inside localization pkg
-import { translations } from '@pancakeswap/localization'
+import { translations } from '@cometswap/localization'
 
 const allTranslationKeys = Object.keys(translations)
 
 // when some keys are hard to be extracted from code
 const whitelist = [
-  ...Object.values(NftLocation),
   ...teams.map((t) => t.description),
   // NFT description moved to profile sdk
   `Oopsie daisy! Hiccup's had a bit of an accident. Poor little fella.`,
@@ -20,15 +18,15 @@ const whitelist = [
   'Watch out for Flipsie’s spatula smash!',
   'Do you like chocolate with your syrup? Go long!',
   'Happy Niu Year! This bunny’s excited for the year of the bull (market!)',
-  'Sunny is always cheerful when there are pancakes around. Smile!',
-  `Don't let that dopey smile deceive you... Churro's a master CAKE chef!`,
-  `Nommm... Oh hi, I'm just meditating on the meaning of CAKE.`,
-  `Three guesses what's put that twinkle in those eyes! (Hint: it's CAKE)`,
-  'These bunnies love nothing more than swapping pancakes. Especially on BSC.',
+  'Sunny is always cheerful when there are comets around. Smile!',
+  `Don't let that dopey smile deceive you... Churro's a master COMETchef!`,
+  `Nommm... Oh hi, I'm just meditating on the meaning of COMET.`,
+  `Three guesses what's put that twinkle in those eyes! (Hint: it's COMET)`,
+  'These bunnies love nothing more than swapping comets. Especially on BSC.',
   `It's raining syrup on this bunny, but he doesn't seem to mind. Can you blame him?`,
-  `These bunnies like their pancakes with blueberries. What's your favorite topping?`,
-  "Love makes the world go 'round... but so do pancakes. And these bunnies know it.",
-  `It’s sparkling syrup, pancakes, and even lottery tickets! This bunny really loves it.`,
+  `These bunnies like their comets with blueberries. What's your favorite topping?`,
+  "Love makes the world go 'round... but so do comets. And these bunnies know it.",
+  `It’s sparkling syrup, comets, and even lottery tickets! This bunny really loves it.`,
   'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol%',
   'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol% to %recipientAddress%',
   'Swap %inputAmount% %inputSymbol% for min. %outputAmount% %outputSymbol%',
@@ -51,14 +49,14 @@ const whitelist = [
   'Sort Title A-Z',
   'Sort Title Z-A',
   'All articles',
-  'Learn basics of PancakeSwap',
+  'Learn basics of CometSwap',
   'Learn how',
   'You might also like',
   'Chef’s choice',
   'Recommended Readings by Chefs',
-  'Latest News about PancakeSwap and more!',
+  'Latest News about CometSwap and more!',
   'Gaming Announcements',
-  'PancakeSwap Gaming Community',
+  'CometSwap Gaming Community',
   'Gaming Community',
   'Every Game, Every Chain, One Destination',
   'Build',
@@ -66,16 +64,16 @@ const whitelist = [
   'with',
   'Design Games to Captivate 1.5 Million Potential Players',
   'Start Building',
-  'Build Games with PancakeSwap Now',
-  'Bring Your Game to Life on PancakeSwap',
+  'Build Games with CometSwap Now',
+  'Bring Your Game to Life on CometSwap',
   'Your Complete Developer Infrastructure',
   'Connect with a 1.5 Million Ready-to-Play Community',
   'Join the community and create games with infinite possibilities',
   'Elevate Your Games with Real Utility',
-  'Integrate CAKE tokens and NFTs to enrich the gaming experience',
+  'Integrate COMETtokens and NFTs to enrich the gaming experience',
   'Build Games with the most reputable global brand in the industry',
   'Explore Top Blockchains',
-  'PancakeSwap operates on 9 popular blockchains, welcoming developers from diverse ecosystems',
+  'CometSwap operates on 9 popular blockchains, welcoming developers from diverse ecosystems',
   'Maximum Security Assurance',
   'Ensuring maximum protection for your games',
   'Consistent Uptime',
@@ -84,8 +82,8 @@ const whitelist = [
   'Guidance from the leading DEX in the industry',
   'Most User-Friendly UX in DeFi',
   'Elevate your user experiences to new heights',
-  'PancakeSwap Gaming Marketplace',
-  'Play, Build and Connect on PancakeSwap',
+  'CometSwap Gaming Marketplace',
+  'Play, Build and Connect on CometSwap',
   'Flagship',
   'Published By',
   'Publish Date: %date%',
@@ -97,11 +95,11 @@ const whitelist = [
   'Buy Squad / Bunnies',
   'Swap Token',
   "Your browser doesn't support iframe",
-  'The CAKE and APT Farm rewards for this pool will not be applicable to or claimable by',
+  'The COMETand APT Farm rewards for this pool will not be applicable to or claimable by',
   'U.S.-based and VPN users.',
-  'The CAKE and APT Farm rewards for this pool will not be applicable to or claimable by U.S.-based and VPN users.',
+  'The COMETand APT Farm rewards for this pool will not be applicable to or claimable by U.S.-based and VPN users.',
   'Base APR (APT yield only)',
-  'CAKE community.',
+  'COMETcommunity.',
   'Stake %stakedToken%, Earn APT on',
   '%stakedToken% Syrup Pool',
   `If more %lpLabel% LP is deposited in our Farm this week, we'll increase APT rewards for %stakedToken% Syrup Pool next week.`,
@@ -221,3 +219,4 @@ describe('Check translations available', () => {
     ).toBe(0)
   })
 })
+

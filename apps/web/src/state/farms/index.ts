@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { createFarmFetcher, getLegacyFarmConfig, SerializedFarm, SerializedFarmsState } from '@pancakeswap/farms'
+import { ChainId } from '@cometswap/chains'
+import { createFarmFetcher, getLegacyFarmConfig, SerializedFarm, SerializedFarmsState } from '@cometswap/farms'
 import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import type {
   UnknownAsyncThunkFulfilledAction,
@@ -20,12 +20,12 @@ import { Address } from 'viem'
 import splitProxyFarms from 'views/Farms/components/YieldBooster/helpers/splitProxyFarms'
 import { resetUserState } from '../global/actions'
 import {
-  fetchFarmBCakeWrapperUserAllowances,
+  fetchFarmBveCometWrapperUserAllowances,
   fetchFarmUserAllowances,
-  fetchFarmUserBCakeWrapperConstants,
-  fetchFarmUserBCakeWrapperEarnings,
-  fetchFarmUserBCakeWrapperRewardPerSec,
-  fetchFarmUserBCakeWrapperStakedBalances,
+  fetchFarmUserBveCometWrapperConstants,
+  fetchFarmUserBveCometWrapperEarnings,
+  fetchFarmUserBveCometWrapperRewardPerSec,
+  fetchFarmUserBveCometWrapperStakedBalances,
   fetchFarmUserEarnings,
   fetchFarmUserStakedBalances,
   fetchFarmUserTokenBalances,
@@ -41,7 +41,7 @@ const fetchFarmPublicDataPkg = async ({
   const farmsCanFetch = farmsConfig?.filter((farmConfig) => pids.includes(farmConfig.pid)) ?? []
   const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
 
-  const { farmsWithPrice, poolLength, regularCakePerBlock, totalRegularAllocPoint } = await farmFetcher.fetchFarms({
+  const { farmsWithPrice, poolLength, regularveCometPerBlock, totalRegularAllocPoint } = await farmFetcher.fetchFarms({
     chainId,
     isTestnet: chain.testnet,
     farms: farmsCanFetch.concat(priceHelperLpsConfig),
@@ -94,7 +94,7 @@ const fetchFarmPublicDataPkg = async ({
   } catch (e) {
     console.error(e)
   }
-  return [farmsWithPriceWithFallback, poolLength, regularCakePerBlock, totalRegularAllocPoint, farmAprs]
+  return [farmsWithPriceWithFallback, poolLength, regularveCometPerBlock, totalRegularAllocPoint, farmAprs]
 }
 
 export const farmFetcher = createFarmFetcher(getViemClients)
@@ -104,7 +104,7 @@ const initialState: SerializedFarmsState = {
   chainId: undefined,
   loadArchivedFarmsData: false,
   userDataLoaded: false,
-  bCakeUserDataLoaded: false,
+  bveCometUserDataLoaded: false,
   totalRegularAllocPoint: '0',
   loadingKeys: {},
 }
@@ -180,7 +180,7 @@ interface FarmUserDataResponse {
   }
 }
 
-interface BCakeUserDataResponse {
+interface BveCometUserDataResponse {
   pid: number
   allowance: string
   tokenBalance: string
@@ -229,7 +229,7 @@ async function getBoostedFarmsStakeValue(farms, account, chainId, proxyAddress) 
   return farmAllowances
 }
 
-async function getBCakeWrapperFarmsStakeValue(farms, account, chainId) {
+async function getBveCometWrapperFarmsStakeValue(farms, account, chainId) {
   const [
     userFarmAllowances,
     userFarmTokenBalances,
@@ -238,12 +238,12 @@ async function getBCakeWrapperFarmsStakeValue(farms, account, chainId) {
     { boosterContractAddress, startTimestamp, endTimestamp },
     { rewardPerSec },
   ] = await Promise.all([
-    fetchFarmBCakeWrapperUserAllowances(account, farms, chainId),
+    fetchFarmBveCometWrapperUserAllowances(account, farms, chainId),
     fetchFarmUserTokenBalances(account, farms, chainId),
-    fetchFarmUserBCakeWrapperStakedBalances(account, farms, chainId),
-    fetchFarmUserBCakeWrapperEarnings(account, farms, chainId),
-    fetchFarmUserBCakeWrapperConstants(farms, chainId),
-    fetchFarmUserBCakeWrapperRewardPerSec(farms, chainId),
+    fetchFarmUserBveCometWrapperStakedBalances(account, farms, chainId),
+    fetchFarmUserBveCometWrapperEarnings(account, farms, chainId),
+    fetchFarmUserBveCometWrapperConstants(farms, chainId),
+    fetchFarmUserBveCometWrapperRewardPerSec(farms, chainId),
   ])
 
   const normalFarmAllowances = farms.map((_, index) => {
@@ -265,11 +265,11 @@ async function getBCakeWrapperFarmsStakeValue(farms, account, chainId) {
   return normalFarmAllowances
 }
 
-async function getBCakeWrapperFarmsData(farms, chainId) {
+async function getBveCometWrapperFarmsData(farms, chainId) {
   const [{ boosterContractAddress, startTimestamp, endTimestamp, totalLiquidityX }, { rewardPerSec }] =
     await Promise.all([
-      fetchFarmUserBCakeWrapperConstants(farms, chainId),
-      fetchFarmUserBCakeWrapperRewardPerSec(farms, chainId),
+      fetchFarmUserBveCometWrapperConstants(farms, chainId),
+      fetchFarmUserBveCometWrapperRewardPerSec(farms, chainId),
     ])
 
   const normalFarmAllowances = farms.map((_, index) => {
@@ -351,14 +351,14 @@ export const fetchFarmUserDataAsync = createAsyncThunk<
   },
 )
 
-export const fetchBCakeWrapperUserDataAsync = createAsyncThunk<
-  BCakeUserDataResponse[],
+export const fetchBveCometWrapperUserDataAsync = createAsyncThunk<
+  BveCometUserDataResponse[],
   { account: Address; pids: number[]; chainId: number },
   {
     state: AppState
   }
 >(
-  'farms/fetchBCakeWrapperUserData',
+  'farms/fetchBveCometWrapperUserData',
   async ({ account, chainId, pids }, { dispatch, getState }) => {
     const state = getState()
     if (state.farms.chainId !== chainId) {
@@ -367,17 +367,17 @@ export const fetchBCakeWrapperUserDataAsync = createAsyncThunk<
     const farmsConfig = await getLegacyFarmConfig(chainId)
     const farmsCanFetch = farmsConfig?.filter((farmConfig) => pids.includes(farmConfig.pid)) ?? []
     if (farmsCanFetch?.length) {
-      const normalAllowances = await getBCakeWrapperFarmsStakeValue(farmsCanFetch, account, chainId)
+      const normalAllowances = await getBveCometWrapperFarmsStakeValue(farmsCanFetch, account, chainId)
       return normalAllowances
     }
 
-    return getBCakeWrapperFarmsStakeValue(farmsCanFetch, account, chainId)
+    return getBveCometWrapperFarmsStakeValue(farmsCanFetch, account, chainId)
   },
   {
     condition: (arg, { getState }) => {
       const { farms } = getState()
       if (farms.loadingKeys[stringify({ type: fetchFarmUserDataAsync.typePrefix, arg })]) {
-        console.debug('farms with BCakeWrapper user action is fetching, skipping here')
+        console.debug('farms with BveCometWrapper user action is fetching, skipping here')
         return false
       }
       return true
@@ -385,14 +385,14 @@ export const fetchBCakeWrapperUserDataAsync = createAsyncThunk<
   },
 )
 
-export const fetchBCakeWrapperDataAsync = createAsyncThunk<
-  BCakeUserDataResponse[],
+export const fetchBveCometWrapperDataAsync = createAsyncThunk<
+  BveCometUserDataResponse[],
   { pids: number[]; chainId: number },
   {
     state: AppState
   }
 >(
-  'farms/fetchBCakeWrapperData',
+  'farms/fetchBveCometWrapperData',
   async ({ chainId, pids }, { dispatch, getState }) => {
     const state = getState()
     if (state.farms.chainId !== chainId) {
@@ -401,17 +401,17 @@ export const fetchBCakeWrapperDataAsync = createAsyncThunk<
     const farmsConfig = await getLegacyFarmConfig(chainId)
     const farmsCanFetch = farmsConfig?.filter((farmConfig) => pids.includes(farmConfig.pid)) ?? []
     if (farmsCanFetch?.length) {
-      const normalAllowances = await getBCakeWrapperFarmsData(farmsCanFetch, chainId)
+      const normalAllowances = await getBveCometWrapperFarmsData(farmsCanFetch, chainId)
       return normalAllowances
     }
 
-    return getBCakeWrapperFarmsData(farmsCanFetch, chainId)
+    return getBveCometWrapperFarmsData(farmsCanFetch, chainId)
   },
   {
     condition: (arg, { getState }) => {
       const { farms } = getState()
       if (farms.loadingKeys[stringify({ type: fetchFarmUserDataAsync.typePrefix, arg })]) {
-        console.debug('farms with BCakeWrapper is fetching, skipping here')
+        console.debug('farms with BveCometWrapper is fetching, skipping here')
         return false
       }
       return true
@@ -450,7 +450,7 @@ export const farmsSlice = createSlice({
             stakedBalance: '0',
             earnings: '0',
           },
-          bCakeUserData: {
+          bveCometUserData: {
             allowance: '0',
             tokenBalance: '0',
             stakedBalance: '0',
@@ -460,7 +460,7 @@ export const farmsSlice = createSlice({
         }
       })
       state.userDataLoaded = false
-      state.bCakeUserDataLoaded = false
+      state.bveCometUserDataLoaded = false
     })
     // Init farm data
     builder.addCase(fetchInitialFarmsData.fulfilled, (state, action) => {
@@ -471,7 +471,7 @@ export const farmsSlice = createSlice({
 
     // Update farms with live data
     builder.addCase(fetchFarmsPublicDataAsync.fulfilled, (state, action) => {
-      const [farmPayload, poolLength, regularCakePerBlock, totalRegularAllocPoint, farmAprs] = action.payload
+      const [farmPayload, poolLength, regularveCometPerBlock, totalRegularAllocPoint, farmAprs] = action.payload
       const farmPayloadPidMap = keyBy(farmPayload, 'pid')
 
       state.data = state.data.map((farm) => {
@@ -483,7 +483,7 @@ export const farmsSlice = createSlice({
         }
       })
       state.poolLength = poolLength
-      state.regularCakePerBlock = regularCakePerBlock
+      state.regularveCometPerBlock = regularveCometPerBlock
       state.totalRegularAllocPoint = totalRegularAllocPoint
     })
 
@@ -499,36 +499,36 @@ export const farmsSlice = createSlice({
       })
       state.userDataLoaded = true
     })
-    // Update farms with BCakeWrapper user data
-    builder.addCase(fetchBCakeWrapperUserDataAsync.fulfilled, (state, action) => {
+    // Update farms with BveCometWrapper user data
+    builder.addCase(fetchBveCometWrapperUserDataAsync.fulfilled, (state, action) => {
       const userDataMap = keyBy(action.payload, 'pid')
       state.data = state.data.map((farm) => {
         const userDataEl = userDataMap[farm.pid]
         if (userDataEl) {
-          return { ...farm, bCakeUserData: userDataEl }
+          return { ...farm, bveCometUserData: userDataEl }
         }
         return farm
       })
-      state.bCakeUserDataLoaded = true
+      state.bveCometUserDataLoaded = true
     })
-    builder.addCase(fetchBCakeWrapperDataAsync.fulfilled, (state, action) => {
+    builder.addCase(fetchBveCometWrapperDataAsync.fulfilled, (state, action) => {
       const userDataMap = keyBy(action.payload, 'pid')
       state.data = state.data.map((farm) => {
         const userDataEl = userDataMap[farm.pid]
         if (userDataEl) {
-          return { ...farm, bCakePublicData: userDataEl }
+          return { ...farm, bveCometPublicData: userDataEl }
         }
         return farm
       })
-      state.bCakeUserDataLoaded = true
+      state.bveCometUserDataLoaded = true
     })
 
     builder.addMatcher(
       isAnyOf(
         fetchFarmUserDataAsync.pending,
         fetchFarmsPublicDataAsync.pending,
-        fetchBCakeWrapperUserDataAsync.pending,
-        fetchBCakeWrapperDataAsync.pending,
+        fetchBveCometWrapperUserDataAsync.pending,
+        fetchBveCometWrapperDataAsync.pending,
       ),
       (state, action) => {
         state.loadingKeys[serializeLoadingKey(action, 'pending')] = true
@@ -538,8 +538,8 @@ export const farmsSlice = createSlice({
       isAnyOf(
         fetchFarmUserDataAsync.fulfilled,
         fetchFarmsPublicDataAsync.fulfilled,
-        fetchBCakeWrapperDataAsync.fulfilled,
-        fetchBCakeWrapperUserDataAsync.fulfilled,
+        fetchBveCometWrapperDataAsync.fulfilled,
+        fetchBveCometWrapperUserDataAsync.fulfilled,
       ),
       (state, action) => {
         state.loadingKeys[serializeLoadingKey(action, 'fulfilled')] = false
@@ -549,8 +549,8 @@ export const farmsSlice = createSlice({
       isAnyOf(
         fetchFarmsPublicDataAsync.rejected,
         fetchFarmUserDataAsync.rejected,
-        fetchBCakeWrapperUserDataAsync.rejected,
-        fetchBCakeWrapperDataAsync.rejected,
+        fetchBveCometWrapperUserDataAsync.rejected,
+        fetchBveCometWrapperDataAsync.rejected,
       ),
       (state, action) => {
         state.loadingKeys[serializeLoadingKey(action, 'rejected')] = false
@@ -560,3 +560,4 @@ export const farmsSlice = createSlice({
 })
 
 export default farmsSlice.reducer
+

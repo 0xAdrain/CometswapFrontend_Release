@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import DatePicker, { DatePickerProps } from './DatePicker'
 
 const TimePicker: React.FC<React.PropsWithChildren<DatePickerProps>> = (props) => {
@@ -17,3 +17,4 @@ const TimePicker: React.FC<React.PropsWithChildren<DatePickerProps>> = (props) =
 }
 
 export default TimePicker
+

@@ -31,3 +31,4 @@ const userInfo = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default userInfo
+

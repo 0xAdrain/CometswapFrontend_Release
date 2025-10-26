@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text } from '@cometswap/uikit'
 
 const LockDurationRow = ({ weekDuration }) => {
   const { t } = useTranslation()
@@ -17,3 +17,4 @@ const LockDurationRow = ({ weekDuration }) => {
 }
 
 export default LockDurationRow
+

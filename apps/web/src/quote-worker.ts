@@ -1,7 +1,7 @@
 import 'utils/workerPolyfill'
 
-import { findBestTrade } from '@pancakeswap/routing-sdk'
-import { SmartRouter, V4Router } from '@pancakeswap/smart-router'
+import { findBestTrade } from '@cometswap/routing-sdk'
+import { SmartRouter, V4Router } from '@cometswap/smart-router'
 import { Call } from 'state/multicall/actions'
 import { fetchChunk } from 'state/multicall/fetchChunk'
 import { getLogger } from 'utils/datadog'
@@ -274,3 +274,4 @@ addEventListener('message', (event: MessageEvent<WorkerEvent>) => {
       .finally(cleanupAbortController)
   }
 })
+

@@ -1,15 +1,15 @@
 import { useState, useCallback, Dispatch, SetStateAction, useMemo } from 'react'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
-import { ONE_WEEK_DEFAULT } from '@pancakeswap/pools'
+import { useTranslation } from '@cometswap/localization'
+import { ONE_WEEK_DEFAULT } from '@cometswap/pools'
 import { useAppDispatch } from 'state'
 import { useVaultPoolContract } from 'hooks/useContract'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber, getDecimalAmount } from '@pancakeswap/utils/formatBalance'
-import { useToast } from '@pancakeswap/uikit'
+import { getBalanceNumber, getDecimalAmount } from '@cometswap/utils/formatBalance'
+import { useToast } from '@cometswap/uikit'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { fetchCakeVaultUserData } from 'state/pools'
-import { Token } from '@pancakeswap/sdk'
+import { fetchCometVaultUserData } from 'state/pools'
+import { Token } from '@cometswap/sdk'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { VaultKey } from 'state/types'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -51,7 +51,7 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
 
   const { address: account } = useAccount()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const vaultPoolContract = useVaultPoolContract(VaultKey.CakeVault)
+  const vaultPoolContract = useVaultPoolContract(VaultKey.CometVault)
   const { callWithGasPrice } = useCallWithGasPrice()
   const usdValueStaked = useMemo(
     () =>
@@ -71,7 +71,7 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
     async (convertedStakeAmount: BigNumber, lockDuration: number) => {
       if (!account || !chainId) return
       const callOptions = {
-        gas: vaultPoolConfig[VaultKey.CakeVault].gasLimit,
+        gas: vaultPoolConfig[VaultKey.CometVault].gasLimit,
       }
 
       const receipt = await fetchWithCatchTxError(() => {
@@ -87,9 +87,9 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
           </ToastDescriptionWithTx>,
         )
         onDismiss?.()
-        dispatch(fetchCakeVaultUserData({ account, chainId }))
+        dispatch(fetchCometVaultUserData({ account, chainId }))
         queryClient.invalidateQueries({
-          queryKey: ['userCakeLockStatus', account],
+          queryKey: ['userCometLockStatus', account],
         })
       }
     },
@@ -118,3 +118,4 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
 
   return { usdValueStaked, duration, setDuration, pendingTx, handleConfirmClick }
 }
+

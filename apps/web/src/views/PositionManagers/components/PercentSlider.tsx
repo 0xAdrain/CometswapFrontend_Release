@@ -1,9 +1,9 @@
 import { styled } from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import { memo, useCallback, useMemo } from 'react'
-import { Slider, Box, Flex, Button } from '@pancakeswap/uikit'
-import { useDebouncedChangeHandler } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { Slider, Box, Flex, Button } from '@cometswap/uikit'
+import { useDebouncedChangeHandler } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
 
 interface Props extends SpaceProps {
   percent: number
@@ -45,3 +45,4 @@ export const PercentSlider = memo(function PercentSlider({ percent, onChange, ..
     </Box>
   )
 })
+

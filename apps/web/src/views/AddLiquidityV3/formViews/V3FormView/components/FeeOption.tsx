@@ -1,5 +1,5 @@
-import { AutoColumn, Skeleton, Text, promotedGradient } from '@pancakeswap/uikit'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { AutoColumn, Skeleton, Text, promotedGradient } from '@cometswap/uikit'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { LightTertiaryCard } from 'components/Card'
 import { PoolState } from 'hooks/v3/types'
 import { useFeeTierDistribution } from 'hooks/v3/useFeeTierDistribution'
@@ -60,3 +60,4 @@ export function FeeOption({
     </FeeOptionContainer>
   )
 }
+

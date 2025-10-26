@@ -1,6 +1,6 @@
-import { BIG_ONE, BIG_TWO, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ONE, BIG_TWO, BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BN from 'bignumber.js'
-import { equalsIgnoreCase } from '@pancakeswap/utils/equalsIgnoreCase'
+import { equalsIgnoreCase } from '@cometswap/utils/equalsIgnoreCase'
 import toNumber from 'lodash/toNumber'
 import { SerializedFarmPublicData, FarmData, isStableFarm } from '../types'
 import { getFullDecimalMultiplier } from './getFullDecimalMultiplier'

@@ -1,7 +1,7 @@
-import { Ifo, PoolIds, cakeBnbLpToken } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId, Token } from '@pancakeswap/sdk'
-import { bscTokens } from '@pancakeswap/tokens'
+import { Ifo, PoolIds, cakeBnbLpToken } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId, Token } from '@cometswap/sdk'
+import { bscTokens } from '@cometswap/tokens'
 import {
   AutoRenewIcon,
   BalanceWithLoading,
@@ -20,10 +20,10 @@ import {
   MessageText,
   Text,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { NumberDisplay, type NumberDisplayProps } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceAmount, getBalanceNumber } from '@cometswap/utils/formatBalance'
+import { NumberDisplay, type NumberDisplayProps } from '@cometswap/widgets-internal'
 import { TokenImage, TokenPairImage } from 'components/TokenImage'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { ReactNode, useMemo } from 'react'
@@ -34,7 +34,7 @@ import { useAccount } from 'wagmi'
 import { TextLink } from '../../IfoCardStyles'
 import StakeVaultButton from '../StakeVaultButton'
 import { EnableStatus } from '../types'
-import { CrossChainVeCakeTips } from './CrossChainVeCakeTips'
+import { CrossChainCometTips } from './CrossChainCometTips'
 import IFORequirements from './IFORequirements'
 
 interface TokenSectionProps extends FlexProps {
@@ -82,7 +82,7 @@ const CommitTokenSection: React.FC<React.PropsWithChildren<TokenSectionProps & {
   ...props
 }) => {
   if (commitToken.equals(cakeBnbLpToken)) {
-    return <TokenSection primaryToken={bscTokens.cake} secondaryToken={bscTokens.wbnb} {...props} />
+    return <TokenSection primaryToken={bscTokens.comet} secondaryToken={bscTokens.wbnb} {...props} />
   }
   return <TokenSection primaryToken={commitToken} {...props} />
 }
@@ -141,7 +141,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
   const { chainId } = useActiveChainId()
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t(
-      'Sorry, you didn’t contribute enough CAKE to meet the minimum threshold. You didn’t buy anything in this sale, but you can still reclaim your CAKE.',
+      'Sorry, you didn’t contribute enough COMETto meet the minimum threshold. You didn’t buy anything in this sale, but you can still reclaim your COMET.',
     ),
     { placement: 'bottom' },
   )
@@ -230,10 +230,10 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
     ) {
       // If Cross-Chain IFO
       if (ifo.chainId !== ChainId.BSC) {
-        message = <CrossChainVeCakeTips ifoChainId={ifo.chainId} />
+        message = <CrossChainCometTips ifoChainId={ifo.chainId} />
       }
       // Phase this out later, as it applies at the same time
-      // else message = <ICakeTips ifoId={ifo.id} ifoChainId={ifo.chainId} ifoAddress={ifo.address} />
+      // else message = <ICometTips ifoId={ifo.id} ifoChainId={ifo.chainId} ifoAddress={ifo.address} />
     }
 
     if (account && !hasProfile && !isPublicPoolBasicSale && publicIfoData.status !== 'finished') {
@@ -337,7 +337,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
             (ifov31Msg || (
               <>
                 <Text textAlign="center" fontSize="14px">
-                  {t('To participate in the next IFO, lock some CAKE in the fixed-term staking CAKE pool!')}
+                  {t('To participate in the next IFO, lock some COMETin the fixed-term staking COMETpool!')}
                 </Text>
                 <TextLink href="/ifo#ifo-how-to" textAlign="center">
                   {t('How does it work?')} »
@@ -399,3 +399,4 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
 }
 
 export default IfoCardTokens
+

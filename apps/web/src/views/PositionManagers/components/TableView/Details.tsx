@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@pancakeswap/uikit'
+import { ChevronDownIcon } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 export interface DetailsProps {
@@ -29,3 +29,4 @@ export const Details: React.FC<React.PropsWithChildren<DetailsProps>> = ({ actio
     </Container>
   )
 }
+

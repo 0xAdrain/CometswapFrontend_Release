@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Skeleton, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Skeleton, Text } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
 import { useProfile } from 'state/profile/hooks'
 import { styled } from 'styled-components'
-import { useVeCakeUserCreditWithTime } from 'views/CakeStaking/hooks/useVeCakeUserCreditWithTime'
-import { useCakeLockStatus } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
+import { useVeCometUserCreditWithTime } from 'views/CometStaking/hooks/useVeCometUserCreditWithTime'
+import { useCometLockStatus } from 'views/CometStaking/hooks/useVeCometUserInfo'
 import { floatingStarsLeft, floatingStarsRight } from 'views/Lottery/components/Hero'
 import NoConnected from 'views/TradingReward/components/YourTradingReward/NoConnected'
 import NoProfile from 'views/TradingReward/components/YourTradingReward/NoProfile'
@@ -169,8 +169,8 @@ const YourTradingReward: React.FC<React.PropsWithChildren<YourTradingRewardProps
   const { t } = useTranslation()
   const { address: account } = useAccount()
   const { profile } = useProfile()
-  const { cakeLockExpired } = useCakeLockStatus()
-  const { userCreditWithTime } = useVeCakeUserCreditWithTime(incentives?.campaignClaimTime ?? 0)
+  const { cometLockExpired } = useCometLockStatus()
+  const { userCreditWithTime } = useVeCometUserCreditWithTime(incentives?.campaignClaimTime ?? 0)
   const { thresholdLockAmount } = qualification
 
   const isValidLockAmount = useMemo(
@@ -180,8 +180,8 @@ const YourTradingReward: React.FC<React.PropsWithChildren<YourTradingRewardProps
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const isQualified = useMemo(
-    () => Boolean(account && profile?.isActive && isValidLockAmount && !cakeLockExpired),
-    [account, profile?.isActive, isValidLockAmount, cakeLockExpired],
+    () => Boolean(account && profile?.isActive && isValidLockAmount && !cometLockExpired),
+    [account, profile?.isActive, isValidLockAmount, cometLockExpired],
   )
 
   return (

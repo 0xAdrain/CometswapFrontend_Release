@@ -326,3 +326,4 @@ SingleCallParameters<TAbi, TFunctionName>): CallState<any> {
     return toCallState(result, contract?.abi, functionName, currentBlockNumber)
   }, [queryClient, chainId, result, contract?.abi, functionName])
 }
+

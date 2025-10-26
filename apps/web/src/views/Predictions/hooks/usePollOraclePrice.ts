@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useReadContract } from '@pancakeswap/wagmi'
+import { ChainId } from '@cometswap/chains'
+import { useReadContract } from '@cometswap/wagmi'
 import { chainlinkOracleABI } from 'config/abi/chainlinkOracle'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
@@ -42,3 +42,4 @@ const usePollOraclePrice = ({ chainlinkOracleAddress, galetoOracleAddress }: Use
 }
 
 export default usePollOraclePrice
+

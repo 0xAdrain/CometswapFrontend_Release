@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Fraction, Price } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Fraction, Price } from '@cometswap/sdk'
 import formatLocaleNumber from './formatLocaleNumber'
 
 export function formatCurrencyAmount(
@@ -37,3 +37,4 @@ export function formatPrice(price: Price<Currency, Currency> | undefined, sigFig
 export function formatRawAmount(amountRaw: string, decimals: number, sigFigs: number): string {
   return new Fraction(amountRaw, 10n ** BigInt(decimals)).toSignificant(sigFigs)
 }
+

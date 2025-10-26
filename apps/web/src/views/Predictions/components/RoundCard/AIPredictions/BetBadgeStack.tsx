@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, CheckmarkCircleFillIcon, GlassGlobeIcon, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, CheckmarkCircleFillIcon, GlassGlobeIcon, useTooltip } from '@cometswap/uikit'
 import styled from 'styled-components'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 import { formatTokenv2 } from 'views/Predictions/helpers'
@@ -145,3 +145,4 @@ export const BetBadgeStack = ({
     </>
   )
 }
+

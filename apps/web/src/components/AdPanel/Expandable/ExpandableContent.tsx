@@ -1,4 +1,4 @@
-import { Box, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Box, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { PropsWithChildren, ReactNode } from 'react'
 import { Divider } from './styles'
 
@@ -42,3 +42,4 @@ export const ExpandableContent = ({
     </>
   )
 }
+

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { getChainId } from 'config/chains'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import { useRouter } from 'next/router'
@@ -64,3 +64,4 @@ export const useActiveChainId = () => {
     isNotMatched,
   }
 }
+

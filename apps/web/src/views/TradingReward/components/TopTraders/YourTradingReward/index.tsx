@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Skeleton, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Skeleton, Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import { floatingStarsLeft, floatingStarsRight } from 'views/Lottery/components/Hero'
 import RewardPeriod from 'views/TradingReward/components/TopTraders/YourTradingReward/RewardPeriod'

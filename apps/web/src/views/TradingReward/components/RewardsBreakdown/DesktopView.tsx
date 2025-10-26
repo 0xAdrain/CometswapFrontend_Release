@@ -1,7 +1,7 @@
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Table, Td, Text, Th } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Table, Td, Text, Th } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import PairInfo from 'views/TradingReward/components/PairInfo'
 import { RewardType } from 'views/TradingReward/hooks/useAllTradingRewardPair'
 import { RewardBreakdownDetail } from 'views/TradingReward/hooks/useRewardBreakdown'
@@ -80,7 +80,7 @@ const DesktopView: React.FC<React.PropsWithChildren<RewardsBreakdownDesktopViewP
                           </Text>
                         </Td>
                         <Td textAlign="right" width="20%">
-                          {type === RewardType.CAKE_STAKERS ? (
+                          {type === RewardType.COMET_STAKERS ? (
                             <Text color={pair.preCap > 0 ? 'text' : 'textSubtle'}>{`$${formatNumber(
                               pair.preCap,
                             )}`}</Text>

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Heading, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Heading, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
@@ -91,7 +91,7 @@ const CommunitySection = () => {
             </Heading>
           </Flex>
           <Text mb="40px" color="textSubtle" fontWeight={600} textAlign="center">
-            {t('Together we can make the PancakeSwap community even stronger')}
+            {t('Together we can make the CometSwap community even stronger')}
           </Text>
           <Flex flexDirection="row" flexWrap="wrap" alignItems="center" style={{ gap: 24 }} justifyContent="center">
             <CommunitySummary />
@@ -124,3 +124,4 @@ const CommunitySection = () => {
 }
 
 export default CommunitySection
+

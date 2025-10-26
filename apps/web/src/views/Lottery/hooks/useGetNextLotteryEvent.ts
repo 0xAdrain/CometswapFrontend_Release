@@ -1,5 +1,5 @@
 import { LotteryStatus } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useMemo } from 'react'
 
 interface LotteryEvent {
@@ -47,3 +47,4 @@ const useGetNextLotteryEvent = (endTime?: number, status?: LotteryStatus): Lotte
 }
 
 export default useGetNextLotteryEvent
+

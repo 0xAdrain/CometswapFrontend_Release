@@ -1,0 +1,56 @@
+{
+  "name": "@cometswap/liquidity-widgets",
+  "version": "1.0.6",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/liquidity-widget.js",
+      "require": "./dist/liquidity-widget.cjs"
+    },
+    "./dist/style.css": "./dist/liquidity-widget.css"
+  },
+  "main": "./dist/liquidity-widget.cjs",
+  "module": "./dist/liquidity-widget.js",
+  "types": "./dist/liquidity-widget.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "echo 'Using pre-built dist files'",
+    "dev": "echo 'Using pre-built dist files'",
+    "clean": "rm -rf .turbo && rm -rf node_modules"
+  },
+  "dependencies": {
+    "@cometswap/sdk": "workspace:*",
+    "@cometswap/swap-sdk-core": "workspace:*",
+    "@cometswap/v3-sdk": "workspace:*",
+    "@popperjs/core": "^2.11.8",
+    "react-popper": "^2.3.0"
+  },
+  "devDependencies": {
+    "@cometswap/tsconfig": "workspace:*",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.2.17",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "viem": ">=2.13.3"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

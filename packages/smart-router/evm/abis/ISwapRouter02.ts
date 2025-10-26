@@ -317,7 +317,7 @@ export const swapRouter02Abi = [
       { internalType: 'int256', name: 'amount1Delta', type: 'int256' },
       { internalType: 'bytes', name: '_data', type: 'bytes' },
     ],
-    name: 'pancakeV3SwapCallback',
+    name: 'cometV3SwapCallback',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',

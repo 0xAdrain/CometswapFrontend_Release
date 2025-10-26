@@ -4,11 +4,8 @@ import { Address } from 'viem'
 import { useAccount } from 'wagmi'
 
 export const fetchAffiliateList = async (account: Address): Promise<any> => {
-  const response = await fetch(`https://proofs.pancakeswap.com/aff-program/v2/${account.toLowerCase()}`)
-  if (!response.ok) {
-    throw new Error('User is not in affiliate list')
-  }
-  return true
+  // CometSwap: 禁用联盟计划功能，直接返回false
+  return false
 }
 
 export const useUserIsInAffiliateListData = () => {
@@ -16,15 +13,12 @@ export const useUserIsInAffiliateListData = () => {
   const { data } = useQuery({
     queryKey: ['IsInAffiliateListData', account],
     queryFn: async () => {
-      try {
-        await fetchAffiliateList(account!)
-        return true
-      } catch (error) {
-        return false
-      }
+      // CometSwap: 联盟计划功能已禁用，直接返回false
+      return false
     },
     enabled: Boolean(account),
   })
 
   return useMemo(() => data ?? false, [data])
 }
+

@@ -1,9 +1,9 @@
-import { Box, Message, MessageText } from '@pancakeswap/uikit'
+import { Box, Message, MessageText } from '@cometswap/uikit'
 
-import { Pool, NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { Pool, NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import { useProfileRequirement } from '../hooks/useProfileRequirement'
 
 export function ProfileRequirementWarning({
@@ -19,10 +19,10 @@ export function ProfileRequirementWarning({
         <MessageText>
           {notMeetRequired &&
             notMeetThreshold &&
-            t('This pool requires active Pancake Profile and %amount% profile points.', {
+            t('This pool requires active Comet Profile and %amount% profile points.', {
               amount: profileRequirement?.thresholdPoints?.toNumber(),
             })}
-          {notMeetRequired && !notMeetThreshold && t('This pool requires active Pancake Profile')}
+          {notMeetRequired && !notMeetThreshold && t('This pool requires active Comet Profile')}
           {!notMeetRequired &&
             notMeetThreshold &&
             t('This pool requires %amount% profile points.', {
@@ -46,3 +46,4 @@ export function ProfileRequirementWarning({
     </Message>
   )
 }
+

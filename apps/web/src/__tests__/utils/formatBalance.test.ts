@@ -1,5 +1,5 @@
 import BN from 'bignumber.js'
-import { formatBigInt, formatBigIntToFixed, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { formatBigInt, formatBigIntToFixed, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 
 describe('formatBigInt', () => {
   it.each([
@@ -67,3 +67,4 @@ describe('getFullDisplayBalance', () => {
     expect(getFullDisplayBalance(new BN(value), decimals, displayDecimals)).toBe(expected)
   })
 })
+

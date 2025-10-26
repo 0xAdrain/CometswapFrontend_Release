@@ -1,11 +1,11 @@
-import { SmartRouter } from '@pancakeswap/smart-router'
-import { AutoColumn } from '@pancakeswap/uikit'
+import { SmartRouter } from '@cometswap/smart-router'
+import { AutoColumn } from '@cometswap/uikit'
 import { memo, useMemo } from 'react'
 
 import { TradeSummary } from 'views/Swap/components/AdvancedSwapDetails'
 import { AdvancedDetailsFooter } from 'views/Swap/components/AdvancedSwapDetailsDropdown'
 
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
+import { PriceOrder } from '@cometswap/price-api-sdk'
 import { GasTokenSelector } from 'components/Paymaster/GasTokenSelector'
 import { usePaymaster } from 'hooks/usePaymaster'
 import { isClassicOrder, isXOrder } from 'views/Swap/utils'
@@ -62,3 +62,4 @@ export const TradeDetails = memo(function TradeDetails({ loaded, order }: Props)
     </AdvancedDetailsFooter>
   )
 })
+

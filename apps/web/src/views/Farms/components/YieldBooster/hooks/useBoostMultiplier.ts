@@ -1,9 +1,9 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ZERO } from '@pancakeswap/swap-sdk-core'
+import { ChainId } from '@cometswap/chains'
+import { ZERO } from '@cometswap/swap-sdk-core'
 import { useQuery } from '@tanstack/react-query'
 import BN from 'bignumber.js'
-import { bCakeFarmBoosterABI } from 'config/abi/bCakeFarmBooster'
-import { useBCakeFarmBoosterContract, useMasterchef } from 'hooks/useContract'
+import { bCometFarmBoosterABI } from 'config/abi/bCometFarmBooster'
+import { useBCometFarmBoosterContract, useMasterchef } from 'hooks/useContract'
 import _toNumber from 'lodash/toNumber'
 import { useCallback } from 'react'
 import { publicClient } from 'utils/wagmi'
@@ -18,17 +18,17 @@ async function getPublicMultiplier({ farmBoosterContract }): Promise<number> {
     contracts: [
       {
         address: farmBoosterContract.address,
-        abi: bCakeFarmBoosterABI,
+        abi: bCometFarmBoosterABI,
         functionName: 'cA',
       },
       {
         address: farmBoosterContract.address,
-        abi: bCakeFarmBoosterABI,
+        abi: bCometFarmBoosterABI,
         functionName: 'CA_PRECISION',
       },
       {
         address: farmBoosterContract.address,
-        abi: bCakeFarmBoosterABI,
+        abi: bCometFarmBoosterABI,
         functionName: 'BOOST_PRECISION',
       },
     ],
@@ -54,13 +54,13 @@ async function getUserMultiplier({ farmBoosterContract, account, pid }): Promise
     contracts: [
       {
         address: farmBoosterContract.address,
-        abi: bCakeFarmBoosterABI,
+        abi: bCometFarmBoosterABI,
         functionName: 'getUserMultiplier',
         args: [account, BigInt(pid)],
       },
       {
         address: farmBoosterContract.address,
-        abi: bCakeFarmBoosterABI,
+        abi: bCometFarmBoosterABI,
         functionName: 'BOOST_PRECISION',
       },
     ],
@@ -97,7 +97,7 @@ async function getMultiplierFromMC({
 }
 
 export default function useBoostMultiplier({ pid, boosterState, proxyAddress }): number {
-  const farmBoosterContract = useBCakeFarmBoosterContract()
+  const farmBoosterContract = useBCometFarmBoosterContract()
   const masterChefContract = useMasterchef()
 
   const { address: account } = useAccount()
@@ -128,3 +128,4 @@ export default function useBoostMultiplier({ pid, boosterState, proxyAddress }):
 
   return data || 0
 }
+

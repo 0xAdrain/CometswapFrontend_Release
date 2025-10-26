@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { SUPPORTED_CHAIN_IDS } from '@pancakeswap/prediction'
-import { Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { SUPPORTED_CHAIN_IDS } from '@cometswap/prediction'
+import { Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { AIPrediction } from 'components/AdPanel/InfoStripes/AIPredictionStripe'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
@@ -93,7 +93,7 @@ export const InPageBanner = () => {
           <InnerContainer>
             <AIPrediction
               ctaLink="/prediction?token=ETH&chain=arb&utm_source=PredictionPage&utm_medium=website&utm_campaign=Arbitrum&utm_id=PredictionLaunch"
-              learnMoreLink="https://blog.pancakeswap.finance/articles/pancake-swap-introduces-ai-powered-prediction-market-on-arbitrum-up-to-100-fund-protection-and-launching-60-000-arb-campaign?utm_source=PredictionPage&utm_medium=website&utm_campaign=Arbitrum&utm_id=PredictionLaunch"
+              learnMoreLink="https://blog.cometswap.finance/articles/comet-swap-introduces-ai-powered-prediction-market-on-arbitrum-up-to-100-fund-protection-and-launching-60-000-arb-campaign?utm_source=PredictionPage&utm_medium=website&utm_campaign=Arbitrum&utm_id=PredictionLaunch"
             />
           </InnerContainer>
         </SpeechBubble>
@@ -101,3 +101,4 @@ export const InPageBanner = () => {
     </Container>
   )
 }
+

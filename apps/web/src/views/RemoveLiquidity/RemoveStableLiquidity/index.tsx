@@ -1,6 +1,6 @@
-import { useDebouncedChangeHandler } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Percent, WNATIVE } from '@pancakeswap/sdk'
+import { useDebouncedChangeHandler } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Percent, WNATIVE } from '@cometswap/sdk'
 import {
   AddIcon,
   ArrowDownIcon,
@@ -19,8 +19,8 @@ import {
   useModal,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+} from '@cometswap/uikit'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { CommitButton } from 'components/CommitButton'
 import { useStableSwapNativeHelperContract } from 'hooks/useContract'
 import useNativeCurrency from 'hooks/useNativeCurrency'
@@ -619,3 +619,4 @@ export const RemoveLiquidityStableLayout = ({ currencyA, currencyB, children }) 
     </RemoveLiquidityLayout>
   )
 }
+

@@ -1,5 +1,5 @@
-import { Gauge } from '@pancakeswap/gauges'
-import { AutoColumn, Skeleton } from '@pancakeswap/uikit'
+import { Gauge } from '@cometswap/gauges'
+import { AutoColumn, Skeleton } from '@cometswap/uikit'
 import orderBy from 'lodash/orderBy'
 import uniqBy from 'lodash/uniqBy'
 import React, { ReactNode, useCallback, useMemo, useState } from 'react'
@@ -97,3 +97,4 @@ export const GaugesTable: React.FC<
     </Table>
   )
 }
+

@@ -9,3 +9,4 @@ import { CONTRACTS_WITH_SWELL_REWARD } from 'config/swell'
 export function useHasSwellReward(id?: Address) {
   return useMemo(() => CONTRACTS_WITH_SWELL_REWARD.some(({ identifier }) => identifier === id), [id])
 }
+

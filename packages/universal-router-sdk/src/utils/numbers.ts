@@ -1,5 +1,5 @@
-import { Percent as PancakePercent } from '@pancakeswap/sdk'
+import { Percent as CometPercent } from '@cometswap/sdk'
 
-export function encodeFeeBips(fee: PancakePercent): string {
+export function encodeFeeBips(fee: CometPercent): string {
   return fee.multiply(10_000).quotient.toString()
 }

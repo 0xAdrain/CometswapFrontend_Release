@@ -18,3 +18,4 @@ export function useBurnV3ActionHandlers(): {
     onPercentSelect,
   }
 }
+

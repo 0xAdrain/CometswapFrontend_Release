@@ -1,5 +1,5 @@
 ---
-'@pancakeswap/tokens': patch
+'@cometswap/tokens': patch
 ---
 
 Update token symbol

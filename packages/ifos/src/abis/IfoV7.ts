@@ -300,7 +300,7 @@ export const ifoV7ABI = [
   },
   {
     inputs: [],
-    name: 'iCakeAddress',
+    name: 'iveCometAddress',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -309,13 +309,13 @@ export const ifoV7ABI = [
     inputs: [
       { internalType: 'address', name: '_lpToken', type: 'address' },
       { internalType: 'address', name: '_offeringToken', type: 'address' },
-      { internalType: 'address', name: '_pancakeProfileAddress', type: 'address' },
+      { internalType: 'address', name: '_cometProfileAddress', type: 'address' },
       { internalType: 'uint256', name: '_startTimestamp', type: 'uint256' },
       { internalType: 'uint256', name: '_endTimestamp', type: 'uint256' },
       { internalType: 'uint256', name: '_maxBufferSeconds', type: 'uint256' },
       { internalType: 'uint8', name: '_maxPoolId', type: 'uint8' },
       { internalType: 'address', name: '_adminAddress', type: 'address' },
-      { internalType: 'address', name: '_iCakeAddress', type: 'address' },
+      { internalType: 'address', name: '_iveCometAddress', type: 'address' },
       { internalType: 'uint256', name: '_pointThreshold', type: 'uint256' },
       { internalType: 'address', name: '_admissionProfile', type: 'address' },
     ],
@@ -389,7 +389,7 @@ export const ifoV7ABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfileAddress',
+    name: 'cometProfileAddress',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',

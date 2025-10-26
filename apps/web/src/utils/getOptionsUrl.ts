@@ -1,3 +1,4 @@
 export function getOptionsUrl() {
-  return 'https://pancakeswap.stryke.xyz'
+  return 'https://cometswap.stryke.xyz'
 }
+

@@ -1,4 +1,4 @@
-import { Token, getTokenComparator } from '@pancakeswap/sdk'
+import { Token, getTokenComparator } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import { useAllTokenBalances } from '../state/wallet/hooks'
 
@@ -12,3 +12,4 @@ export function useTokenComparator(inverted: boolean): (tokenA: Token, tokenB: T
     return comparator
   }, [inverted, comparator])
 }
+

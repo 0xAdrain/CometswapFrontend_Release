@@ -1,6 +1,6 @@
-import { Flex, LinkExternal, ScanLink, Text, useTooltip } from '@pancakeswap/uikit'
-import truncateHash from '@pancakeswap/utils/truncateHash'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { Flex, LinkExternal, ScanLink, Text, useTooltip } from '@cometswap/uikit'
+import truncateHash from '@cometswap/utils/truncateHash'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 import { Proposal, ProposalTypeName, Vote } from 'state/types'
 import { getBlockExploreLink } from 'utils'
@@ -90,3 +90,4 @@ const VoteRow: React.FC<React.PropsWithChildren<VoteRowProps>> = ({ vote, propos
 }
 
 export default VoteRow
+

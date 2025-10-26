@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { RocketIcon, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { useTranslation } from '@cometswap/localization'
+import { RocketIcon, Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import { memo, useContext } from 'react'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import useBoostMultiplier from '../hooks/useBoostMultiplier'
 import useGetBoostedAPR from '../hooks/useGetBoostedAPR'
 import { YieldBoosterState } from '../hooks/useYieldBoosterState'
@@ -64,3 +64,4 @@ function BoostedApr(props: BoostedAprPropsType) {
 }
 
 export default memo(BoostedApr)
+

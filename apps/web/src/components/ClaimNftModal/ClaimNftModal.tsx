@@ -1,7 +1,7 @@
-import { Flex, Text, Button, Modal, InjectedModalProps, useToast } from '@pancakeswap/uikit'
+import { Flex, Text, Button, Modal, InjectedModalProps, useToast } from '@cometswap/uikit'
 import confetti from 'canvas-confetti'
 import delay from 'lodash/delay'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useEffect, useState } from 'react'
 
 const showConfetti = () => {
@@ -51,7 +51,7 @@ const ClaimNftModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
         />
         <Text bold color="secondary" textAlign="center" fontSize="18px" mb="24px">
           {t(
-            'Celebrate Christmas and New Year with us! Enjoy this wonderful NFT crafted by Chef Cecy and the winner from our #PancakeChristmas event.',
+            'Celebrate Christmas and New Year with us! Enjoy this wonderful NFT crafted by Chef Cecy and the winner from our #CometChristmas event.',
           )}
         </Text>
         <Button disabled={isClaiming} onClick={claimNft}>
@@ -63,3 +63,4 @@ const ClaimNftModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
 }
 
 export default ClaimNftModal
+

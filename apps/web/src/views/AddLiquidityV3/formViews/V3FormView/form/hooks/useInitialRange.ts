@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { Token } from '@cometswap/swap-sdk-core'
 import { tryParsePrice } from 'hooks/v3/utils'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
@@ -27,3 +27,4 @@ export const useInitialRange = (baseToken?: Token, quoteToken?: Token) => {
     }
   }, [query, minPrice, maxPrice, baseToken, quoteToken, leftRangeTypedValue, rightRangeTypedValue, onBothRangeInput])
 }
+

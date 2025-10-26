@@ -1,4 +1,4 @@
-import { Button, ButtonProps, FlexGap, WalletFilledV2Icon } from '@pancakeswap/uikit'
+import { Button, ButtonProps, FlexGap, WalletFilledV2Icon } from '@cometswap/uikit'
 
 import { useCallback, useState } from 'react'
 import WalletModalManager from 'components/WalletModalManager'
@@ -31,3 +31,4 @@ const ConnectWalletButton = ({ children, withIcon, ...props }: ConnectWalletButt
 }
 
 export default ConnectWalletButton
+

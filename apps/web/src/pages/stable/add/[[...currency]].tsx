@@ -1,4 +1,4 @@
-import { CAKE, USDC } from '@pancakeswap/tokens'
+import { COMET, USDC } from '@cometswap/tokens'
 import { useCurrency } from 'hooks/Tokens'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
@@ -19,7 +19,7 @@ const AddStableLiquidityPage = () => {
 
   const [currencyIdA, currencyIdB] = router.query.currency || [
     native.symbol,
-    chainId ? CAKE[chainId]?.address ?? USDC[chainId]?.address : '',
+    chainId ? COMET[chainId]?.address ?? USDC[chainId]?.address : '',
   ]
 
   const [currencyA, currencyB] = [useCurrency(currencyIdA) ?? undefined, useCurrency(currencyIdB) ?? undefined]

@@ -1,6 +1,6 @@
-import { Token } from '@pancakeswap/sdk'
-import { TokenLogo } from '@pancakeswap/uikit'
-import { chainName as CHAIN_PATH } from '@pancakeswap/widgets-internal'
+import { Token } from '@cometswap/sdk'
+import { TokenLogo } from '@cometswap/uikit'
+import { chainName as CHAIN_PATH } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 import { multiChainId, MultiChainName } from 'state/info/constant'
 import { styled } from 'styled-components'
@@ -35,7 +35,7 @@ export const CurrencyLogo: React.FC<
   const imagePath = chainNameToPath(chainName)
   const checkedsummedAddress = safeGetAddress(address)
   const srcFromPCS = checkedsummedAddress
-    ? `https://tokens.pancakeswap.finance/images/${imagePath}${checkedsummedAddress}.png`
+    ? `https://tokens.cometswap.finance/images/${imagePath}${checkedsummedAddress}.png`
     : ''
 
   return <StyledLogo size={size} srcs={src ? [srcFromPCS, src] : [srcFromPCS]} alt="token logo" {...rest} />
@@ -69,3 +69,4 @@ export const DoubleCurrencyLogo: React.FC<React.PropsWithChildren<DoubleCurrency
     </DoubleCurrencyWrapper>
   )
 }
+

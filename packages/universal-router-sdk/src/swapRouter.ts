@@ -1,15 +1,15 @@
-import { TradeType } from '@pancakeswap/sdk'
-import { SmartRouter, SmartRouterTrade } from '@pancakeswap/smart-router'
-import { MethodParameters } from '@pancakeswap/v3-sdk'
+import { TradeType } from '@cometswap/sdk'
+import { SmartRouter, SmartRouterTrade } from '@cometswap/smart-router'
+import { MethodParameters } from '@cometswap/v3-sdk'
 import invariant from 'tiny-invariant'
 import { encodeFunctionData, toHex } from 'viem'
 import { UniversalRouterABI } from './abis/UniversalRouter'
-import { PancakeSwapTrade } from './entities/protocols/pancakeswap'
-import { PancakeSwapOptions, SwapRouterConfig } from './entities/types'
+import { CometSwapTrade } from './entities/protocols/cometswap'
+import { CometSwapOptions, SwapRouterConfig } from './entities/types'
 import { encodePermit } from './utils/inputTokens'
 import { RoutePlanner } from './utils/routerCommands'
 
-export abstract class PancakeSwapUniversalRouter {
+export abstract class CometSwapUniversalRouter {
   /**
    * Produces the on-chain method name to call and the hex encoded parameters to pass as arguments for a given trade.
    * @param trades to produce call parameters for
@@ -17,12 +17,12 @@ export abstract class PancakeSwapUniversalRouter {
    */
   public static swapERC20CallParameters(
     trade: Omit<SmartRouterTrade<TradeType>, 'gasEstimate'>,
-    options: PancakeSwapOptions,
+    options: CometSwapOptions,
   ): MethodParameters {
     // TODO: use permit if signature included in swapOptions
     const planner = new RoutePlanner()
 
-    const tradeCommand: PancakeSwapTrade = new PancakeSwapTrade(trade, options)
+    const tradeCommand: CometSwapTrade = new CometSwapTrade(trade, options)
 
     const inputCurrency = tradeCommand.trade.inputAmount.currency
     invariant(!(inputCurrency.isNative && !!options.inputTokenPermit), 'NATIVE_INPUT_PERMIT')
@@ -37,7 +37,7 @@ export abstract class PancakeSwapUniversalRouter {
       : 0n
 
     tradeCommand.encode(planner)
-    return PancakeSwapUniversalRouter.encodePlan(planner, nativeCurrencyValue, {
+    return CometSwapUniversalRouter.encodePlan(planner, nativeCurrencyValue, {
       deadline: options.deadlineOrPreviousBlockhash
         ? BigInt(options.deadlineOrPreviousBlockhash.toString())
         : undefined,

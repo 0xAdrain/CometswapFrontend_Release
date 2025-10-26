@@ -1,7 +1,7 @@
-import { Gauge } from '@pancakeswap/gauges'
+import { Gauge } from '@cometswap/gauges'
 import { useQuery } from '@tanstack/react-query'
 import { getPositionManagerName } from 'views/GaugesVoting/utils'
-import { fetchPositionManager } from '@pancakeswap/position-managers'
+import { fetchPositionManager } from '@cometswap/position-managers'
 
 export const usePositionManagerName = (data: Gauge) => {
   const { data: chainPositionManagers } = useQuery({
@@ -26,3 +26,4 @@ export const usePositionManagerName = (data: Gauge) => {
     managerName: managerName ?? '',
   }
 }
+

@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Currency } from '@pancakeswap/sdk'
-import { TokenAddressMap } from '@pancakeswap/token-lists'
+import { ChainId } from '@cometswap/chains'
+import { Currency } from '@cometswap/sdk'
+import { TokenAddressMap } from '@cometswap/token-lists'
 import memoize from 'lodash/memoize'
 import { multiChainScanName } from 'state/info/constant'
 import { Address } from 'viem'
@@ -82,3 +82,4 @@ export function isTokenOnList(defaultTokens: TokenAddressMap<ChainId>, currency?
   if (currency?.isNative) return true
   return Boolean(currency?.isToken && defaultTokens[currency.chainId]?.[currency.address])
 }
+

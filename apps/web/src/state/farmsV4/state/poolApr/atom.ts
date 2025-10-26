@@ -27,7 +27,7 @@ export const lpAprAtom = atom<LpApr>((get) => {
   }, {} as LpApr)
 })
 
-export type CakeApr = Record<
+export type veCometApr = Record<
   ChainIdAddressKey,
   {
     // default apr
@@ -40,9 +40,9 @@ export type CakeApr = Record<
     totalSupply?: bigint
   }
 >
-export const cakeAprAtom = atom<CakeApr>({})
+export const cakeAprAtom = atom<veCometApr>({})
 
-export const cakeAprSetterAtom = atom(null, (get, set, newApr: CakeApr) => {
+export const cakeAprSetterAtom = atom(null, (get, set, newApr: veCometApr) => {
   const cakeApr = get(cakeAprAtom)
   set(cakeAprAtom, { ...cakeApr, ...newApr })
 })
@@ -51,7 +51,7 @@ export type PoolApr = Record<
   ChainIdAddressKey,
   {
     lpApr: `${number}`
-    cakeApr: CakeApr[ChainIdAddressKey]
+    cakeApr: veCometApr[ChainIdAddressKey]
     merklApr: `${number}`
   }
 >
@@ -72,9 +72,10 @@ export const poolAprAtom = atom<PoolApr>((get) => {
   }, {} as PoolApr)
 })
 
-export const emptyCakeAprPoolsAtom = atom((get) => {
+export const emptyveCometAprPoolsAtom = atom((get) => {
   const pools = get(poolsAtom)
   const aprs = get(cakeAprAtom)
 
   return pools.filter((pool) => !(`${pool.chainId}:${pool.lpAddress}` in aprs))
 })
+

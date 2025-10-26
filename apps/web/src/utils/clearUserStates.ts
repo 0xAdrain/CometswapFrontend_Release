@@ -27,3 +27,4 @@ export const clearUserStates = (
   window?.localStorage?.removeItem(PREDICTION_TOOLTIP_DISMISS_KEY)
   deleteCookie(AFFILIATE_SID, { sameSite: true })
 }
+

@@ -24,3 +24,4 @@ export default function useCriterias(userBasicPoolInfo, ifoCriterias) {
     criterias,
   }
 }
+

@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { Price, Token } from '@pancakeswap/swap-sdk-core'
+import { Price, Token } from '@cometswap/swap-sdk-core'
 import { CurrencyField as Field } from 'utils/types'
 
 export const typeInput = createAction<{ field: Field; typedValue: string | undefined; noLiquidity: boolean }>(
@@ -14,3 +14,4 @@ export const typeRightRangeInput = createAction<{ typedValue: Price<Token, Token
 )
 export const resetMintState = createAction<void>('mintV3/resetMintState')
 export const setFullRange = createAction<void>('mintV3/setFullRange')
+

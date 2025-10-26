@@ -1,9 +1,9 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Currency, CurrencyAmount, Price, TradeType } from '@pancakeswap/sdk'
-import { SmartRouterTrade } from '@pancakeswap/smart-router'
-import { CAKE, STABLE_COIN } from '@pancakeswap/tokens'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { ChainId } from '@cometswap/chains'
+import { Currency, CurrencyAmount, Price, TradeType } from '@cometswap/sdk'
+import { SmartRouterTrade } from '@cometswap/smart-router'
+import { COMET, STABLE_COIN } from '@cometswap/tokens'
+import { getFullDecimalMultiplier } from '@cometswap/utils/getFullDecimalMultiplier'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useMemo } from 'react'
 import { warningSeverity } from 'utils/exchange'
 import { multiplyPriceByAmount } from 'utils/prices'
@@ -29,14 +29,14 @@ export function useStablecoinPrice(
   const chainId = currency?.chainId
   const { enabled, hideIfPriceImpactTooHigh } = { ...DEFAULT_CONFIG, ...config }
 
-  const isCake = Boolean(chainId && currency && CAKE[chainId] && currency.wrapped.equals(CAKE[chainId]))
-  const cakePrice = useCakePrice({ enabled: Boolean(isCake && enabled) })
+  const isComet = Boolean(chainId && currency && COMET[chainId] && currency.wrapped.equals(COMET[chainId]))
+  const cometPrice = useCometPrice({ enabled: Boolean(isComet && enabled) })
   const stableCoin = chainId && chainId in ChainId ? STABLE_COIN[chainId as ChainId] : undefined
 
   const isStableCoin = currency && stableCoin && currency.wrapped.equals(stableCoin)
 
   const shouldEnabled = Boolean(
-    currency && stableCoin && enabled && currentChainId === chainId && !isCake && !isStableCoin,
+    currency && stableCoin && enabled && currentChainId === chainId && !isComet && !isStableCoin,
   )
 
   const { data: priceFromApi, isLoading } = useCurrencyUsdPrice(currency, {
@@ -64,12 +64,12 @@ export function useStablecoinPrice(
       return undefined
     }
 
-    if (isCake && cakePrice) {
+    if (isComet && cometPrice) {
       return new Price(
         currency,
         stableCoin,
         1 * 10 ** currency.decimals,
-        getFullDecimalMultiplier(stableCoin.decimals).times(cakePrice.toFixed(stableCoin.decimals)).toString(),
+        getFullDecimalMultiplier(stableCoin.decimals).times(cometPrice.toFixed(stableCoin.decimals)).toString(),
       )
     }
 
@@ -103,7 +103,7 @@ export function useStablecoinPrice(
     }
 
     return undefined
-  }, [currency, stableCoin, enabled, isCake, cakePrice, isStableCoin, priceFromApi, trade, hideIfPriceImpactTooHigh])
+  }, [currency, stableCoin, enabled, isComet, cometPrice, isStableCoin, priceFromApi, trade, hideIfPriceImpactTooHigh])
 
   return price
 }
@@ -122,3 +122,4 @@ export const useStablecoinPriceAmount = (
   }
   return undefined
 }
+

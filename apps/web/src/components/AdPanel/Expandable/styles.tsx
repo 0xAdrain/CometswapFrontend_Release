@@ -1,4 +1,4 @@
-import { Box, Flex } from '@pancakeswap/uikit'
+import { Box, Flex } from '@cometswap/uikit'
 import styled from 'styled-components'
 
 export const Divider = styled(Box)`
@@ -15,3 +15,4 @@ export const ActionContainer = styled(Flex).attrs({ justifyContent: 'space-betwe
       border-top: 1px solid ${theme.colors.cardBorder};
   `}
 `
+

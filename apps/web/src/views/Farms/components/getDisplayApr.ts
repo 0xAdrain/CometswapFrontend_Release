@@ -7,3 +7,4 @@ export const getDisplayApr = (cakeRewardsApr?: number, lpRewardsApr?: number, ad
   }
   return null
 }
+

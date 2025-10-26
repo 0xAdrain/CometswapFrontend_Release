@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 
 import { Provider, StableSwapPair } from '../types'
 import { wrappedCurrencyAmount } from '../../evm/utils/currency'

@@ -9,3 +9,4 @@ InfoPoolsPage.Layout = InfoPageLayout
 InfoPoolsPage.chains = [] // set all
 
 export default InfoPoolsPage
+

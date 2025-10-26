@@ -1,4 +1,4 @@
-import { ChainId, AVERAGE_CHAIN_BLOCK_TIMES } from '@pancakeswap/chains'
+import { ChainId, AVERAGE_CHAIN_BLOCK_TIMES } from '@cometswap/chains'
 import { useCallback, useMemo } from 'react'
 import { RetryableError, retry } from 'state/multicall/retry'
 import { Hash } from 'viem'
@@ -77,3 +77,4 @@ export const useSafeTxHashTransformer = () => {
     [confirmationSeconds, connector, isGnosisSafe],
   )
 }
+

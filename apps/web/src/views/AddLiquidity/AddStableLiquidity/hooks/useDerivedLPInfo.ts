@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Price } from '@pancakeswap/sdk'
-import { getLPOutputWithoutFee, getSwapOutputWithoutFee } from '@pancakeswap/stable-swap-sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { Currency, CurrencyAmount, Price } from '@cometswap/sdk'
+import { getLPOutputWithoutFee, getSwapOutputWithoutFee } from '@cometswap/stable-swap-sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 import { useContext, useMemo } from 'react'
 
 import { BIG_INT_ZERO } from 'config/constants/exchange'
@@ -85,3 +85,4 @@ export function useDerivedLPInfo(
     }
   }, [totalSupplyAmount, poolBalances, amplifier, loading, amount0, amount1, amountA, amountB])
 }
+

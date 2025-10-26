@@ -1,4 +1,4 @@
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@cometswap/uikit'
 import CurrentPeriod from 'views/TradingReward/components/YourTradingReward/CurrentPeriod'
 import TotalPeriod from 'views/TradingReward/components/YourTradingReward/TotalPeriod'
 import { Incentives, Qualification, RewardInfo, RewardType } from 'views/TradingReward/hooks/useAllTradingRewardPair'
@@ -43,7 +43,7 @@ const RewardPeriod: React.FC<React.PropsWithChildren<RewardPeriodProps>> = ({
         totalAvailableClaimData={totalAvailableClaimData}
       />
       <TotalPeriod
-        type={RewardType.CAKE_STAKERS}
+        type={RewardType.COMET_STAKERS}
         campaignIds={campaignIds}
         rewardInfo={rewardInfo}
         qualification={qualification}

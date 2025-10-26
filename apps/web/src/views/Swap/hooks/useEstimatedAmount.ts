@@ -1,4 +1,4 @@
-import { CurrencyAmount } from '@pancakeswap/sdk'
+import { CurrencyAmount } from '@cometswap/sdk'
 import { useDeferredValue } from 'react'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { isAddressEqual } from 'utils'
@@ -23,3 +23,4 @@ export function useEstimatedAmount({ estimatedCurrency, stableSwapConfig, quotie
     placeholderData: keepPreviousData,
   })
 }
+

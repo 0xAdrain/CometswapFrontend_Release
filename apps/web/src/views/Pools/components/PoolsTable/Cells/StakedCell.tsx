@@ -1,13 +1,13 @@
-import { Balance, Box, Flex, HelpIcon, Skeleton, Text, useMatchBreakpoints, useTooltip } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Balance, Box, Flex, HelpIcon, Skeleton, Text, useMatchBreakpoints, useTooltip } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import { styled } from 'styled-components'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import BigNumber from 'bignumber.js'
 
-import { Token } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { Token } from '@cometswap/sdk'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
 import OriginalLockedInfo from '../../OriginalLockedInfo'
@@ -30,7 +30,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
 
   const {
     userShares,
-    balance: { cakeAsBigNumber, cakeAsNumberBalance },
+    balance: { cometAsBigNumber, cometAsNumberBalance },
     isLoading,
   } = vaultData.userData as Pool.DeserializedLockedVaultUser
   const hasSharesStaked = userShares.gt(0)
@@ -38,7 +38,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
 
   // pool
   const { stakingTokenPrice = 0, stakingToken, userData } = pool
-  const stakedAutoDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(cometAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
   const stakedTokenDollarBalance = getBalanceNumber(
@@ -46,7 +46,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
     stakingToken.decimals,
   )
 
-  const isLocked = pool.vaultKey === VaultKey.CakeVault && vaultData.userData?.locked
+  const isLocked = pool.vaultKey === VaultKey.CometVault && vaultData.userData?.locked
   const labelText = `${pool.stakingToken.symbol} ${isLocked ? t('Locked') : t('Staked')}`
 
   const hasStaked = account && (stakedBalance.gt(0) || isVaultWithShares)
@@ -83,9 +83,9 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
                     value={
                       hasStaked
                         ? pool.vaultKey
-                          ? Number.isNaN(cakeAsNumberBalance)
+                          ? Number.isNaN(cometAsNumberBalance)
                             ? 0
-                            : cakeAsNumberBalance
+                            : cometAsNumberBalance
                           : stakedTokenBalance
                         : 0
                     }
@@ -124,3 +124,4 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
 }
 
 export default StakedCell
+

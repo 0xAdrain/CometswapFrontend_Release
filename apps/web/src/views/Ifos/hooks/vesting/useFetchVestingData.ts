@@ -1,4 +1,4 @@
-import { PoolIds, UserVestingData } from '@pancakeswap/ifos'
+import { PoolIds, UserVestingData } from '@cometswap/ifos'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useAccount } from 'wagmi'
@@ -71,3 +71,4 @@ const useFetchVestingData = () => {
 }
 
 export default useFetchVestingData
+

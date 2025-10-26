@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, Flex, Skeleton, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, Flex, Skeleton, Text } from '@cometswap/uikit'
 import { TabToggle, TabToggleGroup } from 'components/TabToggle'
 import dayjs from 'dayjs'
 import dynamic from 'next/dynamic'
@@ -127,3 +127,4 @@ const ChartCard: React.FC<React.PropsWithChildren<ChartCardProps>> = ({
 }
 
 export default ChartCard
+

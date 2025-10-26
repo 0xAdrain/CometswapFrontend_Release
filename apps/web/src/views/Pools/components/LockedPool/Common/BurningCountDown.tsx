@@ -1,8 +1,8 @@
 import { useState, useCallback, memo, useMemo } from 'react'
-import { useInterval } from '@pancakeswap/hooks'
+import { useInterval } from '@cometswap/hooks'
 
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
-import { UNLOCK_FREE_DURATION } from '@pancakeswap/pools'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
+import { UNLOCK_FREE_DURATION } from '@cometswap/pools'
 import dayjs from 'dayjs'
 import { convertTimeToMilliseconds } from 'utils/timeHelper'
 
@@ -32,3 +32,4 @@ const BurningCountDown: React.FC<React.PropsWithChildren<PropsType>> = ({ lockEn
 }
 
 export default memo(BurningCountDown)
+

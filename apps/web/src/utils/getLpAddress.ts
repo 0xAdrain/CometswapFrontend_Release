@@ -1,5 +1,5 @@
-import { ERC20Token, Pair } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { ERC20Token, Pair } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 import { safeGetAddress } from 'utils'
 import memoize from 'lodash/memoize'
 
@@ -15,14 +15,14 @@ const getLpAddress = memoize(
       if (!checksummedToken1Address) {
         return null
       }
-      token1AsTokenInstance = new ERC20Token(chainId, checksummedToken1Address, 18, 'Cake-LP')
+      token1AsTokenInstance = new ERC20Token(chainId, checksummedToken1Address, 18, 'veComet-LP')
     }
     if (typeof token2 === 'string' || token2 instanceof String) {
       const checksummedToken2Address = safeGetAddress(token2)
       if (!checksummedToken2Address) {
         return null
       }
-      token2AsTokenInstance = new ERC20Token(chainId, checksummedToken2Address, 18, 'Cake-LP')
+      token2AsTokenInstance = new ERC20Token(chainId, checksummedToken2Address, 18, 'veComet-LP')
     }
     return Pair.getAddress(token1AsTokenInstance as ERC20Token, token2AsTokenInstance as ERC20Token)
   },
@@ -33,3 +33,4 @@ const getLpAddress = memoize(
 )
 
 export default getLpAddress
+

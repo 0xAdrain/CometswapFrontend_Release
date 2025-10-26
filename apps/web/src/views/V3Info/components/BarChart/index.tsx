@@ -1,4 +1,4 @@
-import { RowBetween } from '@pancakeswap/uikit'
+import { RowBetween } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import useTheme from 'hooks/useTheme'
 import { ColorType, createChart, IChartApi } from 'lightweight-charts'
@@ -203,3 +203,4 @@ const BarChart = ({
 }
 
 export default BarChart
+

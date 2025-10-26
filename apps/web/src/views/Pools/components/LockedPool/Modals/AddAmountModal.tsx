@@ -1,16 +1,16 @@
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import dayjs from 'dayjs'
 import { convertTimeToMilliseconds } from 'utils/timeHelper'
-import { Modal, Box, MessageText, Message, Checkbox, Flex, Text } from '@pancakeswap/uikit'
+import { Modal, Box, MessageText, Message, Checkbox, Flex, Text } from '@cometswap/uikit'
 import _noop from 'lodash/noop'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import BigNumber from 'bignumber.js'
 import { useIfoCeiling } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
 import useTheme from 'hooks/useTheme'
-import { getBalanceNumber, getDecimalAmount, getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { ONE_WEEK_DEFAULT } from '@pancakeswap/pools'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { getBalanceNumber, getDecimalAmount, getBalanceAmount } from '@cometswap/utils/formatBalance'
+import { ONE_WEEK_DEFAULT } from '@cometswap/pools'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { useCheckVaultApprovalStatus } from '../../../hooks/useApprove'
 
 import RoiCalculatorModalProvider from './RoiCalculatorModalProvider'
@@ -29,7 +29,7 @@ const RenewDuration = ({ setCheckedState, checkedState }) => {
         <Message variant="warning" mb="16px">
           <MessageText maxWidth="320px">
             {t(
-              'Adding more CAKE will renew your lock, setting it to remaining duration. Due to shorter lock period, benefits decrease. To keep similar benefits, extend your lock.',
+              'Adding more COMETwill renew your lock, setting it to remaining duration. Due to shorter lock period, benefits decrease. To keep similar benefits, extend your lock.',
             )}
           </MessageText>
         </Message>
@@ -103,7 +103,7 @@ const AddAmountModal: React.FC<React.PropsWithChildren<AddAmountModalProps>> = (
   const remainingDuration = dayjs(convertTimeToMilliseconds(lockEndTime || '')).diff(dayjs(), 'seconds')
   const passedDuration = dayjs().diff(dayjs(convertTimeToMilliseconds(lockStartTime || '')), 'seconds')
 
-  // if you locked for 1 week, then add cake without renew the extension, it's possible that remainingDuration + passedDuration less than 1 week.
+  // if you locked for 1 week, then add comet without renew the extension, it's possible that remainingDuration + passedDuration less than 1 week.
   const atLeastOneWeekNewDuration = Math.max(ONE_WEEK_DEFAULT + MIN_DURATION_BUFFER, remainingDuration + passedDuration)
 
   const prepConfirmArg = useCallback(() => {
@@ -139,7 +139,7 @@ const AddAmountModal: React.FC<React.PropsWithChildren<AddAmountModalProps>> = (
     ],
   )
 
-  const { allowance } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
+  const { allowance } = useCheckVaultApprovalStatus(VaultKey.CometVault)
   const needApprove = useMemo(() => {
     const amount = getDecimalAmount(new BigNumber(lockedAmount))
     return amount.gt(allowance)
@@ -147,7 +147,7 @@ const AddAmountModal: React.FC<React.PropsWithChildren<AddAmountModalProps>> = (
 
   return (
     <RoiCalculatorModalProvider lockedAmount={lockedAmount}>
-      <Modal title={t('Add CAKE')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
+      <Modal title={t('Add COMET')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
         <Box mb="16px">
           <BalanceField
             stakingAddress={stakingToken.address}
@@ -177,3 +177,4 @@ const AddAmountModal: React.FC<React.PropsWithChildren<AddAmountModalProps>> = (
 }
 
 export default AddAmountModal
+

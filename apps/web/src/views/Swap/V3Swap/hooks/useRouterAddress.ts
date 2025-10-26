@@ -1,5 +1,5 @@
-import { TradeType } from '@pancakeswap/sdk'
-import { SmartRouterTrade, RouteType, SMART_ROUTER_ADDRESSES } from '@pancakeswap/smart-router'
+import { TradeType } from '@cometswap/sdk'
+import { SmartRouterTrade, RouteType, SMART_ROUTER_ADDRESSES } from '@cometswap/smart-router'
 
 import { V2_ROUTER_ADDRESS } from 'config/constants/exchange'
 
@@ -17,3 +17,4 @@ export function useRouterAddress(trade?: SmartRouterTrade<TradeType>) {
   }
   return SMART_ROUTER_ADDRESSES[chainId]
 }
+

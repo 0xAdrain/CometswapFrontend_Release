@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Native } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { Native } from '@cometswap/sdk'
 import { GRAPH_API_PREDICTION_ETH } from '../../endpoints'
 import { predictionsETH } from '../../predictionContract'
 import { PredictionConfig, PredictionSupportedSymbol } from '../../type'

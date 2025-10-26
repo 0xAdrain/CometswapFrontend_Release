@@ -1,4 +1,4 @@
-import { Protocol } from '@pancakeswap/farms'
+import { Protocol } from '@cometswap/farms'
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { useCallback, useMemo } from 'react'
 import { useStableSwapPairsByChainId } from 'state/farmsV4/state/accountPositions/hooks'
@@ -89,3 +89,4 @@ export const useAccountPositionDetailByPool = <TProtocol extends keyof PoolPosit
     ),
   })
 }
+

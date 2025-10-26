@@ -1,7 +1,7 @@
 import { memo } from 'react'
-import { Tag, TagProps } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { Tag, TagProps } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { FarmWidget } from '@cometswap/widgets-internal'
 
 const { V3FeeTag, CompoundingPoolTag } = FarmWidget.Tags
 
@@ -24,3 +24,4 @@ export const SingleTokenTag = memo(function SingleTokenTag(props: TagProps) {
 })
 
 export { V3FeeTag as FeeTag, CompoundingPoolTag as AutoCompoundTag }
+

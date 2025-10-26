@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { useTranslation } from '@cometswap/localization'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 
 export const useIDODuration = (duration: number) => {
   const { days, hours } = getTimePeriods(duration)
@@ -15,3 +15,4 @@ export const useIDODuration = (duration: number) => {
 
   return `${t('< 1 hour')}`
 }
+

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { ACCESS_RISK_API } from 'config/constants/endpoints'
 
 export interface RiskTokenInfo {
@@ -60,3 +60,4 @@ export const fetchRiskToken = async (address: string, chainId: number): Promise<
     pollingInterval: 0,
   }
 }
+

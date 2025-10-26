@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useSidNameForAddress } from 'hooks/useSid'
 import { useUnsNameForAddress } from 'hooks/useUns'
@@ -36,3 +36,4 @@ export const useDomainNameForAddress = (address?: `0x${string}` | string, fetchD
     }
   }, [sidName, unsName, isSidLoading, isUnsLoading, ensName, isEnsLoading, ensAvatar, isEnsAvatarLoading])
 }
+

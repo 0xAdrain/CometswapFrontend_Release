@@ -79,3 +79,4 @@ describe('formatTokenv2', () => {
       expect(formatTokenv2(BigInt(priceDifference), 18, 4)).toEqual(expectedPriceDifferenceFormatted),
   )
 })
+

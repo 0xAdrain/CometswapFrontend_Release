@@ -1,6 +1,6 @@
-import { PositionDetails } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { PositionDetails } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/swap-sdk-core'
 import {
   AutoRow,
   Balance,
@@ -12,7 +12,7 @@ import {
   StyledLink,
   SyncAltIcon,
   Text,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { RangeTag } from 'components/RangeTag'
 import { Bound } from 'config/constants/types'
@@ -234,7 +234,7 @@ const FarmV3StakeAndUnStake: React.FunctionComponent<React.PropsWithChildren<Far
           {t('Inactive')}
           <QuestionHelper
             ml="4px"
-            text={t('Inactive positions will NOT earn CAKE rewards from farm.')}
+            text={t('Inactive positions will NOT earn COMETrewards from farm.')}
             size="20px"
             color="white"
             placement="bottom"
@@ -272,3 +272,4 @@ const FarmV3StakeAndUnStake: React.FunctionComponent<React.PropsWithChildren<Far
 }
 
 export default FarmV3StakeAndUnStake
+

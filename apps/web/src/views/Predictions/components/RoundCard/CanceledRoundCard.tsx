@@ -1,7 +1,7 @@
-import { Card, CardBody, Text, Flex, BlockIcon, LinkExternal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, CardBody, Text, Flex, BlockIcon, LinkExternal } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { NodeRound } from 'state/types'
-import { BetPosition } from '@pancakeswap/prediction'
+import { BetPosition } from '@cometswap/prediction'
 import useTheme from 'hooks/useTheme'
 import ReclaimPositionButton from '../ReclaimPositionButton'
 import useIsRefundable from '../../hooks/useIsRefundable'
@@ -39,7 +39,7 @@ const CanceledRoundCard: React.FC<React.PropsWithChildren<CanceledRoundCardProps
               {t('Round Cancelled')}
             </Text>
             {isRefundable && <ReclaimPositionButton epoch={epoch} onSuccess={handleSuccess} width="100%" my="8px" />}
-            <LinkExternal href="https://docs.pancakeswap.finance/products/prediction" external>
+            <LinkExternal href="https://docs.cometswap.finance/products/prediction" external>
               {t('Learn More')}
             </LinkExternal>
           </Flex>
@@ -51,3 +51,4 @@ const CanceledRoundCard: React.FC<React.PropsWithChildren<CanceledRoundCardProps
 }
 
 export default CanceledRoundCard
+

@@ -1,4 +1,4 @@
-import { ButtonProps, CogIcon, Flex, IconButton, ModalV2, useModalV2 } from '@pancakeswap/uikit'
+import { ButtonProps, CogIcon, Flex, IconButton, ModalV2, useModalV2 } from '@cometswap/uikit'
 
 import { SettingsModalV2 } from './SettingsModalV2'
 import { SettingsMode } from './types'
@@ -38,3 +38,4 @@ const GlobalSettings = ({ color, mr = '8px', mode = SettingsMode.GLOBAL, overrid
 }
 
 export default GlobalSettings
+

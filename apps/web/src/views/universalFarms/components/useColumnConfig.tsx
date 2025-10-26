@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Percent } from '@pancakeswap/swap-sdk-core'
-import { BasicDataType, IColumnsType, ITableViewProps, Skeleton, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { FeatureStack, FeeTierTooltip, FiatNumberDisplay, TokenOverview } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Percent } from '@cometswap/swap-sdk-core'
+import { BasicDataType, IColumnsType, ITableViewProps, Skeleton, useMatchBreakpoints } from '@cometswap/uikit'
+import { FeatureStack, FeeTierTooltip, FiatNumberDisplay, TokenOverview } from '@cometswap/widgets-internal'
 import { TokenPairImage } from 'components/TokenImage'
 import { useMemo } from 'react'
 import type { PoolInfo } from 'state/farmsV4/state/type'
@@ -158,3 +158,4 @@ export const useColumnMobileConfig = (): ITableViewProps<PoolInfo>['columns'] =>
     [APRConf, feeTierConf, vol24hUsdConf, TVLUsdConf],
   )
 }
+

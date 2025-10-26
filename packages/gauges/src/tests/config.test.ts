@@ -1,6 +1,6 @@
-import { ChainId, chainNames } from '@pancakeswap/chains'
-import { FACTORY_ADDRESS_MAP, Token, computePairAddress } from '@pancakeswap/sdk'
-import { DEPLOYER_ADDRESSES, computePoolAddress } from '@pancakeswap/v3-sdk'
+import { ChainId, chainNames } from '@cometswap/chains'
+import { FACTORY_ADDRESS_MAP, Token, computePairAddress } from '@cometswap/sdk'
+import { DEPLOYER_ADDRESSES, computePoolAddress } from '@cometswap/v3-sdk'
 import groupBy from 'lodash/groupBy'
 import { PublicClient, createPublicClient, fallback, http, parseAbiItem } from 'viem'
 import * as CHAINS from 'viem/chains'
@@ -116,7 +116,7 @@ describe.skip('Gauges Config', async () => {
         const tokenA = new Token(gauge.chainId, gauge.token0Address, 18, '')
         const tokenB = new Token(gauge.chainId, gauge.token1Address, 18, '')
         const computedAddress = computePairAddress({
-          factoryAddress: FACTORY_ADDRESS_MAP[gauge.chainId],
+          factoryAddress: FACTORY_ADDRESS_MAP[gauge.chainId] as `0x${string}`,
           tokenA,
           tokenB,
         })

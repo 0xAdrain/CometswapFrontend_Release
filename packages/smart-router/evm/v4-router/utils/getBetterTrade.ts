@@ -1,4 +1,4 @@
-import { TradeType } from '@pancakeswap/sdk'
+import { TradeType } from '@cometswap/sdk'
 
 import { V4Trade } from '../types'
 

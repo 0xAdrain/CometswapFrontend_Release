@@ -10,8 +10,8 @@ import {
   MessageText,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { AppHeader } from 'components/App'
 
@@ -20,8 +20,8 @@ import { styled } from 'styled-components'
 import { CHAIN_IDS } from 'utils/wagmi'
 import Page from 'views/Page'
 
-import { getLegacyFarmConfig, Protocol } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
+import { getLegacyFarmConfig, Protocol } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
 import { useQuery } from '@tanstack/react-query'
 import { LightGreyCard } from 'components/Card'
 import { usePoolTokenPercentage } from 'components/PositionCard'
@@ -34,7 +34,7 @@ import { useAccount } from 'wagmi'
 import { useAccountPositionDetailByPool } from 'state/farmsV4/state/accountPositions/hooks'
 import { usePoolInfo } from 'state/farmsV4/state/extendPools/hooks'
 import React, { useMemo } from 'react'
-import { formatFiatNumber } from '@pancakeswap/utils/formatFiatNumber'
+import { formatFiatNumber } from '@cometswap/utils/formatFiatNumber'
 import { useTotalPriceUSD } from 'hooks/useTotalPriceUSD'
 import { useLPApr } from 'state/swap/useLPApr'
 import { formatAmount } from 'utils/formatInfoNumbers'

@@ -33,3 +33,4 @@ export async function getStaticProps(): Promise<{ props: PageProps; revalidate: 
 }
 
 export default MevPage
+

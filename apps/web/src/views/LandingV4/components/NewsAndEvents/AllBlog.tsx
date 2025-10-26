@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, FlexGap, OptionProps, Select, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, FlexGap, OptionProps, Select, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 import { GradientBox } from 'views/LandingV4/components/GradientBox'
@@ -153,3 +153,4 @@ export const AllBlog = () => {
     </Box>
   )
 }
+

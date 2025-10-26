@@ -130,7 +130,7 @@ it("renders correctly", () => {
 
 it("renders correctly with unit prop", () => {
   const { asFragment } = renderWithProvider(
-    <BalanceInput value="14" currencyValue="15 USD" unit="CAKE" onUserInput={handleChange} />
+    <BalanceInput value="14" currencyValue="15 USD" unit="COMET" onUserInput={handleChange} />
   );
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
@@ -255,7 +255,7 @@ it("renders correctly with unit prop", () => {
                 <div
                   class="c7 c8"
                 >
-                  CAKE
+                  COMET
                 </div>
               </div>
               <div
@@ -276,7 +276,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
     <BalanceInput
       value="14"
       currencyValue="15 USD"
-      unit="CAKE"
+      unit="COMET"
       switchEditingUnits={vi.fn()}
       onUserInput={handleChange}
     />
@@ -385,14 +385,14 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
       box-shadow: var(--shadows-focus);
     }
 
-    .c11:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+    .c11:active:not(:disabled):not(.comet-button--disabled):not(.comet-button--disabled) {
       opacity: 0.85;
       transform: translateY(1px);
       box-shadow: none;
     }
 
     .c11:disabled,
-    .c11.pancake-button--disabled {
+    .c11.comet-button--disabled {
       background-color: var(--colors-backgroundDisabled);
       border-color: var(--colors-backgroundDisabled);
       box-shadow: none;
@@ -449,7 +449,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
     }
 
     @media (hover: hover) {
-      .c11:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+      .c11:hover:not(:disabled):not(.comet-button--disabled):not(.comet-button--disabled):not(:active) {
         opacity: 0.65;
       }
     }
@@ -480,7 +480,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
                 <div
                   class="c7 c8"
                 >
-                  CAKE
+                  COMET
                 </div>
               </div>
               <div

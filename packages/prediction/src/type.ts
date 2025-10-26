@@ -1,11 +1,11 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { Token } from '@cometswap/sdk'
 import { Address } from 'viem'
 import { SupportedChainId } from './constants/supportedChains'
 
 export enum PredictionSupportedSymbol {
   BNB = 'BNB',
-  CAKE = 'CAKE',
+  COMET= 'COMET',
   ETH = 'ETH',
   WBTC = 'WBTC',
 }

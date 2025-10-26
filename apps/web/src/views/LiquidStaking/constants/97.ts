@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { WETH9 } from '@pancakeswap/sdk'
-import { bscTokens } from '@pancakeswap/tokens'
+import { ChainId } from '@cometswap/chains'
+import { WETH9 } from '@cometswap/sdk'
+import { bscTokens } from '@cometswap/tokens'
 import { WBETH } from 'config/constants/liquidStaking'
 import { FunctionName, LiquidStakingList } from 'views/LiquidStaking/constants/types'
 // FAQs
@@ -34,3 +34,4 @@ const liquidStaking: LiquidStakingList[] = [
 ]
 
 export default liquidStaking
+

@@ -38,3 +38,4 @@ export function useRecentXOrders<selectData = GetRecentXOrdersReturnType>(
     enabled: enabled && Boolean(chainId && address),
   })
 }
+

@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { Card, CardBody, Flex, InfoIcon, Spinner, TooltipText, WaitIcon, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { Card, CardBody, Flex, InfoIcon, Spinner, TooltipText, WaitIcon, useTooltip } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { NodeRound } from 'state/types'
 import { RoundResultBox } from '../../RoundResult'
@@ -46,3 +46,4 @@ export const AICalculatingCard: React.FC<React.PropsWithChildren<AICalculatingCa
     </>
   )
 }
+

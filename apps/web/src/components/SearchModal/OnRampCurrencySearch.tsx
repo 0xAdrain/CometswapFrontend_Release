@@ -1,10 +1,10 @@
 /* eslint-disable no-restricted-syntax */
-import { useDebounce, useSortedTokensByQuery } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Token } from '@pancakeswap/sdk'
-import { createFilterToken } from '@pancakeswap/token-lists'
-import { AutoColumn, AutoRow, Box, Column, Input, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { useAudioPlay } from '@pancakeswap/utils/user'
+import { useDebounce, useSortedTokensByQuery } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Token } from '@cometswap/sdk'
+import { createFilterToken } from '@cometswap/token-lists'
+import { AutoColumn, AutoRow, Box, Column, Input, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { useAudioPlay } from '@cometswap/utils/user'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FixedSizeList } from 'react-window'
@@ -168,3 +168,4 @@ function OnRampCurrencySearch({
 }
 
 export default OnRampCurrencySearch
+

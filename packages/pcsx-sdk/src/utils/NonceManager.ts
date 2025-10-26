@@ -1,4 +1,4 @@
-import { SignatureTransfer, Permit2ABI as permit2Abi } from '@pancakeswap/permit2-sdk'
+import { SignatureTransfer, Permit2ABI as permit2Abi } from '@cometswap/permit2-sdk'
 import {
   getContract,
   recoverAddress,

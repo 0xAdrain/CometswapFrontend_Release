@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Flex, Skeleton, Text } from '@cometswap/uikit'
+import { getBalanceNumber, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 
 interface RewardBracketDetailProps {
   cakeAmount: BigNumber
@@ -22,7 +22,7 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
   isLoading,
 }) => {
   const { t } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const getRewardText = () => {
     const numberMatch = rewardBracket + 1
@@ -48,7 +48,7 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
         {isLoading || cakeAmount.isNaN() ? (
           <Skeleton my="4px" mr="10px" height={20} width={110} />
         ) : (
-          <Balance fontSize="20px" bold unit=" CAKE" value={getBalanceNumber(cakeAmount)} decimals={0} />
+          <Balance fontSize="20px" bold unit=" COMET" value={getBalanceNumber(cakeAmount)} decimals={0} />
         )}
         {isLoading || cakeAmount.isNaN() ? (
           <>
@@ -59,7 +59,7 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
             fontSize="12px"
             color="textSubtle"
             prefix="~$"
-            value={getBalanceNumber(cakeAmount.times(cakePrice))}
+            value={getBalanceNumber(cakeAmount.times(cometPrice))}
             decimals={0}
           />
         )}
@@ -67,7 +67,7 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
           <>
             {numberWinners && numberWinners !== '0' && (
               <Text fontSize="12px" color="textSubtle">
-                {getFullDisplayBalance(cakeAmount.div(parseInt(numberWinners, 10)), 18, 2)} CAKE {t('each')}
+                {getFullDisplayBalance(cakeAmount.div(parseInt(numberWinners, 10)), 18, 2)} COMET{t('each')}
               </Text>
             )}
             <Text fontSize="12px" color="textSubtle">
@@ -81,3 +81,4 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
 }
 
 export default RewardBracketDetail
+

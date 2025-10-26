@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Token } from '@pancakeswap/sdk'
-import { AutoColumn, InjectedModalProps, Link, Modal, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Token } from '@cometswap/sdk'
+import { AutoColumn, InjectedModalProps, Link, Modal, Text } from '@cometswap/uikit'
 import { AutoRow } from 'components/Layout/Row'
 import { CurrencyLogo } from 'components/Logo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -62,3 +62,4 @@ export const UnsupportedModal: React.FC<React.PropsWithChildren<Props>> = ({ cur
     </Modal>
   )
 }
+

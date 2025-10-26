@@ -1,4 +1,4 @@
-import { SmartRouter } from '@pancakeswap/smart-router'
+import { SmartRouter } from '@cometswap/smart-router'
 import dayjs from 'dayjs'
 
 import { v3SubgraphProvider } from './provider'

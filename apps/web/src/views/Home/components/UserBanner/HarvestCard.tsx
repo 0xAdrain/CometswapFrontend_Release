@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ArrowForwardIcon,
   AutoRenewIcon,
@@ -12,18 +12,18 @@ import {
   TextProps,
   useMatchBreakpoints,
   useToast,
-} from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { BOOSTED_FARM_GAS_LIMIT } from 'config'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useCallback } from 'react'
 import { useGasPrice } from 'state/user/hooks'
 import { styled } from 'styled-components'
-import { bCakeHarvestFarm, harvestFarm } from 'utils/calls'
+import { bCometHarvestFarm, harvestFarm } from 'utils/calls'
 import { useFarmsV3BatchHarvest } from 'views/Farms/hooks/v3/useFarmV3Actions'
 import useFarmsWithBalance, { FarmWithBalance } from 'views/Home/hooks/useFarmsWithBalance'
 import { useMasterchef } from 'hooks/useContract'
@@ -51,18 +51,18 @@ const HarvestCard: React.FC<React.PropsWithChildren<HarvestCardProps>> = ({ onHa
   const { fetchWithCatchTxError, loading: v2PendingTx } = useCatchTxError()
   const { farmsWithStakedBalance, earningsSum: farmEarningsSum } = useFarmsWithBalance()
 
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const masterChefAddress = useMasterchef()
   const { isMobile } = useMatchBreakpoints()
   const gasPrice = useGasPrice()
-  const earningsBusd = new BigNumber(farmEarningsSum).multipliedBy(cakePrice)
+  const earningsBusd = new BigNumber(farmEarningsSum).multipliedBy(cometPrice)
   const numTotalToCollect = farmsWithStakedBalance.length
   const numFarmsToCollect = farmsWithStakedBalance.filter(
     (value) => (value && 'pid' in value && value.pid !== 0) || (value && 'sendTx' in value && value.sendTx !== null),
   ).length
-  const hasCakePoolToCollect = numTotalToCollect - numFarmsToCollect > 0
+  const hasCometPoolToCollect = numTotalToCollect - numFarmsToCollect > 0
 
-  const earningsText = getEarningsText(numFarmsToCollect, hasCakePoolToCollect, earningsBusd, t)
+  const earningsText = getEarningsText(numFarmsToCollect, hasCometPoolToCollect, earningsBusd, t)
   const [preText, toCollectText] = earningsText.split(earningsBusd.toString())
   const { onHarvestAll, harvesting: v3PendingTx } = useFarmsV3BatchHarvest()
 
@@ -88,17 +88,17 @@ const HarvestCard: React.FC<React.PropsWithChildren<HarvestCardProps>> = ({ onHa
           toastSuccess(
             `${t('Harvested')}!`,
             <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-              {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+              {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
             </ToastDescriptionWithTx>,
           )
         }
       }
-      if (farmWithBalance.bCakeBalance.gt(0)) {
+      if (farmWithBalance.bCometBalance.gt(0)) {
         // eslint-disable-next-line no-await-in-loop
         const receipt = await fetchWithCatchTxError(() => {
-          return bCakeHarvestFarm(
+          return bCometHarvestFarm(
             // @ts-ignore
-            farmWithBalance.bCakeContract,
+            farmWithBalance.bCometContract,
             gasPrice,
             BOOSTED_FARM_GAS_LIMIT,
           )
@@ -107,7 +107,7 @@ const HarvestCard: React.FC<React.PropsWithChildren<HarvestCardProps>> = ({ onHa
           toastSuccess(
             `${t('Harvested')}!`,
             <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-              {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+              {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
             </ToastDescriptionWithTx>,
           )
         }
@@ -195,3 +195,4 @@ const HarvestCard: React.FC<React.PropsWithChildren<HarvestCardProps>> = ({ onHa
 }
 
 export default HarvestCard
+

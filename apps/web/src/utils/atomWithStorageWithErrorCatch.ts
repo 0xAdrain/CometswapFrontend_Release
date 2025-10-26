@@ -34,3 +34,4 @@ export default function atomWithStorageWithErrorCatch<Value>(
   })
   return atomWithStorage(key, initialValue, tryCatchStorage)
 }
+

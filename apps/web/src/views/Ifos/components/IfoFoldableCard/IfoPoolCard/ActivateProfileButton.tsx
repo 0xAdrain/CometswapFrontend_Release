@@ -1,12 +1,12 @@
-import { isNativeIfoSupported, PROFILE_SUPPORTED_CHAIN_IDS } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, ProfileAvatar, Text, useModalV2 } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { isNativeIfoSupported, PROFILE_SUPPORTED_CHAIN_IDS } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { Button, Flex, ProfileAvatar, Text, useModalV2 } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
 
-import { isTestnetChainId } from '@pancakeswap/chains'
+import { isTestnetChainId } from '@cometswap/chains'
 import { useChainNames } from '../../../hooks/useChainNames'
 import { ContentText, LinkTitle, WarningTips } from '../../WarningTips'
 import { NetworkSwitcherModal } from './NetworkSwitcherModal'
@@ -37,7 +37,7 @@ export function ActivateProfileButton({ saleFinished }: Props) {
   const tips = (
     <Flex flexDirection="column" justifyContent="flex-start">
       <ProfileAvatar width={40} height={40} src="https://via.placeholder.com" />
-      <Text mt="0.625rem">{t('Pancakeswap profile is needed for IFO public sale eligibility.')}</Text>
+      <Text mt="0.625rem">{t('Cometswap profile is needed for IFO public sale eligibility.')}</Text>
     </Flex>
   )
 
@@ -51,7 +51,7 @@ export function ActivateProfileButton({ saleFinished }: Props) {
         isOpen={isOpen}
         supportedChains={supportedChainIds}
         title={t('Create Profile')}
-        description={t('Create your Pancake Profile on %chain%', {
+        description={t('Create your Comet Profile on %chain%', {
           chain: chainNames,
         })}
         buttonText={t('Switch chain to create profile')}
@@ -72,10 +72,11 @@ export function ActivateProfileButton({ saleFinished }: Props) {
       content={
         <ContentText>
           {saleFinished
-            ? t('Activate PancakeSwap Profile to take part in next IFO.')
+            ? t('Activate CometSwap Profile to take part in next IFO.')
             : t('You need to create a profile to participate in the IFO.')}
         </ContentText>
       }
     />
   )
 }
+

@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoRenewIcon,
   Button,
@@ -10,7 +10,7 @@ import {
   ModalHeader,
   ModalTitle,
   Text,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 import { useAccount } from 'wagmi'
@@ -75,7 +75,7 @@ const CollectRoundWinningsModal: React.FC<React.PropsWithChildren<InjectedModalP
 
     anchor.href = URL.createObjectURL(blob)
     anchor.target = '_blank'
-    anchor.download = 'pancakeswap-prediction-v1-history.csv'
+    anchor.download = 'cometswap-prediction-v1-history.csv'
 
     document.body.appendChild(anchor)
     anchor.click()
@@ -132,3 +132,4 @@ const CollectRoundWinningsModal: React.FC<React.PropsWithChildren<InjectedModalP
 }
 
 export default CollectRoundWinningsModal
+

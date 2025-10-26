@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
-import { GAUGES_SUPPORTED_CHAIN_IDS } from '@pancakeswap/gauges'
-import { Trans, useTranslation } from '@pancakeswap/localization'
-import { AutoRow, Checkbox, FlexGap, GroupsIcon, RocketIcon, Tag, Text, VoteIcon } from '@pancakeswap/uikit'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { GAUGES_SUPPORTED_CHAIN_IDS } from '@cometswap/gauges'
+import { Trans, useTranslation } from '@cometswap/localization'
+import { AutoRow, Checkbox, FlexGap, GroupsIcon, RocketIcon, Tag, Text, VoteIcon } from '@cometswap/uikit'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import styled from 'styled-components'
 import { v3FeeToPercent } from 'views/Swap/V3Swap/utils/exchange'
 import { NetworkBadge } from '../NetworkBadge'
@@ -139,3 +139,4 @@ export const FilterOption: React.FC<{
       return null
   }
 }
+

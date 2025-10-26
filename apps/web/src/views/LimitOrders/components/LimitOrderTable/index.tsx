@@ -1,6 +1,6 @@
 import { useState, memo, useMemo } from 'react'
-import { Flex, Card, ButtonTabMenu } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Card, ButtonTabMenu } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import noop from 'lodash/noop'
 import useGelatoLimitOrdersHistory from '../../hooks/useGelatoLimitOrdersHistory'
 
@@ -53,3 +53,4 @@ const LimitOrderTable: React.FC<React.PropsWithChildren<{ isCompact: boolean }>>
 }
 
 export default memo(LimitOrderTable)
+

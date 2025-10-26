@@ -1,6 +1,6 @@
-import { chainNames } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button } from '@pancakeswap/uikit'
+import { chainNames } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button } from '@cometswap/uikit'
 import NextLink from 'next/link'
 import { useMemo } from 'react'
 import { addQueryToPath } from 'utils/addQueryToPath'
@@ -41,3 +41,4 @@ export const V3UnstakeModalContent: React.FC<PositionInfoProps> = (props) => {
     </>
   )
 }
+

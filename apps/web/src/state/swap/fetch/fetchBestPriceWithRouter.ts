@@ -1,5 +1,5 @@
-import { TradeType } from '@pancakeswap/sdk'
-import { LegacyRouteType as RouteType } from '@pancakeswap/smart-router/legacy-router'
+import { TradeType } from '@cometswap/sdk'
+import { LegacyRouteType as RouteType } from '@cometswap/smart-router/legacy-router'
 
 export interface RequestBody {
   networkId: number
@@ -54,3 +54,4 @@ export const getBestPriceWithRouter = (requestBody: RequestBody): Promise<SmartR
     headers,
     body: JSON.stringify(requestBody),
   }).then((response) => response.json())
+

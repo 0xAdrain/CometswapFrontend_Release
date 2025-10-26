@@ -1,5 +1,5 @@
-import { FeeAmount } from '@pancakeswap/v3-sdk'
-import { ZOOM_LEVELS, ZoomLevels } from '@pancakeswap/widgets-internal'
+import { FeeAmount } from '@cometswap/v3-sdk'
+import { ZOOM_LEVELS, ZoomLevels } from '@cometswap/widgets-internal'
 
 export enum SELECTOR_TYPE {
   V3,
@@ -86,3 +86,4 @@ export const QUICK_ACTION_CONFIGS: Record<FeeAmount, { [percentage: number]: Zoo
 }
 
 export type HandleFeePoolSelectFn = (arg: HandleFeePoolSelectArgs) => void
+

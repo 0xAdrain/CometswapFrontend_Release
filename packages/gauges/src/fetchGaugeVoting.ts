@@ -1,4 +1,4 @@
-import { cacheByLRU } from '@pancakeswap/utils/cacheByLRU'
+import { cacheByLRU } from '@cometswap/utils/cacheByLRU'
 import { PublicClient } from 'viem'
 import { getCalcContract } from './contract'
 import { Gauge, GaugeInfoConfig } from './types'

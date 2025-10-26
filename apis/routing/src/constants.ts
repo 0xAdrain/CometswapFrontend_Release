@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 export const SUPPORTED_CHAINS = [
   ChainId.ETHEREUM,

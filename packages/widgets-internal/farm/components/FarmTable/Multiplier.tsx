@@ -1,4 +1,4 @@
-import { FarmMultiplierInfo, HelpIcon, Skeleton, useTooltip } from "@pancakeswap/uikit";
+import { FarmMultiplierInfo, HelpIcon, Skeleton, useTooltip } from "@cometswap/uikit";
 import { styled } from "styled-components";
 import { FarmTableMultiplierProps } from "../../types";
 
@@ -24,13 +24,13 @@ const Container = styled.div`
 
 const Multiplier: React.FunctionComponent<React.PropsWithChildren<FarmTableMultiplierProps>> = ({
   multiplier,
-  farmCakePerSecond,
+  farmveCometPerSecond,
   totalMultipliers,
 }) => {
   const displayMultiplier = multiplier ? multiplier.toLowerCase() : <Skeleton width={30} />;
 
   const tooltipContent = FarmMultiplierInfo({
-    farmCakePerSecond: farmCakePerSecond ?? "-",
+    farmveCometPerSecond: farmveCometPerSecond ?? "-",
     totalMultipliers: totalMultipliers ?? "-",
   });
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, {

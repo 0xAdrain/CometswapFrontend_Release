@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { FlexLayout, CardHeader as CardHeaderComp } from '@pancakeswap/uikit'
+import { FlexLayout, CardHeader as CardHeaderComp } from '@cometswap/uikit'
 
 export const CardLayout = styled(FlexLayout)`
   justify-content: flex-start;
@@ -13,3 +13,4 @@ export const CardHeader = styled(CardHeaderComp)`
   align-items: flex-start;
   padding: 1.5em 1.5em 0 1.5em;
 `
+

@@ -1,4 +1,4 @@
-import { ToggleView } from '@pancakeswap/uikit'
+import { ToggleView } from '@cometswap/uikit'
 import { memo } from 'react'
 
 import { useViewMode } from '../hooks'
@@ -8,3 +8,4 @@ export const ViewSwitch = memo(function ViewSwitch() {
 
   return <ToggleView idPrefix="positionManagers" viewMode={mode} onToggle={setViewMode} />
 })
+

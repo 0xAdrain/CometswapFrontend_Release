@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Swap } from '@pancakeswap/widgets-internal'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Swap } from '@cometswap/widgets-internal'
 import { EXCHANGE_HELP_URLS } from 'config/constants'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
@@ -28,7 +28,7 @@ const Page: React.FC<
   const { chainId } = useActiveChainId()
   const isBSC = chainId === ChainId.BSC
   const externalText = isBSC ? t('Bridge assets to BNB Chain') : ''
-  const externalLinkUrl = isBSC ? 'https://bridge.pancakeswap.finance/' : ''
+  const externalLinkUrl = isBSC ? 'https://bridge.cometswap.finance/' : ''
 
   return (
     <Swap.Page
@@ -49,3 +49,4 @@ export default Page
 
 export const PageWithoutFAQ = Page
 PageWithoutFAQ.defaultProps = { showHelpLink: false, showExternalLink: false }
+

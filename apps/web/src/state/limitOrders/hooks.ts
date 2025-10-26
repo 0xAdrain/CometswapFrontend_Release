@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Native, Price, Token, Trade, TradeType } from '@pancakeswap/sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Native, Price, Token, Trade, TradeType } from '@cometswap/sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 import { BIG_INT_TEN, DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from 'config/constants/exchange'
 import { useCurrency } from 'hooks/Tokens'
 import { useTradeExactIn, useTradeExactOut } from 'hooks/Trades'
@@ -459,3 +459,4 @@ export const useDefaultsFromURLSearch = ():
 
   return result
 }
+

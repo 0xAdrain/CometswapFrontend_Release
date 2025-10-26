@@ -6,7 +6,7 @@ import {
   ChevronsExpandIcon,
   Link,
   OpenNewIcon,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
@@ -82,3 +82,4 @@ export const ExpandButton = ({ isExpanded, ...props }: ExpandButtonProps) => {
     </AdButton>
   )
 }
+

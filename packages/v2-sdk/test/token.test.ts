@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { ChainId } from '@cometswap/chains'
+import { Token } from '@cometswap/swap-sdk-core'
 import { describe, expect, it } from 'vitest'
 
 describe('Token', () => {

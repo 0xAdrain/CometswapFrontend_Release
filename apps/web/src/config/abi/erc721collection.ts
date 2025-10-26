@@ -645,3 +645,4 @@ export const erc721CollectionABI = [
     type: 'function',
   },
 ] as const
+

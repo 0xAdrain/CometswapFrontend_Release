@@ -13,7 +13,7 @@ export const config = {
     '/swap',
     '/liquidity',
     '/pools',
-    '/cake-staking',
+    '/comet-staking',
     '/gauges-voting',
     '/farms',
     '/add',
@@ -27,3 +27,4 @@ export const config = {
     '/info/:path*',
   ],
 }
+

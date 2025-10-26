@@ -8,3 +8,4 @@ export function getBannerUrl(idoId: string) {
 export function getTempBannerUrl() {
   return bgImage.src
 }
+

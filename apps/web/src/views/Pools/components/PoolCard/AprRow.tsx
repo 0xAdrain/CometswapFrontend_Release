@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Token } from '@cometswap/sdk'
+import { Pool } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import Apr from 'views/Pools/components/Apr'
 
@@ -25,3 +25,4 @@ const AprRow: React.FC<React.PropsWithChildren<AprRowProps>> = ({
 }
 
 export default AprRow
+

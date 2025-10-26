@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition, TRANSACTION_BUFFER_BLOCKS } from '@pancakeswap/prediction'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition, TRANSACTION_BUFFER_BLOCKS } from '@cometswap/prediction'
 import {
   Box,
   Button,
@@ -11,8 +11,8 @@ import {
   Text,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { formatBigInt } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { formatBigInt } from '@cometswap/utils/formatBalance'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
@@ -26,7 +26,7 @@ import { getNowInSeconds } from 'utils/getNowInSeconds'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 import { usePredictionPrice } from 'views/Predictions/hooks/usePredictionPrice'
 import { useAccount } from 'wagmi'
-import { AVERAGE_CHAIN_BLOCK_TIMES } from '@pancakeswap/chains'
+import { AVERAGE_CHAIN_BLOCK_TIMES } from '@cometswap/chains'
 import { formatTokenv2 } from '../../../helpers'
 import CardFlip from '../../CardFlip'
 import { PrizePoolRow, RoundResultBox } from '../../RoundResult'
@@ -343,3 +343,4 @@ export const AIOpenRoundCard: React.FC<React.PropsWithChildren<AIOpenRoundCardPr
     </CardFlip>
   )
 }
+

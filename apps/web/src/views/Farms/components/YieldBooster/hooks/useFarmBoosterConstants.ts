@@ -1,13 +1,13 @@
-import { getBCakeFarmBoosterAddress } from 'utils/addressHelpers'
+import { getBCometFarmBoosterAddress } from 'utils/addressHelpers'
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
 import { publicClient } from 'utils/wagmi'
-import { ChainId } from '@pancakeswap/chains'
-import { bCakeFarmBoosterABI } from 'config/abi/bCakeFarmBooster'
+import { ChainId } from '@cometswap/chains'
+import { bCometFarmBoosterABI } from 'config/abi/bCometFarmBooster'
 import { useQuery } from '@tanstack/react-query'
 
 const useFarmBoosterConstants = () => {
-  const bCakeFarmBoosterAddress = getBCakeFarmBoosterAddress()
+  const bCometFarmBoosterAddress = getBCometFarmBoosterAddress()
 
   const { data, status } = useQuery({
     queryKey: ['farmBoosterConstants'],
@@ -16,18 +16,18 @@ const useFarmBoosterConstants = () => {
       return publicClient({ chainId: ChainId.BSC }).multicall({
         contracts: [
           {
-            address: bCakeFarmBoosterAddress,
-            abi: bCakeFarmBoosterABI,
+            address: bCometFarmBoosterAddress,
+            abi: bCometFarmBoosterABI,
             functionName: 'cA',
           },
           {
-            address: bCakeFarmBoosterAddress,
-            abi: bCakeFarmBoosterABI,
+            address: bCometFarmBoosterAddress,
+            abi: bCometFarmBoosterABI,
             functionName: 'CA_PRECISION',
           },
           {
-            address: bCakeFarmBoosterAddress,
-            abi: bCakeFarmBoosterABI,
+            address: bCometFarmBoosterAddress,
+            abi: bCometFarmBoosterABI,
             functionName: 'cB',
           },
         ],
@@ -51,3 +51,4 @@ const useFarmBoosterConstants = () => {
 }
 
 export default useFarmBoosterConstants
+

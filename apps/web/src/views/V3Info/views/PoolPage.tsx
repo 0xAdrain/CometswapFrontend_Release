@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoColumn,
   Box,
@@ -12,8 +12,8 @@ import {
   Spinner,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import dayjs from 'dayjs'
 
 import Page from 'components/Layout/Page'
@@ -387,3 +387,4 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
 }
 
 export default PoolPage
+

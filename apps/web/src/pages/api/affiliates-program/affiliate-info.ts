@@ -27,3 +27,4 @@ const affiliateInfo = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default affiliateInfo
+

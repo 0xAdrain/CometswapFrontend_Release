@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ArrowBackIcon,
   ArrowForwardIcon,
@@ -8,7 +8,7 @@ import {
   ScanLink,
   SortArrowIcon,
   Text,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { ChainLinkSupportChains, multiChainId } from 'state/info/constant'
 import { useChainIdByQuery, useChainNameByQuery } from 'state/info/hooks'
@@ -348,3 +348,4 @@ export default function TransactionTable({
     </TableWrapper>
   )
 }
+

@@ -11,3 +11,4 @@ export const TableActionCard = styled.div`
   border-radius: 16px;
   border: 2px solid ${({ theme }) => theme.colors.cardBorder};
 `
+

@@ -1,4 +1,4 @@
-import { MiscellaneousIcon, Text, useTooltip } from "@pancakeswap/uikit";
+import { MiscellaneousIcon, Text, useTooltip } from "@cometswap/uikit";
 import { forwardRef, useMemo } from "react";
 import styled from "styled-components";
 

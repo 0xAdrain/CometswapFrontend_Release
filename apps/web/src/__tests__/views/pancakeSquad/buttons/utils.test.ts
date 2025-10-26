@@ -1,8 +1,8 @@
-import { BuyButtonsEnum } from 'views/PancakeSquad/components/Buttons/types'
-import { getBuyButton, getBuyButtonText } from 'views/PancakeSquad/components/Buttons/utils'
-import { SaleStatusEnum } from 'views/PancakeSquad/types'
+import { BuyButtonsEnum } from 'views/CometSquad/components/Buttons/types'
+import { getBuyButton, getBuyButtonText } from 'views/CometSquad/components/Buttons/utils'
+import { SaleStatusEnum } from 'views/CometSquad/types'
 
-describe('PancakeSquad/buttons/utils/getBuyButtonText', () => {
+describe('CometSquad/buttons/utils/getBuyButtonText', () => {
   it('Should return Max purchased text', () => {
     // Given
     const canBuyTickets = false
@@ -46,7 +46,7 @@ describe('PancakeSquad/buttons/utils/getBuyButtonText', () => {
   })
 })
 
-describe('PancakeSquad/buttons/utils/getBuyButton', () => {
+describe('CometSquad/buttons/utils/getBuyButton', () => {
   it('Should return ENABLE button', () => {
     // Given
     const isApproved = false
@@ -231,3 +231,4 @@ describe('PancakeSquad/buttons/utils/getBuyButton', () => {
     expect(result).toEqual(BuyButtonsEnum.NONE)
   })
 })
+

@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, CardBody, Flex, Heading, StarCircle, Tag } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, CardBody, Flex, Heading, StarCircle, Tag } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { LightGreyCard } from 'components/Card'
 import Divider from 'components/Divider'
@@ -28,7 +28,7 @@ export function FixedStakingCard({ pool, stakedPositions }: { pool: PoolGroup; s
             </Heading>
             {new BigNumber(first(pool.pools)?.boostDayPercent || '0').gt(0) ? (
               <Tag outline variant="success" startIcon={<StarCircle width="18px" color="success" />}>
-                {t('Locked Cake Boost')}
+                {t('Locked Comet Boost')}
               </Tag>
             ) : null}
           </Box>
@@ -95,3 +95,4 @@ export function FixedStakingCard({ pool, stakedPositions }: { pool: PoolGroup; s
     </Pool.StyledCard>
   )
 }
+

@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { PoolIds } from '@pancakeswap/ifos'
+import { PoolIds } from '@cometswap/ifos'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 
 interface UseIfoVestingProps {
   poolId: PoolIds
@@ -65,3 +65,4 @@ const useIfoVesting = ({ poolId, publicIfoData, walletIfoData }: UseIfoVestingPr
 }
 
 export default useIfoVesting
+

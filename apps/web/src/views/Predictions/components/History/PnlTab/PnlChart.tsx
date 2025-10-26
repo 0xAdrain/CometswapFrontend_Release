@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text } from '@cometswap/uikit'
 import { SVG, WonSlice, LostSlice, Wrapper, Info } from './PnlChartStyles'
 
 /**
@@ -43,3 +43,4 @@ const PnlChart: React.FC<React.PropsWithChildren<PnlChartProps>> = ({ lost, won 
 }
 
 export default PnlChart
+

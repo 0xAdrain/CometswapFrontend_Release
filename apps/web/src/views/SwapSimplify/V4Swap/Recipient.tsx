@@ -17,3 +17,4 @@ export const Recipient = memo(function Recipient() {
 
   return <AddressInputPanel id="recipient" value={recipient} onChange={onChangeRecipient} />
 })
+

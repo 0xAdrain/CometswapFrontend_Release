@@ -14,3 +14,4 @@ export const setImportantAlerts = createAction<{
 export const toggleAllowNotifications = createAction<{
   allowNotifications: boolean
 }>('notifications/toggleAllowNotifications')
+

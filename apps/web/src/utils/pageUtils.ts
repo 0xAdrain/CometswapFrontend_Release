@@ -1,4 +1,4 @@
-import unsupportedTokens from 'config/constants/tokenLists/pancake-unsupported.tokenlist.json'
+import unsupportedTokens from 'config/constants/tokenLists/comet-unsupported.tokenlist.json'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { isAddress } from 'viem'
 
@@ -35,3 +35,4 @@ export const getTokenStaticProps = (): GetStaticProps => {
     }
   }
 }
+

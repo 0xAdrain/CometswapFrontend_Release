@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, InfoFilledIcon, LinkExternal, Placement, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, InfoFilledIcon, LinkExternal, Placement, Text, useTooltip } from '@cometswap/uikit'
 import styled from 'styled-components'
 
 const InlineLink = styled(LinkExternal)`
@@ -44,3 +44,4 @@ export function SwellTooltip({ size = '20px', placement = 'top-start', tooltipOf
     </>
   )
 }
+

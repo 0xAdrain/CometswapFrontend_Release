@@ -73,7 +73,7 @@ export const revenueSharingPoolProxyABI = [
   },
   {
     inputs: [],
-    name: 'VECake',
+    name: 'VEveComet',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -325,3 +325,4 @@ export const revenueSharingPoolProxyABI = [
     type: 'function',
   },
 ] as const
+

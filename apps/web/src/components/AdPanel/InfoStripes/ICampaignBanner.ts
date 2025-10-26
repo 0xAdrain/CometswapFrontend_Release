@@ -4,3 +4,4 @@ export type ICampaignBanner<T = object> = React.FC<T> & {
   stripeImageAlt: string
   background?: string
 }
+

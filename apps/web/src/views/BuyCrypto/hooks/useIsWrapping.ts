@@ -14,3 +14,4 @@ export function useIsWrapping() {
   const outputCurrency = useCurrency(outputCurrencyId)
   return useIsWrappingHook(inputCurrency, outputCurrency, typedValue)
 }
+

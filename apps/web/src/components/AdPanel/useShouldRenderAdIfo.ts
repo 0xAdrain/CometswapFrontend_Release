@@ -6,3 +6,4 @@ export const useShouldRenderAdIfo = () => {
 
   return Boolean(ifoConfig && dayjs().isBefore(dayjs.unix(ifoConfig.plannedStartTime || 0)))
 }
+

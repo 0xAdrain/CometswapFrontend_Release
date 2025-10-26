@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, LinkExternal, Text, useTooltip } from '@pancakeswap/uikit'
-import { ConfirmModalState } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, LinkExternal, Text, useTooltip } from '@cometswap/uikit'
+import { ConfirmModalState } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 import { styled } from 'styled-components'
 import { PendingConfirmModalState } from '../types'
@@ -80,7 +80,7 @@ export const ApproveStepFlow: React.FC<React.PropsWithChildren<ApproveStepFlowPr
             <StyledLinkExternal
               external
               margin="16px auto auto auto"
-              href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/faq#why-do-i-need-to-reset-approval-on-usdt-before-enabling-approving"
+              href="https://docs.cometswap.finance/products/cometswap-exchange/faq#why-do-i-need-to-reset-approval-on-usdt-before-enabling-approving"
             >
               <Text color="primary">{t('Why resetting approval')}</Text>
             </StyledLinkExternal>
@@ -89,7 +89,7 @@ export const ApproveStepFlow: React.FC<React.PropsWithChildren<ApproveStepFlowPr
             <StyledLinkExternal
               external
               margin="16px auto auto auto"
-              href="https://docs.pancakeswap.finance/~/changes/d1gFBwxReM0gH1aeMo0G/readme/help/what-is-an-approval-transaction"
+              href="https://docs.cometswap.finance/~/changes/d1gFBwxReM0gH1aeMo0G/readme/help/what-is-an-approval-transaction"
             >
               <Text color="primary">{t('Why')}</Text>
               <Text m="0 2px" color="primary" style={{ borderBottom: '1px dashed' }} ref={targetRef}>
@@ -104,3 +104,4 @@ export const ApproveStepFlow: React.FC<React.PropsWithChildren<ApproveStepFlowPr
     </Box>
   )
 }
+

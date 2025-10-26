@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BoxProps, Modal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BoxProps, Modal } from '@cometswap/uikit'
 
 interface ConfirmSwapModalContainerProps extends BoxProps {
   hideTitleAndBackground?: boolean
@@ -39,3 +39,4 @@ const ConfirmSwapModalContainer: React.FC<React.PropsWithChildren<ConfirmSwapMod
 }
 
 export default ConfirmSwapModalContainer
+

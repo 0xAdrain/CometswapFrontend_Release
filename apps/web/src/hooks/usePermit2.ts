@@ -1,6 +1,6 @@
-import { getPermit2Address } from '@pancakeswap/permit2-sdk'
-import { Currency, CurrencyAmount, Token } from '@pancakeswap/swap-sdk-core'
-import { Permit2Signature } from '@pancakeswap/universal-router-sdk'
+import { getPermit2Address } from '@cometswap/permit2-sdk'
+import { Currency, CurrencyAmount, Token } from '@cometswap/swap-sdk-core'
+import { Permit2Signature } from '@cometswap/universal-router-sdk'
 import { QueryObserverResult } from '@tanstack/react-query'
 import { useCallback, useMemo, useState } from 'react'
 import { Address, Hash } from 'viem'
@@ -112,3 +112,4 @@ export const usePermit2 = (
     permit,
   }
 }
+

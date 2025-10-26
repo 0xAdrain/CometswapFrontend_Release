@@ -1,12 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useMemo } from 'react'
-import { CheckmarkCircleIcon, ErrorIcon, ScanLink } from '@pancakeswap/uikit'
+import { CheckmarkCircleIcon, ErrorIcon, ScanLink } from '@cometswap/uikit'
 import {
   TransactionListItem,
   TransactionListItemDesc,
   TransactionListItemTitle,
   TransactionStatus,
-} from '@pancakeswap/widgets-internal'
+} from '@cometswap/widgets-internal'
 import { ChainLinkSupportChains } from 'state/info/constant'
 import { TransactionDetails } from 'state/transactions/reducer'
 import { useReadableTransactionType } from 'state/transactions/hooks'
@@ -83,3 +83,4 @@ export function TransactionWrapper({
     </TransactionState>
   )
 }
+

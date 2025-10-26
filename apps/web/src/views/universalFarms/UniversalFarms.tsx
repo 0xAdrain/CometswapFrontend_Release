@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Card, Tab, TabMenu, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Button, Card, Tab, TabMenu, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import Page from 'components/Layout/Page'
 import { useRouter } from 'next/router'
 import { PropsWithChildren, useMemo } from 'react'
@@ -94,15 +94,20 @@ export const UniversalFarms: React.FC<PropsWithChildren> = () => {
     }
   }, [t])
 
+  // 默认使用第一�?tab 如果 tabIdx 未定�?  const currentTabIdx = tabIdx ?? 0
+  const currentTab = tabsConfig[currentTabIdx]
+
   return (
     <>
       <PoolsBanner additionLink={<LegacyPage />} />
       <Page>
-        <TabMenu gap="8px" activeIndex={tabIdx} isShowBorderBottom={false}>
+        <TabMenu gap="8px" activeIndex={currentTabIdx} isShowBorderBottom={false}>
           {Object.values(tabsConfig).map(({ menu }) => menu())}
         </TabMenu>
-        {tabsConfig[tabIdx].page()}
+        {currentTab?.page ? currentTab.page() : <PoolsPage />}
       </Page>
     </>
   )
 }
+
+

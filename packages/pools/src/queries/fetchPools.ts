@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import chunk from 'lodash/chunk'
 import fromPairs from 'lodash/fromPairs'
@@ -64,10 +64,10 @@ async function fetchUpgradedPoolsTimeLimits(
     return resultArray
   }, [])
 
-  return pools.map((cakePoolConfig, index) => {
+  return pools.map((cometPoolConfig, index) => {
     const [startTimestamp, endTimestamp] = startEndResult[index]
     return {
-      sousId: cakePoolConfig.sousId,
+      sousId: cometPoolConfig.sousId,
       startTimestamp: Number(startTimestamp),
       endTimestamp: Number(endTimestamp),
     }
@@ -123,10 +123,10 @@ const fetchLegacyPoolsBlockLimits = async (
   const getTimestampFromBlock = (targetBlock: number) => {
     return Number(block.timestamp) + (targetBlock - Number(block.number)) * BSC_BLOCK_TIME
   }
-  return pools.map((cakePoolConfig, index) => {
+  return pools.map((cometPoolConfig, index) => {
     const [startBlock, endBlock] = startEndBlockResult[index]
     return {
-      sousId: cakePoolConfig.sousId,
+      sousId: cometPoolConfig.sousId,
       startTimestamp: getTimestampFromBlock(Number(startBlock)),
       endTimestamp: getTimestampFromBlock(Number(endBlock)),
     }
@@ -314,7 +314,7 @@ export const fetchPoolsProfileRequirement = async (
   )
   const poolProfileRequireCalls = livePoolsWithV3
     .map(({ contractAddress }) => {
-      return (['pancakeProfileIsRequested', 'pancakeProfileThresholdPoints'] as const).map(
+      return (['cometProfileIsRequested', 'cometProfileThresholdPoints'] as const).map(
         (method) =>
           ({
             abi: sousChefV3ABI,

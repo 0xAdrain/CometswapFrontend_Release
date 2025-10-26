@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { MANAGER, Strategy, isManagerVerified } from '@pancakeswap/position-managers'
-import { Row, Text, VerifiedIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { MANAGER, Strategy, isManagerVerified } from '@cometswap/position-managers'
+import { Row, Text, VerifiedIcon } from '@cometswap/uikit'
 import { memo, useMemo } from 'react'
 import { styled } from 'styled-components'
 import { SpaceProps } from 'styled-system'
@@ -46,3 +46,4 @@ export const ManagerInfo = memo(function ManagerInfo({ id, name, strategy, allow
     </CardSection>
   )
 })
+

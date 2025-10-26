@@ -1,9 +1,9 @@
-import { ChainId } from '@pancakeswap/chains'
-import { masterChefV3ABI } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { masterChefV3ABI } from '@cometswap/v3-sdk'
 import { getMasterChefV3Contract } from 'utils/contractHelpers'
 import { Address, decodeFunctionResult, encodeFunctionData, Hex } from 'viem'
 
-export const getAccountV3FarmingPendingCakeReward = async (
+export const getAccountV3FarmingPendingveCometReward = async (
   chainId: number,
   account: Address,
   tokenIds: bigint[],
@@ -22,7 +22,7 @@ export const getAccountV3FarmingPendingCakeReward = async (
       harvestCalls.push(
         encodeFunctionData({
           abi: masterChefV3ABI,
-          functionName: 'pendingCake',
+          functionName: 'pendingveComet',
           args: [tokenId],
         }),
       )
@@ -42,8 +42,9 @@ export const getAccountV3FarmingPendingCakeReward = async (
   return result.map((res) => {
     return decodeFunctionResult({
       abi: masterChefV3ABI,
-      functionName: isZkSync ? 'pendingCake' : 'harvest',
+      functionName: isZkSync ? 'pendingveComet' : 'harvest',
       data: res,
     })
   })
 }
+

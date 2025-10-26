@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { ChevronDownIcon, ChevronUpIcon, Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { ChevronDownIcon, ChevronUpIcon, Flex, Text } from '@cometswap/uikit'
 import { useState } from 'react'
 import PreviousBetsTable from './PreviousBetsTable'
 
@@ -39,3 +39,4 @@ const MobileBetsTable: React.FC<React.PropsWithChildren<MobileBetsTableProps>> =
 }
 
 export default MobileBetsTable
+

@@ -61,3 +61,4 @@ export enum CurrencyField {
   CURRENCY_A = 'CURRENCY_A',
   CURRENCY_B = 'CURRENCY_B',
 }
+

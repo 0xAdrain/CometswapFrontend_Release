@@ -1,4 +1,4 @@
-import { Image } from '@pancakeswap/uikit'
+import { Image } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const DesktopImage = styled(Image)`
@@ -10,3 +10,4 @@ const DesktopImage = styled(Image)`
 `
 
 export default DesktopImage
+

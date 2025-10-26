@@ -1,8 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BlockIcon, BscScanIcon, CheckmarkCircleIcon, Flex, RefreshIcon } from '@pancakeswap/uikit'
-import { useAppDispatch } from 'state'
-import { pickFarmTransactionTx } from 'state/global/actions'
-import { FarmTransactionStatus, TransactionType } from 'state/transactions/actions'
+import { useTranslation } from '@cometswap/localization'
+import { BlockIcon, BscScanIcon, CheckmarkCircleIcon, Flex, RefreshIcon } from '@cometswap/uikit'
+import { TransactionType } from 'state/transactions/actions'
 import { TransactionDetails } from 'state/transactions/reducer'
 import { styled } from 'styled-components'
 import { getBlockExploreLink } from 'utils'
@@ -39,13 +37,12 @@ const TxnLink = styled.div`
 `
 
 const renderIcon = (txn: TransactionDetails) => {
-  const { receipt, crossChainFarm } = txn
-  if (!txn.receipt || crossChainFarm?.status === FarmTransactionStatus.PENDING) {
+  const { receipt } = txn
+  if (!txn.receipt) {
     return <RefreshIcon spin width="24px" />
   }
 
-  const isFarmStatusSuccess = crossChainFarm ? crossChainFarm.status === FarmTransactionStatus.SUCCESS : true
-  return (receipt?.status === 1 && isFarmStatusSuccess) || typeof receipt?.status === 'undefined' ? (
+  return receipt?.status === 1 || typeof receipt?.status === 'undefined' ? (
     <CheckmarkCircleIcon color="success" width="24px" />
   ) : (
     <BlockIcon color="failure" width="24px" />
@@ -54,16 +51,10 @@ const renderIcon = (txn: TransactionDetails) => {
 
 const TransactionRow: React.FC<React.PropsWithChildren<TransactionRowProps>> = ({ txn, chainId, type, onDismiss }) => {
   const { t } = useTranslation()
-  const dispatch = useAppDispatch()
 
   const onClickTransaction = () => {
-    if (type === 'cross-chain-farm') {
-      onDismiss()
-      dispatch(pickFarmTransactionTx({ tx: txn.hash, chainId }))
-    } else {
-      const url = getBlockExploreLink(txn.hash, 'transaction', chainId)
-      window.open(url, '_blank', 'noopener noreferrer')
-    }
+    const url = getBlockExploreLink(txn.hash, 'transaction', chainId)
+    window.open(url, '_blank', 'noopener noreferrer')
   }
 
   if (!txn) {
@@ -86,3 +77,4 @@ const TransactionRow: React.FC<React.PropsWithChildren<TransactionRowProps>> = (
 }
 
 export default TransactionRow
+

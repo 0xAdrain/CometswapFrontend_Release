@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowBackIcon, ArrowForwardIcon, ArrowLastIcon, Flex, Heading, IconButton, Input } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowBackIcon, ArrowForwardIcon, ArrowLastIcon, Flex, Heading, IconButton, Input } from '@cometswap/uikit'
 import { useCallback } from 'react'
 import { styled } from 'styled-components'
 
@@ -100,3 +100,4 @@ const RoundSwitcher: React.FC<React.PropsWithChildren<RoundSwitcherProps>> = ({
 }
 
 export default RoundSwitcher
+

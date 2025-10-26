@@ -1,4 +1,4 @@
-import { ChainId, getChainNameInKebabCase } from '@pancakeswap/chains'
+import { ChainId, getChainNameInKebabCase } from '@cometswap/chains'
 import BN from 'bignumber.js'
 
 import { explorerApiClient } from 'state/info/api/client'
@@ -62,3 +62,4 @@ export const fetchV3FarmsAvgInfo = createGeneralFarmsAvgInfoFetcher('/cached/poo
 export const fetchV2FarmsAvgInfo = createGeneralFarmsAvgInfoFetcher('/cached/pools/apr/v2/{chainName}/farms-lp')
 
 export const fetchStableFarmsAvgInfo = createGeneralFarmsAvgInfoFetcher('/cached/pools/apr/stable/{chainName}/farms-lp')
+

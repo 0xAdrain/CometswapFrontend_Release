@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, CardBody, CardHeader, Flex, Heading, LinkExternal, ScanLink, Text } from '@pancakeswap/uikit'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, CardBody, CardHeader, Flex, Heading, LinkExternal, ScanLink, Text } from '@cometswap/uikit'
+import truncateHash from '@cometswap/utils/truncateHash'
 import dayjs from 'dayjs'
 import { Proposal, ProposalTypeName } from 'state/types'
 import { getBlockExploreLink } from 'utils'
@@ -73,3 +73,4 @@ const Details: React.FC<React.PropsWithChildren<DetailsProps>> = ({ proposal }) 
 }
 
 export default Details
+

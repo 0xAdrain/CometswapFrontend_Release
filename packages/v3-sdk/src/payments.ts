@@ -1,4 +1,4 @@
-import { Percent, Token, validateAndParseAddress } from '@pancakeswap/sdk'
+import { Percent, Token, validateAndParseAddress } from '@cometswap/sdk'
 import { Address, encodeFunctionData } from 'viem'
 import { peripheryPaymentsWithFeeABI } from './abi/PeripheryPaymentsWithFee'
 

@@ -7,7 +7,7 @@ export const potteryDrawABI = [
         type: 'address',
       },
       {
-        internalType: 'contract ICakePool',
+        internalType: 'contract IveCometPool',
         name: '_cakePool',
         type: 'address',
       },
@@ -438,7 +438,7 @@ export const potteryDrawABI = [
             type: 'uint256',
           },
           {
-            internalType: 'contract IPancakeSwapPotteryVault',
+            internalType: 'contract ICometSwapPotteryVault',
             name: 'vault',
             type: 'address',
           },
@@ -784,3 +784,4 @@ export const potteryDrawABI = [
     type: 'function',
   },
 ] as const
+

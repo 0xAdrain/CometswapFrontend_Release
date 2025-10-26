@@ -48,3 +48,4 @@ export default async (req: NextRequest) => {
     return badRequestRes
   }
 }
+

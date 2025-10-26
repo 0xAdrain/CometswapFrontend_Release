@@ -1,5 +1,5 @@
-import type { Pool } from '@pancakeswap/routing-sdk'
-import { isV3Pool } from '@pancakeswap/routing-sdk-addon-v3'
+import type { Pool } from '@cometswap/routing-sdk'
+import { isV3Pool } from '@cometswap/routing-sdk-addon-v3'
 
 type Route<P extends Pool> = {
   pools: P[]

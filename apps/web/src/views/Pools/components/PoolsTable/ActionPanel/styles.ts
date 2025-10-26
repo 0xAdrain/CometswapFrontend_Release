@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@cometswap/uikit'
 
 export const ActionContainer = styled(Flex)`
   flex-direction: column;
@@ -44,3 +44,4 @@ export const ActionContent = styled(Flex)`
 ActionContent.defaultProps = {
   mt: '8px',
 }
+

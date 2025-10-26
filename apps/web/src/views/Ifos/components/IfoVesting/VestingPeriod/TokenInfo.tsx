@@ -1,14 +1,14 @@
 import { useEffect, useState, useMemo } from 'react'
 import { styled } from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Box, Flex, Text, ChevronDownIcon, BalanceWithLoading } from '@pancakeswap/uikit'
+import { Box, Flex, Text, ChevronDownIcon, BalanceWithLoading } from '@cometswap/uikit'
 import { TokenImage } from 'components/TokenImage'
 import { VestingData } from 'views/Ifos/hooks/vesting/fetchUserWalletIfoData'
-import { PoolIds } from '@pancakeswap/ifos'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { PoolIds } from '@cometswap/ifos'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { useStablecoinPrice } from 'hooks/useStablecoinPrice'
 import { multiplyPriceByAmount } from 'utils/prices'
-import { useDelayedUnmount } from '@pancakeswap/hooks'
+import { useDelayedUnmount } from '@cometswap/hooks'
 import Expand from './Expand'
 
 const ArrowIcon = styled(ChevronDownIcon)<{ $toggled: boolean }>`
@@ -83,3 +83,4 @@ const TokenInfo: React.FC<React.PropsWithChildren<TokenInfoProps>> = ({
 }
 
 export default TokenInfo
+

@@ -1,4 +1,4 @@
-# Pancake Multicall
+# Comet Multicall
 
 Enhanced multicall sdk to safely make multicalls within the gas limit.
 
@@ -7,7 +7,7 @@ Inspired by the [1inch multicall](https://github.com/1inch/multicall).
 ## Install
 
 ```bash
-$ pnpm add @pancakeswap/multicall @pancakeswap/sdk viem
+$ pnpm add @cometswap/multicall @cometswap/sdk viem
 ```
 
 ## Usage
@@ -17,8 +17,8 @@ $ pnpm add @pancakeswap/multicall @pancakeswap/sdk viem
 By default the calls will be splitted into chunks based on gas limit of each call and the rpc call gas limit of the chain
 
 ```typescript
-import { ChainId } from '@pancakeswap/chains'
-import { multicallByGasLimit, MulticallRequestWithGas } from '@pancakeswap/multicall'
+import { ChainId } from '@cometswap/chains'
+import { multicallByGasLimit, MulticallRequestWithGas } from '@cometswap/multicall'
 
 const calls: MulticallRequestWithGas[] = [
   {
@@ -63,8 +63,8 @@ const { results, blockNumber } = await multicallByGasLimit(calls, {
 ### Get multicall gas limit
 
 ```typescript
-import { ChainId } from '@pancakeswap/chains'
-import { getGasLimitOnChain } from '@pancakeswap/multicall'
+import { ChainId } from '@cometswap/chains'
+import { getGasLimitOnChain } from '@cometswap/multicall'
 
 // Get the rpc call gas limit of the specified chain
 const gasLimit = await getGasLimitOnChain(ChainId.BSC)
@@ -72,4 +72,4 @@ const gasLimit = await getGasLimitOnChain(ChainId.BSC)
 
 ## Supported chains
 
-For supported chains and contract addresses, please refer to [multicall contracts](https://github.com/pancakeswap/pancake-frontend/blob/develop/packages/multicall/src/constants/contracts.ts).
+For supported chains and contract addresses, please refer to [multicall contracts](https://github.com/cometswap/comet-frontend/blob/develop/packages/multicall/src/constants/contracts.ts).

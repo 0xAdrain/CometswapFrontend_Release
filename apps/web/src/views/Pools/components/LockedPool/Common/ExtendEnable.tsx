@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import ApproveConfirmButtons from 'components/ApproveConfirmButtons'
-import { useCakeEnable } from 'hooks/useCakeEnable'
+import { useVeCometEnable } from 'hooks/useVeCometEnable'
 import { ENABLE_EXTEND_LOCK_AMOUNT } from '../../../helpers'
 
 interface ExtendEnableProps {
-  hasEnoughCake: boolean
+  hasEnoughComet: boolean
   handleConfirmClick: () => void
   pendingConfirmTx: boolean
   isValidAmount: boolean
@@ -12,29 +12,29 @@ interface ExtendEnableProps {
 }
 
 const ExtendEnable: React.FC<React.PropsWithChildren<ExtendEnableProps>> = ({
-  hasEnoughCake,
+  hasEnoughComet,
   handleConfirmClick,
   pendingConfirmTx,
   isValidAmount,
   isValidDuration,
 }) => {
-  const { handleEnable, pendingEnableTx } = useCakeEnable(ENABLE_EXTEND_LOCK_AMOUNT)
+  const { handleEnable, pendingEnableTx } = useVeCometEnable(ENABLE_EXTEND_LOCK_AMOUNT)
 
   const [pendingEnableTxWithBalance, setPendingEnableTxWithBalance] = useState(pendingEnableTx)
 
   useEffect(() => {
     if (pendingEnableTx) {
       setPendingEnableTxWithBalance(true)
-    } else if (hasEnoughCake) {
+    } else if (hasEnoughComet) {
       setPendingEnableTxWithBalance(false)
     }
-  }, [hasEnoughCake, pendingEnableTx])
+  }, [hasEnoughComet, pendingEnableTx])
 
   return (
     <ApproveConfirmButtons
-      isApproveDisabled={!(isValidAmount && isValidDuration) || hasEnoughCake}
+      isApproveDisabled={!(isValidAmount && isValidDuration) || hasEnoughComet}
       isApproving={pendingEnableTxWithBalance}
-      isConfirmDisabled={!(isValidAmount && isValidDuration) || !hasEnoughCake}
+      isConfirmDisabled={!(isValidAmount && isValidDuration) || !hasEnoughComet}
       isConfirming={pendingConfirmTx}
       onApprove={handleEnable}
       onConfirm={handleConfirmClick}
@@ -44,3 +44,4 @@ const ExtendEnable: React.FC<React.PropsWithChildren<ExtendEnableProps>> = ({
 }
 
 export default ExtendEnable
+

@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { AddIcon, Flex, IconButton, MinusIcon, Text, useMatchBreakpoints } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { AddIcon, Flex, IconButton, MinusIcon, Text, useMatchBreakpoints } from "@cometswap/uikit";
 import { ReactNode } from "react";
 import { ActionContent, ActionTitles, IconButtonWrapper, StyledActionContainer } from "./styles";
 
@@ -10,7 +10,7 @@ export interface StakedActionComponentProps {
   disabledPlusButton?: boolean;
   onPresentWithdraw: () => void;
   onPresentDeposit: () => void;
-  bCakeInfoSlot?: React.ReactElement;
+  bveCometInfoSlot?: React.ReactElement;
 }
 
 const StakedActionComponent: React.FunctionComponent<React.PropsWithChildren<StakedActionComponentProps>> = ({
@@ -20,14 +20,14 @@ const StakedActionComponent: React.FunctionComponent<React.PropsWithChildren<Sta
   disabledPlusButton,
   onPresentWithdraw,
   onPresentDeposit,
-  bCakeInfoSlot,
+  bveCometInfoSlot,
 }) => {
   const { t } = useTranslation();
   const { isMobile } = useMatchBreakpoints();
   return (
     <StyledActionContainer
       style={
-        bCakeInfoSlot
+        bveCometInfoSlot
           ? {
               paddingBottom: isMobile ? undefined : 0,
               paddingTop: isMobile ? undefined : 0,
@@ -38,7 +38,7 @@ const StakedActionComponent: React.FunctionComponent<React.PropsWithChildren<Sta
           : undefined
       }
     >
-      {!bCakeInfoSlot && (
+      {!bveCometInfoSlot && (
         <ActionTitles style={{ marginBottom: 0 }}>
           <Text bold color="secondary" fontSize="12px" pr="4px">
             {lpSymbol}
@@ -48,12 +48,12 @@ const StakedActionComponent: React.FunctionComponent<React.PropsWithChildren<Sta
           </Text>
         </ActionTitles>
       )}
-      <ActionContent style={{ gap: 16, width: "100%", flexDirection: isMobile && bCakeInfoSlot ? "column" : "row" }}>
+      <ActionContent style={{ gap: 16, width: "100%", flexDirection: isMobile && bveCometInfoSlot ? "column" : "row" }}>
         <Flex
           width="100%"
           justifyContent="space-between"
           alignItems="center"
-          flexBasis={bCakeInfoSlot ? "33%" : undefined}
+          flexBasis={bveCometInfoSlot ? "33%" : undefined}
         >
           {children}
           <IconButtonWrapper>
@@ -65,7 +65,7 @@ const StakedActionComponent: React.FunctionComponent<React.PropsWithChildren<Sta
             </IconButton>
           </IconButtonWrapper>
         </Flex>
-        {bCakeInfoSlot}
+        {bveCometInfoSlot}
       </ActionContent>
     </StyledActionContainer>
   );

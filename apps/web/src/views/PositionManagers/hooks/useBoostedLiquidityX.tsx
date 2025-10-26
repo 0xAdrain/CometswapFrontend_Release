@@ -1,18 +1,18 @@
-import { positionManagerAdapterABI, positionManagerVeBCakeWrapperABI } from '@pancakeswap/position-managers'
+import { positionManagerAdapterABI, positionManagerWrapperABI } from '@cometswap/position-managers'
 import { useQuery } from '@tanstack/react-query'
 import BN from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { publicClient } from 'utils/wagmi'
 import { Address } from 'viem'
 
-export const useBoosterLiquidityX = (bCakeWrapperAddress?: Address, adapterAddress?: Address) => {
+export const useBoosterLiquidityX = (bCometWrapperAddress?: Address, adapterAddress?: Address) => {
   const { chainId } = useActiveChainId()
-  const enabled = Boolean(adapterAddress) && Boolean(bCakeWrapperAddress) && Boolean(chainId)
+  const enabled = Boolean(adapterAddress) && Boolean(bCometWrapperAddress) && Boolean(chainId)
 
   const { data } = useQuery({
-    queryKey: ['boostedLiquidityX', adapterAddress, bCakeWrapperAddress, chainId],
+    queryKey: ['boostedLiquidityX', adapterAddress, bCometWrapperAddress, chainId],
     queryFn: async () => {
-      const boostedLiquidityX = await getBoosterLiquidityX({ bCakeWrapperAddress, adapterAddress, chainId })
+      const boostedLiquidityX = await getBoosterLiquidityX({ bCometWrapperAddress, adapterAddress, chainId })
       return boostedLiquidityX
     },
     enabled,
@@ -20,7 +20,7 @@ export const useBoosterLiquidityX = (bCakeWrapperAddress?: Address, adapterAddre
   return { boostedLiquidityX: data?.boostedLiquidityX ?? 1 }
 }
 
-export async function getBoosterLiquidityX({ bCakeWrapperAddress, adapterAddress, chainId }): Promise<{
+export async function getBoosterLiquidityX({ bCometWrapperAddress, adapterAddress, chainId }): Promise<{
   boostedLiquidityX: number
 } | null> {
   const [totalBoostedShareData, totalSupplyData] = await publicClient({
@@ -28,9 +28,9 @@ export async function getBoosterLiquidityX({ bCakeWrapperAddress, adapterAddress
   }).multicall({
     contracts: [
       {
-        address: bCakeWrapperAddress,
+        address: bCometWrapperAddress,
         functionName: 'totalBoostedShare',
-        abi: positionManagerVeBCakeWrapperABI,
+        abi: positionManagerWrapperABI,
       },
       {
         address: adapterAddress,
@@ -48,3 +48,4 @@ export async function getBoosterLiquidityX({ bCakeWrapperAddress, adapterAddress
     boostedLiquidityX: new BN(totalBoostedShare.toString()).div(totalSupply.toString()).toNumber(),
   }
 }
+

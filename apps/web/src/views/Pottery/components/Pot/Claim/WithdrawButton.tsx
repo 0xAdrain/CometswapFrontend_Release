@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRenewIcon, Button } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
 import { PotteryDepositStatus } from 'state/types'
@@ -49,3 +49,4 @@ const WithdrawButton: React.FC<React.PropsWithChildren<WithdrawButtonProps>> = (
 }
 
 export default WithdrawButton
+

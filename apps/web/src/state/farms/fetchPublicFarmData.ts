@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { SerializedFarm } from '@pancakeswap/farms'
+import { ChainId } from '@cometswap/chains'
+import { SerializedFarm } from '@cometswap/farms'
 import chunk from 'lodash/chunk'
 import { getMasterChefV2Address } from 'utils/addressHelpers'
 import { publicClient } from 'utils/wagmi'
@@ -61,3 +61,4 @@ export const fetchPublicFarmsData = async (farms: SerializedFarmConfig[], chainI
   const chunkSize = farmCalls.length / farms.length
   return chunk(farmMultiCallResult, chunkSize)
 }
+

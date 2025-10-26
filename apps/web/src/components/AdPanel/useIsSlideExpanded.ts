@@ -27,3 +27,4 @@ export const useIsSlideExpanded = () => {
 
   return { isAnySlideExpanded, slideExpanded, setSlideExpanded, resetAllExpanded }
 }
+

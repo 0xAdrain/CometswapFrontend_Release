@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/gauges",
+  "name": "@cometswap/gauges",
   "version": "2.0.4",
   "sideEffects": false,
   "scripts": {
@@ -23,19 +23,19 @@
     "./package.json": "./package.json"
   },
   "peerDependencies": {
-    "@pancakeswap/utils": "workspace:*"
+    "@cometswap/utils": "workspace:*"
   },
   "devDependencies": {
-    "@pancakeswap/position-managers": "workspace:^",
-    "@pancakeswap/sdk": "workspace:^",
+    "@cometswap/position-managers": "workspace:^",
+    "@cometswap/sdk": "workspace:^",
     "@types/lodash": "^4.14.202",
     "lodash": "^4.17.21",
     "tsup": "^6.7.0"
   },
   "dependencies": {
-    "@pancakeswap/chains": "workspace:^",
-    "@pancakeswap/tokens": "workspace:^",
-    "@pancakeswap/v3-sdk": "workspace:^",
+    "@cometswap/chains": "workspace:^",
+    "@cometswap/tokens": "workspace:^",
+    "@cometswap/v3-sdk": "workspace:^",
     "viem": "catalog:"
   }
 }

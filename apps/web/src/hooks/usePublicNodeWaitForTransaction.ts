@@ -1,7 +1,7 @@
 import { ChainId } from '@gelatonetwork/limit-orders-lib'
 import { BSC_BLOCK_TIME } from 'config'
 import { CHAINS } from 'config/chains'
-import { AVERAGE_CHAIN_BLOCK_TIMES } from '@pancakeswap/chains'
+import { AVERAGE_CHAIN_BLOCK_TIMES } from '@cometswap/chains'
 import first from 'lodash/first'
 import { useCallback } from 'react'
 import { RetryableError, retry } from 'state/multicall/retry'
@@ -17,7 +17,7 @@ import {
   http,
 } from 'viem'
 import { usePublicClient } from 'wagmi'
-import { useFetchBlockData } from '@pancakeswap/wagmi'
+import { useFetchBlockData } from '@cometswap/wagmi'
 import { useActiveChainId } from './useActiveChainId'
 
 export const viemClientsPublicNodes = CHAINS.reduce((prev, cur) => {
@@ -96,3 +96,4 @@ export function usePublicNodeWaitForTransaction() {
     waitForTransaction: waitForTransaction_,
   }
 }
+

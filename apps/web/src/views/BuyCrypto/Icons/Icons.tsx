@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 export const MercuryoSvg = ({ isDark, ...props }: SvgProps & { isDark: boolean }) => {
   return (
@@ -139,3 +139,4 @@ export const MoonPaySvg = ({ ...props }: SvgProps) => {
     </Svg>
   )
 }
+

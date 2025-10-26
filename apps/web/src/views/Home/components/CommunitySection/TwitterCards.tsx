@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   BarChartIcon,
   FavoriteBorderIcon,
@@ -9,7 +9,7 @@ import {
   Text,
   VerifiedIcon,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { useMemo } from 'react'
 import { styled } from 'styled-components'
@@ -72,12 +72,12 @@ export const useTweetsData = () => {
   return useMemo(() => {
     return [
       {
-        tweet: `Get Your Uniswap Interface Fees Refunded on PancakeSwap, up to $8M!
+        tweet: `Get Your Uniswap Interface Fees Refunded on CometSwap, up to $8M!
 
-Match your Ethereum Uniswap volume 1:1 on Ethereum PancakeSwap, and we’ll refund ALL your interface fees paid.
-Trade now: https://pancakeswap.finance/swap?chain=eth&utm_source=twitter&utm_medium=Ethereum&utm_campaign=Swap&utm_id=InterfacefeeRefund
+Match your Ethereum Uniswap volume 1:1 on Ethereum CometSwap, and we’ll refund ALL your interface fees paid.
+Trade now: https://cometswap.finance/swap?chain=eth&utm_source=twitter&utm_medium=Ethereum&utm_campaign=Swap&utm_id=InterfacefeeRefund
 `,
-        link: 'https://x.com/PancakeSwap/status/1791076335462314097',
+        link: 'https://x.com/CometSwap/status/1791076335462314097',
         date: 'May 16',
         like: '1k',
         impression: '295.5k',
@@ -120,13 +120,13 @@ export const TwitterCards: React.FC = () => {
       </LogoBox>
       <Flex alignItems="center">
         <Text mt="10px" fontSize={14} bold>
-          PancakeSwap🥞Ev3ryone&#39;s Favourite D3X
+          CometSwap🥞Ev3ryone&#39;s Favourite D3X
         </Text>
         <VerifiedIcon ml="3px" mt="9px" color={theme.colors.secondary} />
       </Flex>
       <Flex style={{ gap: 0 }} alignItems="center" justifyContent="center">
         <StyledText fontSize={14} color={theme.colors.textSubtle}>
-          @PancakeSwap
+          @CometSwap
         </StyledText>
         <Divider />
         <Text fontSize={14} color={theme.colors.textSubtle}>
@@ -161,7 +161,7 @@ export const BlogCard: React.FC = () => {
     <Wrapper
       onClick={() => {
         window.open(
-          `https://blog.pancakeswap.finance/articles/${articlesData?.data?.[0]?.slug ?? ''}`,
+          `https://blog.cometswap.finance/articles/${articlesData?.data?.[0]?.slug ?? ''}`,
           '_blank',
           'noopener noreferrer',
         )
@@ -181,3 +181,4 @@ export const BlogCard: React.FC = () => {
     </Wrapper>
   )
 }
+

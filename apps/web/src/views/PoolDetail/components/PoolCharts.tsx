@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, CardBody, Column, Container, Tab, TabMenu } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, CardBody, Column, Container, Tab, TabMenu } from '@cometswap/uikit'
 import { useMemo, useState } from 'react'
 import { PoolInfo } from 'state/farmsV4/state/type'
 import styled from 'styled-components'
@@ -74,3 +74,4 @@ export const PoolCharts: React.FC<PoolChartsProps> = ({ poolInfo }) => {
     </Column>
   )
 }
+

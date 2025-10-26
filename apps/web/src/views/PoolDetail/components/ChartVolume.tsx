@@ -1,4 +1,4 @@
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import { useState } from 'react'
 import { PoolInfo } from 'state/farmsV4/state/type'
@@ -45,3 +45,4 @@ export const ChartVolume: React.FC<ChartVolumeProps> = ({ address, poolInfo }) =
     </>
   )
 }
+

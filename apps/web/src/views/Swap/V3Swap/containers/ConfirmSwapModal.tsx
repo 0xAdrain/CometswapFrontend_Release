@@ -1,18 +1,18 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId, Currency, CurrencyAmount, Token, TradeType } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId, Currency, CurrencyAmount, Token, TradeType } from '@cometswap/sdk'
 import { useCallback, useMemo } from 'react'
 
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
-import { Box, BscScanIcon, Flex, InjectedModalProps, Link } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import truncateHash from '@pancakeswap/utils/truncateHash'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { WrappedTokenInfo } from '@cometswap/token-lists'
+import { Box, BscScanIcon, Flex, InjectedModalProps, Link } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import truncateHash from '@cometswap/utils/truncateHash'
+import { useUserSlippage } from '@cometswap/utils/user'
 import {
   ApproveModalContent,
   ConfirmModalState,
   SwapPendingModalContent,
   SwapTransactionReceiptModalContent,
-} from '@pancakeswap/widgets-internal'
+} from '@cometswap/widgets-internal'
 import AddToWalletButton, { AddToWalletTextOptions } from 'components/AddToWallet/AddToWalletButton'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { Field } from 'state/swap/actions'
@@ -310,3 +310,4 @@ export const ConfirmSwapModal: React.FC<ConfirmSwapModalProps> = ({
     </ConfirmSwapModalContainer>
   )
 }
+

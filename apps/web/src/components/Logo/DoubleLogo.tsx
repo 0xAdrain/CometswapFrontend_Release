@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@cometswap/sdk'
 import { styled } from 'styled-components'
 import CurrencyLogo from './CurrencyLogo'
 
@@ -29,3 +29,4 @@ export default function DoubleCurrencyLogo({
     </Wrapper>
   )
 }
+

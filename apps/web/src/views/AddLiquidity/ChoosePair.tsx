@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { AddIcon, Box, CardBody, CardFooter, FlexGap, Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { AddIcon, Box, CardBody, CardFooter, FlexGap, Text, TooltipText, useTooltip } from '@cometswap/uikit'
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { CurrencySelect } from 'components/CurrencySelect'
@@ -100,3 +100,4 @@ export function ChoosePair({
     </>
   )
 }
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { SubMenuItems } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { SubMenuItems } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import React, { useMemo } from 'react'
 
@@ -9,7 +9,7 @@ const SubMenu: React.FC<React.PropsWithChildren> = () => {
 
   const subMenuItems = useMemo(() => {
     return [
-      { label: t('CAKE Stakers'), href: '/trading-reward/cake-stakers' },
+      { label: t('COMET Stakers'), href: '/trading-reward/comet-stakers' },
       { label: t('Top Traders'), href: '/trading-reward/top-traders' },
     ]
   }, [t])

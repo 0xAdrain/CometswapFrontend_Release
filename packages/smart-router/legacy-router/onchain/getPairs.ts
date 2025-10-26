@@ -1,9 +1,9 @@
-import { Currency, CurrencyAmount, Pair, Token } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { Currency, CurrencyAmount, Pair, Token } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 import { Address } from 'viem'
 
 import { wrappedCurrency } from '../../evm/utils/currency'
-import { pancakePairABI } from '../../evm/abis/IPancakePair'
+import { cometPairABI } from '../../evm/abis/ICometPair'
 
 import { Provider } from '../types'
 
@@ -35,7 +35,7 @@ export async function getPairs(currencyPairs: CurrencyPair[], { provider, chainI
     contracts: pairAddresses.map(
       (address) =>
         ({
-          abi: pancakePairABI,
+          abi: cometPairABI,
           address,
           functionName: 'getReserves',
         } as const),

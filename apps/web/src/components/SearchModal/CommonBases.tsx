@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Token } from '@pancakeswap/sdk'
-import { AutoColumn, QuestionHelper, Text } from '@pancakeswap/uikit'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Token } from '@cometswap/sdk'
+import { AutoColumn, QuestionHelper, Text } from '@cometswap/uikit'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { styled } from 'styled-components'
 
@@ -98,3 +98,4 @@ export default function CommonBases({
     </AutoColumn>
   )
 }
+

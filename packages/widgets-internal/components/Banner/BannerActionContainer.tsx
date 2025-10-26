@@ -1,4 +1,4 @@
-import { FlexGap } from "@pancakeswap/uikit";
+import { FlexGap } from "@cometswap/uikit";
 import { PropsWithChildren } from "react";
 
 export const BannerActionContainer = ({ children }: PropsWithChildren) => {

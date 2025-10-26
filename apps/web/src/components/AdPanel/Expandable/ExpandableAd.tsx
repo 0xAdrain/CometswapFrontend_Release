@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, useMatchBreakpoints } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { BodyText } from '../BodyText'
 import { AdButton } from '../Button'
@@ -77,3 +77,4 @@ export const ExpandableAd = (props: AdPlayerProps) => {
     </AdCard>
   )
 }
+

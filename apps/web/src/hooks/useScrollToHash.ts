@@ -32,3 +32,4 @@ const useScrollToHash = (isFetching: boolean, enabled: boolean) => {
 }
 
 export default useScrollToHash
+

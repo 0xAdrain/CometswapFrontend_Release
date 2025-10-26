@@ -1,4 +1,4 @@
-import { useDebounce } from '@pancakeswap/hooks'
+import { useDebounce } from '@cometswap/hooks'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useAtom } from 'jotai'
 import { useEffect, useMemo, useRef } from 'react'
@@ -211,3 +211,4 @@ export default function Updater(): null {
 
   return null
 }
+

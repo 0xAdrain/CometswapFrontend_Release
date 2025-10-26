@@ -1,4 +1,4 @@
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@cometswap/tokens'
 
 import { useFetchIfo } from 'state/pools/hooks'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -6,12 +6,12 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import IfoContainer from './components/IfoContainer'
 import IfoSteps from './components/IfoSteps'
 import ComingSoonSection from './components/ComingSoonSection'
-import { useICakeBridgeStatus } from './hooks/useIfoCredit'
+import { useICometBridgeStatus } from './hooks/useIfoCredit'
 
 const SoonIfo = () => {
   useFetchIfo()
   const { chainId } = useActiveChainId()
-  const { sourceChainCredit } = useICakeBridgeStatus({
+  const { sourceChainCredit } = useICometBridgeStatus({
     ifoChainId: chainId,
   })
   return (
@@ -22,7 +22,7 @@ const SoonIfo = () => {
           isLive={false}
           hasClaimed={false}
           isCommitted={false}
-          ifoCurrencyAddress={bscTokens.cake.address}
+          ifoCurrencyAddress={bscTokens.comet.address}
           sourceChainIfoCredit={sourceChainCredit}
         />
       }
@@ -31,3 +31,4 @@ const SoonIfo = () => {
 }
 
 export default SoonIfo
+

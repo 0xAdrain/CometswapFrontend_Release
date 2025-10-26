@@ -7,31 +7,22 @@ import {
   MessageText,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 import { css, keyframes, styled } from 'styled-components'
-import { useIsMigratedToVeCake } from 'views/CakeStaking/hooks/useIsMigratedToVeCake'
+// Migration hook removed
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { DeserializedLockedCakeVault, DeserializedLockedVaultUser, VaultKey } from 'state/types'
-import { VaultPosition, getVaultPosition } from 'utils/cakePool'
-import {
-  LearnMoreLink,
-  VeCakeBunny,
-  VeCakeButton,
-  VeCakeCardTableView,
-  VeCakeDelegatedCard,
-  VeCakeMigrateCard,
-  VeCakeUpdateCard,
-  VeCakeUpdateCardTableView,
-} from 'views/CakeStaking/components/SyrupPool'
-import { useIsUserDelegated } from 'views/CakeStaking/hooks/useIsUserDelegated'
+import { DeserializedLockedCometVault, DeserializedLockedVaultUser, VaultKey } from 'state/types'
+import { VaultPosition, getVaultPosition } from 'utils/cometPool'
+// CometStaking components removed - migration logic deleted
+import { CometBunny, LearnMoreLink } from 'views/CometStaking/components/SyrupPool'
 import WithdrawAllButton from '../../LockedPool/Buttons/WithdrawAllButton'
 import LockDurationRow from '../../LockedPool/Common/LockDurationRow'
 import YieldBoostRow from '../../LockedPool/Common/YieldBoostRow'
@@ -42,6 +33,9 @@ import { VaultPositionTagWithLabel } from '../../Vault/VaultPositionTag'
 import AutoHarvest from './AutoHarvest'
 import Harvest from './Harvest'
 import Stake from './Stake'
+
+// Temporary placeholder for CometCardTableView
+const CometCardTableView = () => <div>CometCard Table View</div>
 
 const expandAnimation = keyframes`
   from {
@@ -140,8 +134,8 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
   const { userData, vaultKey } = pool
   const { isMobile } = useMatchBreakpoints()
 
-  const vaultData = useVaultPoolByKey(vaultKey as Pool.VaultKey) as DeserializedLockedCakeVault
-  const cakeAsBigNumber = vaultData.userData?.balance?.cakeAsBigNumber ?? new BigNumber(0)
+  const vaultData = useVaultPoolByKey(vaultKey as Pool.VaultKey) as DeserializedLockedCometVault
+  const cometAsBigNumber = vaultData.userData?.balance?.cometAsBigNumber ?? new BigNumber(0)
   const vaultPosition = getVaultPosition(vaultData.userData)
 
   const isLocked = vaultData.userData?.locked
@@ -150,22 +144,21 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
 
   const poolStakingTokenBalance = vaultKey
-    ? cakeAsBigNumber.plus(stakingTokenBalance)
+    ? cometAsBigNumber.plus(stakingTokenBalance)
     : stakedBalance.plus(stakingTokenBalance)
 
   const originalLockedAmount = getBalanceNumber(vaultData.userData?.lockedAmount)
 
-  const isCakePool = useMemo(
-    () => pool.vaultKey === VaultKey.CakeVault || pool.vaultKey === VaultKey.CakeFlexibleSideVault,
+  const isCometPool = useMemo(
+    () => pool.vaultKey === VaultKey.CometVault,
     [pool.vaultKey],
   )
-  const isMigratedToVeCake = useIsMigratedToVeCake()
-  const isUserDelegated = useIsUserDelegated()
+  // Migration and delegation checks removed
 
   return (
     <StyledActionPanel expanded={expanded}>
       <InfoSection>
-        {isMobile && vaultKey === VaultKey.CakeVault && isLocked && (
+        {isMobile && vaultKey === VaultKey.CometVault && isLocked && (
           <Box mb="16px">
             <YieldBoostDurationRow
               lockEndTime={vaultData.userData?.lockEndTime}
@@ -181,15 +174,15 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
         )}
         <Flex flexDirection="column" mb="8px">
           <>
-            {!isMobile && vaultKey === VaultKey.CakeVault && !account ? (
-              <VeCakeBunny />
+            {!isMobile && vaultKey === VaultKey.CometVault && !account ? (
+              <CometBunny />
             ) : (
               <PoolStatsInfo pool={pool} account={account} showTotalStaked={isMobile} alignLinksToRight={isMobile} />
             )}
           </>
         </Flex>
         <Flex alignItems="center">
-          {vaultKey !== VaultKey.CakeVault && (
+          {vaultKey !== VaultKey.CometVault && (
             <PoolTypeTag vaultKey={vaultKey} isLocked={isLocked} account={account}>
               {(tagTargetRef: any) => (
                 <Flex ref={tagTargetRef}>
@@ -202,7 +195,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
       </InfoSection>
       <ActionContainer>
         <Box width="100%">
-          {pool.vaultKey === VaultKey.CakeVault && (
+          {pool.vaultKey === VaultKey.CometVault && (
             <VaultPositionTagWithLabel
               userData={vaultData.userData as DeserializedLockedVaultUser}
               width={['auto', null, 'fit-content']}
@@ -217,7 +210,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
                     <AutoHarvest pool={pool} />
                   )
                 ) : (
-                  <VeCakeCardTableView />
+                  <CometCardTableView />
                 )}
               </>
             ) : (
@@ -226,7 +219,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
             <Stake pool={pool} />
           </ActionContainer>
         </Box>
-        {isCakePool && account && vaultPosition !== VaultPosition.None && (
+        {isCometPool && account && vaultPosition !== VaultPosition.None && (
           <Flex width="100%">
             <Message
               variant="warning"
@@ -236,17 +229,8 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
                   alignItems="center"
                   style={{ gap: isMobile ? 15 : 24, flexDirection: isMobile ? 'column' : 'row' }}
                 >
-                  {isUserDelegated && <VeCakeDelegatedCard isTableView />}
-                  {vaultPosition === VaultPosition.Locked && !isUserDelegated && (
-                    <VeCakeMigrateCard
-                      isTableView
-                      lockEndTime={(vaultData?.userData as DeserializedLockedVaultUser)?.lockEndTime}
-                    />
-                  )}
-                  {vaultPosition === VaultPosition.Flexible && <VeCakeUpdateCard isFlexibleStake isTableView />}
-                  {vaultPosition >= VaultPosition.LockedEnd && !isUserDelegated && <VeCakeUpdateCardTableView />}
-                  {vaultPosition >= VaultPosition.LockedEnd && !isUserDelegated && <WithdrawAllButton />}
-                  <VeCakeButton style={{ flexBasis: '50%' }} type={isUserDelegated ? 'check' : 'get'} />
+                  {/* Migration and delegation cards removed - simplified staking only */}
+                  {vaultPosition >= VaultPosition.LockedEnd && <WithdrawAllButton />}
                 </Flex>
               }
               showIcon={vaultPosition !== VaultPosition.Locked}
@@ -255,19 +239,19 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
                 <MessageText marginBottom="10px">
                   {vaultPosition === VaultPosition.Flexible ? (
                     <>
-                      {t('Flexible CAKE pool is discontinued and no longer distributing rewards.')}
+                      {t('Flexible COMETpool is discontinued and no longer distributing rewards.')}
                       <LearnMoreLink withArrow />
                     </>
                   ) : vaultPosition >= VaultPosition.LockedEnd ? (
                     isUserDelegated ? (
                       t('To check out your converted position, please visit the protocol page.')
-                    ) : isMigratedToVeCake ? (
+                    ) : isMigratedToComet ? (
                       t(
-                        'Extending or adding CAKE is not available for migrated positions. To get more veCAKE, withdraw from the unlocked CAKE pool position, and add CAKE to veCAKE.',
+                        'Extending or adding COMETis not available for migrated positions. To get more veCOMET, withdraw from the unlocked COMETpool position, and add COMETto veCOMET.',
                       )
                     ) : (
                       t(
-                        'The lock period has ended. To get more veCAKE, withdraw from the unlocked CAKE pool position, and add CAKE to veCAKE.',
+                        'The lock period has ended. To get more veCOMET, withdraw from the unlocked COMETpool position, and add COMETto veCOMET.',
                       )
                     )
                   ) : null}
@@ -282,3 +266,4 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
 }
 
 export default ActionPanel
+

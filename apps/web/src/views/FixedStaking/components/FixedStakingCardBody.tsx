@@ -1,8 +1,8 @@
-import { Box, ButtonMenu, ButtonMenuItem, Flex, LockIcon, Text, UnlockIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, ButtonMenu, ButtonMenuItem, Flex, LockIcon, Text, UnlockIcon } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 import { ReactNode } from 'react'
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount } from '@cometswap/swap-sdk-core'
 
 import { PoolGroup, StakedPosition } from '../type'
 import { FixedStakingCardFooter } from './FixedStakingCardFooter'
@@ -103,3 +103,4 @@ export function FixedStakingCardBody({
     </>
   )
 }
+

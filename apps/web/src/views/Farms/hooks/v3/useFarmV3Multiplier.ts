@@ -11,16 +11,17 @@ export function useFarmV3Multiplier() {
 
   return {
     totalMultipliers,
-    getFarmCakePerSecond: useCallback(
+    getFarmCometPerSecond: useCallback(
       (poolWeight?: string) => {
-        const farmCakePerSecondNum = poolWeight && cakePerSecond ? Number(poolWeight) * Number(cakePerSecond) : 0
-        return farmCakePerSecondNum === 0
+        const farmCometPerSecondNum = poolWeight && cakePerSecond ? Number(poolWeight) * Number(cakePerSecond) : 0
+        return farmCometPerSecondNum === 0
           ? '0'
-          : farmCakePerSecondNum < 0.000001
+          : farmCometPerSecondNum < 0.000001
           ? '<0.000001'
-          : `~${farmCakePerSecondNum.toFixed(6)}`
+          : `~${farmCometPerSecondNum.toFixed(6)}`
       },
       [cakePerSecond],
     ),
   }
 }
+

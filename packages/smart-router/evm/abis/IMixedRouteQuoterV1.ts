@@ -113,7 +113,7 @@ export const mixedRouteQuoterV1ABI = [
         type: 'bytes',
       },
     ],
-    name: 'pancakeV3SwapCallback',
+    name: 'cometV3SwapCallback',
     outputs: [],
     stateMutability: 'view',
     type: 'function',

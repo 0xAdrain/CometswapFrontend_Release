@@ -10,17 +10,17 @@ import {
   useMatchBreakpoints,
   useModal,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { MAX_LOCK_DURATION } from '@pancakeswap/pools'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { MAX_LOCK_DURATION } from '@cometswap/pools'
+import { Token } from '@cometswap/sdk'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { DeserializedLockedVaultUser, VaultKey } from 'state/types'
 import { styled } from 'styled-components'
-import { VaultPosition, getVaultPosition, isLocked } from 'utils/cakePool'
+import { VaultPosition, getVaultPosition, isLocked } from 'utils/cometPool'
 
 import LockedAprTooltipContent from '../../LockedPool/Common/LockedAprTooltipContent'
 import { VaultRoiCalculatorModal } from '../../Vault/VaultRoiCalculatorModal'
@@ -57,13 +57,13 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
     <VaultRoiCalculatorModal pool={pool} initialView={1} />,
     true,
     true,
-    pool.vaultKey === VaultKey.CakeVault ? 'LockedVaultRoiCalculatorModal' : 'FlexibleSideVaultRoiCalculatorModal',
+    pool.vaultKey === VaultKey.CometVault ? 'LockedVaultRoiCalculatorModal' : 'FlexibleSideVaultRoiCalculatorModal',
   )
 
   const tooltipContent = <LockedAprTooltipContent />
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 
-  if (pool.vaultKey === VaultKey.CakeVault && vaultPosition === VaultPosition.None) {
+  if (pool.vaultKey === VaultKey.CometVault && vaultPosition === VaultPosition.None) {
     return (
       <>
         <Pool.BaseCell role="cell" flex={['1 0 50px', '1 0 50px', '2 0 100px', '2 0 100px', '1 0 120px']}>
@@ -203,3 +203,4 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
 }
 
 export default AutoAprCell
+

@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 const CandleChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -158,3 +158,4 @@ const CandleChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = (props
 }
 
 export default CandleChartLoaderSVG
+

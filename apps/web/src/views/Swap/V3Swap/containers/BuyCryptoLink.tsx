@@ -1,7 +1,7 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@cometswap/sdk'
 import { memo } from 'react'
-import { Row, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Row, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 import InternalLink from 'components/Links'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -31,3 +31,4 @@ export const BuyCryptoLink = memo(function BuyCryptoInstruction({ currency }: Pr
     </Row>
   )
 })
+

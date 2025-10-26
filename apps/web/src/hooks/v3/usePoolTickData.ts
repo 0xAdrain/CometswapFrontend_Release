@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { FeeAmount, Pool, tickToPrice } from '@pancakeswap/v3-sdk'
+import { Currency } from '@cometswap/sdk'
+import { FeeAmount, Pool, tickToPrice } from '@cometswap/v3-sdk'
 import { useMemo } from 'react'
 
 import { getActiveTick } from 'utils/getActiveTick'
@@ -130,3 +130,4 @@ export function usePoolActiveLiquidity(
     }
   }, [currencyA, currencyB, activeTick, pool, ticks, isLoading, error])
 }
+

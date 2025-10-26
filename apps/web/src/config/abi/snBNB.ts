@@ -587,3 +587,4 @@ export const snBnbABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+

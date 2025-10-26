@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Token } from '@pancakeswap/sdk'
-import { bscTokens, ethereumTokens, zksyncTokens } from '@pancakeswap/tokens'
+import { ChainId } from '@cometswap/chains'
+import { Token } from '@cometswap/sdk'
+import { bscTokens, ethereumTokens, zksyncTokens } from '@cometswap/tokens'
 import { arbitrumWarningTokens } from 'config/constants/warningTokens/arbitrumWarningTokens'
 import { baseWarningTokens } from 'config/constants/warningTokens/baseWarningTokens'
 import { bscWarningTokens } from 'config/constants/warningTokens/bscWarningTokens'
@@ -50,3 +50,4 @@ const SwapWarningTokens = <WarningTokenList>{
 }
 
 export default SwapWarningTokens
+

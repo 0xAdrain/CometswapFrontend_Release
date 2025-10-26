@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, ButtonProps, Flex } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Box, ButtonProps, Flex } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
-import { VaultPosition, getVaultPosition } from 'utils/cakePool'
-import AddCakeButton from '../Buttons/AddCakeButton'
+import { VaultPosition, getVaultPosition } from 'utils/cometPool'
+import AddCometButton from '../Buttons/AddCometButton'
 import ExtendButton from '../Buttons/ExtendDurationButton'
 import { LockedActionsPropsType } from '../types'
 import AfterLockedActions from './AfterLockedActions'
@@ -43,7 +43,7 @@ const LockedActions: React.FC<React.PropsWithChildren<LockedActionsPropsType & B
     return (
       <Flex>
         <Box width="100%" mr="4px">
-          <AddCakeButton
+          <AddCometButton
             variant={variant || 'primary'}
             lockEndTime={lockEndTime ?? ''}
             lockStartTime={lockStartTime}
@@ -84,3 +84,4 @@ const LockedActions: React.FC<React.PropsWithChildren<LockedActionsPropsType & B
 }
 
 export default LockedActions
+

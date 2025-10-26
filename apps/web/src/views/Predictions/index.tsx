@@ -1,5 +1,5 @@
-import { PredictionsChartView } from '@pancakeswap/prediction'
-import { useMatchBreakpoints, useModal } from '@pancakeswap/uikit'
+import { PredictionsChartView } from '@cometswap/prediction'
+import { useMatchBreakpoints, useModal } from '@cometswap/uikit'
 import { useAccountLocalEventListener } from 'hooks/useAccountLocalEventListener'
 import { useEffect, useRef } from 'react'
 import { useChartView, useIsChartPaneOpen } from 'state/predictions/hooks'
@@ -77,3 +77,4 @@ const Predictions = () => {
 }
 
 export default Predictions
+

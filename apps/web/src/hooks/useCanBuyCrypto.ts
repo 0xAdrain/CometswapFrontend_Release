@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useMemo } from 'react'
 
 const SUPPORTED_ONRAMP_TOKENS = {
-  [ChainId.BSC]: ['BNB', 'CAKE', 'USDT', 'USDC'],
+  [ChainId.BSC]: ['BNB', 'COMET', 'USDT', 'USDC'],
   [ChainId.ETHEREUM]: ['ETH', 'USDT', 'USDC', 'DAI', 'WBTC'],
   [ChainId.POLYGON_ZKEVM]: ['ETH'],
   [ChainId.ZKSYNC]: ['ETH'],
@@ -18,7 +18,8 @@ interface Params {
 
 export function useCanBuyCrypto({ currencySymbol, chainId }: Params) {
   return useMemo(
-    () => !!currencySymbol && !!chainId && SUPPORTED_ONRAMP_TOKENS[chainId]?.includes(currencySymbol), // check CAKE with BSC only
+    () => !!currencySymbol && !!chainId && SUPPORTED_ONRAMP_TOKENS[chainId]?.includes(currencySymbol), // check COMETwith BSC only
     [currencySymbol, chainId],
   )
 }
+

@@ -1,4 +1,4 @@
-import { Text, TextProps } from '@pancakeswap/uikit'
+import { Text, TextProps } from '@cometswap/uikit'
 
 export interface PercentProps extends TextProps {
   value: number | undefined
@@ -13,10 +13,11 @@ const Percent: React.FC<React.PropsWithChildren<PercentProps>> = ({ value, ...re
 
   return (
     <Text {...rest} color={isNegative ? 'failure' : 'success'}>
-      {isNegative ? '↓' : '↑'}
+      {isNegative ? '-' : '+'}
       {Math.abs(value).toFixed(2)}%
     </Text>
   )
 }
 
 export default Percent
+

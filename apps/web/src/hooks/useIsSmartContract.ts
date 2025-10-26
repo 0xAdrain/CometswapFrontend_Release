@@ -27,3 +27,4 @@ export const useIsSmartContract = (address?: Address): boolean => {
 
   return !!data
 }
+

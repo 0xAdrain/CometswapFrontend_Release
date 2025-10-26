@@ -1,8 +1,8 @@
 {
-  "name": "@pancakeswap/chains",
+  "name": "@cometswap/chains",
   "license": "MIT",
   "version": "0.4.6",
-  "description": "The single source of truth for Pancakeswap chain-related information",
+  "description": "The single source of truth for Cometswap chain-related information",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.mjs",
@@ -11,11 +11,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "https://github.com/cometswap/comet-frontend.git",
     "directory": "packages/chains"
   },
   "keywords": [
-    "pancakeswap",
+    "cometswap",
     "chain"
   ],
   "exports": {

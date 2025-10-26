@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow, no-await-in-loop, no-constant-condition, no-console */
-import { Currency } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/smart-router'
+import { Currency } from '@cometswap/sdk'
+import { Pool } from '@cometswap/smart-router'
 import { useMemo, useCallback } from 'react'
 
 import {
@@ -110,6 +110,30 @@ function commonPoolsHookCreator({ useV3Pools }: FactoryOptions) {
 
     const loading = v2Loading || v3Loading || stableLoading
     const syncing = v2Syncing || v3Syncing || stableSyncing
+    
+    // 添加详细日志
+    console.log('🏊 [useCommonPools] Pool data summary:', {
+      currencyA: currencyA?.symbol,
+      currencyB: currencyB?.symbol,
+      chainId: currencyA?.chainId || currencyB?.chainId,
+      v2Pools: v2Pools?.length || 0,
+      v3Pools: v3Pools?.length || 0,
+      stablePools: stablePools?.length || 0,
+      totalPools: poolsData?.[0]?.length || 0,
+      loading: {
+        v2Loading,
+        v3Loading,
+        stableLoading,
+        overall: loading
+      },
+      blockNumbers: {
+        v2: v2BlockNumber,
+        v3: v3BlockNumber,
+        stable: stableBlockNumber,
+        consistent: consistentBlockNumber
+      }
+    })
+    
     return {
       refresh,
       pools: poolsData?.[0],
@@ -134,3 +158,4 @@ export const useCommonPoolsLite = commonPoolsHookCreator({
   key: 'useCommonPoolsLite',
   useV3Pools: useV3CandidatePoolsWithoutTicks,
 })
+

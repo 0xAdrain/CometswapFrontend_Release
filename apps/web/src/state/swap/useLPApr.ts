@@ -1,4 +1,4 @@
-import { ERC20Token } from '@pancakeswap/sdk'
+import { ERC20Token } from '@cometswap/sdk'
 import { useQuery } from '@tanstack/react-query'
 import { SLOW_INTERVAL } from 'config/constants'
 import { chainIdToExplorerInfoChainName, explorerApiClient } from 'state/info/api/client'
@@ -51,3 +51,4 @@ export const useLPApr = (
 
   return poolData ?? (poolApr ? { lpApr: parseFloat(poolApr.lpApr) * 100 } : undefined)
 }
+

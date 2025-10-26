@@ -1,5 +1,5 @@
 import { encodeFunctionData, Hex } from 'viem'
-import { BigintIsh, CurrencyAmount, ONE, Token, validateAndParseAddress, ZERO } from '@pancakeswap/sdk'
+import { BigintIsh, CurrencyAmount, ONE, Token, validateAndParseAddress, ZERO } from '@cometswap/sdk'
 import invariant from 'tiny-invariant'
 import { ADDRESS_ZERO } from './constants'
 import { Position } from './entities'
@@ -282,7 +282,7 @@ export abstract class MasterChefV3 {
 
     const calldatas: Hex[] = []
 
-    // harvest pendingCake
+    // harvest pendingveComet
     calldatas.push(
       encodeFunctionData({
         abi: MasterChefV3.ABI,

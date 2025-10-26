@@ -21,7 +21,7 @@ const applyNodeDataToLotteriesGraphResponse = (
         startTime: nodeRound.startTime,
         status: nodeRound.status,
         id: nodeRound.lotteryId.toString(),
-        ticketPrice: nodeRound.priceTicketInCake,
+        ticketPrice: nodeRound.priceTicketInveComet,
         totalTickets: '',
         totalUsers: '',
         winningTickets: '',
@@ -96,3 +96,4 @@ const getLotteriesData = async (currentLotteryId: string): Promise<LotteryRoundG
 }
 
 export default getLotteriesData
+

@@ -1,6 +1,6 @@
-import { GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@pancakeswap/gauges'
-import { useTranslation } from '@pancakeswap/localization'
-import { Percent } from '@pancakeswap/sdk'
+import { GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@cometswap/gauges'
+import { useTranslation } from '@cometswap/localization'
+import { Percent } from '@cometswap/sdk'
 import {
   AutoColumn,
   Box,
@@ -13,8 +13,8 @@ import {
   Skeleton,
   Tag,
   Text,
-} from '@pancakeswap/uikit'
-import formatLocalisedCompactNumber, { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import formatLocalisedCompactNumber, { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
@@ -283,3 +283,4 @@ export function GaugeCardItem({ data, locked, totalGaugesWeight, selected, selec
     </CardItemContainer>
   )
 }
+

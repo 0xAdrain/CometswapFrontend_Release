@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import { PropsWithChildren, ReactNode, memo } from 'react'
-import { Box, Text } from '@pancakeswap/uikit'
+import { Box, Text } from '@cometswap/uikit'
 
 interface Props extends SpaceProps {
   title: ReactNode
@@ -28,3 +28,4 @@ export const CardSection = memo(function CardSection({ title, children, ...props
     </Section>
   )
 })
+

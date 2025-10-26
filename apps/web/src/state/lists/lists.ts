@@ -1,4 +1,4 @@
-import { createListsAtom, createTokenListReducer, NEW_LIST_STATE } from '@pancakeswap/token-lists/react'
+import { createListsAtom, createTokenListReducer, NEW_LIST_STATE } from '@cometswap/token-lists/react'
 import { DEFAULT_ACTIVE_LIST_URLS, DEFAULT_LIST_OF_LISTS, UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
 
 export const initialState = {
@@ -15,3 +15,4 @@ export const initialState = {
 const listReducer = createTokenListReducer(initialState, DEFAULT_LIST_OF_LISTS, DEFAULT_ACTIVE_LIST_URLS)
 
 export const { listsAtom, useListState, useListStateReady } = createListsAtom('listv4', listReducer, initialState)
+

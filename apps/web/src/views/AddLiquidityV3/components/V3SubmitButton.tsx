@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import { AutoColumn, Button } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount } from '@cometswap/sdk'
+import { AutoColumn, Button } from '@cometswap/uikit'
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ApprovalState } from 'hooks/useApproveCallback'
@@ -126,3 +126,4 @@ export function V3SubmitButton({
 
   return buttons
 }
+

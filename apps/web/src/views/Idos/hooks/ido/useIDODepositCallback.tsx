@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import type { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import type { Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -64,8 +64,8 @@ export const useIDODepositCallback = () => {
             })
           }
 
-          console.log('signature', signature)
-          console.log('expireAt', expireAt)
+          // console.log('signature', signature)
+          // console.log('expireAt', expireAt)
 
           if (!signature || !expireAt) {
             throw new W3WSignError('Invalid signature or expiredAt')
@@ -117,3 +117,4 @@ export const useIDODepositCallback = () => {
     isPending,
   }
 }
+

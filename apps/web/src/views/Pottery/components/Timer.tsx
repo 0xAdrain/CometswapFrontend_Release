@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { styled } from 'styled-components'
-import { Flex, Heading, Text } from '@pancakeswap/uikit'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { Flex, Heading, Text } from '@cometswap/uikit'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 
 const FlexGap = styled(Flex)<{ gap: string }>`
   gap: ${({ gap }) => gap};
@@ -69,3 +69,4 @@ export const LockTimer: React.FC<React.PropsWithChildren<{ lockTime: number }>> 
 
   return <Timer secondsRemaining={secondsRemaining} text={t('until the next pot lock')} />
 }
+

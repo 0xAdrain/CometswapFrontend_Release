@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { HooksIcon, OptionProps } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { HooksIcon, OptionProps } from '@cometswap/uikit'
 import { useMemo } from 'react'
 import { ClammIcon } from 'views/LandingV4/components/Icons/ClammIcon'
 import { LbammIcon } from 'views/LandingV4/components/Icons/LbammIcon'
@@ -67,3 +67,4 @@ export const useSelectorConfig = (): SelectorConfigProps[] => {
 
   return options
 }
+

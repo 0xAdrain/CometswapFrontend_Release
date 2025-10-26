@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Progress, Text } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Progress, Text } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import _mergeWith from 'lodash/mergeWith'
 import { useMemo } from 'react'
 import { WeightedVoteState } from 'views/Voting/Proposal/VoteType/types'
@@ -65,3 +65,4 @@ export const WeightedVoteResults: React.FC<WeightedVoteResultsProps> = ({ choice
     </>
   )
 }
+

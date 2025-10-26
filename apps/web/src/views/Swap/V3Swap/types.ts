@@ -1,4 +1,4 @@
-import { ConfirmModalState } from '@pancakeswap/widgets-internal'
+import { ConfirmModalState } from '@cometswap/widgets-internal'
 
 export enum ConfirmModalStateV1 {
   REVIEWING,
@@ -35,3 +35,4 @@ export type CommitButtonProps = {
   beforeCommit?: () => void
   afterCommit?: () => void
 }
+

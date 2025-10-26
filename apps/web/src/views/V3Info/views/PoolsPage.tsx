@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Heading } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Heading } from '@cometswap/uikit'
 import Page from 'components/Layout/Page'
 import { useMemo } from 'react'
 import PoolTable from '../components/PoolTable'
@@ -43,3 +43,4 @@ const PoolsOverview: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default PoolsOverview
+

@@ -1,8 +1,8 @@
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import BigNumber from 'bignumber.js'
 import { Dispatch, SetStateAction } from 'react'
 import { DeserializedLockedVaultUser } from 'state/types'
-import { VaultPosition, VaultPositionParams } from 'utils/cakePool'
+import { VaultPosition, VaultPositionParams } from 'utils/cometPool'
 
 type VoidFn = () => void
 
@@ -161,3 +161,4 @@ export interface LockDurationFieldPropsType {
 export interface LockedStakingApyPropsType {
   userData?: DeserializedLockedVaultUser
 }
+

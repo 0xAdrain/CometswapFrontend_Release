@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { getGauges } from './constants/config/getGauges'
 import { GaugeConfig } from './types'
 

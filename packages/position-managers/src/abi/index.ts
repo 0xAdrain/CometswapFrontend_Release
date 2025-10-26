@@ -1,3 +1,3 @@
 export * from './positionManagerAdapter'
-export * from './positionManagerVeBCakeWrapper'
+export * from './positionManagerBveCometWrapper'
 export * from './positionManagerWrapper'

@@ -1,12 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { TokenList, Version } from '@pancakeswap/token-lists'
+import { useTranslation } from '@cometswap/localization'
+import { TokenList, Version } from '@cometswap/token-lists'
 import {
   acceptListUpdate,
   disableList,
   enableList,
   removeList,
   useFetchListCallback,
-} from '@pancakeswap/token-lists/react'
+} from '@cometswap/token-lists/react'
 import {
   AutoColumn,
   Button,
@@ -19,10 +19,10 @@ import {
   Toggle,
   useConfirm,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { ListLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { ListLogo } from '@cometswap/widgets-internal'
 
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
+import uriToHttp from '@cometswap/utils/uriToHttp'
 import Card from 'components/Card'
 import { MULTI_CHAIN_LIST_URLS, UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
 import { useAtomValue } from 'jotai'
@@ -227,8 +227,8 @@ function ManageLists({
         }
 
         if (l1 && l2) {
-          // Always make PancakeSwap list in top.
-          const keyword = 'pancakeswap'
+          // Always make CometSwap list in top.
+          const keyword = 'cometswap'
           if (!l1.name.toLowerCase().includes(keyword) && l2.name.toLowerCase().includes(keyword)) {
             return 1
           }
@@ -336,3 +336,4 @@ function ManageLists({
 }
 
 export default ManageLists
+

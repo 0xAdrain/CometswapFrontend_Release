@@ -2,7 +2,7 @@ export const masterChefV2ABI = [
   {
     inputs: [
       { internalType: 'contract IMasterChef', name: '_MASTER_CHEF', type: 'address' },
-      { internalType: 'contract IBEP20', name: '_CAKE', type: 'address' },
+      { internalType: 'contract IBEP20', name: '_COMET', type: 'address' },
       { internalType: 'uint256', name: '_MASTER_PID', type: 'uint256' },
       { internalType: 'address', name: '_burnAdmin', type: 'address' },
     ],
@@ -92,7 +92,7 @@ export const masterChefV2ABI = [
       { indexed: false, internalType: 'uint256', name: 'regularFarmRate', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'specialFarmRate', type: 'uint256' },
     ],
-    name: 'UpdateCakeRate',
+    name: 'UpdateveCometRate',
     type: 'event',
   },
   {
@@ -101,7 +101,7 @@ export const masterChefV2ABI = [
       { indexed: true, internalType: 'uint256', name: 'pid', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
       { indexed: false, internalType: 'uint256', name: 'lpSupply', type: 'uint256' },
-      { indexed: false, internalType: 'uint256', name: 'accCakePerShare', type: 'uint256' },
+      { indexed: false, internalType: 'uint256', name: 'accveCometPerShare', type: 'uint256' },
     ],
     name: 'UpdatePool',
     type: 'event',
@@ -127,7 +127,7 @@ export const masterChefV2ABI = [
   },
   {
     inputs: [],
-    name: 'ACC_CAKE_PRECISION',
+    name: 'ACC_COMET_PRECISION',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -141,21 +141,21 @@ export const masterChefV2ABI = [
   },
   {
     inputs: [],
-    name: 'CAKE',
+    name: 'COMET',
     outputs: [{ internalType: 'contract IBEP20', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
-    name: 'CAKE_RATE_TOTAL_PRECISION',
+    name: 'COMET_RATE_TOTAL_PRECISION',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
-    name: 'MASTERCHEF_CAKE_PER_BLOCK',
+    name: 'MASTERCHEF_COMET_PER_BLOCK',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -209,7 +209,7 @@ export const masterChefV2ABI = [
   },
   {
     inputs: [{ internalType: 'bool', name: '_withUpdate', type: 'bool' }],
-    name: 'burnCake',
+    name: 'burnveComet',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -311,7 +311,7 @@ export const masterChefV2ABI = [
       { internalType: 'uint256', name: '_pid', type: 'uint256' },
       { internalType: 'address', name: '_user', type: 'address' },
     ],
-    name: 'pendingCake',
+    name: 'pendingveComet',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -320,7 +320,7 @@ export const masterChefV2ABI = [
     inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     name: 'poolInfo',
     outputs: [
-      { internalType: 'uint256', name: 'accCakePerShare', type: 'uint256' },
+      { internalType: 'uint256', name: 'accveCometPerShare', type: 'uint256' },
       { internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
       { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
       { internalType: 'uint256', name: 'totalBoostedShare', type: 'uint256' },
@@ -401,7 +401,7 @@ export const masterChefV2ABI = [
       { internalType: 'uint256', name: '_specialFarmRate', type: 'uint256' },
       { internalType: 'bool', name: '_withUpdate', type: 'bool' },
     ],
-    name: 'updateCakeRate',
+    name: 'updateveCometRate',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -412,7 +412,7 @@ export const masterChefV2ABI = [
     outputs: [
       {
         components: [
-          { internalType: 'uint256', name: 'accCakePerShare', type: 'uint256' },
+          { internalType: 'uint256', name: 'accveCometPerShare', type: 'uint256' },
           { internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
           { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
           { internalType: 'uint256', name: 'totalBoostedShare', type: 'uint256' },
@@ -468,3 +468,4 @@ export const masterChefV2ABI = [
     type: 'function',
   },
 ] as const
+

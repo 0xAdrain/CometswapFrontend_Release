@@ -1,4 +1,4 @@
-# @pancakeswap/v2-sdk
+# @cometswap/v2-sdk
 
 ## 1.0.6
 
@@ -6,32 +6,32 @@
 
 - Updated dependencies [176eb10]
 - Updated dependencies [176eb10]
-  - @pancakeswap/swap-sdk-core@1.3.0
-  - @pancakeswap/swap-sdk-evm@1.0.6
+  - @cometswap/swap-sdk-core@1.3.0
+  - @cometswap/swap-sdk-evm@1.0.6
 
 ## 1.0.5
 
 ### Patch Changes
 
 - Updated dependencies [f551e5e]
-  - @pancakeswap/swap-sdk-core@1.2.0
-  - @pancakeswap/swap-sdk-evm@1.0.5
+  - @cometswap/swap-sdk-core@1.2.0
+  - @cometswap/swap-sdk-evm@1.0.5
 
 ## 1.0.4
 
 ### Patch Changes
 
 - Updated dependencies [9a16780]
-  - @pancakeswap/chains@0.4.6
-  - @pancakeswap/swap-sdk-evm@1.0.4
+  - @cometswap/chains@0.4.6
+  - @cometswap/swap-sdk-evm@1.0.4
 
 ## 1.0.3
 
 ### Patch Changes
 
 - Updated dependencies [b9c91d1]
-  - @pancakeswap/chains@0.4.5
-  - @pancakeswap/swap-sdk-evm@1.0.3
+  - @cometswap/chains@0.4.5
+  - @cometswap/swap-sdk-evm@1.0.3
 
 ## 1.0.2
 
@@ -39,15 +39,15 @@
 
 - edc3f30: Upgrade viem and wagmi
 - Updated dependencies [edc3f30]
-  - @pancakeswap/swap-sdk-evm@1.0.2
+  - @cometswap/swap-sdk-evm@1.0.2
 
 ## 1.0.1
 
 ### Patch Changes
 
 - Updated dependencies [edf4640]
-  - @pancakeswap/chains@0.4.4
-  - @pancakeswap/swap-sdk-evm@1.0.1
+  - @cometswap/chains@0.4.4
+  - @cometswap/swap-sdk-evm@1.0.1
 
 ## 1.0.0
 
@@ -58,4 +58,4 @@
 ### Patch Changes
 
 - Updated dependencies [e99c216]
-  - @pancakeswap/swap-sdk-evm@1.0.0
+  - @cometswap/swap-sdk-evm@1.0.0

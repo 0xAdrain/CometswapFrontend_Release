@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 import React from 'react'
 
 export const Step2Icon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
@@ -12,3 +12,4 @@ export const Step2Icon: React.FC<React.PropsWithChildren<SvgProps>> = (props) =>
     </Svg>
   )
 }
+

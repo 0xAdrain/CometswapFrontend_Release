@@ -1,7 +1,7 @@
-import { Box, Message, MessageText, Flex } from '@pancakeswap/uikit'
-import { ChainLogo } from '@pancakeswap/widgets-internal'
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/sdk'
+import { Box, Message, MessageText, Flex } from '@cometswap/uikit'
+import { ChainLogo } from '@cometswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId } from '@cometswap/sdk'
 import { useCallback, MouseEvent } from 'react'
 import styled from 'styled-components'
 
@@ -60,3 +60,4 @@ export function SwitchNetworkTips({ ifoChainId }: Props) {
     </StyledMessage>
   )
 }
+

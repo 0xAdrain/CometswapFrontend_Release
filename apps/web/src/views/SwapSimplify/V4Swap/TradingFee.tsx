@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
-import { FlexGap, SkeletonV2, Text } from '@pancakeswap/uikit'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
+import { useTranslation } from '@cometswap/localization'
+import { PriceOrder } from '@cometswap/price-api-sdk'
+import { FlexGap, SkeletonV2, Text } from '@cometswap/uikit'
+import { formatAmount } from '@cometswap/utils/formatFractions'
 import { memo, useMemo } from 'react'
 import { isXOrder } from 'views/Swap/utils'
 import { useIsWrapping, useSlippageAdjustedAmounts } from '../../Swap/V3Swap/hooks'
@@ -45,3 +45,4 @@ export const TradingFee: React.FC<TradingFeeProps> = memo(({ order, loaded }) =>
     </FlexGap>
   )
 })
+

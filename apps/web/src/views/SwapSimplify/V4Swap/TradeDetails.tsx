@@ -1,10 +1,10 @@
-import { SmartRouter } from '@pancakeswap/smart-router'
-import { AutoColumn, Box } from '@pancakeswap/uikit'
+import { SmartRouter } from '@cometswap/smart-router'
+import { AutoColumn, Box } from '@cometswap/uikit'
 import { memo, useMemo } from 'react'
 
 import { styled } from 'styled-components'
 
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
+import { PriceOrder } from '@cometswap/price-api-sdk'
 import { MevSwapDetail } from 'views/Mev/MevSwapDetail'
 import { isClassicOrder, isXOrder } from 'views/Swap/utils'
 import { useIsWrapping, useSlippageAdjustedAmounts } from '../../Swap/V3Swap/hooks'
@@ -75,3 +75,4 @@ export const TradeDetails = memo(function TradeDetails({ loaded, order }: Props)
     </AdvancedDetailsFooter>
   )
 })
+

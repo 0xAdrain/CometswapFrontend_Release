@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
-import { Flex, TrophyGoldIcon } from '@pancakeswap/uikit'
+import { Flex, TrophyGoldIcon } from '@cometswap/uikit'
 import { useGetIsClaimable } from 'state/predictions/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import CollectWinningsButton from '../CollectWinningsButton'
 
 interface CollectWinningsOverlayProps {
@@ -51,3 +51,4 @@ const CollectWinningsOverlay: React.FC<React.PropsWithChildren<CollectWinningsOv
 }
 
 export default CollectWinningsOverlay
+

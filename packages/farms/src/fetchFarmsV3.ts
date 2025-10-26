@@ -1,13 +1,13 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Currency, ERC20Token } from '@pancakeswap/sdk'
-import { CAKE } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { tickToPrice } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { Currency, ERC20Token } from '@cometswap/sdk'
+import { COMET} from '@cometswap/tokens'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { tickToPrice } from '@cometswap/v3-sdk'
 import BN from 'bignumber.js'
 import chunk from 'lodash/chunk'
 import { Address, PublicClient, formatUnits, getAddress } from 'viem'
 
-import { getCurrencyListUsdPrice } from '@pancakeswap/price-api-sdk'
+import { getCurrencyListUsdPrice } from '@cometswap/price-api-sdk'
 import { DEFAULT_COMMON_PRICE, PriceHelper } from '../constants/common'
 import { getFarmApr } from './apr'
 import { FarmV3SupportedChainId, supportedChainIdV3 } from './const'
@@ -38,7 +38,7 @@ export async function farmV3FetchFarms({
   totalAllocPoint: bigint
   commonPrice: CommonPrice
 }) {
-  const [poolInfos, cakePrice, v3PoolData] = await Promise.all([
+  const [poolInfos, cometPrice, v3PoolData] = await Promise.all([
     fetchPoolInfos(farms, chainId, provider, masterChefAddress),
     provider({ chainId: ChainId.BSC })
       .readContract({
@@ -91,7 +91,7 @@ export async function farmV3FetchFarms({
     ...commonPrice,
   }
 
-  const farmsWithPrice = getFarmsPrices(farmsData, cakePrice, combinedCommonPrice)
+  const farmsWithPrice = getFarmsPrices(farmsData, cometPrice, combinedCommonPrice)
 
   return farmsWithPrice
 }
@@ -99,7 +99,7 @@ export async function farmV3FetchFarms({
 const masterchefV3Abi = [
   {
     inputs: [],
-    name: 'latestPeriodCakePerSecond',
+    name: 'latestPeriodveCometPerSecond',
     outputs: [
       {
         internalType: 'uint256',
@@ -115,7 +115,7 @@ const masterchefV3Abi = [
     name: 'poolInfo',
     outputs: [
       { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
-      { internalType: 'contract IPancakeV3Pool', name: 'v3Pool', type: 'address' },
+      { internalType: 'contract ICometV3Pool', name: 'v3Pool', type: 'address' },
       { internalType: 'address', name: 'token0', type: 'address' },
       { internalType: 'address', name: 'token1', type: 'address' },
       { internalType: 'uint24', name: 'fee', type: 'uint24' },
@@ -152,9 +152,9 @@ export async function fetchMasterChefV3Data({
 }): Promise<{
   poolLength: bigint
   totalAllocPoint: bigint
-  latestPeriodCakePerSecond: bigint
+  latestPeriodveCometPerSecond: bigint
 }> {
-  const [poolLength, totalAllocPoint, latestPeriodCakePerSecond] = await provider({ chainId }).multicall({
+  const [poolLength, totalAllocPoint, latestPeriodveCometPerSecond] = await provider({ chainId }).multicall({
     contracts: [
       {
         address: masterChefAddress,
@@ -169,7 +169,7 @@ export async function fetchMasterChefV3Data({
       {
         address: masterChefAddress,
         abi: masterchefV3Abi,
-        functionName: 'latestPeriodCakePerSecond',
+        functionName: 'latestPeriodveCometPerSecond',
       },
     ],
     allowFailure: false,
@@ -178,7 +178,7 @@ export async function fetchMasterChefV3Data({
   return {
     poolLength,
     totalAllocPoint,
-    latestPeriodCakePerSecond,
+    latestPeriodveCometPerSecond,
   }
 }
 
@@ -241,7 +241,7 @@ const fetchPoolInfos = async (
   }
 }
 
-export const getCakeApr = (poolWeight: string, activeTvlUSD: BN, cakePriceUSD: string, cakePerSecond: string) => {
+export const getveCometApr = (poolWeight: string, activeTvlUSD: BN, cakePriceUSD: string, cakePerSecond: string) => {
   return getFarmApr({
     poolWeight,
     tvlUsd: activeTvlUSD,
@@ -302,7 +302,7 @@ const v3PoolAbi = [
   {
     inputs: [],
     name: 'lmPool',
-    outputs: [{ internalType: 'contract IPancakeV3LmPool', name: '', type: 'address' }],
+    outputs: [{ internalType: 'contract ICometV3LmPool', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -471,18 +471,18 @@ export function getFarmsPrices(
       tokenPriceBusd = new BN(commonPrice[farm.token.address])
     }
 
-    // try price via CAKE
+    // try price via COMET
     if (
       tokenPriceBusd.isZero() &&
-      farm.token.chainId in CAKE &&
-      farm.token.equals(CAKE[farm.token.chainId as keyof typeof CAKE])
+      farm.token.chainId in COMET&&
+      farm.token.equals(COMET[farm.token.chainId as keyof typeof COMET])
     ) {
       tokenPriceBusd = new BN(cakePriceUSD)
     }
     if (
       quoteTokenPriceBusd.isZero() &&
-      farm.quoteToken.chainId in CAKE &&
-      farm.quoteToken.equals(CAKE[farm.quoteToken.chainId as keyof typeof CAKE])
+      farm.quoteToken.chainId in COMET&&
+      farm.quoteToken.equals(COMET[farm.quoteToken.chainId as keyof typeof COMET])
     ) {
       quoteTokenPriceBusd = new BN(cakePriceUSD)
     }

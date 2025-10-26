@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 import { BatchMulticallConfigs, ChainMap } from '../types'
 
@@ -71,4 +71,5 @@ export const BATCH_MULTICALL_CONFIGS: ChainMap<BatchMulticallConfigs> = {
   [ChainId.SEPOLIA]: DEFAULT,
   [ChainId.ARBITRUM_SEPOLIA]: DEFAULT,
   [ChainId.BASE_SEPOLIA]: DEFAULT,
+  [ChainId.XLAYER_TESTNET]: DEFAULT,
 }

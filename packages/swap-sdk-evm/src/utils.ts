@@ -3,7 +3,6 @@ import invariant from 'tiny-invariant'
 import warning from 'tiny-warning'
 
 // warns if addresses are not checksummed
-// eslint-disable-next-line consistent-return
 export function validateAndParseAddress(address: string): Address {
   try {
     const checksummedAddress = getAddress(address)
@@ -11,5 +10,7 @@ export function validateAndParseAddress(address: string): Address {
     return checksummedAddress
   } catch (error) {
     invariant(false, `${address} is not a valid address.`)
+    // This line will never be reached due to invariant throwing, but TypeScript needs it
+    throw new Error(`${address} is not a valid address.`)
   }
 }

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { useQuery } from '@tanstack/react-query'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import Image from 'next/legacy/image'
@@ -76,7 +76,7 @@ const Stats = () => {
         fontSize={isMobile ? '20px' : '32px'}
         mb={isMobile ? '32px' : '48px'}
       >
-        {t('PancakeSwap’s Unstoppable Expansion')}
+        {t('CometSwap’s Unstoppable Expansion')}
       </Text>
       <Flex
         justifyContent="center"
@@ -131,3 +131,4 @@ const Stats = () => {
 }
 
 export default Stats
+

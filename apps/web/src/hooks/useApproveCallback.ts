@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, ERC20Token } from '@pancakeswap/sdk'
-import { MaxUint256 } from '@pancakeswap/swap-sdk-core'
-import { useToast } from '@pancakeswap/uikit'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, ERC20Token } from '@cometswap/sdk'
+import { MaxUint256 } from '@cometswap/swap-sdk-core'
+import { useToast } from '@cometswap/uikit'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { usePaymaster } from 'hooks/usePaymaster'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useHasPendingApproval, useTransactionAdder } from 'state/transactions/hooks'
@@ -280,3 +280,4 @@ export function useApproveCallbackFromInputCurrencyAmount(currencyAmountIn: Curr
 
   return useApproveCallback(currencyAmountIn, gelatoLibrary?.erc20OrderRouter?.address ?? undefined)
 }
+

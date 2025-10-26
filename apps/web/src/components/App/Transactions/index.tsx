@@ -1,4 +1,4 @@
-import { HistoryIcon, useModal, IconButton } from '@pancakeswap/uikit'
+import { HistoryIcon, useModal, IconButton } from '@cometswap/uikit'
 import TransactionsModal from './TransactionsModal'
 
 const Transactions = () => {
@@ -13,3 +13,4 @@ const Transactions = () => {
 }
 
 export default Transactions
+

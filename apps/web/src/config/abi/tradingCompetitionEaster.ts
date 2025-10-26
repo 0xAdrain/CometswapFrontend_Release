@@ -3,7 +3,7 @@ export const tradingCompetitionEasterABI = [
     inputs: [
       {
         internalType: 'address',
-        name: '_pancakeProfileAddress',
+        name: '_cometProfileAddress',
         type: 'address',
       },
       {
@@ -260,10 +260,10 @@ export const tradingCompetitionEasterABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfile',
+    name: 'cometProfile',
     outputs: [
       {
-        internalType: 'contract IPancakeProfile',
+        internalType: 'contract ICometProfile',
         name: '',
         type: 'address',
       },
@@ -471,3 +471,4 @@ export const tradingCompetitionEasterABI = [
     type: 'function',
   },
 ] as const
+

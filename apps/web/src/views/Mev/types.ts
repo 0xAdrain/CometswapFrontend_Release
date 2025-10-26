@@ -8,3 +8,4 @@ export interface RPCResponse {
   jsonrpc: string
   result: number
 }
+

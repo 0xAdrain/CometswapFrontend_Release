@@ -28,3 +28,4 @@ export function useSlowRefreshEffect(effect: BlockEffectCallback, deps?: Depende
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(effect.bind(null, data), [data, ...(deps || EMPTY_ARRAY)])
 }
+

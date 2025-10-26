@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Token } from '@pancakeswap/sdk'
-import { ButtonMenu, ButtonMenuItem, ModalBody } from '@pancakeswap/uikit'
+import { Token } from '@cometswap/sdk'
+import { ButtonMenu, ButtonMenuItem, ModalBody } from '@cometswap/uikit'
 import { styled } from 'styled-components'
-import { TokenList } from '@pancakeswap/token-lists'
-import { useTranslation } from '@pancakeswap/localization'
+import { TokenList } from '@cometswap/token-lists'
+import { useTranslation } from '@cometswap/localization'
 import ManageLists from './ManageLists'
 import ManageTokens from './ManageTokens'
 import { CurrencyModalView } from './types'
@@ -47,3 +47,4 @@ export default function Manage({
     </ModalBody>
   )
 }
+

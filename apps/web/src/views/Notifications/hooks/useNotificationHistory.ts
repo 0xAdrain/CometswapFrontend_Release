@@ -49,3 +49,4 @@ const useNotificationHistory = (subscriptionId: string | undefined) => {
 }
 
 export default useNotificationHistory
+

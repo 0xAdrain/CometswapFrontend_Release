@@ -1,6 +1,6 @@
-import { useDebounce } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { BunnyPlaceholderIcon, Card, CardHeader, Flex, Skeleton, Text } from '@pancakeswap/uikit'
+import { useDebounce } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { BunnyPlaceholderIcon, Card, CardHeader, Flex, Skeleton, Text } from '@cometswap/uikit'
 import { useEffect, useState } from 'react'
 import { useAppDispatch } from 'state'
 import { usePotteryData } from 'state/pottery/hook'
@@ -127,3 +127,4 @@ const AllHistoryCard = () => {
 }
 
 export default AllHistoryCard
+

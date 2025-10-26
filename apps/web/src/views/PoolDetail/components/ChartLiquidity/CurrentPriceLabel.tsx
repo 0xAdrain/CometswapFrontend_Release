@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Box, Text } from '@cometswap/uikit'
 import { RowFixed } from 'components/Layout/Row'
 import useTheme from 'hooks/useTheme'
 import { PoolInfo } from 'state/farmsV4/state/type'
@@ -61,3 +61,4 @@ export const CurrentPriceLabel: React.FC<CurrentPriceLabelProps> = ({ data, x = 
   }
   return null
 }
+

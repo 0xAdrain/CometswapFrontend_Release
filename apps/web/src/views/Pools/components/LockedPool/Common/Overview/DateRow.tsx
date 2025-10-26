@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Flex, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text, Flex, TooltipText, useTooltip } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 
@@ -14,7 +14,7 @@ interface PropsType {
 const DateRow: React.FC<React.PropsWithChildren<PropsType>> = ({ title, value, color }) => {
   const { t } = useTranslation()
   const tooltipContent = t(
-    'You will be able to withdraw the staked CAKE and profit only when the staking position is unlocked, i.e. when the staking period ends.',
+    'You will be able to withdraw the staked COMETand profit only when the staking position is unlocked, i.e. when the staking period ends.',
   )
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 
@@ -34,3 +34,4 @@ const DateRow: React.FC<React.PropsWithChildren<PropsType>> = ({ title, value, c
 }
 
 export default DateRow
+

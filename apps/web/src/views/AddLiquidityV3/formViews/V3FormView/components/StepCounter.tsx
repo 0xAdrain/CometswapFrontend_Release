@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Price, Token } from '@pancakeswap/swap-sdk-core'
-import { AddCircleIcon, AutoColumn, AutoRow, IconButton, RemoveIcon } from '@pancakeswap/uikit'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
-import { NumericalInput } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Price, Token } from '@cometswap/swap-sdk-core'
+import { AddCircleIcon, AutoColumn, AutoRow, IconButton, RemoveIcon } from '@cometswap/uikit'
+import { FeeAmount } from '@cometswap/v3-sdk'
+import { NumericalInput } from '@cometswap/widgets-internal'
 import { LightGreyCard } from 'components/Card'
 import { tryParsePrice } from 'hooks/v3/utils'
 import { ReactNode, useCallback, useEffect, useState } from 'react'
@@ -130,3 +130,4 @@ const StepCounter = ({
 }
 
 export default StepCounter
+

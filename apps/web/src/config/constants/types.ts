@@ -1,8 +1,8 @@
-import { Campaign, CampaignType, TranslatableText } from '@pancakeswap/achievements'
-import { ChainId } from '@pancakeswap/chains'
-import type { FarmConfigBaseProps, SerializedFarmConfig, SerializedFarmPublicData } from '@pancakeswap/farms'
-import { Currency, CurrencyAmount, ERC20Token, Percent, Price, Token, Trade, TradeType } from '@pancakeswap/sdk'
-import { LegacyTradeWithStableSwap as TradeWithStableSwap } from '@pancakeswap/smart-router/legacy-router'
+import { Campaign, CampaignType, TranslatableText } from '@cometswap/achievements'
+import { ChainId } from '@cometswap/chains'
+import type { FarmConfigBaseProps, SerializedFarmConfig, SerializedFarmPublicData } from '@cometswap/farms'
+import { Currency, CurrencyAmount, ERC20Token, Percent, Price, Token, Trade, TradeType } from '@cometswap/sdk'
+import { LegacyTradeWithStableSwap as TradeWithStableSwap } from '@cometswap/smart-router/legacy-router'
 import BigNumber from 'bignumber.js'
 import { Address } from 'viem'
 
@@ -82,7 +82,7 @@ export interface LotteryTicket {
 export interface LotteryTicketClaimData {
   ticketsWithUnclaimedRewards: LotteryTicket[]
   allWinningTickets: LotteryTicket[]
-  cakeTotal: BigNumber
+  cometTotal: BigNumber
   roundId: string
 }
 
@@ -179,3 +179,4 @@ export enum Bound {
 }
 
 export type UnsafeCurrency = Currency | ERC20Token | null | undefined
+

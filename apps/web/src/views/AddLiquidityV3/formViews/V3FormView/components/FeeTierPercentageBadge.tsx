@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Tag } from '@pancakeswap/uikit'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Tag } from '@cometswap/uikit'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { PoolState } from 'hooks/v3/types'
 import { useFeeTierDistribution } from 'hooks/v3/useFeeTierDistribution'
 
@@ -37,3 +37,4 @@ export function FeeTierPercentageBadge({
     </Tag>
   )
 }
+

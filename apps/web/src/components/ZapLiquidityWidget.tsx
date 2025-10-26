@@ -1,6 +1,6 @@
-import '@kyberswap/pancake-liquidity-widgets/dist/style.css'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
+import '@cometswap/liquidity-widgets/dist/style.css'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
 import {
   Flex,
   InfoFilledIcon,
@@ -10,8 +10,8 @@ import {
   ModalV2,
   useModal,
   useToast,
-} from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/v3-sdk'
+} from '@cometswap/uikit'
+import { Pool } from '@cometswap/v3-sdk'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import dynamic from 'next/dynamic'
@@ -39,7 +39,7 @@ interface ZapLiquidityProps {
 }
 
 const LiquidityWidget = dynamic(
-  () => import('@kyberswap/pancake-liquidity-widgets').then((mod) => mod.LiquidityWidget),
+  () => import('@cometswap/liquidity-widgets').then((mod) => mod.LiquidityWidget),
   { ssr: false },
 )
 
@@ -243,10 +243,11 @@ export const ZapLiquidityWidget: React.FC<ZapLiquidityProps> = ({
             onAmountChange={handleAmountChange}
             onDismiss={handleOnDismiss}
             onTxSubmit={handleTransaction}
-            source="pancakeswap"
+            source="cometswap"
           />
         </ModalContainer>
       </ModalV2>
     </>
   )
 }
+

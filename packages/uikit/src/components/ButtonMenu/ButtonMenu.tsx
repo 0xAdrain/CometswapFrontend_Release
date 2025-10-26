@@ -28,7 +28,7 @@ const StyledButtonMenu = styled.div.withConfig({
     border: 1px solid ${getBorderColor(props)};
     `;
   }}
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.radii.default}; /* CometSwap: 使用更新的圆角值 8px */
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
   align-items: center;

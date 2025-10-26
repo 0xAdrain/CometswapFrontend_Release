@@ -1,7 +1,7 @@
-import { getStepperStatus } from 'views/PancakeSquad/components/EventStepsSection/utils'
-import { SaleStatusEnum } from 'views/PancakeSquad/types'
+import { getStepperStatus } from 'views/CometSquad/components/EventStepsSection/utils'
+import { SaleStatusEnum } from 'views/CometSquad/types'
 
-describe('PancakeSquad/EventStepsSection/utils/getStepperStatus', () => {
+describe('CometSquad/EventStepsSection/utils/getStepperStatus', () => {
   it('Should return future text', () => {
     // Given
     const eventStatus = []
@@ -65,3 +65,4 @@ describe('PancakeSquad/EventStepsSection/utils/getStepperStatus', () => {
     expect(result).toEqual('current')
   })
 })
+

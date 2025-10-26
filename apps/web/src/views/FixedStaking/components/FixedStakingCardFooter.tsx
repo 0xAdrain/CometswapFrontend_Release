@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ExpandableLabel, Flex } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { ExpandableLabel, Flex } from '@cometswap/uikit'
 import { ReactNode, useState } from 'react'
 import { styled } from 'styled-components'
 
@@ -34,3 +34,4 @@ export function FixedStakingCardFooter({ children }: { children: ReactNode }) {
     </Flex>
   )
 }
+

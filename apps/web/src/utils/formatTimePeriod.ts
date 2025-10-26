@@ -1,4 +1,4 @@
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 
 /**
  * @param {Object} periods Return value from getTimePeriods
@@ -22,3 +22,4 @@ const formatTimePeriod = (periods: ReturnType<typeof getTimePeriods>, excludePer
 }
 
 export default formatTimePeriod
+

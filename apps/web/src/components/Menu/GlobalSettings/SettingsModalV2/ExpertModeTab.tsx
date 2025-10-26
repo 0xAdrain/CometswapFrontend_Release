@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Checkbox, Flex, Message, Text, usePrompt } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, Checkbox, Flex, Message, Text, usePrompt } from '@cometswap/uikit'
 import { memo, useCallback, useState } from 'react'
 import { TabContent } from './TabContent'
 
@@ -74,3 +74,4 @@ export const ExpertModeTab = memo(
     )
   },
 )
+

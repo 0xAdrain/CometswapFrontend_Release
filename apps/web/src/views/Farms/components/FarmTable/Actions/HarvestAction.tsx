@@ -1,21 +1,20 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Skeleton, useModal, useToast } from '@pancakeswap/uikit'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Skeleton, useModal, useToast } from '@cometswap/uikit'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useERC20 } from 'hooks/useContract'
 import { useAppDispatch } from 'state'
-import { fetchBCakeWrapperUserDataAsync, fetchFarmUserDataAsync } from 'state/farms'
+import { fetchBCometWrapperUserDataAsync, fetchFarmUserDataAsync } from 'state/farms'
 
-import { FarmWithStakedValue } from '@pancakeswap/farms'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { FarmWithStakedValue } from '@cometswap/farms'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useCallback } from 'react'
-import MultiChainHarvestModal from 'views/Farms/components/MultiChainHarvestModal'
-import useHarvestFarm, { useBCakeHarvestFarm } from '../../../hooks/useHarvestFarm'
+import useHarvestFarm, { useBCometHarvestFarm } from '../../../hooks/useHarvestFarm'
 import useProxyStakedActions from '../../YieldBooster/hooks/useProxyStakedActions'
 
 const { FarmTableHarvestAction } = FarmWidget.FarmTable
@@ -23,7 +22,7 @@ const { FarmTableHarvestAction } = FarmWidget.FarmTable
 interface HarvestActionProps extends FarmWithStakedValue {
   userDataReady: boolean
   onReward?: <TResult>() => Promise<TResult>
-  proxyCakeBalance?: number
+  proxyCometBalance?: number
   onDone?: () => void
   style?: React.CSSProperties
 }
@@ -32,15 +31,15 @@ export const ProxyHarvestActionContainer = ({ children, ...props }) => {
   const { lpAddress } = props
   const lpContract = useERC20(lpAddress)
 
-  const { onReward, onDone, proxyCakeBalance } = useProxyStakedActions(props.pid, lpContract)
+  const { onReward, onDone, proxyCometBalance } = useProxyStakedActions(props.pid, lpContract)
 
-  return children({ ...props, onReward, proxyCakeBalance, onDone })
+  return children({ ...props, onReward, proxyCometBalance, onDone })
 }
 
 export const HarvestActionContainer = ({ children, ...props }) => {
   const { onReward } = useHarvestFarm(props.pid)
-  const { onReward: onRewardBCake } = useBCakeHarvestFarm(props.bCakeWrapperAddress ?? '0x')
-  const isBooster = Boolean(props.bCakeWrapperAddress)
+  const { onReward: onRewardBComet } = useBCometHarvestFarm(props.bCometWrapperAddress ?? '0x')
+  const isBooster = Boolean(props.bCometWrapperAddress)
   const { account, chainId } = useAccountActiveChain()
   const dispatch = useAppDispatch()
 
@@ -49,16 +48,16 @@ export const HarvestActionContainer = ({ children, ...props }) => {
       dispatch(fetchFarmUserDataAsync({ account, pids: [props.pid], chainId }))
     }
   }, [account, dispatch, chainId, props.pid])
-  const onBCakeDone = useCallback(() => {
+  const onBCometDone = useCallback(() => {
     if (account && chainId) {
-      dispatch(fetchBCakeWrapperUserDataAsync({ account, pids: [props.pid], chainId }))
+      dispatch(fetchBCometWrapperUserDataAsync({ account, pids: [props.pid], chainId }))
     }
   }, [account, dispatch, chainId, props.pid])
 
   return children({
     ...props,
-    onDone: isBooster ? onBCakeDone : onDone,
-    onReward: isBooster ? onRewardBCake : onReward,
+    onDone: isBooster ? onBCometDone : onDone,
+    onReward: isBooster ? onRewardBComet : onReward,
   })
 }
 
@@ -69,21 +68,21 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   vaultPid,
   userData,
   userDataReady,
-  proxyCakeBalance,
+  proxyCometBalance,
   lpSymbol,
   onReward,
   onDone,
-  bCakeUserData,
-  bCakeWrapperAddress,
+  bCometUserData,
+  bCometWrapperAddress,
   style,
 }) => {
   const { t } = useTranslation()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const earningsBigNumber = bCakeWrapperAddress
-    ? new BigNumber(bCakeUserData?.earnings ?? 0)
+  const earningsBigNumber = bCometWrapperAddress
+    ? new BigNumber(bCometUserData?.earnings ?? 0)
     : new BigNumber(userData?.earnings ?? 0)
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   let earnings = BIG_ZERO
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toFixed(5, BigNumber.ROUND_DOWN) : <Skeleton width={60} />
@@ -91,16 +90,13 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
     earnings = getBalanceAmount(earningsBigNumber)
-    earningsBusd = earnings.multipliedBy(cakePrice).toNumber()
+    earningsBusd = earnings.multipliedBy(cometPrice).toNumber()
     displayBalance = earnings.toFixed(5, BigNumber.ROUND_DOWN)
   }
 
   const onClickHarvestButton = () => {
-    if (vaultPid) {
-      onPresentCrossChainHarvestModal()
-    } else {
-      handleHarvest()
-    }
+    // Cross-chain harvest removed - always use direct harvest
+    handleHarvest()
   }
 
   const handleHarvest = async () => {
@@ -109,23 +105,14 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'COMET' })}
         </ToastDescriptionWithTx>,
       )
       onDone?.()
     }
   }
 
-  const [onPresentCrossChainHarvestModal] = useModal(
-    <MultiChainHarvestModal
-      pid={pid}
-      token={token}
-      lpSymbol={lpSymbol}
-      quoteToken={quoteToken}
-      earningsBigNumber={earningsBigNumber}
-      earningsBusd={earningsBusd}
-    />,
-  )
+  // Cross-chain harvest modal removed - single chain only
 
   return (
     <FarmTableHarvestAction
@@ -134,7 +121,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
       displayBalance={displayBalance}
       pendingTx={pendingTx}
       userDataReady={userDataReady}
-      proxyCakeBalance={proxyCakeBalance}
+      proxyCometBalance={proxyCometBalance}
       disabled={earnings.eq(0) || pendingTx || !userDataReady}
       handleHarvest={onClickHarvestButton}
       style={style}
@@ -143,3 +130,4 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
 }
 
 export default HarvestAction
+

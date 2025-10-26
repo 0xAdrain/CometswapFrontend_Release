@@ -10,11 +10,11 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import { CORS_ALLOW, handleCors, wrapCorsHeader } from '@pancakeswap/worker-utils'
+import { CORS_ALLOW, handleCors, wrapCorsHeader } from '@cometswap/worker-utils'
 import BigNumber from 'bignumber.js'
 import { Router } from 'itty-router'
 import { error, json, missing } from 'itty-router-extras'
-import { fetchCakePrice, saveFarms } from './handler'
+import { fetchCometPrice, saveFarms } from './handler'
 import { requireChainId } from './helper'
 import { FarmKV } from './kv'
 import { handler as v3Handler } from './v3'
@@ -26,12 +26,12 @@ BigNumber.config({
 
 const router = Router()
 
-router.get('/price/cake', async (_, event) => {
+router.get('/price/comet', async (_, event) => {
   const cache = caches.default
   const cacheResponse = await cache.match(event.request)
   let response
   if (!cacheResponse) {
-    const price = await fetchCakePrice()
+    const price = await fetchCometPrice()
     response = json(
       { price, updatedAt: new Date().toISOString() },
       {

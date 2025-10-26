@@ -1,3 +1,4 @@
-import { Gauge } from '@pancakeswap/gauges'
+import { Gauge } from '@cometswap/gauges'
 
 export type RowData = Gauge & { locked?: boolean }
+

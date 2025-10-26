@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@cometswap/uikit'
 import { styled, DefaultTheme } from 'styled-components'
 import memoize from 'lodash/memoize'
 
@@ -113,3 +113,4 @@ const CardHeader: React.FC<React.PropsWithChildren<CardHeaderProps>> = ({ status
 }
 
 export default CardHeader
+

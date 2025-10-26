@@ -1,7 +1,7 @@
-import { Currency, CurrencyAmount, TradeType, Fraction } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, TradeType, Fraction } from '@cometswap/sdk'
 import { Address } from 'viem'
 import invariant from 'tiny-invariant'
-import { formatFraction } from '@pancakeswap/utils/formatFractions'
+import { formatFraction } from '@cometswap/utils/formatFractions'
 import memoize from 'lodash/memoize.js'
 
 import { Pool } from '../../v3-router/types'

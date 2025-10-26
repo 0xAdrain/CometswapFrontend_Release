@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PredictionStatus, REWARD_RATE } from '@pancakeswap/prediction'
+import { useTranslation } from '@cometswap/localization'
+import { PredictionStatus, REWARD_RATE } from '@cometswap/prediction'
 import {
   Box,
   ChevronDownIcon,
@@ -11,7 +11,7 @@ import {
   Text,
   WaitIcon,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useState } from 'react'
@@ -53,7 +53,7 @@ const HistoricalBet: React.FC<React.PropsWithChildren<BetProps>> = ({ bet }) => 
       </Text>
       <Text>
         {t(
-          'The Locked Price & Closed Price are exactly the same (within 8 decimals), so neither side wins. All funds entered into UP and DOWN positions will go to the weekly CAKE burn.',
+          'The Locked Price & Closed Price are exactly the same (within 8 decimals), so neither side wins. All funds entered into UP and DOWN positions will go to the weekly COMETburn.',
         )}
       </Text>
     </>,
@@ -200,3 +200,4 @@ const HistoricalBet: React.FC<React.PropsWithChildren<BetProps>> = ({ bet }) => 
 }
 
 export default HistoricalBet
+

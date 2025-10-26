@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Box, Button, Flex, Message, MessageText, ModalV2, PreTitle, useModalV2 } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Box, Button, Flex, Message, MessageText, ModalV2, PreTitle, useModalV2 } from '@cometswap/uikit'
 import Divider from 'components/Divider'
 import dayjs from 'dayjs'
 import { ReactNode, useCallback, useMemo } from 'react'
@@ -142,3 +142,4 @@ export function FixedStakingModal({
     <ConnectWalletButton />
   )
 }
+

@@ -1,5 +1,5 @@
 import { SUPPORT_FARMS } from 'config/constants/supportChains'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useContext } from 'react'
 import { FarmsV3Context, FarmsV3PageLayout } from 'views/Farms'
 import FarmCard from 'views/Farms/components/FarmCard/FarmCard'
@@ -12,7 +12,7 @@ import { useAccount } from 'wagmi'
 
 export const ProxyFarmCardContainer = ({ farm }) => {
   const { address: account } = useAccount()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const { proxyFarm, shouldUseProxyFarm } = useContext(YieldBoosterStateContext)
   const finalFarm = shouldUseProxyFarm ? proxyFarm : farm
@@ -22,10 +22,10 @@ export const ProxyFarmCardContainer = ({ farm }) => {
       key={finalFarm.pid}
       farm={finalFarm}
       displayApr={getDisplayApr(
-        finalFarm.bCakeWrapperAddress && finalFarm?.bCakePublicData?.rewardPerSecond === 0 ? 0 : finalFarm.apr,
+        finalFarm.bveCometWrapperAddress && finalFarm?.bveCometPublicData?.rewardPerSecond === 0 ? 0 : finalFarm.apr,
         finalFarm.lpRewardsApr,
       )}
-      cakePrice={cakePrice}
+      cometPrice={cometPrice}
       account={account}
       removed={false}
     />
@@ -35,7 +35,7 @@ export const ProxyFarmCardContainer = ({ farm }) => {
 const FarmsPage = () => {
   const { address: account } = useAccount()
   const { chosenFarmsMemoized } = useContext(FarmsV3Context)
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   return (
     <>
@@ -51,10 +51,10 @@ const FarmsPage = () => {
                 key={`${farm.pid}-${farm.version}`}
                 farm={farm}
                 displayApr={getDisplayApr(
-                  farm.bCakeWrapperAddress && farm?.bCakePublicData?.rewardPerSecond === 0 ? 0 : farm.apr,
+                  farm.bveCometWrapperAddress && farm?.bveCometPublicData?.rewardPerSecond === 0 ? 0 : farm.apr,
                   farm.lpRewardsApr,
                 )}
-                cakePrice={cakePrice}
+                cometPrice={cometPrice}
                 account={account}
                 removed={false}
               />
@@ -66,7 +66,7 @@ const FarmsPage = () => {
           <FarmV3Card
             key={`${farm.pid}-${farm.version}`}
             farm={farm}
-            cakePrice={cakePrice}
+            cometPrice={cometPrice}
             account={account}
             removed={false}
           />
@@ -81,3 +81,4 @@ FarmsPage.Layout = FarmsV3PageLayout
 FarmsPage.chains = SUPPORT_FARMS
 
 export default FarmsPage
+

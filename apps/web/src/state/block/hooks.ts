@@ -8,7 +8,7 @@ import {
   useInitialBlockNumber,
   useInitialBlockTimestamp as useInitBlockTimestamp,
   getInitialBlockTimestampQueryKey,
-} from '@pancakeswap/wagmi'
+} from '@cometswap/wagmi'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useCallback } from 'react'
@@ -111,3 +111,4 @@ export const useInitialBlockTimestamp = (chainId?: number): number => {
   })
   return initialBlockTimestamp
 }
+

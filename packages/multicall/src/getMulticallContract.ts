@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { Address, PublicClient, getContract } from 'viem'
 
 import { iMulticallABI } from './abis/IMulticall'
@@ -12,7 +12,7 @@ type Params = {
 export function getMulticallContract({ chainId, client }: Params) {
   const address = MULTICALL_ADDRESS[chainId]
   if (!address) {
-    throw new Error(`PancakeMulticall not supported on chain ${chainId}`)
+    throw new Error(`CometMulticall not supported on chain ${chainId}`)
   }
 
   return getContract({ abi: iMulticallABI, address, client: client as PublicClient })

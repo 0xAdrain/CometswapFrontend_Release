@@ -1,6 +1,6 @@
-import { Button, Grid, Message, MessageText, Modal, Text } from '@pancakeswap/uikit'
+import { Button, Grid, Message, MessageText, Modal, Text } from '@cometswap/uikit'
 import { useLocalNetworkChain } from 'hooks/useActiveChainId'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useSwitchNetwork, useSwitchNetworkLocal } from 'hooks/useSwitchNetwork'
 import Image from 'next/image'
 import useAuth from 'hooks/useAuth'
@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { getActiveMenuItem, getActiveSubMenuItem } from 'components/Menu/utils'
 import { useAccount } from 'wagmi'
 import { useMemo } from 'react'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { viemClients } from 'utils/viem'
 import Dots from '../Loader/Dots'
 
@@ -98,3 +98,4 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
     </Modal>
   )
 }
+

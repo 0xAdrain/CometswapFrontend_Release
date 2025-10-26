@@ -1,8 +1,8 @@
-import { Link, Text, BscScanIcon } from '@pancakeswap/uikit'
-import { ChainId } from '@pancakeswap/chains'
+import { Link, Text, BscScanIcon } from '@cometswap/uikit'
+import { ChainId } from '@cometswap/chains'
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
-import { useTranslation } from '@pancakeswap/localization'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@cometswap/localization'
+import truncateHash from '@cometswap/utils/truncateHash'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
 interface DescriptionWithTxProps {
@@ -33,3 +33,4 @@ const DescriptionWithTx: React.FC<React.PropsWithChildren<DescriptionWithTxProps
 }
 
 export default DescriptionWithTx
+

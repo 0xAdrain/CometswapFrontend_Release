@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ArrowForwardIcon, Box, Link, Text } from '@pancakeswap/uikit'
-import { VerticalDivider } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { ArrowForwardIcon, Box, Link, Text } from '@cometswap/uikit'
+import { VerticalDivider } from '@cometswap/widgets-internal'
 
 export const Step3 = () => {
   const { t } = useTranslation()
@@ -17,7 +17,7 @@ export const Step3 = () => {
         {t('trading and gas fees on Ethereum and Arbitrum with')}
       </Text>
       <Text bold as="span" color="#FCC631" fontSize={['12px', '12px', '14px']}>
-        PancakeSwapX
+        CometSwapX
       </Text>
       <Link
         external
@@ -25,7 +25,7 @@ export const Step3 = () => {
         verticalAlign="baseline"
         showExternalIcon
         fontSize={['12px', '12px', '14px']}
-        href="https://pancakeswap.finance/swap?utm_source=Website&utm_medium=homepage&utm_campaign=PCSX&utm_id=PCSX"
+        href="https://cometswap.finance/swap?utm_source=Website&utm_medium=homepage&utm_campaign=PCSX&utm_id=PCSX"
       >
         {t('Swap Now')}
         <ArrowForwardIcon
@@ -51,10 +51,11 @@ export const Step3 = () => {
         display="inline !important"
         showExternalIcon
         fontSize={['12px', '12px', '14px']}
-        href="https://blog.pancakeswap.finance/articles/introducing-pancake-swap-x-zero-fee-and-gasless-swaps-on-ethereum-and-arbitrum?utm_source=Website&utm_medium=homepage&utm_campaign=PCSX&utm_id=PCSX"
+        href="https://blog.cometswap.finance/articles/introducing-comet-swap-x-zero-fee-and-gasless-swaps-on-ethereum-and-arbitrum?utm_source=Website&utm_medium=homepage&utm_campaign=PCSX&utm_id=PCSX"
       >
         {t('Learn More')}
       </Link>
     </Box>
   )
 }
+

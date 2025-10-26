@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { Card, CardBody, Flex, PlayCircleOutlineIcon, Text, useTooltip } from '@pancakeswap/uikit'
-import { formatBigInt, formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { Card, CardBody, Flex, PlayCircleOutlineIcon, Text, useTooltip } from '@cometswap/uikit'
+import { formatBigInt, formatNumber } from '@cometswap/utils/formatBalance'
 import RoundProgress from 'components/RoundProgress'
 import { useEffect, useMemo, useState } from 'react'
 import { getHasRoundFailed } from 'state/predictions/helpers'
@@ -188,3 +188,4 @@ export const AILiveRoundCard: React.FC<React.PropsWithChildren<AILiveRoundCardPr
     </Card>
   )
 }
+

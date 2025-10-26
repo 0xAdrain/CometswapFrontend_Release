@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Button,
@@ -15,7 +15,7 @@ import {
   Toggle,
   useModalV2,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 
 import { styled } from 'styled-components'
 import { AddMevRpcButton } from './AddMevRpcButton'
@@ -43,7 +43,7 @@ export const MevToggle: React.FC = () => {
   const { isMEVEnabled } = useIsMEVEnabled()
   const { isOpen, onOpen, onDismiss } = useModalV2()
   const { tooltip, tooltipVisible, targetRef } = useTooltip(
-    t('PancakeSwap MEV Guard protects you from frontrunning and sandwich attacks when Swapping.'),
+    t('CometSwap MEV Guard protects you from frontrunning and sandwich attacks when Swapping.'),
     {
       placement: 'auto',
       trigger: 'hover',
@@ -102,7 +102,7 @@ export const MevModal: React.FC<{ isOpen: boolean; onSuccess?: () => void } & In
             <Box width="100%">
               <Text width="100%">{t('Add automatically on BNB Smart Chain:')}</Text>
               <Text bold width="100%">
-                {t('PancakeSwap MEV Guard')}
+                {t('CometSwap MEV Guard')}
               </Text>
             </Box>
             <ModalImg src={getImageUrl('swap-toggle-modal.png')} alt="swap-toggle-modal" />
@@ -118,3 +118,4 @@ export const MevModal: React.FC<{ isOpen: boolean; onSuccess?: () => void } & In
     </ModalV2>
   )
 }
+

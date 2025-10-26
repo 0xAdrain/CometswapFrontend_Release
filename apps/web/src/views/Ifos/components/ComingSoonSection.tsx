@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
-import { Card, Text, BunnyPlaceholderIcon, Box, IfoGenericIfoCard, BunnyKnownPlaceholder } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, Text, BunnyPlaceholderIcon, Box, IfoGenericIfoCard, BunnyKnownPlaceholder } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import styled from 'styled-components'
-import { PoolIds } from '@pancakeswap/ifos'
+import { PoolIds } from '@cometswap/ifos'
 
 import { CardsWrapper } from './IfoCardStyles'
 import { StyledCardBody } from './IfoFoldableCard/index'
@@ -86,3 +86,4 @@ export default function ComingSoonSection() {
     </Card>
   )
 }
+

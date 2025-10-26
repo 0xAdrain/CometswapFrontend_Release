@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 export const SUPPORTED_CHAIN_IDS = [
   ChainId.BSC,
@@ -9,6 +9,7 @@ export const SUPPORTED_CHAIN_IDS = [
   ChainId.POLYGON_ZKEVM,
   ChainId.ZKSYNC,
   ChainId.LINEA,
+  ChainId.XLAYER_TESTNET,
 ] as const
 
 export type SupportedChainId = (typeof SUPPORTED_CHAIN_IDS)[number]

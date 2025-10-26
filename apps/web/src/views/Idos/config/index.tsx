@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Trans } from '@pancakeswap/localization'
+import { ChainId } from '@cometswap/chains'
+import { Trans } from '@cometswap/localization'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { ReactNode } from 'react'
 import type { Address } from 'viem'
@@ -37,3 +37,4 @@ export const idoConfigDict: Record<string, IDOConfig> = {
     ),
   },
 }
+

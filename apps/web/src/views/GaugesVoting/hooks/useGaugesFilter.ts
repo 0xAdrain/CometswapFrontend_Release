@@ -1,6 +1,6 @@
-import { ChainId, chainNames } from '@pancakeswap/chains'
-import { GAUGES_SUPPORTED_CHAIN_IDS, GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@pancakeswap/gauges'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { ChainId, chainNames } from '@cometswap/chains'
+import { GAUGES_SUPPORTED_CHAIN_IDS, GAUGE_TYPE_NAMES, Gauge, GaugeType } from '@cometswap/gauges'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import {
   parseAsArrayOf,
   parseAsNumberLiteral,
@@ -10,8 +10,8 @@ import {
   useQueryStates,
 } from 'nuqs'
 import { useCallback, useEffect, useState } from 'react'
-import { useDebounce } from '@pancakeswap/hooks'
-import { fetchPositionManager, PCSDuoTokenVaultConfig } from '@pancakeswap/position-managers'
+import { useDebounce } from '@cometswap/hooks'
+import { fetchPositionManager, PCSDuoTokenVaultConfig } from '@cometswap/position-managers'
 import fromPairs from 'lodash/fromPairs'
 import { Filter, FilterValue, Gauges, OptionsType, SortOptions } from '../components/GaugesFilter'
 import { getPositionManagerName } from '../utils'
@@ -274,3 +274,4 @@ export const useGaugesFilter = (fullGauges: Gauge[] | undefined) => {
     setSort,
   }
 }
+

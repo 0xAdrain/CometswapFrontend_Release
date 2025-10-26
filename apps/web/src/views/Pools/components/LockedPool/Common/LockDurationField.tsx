@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from 'react'
-import { Text, Flex, Button, Input, Box, Message, MessageText } from '@pancakeswap/uikit'
+import { Text, Flex, Button, Input, Box, Message, MessageText } from '@cometswap/uikit'
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import _toNumber from 'lodash/toNumber'
-import { ONE_WEEK_DEFAULT, MAX_LOCK_DURATION } from '@pancakeswap/pools'
+import { ONE_WEEK_DEFAULT, MAX_LOCK_DURATION } from '@cometswap/pools'
 import { secondsToWeeks, weeksToSeconds } from '../../utils/formatSecondsToWeeks'
 import { LockDurationFieldPropsType } from '../types'
 
@@ -123,3 +123,4 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
 }
 
 export default LockDurationField
+

@@ -1,10 +1,10 @@
-import { ChainId } from '@pancakeswap/chains'
-import { CAKE } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { useBalance, useReadContract } from '@pancakeswap/wagmi'
+import { ChainId } from '@cometswap/chains'
+import { COMET} from '@cometswap/tokens'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { useBalance, useReadContract } from '@cometswap/wagmi'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
-import { getVeCakeAddress } from 'utils/addressHelpers'
+import { getveCometAddress } from 'utils/addressHelpers'
 import { Address, erc20Abi } from 'viem'
 import { useAccount } from 'wagmi'
 import { useActiveChainId } from './useActiveChainId'
@@ -68,18 +68,19 @@ export const useGetNativeTokenBalance = () => {
   return { balance: data?.value ? BigInt(data.value) : 0n, fetchStatus: status, refresh: refetch }
 }
 
-export const useBSCCakeBalance = () => {
-  const { balance, fetchStatus } = useTokenBalance(CAKE[ChainId.BSC]?.address, true)
+export const useBSCveCometBalance = () => {
+  const { balance, fetchStatus } = useTokenBalance(COMET[ChainId.BSC]?.address, true)
 
   return { balance: BigInt(balance.toString()), fetchStatus }
 }
 
-// veCake only deploy on bsc/bscTestnet
-export const useVeCakeBalance = (targetChainId?: ChainId) => {
+// veComet only deploy on bsc/bscTestnet
+export const useVeCometBalance = (targetChainId?: ChainId) => {
   const { chainId } = useActiveChainId()
-  const { balance, fetchStatus } = useTokenBalance(getVeCakeAddress(targetChainId ?? chainId), false, targetChainId)
+  const { balance, fetchStatus } = useTokenBalance(getveCometAddress(targetChainId ?? chainId), false, targetChainId)
 
   return { balance, fetchStatus }
 }
 
 export default useTokenBalance
+

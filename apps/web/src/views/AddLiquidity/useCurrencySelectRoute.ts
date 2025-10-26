@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { CAKE, USDC } from '@pancakeswap/tokens'
+import { Currency } from '@cometswap/sdk'
+import { COMET, USDC } from '@cometswap/tokens'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useRouter } from 'next/router'
@@ -11,7 +11,7 @@ export const useCurrencySelectRoute = () => {
   const router = useRouter()
   const { chainId } = useActiveChainId()
   const [currencyIdA, currencyIdB] =
-    router.query.currency || (chainId ? [native.symbol, CAKE[chainId]?.address ?? USDC[chainId]?.address] : [])
+    router.query.currency || (chainId ? [native.symbol, COMET[chainId]?.address ?? USDC[chainId]?.address] : [])
 
   const handleCurrencyASelect = useCallback(
     (currencyA_: Currency) => {
@@ -47,3 +47,4 @@ export const useCurrencySelectRoute = () => {
     handleCurrencyBSelect,
   }
 }
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Heading, ModalBody, ModalCloseButton, ModalContainer, ModalHeader, ModalTitle } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Heading, ModalBody, ModalCloseButton, ModalContainer, ModalHeader, ModalTitle } from '@cometswap/uikit'
 import confetti from 'canvas-confetti'
 import { LotteryTicketClaimData } from 'config/constants/types'
 import delay from 'lodash/delay'
@@ -90,3 +90,4 @@ const ClaimPrizesModal: React.FC<React.PropsWithChildren<ClaimPrizesModalModalPr
 }
 
 export default ClaimPrizesModal
+

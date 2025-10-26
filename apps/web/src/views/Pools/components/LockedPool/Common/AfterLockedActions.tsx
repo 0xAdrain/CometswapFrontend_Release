@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Message, MessageText, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Message, MessageText, useMatchBreakpoints } from '@cometswap/uikit'
 import Trans from 'components/Trans'
 import { ReactNode, memo } from 'react'
-import { VaultPosition } from 'utils/cakePool'
-import { useIsMigratedToVeCake } from 'views/CakeStaking/hooks/useIsMigratedToVeCake'
+import { VaultPosition } from 'utils/cometPool'
+// Migration hook removed
 import WithdrawAllButton from '../Buttons/WithdrawAllButton'
 import { AfterLockedActionsPropsType } from '../types'
 
@@ -13,14 +13,14 @@ const msg: Record<VaultPosition, ReactNode> = {
   [VaultPosition.Locked]: null,
   [VaultPosition.LockedEnd]: (
     <Trans>
-      Extending or adding CAKE is not available for migrated positions. To get more veCAKE, withdraw from the unlocked
-      CAKE pool position, and add CAKE to veCAKE.
+      Extending or adding COMETis not available for migrated positions. To get more veCOMET, withdraw from the unlocked
+      COMETpool position, and add COMETto veCOMET.
     </Trans>
   ),
   [VaultPosition.AfterBurning]: (
     <Trans>
-      Extending or adding CAKE is not available for migrated positions. To get more veCAKE, withdraw from the unlocked
-      CAKE pool position, and add CAKE to veCAKE.
+      Extending or adding COMETis not available for migrated positions. To get more veCOMET, withdraw from the unlocked
+      COMETpool position, and add COMETto veCOMET.
     </Trans>
   ),
 }
@@ -33,7 +33,7 @@ const AfterLockedActions: React.FC<React.PropsWithChildren<AfterLockedActionsPro
   const { isDesktop } = useMatchBreakpoints()
   const isDesktopView = isInline && isDesktop
   const Container = isDesktopView ? Flex : Box
-  const isMigratedToVeCake = useIsMigratedToVeCake()
+  // Migration check removed
   const { t } = useTranslation()
 
   return (
@@ -64,14 +64,13 @@ const AfterLockedActions: React.FC<React.PropsWithChildren<AfterLockedActionsPro
       actionInline={isDesktopView}
     >
       <MessageText>
-        {isMigratedToVeCake
-          ? msg[position]
-          : t(
-              'The lock period has ended. To get more veCAKE, withdraw from the unlocked CAKE pool position, and add CAKE to veCAKE.',
-            )}
+        {t(
+          'The lock period has ended. To get more veCOMET, withdraw from the unlocked COMETpool position, and add COMETto veCOMET.',
+        )}
       </MessageText>
     </Message>
   )
 }
 
 export default memo(AfterLockedActions)
+

@@ -1,5 +1,5 @@
-import { PoolIds } from '@pancakeswap/ifos'
-import { BetPosition } from '@pancakeswap/prediction'
+import { PoolIds } from '@cometswap/ifos'
+import { BetPosition } from '@cometswap/prediction'
 
 export enum GTMEvent {
   EventTracking = 'eventTracking',
@@ -19,14 +19,14 @@ export enum GTMEvent {
   MenuClick = 'menuClick',
   StakePool = 'stakePool',
   PositionManagerAddLiquidity = 'positionManagerAddLiquidity',
-  LockCake = 'lockCake',
+  LockveComet = 'lockveComet',
   BuyLotteryTickets = 'buyLotteryTickets',
   FiatOnRampModalOpened = 'fiatOnRampModalOpened',
   PredictionBet = 'predictionBet',
   PredictionBetPlaced = 'predictionBetPlaced',
 
   // IFO
-  IFOGoToCakeStaking = 'ifoGoToCakeStaking',
+  IFOGoToveCometStaking = 'ifoGoToveCometStaking',
   IFOCommit = 'ifoCommit',
   IFOCommitTxnSent = 'ifoCommitTxnSent',
 
@@ -47,7 +47,7 @@ export enum GTMCategory {
   Web3WalletView = 'Web3WalletView',
   Pool = 'Pool',
   PositionManager = 'PositionManager',
-  CakeStaking = 'CakeStaking',
+  veCometStaking = 'veCometStaking',
   Lottery = 'Lottery',
   FiatOnRamp = 'FiatOnRamp',
   Prediction = 'Prediction',
@@ -74,7 +74,7 @@ export enum GTMAction {
   ClickEnablePoolButton = 'Click Enable Pool Button',
   ClickUnstakePoolButton = 'Click Unstake Pool Button',
   ClickAddLiquidityPositionManagerButton = 'Click Add Liquidity Position Manager Button',
-  ClickLockCakeButton = 'Click Lock CAKE Button',
+  ClickLockveCometButton = 'Click Lock COMETButton',
   ClickBuyLotteryTicketsButton = 'Click Buy Lottery Tickets Button',
   ClickFiatOnRampModalButton = 'Click Fiat On-Ramp Modal Button',
   ClickBetUpButton = 'Click Bet Up Button',
@@ -82,7 +82,7 @@ export enum GTMAction {
   PredictionBetPlaced = 'Prediction Bet Placed',
 
   // IFO
-  ClickGoToCakeStakingButton = 'Click Go To Cake Staking Button',
+  ClickGoToveCometStakingButton = 'Click Go To veComet Staking Button',
   ClickCommitPublicSale = 'Click Commit Button for Public Sale',
   ClickCommitBasicSale = 'Click Commit Button for Basic Sale',
   CommitTxnSentPublicSale = 'Commit Transaction Sent for Public Sale',
@@ -286,12 +286,12 @@ export const logGTMClickPositionManagerAddLiquidityEvent = (tokenPairAndVault?: 
   })
 }
 
-export const logGTMClickLockCakeEvent = () => {
-  console.info('---LockCake---')
+export const logGTMClickLockveCometEvent = () => {
+  console.info('---LockveComet---')
   window?.dataLayer?.push({
-    event: GTMEvent.LockCake,
-    action: GTMAction.ClickLockCakeButton,
-    category: GTMCategory.CakeStaking,
+    event: GTMEvent.LockveComet,
+    action: GTMAction.ClickLockveCometButton,
+    category: GTMCategory.veCometStaking,
   })
 }
 
@@ -334,11 +334,11 @@ export const logGTMPredictionBetPlacedEvent = (position: string) => {
   })
 }
 
-export const logGTMIfoGoToCakeStakingEvent = () => {
-  console.info('---IFOGoToCakeStaking---')
+export const logGTMIfoGoToveCometStakingEvent = () => {
+  console.info('---IFOGoToveCometStaking---')
   window?.dataLayer?.push({
-    event: GTMEvent.IFOGoToCakeStaking,
-    action: GTMAction.ClickGoToCakeStakingButton,
+    event: GTMEvent.IFOGoToveCometStaking,
+    action: GTMAction.ClickGoToveCometStakingButton,
     category: GTMCategory.IFO,
   })
 }
@@ -387,3 +387,4 @@ export const logGTMIdoConnectWalletEvent = (preTGE: boolean) => {
     category: GTMCategory.IDO,
   })
 }
+

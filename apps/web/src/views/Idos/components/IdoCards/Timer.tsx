@@ -1,7 +1,7 @@
-import { IfoStatus } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { IfoStatus } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Skeleton, Text } from '@cometswap/uikit'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 
@@ -115,3 +115,4 @@ const LiveTimer: React.FC<React.PropsWithChildren<Pick<Props, 'endTime' | 'ifoSt
 }
 
 export default LiveTimer
+

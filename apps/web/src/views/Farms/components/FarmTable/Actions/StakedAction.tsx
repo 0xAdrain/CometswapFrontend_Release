@@ -1,40 +1,41 @@
-import { ChainId } from '@pancakeswap/chains'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { NATIVE, WNATIVE } from '@pancakeswap/sdk'
-import { Flex, Text, useModal, useToast } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { formatLpBalance } from '@pancakeswap/utils/formatBalance'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { ChainId } from '@cometswap/chains'
+import { FarmWithStakedValue } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { NATIVE, WNATIVE } from '@cometswap/sdk'
+import { Flex, Text, useModal, useToast } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { formatLpBalance } from '@cometswap/utils/formatBalance'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import WalletModal, { WalletView } from 'components/Menu/UserMenu/WalletModal'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { BASE_ADD_LIQUIDITY_URL, DEFAULT_TOKEN_DECIMAL } from 'config'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useERC20 } from 'hooks/useContract'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useRouter } from 'next/router'
 import { useCallback, useContext, useMemo, useState } from 'react'
 import { useAppDispatch } from 'state'
-import { fetchBCakeWrapperUserDataAsync, fetchFarmUserDataAsync } from 'state/farms'
-import { pickFarmTransactionTx } from 'state/global/actions'
-import { CrossChainFarmStepType, FarmTransactionStatus } from 'state/transactions/actions'
-import { useCrossChainFarmPendingTransaction, useTransactionAdder } from 'state/transactions/hooks'
+import { fetchBCometWrapperUserDataAsync, fetchFarmUserDataAsync } from 'state/farms'
+// Cross-chain farm functionality removed
+
+import { useTransactionAdder } from 'state/transactions/hooks'
+import { FarmTransactionStatus, pickFarmTransactionTx } from 'state/transactions/actions'
 import { styled } from 'styled-components'
 import { logGTMClickStakeFarmConfirmEvent } from 'utils/customGTMEventTracking'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { Hash } from 'viem'
 import { useIsBloctoETH } from 'views/Farms'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
 
 import { useAccount } from 'wagmi'
 import useApproveFarm from '../../../hooks/useApproveFarm'
-import { useFirstTimeCrossFarming } from '../../../hooks/useFirstTimeCrossFarming'
-import useStakeFarms, { useBCakeStakeFarms } from '../../../hooks/useStakeFarms'
-import useUnstakeFarms, { useBCakeUnstakeFarms } from '../../../hooks/useUnstakeFarms'
+// Cross-chain farming hooks removed
+import useStakeFarms, { useBCometStakeFarms } from '../../../hooks/useStakeFarms'
+import useUnstakeFarms, { useBCometUnstakeFarms } from '../../../hooks/useUnstakeFarms'
 import { YieldBoosterStateContext } from '../../YieldBooster/components/ProxyFarmContainer'
 import useProxyStakedActions from '../../YieldBooster/hooks/useProxyStakedActions'
 import { YieldBoosterState } from '../../YieldBooster/hooks/useYieldBoosterState'
@@ -54,7 +55,7 @@ interface StackedActionProps extends FarmWithStakedValue {
   onApprove: () => Promise<Hash>
   isApproved: boolean
   shouldUseProxyFarm?: boolean
-  bCakeInfoSlot?: React.ReactElement
+  bCometInfoSlot?: React.ReactElement
 }
 
 export function useStakedActions(lpContract, pid, vaultPid) {
@@ -79,17 +80,17 @@ export function useStakedActions(lpContract, pid, vaultPid) {
   }
 }
 
-export function useStakedBCakeActions(bCakeWrapperAddress, lpContract, pid) {
+export function useStakedBCometActions(bCometWrapperAddress, lpContract, pid) {
   const { account, chainId } = useAccountActiveChain()
-  const { onStake } = useBCakeStakeFarms(bCakeWrapperAddress)
-  const { onUnstake } = useBCakeUnstakeFarms(bCakeWrapperAddress)
+  const { onStake } = useBCometStakeFarms(bCometWrapperAddress)
+  const { onUnstake } = useBCometUnstakeFarms(bCometWrapperAddress)
   const dispatch = useAppDispatch()
 
-  const { onApprove } = useApproveFarm(lpContract, chainId!, bCakeWrapperAddress)
+  const { onApprove } = useApproveFarm(lpContract, chainId!, bCometWrapperAddress)
 
   const onDone = useCallback(() => {
     if (account && chainId) {
-      dispatch(fetchBCakeWrapperUserDataAsync({ account, pids: [pid], chainId }))
+      dispatch(fetchBCometWrapperUserDataAsync({ account, pids: [pid], chainId }))
     }
   }, [account, pid, chainId, dispatch])
 
@@ -125,28 +126,28 @@ export const ProxyStakedContainer = ({ children, ...props }) => {
 
 export const StakedContainer = ({ children, ...props }) => {
   const { address: account } = useAccount()
-  const isBooster = Boolean(props.bCakeWrapperAddress)
+  const isBooster = Boolean(props.bCometWrapperAddress)
 
   const { lpAddress } = props
   const lpContract = useERC20(lpAddress)
   const { onStake, onUnstake, onApprove, onDone } = useStakedActions(lpContract, props.pid, props.vaultPid)
   const {
-    onStake: onBCakeWrapperStake,
-    onUnstake: onBCakeWrapperUnStake,
-    onApprove: onBCakeWrapperApprove,
-    onDone: onBCakeWrapperDone,
-  } = useStakedBCakeActions(props.bCakeWrapperAddress, lpContract, props.pid)
+    onStake: onBCometWrapperStake,
+    onUnstake: onBCometWrapperUnStake,
+    onApprove: onBCometWrapperApprove,
+    onDone: onBCometWrapperDone,
+  } = useStakedBCometActions(props.bCometWrapperAddress, lpContract, props.pid)
 
-  const { allowance } = (isBooster ? props.bCakeUserData : props.userData) || {}
+  const { allowance } = (isBooster ? props.bCometUserData : props.userData) || {}
 
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
   return children({
     ...props,
-    onStake: isBooster ? onBCakeWrapperStake : onStake,
-    onDone: isBooster ? onBCakeWrapperDone : onDone,
-    onUnstake: isBooster ? onBCakeWrapperUnStake : onUnstake,
-    onApprove: isBooster ? onBCakeWrapperApprove : onApprove,
+    onStake: isBooster ? onBCometWrapperStake : onStake,
+    onDone: isBooster ? onBCometWrapperDone : onDone,
+    onUnstake: isBooster ? onBCometWrapperUnStake : onUnstake,
+    onApprove: isBooster ? onBCometWrapperApprove : onApprove,
     isApproved,
   })
 }
@@ -168,38 +169,38 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   tokenAmountTotal,
   quoteTokenAmountTotal,
   userData,
-  bCakeUserData,
-  bCakePublicData,
-  bCakeWrapperAddress,
+  bCometUserData,
+  bCometPublicData,
+  bCometWrapperAddress,
   lpRewardsApr,
   onDone,
   onStake,
   onUnstake,
   onApprove,
   isApproved,
-  bCakeInfoSlot,
+  bCometInfoSlot,
 }) => {
   const dispatch = useAppDispatch()
   const native = useNativeCurrency()
 
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { locked } = useBCometBoostLimitAndLockInfo()
   const pendingFarm = useCrossChainFarmPendingTransaction(lpAddress)
   const { boosterState } = useContext(YieldBoosterStateContext)
   const { isFirstTime, refresh: refreshFirstTime } = useFirstTimeCrossFarming(vaultPid)
   const { t } = useTranslation()
-  const isBooster = Boolean(bCakeWrapperAddress)
-  const isBoosterAndRewardInRange = isBooster && bCakePublicData?.isRewardInRange
+  const isBooster = Boolean(bCometWrapperAddress)
+  const isBoosterAndRewardInRange = isBooster && bCometPublicData?.isRewardInRange
   const { toastSuccess } = useToast()
   const addTransaction = useTransactionAdder()
   const isBloctoETH = useIsBloctoETH()
   const { fetchWithCatchTxError, fetchTxResponse, loading: pendingTx } = useCatchTxError()
   const { account, chainId } = useAccountActiveChain()
 
-  const { tokenBalance, stakedBalance, allowance } = (isBooster ? bCakeUserData : userData) || {}
+  const { tokenBalance, stakedBalance, allowance } = (isBooster ? bCometUserData : userData) || {}
 
   const router = useRouter()
-  const cakePrice = useCakePrice()
-  const [bCakeMultiplier] = useState<number | null>(() => null)
+  const cometPrice = useCometPrice()
+  const [bCometMultiplier] = useState<number | null>(() => null)
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
@@ -214,7 +215,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
 
   const crossChainWarningText = useMemo(() => {
     return isFirstTime
-      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain CAKE farming.', {
+      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain COMETfarming.', {
           nativeToken: native.symbol,
         })
       : t('For safety, cross-chain transactions will take around 30 minutes to confirm.')
@@ -255,7 +256,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
           data: { amount, lpSymbol },
         },
         crossChainFarm: {
-          type: CrossChainFarmStepType.STAKE,
+          type: 'STAKE',
           status: FarmTransactionStatus.PENDING,
           amount,
           lpSymbol,
@@ -265,13 +266,18 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
               step: 1,
               chainId,
               tx: receipt.hash,
-              isFirstTime,
               status: FarmTransactionStatus.PENDING,
             },
             {
               step: 2,
-              tx: '',
               chainId: ChainId.BSC,
+              tx: '',
+              status: FarmTransactionStatus.PENDING,
+            },
+            {
+              step: 3,
+              chainId,
+              tx: '',
               status: FarmTransactionStatus.PENDING,
             },
           ],
@@ -315,7 +321,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
           data: { amount, lpSymbol },
         },
         crossChainFarm: {
-          type: CrossChainFarmStepType.UNSTAKE,
+          type: 'UNSTAKE',
           status: FarmTransactionStatus.PENDING,
           amount,
           lpSymbol,
@@ -350,12 +356,12 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     }
   }
 
-  // const bCakeCalculatorSlot = (calculatorBalance) => (
-  //   <BCakeCalculator
+  // const bCometCalculatorSlot = (calculatorBalance) => (
+  //   <BCometCalculator
   //     targetInputBalance={calculatorBalance}
-  //     earningTokenPrice={cakePrice.toNumber()}
+  //     earningTokenPrice={cometPrice.toNumber()}
   //     lpTokenStakedAmount={lpTokenStakedAmount ?? BIG_ZERO}
-  //     setBCakeMultiplier={setBCakeMultiplier}
+  //     setBCometMultiplier={setBCometMultiplier}
   //   />
   // )
 
@@ -381,10 +387,10 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       tokenName={lpSymbol}
       multiplier={multiplier}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
+      cometPrice={cometPrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
-      bCakeMultiplier={bCakeMultiplier}
-      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET && !bCakeWrapperAddress}
+      bCometMultiplier={bCometMultiplier}
+      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET && !bCometWrapperAddress}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
       allowance={allowance}
@@ -395,12 +401,12 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       isBooster={isBoosterAndRewardInRange}
       boosterMultiplier={
         isBoosterAndRewardInRange
-          ? bCakeUserData?.boosterMultiplier === 0 || bCakeUserData?.stakedBalance.eq(0) || !locked
+          ? bCometUserData?.boosterMultiplier === 0 || bCometUserData?.stakedBalance.eq(0) || !locked
             ? 2.5
-            : bCakeUserData?.boosterMultiplier
+            : bCometUserData?.boosterMultiplier
           : 1
       }
-      // bCakeCalculatorSlot={bCakeCalculatorSlot}
+      // bCometCalculatorSlot={bCometCalculatorSlot}
     />,
     true,
     true,
@@ -415,7 +421,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       lpPrice={lpTokenPrice}
       tokenName={lpSymbol}
       decimals={18}
-      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET && !bCakeWrapperAddress}
+      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET && !bCometWrapperAddress}
     />,
   )
 
@@ -435,8 +441,8 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   if (!account) {
     return (
       <FarmWidget.FarmTable.AccountNotConnect>
-        <ConnectWalletButton width={bCakeInfoSlot ? '50%' : '100%'} />
-        {bCakeInfoSlot}
+        <ConnectWalletButton width={bCometInfoSlot ? '50%' : '100%'} />
+        {bCometInfoSlot}
       </FarmWidget.FarmTable.AccountNotConnect>
     )
   }
@@ -444,7 +450,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   if (!isApproved && stakedBalance?.eq(0)) {
     return (
       <FarmWidget.FarmTable.EnableStakeAction
-        bCakeInfoSlot={bCakeInfoSlot}
+        bCometInfoSlot={bCometInfoSlot}
         pendingTx={pendingTx || isBloctoETH}
         handleApprove={handleApprove}
       />
@@ -452,7 +458,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   }
 
   if (!userDataReady) {
-    return <FarmWidget.FarmTable.StakeActionDataNotReady bCakeInfoSlot={bCakeInfoSlot} />
+    return <FarmWidget.FarmTable.StakeActionDataNotReady bCometInfoSlot={bCometInfoSlot} />
   }
 
   if (stakedBalance?.gt(0)) {
@@ -463,9 +469,9 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
         disabledPlusButton={isStakeReady || isBloctoETH}
         onPresentWithdraw={onPresentWithdraw}
         onPresentDeposit={onPresentDeposit}
-        bCakeInfoSlot={bCakeInfoSlot}
+        bCometInfoSlot={bCometInfoSlot}
       >
-        {bCakeInfoSlot ? (
+        {bCometInfoSlot ? (
           <Flex flexDirection="column" flexBasis="75%">
             <ActionTitles style={{ marginBottom: 0 }}>
               <Text bold color="secondary" fontSize="12px" pr="4px">
@@ -517,9 +523,10 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       lpSymbol={lpSymbol}
       isStakeReady={isStakeReady}
       onPresentDeposit={onPresentDeposit}
-      bCakeInfoSlot={bCakeInfoSlot}
+      bCometInfoSlot={bCometInfoSlot}
     />
   )
 }
 
 export default Staked
+

@@ -46,3 +46,4 @@ export const useDrawCanvas = (
 
   return { drawImage, isVideoPlaying }
 }
+

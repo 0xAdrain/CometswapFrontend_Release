@@ -1,4 +1,4 @@
-import { Flex } from "@pancakeswap/uikit";
+import { Flex } from "@cometswap/uikit";
 import { styled } from "styled-components";
 
 export const SwapFormWrapper = styled.div`
@@ -19,7 +19,7 @@ export const InputPanelWrapper = styled(Flex)`
   padding: 1rem;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
-  border-radius: 24px;
+  border-radius: ${({ theme }) => theme.radii.card}; /* CometSwap: 使用更新的圆角值 12px */
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
 `;
 

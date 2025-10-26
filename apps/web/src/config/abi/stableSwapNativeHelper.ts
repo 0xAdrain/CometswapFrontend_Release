@@ -15,7 +15,7 @@ export const stableSwapNativeHelperABI = [
   },
   {
     inputs: [
-      { internalType: 'contract IPancakeStableSwap', name: 'swap', type: 'address' },
+      { internalType: 'contract ICometStableSwap', name: 'swap', type: 'address' },
       { internalType: 'uint256[2]', name: 'amounts', type: 'uint256[2]' },
       { internalType: 'uint256', name: 'min_mint_amount', type: 'uint256' },
     ],
@@ -40,7 +40,7 @@ export const stableSwapNativeHelperABI = [
   },
   {
     inputs: [
-      { internalType: 'contract IPancakeStableSwap', name: 'swap', type: 'address' },
+      { internalType: 'contract ICometStableSwap', name: 'swap', type: 'address' },
       { internalType: 'uint256', name: '_amount', type: 'uint256' },
       { internalType: 'uint256[2]', name: 'min_amounts', type: 'uint256[2]' },
     ],
@@ -69,3 +69,4 @@ export const stableSwapNativeHelperABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+

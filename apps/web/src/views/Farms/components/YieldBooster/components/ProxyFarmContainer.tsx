@@ -2,7 +2,7 @@ import _noop from 'lodash/noop'
 import { ReactElement, createContext, memo, useMemo } from 'react'
 import { Address } from 'viem'
 
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@cometswap/farms'
 import useYieldBoosterState, { YieldBoosterState } from '../hooks/useYieldBoosterState'
 
 interface ProxyFarmContainerPropsType {
@@ -46,3 +46,4 @@ const ProxyFarmContainer: React.FC<ProxyFarmContainerPropsType> = ({ children, f
 }
 
 export default memo(ProxyFarmContainer)
+

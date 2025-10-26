@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { Text, Heading } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { Text, Heading } from '@cometswap/uikit'
 import { LightGreyCard, LightCardProps } from 'components/Card'
 
 interface RangePriceSectionProps extends LightCardProps {
@@ -34,3 +34,4 @@ export const RangePriceSection = ({ title, currency0, currency1, price, ...props
     </LightGreyCard>
   )
 }
+

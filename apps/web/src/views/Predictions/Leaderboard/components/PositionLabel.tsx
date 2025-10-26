@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
-import { ArrowDownIcon, ArrowUpIcon } from '@pancakeswap/uikit'
-import { BetPosition } from '@pancakeswap/prediction'
-import { useTranslation } from '@pancakeswap/localization'
+import { ArrowDownIcon, ArrowUpIcon } from '@cometswap/uikit'
+import { BetPosition } from '@cometswap/prediction'
+import { useTranslation } from '@cometswap/localization'
 
 interface PositionLabelProps {
   position: BetPosition
@@ -45,3 +45,4 @@ const PositionLabel: React.FC<React.PropsWithChildren<PositionLabelProps>> = ({ 
 }
 
 export default PositionLabel
+

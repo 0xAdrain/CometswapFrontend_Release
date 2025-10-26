@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { convertTimeToMilliseconds, distanceToNowStrict } from 'utils/timeHelper'
 import formatSecondsToWeeks from '../../utils/formatSecondsToWeeks'
 
@@ -63,3 +63,4 @@ const useUserDataInVaultPresenter: UserDataInVaultPresenterFn = ({ lockEndTime, 
 }
 
 export default useUserDataInVaultPresenter
+

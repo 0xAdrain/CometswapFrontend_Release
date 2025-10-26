@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text, Link, LinkExternal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text, Link, LinkExternal } from '@cometswap/uikit'
 
 const BTTWarning = () => {
   const { t } = useTranslation()
@@ -26,3 +26,4 @@ const BTTWarning = () => {
 }
 
 export default BTTWarning
+

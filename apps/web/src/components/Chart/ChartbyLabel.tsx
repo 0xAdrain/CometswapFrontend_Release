@@ -1,5 +1,5 @@
-import { Flex, FlexProps, Link, Text, LinkProps } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, FlexProps, Link, Text, LinkProps } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 export const ChartByLabel = ({
   symbol,
@@ -20,3 +20,4 @@ export const ChartByLabel = ({
     </Flex>
   )
 }
+

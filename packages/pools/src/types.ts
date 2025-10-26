@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { PublicClient, Address } from 'viem'
-import type { SerializedWrappedToken } from '@pancakeswap/token-lists'
+import type { SerializedWrappedToken } from '@cometswap/token-lists'
 import BigNumber from 'bignumber.js'
 
 export type OnChainProvider = ({ chainId }: { chainId?: ChainId }) => PublicClient
@@ -69,7 +69,7 @@ export type SerializedPoolWithInfo = LegacySerializedPoolWithInfo | UpgradedSeri
 export interface SerializedVaultUser {
   isLoading: boolean
   userShares: SerializedBigNumber
-  cakeAtLastUserAction: SerializedBigNumber
+  cometAtLastUserAction: SerializedBigNumber
   lastDepositedTime: string
   lastUserActionTime: string
 }
@@ -136,8 +136,8 @@ export type LegacyDeserializedPool<T> = LegacyDeserializedPoolConfig<T> & PoolIn
 
 export type DeserializedPool<T> = UpgradedDeserializedPool<T> | LegacyDeserializedPool<T>
 
-export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedCakeVault
-export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedCakeVault
+export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedCometVault
+export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedCometVault
 
 export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   lastDepositedTime: string
@@ -152,7 +152,7 @@ export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   currentOverdueFee: BigNumber
 }
 
-export interface DeserializedLockedCakeVault extends Omit<DeserializedCakeVault, 'userData'> {
+export interface DeserializedLockedCometVault extends Omit<DeserializedCometVault, 'userData'> {
   totalLockedAmount?: BigNumber
   userData?: DeserializedLockedVaultUser
 }
@@ -170,29 +170,29 @@ export interface DeserializedVaultFees extends SerializedVaultFees {
 export interface DeserializedVaultUser {
   isLoading: boolean
   userShares: BigNumber
-  cakeAtLastUserAction: BigNumber
+  cometAtLastUserAction: BigNumber
   lastDepositedTime: string
   lastUserActionTime: string
   balance: {
-    cakeAsNumberBalance: number
-    cakeAsBigNumber: BigNumber
-    cakeAsDisplayBalance: string
+    cometAsNumberBalance: number
+    cometAsBigNumber: BigNumber
+    cometAsDisplayBalance: string
   }
 }
 
-export interface DeserializedCakeVault {
+export interface DeserializedCometVault {
   totalShares?: BigNumber
   totalLockedAmount?: BigNumber
   pricePerFullShare: BigNumber
-  totalCakeInVault?: BigNumber
+  totalCometInVault?: BigNumber
   fees?: DeserializedVaultFees
   userData?: DeserializedVaultUser
 }
 
 export enum VaultKey {
-  CakeVaultV1 = 'cakeVaultV1',
-  CakeVault = 'cakeVault',
-  CakeFlexibleSideVault = 'cakeFlexibleSideVault',
+  CometVaultV1 = 'cometVaultV1',
+  CometVault = 'cometVault',
+  CometFlexibleSideVault = 'cometFlexibleSideVault',
   IfoPool = 'ifoPool',
 }
 

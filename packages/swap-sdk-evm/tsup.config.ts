@@ -8,18 +8,8 @@ export default defineConfig((options) => ({
   sourcemap: true,
   skipNodeModulesBundle: true,
   format: ['esm', 'cjs'],
-  dts: false,
+  dts: true, // 恢复类型声明文件生成
   clean: !options.watch,
   treeshake: true,
   splitting: true,
-  onSuccess: async () => {
-    exec('tsc --emitDeclarationOnly --declaration', (err, stdout) => {
-      if (err) {
-        console.error(stdout)
-        if (!options.watch) {
-          process.exit(1)
-        }
-      }
-    })
-  },
 }))

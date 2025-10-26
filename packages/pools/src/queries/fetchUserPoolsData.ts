@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import BigNumber from 'bignumber.js'
 import fromPairs from 'lodash/fromPairs'
 import uniq from 'lodash/uniq'
@@ -7,7 +7,7 @@ import { sousChefABI } from '../abis/ISousChef'
 import { getPoolsConfig } from '../constants'
 import { OnChainProvider, SerializedPool } from '../types'
 
-// Pool 0, Cake / Cake is a different kind of contract (master chef)
+// Pool 0, Comet / Comet is a different kind of contract (master chef)
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
 const getPoolsFactory = (filter: (pool: SerializedPool) => boolean) => async (chainId: ChainId) => {
   const poolsConfig = await getPoolsConfig(chainId)

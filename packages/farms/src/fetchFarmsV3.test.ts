@@ -1,5 +1,5 @@
-import { bscTokens } from '@pancakeswap/tokens'
-import { FeeAmount, Pool } from '@pancakeswap/v3-sdk'
+import { bscTokens } from '@cometswap/tokens'
+import { FeeAmount, Pool } from '@cometswap/v3-sdk'
 import { describe, expect, it } from 'vitest'
 import { getFarmsPrices } from './fetchFarmsV3'
 import { FarmV3Data } from './types'
@@ -7,14 +7,14 @@ import { FarmV3Data } from './types'
 describe('fetchFarmsV3', () => {
   it('getFarmsPrices', async () => {
     const farmsData: FarmV3Data[] = [
-      // CAKE Pair
+      // COMETPair
       // @ts-ignore
       {
         pid: 1,
-        lpSymbol: 'WBNB-CAKE LP',
-        lpAddress: Pool.getAddress(bscTokens.wbnb, bscTokens.cake, FeeAmount.MEDIUM),
+        lpSymbol: 'WBNB-COMETLP',
+        lpAddress: Pool.getAddress(bscTokens.wbnb, bscTokens.comet, FeeAmount.MEDIUM),
         token: bscTokens.wbnb,
-        quoteToken: bscTokens.cake,
+        quoteToken: bscTokens.comet,
         feeAmount: FeeAmount.MEDIUM,
         multiplier: '',
         poolWeight: '',
@@ -22,14 +22,14 @@ describe('fetchFarmsV3', () => {
         lmPoolLiquidity: '',
         tokenPriceVsQuote: '2',
       },
-      // CAKE Pair
+      // COMETPair
       {
         pid: 2,
-        lpSymbol: 'SUSHI-CAKE LP',
+        lpSymbol: 'SUSHI-COMETLP',
         // @ts-ignore
         lpAddress: '',
         token: bscTokens.sushi,
-        quoteToken: bscTokens.cake,
+        quoteToken: bscTokens.comet,
         feeAmount: FeeAmount.LOWEST,
         multiplier: '',
         poolWeight: '',
@@ -87,16 +87,16 @@ describe('fetchFarmsV3', () => {
       [bscTokens.usdt.address]: '1',
     }
 
-    const cakePrice = '40'
+    const cometPrice = '40'
 
-    expect(getFarmsPrices(farmsData, cakePrice, commonPrice)).toMatchInlineSnapshot(`
+    expect(getFarmsPrices(farmsData, cometPrice, commonPrice)).toMatchInlineSnapshot(`
       [
         {
           "feeAmount": 2500,
           "lmPool": "",
           "lmPoolLiquidity": "",
           "lpAddress": "0x133B3D95bAD5405d14d53473671200e9342896BF",
-          "lpSymbol": "WBNB-CAKE LP",
+          "lpSymbol": "WBNB-COMETLP",
           "multiplier": "",
           "pid": 1,
           "poolWeight": "",
@@ -106,9 +106,9 @@ describe('fetchFarmsV3', () => {
             "decimals": 18,
             "isNative": false,
             "isToken": true,
-            "name": "PancakeSwap Token",
-            "projectLink": "https://pancakeswap.finance/",
-            "symbol": "CAKE",
+            "name": "CometSwap Token",
+            "projectLink": "https://cometswap.finance/",
+            "symbol": "COMET",
           },
           "quoteTokenPriceBusd": "40",
           "token": ERC20Token {
@@ -129,7 +129,7 @@ describe('fetchFarmsV3', () => {
           "lmPool": "",
           "lmPoolLiquidity": "",
           "lpAddress": "",
-          "lpSymbol": "SUSHI-CAKE LP",
+          "lpSymbol": "SUSHI-COMETLP",
           "multiplier": "",
           "pid": 2,
           "poolWeight": "",
@@ -139,9 +139,9 @@ describe('fetchFarmsV3', () => {
             "decimals": 18,
             "isNative": false,
             "isToken": true,
-            "name": "PancakeSwap Token",
-            "projectLink": "https://pancakeswap.finance/",
-            "symbol": "CAKE",
+            "name": "CometSwap Token",
+            "projectLink": "https://cometswap.finance/",
+            "symbol": "COMET",
           },
           "quoteTokenPriceBusd": "40",
           "token": ERC20Token {

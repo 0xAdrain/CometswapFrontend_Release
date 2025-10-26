@@ -1,13 +1,13 @@
-import { Text, Box } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { Text, Box } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey, DeserializedLockedVaultUser } from 'state/types'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import dayjs from 'dayjs'
-import { getCakeVaultEarnings } from '../helpers'
+import { getCometVaultEarnings } from '../helpers'
 
 interface AutoEarningsBreakdownProps {
   pool: Pool.DeserializedPool<Token>
@@ -21,13 +21,13 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
   } = useTranslation()
   const { earningTokenPrice } = pool
   const { pricePerFullShare, userData } = useVaultPoolByKey(pool.vaultKey)
-  const { autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { autoCometToDisplay, autoUsdToDisplay } = getCometVaultEarnings(
     account,
-    userData?.cakeAtLastUserAction || BIG_ZERO,
+    userData?.cometAtLastUserAction || BIG_ZERO,
     userData?.userShares || BIG_ZERO,
     pricePerFullShare || BIG_ZERO,
     earningTokenPrice || 0,
-    pool.vaultKey === VaultKey.CakeVault
+    pool.vaultKey === VaultKey.CometVault
       ? (userData as DeserializedLockedVaultUser).currentPerformanceFee
           .plus((userData as DeserializedLockedVaultUser).currentOverdueFee)
           .plus((userData as DeserializedLockedVaultUser).userBoostedShare)
@@ -36,7 +36,7 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
 
   const lastActionInMs = userData?.lastUserActionTime ? parseInt(userData.lastUserActionTime) * 1000 : 0
   const hourDiffSinceLastAction = dayjs().diff(dayjs(lastActionInMs), 'hours')
-  const earnedCakePerHour = hourDiffSinceLastAction ? autoCakeToDisplay / hourDiffSinceLastAction : 0
+  const earnedCometPerHour = hourDiffSinceLastAction ? autoCometToDisplay / hourDiffSinceLastAction : 0
   const earnedUsdPerHour = hourDiffSinceLastAction ? autoUsdToDisplay / hourDiffSinceLastAction : 0
 
   return (
@@ -56,7 +56,7 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
         <Box mt="12px">
           <Text>{t('Hourly Average')}:</Text>
           <Text bold>
-            {earnedCakePerHour < 0.01 ? '<0.01' : earnedCakePerHour.toFixed(2)} CAKE
+            {earnedCometPerHour < 0.01 ? '<0.01' : earnedCometPerHour.toFixed(2)} COMET
             <Text display="inline-block" ml="5px">
               ({earnedUsdPerHour < 0.01 ? '<0.01' : `~${earnedUsdPerHour.toFixed(2)}`} USD)
             </Text>
@@ -75,3 +75,4 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
 }
 
 export default AutoEarningsBreakdown
+

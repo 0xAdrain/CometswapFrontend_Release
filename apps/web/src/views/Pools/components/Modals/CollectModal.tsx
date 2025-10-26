@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
 import { useAccount } from 'wagmi'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -70,3 +70,4 @@ export const CollectModalContainer = ({
 }
 
 export default CollectModalContainer
+

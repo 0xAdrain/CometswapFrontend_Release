@@ -27,3 +27,4 @@ const leaderBoard = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default leaderBoard
+

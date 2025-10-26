@@ -17,3 +17,4 @@ export const ProviderIcon: React.FC<
   const logo = providerToLogo[provider]
   return logo
 }
+

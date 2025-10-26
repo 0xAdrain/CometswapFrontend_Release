@@ -1,4 +1,4 @@
-import { SerializedWrappedToken } from '@pancakeswap/token-lists'
+import { SerializedWrappedToken } from '@cometswap/token-lists'
 import { createReducer } from '@reduxjs/toolkit'
 import omitBy from 'lodash/omitBy'
 import { updateVersion } from '../global/actions'
@@ -179,3 +179,4 @@ export default createReducer(initialState, (builder) =>
       state.isSubgraphHealthIndicatorDisplayed = payload
     }),
 )
+

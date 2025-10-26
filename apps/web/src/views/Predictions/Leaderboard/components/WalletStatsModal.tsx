@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import {
   Box,
   CloseIcon,
@@ -14,14 +14,14 @@ import {
   Skeleton,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+} from '@cometswap/uikit'
+import truncateHash from '@cometswap/utils/truncateHash'
 import useTheme from 'hooks/useTheme'
 import { useProfileForAddress } from 'state/profile/hooks'
 import { styled } from 'styled-components'
 import { getBlockExploreLink } from 'utils'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { FetchStatus, TFetchStatus } from 'config/constants/types'
 import { useDomainNameForAddress } from 'hooks/useDomain'
 import { PredictionUser } from 'state/types'
@@ -160,3 +160,4 @@ const WalletStatsModal: React.FC<React.PropsWithChildren<WalletStatsModalProps>>
 }
 
 export default WalletStatsModal
+

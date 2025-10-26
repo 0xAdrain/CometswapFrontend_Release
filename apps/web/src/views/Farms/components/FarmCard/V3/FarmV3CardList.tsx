@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, AutoRow, Box, Button, Flex, PreTitle, Text } from '@pancakeswap/uikit'
-import { isPositionOutOfRange } from '@pancakeswap/utils/isPositionOutOfRange'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRenewIcon, AutoRow, Box, Button, Flex, PreTitle, Text } from '@cometswap/uikit'
+import { isPositionOutOfRange } from '@cometswap/utils/isPositionOutOfRange'
 import { usePool } from 'hooks/v3/usePools'
 import partition_ from 'lodash/partition'
 import { useCallback } from 'react'
@@ -25,7 +25,7 @@ const FarmV3CardList: React.FunctionComponent<React.PropsWithChildren<FarmV3Card
 }) => {
   const { t } = useTranslation()
   const { onHarvestAll, harvesting: v3BatchHarvesting } = useFarmsV3BatchHarvest()
-  const { stakedPositions, unstakedPositions, lpSymbol, token, quoteToken, pendingCakeByTokenIds, multiplier } = farm
+  const { stakedPositions, unstakedPositions, lpSymbol, token, quoteToken, pendingCometByTokenIds, multiplier } = farm
   const [, pool] = usePool(farm.token, farm.quoteToken, farm.feeAmount)
 
   const harvestAllFarms = useCallback(async () => {
@@ -59,7 +59,7 @@ const FarmV3CardList: React.FunctionComponent<React.PropsWithChildren<FarmV3Card
                     position={position}
                     token={token}
                     quoteToken={quoteToken}
-                    pendingCakeByTokenIds={pendingCakeByTokenIds}
+                    pendingCometByTokenIds={pendingCometByTokenIds}
                     onDismiss={onDismiss}
                   />
                 </>
@@ -87,7 +87,7 @@ const FarmV3CardList: React.FunctionComponent<React.PropsWithChildren<FarmV3Card
                   position={position}
                   token={token}
                   quoteToken={quoteToken}
-                  pendingCakeByTokenIds={pendingCakeByTokenIds}
+                  pendingCometByTokenIds={pendingCometByTokenIds}
                   onDismiss={onDismiss}
                 />
               </>
@@ -114,3 +114,4 @@ const FarmV3CardList: React.FunctionComponent<React.PropsWithChildren<FarmV3Card
 }
 
 export default FarmV3CardList
+

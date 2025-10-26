@@ -1,20 +1,20 @@
-import { useModalV2, useTooltip } from '@pancakeswap/uikit'
+import { useModalV2, useTooltip } from '@cometswap/uikit'
 import { useMemo } from 'react'
-import { CakeApr } from 'state/farmsV4/atom'
+import { CometApr } from 'state/farmsV4/atom'
 import { PositionDetail } from 'state/farmsV4/state/accountPositions/type'
 import { ChainIdAddressKey, PoolInfo } from 'state/farmsV4/state/type'
 import { getMerklLink } from 'utils/getMerklLink'
 import { sumApr } from '../../utils/sumApr'
 import { StopPropagation } from '../StopPropagation'
 import { AprButton } from './AprButton'
-import { AprTooltipContent, BCakeWrapperFarmAprTipContent } from './AprTooltipContent'
+import { AprTooltipContent, BCometWrapperFarmAprTipContent } from './AprTooltipContent'
 import { V2PoolAprModal } from './V2PoolAprModal'
 import { V3PoolAprModal } from './V3PoolAprModal'
 
 type PoolGlobalAprButtonProps = {
   pool: PoolInfo
   lpApr: number
-  cakeApr: CakeApr[ChainIdAddressKey]
+  cakeApr: CometApr[ChainIdAddressKey]
   merklApr?: number
   userPosition?: PositionDetail
 }
@@ -28,7 +28,7 @@ export const PoolAprButton: React.FC<PoolGlobalAprButtonProps> = ({ pool, lpApr,
       ? sumApr(lpApr, cakeApr?.boost, merklApr)
       : undefined
   }, [cakeApr.boost, lpApr, merklApr])
-  const hasBCake = pool.protocol === 'v2' || pool.protocol === 'stable'
+  const hasBComet = pool.protocol === 'v2' || pool.protocol === 'stable'
   const merklLink = useMemo(() => {
     return getMerklLink({ chainId: pool.chainId, lpAddress: pool.lpAddress })
   }, [pool.chainId, pool.lpAddress])
@@ -44,7 +44,7 @@ export const PoolAprButton: React.FC<PoolGlobalAprButtonProps> = ({ pool, lpApr,
       merklLink={merklLink}
       showDesc
     >
-      {hasBCake ? <BCakeWrapperFarmAprTipContent /> : null}
+      {hasBComet ? <BCometWrapperFarmAprTipContent /> : null}
     </AprTooltipContent>,
   )
 
@@ -52,7 +52,7 @@ export const PoolAprButton: React.FC<PoolGlobalAprButtonProps> = ({ pool, lpApr,
     <StopPropagation>
       <AprButton ref={targetRef} baseApr={baseApr} boostApr={boostApr} onClick={() => modal.setIsOpen(true)} />
       {tooltipVisible && tooltip}
-      {hasBCake ? (
+      {hasBComet ? (
         <V2PoolAprModal
           modal={modal}
           poolInfo={pool}
@@ -66,3 +66,4 @@ export const PoolAprButton: React.FC<PoolGlobalAprButtonProps> = ({ pool, lpApr,
     </StopPropagation>
   )
 }
+

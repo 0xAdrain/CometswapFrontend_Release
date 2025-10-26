@@ -1,12 +1,12 @@
-import { ChainId } from '@pancakeswap/chains'
-import { BOOST_WEIGHT, DURATION_FACTOR, MAX_LOCK_DURATION } from '@pancakeswap/pools'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { ChainId } from '@cometswap/chains'
+import { BOOST_WEIGHT, DURATION_FACTOR, MAX_LOCK_DURATION } from '@cometswap/pools'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BN from 'bignumber.js'
 import { BLOCKS_PER_YEAR } from 'config'
 import { masterChefV2ABI } from 'config/abi/masterchefV2'
 import toString from 'lodash/toString'
 import { useCallback, useMemo } from 'react'
-import { useCakeVault } from 'state/pools/hooks'
+import { useVeCometVault } from 'state/pools/hooks'
 import { getMasterChefV2Address } from 'utils/addressHelpers'
 import { publicClient } from 'utils/wagmi'
 import { useQuery } from '@tanstack/react-query'
@@ -19,8 +19,8 @@ const DEFAULT_PERFORMANCE_FEE_DECIMALS = 2
 const PRECISION_FACTOR = new BN('1000000000000')
 const WeiPerEther = new BN('1000000000000000000')
 
-const getFlexibleApy = (totalCakePoolEmissionPerYear: BN, pricePerFullShare: BN, totalShares: BN) =>
-  totalCakePoolEmissionPerYear.times(WeiPerEther).div(pricePerFullShare).div(totalShares).times(100)
+const getFlexibleApy = (totalveCometPoolEmissionPerYear: BN, pricePerFullShare: BN, totalShares: BN) =>
+  totalveCometPoolEmissionPerYear.times(WeiPerEther).div(pricePerFullShare).div(totalShares).times(100)
 
 const _getBoostFactor = (boostWeight: bigint, duration: number, durationFactor: bigint) => {
   return new BN(boostWeight.toString())
@@ -38,13 +38,13 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
     totalShares = BIG_ZERO,
     pricePerFullShare = BIG_ZERO,
     fees: { performanceFeeAsDecimal } = { performanceFeeAsDecimal: DEFAULT_PERFORMANCE_FEE_DECIMALS },
-  } = useCakeVault()
+  } = useVeCometVault()
 
   const totalSharesAsEtherBN = useMemo(() => new BN(totalShares.toString()), [totalShares])
   const pricePerFullShareAsEtherBN = useMemo(() => new BN(pricePerFullShare.toString()), [pricePerFullShare])
 
-  const { data: totalCakePoolEmissionPerYear } = useQuery({
-    queryKey: ['masterChef-total-cake-pool-emission'],
+  const { data: totalveCometPoolEmissionPerYear } = useQuery({
+    queryKey: ['masterChef-total-comet-pool-emission'],
     queryFn: async () => {
       const bscClient = publicClient({ chainId: ChainId.BSC })
 
@@ -83,11 +83,11 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
 
   const flexibleApy = useMemo(
     () =>
-      totalCakePoolEmissionPerYear &&
+      totalveCometPoolEmissionPerYear &&
       !pricePerFullShareAsEtherBN.isZero() &&
       !totalSharesAsEtherBN.isZero() &&
-      getFlexibleApy(totalCakePoolEmissionPerYear, pricePerFullShareAsEtherBN, totalSharesAsEtherBN).toString(),
-    [pricePerFullShareAsEtherBN, totalCakePoolEmissionPerYear, totalSharesAsEtherBN],
+      getFlexibleApy(totalveCometPoolEmissionPerYear, pricePerFullShareAsEtherBN, totalSharesAsEtherBN).toString(),
+    [pricePerFullShareAsEtherBN, totalveCometPoolEmissionPerYear, totalSharesAsEtherBN],
   )
 
   const boostFactor = useMemo(() => _getBoostFactor(BOOST_WEIGHT, duration, DURATION_FACTOR), [duration])
@@ -122,3 +122,4 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
     getBoostFactor: useCallback((adjustDuration: number) => getBoostFactor(adjustDuration).plus('1'), [getBoostFactor]),
   }
 }
+

@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, Fraction } from '@pancakeswap/sdk'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
+import { Currency, CurrencyAmount, Fraction } from '@cometswap/sdk'
+import { formatAmount } from '@cometswap/utils/formatFractions'
 
 const CURRENCY_AMOUNT_MIN = new Fraction(1n, 1000000n)
 
@@ -22,3 +22,4 @@ export function formattedCurrencyAmount({ currencyAmount, significantDigits = 4 
 export default function FormattedCurrencyAmount(props: FormatterCurrencyAmountProps) {
   return <>{formattedCurrencyAmount(props)}</>
 }
+

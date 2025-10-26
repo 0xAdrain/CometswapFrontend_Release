@@ -1,5 +1,5 @@
-import { ChainId, getLlamaChainName } from '@pancakeswap/chains'
-import { Currency, Token } from '@pancakeswap/sdk'
+import { ChainId, getLlamaChainName } from '@cometswap/chains'
+import { Currency, Token } from '@cometswap/sdk'
 import { gql } from 'graphql-request'
 import { Address, getAddress } from 'viem'
 
@@ -152,7 +152,7 @@ export const getCommonTokenPricesByLlma = createCommonTokenPriceProvider<BySubgr
 
 export const getCommonTokenPricesByWalletApi = createCommonTokenPriceProvider<BySubgraphEssentials>(
   createGetTokenPriceFromLlmaWithCache({
-    endpoint: 'https://wallet-api.pancakeswap.com/v1/prices',
+    endpoint: 'https://wallet-api.cometswap.com/v1/prices',
   }),
 )
 

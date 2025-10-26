@@ -1,4 +1,4 @@
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@cometswap/uikit'
 
 export const TextHighlight = ({ text, highlights }: { text: string; highlights: string[] }) => {
   let prts: string[] = [text]
@@ -22,3 +22,4 @@ export const TextHighlight = ({ text, highlights }: { text: string; highlights: 
     )
   })
 }
+

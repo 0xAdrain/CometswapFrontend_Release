@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo } from 'react'
 import intersection from 'lodash/intersection'
 import { isAddress } from 'viem'
 import { useRouter } from 'next/router'
-import { SORT_ORDER } from '@pancakeswap/uikit'
+import { SORT_ORDER } from '@cometswap/uikit'
 import { useAllTokensByChainIds } from 'hooks/Tokens'
 import { PoolInfo } from 'state/farmsV4/state/type'
 import { IPoolsFilterPanelProps } from '../components'
@@ -191,3 +191,4 @@ export const useFilterToQueries = () => {
     replaceURLQueriesByFilter,
   }
 }
+

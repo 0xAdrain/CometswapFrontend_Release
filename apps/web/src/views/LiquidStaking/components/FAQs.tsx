@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Card, CardBody, CardHeader, Heading, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Card, CardBody, CardHeader, Heading, Text } from '@cometswap/uikit'
 import FoldableText from 'components/FoldableSection/FoldableText'
 import { FAQType } from 'views/LiquidStaking/constants/types'
 
@@ -30,3 +30,4 @@ export const LiquidStakingFAQs: React.FC<LiquidStakingFAQsProps> = ({ config }) 
     </Card>
   )
 }
+

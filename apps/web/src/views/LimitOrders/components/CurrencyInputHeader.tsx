@@ -1,4 +1,4 @@
-import { ChartDisableIcon, ChartIcon, Flex, Heading, HistoryIcon, IconButton, Text, useModal } from '@pancakeswap/uikit'
+import { ChartDisableIcon, ChartIcon, Flex, Heading, HistoryIcon, IconButton, Text, useModal } from '@cometswap/uikit'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import React from 'react'
 import { styled } from 'styled-components'
@@ -67,3 +67,4 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
 }
 
 export default CurrencyInputHeader
+

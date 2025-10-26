@@ -1,4 +1,4 @@
-import { Colors, Flex } from '@pancakeswap/uikit'
+import { Colors, Flex } from '@cometswap/uikit'
 import Link from 'next/link'
 import styled, { keyframes } from 'styled-components'
 
@@ -232,3 +232,4 @@ export const Dot = styled('span').withConfig({
   border-radius: 50%;
   background-color: ${({ theme, color }) => theme.colors[color]};
 `
+

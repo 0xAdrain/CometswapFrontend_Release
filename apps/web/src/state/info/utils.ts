@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 import { CHAIN_QUERY_NAME } from 'config/chains'
 
@@ -17,3 +17,4 @@ export function getTokenInfoPath(
     multiChainPaths[chainId ?? '']
   }/tokens/${address}?chain=${CHAIN_QUERY_NAME[chainId ?? '']}${stableSwapPath.replace('?', '&')}`
 }
+

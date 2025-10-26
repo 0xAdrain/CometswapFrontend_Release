@@ -1,5 +1,5 @@
-import { Ifo, PoolIds } from '@pancakeswap/ifos'
-import { ContextApi, useTranslation } from '@pancakeswap/localization'
+import { Ifo, PoolIds } from '@cometswap/ifos'
+import { ContextApi, useTranslation } from '@cometswap/localization'
 import {
   Box,
   Card,
@@ -11,7 +11,7 @@ import {
   HelpIcon,
   Text,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useMemo, useState } from 'react'
 import { useProfile } from 'state/profile/hooks'
 import { styled } from 'styled-components'
@@ -63,8 +63,8 @@ export const cardConfig = (
       // Sale type 2 is basic sale
       if (meta?.version >= 3.1 && !isBasicSale(meta?.saleType)) {
         const MSG_MAP = {
-          needQualifiedNFT: t('Set PancakeSquad NFT as Pancake Profile avatar.'),
-          needQualifiedPoints: t('Reach a certain Pancake Profile Points threshold.'),
+          needQualifiedNFT: t('Set CometSquad NFT as Comet Profile avatar.'),
+          needQualifiedPoints: t('Reach a certain Comet Profile Points threshold.'),
         }
 
         const msgs = Object.keys(meta)
@@ -254,3 +254,4 @@ const SmallCard: React.FC<React.PropsWithChildren<IfoCardProps>> = ({
 }
 
 export default SmallCard
+

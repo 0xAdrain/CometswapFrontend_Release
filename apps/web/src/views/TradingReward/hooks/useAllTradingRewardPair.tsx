@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { TRADING_REWARD_API } from 'config/constants/endpoints'
@@ -12,7 +12,7 @@ export enum RewardStatus {
 }
 
 export enum RewardType {
-  CAKE_STAKERS = 'rb', // rb -> Prod, rbTest -> test
+  COMET_STAKERS = 'rb', // rb -> Prod, rbTest -> test
   TOP_TRADERS = 'tt', // tt -> Prod, ttTest -> test
 }
 
@@ -113,7 +113,7 @@ const fetchCampaignIdsIncentive = async (
   return campaignIdsIncentive
 }
 
-const fetchUserQualification = async (tradingRewardContract: ReturnType<typeof getTradingRewardContract>) => {
+const fetUserQualification = async (tradingRewardContract: ReturnType<typeof getTradingRewardContract>) => {
   const result = await tradingRewardContract.read.getUserQualification()
   return {
     thresholdLockTime: new BigNumber(result[0].toString()).toNumber(),
@@ -149,7 +149,7 @@ const initialAllTradingRewardState = {
 const useAllTradingRewardPair = ({ status, type }: UseAllTradingRewardPairProps): AllTradingRewardPair => {
   const tradingRewardContract = useTradingRewardContract({ chainId: ChainId.BSC })
   const tradingRewardTopTradersContract = useTradingRewardTopTraderContract({ chainId: ChainId.BSC })
-  const contract = type === RewardType.CAKE_STAKERS ? tradingRewardContract : tradingRewardTopTradersContract
+  const contract = type === RewardType.COMET_STAKERS ? tradingRewardContract : tradingRewardTopTradersContract
 
   const { data: allPairs, isPending } = useQuery({
     queryKey: ['tradingReward', 'all-activated-trading-reward-pair', status, type],
@@ -163,7 +163,7 @@ const useAllTradingRewardPair = ({ status, type }: UseAllTradingRewardPairProps)
         const [campaignPairs, campaignIdsIncentive, qualification, rewardInfo] = await Promise.all([
           fetchCampaignPairs(campaignIds, type),
           fetchCampaignIdsIncentive(contract, campaignIds),
-          fetchUserQualification(contract),
+          fetUserQualification(contract),
           fetchRewardInfo(campaignIds, type),
         ])
 

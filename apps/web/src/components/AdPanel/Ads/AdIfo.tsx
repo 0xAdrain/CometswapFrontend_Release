@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useActiveIfoConfigAcrossChains } from 'hooks/useIfoConfig'
 import dayjs from 'dayjs'
 import { BodyText } from '../BodyText'
@@ -30,9 +30,10 @@ export const AdIfo = (props: AdPlayerProps) => {
         mb="8px"
       />
 
-      <AdButton variant="text" isExternalLink href="https://pancakeswap.finance/ifo">
+      <AdButton variant="text" isExternalLink href="https://cometswap.finance/ifo">
         {t('Get Started')}
       </AdButton>
     </AdCard>
   )
 }
+

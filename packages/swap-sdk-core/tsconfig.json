@@ -1,5 +1,5 @@
 {
-  "extends": "@pancakeswap/tsconfig/base",
+  "extends": "../tsconfig/base.json",
   "include": ["src"],
   "exclude": ["./dist/**"],
   "compilerOptions": {
@@ -24,6 +24,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["vitest/globals"]
+    "types": []
   }
 }

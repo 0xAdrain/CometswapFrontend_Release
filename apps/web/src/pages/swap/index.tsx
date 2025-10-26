@@ -12,3 +12,4 @@ SwapPage.chains = CHAIN_IDS
 SwapPage.screen = true
 
 export default SwapPage
+

@@ -1,4 +1,4 @@
-import { SUPPORTED_CHAIN_IDS } from '@pancakeswap/prediction'
+import { SUPPORTED_CHAIN_IDS } from '@cometswap/prediction'
 import { configureStore } from '@reduxjs/toolkit'
 import LocalReduxProvider from 'contexts/LocalRedux/Provider'
 import { predictionsSlice } from 'state/predictions'
@@ -17,3 +17,4 @@ export default function Leaderboard() {
 }
 
 Leaderboard.chains = SUPPORTED_CHAIN_IDS
+

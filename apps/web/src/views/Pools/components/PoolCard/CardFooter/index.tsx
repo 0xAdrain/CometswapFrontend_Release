@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { styled } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, CardFooter, ExpandableLabel, HelpIcon } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, CardFooter, ExpandableLabel, HelpIcon } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import PoolStatsInfo from '../../PoolStatsInfo'
 import PoolTypeTag from '../../PoolTypeTag'
 
 interface FooterProps {
   pool: Pool.DeserializedPool<Token>
   account: string
-  totalCakeInVault?: BigNumber
+  totalCometInVault?: BigNumber
   defaultExpanded?: boolean
   isLocked?: boolean
 }
@@ -68,3 +68,4 @@ const Footer: React.FC<React.PropsWithChildren<FooterProps>> = ({
 }
 
 export default Footer
+

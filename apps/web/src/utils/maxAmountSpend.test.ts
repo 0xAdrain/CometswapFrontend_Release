@@ -1,4 +1,4 @@
-import { CurrencyAmount, Native } from '@pancakeswap/sdk'
+import { CurrencyAmount, Native } from '@cometswap/sdk'
 import { maxAmountSpend } from './maxAmountSpend'
 
 describe('maxAmountSpend', () => {
@@ -16,3 +16,4 @@ describe('maxAmountSpend', () => {
     expect(maxAmountSpend(CurrencyAmount.fromRawAmount(Native.onChain(56), '0')).quotient === 0n).toBeTruthy()
   })
 })
+

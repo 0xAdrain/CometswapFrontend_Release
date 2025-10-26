@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { AutoRenewIcon, Box, Button, Flex, Grid, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { AutoRenewIcon, Box, Button, Flex, Grid, useMatchBreakpoints } from '@cometswap/uikit'
 import Container from 'components/Layout/Container'
 import { FetchStatus } from 'config/constants/types'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
@@ -78,3 +78,4 @@ const Results: React.FC<React.PropsWithChildren<ResultsProps>> = ({ token, api }
 }
 
 export default Results
+

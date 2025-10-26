@@ -19,3 +19,4 @@ export const CONTRACTS_WITH_SWELL_REWARD = [
     identifier: '0x7B94A5622035207d3f527d236d47B7714Ee0acBa',
   },
 ] as const
+

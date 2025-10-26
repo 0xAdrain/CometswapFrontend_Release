@@ -98,7 +98,7 @@ export type PoolKey<TPoolType extends PoolType = never> = {
  * encoded poolKey struct
  *
  * @see PoolKey
- * @see {@link https://github.com/pancakeswap/pancake-v4-core/blob/main/src/types/PoolKey.sol|v4-core}
+ * @see {@link https://github.com/cometswap/comet-v4-core/blob/main/src/types/PoolKey.sol|v4-core}
  */
 export type EncodedPoolKey = {
   currency0: Address

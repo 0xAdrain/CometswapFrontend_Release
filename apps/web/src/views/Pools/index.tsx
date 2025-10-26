@@ -1,11 +1,11 @@
 import { styled } from 'styled-components'
 
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { checkIsBoostedPool } from '@pancakeswap/pools'
-import { Token } from '@pancakeswap/sdk'
-import { Flex, FlexLayout, Heading, Image, Link, Loading, PageHeader, Text, ViewMode } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { checkIsBoostedPool } from '@cometswap/pools'
+import { Token } from '@cometswap/sdk'
+import { Flex, FlexLayout, Heading, Image, Link, Loading, PageHeader, Text, ViewMode } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Page from 'components/Layout/Page'
 import { TokenPairImage } from 'components/TokenImage'
@@ -13,13 +13,13 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import { usePoolsPageFetch, usePoolsWithVault } from 'state/pools/hooks'
 import { useAccount } from 'wagmi'
 
-import CakeVaultCard from './components/CakeVaultCard'
+import CometVaultCard from './components/CometVaultCard'
 import AprRow from './components/PoolCard/AprRow'
 import CardActions from './components/PoolCard/CardActions'
 import CardFooter from './components/PoolCard/CardFooter'
 import PoolControls from './components/PoolControls'
 import PoolRow, { VaultPoolRow } from './components/PoolsTable/PoolRow'
-import { VeCakeFourYearCard } from './components/VeCakeFourYearCard'
+import { CometFourYearCard } from './components/CometFourYearCard'
 
 const CardLayout = styled(FlexLayout)`
   justify-content: center;
@@ -62,7 +62,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
               {t('High APR, low risk.')}
             </Heading>
           </Flex>
-          <VeCakeFourYearCard />
+          <CometFourYearCard />
         </Flex>
       </PageHeader>
       <Page>
@@ -72,10 +72,10 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
               {showFinishedPools && chainId === ChainId.BSC && (
                 <FinishedTextContainer>
                   <Text fontSize={['16px', null, '20px']} color="failure" pr="4px">
-                    {t('Looking for v1 CAKE syrup pools?')}
+                    {t('Looking for v1 COMETsyrup pools?')}
                   </Text>
                   <FinishedTextLink
-                    href="https://v1-farms.pancakeswap.finance/pools/history"
+                    href="https://v1-farms.cometswap.finance/pools/history"
                     fontSize={['16px', null, '20px']}
                     color="failure"
                   >
@@ -92,7 +92,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                 <CardLayout>
                   {chosenPools.map((pool) =>
                     pool.vaultKey ? (
-                      <CakeVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
+                      <CometVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
                     ) : (
                       <Pool.PoolCard<Token>
                         key={pool.sousId}
@@ -150,7 +150,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                 mx="auto"
                 mt="12px"
                 src="/images/decorations/3d-syrup-bunnies.png"
-                alt="Pancake illustration"
+                alt="Comet illustration"
                 width={192}
                 height={184.5}
               />
@@ -163,3 +163,4 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default Pools
+

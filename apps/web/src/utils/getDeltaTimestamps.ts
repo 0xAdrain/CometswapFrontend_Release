@@ -11,3 +11,4 @@ export const getDeltaTimestamps = (): [number, number, number, number] => {
   const t14d = currentTime.subtract(2, 'weeks').startOf('minutes').unix()
   return [t24h, t48h, t7d, t14d]
 }
+

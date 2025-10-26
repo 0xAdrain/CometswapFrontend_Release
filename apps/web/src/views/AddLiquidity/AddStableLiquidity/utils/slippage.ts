@@ -1,4 +1,4 @@
-import { Percent } from '@pancakeswap/sdk'
+import { Percent } from '@cometswap/sdk'
 
 import { BIPS_BASE } from 'config/constants/exchange'
 
@@ -18,3 +18,4 @@ export function warningSeverity(slippage?: Percent): 0 | 1 | 2 | 3 | 4 {
   if (!slippage?.lessThan(ALLOWED_SLIPPAGE_LOW)) return 1
   return 0
 }
+

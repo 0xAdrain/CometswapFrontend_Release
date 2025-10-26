@@ -79,7 +79,7 @@ export const LocalLoader = ({ fill }: { fill: boolean }) => {
   return (
     <Wrapper fill={fill ? 1 : 0}>
       <AnimatedImg>
-        <img src={`${ASSET_CDN}/web/pancake-3d-spinner-v2.gif`} alt="loading-icon" />
+        <img src={`${ASSET_CDN}/web/comet-3d-spinner-v2.gif`} alt="loading-icon" />
       </AnimatedImg>
     </Wrapper>
   )
@@ -123,3 +123,4 @@ export const LoadingRows = styled.div`
     margin-bottom: 2em;
   }
 `
+

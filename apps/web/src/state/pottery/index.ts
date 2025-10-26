@@ -29,7 +29,7 @@ const initialState: PotteryState = Object.freeze({
     lastDrawId: '',
     totalPrize: '',
     getStatus: PotteryDepositStatus.BEFORE_LOCK,
-    totalLockCake: '',
+    totalLockveComet: '',
     totalSupply: '',
     lockStartTime: '',
     lockTime: 0,
@@ -170,3 +170,4 @@ export const PotterySlice = createSlice({
 export const { setFinishedRoundInfoFetched } = PotterySlice.actions
 
 export default PotterySlice.reducer
+

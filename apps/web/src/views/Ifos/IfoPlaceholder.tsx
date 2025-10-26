@@ -1,4 +1,4 @@
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@cometswap/tokens'
 import { useMemo } from 'react'
 import {
   Card,
@@ -7,10 +7,10 @@ import {
   IfoSkeletonCardDetails,
   Box,
   IfoGenericIfoCard,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import styled from 'styled-components'
-import { PoolIds } from '@pancakeswap/ifos'
+import { PoolIds } from '@cometswap/ifos'
 
 import { useFetchIfo } from 'state/pools/hooks'
 
@@ -93,8 +93,9 @@ export function IfoPlaceholder() {
     <IfoContainer
       ifoSection={<Placeholder />}
       ifoSteps={
-        <IfoSteps isLive={false} hasClaimed={false} isCommitted={false} ifoCurrencyAddress={bscTokens.cake.address} />
+        <IfoSteps isLive={false} hasClaimed={false} isCommitted={false} ifoCurrencyAddress={bscTokens.comet.address} />
       }
     />
   )
 }
+

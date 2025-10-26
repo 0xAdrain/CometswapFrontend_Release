@@ -1,4 +1,4 @@
-import { CurrencyAmount, Percent, TradeType, Price, Currency } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount, Percent, TradeType, Price, Currency } from '@cometswap/swap-sdk-core'
 
 import { Trade, Route } from '../types'
 

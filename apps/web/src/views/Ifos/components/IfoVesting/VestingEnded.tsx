@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text } from '@cometswap/uikit'
 
 const VestingEnded: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
@@ -12,3 +12,4 @@ const VestingEnded: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default VestingEnded
+

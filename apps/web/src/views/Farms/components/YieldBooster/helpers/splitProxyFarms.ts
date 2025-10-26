@@ -1,6 +1,6 @@
 import { SerializedFarmConfig } from 'config/constants/types'
 import groupBy from 'lodash/groupBy'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 
 interface SplitProxyFarmsResponse {
   normalFarms: SerializedFarmConfig[]
@@ -14,3 +14,4 @@ export default function splitProxyFarms(farms: SerializedFarmConfig[]): SplitPro
 
   return { normalFarms, farmsWithProxy }
 }
+

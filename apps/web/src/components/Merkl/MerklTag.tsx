@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Tag } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Tag } from '@cometswap/uikit'
 import { useMerklInfo } from 'hooks/useMerkl'
 
 export function MerklTag({ poolAddress }: { poolAddress?: string }) {
@@ -27,3 +27,4 @@ export function MerklRewardsTag({ poolAddress }: { poolAddress?: string }) {
     </Tag>
   )
 }
+

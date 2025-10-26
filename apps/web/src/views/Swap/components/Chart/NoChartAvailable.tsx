@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text } from '@cometswap/uikit'
 
 interface NoChartAvailableProps {
   token0Address: string
@@ -50,3 +50,4 @@ const NoChartAvailable: React.FC<React.PropsWithChildren<NoChartAvailableProps>>
 }
 
 export default NoChartAvailable
+

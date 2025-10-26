@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
 import { styled } from 'styled-components'
-import { Flex, Box, Text, ReleasedChart } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Box, Text, ReleasedChart } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import BigNumber from 'bignumber.js'
-import { Ifo } from '@pancakeswap/ifos'
-import { getBalanceNumber, formatNumber } from '@pancakeswap/utils/formatBalance'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { Ifo } from '@cometswap/ifos'
+import { getBalanceNumber, formatNumber } from '@cometswap/utils/formatBalance'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 
 const Dot = styled.div<{ isActive?: boolean }>`
   width: 8px;
@@ -93,3 +93,4 @@ const ReleasedTokenInfo: React.FC<React.PropsWithChildren<ReleasedTokenInfoProps
 }
 
 export default ReleasedTokenInfo
+

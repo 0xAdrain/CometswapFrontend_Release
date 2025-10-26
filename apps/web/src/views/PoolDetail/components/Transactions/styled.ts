@@ -1,4 +1,4 @@
-import { Button, Text } from '@pancakeswap/uikit'
+import { Button, Text } from '@cometswap/uikit'
 import styled, { css } from 'styled-components'
 import { SortDirection } from './type'
 
@@ -146,3 +146,4 @@ export const BodyCell = styled.div`
     grid-auto-rows: auto;
   }
 `
+

@@ -1,5 +1,5 @@
-import { Protocol } from "@pancakeswap/farms";
-import { ButtonMenu, ButtonMenuItem } from "@pancakeswap/uikit";
+import { Protocol } from "@cometswap/farms";
+import { ButtonMenu, ButtonMenuItem } from "@cometswap/uikit";
 
 export interface IPoolTypeMenuProps {
   data: { label: string; value: Protocol | null }[];

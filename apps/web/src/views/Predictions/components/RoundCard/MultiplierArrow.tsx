@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { Box, Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { Box, Flex, Text } from '@cometswap/uikit'
 import { CSSProperties } from 'react'
 import { styled } from 'styled-components'
 import { RoundMultiplierDownArrow, RoundMultiplierUpArrow } from '../../RoundMultiplierArrows'
@@ -127,3 +127,4 @@ const MultiplierArrow: React.FC<React.PropsWithChildren<MultiplierArrowProps>> =
 }
 
 export default MultiplierArrow
+

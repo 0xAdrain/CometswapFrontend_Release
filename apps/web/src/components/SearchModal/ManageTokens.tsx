@@ -1,5 +1,5 @@
 import { useRef, RefObject, useCallback, useState, useMemo } from 'react'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import {
   Text,
   Button,
@@ -10,7 +10,7 @@ import {
   Link,
   AutoColumn,
   Column,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import Row, { RowBetween, RowFixed } from 'components/Layout/Row'
 import { useToken } from 'hooks/Tokens'
@@ -18,7 +18,7 @@ import { useRemoveUserAddedToken } from 'state/user/hooks'
 import useUserAddedTokens from 'state/user/hooks/useUserAddedTokens'
 import { CurrencyLogo } from 'components/Logo'
 import { getBlockExploreLink, safeGetAddress } from 'utils'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import ImportRow from './ImportRow'
 import { CurrencyModalView } from './types'
@@ -148,3 +148,4 @@ export default function ManageTokens({
     </Wrapper>
   )
 }
+

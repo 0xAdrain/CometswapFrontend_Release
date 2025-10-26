@@ -1,4 +1,4 @@
-# @pancakeswap/wagmi
+# @cometswap/wagmi
 
 ## 3.0.4
 
@@ -28,8 +28,8 @@
 
 ### Major Changes
 
-- acc454d: Remove binance extension wallet connector @pancakeswap/wagmi
-  release new pkg @pancakeswap/universal-router-sdk & @pancakeswap/permit2-sdk
+- acc454d: Remove binance extension wallet connector @cometswap/wagmi
+  release new pkg @cometswap/universal-router-sdk & @cometswap/permit2-sdk
 
 ## 2.0.3
 

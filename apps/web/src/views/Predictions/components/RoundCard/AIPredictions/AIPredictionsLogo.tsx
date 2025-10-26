@@ -7,3 +7,4 @@ const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 export const AIPredictionsLogo = (props?: Omit<LottieComponentProps, 'animationData'>) => {
   return <Lottie animationData={AILogoJSON} {...props} />
 }
+

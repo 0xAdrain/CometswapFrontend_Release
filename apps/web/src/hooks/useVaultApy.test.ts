@@ -14,7 +14,7 @@ BigNumber.config({
 vi.mock('../state/pools/hooks', () => ({
   // @ts-ignore
   ...vi.importActual('state/pools/hooks'),
-  useCakeVault: vi.fn(),
+  useVeCometVault: vi.fn(),
 }))
 
 describe('useVaultApy', () => {
@@ -32,12 +32,12 @@ describe('useVaultApy', () => {
     ],
   ])('should get correct vault apy', (cases, want) => {
     // @ts-ignore
-    PoolHooks.useCakeVault.mockReturnValue({
+    PoolHooks.useVeCometVault.mockReturnValue({
       totalShares: cases.totalShares,
       pricePerFullShare: cases.pricePerFullShare,
     })
     const queryClient = new QueryClient()
-    queryClient.setQueryData(['masterChef-total-cake-pool-emission'], cases.emission)
+    queryClient.setQueryData(['masterChef-total-comet-pool-emission'], cases.emission)
     const { result } = renderHook(
       () => {
         const { flexibleApy, getLockedApy, lockedApy } = useVaultApy()
@@ -56,3 +56,4 @@ describe('useVaultApy', () => {
     expect(result.current.lockedApy).toEqual(want.lockedApy)
   })
 })
+

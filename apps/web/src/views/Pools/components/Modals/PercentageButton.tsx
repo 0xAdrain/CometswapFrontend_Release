@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Button } from '@pancakeswap/uikit'
+import { Button } from '@cometswap/uikit'
 
 interface PercentageButtonProps {
   onClick: () => void
@@ -18,3 +18,4 @@ const PercentageButton: React.FC<React.PropsWithChildren<PercentageButtonProps>>
 }
 
 export default PercentageButton
+

@@ -29,3 +29,4 @@ export const formatAmount = (num: number | undefined, digits = 2) => {
     maximumFractionDigits: num > 1000 ? 2 : digits,
   }).format(num)
 }
+

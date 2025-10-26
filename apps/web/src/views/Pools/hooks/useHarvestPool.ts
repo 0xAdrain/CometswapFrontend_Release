@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { useSousChef } from 'hooks/useContract'
 
 const options = {}
@@ -30,3 +30,4 @@ const useHarvestPool = (sousId, isUsingBnb = false) => {
 }
 
 export default useHarvestPool
+

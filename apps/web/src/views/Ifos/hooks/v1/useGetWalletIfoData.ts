@@ -1,11 +1,11 @@
 import { useState, useCallback } from 'react'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
-import { Ifo, PoolIds } from '@pancakeswap/ifos'
+import { Ifo, PoolIds } from '@cometswap/ifos'
 import { useERC20, useIfoV1Contract } from 'hooks/useContract'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { publicClient } from 'utils/wagmi'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { ifoV1ABI } from 'config/abi/ifoV1'
 import useIfoAllowance from '../useIfoAllowance'
 import { WalletIfoState, WalletIfoData } from '../../types'
@@ -116,3 +116,4 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
 }
 
 export default useGetWalletIfoData
+

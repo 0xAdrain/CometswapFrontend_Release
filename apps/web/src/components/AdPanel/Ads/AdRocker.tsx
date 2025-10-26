@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { BodyText } from '../BodyText'
 import { AdButton } from '../Button'
 import { AdCard } from '../Card'
@@ -21,3 +21,4 @@ export const AdRocker = (props: AdPlayerProps) => {
     </AdCard>
   )
 }
+

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { getBoostedPoolsConfig } from '../../constants/boostedPools'
 
 export const checkIsBoostedPool = (contract: string, chainId: ChainId): boolean => {

@@ -61,7 +61,7 @@ export const revenueSharingPoolABI = [
   },
   {
     inputs: [],
-    name: 'VCake',
+    name: 'VveComet',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -241,3 +241,4 @@ export const revenueSharingPoolABI = [
     type: 'function',
   },
 ] as const
+

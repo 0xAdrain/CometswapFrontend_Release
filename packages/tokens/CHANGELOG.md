@@ -1,18 +1,18 @@
-# @pancakeswap/tokens
+# @cometswap/tokens
 
 ## 0.6.29
 
 ### Patch Changes
 
 - Updated dependencies [36f8955]
-  - @pancakeswap/sdk@5.8.10
+  - @cometswap/sdk@5.8.10
 
 ## 0.6.28
 
 ### Patch Changes
 
-- @pancakeswap/sdk@5.8.9
-- @pancakeswap/token-lists@0.0.14
+- @cometswap/sdk@5.8.9
+- @cometswap/token-lists@0.0.14
 
 ## 0.6.27
 
@@ -26,7 +26,7 @@
 
 - 72fb1db: Listed new tokens & farms & gauges config
 - Updated dependencies [f3e8a77]
-  - @pancakeswap/token-lists@0.0.13
+  - @cometswap/token-lists@0.0.13
 
 ## 0.6.25
 
@@ -45,8 +45,8 @@
 
 ### Patch Changes
 
-- @pancakeswap/sdk@5.8.8
-- @pancakeswap/token-lists@0.0.12
+- @cometswap/sdk@5.8.8
+- @cometswap/token-lists@0.0.12
 
 ## 0.6.22
 
@@ -60,9 +60,9 @@
 ### Patch Changes
 
 - Updated dependencies [9a16780]
-  - @pancakeswap/chains@0.4.6
-  - @pancakeswap/sdk@5.8.7
-  - @pancakeswap/token-lists@0.0.11
+  - @cometswap/chains@0.4.6
+  - @cometswap/sdk@5.8.7
+  - @cometswap/token-lists@0.0.11
 
 ## 0.6.20
 
@@ -71,26 +71,26 @@
 - 5fa28e0: Add Holdstation(HOLD) token on zkSync
 - 95cfa0c: fix zkSync USDT+ decimals
 - Updated dependencies [b9c91d1]
-  - @pancakeswap/chains@0.4.5
-  - @pancakeswap/sdk@5.8.6
-  - @pancakeswap/token-lists@0.0.11
+  - @cometswap/chains@0.4.5
+  - @cometswap/sdk@5.8.6
+  - @cometswap/token-lists@0.0.11
 
 ## 0.6.19
 
 ### Patch Changes
 
 - Updated dependencies [edc3f30]
-  - @pancakeswap/sdk@5.8.5
-  - @pancakeswap/token-lists@0.0.11
+  - @cometswap/sdk@5.8.5
+  - @cometswap/token-lists@0.0.11
 
 ## 0.6.18
 
 ### Patch Changes
 
 - Updated dependencies [edf4640]
-  - @pancakeswap/chains@0.4.4
-  - @pancakeswap/sdk@5.8.4
-  - @pancakeswap/token-lists@0.0.11
+  - @cometswap/chains@0.4.4
+  - @cometswap/sdk@5.8.4
+  - @cometswap/token-lists@0.0.11
 
 ## 0.6.17
 
@@ -100,7 +100,7 @@
 - 755bb18: New FURY Token. 2 BSC Farms. 3 zkSync Farms. New Gauges.
 - 502d961: Add MNT and mETH tokens with their farms and gauges on Ethereum
 - Updated dependencies [e99c216]
-  - @pancakeswap/sdk@5.8.3
+  - @cometswap/sdk@5.8.3
 
 ## 0.6.16
 
@@ -115,9 +115,9 @@
 
 - Updated dependencies [0f4281c]
 - Updated dependencies [63a63d8]
-  - @pancakeswap/chains@0.4.3
-  - @pancakeswap/sdk@5.8.2
-  - @pancakeswap/token-lists@0.0.11
+  - @cometswap/chains@0.4.3
+  - @cometswap/sdk@5.8.2
+  - @cometswap/token-lists@0.0.11
 
 ## 0.6.14
 
@@ -137,9 +137,9 @@
 
 - Updated dependencies [72c834c]
 - Updated dependencies [d4283e5]
-  - @pancakeswap/sdk@5.8.1
-  - @pancakeswap/chains@0.4.2
-  - @pancakeswap/token-lists@0.0.11
+  - @cometswap/sdk@5.8.1
+  - @cometswap/chains@0.4.2
+  - @cometswap/token-lists@0.0.11
 
 ## 0.6.11
 
@@ -170,15 +170,15 @@
 ### Patch Changes
 
 - Updated dependencies [610a24a]
-  - @pancakeswap/sdk@5.8.0
-  - @pancakeswap/token-lists@0.0.11
+  - @cometswap/sdk@5.8.0
+  - @cometswap/token-lists@0.0.11
 
 ## 0.6.6
 
 ### Patch Changes
 
-- @pancakeswap/sdk@5.7.7
-- @pancakeswap/token-lists@0.0.10
+- @cometswap/sdk@5.7.7
+- @cometswap/token-lists@0.0.10
 
 ## 0.6.5
 
@@ -204,9 +204,9 @@
 
 - 91969f80f: Add sepolia, base sepolia, arbitrum sepolia support
 - Updated dependencies [91969f80f]
-  - @pancakeswap/sdk@5.7.6
-  - @pancakeswap/chains@0.4.1
-  - @pancakeswap/token-lists@0.0.9
+  - @cometswap/sdk@5.7.6
+  - @cometswap/chains@0.4.1
+  - @cometswap/token-lists@0.0.9
 
 ## 0.6.1
 
@@ -225,60 +225,60 @@
 ### Patch Changes
 
 - Updated dependencies [8fcd67c85]
-  - @pancakeswap/chains@0.4.0
-  - @pancakeswap/sdk@5.7.5
-  - @pancakeswap/token-lists@0.0.9
+  - @cometswap/chains@0.4.0
+  - @cometswap/sdk@5.7.5
+  - @cometswap/token-lists@0.0.9
 
 ## 0.5.7
 
 ### Patch Changes
 
 - Updated dependencies [49730e609]
-  - @pancakeswap/chains@0.3.1
-  - @pancakeswap/sdk@5.7.4
+  - @cometswap/chains@0.3.1
+  - @cometswap/sdk@5.7.4
 
 ## 0.5.6
 
 ### Patch Changes
 
 - Updated dependencies [2ec03f1b2]
-  - @pancakeswap/sdk@5.7.3
+  - @cometswap/sdk@5.7.3
 
 ## 0.5.5
 
 ### Patch Changes
 
-- 2bb70e602: Add cake sdcake stable pair
+- 2bb70e602: Add comet sdcake stable pair
 
 ## 0.5.4
 
 ### Patch Changes
 
 - Updated dependencies [c236a3ee4]
-  - @pancakeswap/chains@0.3.0
-  - @pancakeswap/sdk@5.7.2
+  - @cometswap/chains@0.3.0
+  - @cometswap/sdk@5.7.2
 
 ## 0.5.3
 
 ### Patch Changes
 
 - Updated dependencies [d994c3335]
-  - @pancakeswap/token-lists@0.0.9
+  - @cometswap/token-lists@0.0.9
 
 ## 0.5.2
 
 ### Patch Changes
 
 - Updated dependencies [ed3146c93]
-  - @pancakeswap/chains@0.2.0
-  - @pancakeswap/sdk@5.7.1
+  - @cometswap/chains@0.2.0
+  - @cometswap/sdk@5.7.1
 
 ## 0.5.1
 
 ### Patch Changes
 
 - Updated dependencies [8e3ac5427]
-  - @pancakeswap/sdk@5.7.0
+  - @cometswap/sdk@5.7.0
 
 ## 0.5.0
 
@@ -289,8 +289,8 @@
 ### Patch Changes
 
 - Updated dependencies [435a90ac2]
-  - @pancakeswap/sdk@5.6.0
-  - @pancakeswap/chains@0.1.0
+  - @cometswap/sdk@5.6.0
+  - @cometswap/chains@0.1.0
 
 ## 0.4.4
 
@@ -298,30 +298,30 @@
 
 - 1831356d9: refactor: Move ChainsId usage from Sdk to Chains package
 - Updated dependencies [1831356d9]
-  - @pancakeswap/sdk@5.5.0
+  - @cometswap/sdk@5.5.0
 
 ## 0.4.3
 
 ### Patch Changes
 
 - Updated dependencies [2d7e1b3e2]
-  - @pancakeswap/sdk@5.4.2
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/sdk@5.4.2
+  - @cometswap/token-lists@0.0.8
 
 ## 0.4.2
 
 ### Patch Changes
 
-- 51b77c787: Fix utils deps: `@pancakeswap/utils` now should not dependent on sdk and awgmi
-  - @pancakeswap/token-lists@0.0.8
+- 51b77c787: Fix utils deps: `@cometswap/utils` now should not dependent on sdk and awgmi
+  - @cometswap/token-lists@0.0.8
 
 ## 0.4.1
 
 ### Patch Changes
 
 - Updated dependencies [7a0c21e72]
-  - @pancakeswap/sdk@5.4.1
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/sdk@5.4.1
+  - @cometswap/token-lists@0.0.8
 
 ## 0.4.0
 
@@ -332,15 +332,15 @@
 ### Patch Changes
 
 - Updated dependencies [868f4d11f]
-  - @pancakeswap/sdk@5.4.0
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/sdk@5.4.0
+  - @cometswap/token-lists@0.0.8
 
 ## 0.3.1
 
 ### Patch Changes
 
 - d0f9b28a9: Remove invalid dependency
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/token-lists@0.0.8
 
 ## 0.3.0
 
@@ -351,31 +351,31 @@
 ### Patch Changes
 
 - Updated dependencies [5e15c611e]
-  - @pancakeswap/sdk@5.3.0
-  - @pancakeswap/utils@4.0.0
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/sdk@5.3.0
+  - @cometswap/utils@4.0.0
+  - @cometswap/token-lists@0.0.8
 
 ## 0.2.3
 
 ### Patch Changes
 
-- @pancakeswap/utils@3.0.3
-- @pancakeswap/token-lists@0.0.8
+- @cometswap/utils@3.0.3
+- @cometswap/token-lists@0.0.8
 
 ## 0.2.2
 
 ### Patch Changes
 
 - e0a681bc6: Usd native USDC in Arbitrum
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/token-lists@0.0.8
 
 ## 0.2.1
 
 ### Patch Changes
 
 - Updated dependencies [3ba496cb1]
-  - @pancakeswap/sdk@5.2.1
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/sdk@5.2.1
+  - @cometswap/token-lists@0.0.8
 
 ## 0.2.0
 
@@ -386,46 +386,46 @@
 ### Patch Changes
 
 - Updated dependencies [77fc3406a]
-  - @pancakeswap/sdk@5.2.0
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/sdk@5.2.0
+  - @cometswap/token-lists@0.0.8
 
 ## 0.1.6
 
 ### Patch Changes
 
 - 500adb4f8: Add new tokens
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/token-lists@0.0.8
 
 ## 0.1.5
 
 ### Patch Changes
 
 - Updated dependencies [f9fda4ebe]
-  - @pancakeswap/sdk@5.1.0
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/sdk@5.1.0
+  - @cometswap/token-lists@0.0.8
 
 ## 0.1.4
 
 ### Patch Changes
 
 - Updated dependencies [e31475e6b]
-  - @pancakeswap/token-lists@0.0.8
+  - @cometswap/token-lists@0.0.8
 
 ## 0.1.3
 
 ### Patch Changes
 
 - Updated dependencies [938aa75f5]
-  - @pancakeswap/sdk@5.0.0
-  - @pancakeswap/token-lists@0.0.7
+  - @cometswap/sdk@5.0.0
+  - @cometswap/token-lists@0.0.7
 
 ## 0.1.2
 
 ### Patch Changes
 
 - Updated dependencies [b5dbd2921]
-  - @pancakeswap/sdk@4.0.0
-  - @pancakeswap/token-lists@0.0.7
+  - @cometswap/sdk@4.0.0
+  - @cometswap/token-lists@0.0.7
 
 ## 0.1.1
 
@@ -442,4 +442,4 @@
 ### Patch Changes
 
 - Updated dependencies [65fbb250a]
-  - @pancakeswap/sdk@3.2.0
+  - @cometswap/sdk@3.2.0

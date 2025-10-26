@@ -1,4 +1,4 @@
-import { NotificationBell as BellIcon, Box, Flex, ModalV2, ModalWrapper, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { NotificationBell as BellIcon, Box, Flex, ModalV2, ModalWrapper, useMatchBreakpoints } from '@cometswap/uikit'
 // import { useNotifications } from '@web3inbox/react'
 import React, { ReactNode, memo, useCallback, useEffect, useRef, useState } from 'react'
 import useSendPushNotification from 'views/Notifications/hooks/sendPushNotification'
@@ -76,3 +76,4 @@ const NotificationMenu: React.FC<{
 }
 
 export default memo(NotificationMenu)
+

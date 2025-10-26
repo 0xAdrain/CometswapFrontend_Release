@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Pair, Percent, Price, Token } from '@pancakeswap/sdk'
-import { useModal } from '@pancakeswap/uikit'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Pair, Percent, Price, Token } from '@cometswap/sdk'
+import { useModal } from '@cometswap/uikit'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { ReactElement, useCallback, useMemo, useState } from 'react'
 
 import { V2_ROUTER_ADDRESS } from 'config/constants/exchange'
@@ -378,3 +378,4 @@ export default function AddLiquidity({
     pendingText,
   })
 }
+

@@ -24,3 +24,4 @@ export const useGasSponsorshipBalance = ({ enabled }: UseGasSponsorshipProps = {
     enabled,
   })
 }
+

@@ -1,5 +1,5 @@
-import { ChainId } from "@pancakeswap/chains";
-import { useTranslation } from "@pancakeswap/localization";
+import { ChainId } from "@cometswap/chains";
+import { useTranslation } from "@cometswap/localization";
 import {
   FarmMultiplierInfo,
   Flex,
@@ -9,7 +9,7 @@ import {
   Skeleton,
   Text,
   useTooltip,
-} from "@pancakeswap/uikit";
+} from "@cometswap/uikit";
 import { ReactElement } from "react";
 import { styled } from "styled-components";
 
@@ -25,9 +25,9 @@ export interface ExpandableSectionProps {
   alignLinksToRight?: boolean;
   totalValueLabel?: string;
   multiplier?: string;
-  farmCakePerSecond?: string;
+  farmveCometPerSecond?: string;
   totalMultipliers?: string;
-  isV2BCakeWrapperFarm?: boolean;
+  isV2BveCometWrapperFarm?: boolean;
 }
 
 const Wrapper = styled.div`
@@ -61,9 +61,9 @@ export const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionP
   auctionHostingEndDate,
   alignLinksToRight = true,
   multiplier,
-  farmCakePerSecond,
+  farmveCometPerSecond,
   totalMultipliers,
-  isV2BCakeWrapperFarm,
+  isV2BveCometWrapperFarm,
 }) => {
   const {
     t,
@@ -71,7 +71,7 @@ export const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionP
   } = useTranslation();
 
   const multiplierTooltipContent = FarmMultiplierInfo({
-    farmCakePerSecond: farmCakePerSecond ?? "-",
+    farmveCometPerSecond: farmveCometPerSecond ?? "-",
     totalMultipliers: totalMultipliers ?? "-",
   });
 
@@ -97,7 +97,7 @@ export const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionP
         <Text>{totalValueLabel || t("Staked Liquidity")}:</Text>
         {totalValueFormatted ? <Text>{totalValueFormatted}</Text> : <Skeleton width={75} height={25} />}
       </Flex>
-      {!isV2BCakeWrapperFarm && (
+      {!isV2BveCometWrapperFarm && (
         <Flex justifyContent="space-between">
           <Text>{t("Multiplier")}:</Text>
           {multiplier ? (

@@ -1,12 +1,12 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token, WETH9 } from '@pancakeswap/sdk'
-import { CAKE, USDC, USDT } from './common'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token, WETH9 } from '@cometswap/sdk'
+import { COMET, USDC, USDT } from './common'
 
 export const zksyncTokens = {
   weth: WETH9[ChainId.ZKSYNC],
   usdc: USDC[ChainId.ZKSYNC],
   usdt: USDT[ChainId.ZKSYNC],
-  cake: CAKE[ChainId.ZKSYNC],
+  comet: COMET[ChainId.ZKSYNC],
   usdcNative: new ERC20Token(
     ChainId.ZKSYNC,
     '0x1d17CBcF0D6D143135aE902365D2E5e2A16538D4',

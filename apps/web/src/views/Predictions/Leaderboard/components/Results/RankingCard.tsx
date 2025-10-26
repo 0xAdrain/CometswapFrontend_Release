@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import {
   Box,
   BunnyPlaceholderIcon,
@@ -15,8 +15,8 @@ import {
   SubMenuItem,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+} from '@cometswap/uikit'
+import truncateHash from '@cometswap/utils/truncateHash'
 import { useDomainNameForAddress } from 'hooks/useDomain'
 import { useStatModalProps } from 'state/predictions/hooks'
 import { useProfileForAddress } from 'state/profile/hooks'
@@ -135,3 +135,4 @@ const RankingCard: React.FC<React.PropsWithChildren<RankingCardProps>> = ({ rank
 }
 
 export default RankingCard
+

@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Flex, Skeleton, Td, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Flex, Skeleton, Td, useMatchBreakpoints } from '@cometswap/uikit'
 
 const GridItem = styled(Flex)`
   align-items: center;
@@ -57,3 +57,4 @@ const TableLoader: React.FC<React.PropsWithChildren> = () => (
 )
 
 export default TableLoader
+

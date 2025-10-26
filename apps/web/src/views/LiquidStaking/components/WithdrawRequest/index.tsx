@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, NativeCurrency, Token } from '@pancakeswap/swap-sdk-core'
-import { Button, CardBody, Flex, Message, MessageText, RowBetween, Text } from '@pancakeswap/uikit'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, NativeCurrency, Token } from '@cometswap/swap-sdk-core'
+import { Button, CardBody, Flex, Message, MessageText, RowBetween, Text } from '@cometswap/uikit'
+import { getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useCurrency } from 'hooks/Tokens'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -47,7 +47,7 @@ export const WithdrawRequest = ({ selectedList }: { selectedList: OptionProps })
   const { t } = useTranslation()
   const { account } = useActiveWeb3React()
   const { balance: stakedTokenBalance } = useTokenBalance(selectedList.token1.address as Address)
-  const userCakeDisplayBalance = getFullDisplayBalance(stakedTokenBalance, selectedList.token1.decimals, 6)
+  const userCometDisplayBalance = getFullDisplayBalance(stakedTokenBalance, selectedList.token1.decimals, 6)
   const native = useNativeCurrency()
 
   const userWithdrawRequest = useReadWithdrawRequestInfo()
@@ -93,7 +93,7 @@ export const WithdrawRequest = ({ selectedList }: { selectedList: OptionProps })
 
           <Flex flexDirection="column" alignItems="end">
             <Text>
-              {userCakeDisplayBalance} {selectedList?.token1?.symbol}
+              {userCometDisplayBalance} {selectedList?.token1?.symbol}
             </Text>
             <Text fontSize="10px" color="textSubtle">
               {stakedAmountToken && token1USDPrice
@@ -178,3 +178,4 @@ export const WithdrawRequest = ({ selectedList }: { selectedList: OptionProps })
     </>
   )
 }
+

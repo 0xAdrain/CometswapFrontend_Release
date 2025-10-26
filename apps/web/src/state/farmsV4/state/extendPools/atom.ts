@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Protocol, supportedChainIdV4 } from '@pancakeswap/farms'
+import { ChainId } from '@cometswap/chains'
+import { Protocol, supportedChainIdV4 } from '@cometswap/farms'
 import { atom } from 'jotai'
 import { isAddressEqual } from 'utils'
 import { type Address } from 'viem'
@@ -48,3 +48,4 @@ interface PoolsOfPositionType {
   [address: Address]: PoolInfo
 }
 export const poolsOfPositionAtom = atom({} as PoolsOfPositionType)
+

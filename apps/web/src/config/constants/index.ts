@@ -17,7 +17,7 @@ export const PREDICTION_TOOLTIP_DISMISS_KEY = 'prediction-switcher-dismiss-toolt
 // Gelato uses this address to define a native currency in all chains
 export const GELATO_NATIVE = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
 
-export const EXCHANGE_HELP_URLS = 'https://docs.pancakeswap.finance/help'
+export const EXCHANGE_HELP_URLS = 'https://docs.cometswap.finance/help'
 
 export const QUERY_SETTINGS_IMMUTABLE = {
   refetchOnReconnect: false,
@@ -31,3 +31,4 @@ export const QUERY_SETTINGS_WITHOUT_INTERVAL_REFETCH = {
 }
 
 export const PERSIST_CHAIN_KEY = 'persistChain'
+

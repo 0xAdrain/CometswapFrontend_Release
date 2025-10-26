@@ -24,3 +24,4 @@ const userClaimFee = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default userClaimFee
+

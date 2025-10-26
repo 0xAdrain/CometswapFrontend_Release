@@ -1,4 +1,4 @@
-# @pancakeswap/token-lists
+# @cometswap/token-lists
 
 ## 0.0.14
 
@@ -6,7 +6,7 @@
 
 - Updated dependencies [176eb10]
 - Updated dependencies [176eb10]
-  - @pancakeswap/swap-sdk-core@1.3.0
+  - @cometswap/swap-sdk-core@1.3.0
 
 ## 0.0.13
 
@@ -19,21 +19,21 @@
 ### Patch Changes
 
 - Updated dependencies [f551e5e]
-  - @pancakeswap/swap-sdk-core@1.2.0
+  - @cometswap/swap-sdk-core@1.2.0
 
 ## 0.0.11
 
 ### Patch Changes
 
 - Updated dependencies [610a24a]
-  - @pancakeswap/swap-sdk-core@1.1.0
+  - @cometswap/swap-sdk-core@1.1.0
 
 ## 0.0.10
 
 ### Patch Changes
 
 - Updated dependencies [c269d43]
-  - @pancakeswap/swap-sdk-core@1.0.1
+  - @cometswap/swap-sdk-core@1.0.1
 
 ## 0.0.9
 
@@ -52,7 +52,7 @@
 ### Patch Changes
 
 - Updated dependencies [b5dbd2921]
-  - @pancakeswap/swap-sdk-core@1.0.0
+  - @cometswap/swap-sdk-core@1.0.0
 
 ## 0.0.6
 
@@ -82,6 +82,6 @@
 
 ### Patch Changes
 
-- 68440160d: ## PancakeSwap version spec
+- 68440160d: ## CometSwap version spec
   Add `schema` aptos to indentify aptos version of token list
   without schema will default be uniswap version evm validation

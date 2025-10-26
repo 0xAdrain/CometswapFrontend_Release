@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Flex, Link } from '@pancakeswap/uikit'
+import { Flex, Link } from '@cometswap/uikit'
 
 export const PageButtons = styled.div`
   width: 100%;
@@ -94,3 +94,4 @@ export const ProtocolWrapper = styled.div`
     display: block;
   }
 `
+

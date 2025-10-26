@@ -1,6 +1,6 @@
-import { CardBody, Text, Box, RowBetween } from '@pancakeswap/uikit'
+import { CardBody, Text, Box, RowBetween } from '@cometswap/uikit'
 // import { AppHeader } from 'components/App'
-// import { useTranslation } from '@pancakeswap/localization'
+// import { useTranslation } from '@cometswap/localization'
 import { LightGreyCard } from 'components/Card'
 
 export function LiquidStakingPageHistory() {
@@ -39,3 +39,4 @@ export function LiquidStakingPageHistory() {
     </>
   )
 }
+

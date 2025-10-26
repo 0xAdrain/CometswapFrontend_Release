@@ -1,6 +1,6 @@
-import { PermitSingle } from '@pancakeswap/permit2-sdk'
-import { BigintIsh } from '@pancakeswap/sdk'
-import { SwapOptions } from '@pancakeswap/smart-router'
+import { PermitSingle } from '@cometswap/permit2-sdk'
+import { BigintIsh } from '@cometswap/sdk'
+import { SwapOptions } from '@cometswap/smart-router'
 import { Address } from 'viem'
 
 export interface Permit2Signature extends PermitSingle {
@@ -17,7 +17,7 @@ export type FlatFeeOptions = {
   recipient: Address
 }
 
-export type PancakeSwapOptions = Omit<SwapOptions, 'inputTokenPermit'> & {
+export type CometSwapOptions = Omit<SwapOptions, 'inputTokenPermit'> & {
   inputTokenPermit?: Permit2Signature
   flatFee?: FlatFeeOptions
 }

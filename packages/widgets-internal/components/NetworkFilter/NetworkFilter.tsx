@@ -1,4 +1,4 @@
-import { MultiSelect, IMultiSelectChangeEvent, IMultiSelectProps } from "@pancakeswap/uikit";
+import { MultiSelect, IMultiSelectChangeEvent, IMultiSelectProps } from "@cometswap/uikit";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 

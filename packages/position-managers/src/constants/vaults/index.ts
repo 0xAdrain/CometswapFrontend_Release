@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { PCSDuoTokenVaultConfig, VaultConfig } from '../../types'
 import { MANAGER } from '../managers'
 import { SupportedChainId } from '../supportedChains'

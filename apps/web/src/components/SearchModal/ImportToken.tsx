@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Token } from '@pancakeswap/sdk'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Token } from '@cometswap/sdk'
+import { WrappedTokenInfo } from '@cometswap/token-lists'
 import {
   AutoColumn,
   BscScanIcon,
@@ -16,9 +16,9 @@ import {
   Tag,
   Text,
   useTooltip,
-} from '@pancakeswap/uikit'
-import truncateHash from '@pancakeswap/utils/truncateHash'
-import { ListLogo } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import truncateHash from '@cometswap/utils/truncateHash'
+import { ListLogo } from '@cometswap/widgets-internal'
 import AccessRisk, { TOKEN_RISK } from 'components/AccessRisk'
 import { ACCESS_TOKEN_SUPPORT_CHAIN_IDS } from 'components/AccessRisk/config/supportedChains'
 import { fetchRiskToken } from 'components/AccessRisk/utils/fetchTokenRisk'
@@ -181,3 +181,4 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
 }
 
 export default ImportToken
+

@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, PancakeToggle, PreTitle, QuestionHelper, Text, Toggle } from '@pancakeswap/uikit'
-import { useAudioPlay } from '@pancakeswap/utils/user'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, CometToggle, PreTitle, QuestionHelper, Text, Toggle } from '@cometswap/uikit'
+import { useAudioPlay } from '@cometswap/utils/user'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { memo } from 'react'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
@@ -72,12 +72,12 @@ export const SettingsTab = memo(
             <Flex alignItems="center">
               <Text>{t('Flippy sounds')}</Text>
               <QuestionHelper
-                text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
+                text={t('Fun sounds to make a truly immersive comet-flipping trading experience')}
                 placement="top"
                 ml="4px"
               />
             </Flex>
-            <PancakeToggle
+            <CometToggle
               id="toggle-audio-play"
               checked={audioPlay}
               onChange={() => setAudioMode((s) => !s)}
@@ -98,3 +98,4 @@ export const SettingsTab = memo(
     )
   },
 )
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
 import {
   AutoRow,
   Box,
@@ -11,9 +11,9 @@ import {
   Tag,
   Text,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { FeeAmount } from '@cometswap/v3-sdk'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { GiftTooltip } from 'components/GiftTooltip/GiftTooltip'
 import { SwellTooltip } from 'components/SwellTooltip/SwellTooltip'
 import { TokenPairImage } from 'components/TokenImage'
@@ -40,7 +40,7 @@ type ExpandableSectionProps = {
   version: 3 | 2
   feeAmount?: FeeAmount
   pid?: number
-  farmCakePerSecond?: string
+  farmCometPerSecond?: string
   totalMultipliers?: string
   merklLink?: string
   merklUserLink?: string
@@ -49,7 +49,7 @@ type ExpandableSectionProps = {
   lpAddress?: Address
   merklApr?: number
   isBooster?: boolean
-  bCakeWrapperAddress?: Address
+  bCometWrapperAddress?: Address
 }
 
 const Wrapper = styled(Flex)`
@@ -71,7 +71,7 @@ const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = (
   isStable,
   version,
   feeAmount,
-  farmCakePerSecond,
+  farmCometPerSecond,
   totalMultipliers,
   merklLink,
   merklUserLink,
@@ -79,16 +79,16 @@ const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = (
   merklApr,
   lpAddress,
   isBooster,
-  bCakeWrapperAddress,
+  bCometWrapperAddress,
 }) => {
   const { t } = useTranslation()
   const chainId = useChainId()
-  const isReady = multiplier !== undefined || bCakeWrapperAddress
+  const isReady = multiplier !== undefined || bCometWrapperAddress
   const hasSwellReward = useHasSwellReward(lpAddress)
   const customTooltips = useHasCustomFarmLpTooltips(lpAddress)
 
   const multiplierTooltipContent = FarmMultiplierInfo({
-    farmCakePerSecond: farmCakePerSecond ?? '-',
+    farmCometPerSecond: farmCometPerSecond ?? '-',
     totalMultipliers: totalMultipliers ?? '-',
   })
 
@@ -126,7 +126,7 @@ const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = (
               <GiftTooltip>
                 <Box>
                   <Text lineHeight="110%" as="span">
-                    {t('Stake CAKE, Earn PEPE in our')}
+                    {t('Stake COMET, Earn PEPE in our')}
                     <Link ml="4px" lineHeight="110%" display="inline !important" href="/pools?chain=bsc" external>
                       PEPE Syrup Pool
                     </Link>
@@ -169,3 +169,4 @@ const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = (
 }
 
 export default CardHeading
+

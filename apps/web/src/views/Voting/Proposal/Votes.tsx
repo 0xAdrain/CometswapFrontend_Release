@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoRenewIcon,
   Button,
@@ -9,7 +9,7 @@ import {
   Flex,
   Heading,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { FetchStatus, TFetchStatus } from 'config/constants/types'
 import orderBy from 'lodash/orderBy'
 import { useState } from 'react'
@@ -94,3 +94,4 @@ const Votes: React.FC<React.PropsWithChildren<VotesProps>> = ({ votes, proposal,
 }
 
 export default Votes
+

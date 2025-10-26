@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Balance, Button, Heading, Skeleton, Text, TooltipText, useTooltip } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Balance, Button, Heading, Skeleton, Text, TooltipText, useTooltip } from "@cometswap/uikit";
 import BigNumber from "bignumber.js";
 
 import { FARMS_SMALL_AMOUNT_THRESHOLD } from "../../../constants";
@@ -12,7 +12,7 @@ export interface HarvestActionProps {
   pendingTx: boolean;
   userDataReady: boolean;
   disabled: boolean;
-  proxyCakeBalance?: number;
+  proxyveCometBalance?: number;
   handleHarvest: () => void;
   style?: React.CSSProperties;
 }
@@ -23,7 +23,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
   displayBalance,
   pendingTx,
   userDataReady,
-  proxyCakeBalance,
+  proxyveCometBalance,
   disabled,
   handleHarvest,
   style,
@@ -40,7 +40,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     `${toolTipBalance} ${t(
-      `CAKE has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`
+      `COMEThas been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`
     )}`,
     {
       placement: "bottom",
@@ -51,7 +51,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
     <ActionContainer style={{ minHeight: 124.5, ...style }}>
       <ActionTitles>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          CAKE
+          COMET
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t("Earned")}
@@ -59,7 +59,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
       </ActionTitles>
       <ActionContent>
         <div>
-          {proxyCakeBalance ? (
+          {proxyveCometBalance ? (
             <>
               <TooltipText ref={targetRef} decorationColor="secondary">
                 <Heading>{displayBalance}</Heading>

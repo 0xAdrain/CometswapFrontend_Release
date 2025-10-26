@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@cometswap/uikit'
 
 const SunburstSvg: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -42,3 +42,4 @@ const SunburstSvg: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
 }
 
 export default SunburstSvg
+

@@ -52,3 +52,4 @@ export interface RoundResponse<BetType> {
   bearAmount: string
   bets?: BetType[]
 }
+

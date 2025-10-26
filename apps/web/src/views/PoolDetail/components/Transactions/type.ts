@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/swap-sdk-core'
+import { Currency } from '@cometswap/swap-sdk-core'
 import { Address, Hash } from 'viem'
 
 export enum SortField {
@@ -36,3 +36,4 @@ export enum SortDirection {
   Descending,
   Ascending,
 }
+

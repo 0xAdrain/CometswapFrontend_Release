@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Fraction, ONE, Percent, ZERO } from "@pancakeswap/sdk";
-import { formatFraction, parseNumberToFraction } from "@pancakeswap/utils/formatFractions";
-import { FeeAmount, FeeCalculator } from "@pancakeswap/v3-sdk";
+import { Currency, CurrencyAmount, Fraction, ONE, Percent, ZERO } from "@cometswap/sdk";
+import { formatFraction, parseNumberToFraction } from "@cometswap/utils/formatFractions";
+import { FeeAmount, FeeCalculator } from "@cometswap/v3-sdk";
 import { useMemo } from "react";
 
 import { useRate } from "./useRate";
@@ -13,9 +13,9 @@ interface Params extends Omit<FeeParams, "amount" | "currency"> {
   currencyBUsdPrice?: number;
   amountA?: CurrencyAmount<Currency>;
   amountB?: CurrencyAmount<Currency>;
-  cakeApr?: number;
-  editCakeApr?: number;
-  cakePrice?: number;
+  cometApr?: number;
+  editveCometApr?: number;
+  cometPrice?: number;
 }
 
 export function useRoi({
@@ -26,8 +26,8 @@ export function useRoi({
   currencyBUsdPrice,
   stakeFor = 365,
   compoundOn,
-  cakeApr,
-  editCakeApr,
+  cometApr,
+  editveCometApr,
   ...rest
 }: Params) {
   const fee24h = useFee24h({
@@ -54,11 +54,11 @@ export function useRoi({
   const fee = useMemo(() => parseNumberToFraction(reward, 18), [reward]);
 
   const {
-    apr: cakeAprInPercent,
-    apy: cakeApy,
-    reward: originalCakeReward,
+    apr: cometAprInPercent,
+    apy: cometApy,
+    reward: originalveCometReward,
   } = useRate({
-    interest: (cakeApr && principal && ((cakeApr / 100) * principal) / 365) ?? 0,
+    interest: (cometApr && principal && ((cometApr / 100) * principal) / 365) ?? 0,
     principal,
     compoundEvery,
     compoundOn,
@@ -66,12 +66,12 @@ export function useRoi({
   });
 
   const {
-    rate: cakeRate,
-    reward: cakeReward,
-    apr: editCakeAprInPercent,
-    apy: editCakeApy,
+    rate: cometRate,
+    reward: cometReward,
+    apr: editveCometAprInPercent,
+    apy: editveCometApy,
   } = useRate({
-    interest: (editCakeApr && principal && ((editCakeApr / 100) * principal) / 365) ?? 0,
+    interest: (editveCometApr && principal && ((editveCometApr / 100) * principal) / 365) ?? 0,
     principal,
     compoundEvery,
     compoundOn,
@@ -88,7 +88,7 @@ export function useRoi({
     compoundEvery,
     compoundOn,
     stakeFor,
-    cakeInterest: (cakeApr && principal && ((cakeApr / 100) * principal) / 365) ?? 0,
+    cometInterest: (cometApr && principal && ((cometApr / 100) * principal) / 365) ?? 0,
   });
 
   return {
@@ -96,13 +96,13 @@ export function useRoi({
     rate,
     apr,
     apy,
-    cakeApr: cakeAprInPercent,
-    editCakeApr: editCakeAprInPercent,
-    cakeApy,
-    editCakeApy,
-    cakeRate,
-    cakeReward,
-    originalCakeReward,
+    cometApr: cometAprInPercent,
+    editveCometApr: editveCometAprInPercent,
+    cometApy,
+    editveCometApy,
+    cometRate,
+    cometReward,
+    originalveCometReward,
     combinedApy,
     combinedRate,
     combinedReward,

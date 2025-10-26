@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { bscTestnetTokens } from '@pancakeswap/tokens'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { bscTestnetTokens } from '@cometswap/tokens'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { getAddress } from 'viem'
 import { defineFarmV3ConfigsFromUniversalFarm } from '../defineFarmV3Configs'
 import { Protocol, SerializedFarmConfig, UniversalFarmConfig, UniversalFarmConfigV3 } from '../types'
@@ -23,7 +23,7 @@ export const bscTestnetFarmConfig: UniversalFarmConfig[] = [
     chainId: ChainId.BSC_TESTNET,
     protocol: Protocol.V3,
     lpAddress: '0xe62C422c1E8083CE3b4526Ff0b16388354AB6E64',
-    token0: bscTestnetTokens.cake2,
+    token0: bscTestnetTokens.comet2,
     token1: bscTestnetTokens.wbnb,
     feeAmount: FeeAmount.MEDIUM,
   },
@@ -59,7 +59,7 @@ export const bscTestnetFarmConfig: UniversalFarmConfig[] = [
     chainId: ChainId.BSC_TESTNET,
     protocol: Protocol.V3,
     lpAddress: '0x427d29C609A85AA3aaF87Aff65C392D72588ceC2',
-    token0: bscTestnetTokens.cake2,
+    token0: bscTestnetTokens.comet2,
     token1: bscTestnetTokens.busd,
     feeAmount: FeeAmount.MEDIUM,
   },
@@ -79,23 +79,23 @@ export const legacyFarmConfig: SerializedFarmConfig[] = [
    */
   {
     pid: 0,
-    lpSymbol: 'CAKE',
+    lpSymbol: 'COMET',
     lpAddress: '0x36e3E4fF6471559b19F66bD10985534d5e214D44',
     token: bscTestnetTokens.syrup,
     quoteToken: bscTestnetTokens.wbnb,
   },
   {
     pid: 3,
-    lpSymbol: 'BUSD-CAKE LP',
+    lpSymbol: 'BUSD-COMETLP',
     lpAddress: '0xb98C30fA9f5e9cf6749B7021b4DDc0DBFe73b73e',
     token: bscTestnetTokens.busd,
-    quoteToken: bscTestnetTokens.cake,
+    quoteToken: bscTestnetTokens.comet,
   },
   {
     pid: 4,
-    lpSymbol: 'CAKE-BNB LP',
+    lpSymbol: 'COMET-BNB LP',
     lpAddress: '0xa96818CA65B57bEc2155Ba5c81a70151f63300CD',
-    token: bscTestnetTokens.cake,
+    token: bscTestnetTokens.comet,
     quoteToken: bscTestnetTokens.wbnb,
   },
   {

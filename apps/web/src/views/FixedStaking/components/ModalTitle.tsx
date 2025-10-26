@@ -1,7 +1,7 @@
-import { Flex, Heading } from '@pancakeswap/uikit'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/swap-sdk-core'
+import { Flex, Heading } from '@cometswap/uikit'
+import { CurrencyLogo } from '@cometswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/swap-sdk-core'
 import { UnlockedFixedTag } from './UnlockedFixedTag'
 
 export function ModalTitle({
@@ -31,3 +31,4 @@ export function ModalTitle({
     </Flex>
   )
 }
+

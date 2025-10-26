@@ -1,6 +1,6 @@
-import { BetPosition } from '@pancakeswap/prediction'
-import { Skeleton, TooltipText } from '@pancakeswap/uikit'
-import { formatBigIntToFixed } from '@pancakeswap/utils/formatBalance'
+import { BetPosition } from '@cometswap/prediction'
+import { Skeleton, TooltipText } from '@cometswap/uikit'
+import { formatBigIntToFixed } from '@cometswap/utils/formatBalance'
 import React, { memo, useMemo } from 'react'
 import CountUp from 'react-countup'
 
@@ -53,3 +53,4 @@ const LiveRoundPrice: React.FC<React.PropsWithChildren<LiveRoundPriceProps>> = (
 }
 
 export default memo(LiveRoundPrice)
+

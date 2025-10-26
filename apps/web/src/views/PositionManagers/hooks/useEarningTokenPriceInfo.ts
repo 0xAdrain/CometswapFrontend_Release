@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { Currency } from '@cometswap/sdk'
+import { getBalanceAmount } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
 import { useMemo } from 'react'
@@ -17,3 +17,4 @@ export const useEarningTokenPriceInfo = (earningToken: Currency, pendingReward: 
   )
   return { earningUsdValue, earningTokenPrice, earningsBalance }
 }
+

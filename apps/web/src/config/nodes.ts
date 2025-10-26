@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { getNodeRealUrl } from 'utils/node/nodeReal'
 import { getGroveUrl } from 'utils/node/pokt'
 import { notEmpty } from 'utils/notEmpty'
@@ -84,6 +84,9 @@ export const SERVER_NODES = {
   [ChainId.SEPOLIA]: sepolia.rpcUrls.default.http,
   [ChainId.ARBITRUM_SEPOLIA]: arbitrumSepolia.rpcUrls.default.http,
   [ChainId.BASE_SEPOLIA]: baseSepolia.rpcUrls.default.http,
+  // DEV: Hardcoded localhost URL for local development proxy.
+  // This should be replaced with an environment variable for production.
+  [ChainId.XLAYER_TESTNET]: [`${process.env.NEXT_PUBLIC_SITE_URL || ''}/api/rpc/xlayer-testnet`],
 } satisfies Record<ChainId, readonly string[]>
 
 export const PUBLIC_NODES: Record<ChainId, string[] | readonly string[]> = {
@@ -160,4 +163,8 @@ export const PUBLIC_NODES: Record<ChainId, string[] | readonly string[]> = {
   [ChainId.SEPOLIA]: sepolia.rpcUrls.default.http,
   [ChainId.ARBITRUM_SEPOLIA]: arbitrumSepolia.rpcUrls.default.http,
   [ChainId.BASE_SEPOLIA]: baseSepolia.rpcUrls.default.http,
+  // DEV: Hardcoded localhost URL for local development proxy.
+  // This should be replaced with an environment variable for production.
+  [ChainId.XLAYER_TESTNET]: [`${process.env.NEXT_PUBLIC_SITE_URL || ''}/api/rpc/xlayer-testnet`],
 } satisfies Record<ChainId, readonly string[]>
+

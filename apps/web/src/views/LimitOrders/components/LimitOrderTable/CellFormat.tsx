@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { ReactElement } from 'react'
 
 interface CellFormatProps {
@@ -16,3 +16,4 @@ const CellFormat: React.FC<React.PropsWithChildren<CellFormatProps>> = ({ firstR
 }
 
 export default CellFormat
+

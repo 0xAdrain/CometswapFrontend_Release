@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
+import { useWeb3React } from '@cometswap/wagmi'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
@@ -42,3 +42,4 @@ export const useDepositPottery = (amount: string, potteryVaultAddress: Address) 
 
   return { isPending, handleDeposit }
 }
+

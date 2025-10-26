@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 import { styled, keyframes, css } from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text } from '@cometswap/uikit'
 import { VestingData } from 'views/Ifos/hooks/vesting/fetchUserWalletIfoData'
-import { PoolIds } from '@pancakeswap/ifos'
+import { PoolIds } from '@cometswap/ifos'
 import { useIfoConfigAcrossChainsById } from 'hooks/useIfoConfig'
 
 import Info from './Info'
@@ -91,3 +91,4 @@ const Expand: React.FC<React.PropsWithChildren<ExpandProps>> = ({
 }
 
 export default Expand
+

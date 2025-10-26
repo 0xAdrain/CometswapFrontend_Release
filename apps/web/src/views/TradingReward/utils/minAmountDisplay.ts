@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 
 interface MinAmountDisplayProps {
   amount: number

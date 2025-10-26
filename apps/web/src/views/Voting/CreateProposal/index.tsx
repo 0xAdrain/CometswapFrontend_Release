@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useMemo } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoRenewIcon,
   Box,
@@ -21,9 +21,9 @@ import {
   useModal,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatNumber'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+} from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatNumber'
+import truncateHash from '@cometswap/utils/truncateHash'
 import snapshot from '@snapshot-labs/snapshot.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
@@ -39,7 +39,7 @@ import { useAccount, useWalletClient } from 'wagmi'
 import { spaceAtom } from '../atom/spaceAtom'
 import Layout from '../components/Layout'
 import VoteDetailsModal from '../components/VoteDetailsModal'
-import { PANCAKE_SPACE, VOTE_THRESHOLD } from '../config'
+import { COMET_SPACE, VOTE_THRESHOLD } from '../config'
 import useGetVotingPower from '../hooks/useGetVotingPower'
 import Choices, { MINIMUM_CHOICES, makeChoice } from './Choices'
 import { combineDateAndTime, getFormErrors } from './helpers' // You can adapt or remove this
@@ -128,7 +128,7 @@ const CreateProposal = () => {
   const [onPresentVoteDetailsModal] = useModal(<VoteDetailsModal block={watch('snapshot')} />)
 
   const votingPowerTooltipContent = t(
-    'Your voting power is determined by your veCAKE balance at the snapshot block, which represents how much weight your vote carries.',
+    'Your voting power is determined by your veCOMETbalance at the snapshot block, which represents how much weight your vote carries.',
   )
   const {
     targetRef: votingPowerTargetRef,
@@ -168,7 +168,7 @@ const CreateProposal = () => {
       const end = combineDateAndTime(endDate, endTime) || 0
 
       const resData: any = await client.proposal(web3 as any, account, {
-        space: PANCAKE_SPACE,
+        space: COMET_SPACE,
         type: ProposalTypeName.SINGLE_CHOICE, // Keep or adapt to your type
         title: name,
         body,
@@ -438,3 +438,4 @@ export const SpinnerPage = () => {
 }
 
 export default Wrapped
+

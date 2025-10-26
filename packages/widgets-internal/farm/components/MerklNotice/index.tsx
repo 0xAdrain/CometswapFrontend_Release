@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Box, InfoFilledIcon, LinkExternal, Placement, Text, TooltipText, useTooltip } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Box, InfoFilledIcon, LinkExternal, Placement, Text, TooltipText, useTooltip } from "@cometswap/uikit";
 import { isMobile } from "react-device-detect";
 import styled from "styled-components";
 
@@ -35,7 +35,7 @@ export const MerklNoticeContent: React.FC<MerklNoticeContentProps> = ({
               {t("Stake your LP token in the Farm and accrue both Merkl and Farm rewards.")}
               <br />
               <br />
-              {t("Claim your Farm rewards on PancakeSwap and your Merkl rewards on")}
+              {t("Claim your Farm rewards on CometSwap and your Merkl rewards on")}
               <InlineLink color={linkColor} external display="inline" href={merklUserLink}>
                 {t("Merkl's website")}
               </InlineLink>
@@ -48,7 +48,7 @@ export const MerklNoticeContent: React.FC<MerklNoticeContentProps> = ({
             )} */}
             <br />
             <br />
-            {t("To earn Farm rewards, continue seeding liquidity on PancakeSwap and stake your LP token in the Farm.")}
+            {t("To earn Farm rewards, continue seeding liquidity on CometSwap and stake your LP token in the Farm.")}
           </Text>
         </Box>
       </>
@@ -72,7 +72,7 @@ export const MerklNoticeContent: React.FC<MerklNoticeContentProps> = ({
           {t("Stake your LP token in the Farm and accrue both Merkl and Farm rewards.")}
           <br />
           <br />
-          {t("Claim your Farm rewards on PancakeSwap and your Merkl rewards on")}
+          {t("Claim your Farm rewards on CometSwap and your Merkl rewards on")}
           <InlineLink color={linkColor} external display="inline" href={merklUserLink}>
             {t("Merkl's website")}
           </InlineLink>

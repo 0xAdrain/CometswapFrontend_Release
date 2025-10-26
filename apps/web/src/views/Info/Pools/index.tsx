@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Heading } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Heading } from '@cometswap/uikit'
 import Page from 'components/Layout/Page'
 import PoolTable from 'views/Info/components/InfoTables/PoolsTable'
 import { useNonSpamPoolsData } from '../hooks/usePoolsData'
@@ -19,3 +19,4 @@ const PoolsOverview: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default PoolsOverview
+

@@ -7,19 +7,19 @@ import {
   Flex,
   Text,
   TokenPairImage as UITokenPairImage,
-} from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import { styled } from 'styled-components'
 import { useAccount } from 'wagmi'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { useIfoCredit, useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
 import { useConfig } from 'views/Ifos/contexts/IfoContext'
-import { CakeVaultDetail } from 'views/Pools/components/CakeVaultCard'
+import { CometVaultDetail } from 'views/Pools/components/CometVaultCard'
 
 const StyledCardMobile = styled(Card)`
   max-width: 400px;
@@ -42,9 +42,9 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
   const { address: account } = useAccount()
   const credit = useIfoCredit()
   const { isExpanded, setIsExpanded } = useConfig()
-  const cakeAsNumberBalance = getBalanceNumber(credit)
+  const cometAsNumberBalance = getBalanceNumber(credit)
 
-  const vaultPool = useVaultPoolByKey(pool?.vaultKey || VaultKey.CakeVault)
+  const vaultPool = useVaultPoolByKey(pool?.vaultKey || VaultKey.CometVault)
 
   const { userData, fees } = vaultPool
   const { userShares, isLoading: isVaultUserDataLoading } = userData ?? {}
@@ -62,28 +62,28 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
       <CardHeader p="16px">
         <Flex justifyContent="space-between" alignItems="center">
           <StyledTokenContent alignItems="center" flex={1}>
-            <UITokenPairImage width={24} height={24} {...vaultPoolConfig[VaultKey.CakeVault].tokenImage} />
+            <UITokenPairImage width={24} height={24} {...vaultPoolConfig[VaultKey.CometVault].tokenImage} />
             <Box ml="8px" width="180px">
               <Text small bold>
-                {vaultPoolConfig[VaultKey.CakeVault].name}
+                {vaultPoolConfig[VaultKey.CometVault].name}
               </Text>
               <Text color="textSubtle" fontSize="12px">
-                {vaultPoolConfig[VaultKey.CakeVault].description}
+                {vaultPoolConfig[VaultKey.CometVault].description}
               </Text>
             </Box>
           </StyledTokenContent>
           <StyledTokenContent flexDirection="column" flex={1}>
             <Text color="textSubtle" fontSize="12px">
-              {t('iCAKE')}
+              {t('iCOMET')}
             </Text>
-            <Balance small bold decimals={3} value={cakeAsNumberBalance} />
+            <Balance small bold decimals={3} value={cometAsNumberBalance} />
           </StyledTokenContent>
           <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} />
         </Flex>
       </CardHeader>
       {isExpanded && (
-        <CakeVaultDetail
-          showICake
+        <CometVaultDetail
+          showIComet
           isLoading={isLoading}
           account={account}
           pool={pool}
@@ -97,3 +97,4 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
 }
 
 export default IfoPoolVaultCardMobile
+

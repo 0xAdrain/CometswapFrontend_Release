@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@cometswap/sdk'
 
 export function currencyId(currency?: Currency): string {
   if (currency?.isNative) return currency.symbol?.toUpperCase()
@@ -7,3 +7,4 @@ export function currencyId(currency?: Currency): string {
 }
 
 export default currencyId
+

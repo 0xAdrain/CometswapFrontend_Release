@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { EXPERIMENTAL_FEATURES } from 'config/experimentalFeatures'
 import { SUPPORTED_CHAINS } from 'config/pcsx'
 import { useExperimentalFeatureEnabled } from 'hooks/useExperimentalFeatureEnabled'
@@ -25,3 +25,4 @@ export const usePCSX = () => {
 export function usePCSXEnabledOnChain(chainId?: ChainId) {
   return useMemo(() => chainId && SUPPORTED_CHAINS.includes(chainId), [chainId])
 }
+

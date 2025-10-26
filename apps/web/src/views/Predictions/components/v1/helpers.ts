@@ -57,3 +57,4 @@ export const getAllV1History = (where = {}): Promise<V1History[]> => {
     getHistoryChunk(0)
   })
 }
+

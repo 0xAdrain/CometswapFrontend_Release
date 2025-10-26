@@ -1,4 +1,4 @@
-import { useDebounce } from '@pancakeswap/hooks'
+import { useDebounce } from '@cometswap/hooks'
 import { useGetENSAddressByName } from 'hooks/useGetENSAddressByName'
 import { useMemo } from 'react'
 import { useSwapState } from 'state/swap/hooks'
@@ -24,3 +24,4 @@ export const useIsRecipientError = () => {
 
   return { isRecipientError, isRecipientEmpty }
 }
+

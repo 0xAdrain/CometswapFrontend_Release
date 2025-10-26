@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex } from '@pancakeswap/uikit'
+import { Box, BoxProps, Flex } from '@cometswap/uikit'
 import styled, { css, keyframes } from 'styled-components'
 
 type AnimationType = 'default' | 'to_right'
@@ -57,3 +57,4 @@ export const TabContent = ({ children, type = 'default', ...props }: TabContentP
     </AnimatedBox>
   )
 }
+

@@ -1,6 +1,6 @@
 import useGetPublicIfoV2Data from 'views/Ifos/hooks/v2/useGetPublicIfoData'
 import useGetWalletIfoV2Data from 'views/Ifos/hooks/v2/useGetWalletIfoData'
-import { Ifo } from '@pancakeswap/ifos'
+import { Ifo } from '@cometswap/ifos'
 import IfoFoldableCard from './IfoFoldableCard'
 
 interface Props {
@@ -15,3 +15,4 @@ const IfoCardV2Data: React.FC<React.PropsWithChildren<Props>> = ({ ifo }) => {
 }
 
 export default IfoCardV2Data
+

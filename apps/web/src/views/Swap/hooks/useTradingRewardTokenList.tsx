@@ -9,7 +9,7 @@ const useTradingRewardTokenList = () => {
 
   const { data } = useAllTradingRewardPair({
     status: RewardStatus.ALL,
-    type: RewardType.CAKE_STAKERS,
+    type: RewardType.COMET_STAKERS,
   })
 
   const uniqueAddressList = useMemo(() => {
@@ -56,3 +56,4 @@ const useTradingRewardTokenList = () => {
 }
 
 export default useTradingRewardTokenList
+

@@ -1,5 +1,5 @@
-import { Price, Token } from '@pancakeswap/swap-sdk-core'
-import { tickToPrice } from '@pancakeswap/v3-sdk'
+import { Price, Token } from '@cometswap/swap-sdk-core'
+import { tickToPrice } from '@cometswap/v3-sdk'
 
 export function getTickToPrice(baseToken?: Token, quoteToken?: Token, tick?: number): Price<Token, Token> | undefined {
   if (!baseToken || !quoteToken || typeof tick !== 'number') {
@@ -7,3 +7,4 @@ export function getTickToPrice(baseToken?: Token, quoteToken?: Token, tick?: num
   }
   return tickToPrice(baseToken, quoteToken, tick)
 }
+

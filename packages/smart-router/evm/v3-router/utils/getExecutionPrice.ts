@@ -1,4 +1,4 @@
-import { Currency, Price, TradeType, ZERO } from '@pancakeswap/sdk'
+import { Currency, Price, TradeType, ZERO } from '@cometswap/sdk'
 
 import { SmartRouterTrade } from '../types'
 

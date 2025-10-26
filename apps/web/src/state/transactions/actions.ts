@@ -1,5 +1,5 @@
 import { Order } from '@gelatonetwork/limit-orders-lib'
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { createAction } from '@reduxjs/toolkit'
 
 export type TransactionType =
@@ -16,9 +16,7 @@ export type TransactionType =
   | 'limit-order-submission'
   | 'limit-order-cancellation'
   | 'limit-order-approval'
-  | 'cross-chain-farm'
-  | 'migrate-v3'
-  | 'bridge-icake'
+  // Cross-chain and migration types removed
   | 'claim-liquid-staking'
 
 export interface SerializableTransactionReceipt {
@@ -47,28 +45,7 @@ export enum FarmTransactionStatus {
   SUCCESS = 1,
 }
 
-export enum CrossChainFarmStepType {
-  STAKE = 'STAKE',
-  UNSTAKE = 'UNSTAKE',
-}
-
-export interface CrossChainFarmTransactionStep {
-  step: number
-  chainId: number
-  status: FarmTransactionStatus
-  tx: string
-  isFirstTime?: boolean
-  msgStatus?: MsgStatus
-}
-
-export interface CrossChainFarmTransactionType {
-  type: CrossChainFarmStepType
-  status: FarmTransactionStatus
-  amount: string
-  lpAddress: string
-  lpSymbol: string
-  steps: CrossChainFarmTransactionStep[]
-}
+// Cross-chain farm types removed
 
 export const addTransaction = createAction<{
   chainId: ChainId
@@ -95,3 +72,4 @@ export const checkedTransaction = createAction<{
   hash: string
   blockNumber: number
 }>('transactions/checkedTransaction')
+

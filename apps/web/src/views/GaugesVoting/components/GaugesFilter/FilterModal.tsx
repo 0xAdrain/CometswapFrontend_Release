@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, FlexGap, Modal, ModalV2 } from '@pancakeswap/uikit'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { Button, FlexGap, Modal, ModalV2 } from '@cometswap/uikit'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { FilterOption, OPTIONS } from './FilterOption'
 import { Filter, FilterValue, Gauges, OptionsType } from './type'
 
@@ -47,3 +47,4 @@ export const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onDismiss, typ
     </ModalV2>
   )
 }
+

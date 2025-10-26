@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { AtomBox, AutoColumn, Button, CircleLoader, Text } from '@pancakeswap/uikit'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
+import { AtomBox, AutoColumn, Button, CircleLoader, Text } from '@cometswap/uikit'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { PairState, useV2Pair } from 'hooks/usePairs'
 import { useV3FarmAPI } from 'hooks/useV3FarmAPI'
@@ -233,3 +233,4 @@ export default function FeeSelector({
     />
   )
 }
+

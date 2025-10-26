@@ -1,4 +1,4 @@
-import { BetPosition } from '@pancakeswap/prediction'
+import { BetPosition } from '@cometswap/prediction'
 import { formatBnb, formatUsd, getMultiplier, getPayout } from 'views/Predictions/components/History/helpers'
 
 describe('formatUsd', () => {
@@ -205,3 +205,4 @@ describe('getPayout', () => {
     expect(getPayout(value as any, rewardRate)).toEqual(expected)
   })
 })
+

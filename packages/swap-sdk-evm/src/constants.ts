@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Percent } from '@pancakeswap/swap-sdk-core'
+import { ChainId } from '@cometswap/chains'
+import { Percent } from '@cometswap/swap-sdk-core'
 
 import { ERC20Token } from './entities/erc20Token'
 
@@ -167,6 +167,14 @@ export const WETH9 = {
     'Wrapped Ether',
     'https://weth.io',
   ),
+  [ChainId.XLAYER_TESTNET]: new ERC20Token(
+    ChainId.XLAYER_TESTNET,
+    '0x7D887F03E3a19272FdD761765E90Cae0Af17aB9D',
+    18,
+    'WETH',
+    'Wrapped ETH',
+    'https://weth.io',
+  ),
 }
 
 export const WBNB = {
@@ -233,6 +241,7 @@ export const WNATIVE = {
   [ChainId.SEPOLIA]: WETH9[ChainId.SEPOLIA],
   [ChainId.ARBITRUM_SEPOLIA]: WETH9[ChainId.ARBITRUM_SEPOLIA],
   [ChainId.BASE_SEPOLIA]: WETH9[ChainId.BASE_SEPOLIA],
+  [ChainId.XLAYER_TESTNET]: WETH9[ChainId.XLAYER_TESTNET],
 } satisfies Record<ChainId, ERC20Token>
 
 const ETHER = { name: 'Ether', symbol: 'ETH', decimals: 18 } as const
@@ -286,6 +295,11 @@ export const NATIVE = {
   [ChainId.BASE_SEPOLIA]: {
     name: 'Sepolia Ether',
     symbol: 'ETH',
+    decimals: 18,
+  },
+  [ChainId.XLAYER_TESTNET]: {
+    name: 'OKB',
+    symbol: 'OKB',
     decimals: 18,
   },
 } satisfies Record<

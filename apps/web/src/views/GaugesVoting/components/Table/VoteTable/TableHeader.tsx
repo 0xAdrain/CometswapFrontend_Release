@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Th } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text, Th } from '@cometswap/uikit'
 import { VHeader } from '../styled'
 
 export const TableHeader: React.FC<{
@@ -30,9 +30,10 @@ export const TableHeader: React.FC<{
       </Th>
       <Th>
         <Text color="secondary" textTransform="uppercase" fontWeight={600} textAlign="right">
-          {t('My veCake %')}
+          {t('My Comet %')}
         </Text>
       </Th>
     </VHeader>
   )
 }
+

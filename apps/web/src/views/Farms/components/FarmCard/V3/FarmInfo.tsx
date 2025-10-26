@@ -1,9 +1,9 @@
-import { Flex, ModalV2 } from '@pancakeswap/uikit'
-import { formatBigInt } from '@pancakeswap/utils/formatBalance'
-import { FarmWidget } from '@pancakeswap/widgets-internal'
+import { Flex, ModalV2 } from '@cometswap/uikit'
+import { formatBigInt } from '@cometswap/utils/formatBalance'
+import { FarmWidget } from '@cometswap/widgets-internal'
 import { BigNumber } from 'bignumber.js'
 import { TokenPairImage } from 'components/TokenImage'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useCallback, useMemo, useState } from 'react'
 import { type V3Farm } from 'state/farms/types'
 import FarmV3CardList from 'views/Farms/components/FarmCard/V3/FarmV3CardList'
@@ -22,12 +22,12 @@ const FarmInfo: React.FunctionComponent<React.PropsWithChildren<FarmInfoProps>> 
   isReady,
   onAddLiquidity,
 }) => {
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const [show, setShow] = useState(false)
 
   const inactive = farm.multiplier === '0X'
 
-  const { lpSymbol, token, quoteToken, multiplier, stakedPositions, unstakedPositions, pendingCakeByTokenIds } = farm
+  const { lpSymbol, token, quoteToken, multiplier, stakedPositions, unstakedPositions, pendingCometByTokenIds } = farm
 
   const onlyOnePosition = useMemo(
     () => new BigNumber(stakedPositions.length).plus(unstakedPositions.length).eq(1),
@@ -36,26 +36,26 @@ const FarmInfo: React.FunctionComponent<React.PropsWithChildren<FarmInfoProps>> 
 
   const hasEarningTokenIds = useMemo(
     () =>
-      Object.entries(pendingCakeByTokenIds)
+      Object.entries(pendingCometByTokenIds)
         .filter(([, value]) => value > 0)
         .map(([key]) => key),
-    [pendingCakeByTokenIds],
+    [pendingCometByTokenIds],
   )
 
   const totalEarnings = useMemo(
     () =>
       +formatBigInt(
-        Object.values(pendingCakeByTokenIds).reduce((total, vault) => total + vault, 0n),
+        Object.values(pendingCometByTokenIds).reduce((total, vault) => total + vault, 0n),
         4,
       ),
-    [pendingCakeByTokenIds],
+    [pendingCometByTokenIds],
   )
 
   const { harvesting, onHarvestAll } = useFarmsV3BatchHarvest()
 
   const earningsBusd = useMemo(
-    () => new BigNumber(totalEarnings).times(cakePrice).toNumber(),
-    [cakePrice, totalEarnings],
+    () => new BigNumber(totalEarnings).times(cometPrice).toNumber(),
+    [cometPrice, totalEarnings],
   )
 
   const handleDismiss = useCallback(() => setShow(false), [])
@@ -125,3 +125,4 @@ const FarmInfo: React.FunctionComponent<React.PropsWithChildren<FarmInfoProps>> 
 }
 
 export default FarmInfo
+

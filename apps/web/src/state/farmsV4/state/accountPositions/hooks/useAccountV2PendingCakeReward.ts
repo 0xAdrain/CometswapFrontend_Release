@@ -1,25 +1,26 @@
-import { BCakeWrapperFarmConfig } from '@pancakeswap/farms'
+import { BveCometWrapperFarmConfig } from '@cometswap/farms'
 import { useQuery } from '@tanstack/react-query'
 import { Address } from 'viem'
 import { useCallback } from 'react'
-import { getAccountV2FarmingBCakeWrapperEarning } from '../fetcher'
+import { getAccountV2FarmingBveCometWrapperEarning } from '../fetcher'
 
-export const useAccountV2PendingCakeReward = (
+export const useAccountV2PendingveCometReward = (
   account: Address | undefined,
-  bCakeWrapperConfig: Partial<BCakeWrapperFarmConfig>,
+  bveCometWrapperConfig: Partial<BveCometWrapperFarmConfig>,
 ) => {
   return useQuery({
     queryKey: [
-      'accountV2PendingCakeReward',
+      'accountV2PendingveCometReward',
       account,
-      bCakeWrapperConfig.chainId,
-      bCakeWrapperConfig.bCakeWrapperAddress,
+      bveCometWrapperConfig.chainId,
+      bveCometWrapperConfig.bveCometWrapperAddress,
     ],
     queryFn: () =>
-      getAccountV2FarmingBCakeWrapperEarning(bCakeWrapperConfig.chainId!, account!, [
-        bCakeWrapperConfig as BCakeWrapperFarmConfig,
+      getAccountV2FarmingBveCometWrapperEarning(bveCometWrapperConfig.chainId!, account!, [
+        bveCometWrapperConfig as BveCometWrapperFarmConfig,
       ]),
-    enabled: Boolean(account && bCakeWrapperConfig.chainId && bCakeWrapperConfig.bCakeWrapperAddress),
+    enabled: Boolean(account && bveCometWrapperConfig.chainId && bveCometWrapperConfig.bveCometWrapperAddress),
     select: useCallback((data: string[]) => data?.[0], []),
   })
 }
+

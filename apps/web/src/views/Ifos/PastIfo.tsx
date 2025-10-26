@@ -1,4 +1,4 @@
-import { Container } from '@pancakeswap/uikit'
+import { Container } from '@cometswap/uikit'
 
 import { useInActiveIfoConfigs } from 'hooks/useIfoConfig'
 
@@ -39,3 +39,4 @@ const PastIfo = () => {
 }
 
 export default PastIfo
+

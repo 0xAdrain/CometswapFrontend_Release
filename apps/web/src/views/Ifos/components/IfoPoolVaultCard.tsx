@@ -1,16 +1,16 @@
-import { ChainId } from '@pancakeswap/chains'
-import { isCakeVaultSupported } from '@pancakeswap/pools'
-import { Flex } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { isCometVaultSupported } from '@cometswap/pools'
+import { Flex } from '@cometswap/uikit'
 import { useMemo } from 'react'
 import { Address } from 'viem'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
-import { isCrossChainIfoSupportedOnly } from '@pancakeswap/ifos'
+import { isCrossChainIfoSupportedOnly } from '@cometswap/ifos'
 import { useActiveIfoConfig } from 'hooks/useIfoConfig'
-import { CrossChainVeCakeCard } from './CrossChainVeCakeCard'
+import { CrossChainCometCard } from './CrossChainCometCard'
 import IfoVesting from './IfoVesting/index'
-import { VeCakeCard } from './VeCakeCard'
+import { CometCard } from './CometCard'
 
 type Props = {
   ifoBasicSaleType?: number
@@ -23,14 +23,14 @@ const IfoPoolVaultCard = ({ ifoBasicSaleType, ifoAddress }: Props) => {
   const { activeIfo } = useActiveIfoConfig()
 
   const targetChainId = useMemo(() => activeIfo?.chainId || chainId, [activeIfo, chainId])
-  const cakeVaultSupported = useMemo(() => isCakeVaultSupported(targetChainId), [targetChainId])
+  const cakeVaultSupported = useMemo(() => isCometVaultSupported(targetChainId), [targetChainId])
 
   const vault = useMemo(
     () =>
       cakeVaultSupported ? (
-        <VeCakeCard ifoAddress={ifoAddress} />
+        <CometCard ifoAddress={ifoAddress} />
       ) : isCrossChainIfoSupportedOnly(targetChainId) ? (
-        <CrossChainVeCakeCard ifoAddress={ifoAddress} />
+        <CrossChainCometCard ifoAddress={ifoAddress} />
       ) : null,
     [targetChainId, cakeVaultSupported, ifoAddress],
   )
@@ -47,3 +47,4 @@ const IfoPoolVaultCard = ({ ifoBasicSaleType, ifoAddress }: Props) => {
 }
 
 export default IfoPoolVaultCard
+

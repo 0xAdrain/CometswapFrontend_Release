@@ -1,7 +1,7 @@
-import { Currency, CurrencyAmount, ERC20Token, Native, Pair, TradeType, Trade as V2Trade } from '@pancakeswap/sdk'
-import { RouteType, SmartRouter, SmartRouterTrade, StablePool, V2Pool, V3Pool } from '@pancakeswap/smart-router'
-import { getSwapOutput } from '@pancakeswap/stable-swap-sdk'
-import { Pool, Trade as V3Trade } from '@pancakeswap/v3-sdk'
+import { Currency, CurrencyAmount, ERC20Token, Native, Pair, TradeType, Trade as V2Trade } from '@cometswap/sdk'
+import { RouteType, SmartRouter, SmartRouterTrade, StablePool, V2Pool, V3Pool } from '@cometswap/smart-router'
+import { getSwapOutput } from '@cometswap/stable-swap-sdk'
+import { Pool, Trade as V3Trade } from '@cometswap/v3-sdk'
 import { convertPairToV2Pool, convertPoolToV3Pool } from '../fixtures/address'
 
 export const buildV2Trade = (

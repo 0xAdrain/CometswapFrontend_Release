@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency } from '@cometswap/sdk'
 import {
   CalculateIcon,
   Flex,
@@ -10,7 +10,7 @@ import {
   Text,
   useModal,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
 import { memo, useMemo } from 'react'
@@ -87,7 +87,7 @@ export const AprButton = memo(function YieldInfo({
         </Text>
       </Text>
       <ul>
-        {apr.isInCakeRewardDateRange && rewardToken && (
+        {apr.isInCometRewardDateRange && rewardToken && (
           <>
             <li>
               {`${rewardToken?.symbol ?? ''} ${t('APR')}`}:{' '}
@@ -113,7 +113,7 @@ export const AprButton = memo(function YieldInfo({
       {isBooster && (
         <Text mt="15px">
           {t(
-            'bCAKE only boosts token incentive (often CAKE) APR. Actual multiplier is subject to position manager and veCAKE pool condition.',
+            'bCOMETonly boosts token incentive (often COMET) APR. Actual multiplier is subject to position manager and veCOMETpool condition.',
           )}
         </Text>
       )}
@@ -182,3 +182,4 @@ export const AprButton = memo(function YieldInfo({
     </Flex>
   )
 })
+

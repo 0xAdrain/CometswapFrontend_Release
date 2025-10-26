@@ -1,4 +1,4 @@
-import { Progress, ProgressProps } from '@pancakeswap/uikit'
+import { Progress, ProgressProps } from '@cometswap/uikit'
 
 interface RoundProgressProps extends ProgressProps {
   lockTimestamp: number
@@ -20,3 +20,4 @@ const RoundProgress: React.FC<React.PropsWithChildren<RoundProgressProps>> = ({
 }
 
 export default RoundProgress
+

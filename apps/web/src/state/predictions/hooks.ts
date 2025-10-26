@@ -196,3 +196,4 @@ export const useCollectWinningModalProps = () => {
 export const useGetIntervalTimeInMinutes = () => {
   return useSelector(getIntervalTimeInMinutes)
 }
+

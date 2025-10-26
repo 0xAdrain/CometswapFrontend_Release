@@ -1,18 +1,18 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AtomBox,
   AutoColumn,
   Flex,
   Message,
   MessageText,
-  PancakeToggle,
+  CometToggle,
   PreTitle,
   QuestionHelper,
   Text,
   Toggle,
-} from '@pancakeswap/uikit'
-import { useUserSingleHopOnly } from '@pancakeswap/utils/user'
-import { PancakeSwapXTag } from 'components/PancakeSwapXTag'
+} from '@cometswap/uikit'
+import { useUserSingleHopOnly } from '@cometswap/utils/user'
+import { CometSwapXTag } from 'components/CometSwapXTag'
 import { usePCSX, usePCSXFeatureEnabled } from 'hooks/usePCSX'
 import { useSpeedQuote } from 'hooks/useSpeedQuote'
 import { memo } from 'react'
@@ -53,14 +53,14 @@ export const CustomizeRoutingTab = memo(() => {
         {xFeatureEnabled ? (
           <Flex justifyContent="space-between" alignItems="flex-start" mb="24px">
             <Flex flexDirection="column">
-              <PancakeSwapXTag />
+              <CometSwapXTag />
               <Text fontSize="12px" color="textSubtle" maxWidth={360} mt={10}>
                 {t(
                   'When applicable, aggregates liquidity to provide better price, more token options, and gas free swaps.',
                 )}
               </Text>
             </Flex>
-            <PancakeToggle
+            <CometToggle
               id="stable-swap-toggle"
               scale="md"
               checked={xEnable}
@@ -73,7 +73,7 @@ export const CustomizeRoutingTab = memo(() => {
         <AtomBox>
           <Flex justifyContent="space-between" alignItems="center" mb="24px">
             <Flex alignItems="center">
-              <Text>PancakeSwap V3</Text>
+              <Text>CometSwap V3</Text>
               <QuestionHelper
                 text={
                   <Flex>
@@ -97,7 +97,7 @@ export const CustomizeRoutingTab = memo(() => {
           </Flex>
           <Flex justifyContent="space-between" alignItems="center" mb="24px">
             <Flex alignItems="center">
-              <Text>PancakeSwap V2</Text>
+              <Text>CometSwap V2</Text>
               <QuestionHelper
                 text={
                   <Flex flexDirection="column">
@@ -122,7 +122,7 @@ export const CustomizeRoutingTab = memo(() => {
           </Flex>
           <Flex justifyContent="space-between" alignItems="center" mb="24px">
             <Flex alignItems="center">
-              <Text>PancakeSwap {t('StableSwap')}</Text>
+              <Text>CometSwap {t('StableSwap')}</Text>
               <QuestionHelper
                 text={
                   <Flex flexDirection="column">
@@ -233,3 +233,4 @@ export const CustomizeRoutingTab = memo(() => {
     </TabContent>
   )
 })
+

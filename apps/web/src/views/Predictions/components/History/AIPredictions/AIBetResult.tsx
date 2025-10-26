@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition, REWARD_RATE } from '@pancakeswap/prediction'
-import { BlockIcon, Box, Flex, Heading, InfoIcon, PrizeIcon, ScanLink, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition, REWARD_RATE } from '@cometswap/prediction'
+import { BlockIcon, Box, Flex, Heading, InfoIcon, PrizeIcon, ScanLink, Text, useTooltip } from '@cometswap/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useMemo } from 'react'
 import { fetchLedgerData, markAsCollected } from 'state/predictions'
@@ -205,3 +205,4 @@ export const AIBetResult: React.FC<React.PropsWithChildren<AIBetResultProps>> = 
     </>
   )
 }
+

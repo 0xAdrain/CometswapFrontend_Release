@@ -21,16 +21,16 @@ export const maxNumberTicketsPerBuyOrClaimSelector = createSelector(
 
 export const currentRoundSelector = createSelector([selectCurrentRound], (currentRound) => {
   const {
-    priceTicketInCake: priceTicketInCakeAsString,
+    priceTicketInveComet: priceTicketInveCometAsString,
     discountDivisor: discountDivisorAsString,
-    amountCollectedInCake: amountCollectedInCakeAsString,
+    amountCollectedInveComet: amountCollectedInveCometAsString,
   } = currentRound
 
   return {
     ...currentRound,
-    priceTicketInCake: new BigNumber(priceTicketInCakeAsString),
+    priceTicketInveComet: new BigNumber(priceTicketInveCometAsString),
     discountDivisor: new BigNumber(discountDivisorAsString),
-    amountCollectedInCake: new BigNumber(amountCollectedInCakeAsString),
+    amountCollectedInveComet: new BigNumber(amountCollectedInveCometAsString),
   }
 })
 
@@ -61,3 +61,4 @@ export const lotterySelector = createSelector(
     }
   },
 )
+

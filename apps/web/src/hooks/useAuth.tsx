@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { WalletConnectorNotFoundError, WalletSwitchChainError } from '@pancakeswap/ui-wallets'
+import { useTranslation } from '@cometswap/localization'
+import { WalletConnectorNotFoundError, WalletSwitchChainError } from '@cometswap/ui-wallets'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { ConnectorNames } from 'config/wallet'
 import { useRouter } from 'next/router'
@@ -76,3 +76,4 @@ const useAuth = () => {
 }
 
 export default useAuth
+

@@ -6,29 +6,29 @@ export const karatGalaxy: GameType = {
   title: 'Karat Galaxy',
   subTitle: 'Embark on a Cosmic Karat Quest: Shoot, mine, win!',
   description:
-    'Join an interstellar adventure where mining, NFTs, DeFi, and fun unite.  Power up with KARAT and turn CAKE tokens into gold coins, unlocking exciting in-game adventures. Enjoy exclusive bonuses with Pancake Squad and Bunny NFTs. Battle, mine, win, and conquer the cosmos.',
+    'Join an interstellar adventure where mining, NFTs, DeFi, and fun unite.  Power up with KARAT and turn COMETtokens into gold coins, unlocking exciting in-game adventures. Enjoy exclusive bonuses with Comet Squad and Bunny NFTs. Battle, mine, win, and conquer the cosmos.',
   publishDate: 1698044972, // Timestamp in seconds
   genre: GenreType.FPS,
   trendingTags: [
     TrendingTagType.FPS,
     TrendingTagType.NFT,
-    TrendingTagType.PancakeSquadNFT,
-    TrendingTagType.PancakeBunniesNFT,
+    TrendingTagType.CometSquadNFT,
+    TrendingTagType.CometBunniesNFT,
     TrendingTagType.Multiplayer,
-    TrendingTagType.CakeToken,
+    TrendingTagType.veCometToken,
   ],
-  headerImage: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/header.jpg',
+  headerImage: 'https://statics.karatgalaxy.io/cometswap-game-landing/header.jpg',
   headerIconImage: {
-    desktop: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/header-icon.png',
-    mobile: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/header-icon.png',
+    desktop: 'https://statics.karatgalaxy.io/cometswap-game-landing/header-icon.png',
+    mobile: 'https://statics.karatgalaxy.io/cometswap-game-landing/header-icon.png',
   },
   projectLogo: {
-    lightTheme: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/logo.svg',
-    darkTheme: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/logo.svg',
+    lightTheme: 'https://statics.karatgalaxy.io/cometswap-game-landing/logo.svg',
+    darkTheme: 'https://statics.karatgalaxy.io/cometswap-game-landing/logo.svg',
   },
   projectCircleLogo: {
-    lightTheme: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/circle-logo.png',
-    darkTheme: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/circle-logo.png',
+    lightTheme: 'https://statics.karatgalaxy.io/cometswap-game-landing/circle-logo.png',
+    darkTheme: 'https://statics.karatgalaxy.io/cometswap-game-landing/circle-logo.png',
   },
   gameLink: {
     playNowLink: 'https://statics.karatgalaxy.io/',
@@ -38,38 +38,38 @@ export const karatGalaxy: GameType = {
     items: [
       {
         type: PostersItemDataType.Video,
-        image: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/movie_v1.png',
-        video: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/movie.mp4',
+        image: 'https://statics.karatgalaxy.io/cometswap-game-landing/movie_v1.png',
+        video: 'https://statics.karatgalaxy.io/cometswap-game-landing/movie.mp4',
       },
       {
         type: PostersItemDataType.Image,
-        image: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/1.png',
+        image: 'https://statics.karatgalaxy.io/cometswap-game-landing/1.png',
       },
       {
         type: PostersItemDataType.Image,
-        image: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/2.png',
+        image: 'https://statics.karatgalaxy.io/cometswap-game-landing/2.png',
       },
       {
         type: PostersItemDataType.Image,
-        image: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/3.png',
+        image: 'https://statics.karatgalaxy.io/cometswap-game-landing/3.png',
       },
       {
         type: PostersItemDataType.Image,
-        image: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/4.png',
+        image: 'https://statics.karatgalaxy.io/cometswap-game-landing/4.png',
       },
       {
         type: PostersItemDataType.Image,
-        image: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/5.png',
+        image: 'https://statics.karatgalaxy.io/cometswap-game-landing/5.png',
       },
       {
         type: PostersItemDataType.Image,
-        image: 'https://statics.karatgalaxy.io/pancakeswap-game-landing/6.png',
+        image: 'https://statics.karatgalaxy.io/cometswap-game-landing/6.png',
       },
     ],
   },
   playlist: [],
   socialMedia: {
-    telegram: 'https://t.me/PancakeSwap/3466527',
+    telegram: 'https://t.me/CometSwap/3466527',
     discord: 'https://discord.gg/UtgWsTqu',
   },
 }

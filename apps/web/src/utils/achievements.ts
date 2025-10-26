@@ -1,7 +1,7 @@
-import { campaignMap } from '@pancakeswap/achievements'
-import { ChainId } from '@pancakeswap/chains'
-import { getIfoConfig } from '@pancakeswap/ifos'
-import { TranslateFunction } from '@pancakeswap/localization'
+import { campaignMap } from '@cometswap/achievements'
+import { ChainId } from '@cometswap/chains'
+import { getIfoConfig } from '@cometswap/ifos'
+import { TranslateFunction } from '@cometswap/localization'
 import { pointCenterIfoABI } from 'config/abi/pointCenterIfo'
 import { Campaign, TranslatableText } from 'config/constants/types'
 import { Achievement } from 'state/types'
@@ -123,3 +123,4 @@ export const getClaimableIfoData = async (account: string, t: TranslateFunction)
     ]
   }, [])
 }
+

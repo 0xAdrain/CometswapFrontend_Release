@@ -1,6 +1,6 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Skeleton, Text, useMatchBreakpoints } from "@pancakeswap/uikit";
-import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
+import { useTranslation } from "@cometswap/localization";
+import { Skeleton, Text, useMatchBreakpoints } from "@cometswap/uikit";
+import { BIG_ZERO } from "@cometswap/utils/bigNumber";
 import BigNumber from "bignumber.js";
 import React, { ReactNode, useMemo } from "react";
 import { styled } from "styled-components";
@@ -11,7 +11,7 @@ import { BaseCell, CellContent } from "./BaseCell";
 interface NameCellProps<T> {
   pool: DeserializedPool<T>;
   userShares?: BigNumber;
-  totalCakeInVault?: BigNumber;
+  totalveCometInVault?: BigNumber;
   tokenPairImage: ReactNode;
   tooltipComponent?: ReactNode;
 }
@@ -28,7 +28,7 @@ const StyledCell = styled(BaseCell)`
 
 export function NameCell<T>({
   pool,
-  totalCakeInVault,
+  totalveCometInVault,
   userShares,
   tokenPairImage,
   tooltipComponent,
@@ -52,10 +52,10 @@ export function NameCell<T>({
 
   const isLoaded = useMemo(() => {
     if (pool.vaultKey) {
-      return totalCakeInVault && totalCakeInVault.gte(0);
+      return totalveCometInVault && totalveCometInVault.gte(0);
     }
     return totalStaked && totalStaked.gte(0);
-  }, [pool.vaultKey, totalCakeInVault, totalStaked]);
+  }, [pool.vaultKey, totalveCometInVault, totalStaked]);
 
   return (
     <StyledCell role="cell">

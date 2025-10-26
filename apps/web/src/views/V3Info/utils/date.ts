@@ -28,3 +28,4 @@ export const formatTime = (unix: string, buffer?: number) => {
   }
   return `${inSeconds} ${inSeconds === 1 ? 'second' : 'seconds'} ago`
 }
+

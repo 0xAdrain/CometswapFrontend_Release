@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Ifo } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { bscTokens } from '@pancakeswap/tokens'
+import { ChainId } from '@cometswap/chains'
+import { Ifo } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { bscTokens } from '@cometswap/tokens'
 import {
   Box,
   Flex,
@@ -16,9 +16,9 @@ import {
   TelegramIcon,
   Text,
   TwitterIcon,
-} from '@pancakeswap/uikit'
-import { BIG_TEN } from '@pancakeswap/utils/bigNumber'
-import { formatBigInt } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { BIG_TEN } from '@cometswap/utils/bigNumber'
+import { formatBigInt } from '@cometswap/utils/formatBalance'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { styled } from 'styled-components'
 import { getBlockExploreLink } from 'utils'
@@ -142,7 +142,7 @@ const IfoAchievement: React.FC<React.PropsWithChildren<Props>> = ({ ifo, publicI
               <Text color="textSubtle" fontSize="12px">
                 {t('Commit ~%amount% %symbol% in total to earn!', {
                   amount: minLpForAchievement,
-                  symbol: ifo.currency === bscTokens.cake ? 'CAKE' : 'LP',
+                  symbol: ifo.currency === bscTokens.comet ? 'COMET' : 'LP',
                 })}
               </Text>
             ) : (
@@ -215,3 +215,4 @@ const IfoAchievement: React.FC<React.PropsWithChildren<Props>> = ({ ifo, publicI
 }
 
 export default IfoAchievement
+

@@ -72,3 +72,4 @@ const Positions: React.FC<React.PropsWithChildren<{ view?: PageView }>> = ({ vie
 }
 
 export default Positions
+

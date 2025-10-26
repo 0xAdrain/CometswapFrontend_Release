@@ -1,10 +1,10 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { WEEK } from 'config/constants/veCake'
-import { useRevenueSharingVeCakeContract } from 'hooks/useContract'
-import { useCurrentBlockTimestamp } from 'views/CakeStaking/hooks/useCurrentBlockTimestamp'
+import { WEEK } from 'config/constants/Comet'
+import { useRevenueSharingCometContract } from 'hooks/useContract'
+import { useCurrentBlockTimestamp } from 'views/CometStaking/hooks/useCurrentBlockTimestamp'
 
 export const useEpochRewards = (): number => {
-  const revenueSharingPoolContract = useRevenueSharingVeCakeContract()
+  const revenueSharingPoolContract = useRevenueSharingCometContract()
   const currentTimestamp = useCurrentBlockTimestamp()
 
   const { data } = useQuery({
@@ -21,3 +21,4 @@ export const useEpochRewards = (): number => {
 
   return data ?? 0
 }
+

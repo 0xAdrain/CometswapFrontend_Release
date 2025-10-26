@@ -1,4 +1,4 @@
-import { Gauge } from '@pancakeswap/gauges'
+import { Gauge } from '@cometswap/gauges'
 import { SpaceProps } from 'styled-system'
 import { Hex } from 'viem'
 
@@ -20,3 +20,4 @@ export const DEFAULT_VOTE: UserVote = {
   locked: false,
   hash: '0x',
 }
+

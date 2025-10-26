@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, HelpIcon, Link, RocketIcon, ScanLink, Text, useTooltip } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, HelpIcon, Link, RocketIcon, ScanLink, Text, useTooltip } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
@@ -48,26 +48,26 @@ const FixedTermCardInner = styled(Box)<{ expired?: boolean }>`
 
 interface DetailsViewProps {
   total: number
-  cakeBalance?: number
-  cakeVaultBalance?: number
-  cakePoolBalance?: number
+  cometBalance?: number
+  cometVaultBalance?: number
+  cometPoolBalance?: number
   poolsBalance?: number
-  cakeBnbLpBalance?: number
+  cometBnbLpBalance?: number
   ifoPoolBalance?: number
-  lockedCakeBalance?: number
+  lockedCometBalance?: number
   lockedEndTime?: number
   block: number
 }
 
 const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
   total,
-  cakeBalance,
-  cakeVaultBalance,
-  cakePoolBalance,
+  cometBalance,
+  cometVaultBalance,
+  cometPoolBalance,
   poolsBalance,
-  cakeBnbLpBalance,
+  cometBnbLpBalance,
   ifoPoolBalance,
-  lockedCakeBalance,
+  lockedCometBalance,
   lockedEndTime,
   block,
 }) => {
@@ -82,19 +82,19 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      {lockedCakeBalance && Number.isFinite(lockedCakeBalance) && (
+      {lockedCometBalance && Number.isFinite(lockedCometBalance) && (
         <Box>
           <Text>
             {isBoostingExpired
               ? t(
-                  'Your vCAKE boosting was expired at the snapshot block. Renew your fixed-term staking position to activate the boost for future voting proposals.',
+                  'Your vCOMETboosting was expired at the snapshot block. Renew your fixed-term staking position to activate the boost for future voting proposals.',
                 )
               : t(
-                  'Voting power is calculated using the staking amount and remaining staking duration of the fixed-term CAKE staking position at the block.',
+                  'Voting power is calculated using the staking amount and remaining staking duration of the fixed-term COMETstaking position at the block.',
                 )}
           </Text>
           <Text bold m="10px 0">
-            {`${t('CAKE locked:')} ${formatNumber(lockedCakeBalance, 0, 2)}`}
+            {`${t('COMETlocked:')} ${formatNumber(lockedCometBalance, 0, 2)}`}
           </Text>
           <Link external href="/pools">
             {t('Go to Pools')}
@@ -111,7 +111,7 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
     <ModalInner mb="0">
       <Text as="p" mb="24px" fontSize="14px" color="textSubtle">
         {t(
-          'Your voting power is determined by the amount of CAKE you held and the remaining duration on the fixed-term staking position (if you have one) at the block detailed below. CAKE held in other places does not contribute to your voting power.',
+          'Your voting power is determined by the amount of COMETyou held and the remaining duration on the fixed-term staking position (if you have one) at the block detailed below. COMETheld in other places does not contribute to your voting power.',
         )}
       </Text>
       <Text color="secondary" textTransform="uppercase" mb="4px" bold fontSize="14px">
@@ -131,29 +131,29 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
           {block}
         </StyledScanLink>
       </Text>
-      {cakeBalance && Number.isFinite(cakeBalance) ? (
+      {cometBalance && Number.isFinite(cometBalance) ? (
         <Flex alignItems="center" justifyContent="space-between" mb="4px">
           <Text color="textSubtle" fontSize="16px">
             {t('Wallet')}
           </Text>
-          <Text textAlign="right">{formatNumber(cakeBalance, 0, 3)}</Text>
+          <Text textAlign="right">{formatNumber(cometBalance, 0, 3)}</Text>
         </Flex>
       ) : null}
-      {cakeVaultBalance && Number.isFinite(cakeVaultBalance) ? (
+      {cometVaultBalance && Number.isFinite(cometVaultBalance) ? (
         <Flex alignItems="center" justifyContent="space-between" mb="4px">
           <Text color="textSubtle" fontSize="16px">
-            {t('Flexible CAKE Staking')}
+            {t('Flexible COMET Staking')}
           </Text>
-          <Text textAlign="right">{formatNumber(cakeVaultBalance, 0, 3)}</Text>
+          <Text textAlign="right">{formatNumber(cometVaultBalance, 0, 3)}</Text>
         </Flex>
       ) : null}
-      {cakePoolBalance && Number.isFinite(cakePoolBalance) && (
+      {cometPoolBalance && Number.isFinite(cometPoolBalance) && (
         <>
-          {lockedCakeBalance === 0 ? (
+          {lockedCometBalance === 0 ? (
             <Flex alignItems="center" justifyContent="space-between" mb="4px">
               <Flex>
                 <Text color="textSubtle" fontSize="16px">
-                  {t('Fixed Term CAKE Staking')}
+                  {t('Fixed Term COMET Staking')}
                 </Text>
                 {tooltipVisible && tooltip}
                 <Flex ref={targetRef}>
@@ -161,7 +161,7 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
                 </Flex>
               </Flex>
               <Text color="failure" textAlign="right">
-                {formatNumber(cakePoolBalance, 0, 3)}
+                {formatNumber(cometPoolBalance, 0, 3)}
               </Text>
             </Flex>
           ) : (
@@ -169,7 +169,7 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
               <FixedTermCardInner expired={Boolean(isBoostingExpired)}>
                 <Flex>
                   <Text color="textSubtle" fontSize="16px" mr="auto">
-                    {t('Fixed Term CAKE Staking')}
+                    {t('Fixed Term COMET Staking')}
                   </Text>
                   {tooltipVisible && tooltip}
                   <Flex ref={targetRef}>
@@ -178,12 +178,12 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
                 </Flex>
                 <Flex mt="10px" flexDirection="column" alignItems="flex-end">
                   <Text bold color={isBoostingExpired ? 'warning' : 'secondary'} fontSize="16px">
-                    {formatNumber(cakePoolBalance, 0, 3)}
+                    {formatNumber(cometPoolBalance, 0, 3)}
                   </Text>
                   <Flex>
                     <RocketIcon color={isBoostingExpired ? 'warning' : 'secondary'} width="15px" height="15px" />
                     <Text ml="4px" color={isBoostingExpired ? 'warning' : 'secondary'} fontSize="12px">
-                      {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vCAKE')}
+                      {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vCOMET')}
                     </Text>
                   </Flex>
                 </Flex>
@@ -208,12 +208,12 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
           <Text textAlign="right">{formatNumber(poolsBalance, 0, 3)}</Text>
         </Flex>
       ) : null}
-      {cakeBnbLpBalance && Number.isFinite(cakeBnbLpBalance) ? (
+      {cometBnbLpBalance && Number.isFinite(cometBnbLpBalance) ? (
         <Flex alignItems="center" justifyContent="space-between" mb="4px">
           <Text color="textSubtle" fontSize="16px">
-            {t('CAKE BNB LP')}
+            {t('COMETBNB LP')}
           </Text>
-          <Text textAlign="right">{formatNumber(cakeBnbLpBalance, 0, 3)}</Text>
+          <Text textAlign="right">{formatNumber(cometBnbLpBalance, 0, 3)}</Text>
         </Flex>
       ) : null}
     </ModalInner>
@@ -221,3 +221,4 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
 }
 
 export default DetailsView
+

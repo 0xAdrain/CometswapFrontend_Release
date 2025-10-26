@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { NATIVE } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { NATIVE } from '@cometswap/sdk'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -13,7 +13,7 @@ import {
   UserMenuDivider,
   UserMenuItem,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { useActiveChainId, useLocalNetworkChain } from 'hooks/useActiveChainId'
 import { useHover } from 'hooks/useHover'
@@ -71,10 +71,10 @@ const NetworkSelect = ({ switchNetwork, chainId, isWrongNetwork }) => {
         style={{ justifyContent: 'flex-start' }}
         as="a"
         target="_blank"
-        href="https://aptos.pancakeswap.finance/swap"
+        href="https://aptos.cometswap.finance/swap"
       >
         <Image
-          src="https://aptos.pancakeswap.finance/images/apt.png"
+          src="https://aptos.cometswap.finance/images/apt.png"
           width={24}
           height={24}
           unoptimized
@@ -163,6 +163,7 @@ const SHORT_SYMBOL = {
   [ChainId.SEPOLIA]: 'sepolia',
   [ChainId.BASE_SEPOLIA]: 'Base Sepolia',
   [ChainId.ARBITRUM_SEPOLIA]: 'Arb Sepolia',
+  [ChainId.XLAYER_TESTNET]: 'X Layer Testnet',
 } as const satisfies Record<ChainId, string>
 
 export const NetworkSwitcher = () => {
@@ -221,3 +222,4 @@ export const NetworkSwitcher = () => {
     </Box>
   )
 }
+

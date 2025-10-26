@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { AutoRenewIcon, Box } from '@pancakeswap/uikit'
+import { Currency } from '@cometswap/sdk'
+import { AutoRenewIcon, Box } from '@cometswap/uikit'
 import { memo } from 'react'
 import { styled } from 'styled-components'
 
@@ -59,3 +59,4 @@ export const TokenPairLogos = memo(function TokenPairLogos({
     </Container>
   )
 })
+

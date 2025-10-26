@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AutoRenewIcon, Button } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import { useCallback } from 'react'
@@ -38,9 +38,10 @@ const DepositButton: React.FC<React.PropsWithChildren<DepositButtonProps>> = ({
       endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
       onClick={onClickDeposit}
     >
-      {t('Deposit CAKE')}
+      {t('Deposit COMET')}
     </Button>
   )
 }
 
 export default DepositButton
+

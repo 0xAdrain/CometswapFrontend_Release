@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Card, CardProps } from '@pancakeswap/uikit'
+import { Card, CardProps } from '@cometswap/uikit'
 
 export const BodyWrapper = styled(Card)`
   border-radius: 24px;
@@ -14,3 +14,4 @@ export const BodyWrapper = styled(Card)`
 export default function AppBody({ children, ...cardProps }: { children: React.ReactNode } & CardProps) {
   return <BodyWrapper {...cardProps}>{children}</BodyWrapper>
 }
+

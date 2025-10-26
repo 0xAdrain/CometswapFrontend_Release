@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { useTranslation } from "@pancakeswap/localization";
-import { Text, Button, Flex } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Text, Button, Flex } from "@cometswap/uikit";
 
 interface NoPositionProps {
   inactive: boolean;

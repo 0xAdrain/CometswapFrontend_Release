@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { CardBody, CardRibbon, Flex, Skeleton } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { CardBody, CardRibbon, Flex, Skeleton } from "@cometswap/uikit";
 import { ReactElement, useMemo } from "react";
 import { PoolCardHeader, PoolCardHeaderTitle } from "./PoolCardHeader";
 import { StyledCard } from "./StyledCard";
@@ -29,13 +29,13 @@ export function PoolCard<T>({
   const { sousId, stakingToken, earningToken, isFinished, totalStaked } = pool;
   const { t } = useTranslation();
 
-  const isCakePool = earningToken?.symbol === "CAKE" && stakingToken?.symbol === "CAKE";
+  const isCometPool = earningToken?.symbol === "COMET" && stakingToken?.symbol === "COMET";
 
   const showBoostedTag = useMemo(() => !isFinished && isBoostedPool, [isFinished, isBoostedPool]);
 
   return (
     <StyledCard
-      isActive={isCakePool}
+      isActive={isCometPool}
       isFinished={isFinished && sousId !== 0}
       ribbon={isFinished && <CardRibbon variantColor="textDisabled" text={t("Finished")} />}
     >
@@ -43,9 +43,9 @@ export function PoolCard<T>({
         {totalStaked && totalStaked.gte(0) ? (
           <>
             <PoolCardHeaderTitle
-              title={isCakePool ? t("Manual") : t("Earn %asset%", { asset: earningToken?.symbol || "" })}
+              title={isCometPool ? t("Manual") : t("Earn %asset%", { asset: earningToken?.symbol || "" })}
               subTitle={
-                isCakePool ? t("Earn CAKE, stake CAKE") : t("Stake %symbol%", { symbol: stakingToken?.symbol || "" })
+                isCometPool ? t("Earn COMET, stake COMET") : t("Stake %symbol%", { symbol: stakingToken?.symbol || "" })
               }
               showBoostedTag={showBoostedTag}
               headerTooltipComponent={headerTooltipComponent}

@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { atomWithReducer } from 'jotai/utils'
 import { createContext, useContext } from 'react'
-import { Price, Token } from '@pancakeswap/swap-sdk-core'
+import { Price, Token } from '@cometswap/swap-sdk-core'
 
 import { CurrencyField as Field } from 'utils/types'
 import {
@@ -111,3 +111,4 @@ export function useV3FormDispatch() {
   const ctx = useContext(LiquidityAtomContext)
   return useSetAtom(ctx.formAtom)
 }
+

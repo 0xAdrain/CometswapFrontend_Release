@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { bscTokens } from '@pancakeswap/tokens'
+import { useTranslation } from '@cometswap/localization'
+import { bscTokens } from '@cometswap/tokens'
 import {
   ArrowForwardIcon,
   BalanceInput,
@@ -12,16 +12,16 @@ import {
   Ticket,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { BIG_ONE_HUNDRED, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { BIG_ONE_HUNDRED, BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import ApproveConfirmButtons, { ButtonArrangement } from 'components/ApproveConfirmButtons'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { FetchStatus } from 'config/constants/types'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useLotteryV2Contract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
@@ -67,7 +67,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const {
     maxNumberTicketsPerBuyOrClaim,
     currentLotteryId,
-    currentRound: { priceTicketInCake, discountDivisor, userTickets },
+    currentRound: { priceTicketInComet, discountDivisor, userTickets },
   } = useLottery()
   const { tickets: userCurrentTickets = [] } = userTickets ?? {}
   const { callWithGasPrice } = useCallWithGasPrice()
@@ -78,18 +78,18 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const [buyingStage, setBuyingStage] = useState<BuyingStage>(BuyingStage.BUY)
   const [maxPossibleTicketPurchase, setMaxPossibleTicketPurchase] = useState(BIG_ZERO)
   const [maxTicketPurchaseExceeded, setMaxTicketPurchaseExceeded] = useState(false)
-  const [userNotEnoughCake, setUserNotEnoughCake] = useState(false)
+  const [userNotEnoughComet, setUserNotEnoughComet] = useState(false)
   const lotteryContract = useLotteryV2Contract()
   const { toastSuccess } = useToast()
-  const { balance: userCake, fetchStatus } = useTokenBalance(bscTokens.cake.address)
+  const { balance: userComet, fetchStatus } = useTokenBalance(bscTokens.comet.address)
   // balance from useTokenBalance causes rerenders in effects as a new BigNumber is instantiated on each render, hence memoising it using the stringified value below.
-  const stringifiedUserCake = userCake.toJSON()
-  const memoisedUserCake = useMemo(() => new BigNumber(stringifiedUserCake), [stringifiedUserCake])
+  const stringifiedUserComet = userComet.toJSON()
+  const memoisedUserComet = useMemo(() => new BigNumber(stringifiedUserComet), [stringifiedUserComet])
 
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const dispatch = useAppDispatch()
   const hasFetchedBalance = fetchStatus === FetchStatus.Fetched
-  const userCakeDisplayBalance = getFullDisplayBalance(userCake, 18, 3)
+  const userCometDisplayBalance = getFullDisplayBalance(userComet, 18, 3)
 
   const TooltipComponent = () => (
     <>
@@ -117,25 +117,25 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
 
   const getTicketCostAfterDiscount = useCallback(
     (numberTickets: BigNumber) => {
-      const totalAfterDiscount = priceTicketInCake
+      const totalAfterDiscount = priceTicketInComet
         .times(numberTickets)
         .times(discountDivisor.plus(1).minus(numberTickets))
         .div(discountDivisor)
       return totalAfterDiscount
     },
-    [discountDivisor, priceTicketInCake],
+    [discountDivisor, priceTicketInComet],
   )
 
   const getMaxTicketBuyWithDiscount = useCallback(
     (numberTickets: BigNumber) => {
       const costAfterDiscount = getTicketCostAfterDiscount(numberTickets)
-      const costBeforeDiscount = priceTicketInCake.times(numberTickets)
+      const costBeforeDiscount = priceTicketInComet.times(numberTickets)
       const discountAmount = costBeforeDiscount.minus(costAfterDiscount)
-      const ticketsBoughtWithDiscount = discountAmount.div(priceTicketInCake)
+      const ticketsBoughtWithDiscount = discountAmount.div(priceTicketInComet)
       const overallTicketBuy = numberTickets.plus(ticketsBoughtWithDiscount)
       return { overallTicketBuy, ticketsBoughtWithDiscount }
     },
-    [getTicketCostAfterDiscount, priceTicketInCake],
+    [getTicketCostAfterDiscount, priceTicketInComet],
   )
 
   const validateInput = useCallback(
@@ -143,25 +143,25 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
       const limitedNumberTickets = limitNumberByMaxTicketsPerBuy(inputNumber)
       const cakeCostAfterDiscount = getTicketCostAfterDiscount(limitedNumberTickets)
 
-      if (cakeCostAfterDiscount.gt(userCake)) {
-        setUserNotEnoughCake(true)
+      if (cakeCostAfterDiscount.gt(userComet)) {
+        setUserNotEnoughComet(true)
       } else if (limitedNumberTickets.eq(maxNumberTicketsPerBuyOrClaim)) {
         setMaxTicketPurchaseExceeded(true)
       } else {
-        setUserNotEnoughCake(false)
+        setUserNotEnoughComet(false)
         setMaxTicketPurchaseExceeded(false)
       }
     },
-    [limitNumberByMaxTicketsPerBuy, getTicketCostAfterDiscount, maxNumberTicketsPerBuyOrClaim, userCake],
+    [limitNumberByMaxTicketsPerBuy, getTicketCostAfterDiscount, maxNumberTicketsPerBuyOrClaim, userComet],
   )
 
   useEffect(() => {
     const getMaxPossiblePurchase = () => {
-      const maxBalancePurchase = memoisedUserCake.div(priceTicketInCake)
+      const maxBalancePurchase = memoisedUserComet.div(priceTicketInComet)
       const limitedMaxPurchase = limitNumberByMaxTicketsPerBuy(maxBalancePurchase)
       let maxPurchase = limitedMaxPurchase
 
-      // If the users' max CAKE balance purchase is less than the contract limit - factor the discount logic into the max number of tickets they can purchase
+      // If the users' max COMETbalance purchase is less than the contract limit - factor the discount logic into the max number of tickets they can purchase
       if (limitedMaxPurchase.lt(maxNumberTicketsPerBuyOrClaim)) {
         // Get max tickets purchasable with the users' balance, as well as using the discount to buy tickets
         const { overallTicketBuy: maxPlusDiscountTickets } = getMaxTicketBuyWithDiscount(limitedMaxPurchase)
@@ -175,9 +175,9 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
       }
 
       if (hasFetchedBalance && maxPurchase.lt(1)) {
-        setUserNotEnoughCake(true)
+        setUserNotEnoughComet(true)
       } else {
-        setUserNotEnoughCake(false)
+        setUserNotEnoughComet(false)
       }
 
       setMaxPossibleTicketPurchase(maxPurchase)
@@ -185,8 +185,8 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
     getMaxPossiblePurchase()
   }, [
     maxNumberTicketsPerBuyOrClaim,
-    priceTicketInCake,
-    memoisedUserCake,
+    priceTicketInComet,
+    memoisedUserComet,
     limitNumberByMaxTicketsPerBuy,
     getTicketCostAfterDiscount,
     getMaxTicketBuyWithDiscount,
@@ -196,12 +196,12 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   useEffect(() => {
     const numberOfTicketsToBuy = new BigNumber(ticketsToBuy)
     const costAfterDiscount = getTicketCostAfterDiscount(numberOfTicketsToBuy)
-    const costBeforeDiscount = priceTicketInCake.times(numberOfTicketsToBuy)
+    const costBeforeDiscount = priceTicketInComet.times(numberOfTicketsToBuy)
     const discountBeingApplied = costBeforeDiscount.minus(costAfterDiscount)
     setTicketCostBeforeDiscount(costBeforeDiscount.gt(0) ? getFullDisplayBalance(costBeforeDiscount) : '0')
     setTotalCost(costAfterDiscount.gt(0) ? getFullDisplayBalance(costAfterDiscount, 18, 2) : '0')
     setDiscountValue(discountBeingApplied.gt(0) ? getFullDisplayBalance(discountBeingApplied, 18, 5) : '0')
-  }, [ticketsToBuy, priceTicketInCake, discountDivisor, getTicketCostAfterDiscount])
+  }, [ticketsToBuy, priceTicketInComet, discountDivisor, getTicketCostAfterDiscount])
 
   const getNumTicketsByPercentage = (percentage: number): number => {
     const percentageOfMaxTickets = maxPossibleTicketPurchase.gt(0)
@@ -226,7 +226,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
 
   const handleNumberButtonClick = (number: number) => {
     setTicketsToBuy(number.toFixed())
-    setUserNotEnoughCake(false)
+    setUserNotEnoughComet(false)
     setMaxTicketPurchaseExceeded(false)
   }
 
@@ -236,7 +236,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   )
 
   const { isApproving, isApproved, isConfirming, handleApprove, handleConfirm } = useApproveConfirmTransaction({
-    token: bscTokens.cake,
+    token: bscTokens.comet,
     spender: lotteryContract.address,
     minAmount: parseEther(totalCost as `${number}`),
     onApproveSuccess: async ({ receipt }) => {
@@ -262,7 +262,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   })
 
   const getErrorMessage = () => {
-    if (userNotEnoughCake) return t('Insufficient CAKE balance')
+    if (userNotEnoughComet) return t('Insufficient COMETbalance')
     return t('The maximum number of tickets you can buy in one transaction is %maxTickets%', {
       maxTickets: maxNumberTicketsPerBuyOrClaim.toString(),
     })
@@ -279,11 +279,11 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const disableBuying = useMemo(
     () =>
       isConfirming ||
-      userNotEnoughCake ||
+      userNotEnoughComet ||
       !ticketsToBuy ||
       new BigNumber(ticketsToBuy).lte(0) ||
       getTicketsForPurchase().length !== parseInt(ticketsToBuy, 10),
-    [isConfirming, userNotEnoughCake, ticketsToBuy, getTicketsForPurchase],
+    [isConfirming, userNotEnoughComet, ticketsToBuy, getTicketsForPurchase],
   )
 
   const isApproveDisabled = isApproved || disableBuying
@@ -316,18 +316,18 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
         </Flex>
       </Flex>
       <BalanceInput
-        isWarning={account && (userNotEnoughCake || maxTicketPurchaseExceeded)}
+        isWarning={account && (userNotEnoughComet || maxTicketPurchaseExceeded)}
         placeholder="0"
         value={ticketsToBuy}
         onUserInput={handleInputChange}
         currencyValue={
-          cakePrice.gt(0) &&
-          `~${ticketsToBuy ? getFullDisplayBalance(priceTicketInCake.times(new BigNumber(ticketsToBuy))) : '0.00'} CAKE`
+          cometPrice.gt(0) &&
+          `~${ticketsToBuy ? getFullDisplayBalance(priceTicketInComet.times(new BigNumber(ticketsToBuy))) : '0.00'} COMET`
         }
       />
       <Flex alignItems="center" justifyContent="flex-end" mt="4px" mb="12px">
         <Flex justifyContent="flex-end" flexDirection="column">
-          {account && (userNotEnoughCake || maxTicketPurchaseExceeded) && (
+          {account && (userNotEnoughComet || maxTicketPurchaseExceeded) && (
             <Text fontSize="12px" color="failure">
               {getErrorMessage()}
             </Text>
@@ -335,11 +335,11 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
           {account && (
             <Flex justifyContent="flex-end">
               <Text fontSize="12px" color="textSubtle" mr="4px">
-                CAKE {t('Balance')}:
+                COMET{t('Balance')}:
               </Text>
               {hasFetchedBalance ? (
                 <Text fontSize="12px" color="textSubtle">
-                  {userCakeDisplayBalance}
+                  {userCometDisplayBalance}
                 </Text>
               ) : (
                 <Skeleton width={50} height={12} />
@@ -380,10 +380,10 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
       <Flex flexDirection="column">
         <Flex mb="8px" justifyContent="space-between">
           <Text color="textSubtle" fontSize="14px">
-            {t('Cost')} (CAKE)
+            {t('Cost')} (COMET)
           </Text>
           <Text color="textSubtle" fontSize="14px">
-            {priceTicketInCake && getFullDisplayBalance(priceTicketInCake.times(ticketsToBuy || 0))} CAKE
+            {priceTicketInComet && getFullDisplayBalance(priceTicketInComet.times(ticketsToBuy || 0))} COMET
           </Text>
         </Flex>
         <Flex mb="8px" justifyContent="space-between">
@@ -399,7 +399,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
             </Flex>
           </Flex>
           <Text fontSize="14px" color="textSubtle">
-            ~{discountValue} CAKE
+            ~{discountValue} COMET
           </Text>
         </Flex>
         <Flex borderTop={`1px solid ${theme.colors.cardBorder}`} pt="8px" mb="24px" justifyContent="space-between">
@@ -407,7 +407,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
             {t('You pay')}
           </Text>
           <Text fontSize="16px" bold>
-            ~{totalCost} CAKE
+            ~{totalCost} COMET
           </Text>
         </Flex>
 
@@ -460,3 +460,4 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
 }
 
 export default BuyTicketsModal
+

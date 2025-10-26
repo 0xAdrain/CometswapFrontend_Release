@@ -88,3 +88,4 @@ describe('info/utils/infoDataHelpers', () => {
     },
   )
 })
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, FlexGap, InfoIcon, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, FlexGap, InfoIcon, Text } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { memo } from 'react'
 import { styled } from 'styled-components'
@@ -38,3 +38,4 @@ export const BuyCryptoPanel: React.FC<{ link?: string }> = memo(({ link }) => {
     </Wrapper>
   )
 })
+

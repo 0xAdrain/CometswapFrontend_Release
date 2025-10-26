@@ -1,4 +1,4 @@
-import { ContextApi } from '@pancakeswap/localization'
+import { ContextApi } from '@cometswap/localization'
 
 export enum ResponseEvents {
   NotificationsEnabled = 'NotificationsEnabled',
@@ -82,7 +82,7 @@ export type NotificationPayload = {
   notification: pushNotification
 }
 
-export interface PancakeNotificationBuilders {
+export interface CometNotificationBuilders {
   ['newLpNotification']: {
     newLpPositionNotification: (
       token1: string,
@@ -95,3 +95,4 @@ export interface PancakeNotificationBuilders {
     onBoardingNotification: () => pushNotification
   }
 }
+

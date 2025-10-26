@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react'
 import { styled } from 'styled-components'
-import { StarFillIcon, StarLineIcon } from '@pancakeswap/uikit'
+import { StarFillIcon, StarLineIcon } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 
 const HoverIcon = styled.div`
@@ -30,3 +30,4 @@ const SaveIcon: React.FC<React.PropsWithChildren<{ fill: boolean } & HTMLAttribu
 }
 
 export default SaveIcon
+

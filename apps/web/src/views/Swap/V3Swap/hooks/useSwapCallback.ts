@@ -1,14 +1,14 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { FeeOptions } from '@pancakeswap/v3-sdk'
+import { useTranslation } from '@cometswap/localization'
+import { FeeOptions } from '@cometswap/v3-sdk'
 import { useMemo } from 'react'
 
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { INITIAL_ALLOWED_SLIPPAGE } from 'config/constants'
 import { useSwapState } from 'state/swap/hooks'
 import { basisPointsToPercent } from 'utils/exchange'
 
-import { ClassicOrder } from '@pancakeswap/price-api-sdk'
-import { Permit2Signature } from '@pancakeswap/universal-router-sdk'
+import { ClassicOrder } from '@cometswap/price-api-sdk'
+import { Permit2Signature } from '@cometswap/universal-router-sdk'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { Address } from 'viem'
 import useSendSwapTransaction from './useSendSwapTransaction'
@@ -81,3 +81,4 @@ export function useSwapCallback({
     }
   }, [trade, account, chainId, callback, recipient, recipientAddress, t])
 }
+

@@ -103,7 +103,7 @@ export const crossFarmingReceiverABI = [
   },
   {
     inputs: [],
-    name: 'CAKE',
+    name: 'COMET',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -293,3 +293,4 @@ export const crossFarmingReceiverABI = [
   },
   { stateMutability: 'payable', type: 'receive' },
 ] as const
+

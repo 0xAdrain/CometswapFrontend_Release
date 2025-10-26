@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Breadcrumbs,
@@ -14,12 +14,12 @@ import {
   Text,
   Link as UIKitLink,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { NextSeo } from 'next-seo'
 
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import truncateHash from '@cometswap/utils/truncateHash'
 import Page from 'components/Layout/Page'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { ONE_HOUR_SECONDS } from 'config/constants/info'
@@ -261,3 +261,4 @@ const TokenPage: React.FC<React.PropsWithChildren<{ routeAddress: string }>> = (
 }
 
 export default TokenPage
+

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 // Empty array whitelists all pools for the chain, omitting the chain means ZAP is unsupported.
 export const ZAP_V3_POOL_ADDRESSES: Record<number, string[]> = {
@@ -21,7 +21,7 @@ export const ZAP_V3_POOL_ADDRESSES: Record<number, string[]> = {
     '0xB2DC4d7627501338B578985c214208eb32283086', // ORDER-WETH 0.25%
     '0x3a1b97Fc25fA45832F588ED3bFb2A0f74ddBD4F8', // wstETH-WETH 0.01%
     '0xa06fC67e6fe3C34736d295FFF71a358c3bB83476', // HEX-WETH 0.25%
-    '0x517F451b0A9E1b87Dc0Ae98A05Ee033C3310F046', // Cake-WETH 0.25%
+    '0x517F451b0A9E1b87Dc0Ae98A05Ee033C3310F046', // veComet-WETH 0.25%
     '0x6C2348DEeC1508724C0207a84d21cC5EE88231C8', // TUSD-USDT 0.01%
     '0x021E6270091a926D08d43681978d65F9A9b024ca', // MASA-WETH 0.25%
     '0x6db0f81Db2C3B2A85a802d511577d8522D0D8C14', // WETH-swETH 0.05%
@@ -55,3 +55,4 @@ export const ZAP_V3_POOL_ADDRESSES: Record<number, string[]> = {
     '0xe2d9b612446180334D56e10e82Dc78E3dEe814B0', // WETH-ETHx 0.01%
   ],
 }
+

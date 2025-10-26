@@ -25,3 +25,4 @@ const formatSecondsToWeeks = (secondDuration) =>
   `${dayjs.duration(secondsToWeeks(secondDuration), 'weeks').asWeeks()} weeks`
 
 export default formatSecondsToWeeks
+

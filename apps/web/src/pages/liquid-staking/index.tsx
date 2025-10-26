@@ -80,3 +80,4 @@ const LiquidStakingPage = () => {
 LiquidStakingPage.chains = LIQUID_STAKING_SUPPORTED_CHAINS
 
 export default LiquidStakingPage
+

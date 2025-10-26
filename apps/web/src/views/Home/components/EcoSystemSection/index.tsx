@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, ChevronRightIcon, Flex, Text, useMatchBreakpoints, useModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, ChevronRightIcon, Flex, Text, useMatchBreakpoints, useModal } from '@cometswap/uikit'
 import USCitizenConfirmModal from 'components/Modal/USCitizenConfirmModal'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -159,7 +159,7 @@ const useTradeBlockData = () => {
   const { push } = useRouter()
   const perpetualUrl = useMemo(() => getPerpetualUrl({ chainId, languageCode: code, isDark }), [chainId, code, isDark])
   const [onUSCitizenModalPresent] = useModal(
-    <USCitizenConfirmModal title={t('PancakeSwap Perpetuals')} id={IdType.PERPETUALS} />,
+    <USCitizenConfirmModal title={t('CometSwap Perpetuals')} id={IdType.PERPETUALS} />,
     true,
     false,
     'usCitizenConfirmModal',
@@ -190,7 +190,7 @@ const useTradeBlockData = () => {
         ctaTitle: t('Bridge Now'),
         image: `${ASSET_CDN}/web/landing/trade-bridge.png`,
         defaultImage: `${ASSET_CDN}/web/landing/trade-bridge-purple.png`,
-        path: 'https://bridge.pancakeswap.finance/',
+        path: 'https://bridge.cometswap.finance/',
       },
       {
         title: t('Perpetual'),
@@ -224,7 +224,7 @@ const useEarnBlockData = () => {
     return [
       {
         title: t('Farm'),
-        description: t('Stake LP tokens, harvest CAKE'),
+        description: t('Stake LP tokens, harvest COMET'),
         ctaTitle: t('Stake Now'),
         image: `${ASSET_CDN}/web/landing/earn-farm.png`,
         defaultImage: `${ASSET_CDN}/web/landing/earn-farm-purple.png`,
@@ -232,7 +232,7 @@ const useEarnBlockData = () => {
       },
       {
         title: t('Pools'),
-        description: t('Stake CAKE, earn various rewards'),
+        description: t('Stake COMET, earn various rewards'),
         ctaTitle: t('Stake Now'),
         image: `${ASSET_CDN}/web/landing/earn-pools.png`,
         defaultImage: `${ASSET_CDN}/web/landing/earn-pools-purple.png`,
@@ -256,7 +256,7 @@ const useEarnBlockData = () => {
       },
       {
         title: t('Position Manager'),
-        description: t('Automate your PancakeSwap v3 liquidity'),
+        description: t('Automate your CometSwap v3 liquidity'),
         ctaTitle: t('Stake Now'),
         image: `${ASSET_CDN}/web/landing/earn-pm.png`,
         defaultImage: `${ASSET_CDN}/web/landing/earn-pm-purple.png`,
@@ -273,11 +273,11 @@ const useNftGameBlockData = () => {
     return [
       {
         title: t('Gaming Marketplace'),
-        description: t('Play, Build and Connect on PancakeSwap'),
+        description: t('Play, Build and Connect on CometSwap'),
         ctaTitle: t('Play Now'),
-        image: `${ASSET_CDN}/web/landing/game-pancake-protectors.png`,
-        defaultImage: `${ASSET_CDN}/web/landing/game-pancake-protectors-purple.png`,
-        path: 'https://pancakeswap.games/',
+        image: `${ASSET_CDN}/web/landing/game-comet-protectors.png`,
+        defaultImage: `${ASSET_CDN}/web/landing/game-comet-protectors-purple.png`,
+        path: 'https://cometswap.games/',
       },
       {
         title: t('Prediction'),
@@ -481,3 +481,4 @@ const EcoSystemSection: React.FC = () => {
 }
 
 export default EcoSystemSection
+

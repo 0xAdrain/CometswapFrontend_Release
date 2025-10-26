@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, SortArrowIcon, Text, Th } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, SortArrowIcon, Text, Th } from '@cometswap/uikit'
 import { useState } from 'react'
 import styled from 'styled-components'
 import { SortButton } from 'views/V3Info/components/SortButton'
@@ -94,3 +94,4 @@ export const TableHeader: React.FC<{
     </THeader>
   )
 }
+

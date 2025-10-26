@@ -29,3 +29,4 @@ const userRegisterFee = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default userRegisterFee
+

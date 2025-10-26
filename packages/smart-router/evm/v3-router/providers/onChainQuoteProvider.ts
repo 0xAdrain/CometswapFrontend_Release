@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { BigintIsh, Currency, CurrencyAmount, getCurrencyAddress } from '@pancakeswap/swap-sdk-core'
-import { AbortControl, isAbortError } from '@pancakeswap/utils/abortControl'
+import { ChainId } from '@cometswap/chains'
+import { BigintIsh, Currency, CurrencyAmount, getCurrencyAddress } from '@cometswap/swap-sdk-core'
+import { AbortControl, isAbortError } from '@cometswap/utils/abortControl'
 import retry from 'async-retry'
 import { Abi, Address } from 'viem'
 
@@ -20,7 +20,7 @@ import {
 } from '../types'
 import { encodeMixedRouteToPath, getQuoteCurrency, isStablePool, isV2Pool, isV3Pool } from '../utils'
 import { Result } from './multicallProvider'
-import { PancakeMulticallProvider } from './multicallSwapProvider'
+import { CometMulticallProvider } from './multicallSwapProvider'
 import { V4_BIN_QUOTER_ADDRESSES, V4_CL_QUOTER_ADDRESSES, V4_MIXED_ROUTE_QUOTER_ADDRESSES } from '../../constants/v4'
 import { clQuoterAbi } from '../../abis/ICLQuoter'
 import { PathKey, encodeV4RouteToPath } from '../utils/encodeV4RouteToPath'
@@ -52,6 +52,7 @@ const SUCCESS_RATE_CONFIG = {
   [ChainId.SEPOLIA]: 0.1,
   [ChainId.ARBITRUM_SEPOLIA]: 0.1,
   [ChainId.BASE_SEPOLIA]: 0.1,
+  [ChainId.XLAYER_TESTNET]: 0.1,
 } as const satisfies Record<ChainId, number>
 
 type V4ClInputs = [
@@ -174,7 +175,7 @@ function onChainQuoteProviderFactory({ getQuoteFunctionName, getQuoterAddress, a
         } = multicallConfigs
         const chainProvider = onChainProvider({ chainId })
         const providerConfig = { blockNumber: blockNumberFromConfig }
-        const multicall2Provider = new PancakeMulticallProvider(chainId, chainProvider, defaultGasLimitPerCall)
+        const multicall2Provider = new CometMulticallProvider(chainId, chainProvider, defaultGasLimitPerCall)
         const inputs = routes.map<CallInputs>((route) => getCallInputs(route, isExactIn))
 
         const retryOptionsWithDefault = {

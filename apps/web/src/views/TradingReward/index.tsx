@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Box } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { Box } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
 import Banner from 'views/TradingReward/components/Banner'
@@ -12,23 +12,25 @@ import YourTradingReward from 'views/TradingReward/components/YourTradingReward'
 import useAllTradingRewardPair, { RewardStatus, RewardType } from 'views/TradingReward/hooks/useAllTradingRewardPair'
 import useAllUserCampaignInfo from 'views/TradingReward/hooks/useAllUserCampaignInfo'
 import useCampaignIdInfo from 'views/TradingReward/hooks/useCampaignIdInfo'
+import { useFarmsV3Public } from 'state/farmsV3/hooks'
 
 const TradingReward = () => {
   const { chainId } = useActiveChainId()
 
   const { data: allTradingRewardPairData, isFetching: isAllTradingRewardPairDataFetching } = useAllTradingRewardPair({
     status: RewardStatus.ALL,
-    type: RewardType.CAKE_STAKERS,
+    type: RewardType.COMET_STAKERS,
   })
+  const { data: farmsV3 } = useFarmsV3Public()
 
   const campaignId = allTradingRewardPairData.campaignIds[allTradingRewardPairData.campaignIds.length - 1]
   const { data: campaignInfoData, isFetching: isCampaignInfoFetching } = useCampaignIdInfo({
     campaignId,
-    type: RewardType.CAKE_STAKERS,
+    type: RewardType.COMET_STAKERS,
   })
   const { data: allUserCampaignInfo, isFetching: isAllUserCampaignInfo } = useAllUserCampaignInfo({
     campaignIds: allTradingRewardPairData.campaignIds,
-    type: RewardType.CAKE_STAKERS,
+    type: RewardType.COMET_STAKERS,
   })
 
   const isFetching = useMemo(
@@ -93,10 +95,11 @@ const TradingReward = () => {
       />
       <HowToEarn />
       <RewardsBreakdown
-        type={RewardType.CAKE_STAKERS}
+        type={RewardType.COMET_STAKERS}
         allUserCampaignInfo={allUserCampaignInfo}
         allTradingRewardPairData={allTradingRewardPairData}
         campaignPairs={allTradingRewardPairData.campaignPairs}
+        farms={farmsV3.farmsWithPrice}
       />
       <Questions />
     </Box>

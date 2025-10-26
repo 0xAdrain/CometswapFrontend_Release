@@ -1,6 +1,6 @@
-import { Currency, Percent, Price } from '@pancakeswap/sdk'
-import { Text, AutoColumn } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency, Percent, Price } from '@cometswap/sdk'
+import { Text, AutoColumn } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { ONE_BIPS } from 'config/constants/exchange'
 import { CurrencyField as Field } from 'utils/types'
 import { AutoRow } from '../../components/Layout/Row'
@@ -56,3 +56,4 @@ function PoolPriceBar({
 }
 
 export default PoolPriceBar
+

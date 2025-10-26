@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
 import { NOTIFICATION_HUB_BASE_URL } from 'config/constants/endpoints'
 import crypto from 'crypto'
 import {
   NEXT_PUBLIC_WEB_NOTIFICATION_SECURE_TOKEN,
   PUBLIC_VAPID_KEY,
-  PancakeNotifications,
+  CometNotifications,
   WEB_PUSH_ENCRYPTION_KEY,
   WEB_PUSH_IV,
 } from 'views/Notifications/constants'
@@ -78,7 +78,7 @@ const useSendPushNotification = (): IUseSendNotification => {
   const sendPushNotification = async (notificationType: BuilderNames, args: string[], account: string) => {
     const notificationPayload: NotificationPayload = {
       accounts: [`eip155:1:${account}`],
-      notification: PancakeNotifications[notificationType](t, args),
+      notification: CometNotifications[notificationType](t, args),
     }
     try {
       await fetch(`${NOTIFICATION_HUB_BASE_URL}/walletconnect-notify`, {
@@ -99,3 +99,4 @@ const useSendPushNotification = (): IUseSendNotification => {
 }
 
 export default useSendPushNotification
+

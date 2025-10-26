@@ -208,3 +208,4 @@ export interface DensityChartEntry {
   tvlToken0: number
   tvlToken1: number
 }
+

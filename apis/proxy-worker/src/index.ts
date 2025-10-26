@@ -1,4 +1,4 @@
-import { CORS_ALLOW, handleCors, wrapCorsHeader } from '@pancakeswap/worker-utils'
+import { CORS_ALLOW, handleCors, wrapCorsHeader } from '@cometswap/worker-utils'
 import { Router } from 'itty-router'
 import { error, missing } from 'itty-router-extras'
 
@@ -18,7 +18,7 @@ function createEndpoint(url: string) {
     const response = await fetch(url, {
       headers: {
         'X-Forwarded-For': ip,
-        origin: isLocalHost ? 'https://pancakeswap.finance' : headers.get('origin') || '',
+        origin: isLocalHost ? 'https://cometswap.finance' : headers.get('origin') || '',
       },
       body,
       method: 'POST',

@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { BodyText } from '../BodyText'
 import { AdButton } from '../Button'
 import { AdCard } from '../Card'
@@ -10,7 +10,7 @@ export const ContentCountdown = (props: AdPlayerProps) => {
   const { t } = useTranslation()
   return (
     <AdCard imageUrl={getImageUrl('ad_clamm_options_trading.png')} {...props}>
-      <BodyText mb="8px">{t('PancakeSwap Meetup in Turkey starts in:')}</BodyText>
+      <BodyText mb="8px">{t('CometSwap Meetup in Turkey starts in:')}</BodyText>
 
       <Countdown
         targetTime={1731997322}
@@ -26,3 +26,4 @@ export const ContentCountdown = (props: AdPlayerProps) => {
     </AdCard>
   )
 }
+

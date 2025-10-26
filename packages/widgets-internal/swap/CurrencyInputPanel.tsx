@@ -1,4 +1,4 @@
-import { Text, AtomBox, SwapCSS } from "@pancakeswap/uikit";
+import { Text, AtomBox, SwapCSS } from "@cometswap/uikit";
 
 import { NumericalInput, NumericalInputProps } from "./NumericalInput";
 

@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@pancakeswap/uikit'
+import { Box, Flex, Text } from '@cometswap/uikit'
 import dayjs from 'dayjs'
 import { useState } from 'react'
 import { ResponsiveContainer } from 'recharts'
@@ -35,3 +35,4 @@ export const ChartTVL: React.FC<ChartTVLProps> = ({ address, poolInfo }) => {
     </>
   )
 }
+

@@ -29,3 +29,4 @@ function isAddress(address: string): address is Address {
   if (address.toLowerCase() === address) return true
   return true
 }
+

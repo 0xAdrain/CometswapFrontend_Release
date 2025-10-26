@@ -1,10 +1,10 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { getApy } from "@pancakeswap/utils/compoundApyHelpers";
+import { useTranslation } from "@cometswap/localization";
+import { getApy } from "@cometswap/utils/compoundApyHelpers";
 import BigNumber from "bignumber.js";
 import { useMemo, useState } from "react";
 import { styled } from "styled-components";
 
-import { BIG_ONE_HUNDRED } from "@pancakeswap/utils/bigNumber";
+import { BIG_ONE_HUNDRED } from "@cometswap/utils/bigNumber";
 import { useTooltip } from "../../hooks/useTooltip";
 import { Box, Flex, Grid } from "../Box";
 import { ExpandableLabel } from "../Button";
@@ -47,14 +47,14 @@ interface RoiCalculatorFooterProps {
   linkLabel: string;
   linkHref?: string;
   performanceFee: number;
-  rewardCakePerSecond?: boolean;
+  rewardveCometPerSecond?: boolean;
   isLocked?: boolean;
   stableSwapAddress?: string;
   stableLpFee?: number;
-  farmCakePerSecond?: string;
+  farmveCometPerSecond?: string;
   totalMultipliers?: string;
   dualTokenRewardApr?: number;
-  isBCakeBooster?: boolean;
+  isBveCometBooster?: boolean;
 }
 
 const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterProps>> = ({
@@ -67,22 +67,22 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
   linkLabel,
   linkHref,
   performanceFee,
-  rewardCakePerSecond,
+  rewardveCometPerSecond,
   isLocked = false,
   stableSwapAddress,
   stableLpFee,
-  farmCakePerSecond,
+  farmveCometPerSecond,
   totalMultipliers,
   dualTokenRewardApr,
   lpRewardsApr,
-  isBCakeBooster,
+  isBveCometBooster,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { t } = useTranslation();
-  const isAptos = rewardCakePerSecond === true;
+  const isAptos = rewardveCometPerSecond === true;
 
   const multiplierTooltipContent = FarmMultiplierInfo({
-    farmCakePerSecond: farmCakePerSecond ?? "-",
+    farmveCometPerSecond: farmveCometPerSecond ?? "-",
     totalMultipliers: totalMultipliers ?? "-",
   });
   const {
@@ -95,7 +95,7 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
 
   const cakeRewardAPRDisplay = useMemo(() => {
     let total = new BigNumber(apr);
-    // TODO: In APTOS APR is combine APR (Cake APR + Apt APR + lp APR).
+    // TODO: In APTOS APR is combine APR (veComet APR + Apt APR + lp APR).
     // Soon EVM (v2 Farm & pools) also will change to  combine APR.
     if (dualTokenRewardApr !== undefined) {
       total = new BigNumber(apr).minus(Number(dualTokenRewardApr ?? 0)).minus(lpRewardsApr ?? 0);
@@ -134,7 +134,7 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
                   {displayApr}%
                 </Text>
                 <Text color="textSubtle" small>
-                  {`*${t("Base APR (CAKE yield only)")}`}
+                  {`*${t("Base APR (COMETyield only)")}`}
                 </Text>
                 <Text small textAlign="right">
                   {`${cakeRewardAPRDisplay?.toLocaleString("en-US", {
@@ -176,7 +176,7 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
                 %
               </Text>
             )}
-            {isFarm && isBCakeBooster && (
+            {isFarm && isBveCometBooster && (
               <>
                 <Text color="textSubtle" small>
                   {t("Farm Multiplier")}

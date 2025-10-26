@@ -1,12 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Box, ErrorIcon, Flex, FlexGap, Text } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Box, ErrorIcon, Flex, FlexGap, Text } from '@cometswap/uikit'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
-import { useVeCakeBalance } from 'hooks/useTokenBalance'
+import { useVeCometBalance } from 'hooks/useTokenBalance'
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { Tooltips } from 'views/CakeStaking/components/Tooltips'
-import { useCakeLockStatus } from 'views/CakeStaking/hooks/useVeCakeUserInfo'
+import { Tooltips } from 'views/CometStaking/components/Tooltips'
+import { useVeCometLockStatus } from 'views/CometStaking/hooks/useVeCometUserInfo'
 import { useEpochVotePower } from '../hooks/useEpochVotePower'
 
 const StyledBox = styled(Box)`
@@ -28,24 +28,24 @@ export const RemainingVotePower: React.FC<{
 }> = ({ votedPercent }) => {
   const { t } = useTranslation()
 
-  const { cakeLockedAmount } = useCakeLockStatus()
-  const locked = useMemo(() => cakeLockedAmount > 0n, [cakeLockedAmount])
-  const { balance: veCakeBalance } = useVeCakeBalance()
+  const { cometLockedAmount } = useVeCometLockStatus()
+  const locked = useMemo(() => cometLockedAmount > 0n, [cometLockedAmount])
+  const { balance: vecometBalance } = useVeCometBalance()
   const { data: epochPower } = useEpochVotePower()
 
   // @note: real power is EpochEndPower * (10000 - PercentVoted)
-  // use veCakeBalance as cardinal number for better UX understanding
+  // use vecometBalance as cardinal number for better UX understanding
   const votePower = useMemo(() => {
-    return veCakeBalance.times(10000 - votedPercent * 100).dividedBy(10000)
-  }, [veCakeBalance, votedPercent])
+    return vecometBalance.times(10000 - votedPercent * 100).dividedBy(10000)
+  }, [vecometBalance, votedPercent])
 
   const realPower = useMemo(() => {
     return new BN(epochPower.toString()).times(10000 - votedPercent * 100).dividedBy(10000)
   }, [epochPower, votedPercent])
 
   return (
-    <StyledBox id="vecake-vote-power">
-      <img src="/images/cake-staking/token-vecake.png" alt="token-vecake" width="58px" />
+    <StyledBox id="Comet-vote-power">
+      <img src="/images/comet-staking/token-Comet.png" alt="token-Comet" width="58px" />
       <Flex
         flexDirection={['column', 'column', 'row']}
         justifyContent="space-between"
@@ -54,7 +54,7 @@ export const RemainingVotePower: React.FC<{
         alignItems={['flex-start', 'flex-start', 'center']}
       >
         <Text fontSize="20px" bold color="white" lineHeight="2">
-          {t('Remaining veCAKE')}
+          {t('Remaining veCOMET')}
         </Text>
         {epochPower === 0n && realPower.gt(0) ? (
           <FlexGap gap="4px" alignItems="center">
@@ -65,7 +65,7 @@ export const RemainingVotePower: React.FC<{
               content={
                 <>
                   {t(
-                    'Your positions are unlocking soon. Therefore, you have no veCAKE balance at the end of the current voting epoch while votes are being tallied. ',
+                    'Your positions are unlocking soon. Therefore, you have no veCOMETbalance at the end of the current voting epoch while votes are being tallied. ',
                   )}
                   <br />
                   <br />
@@ -81,7 +81,7 @@ export const RemainingVotePower: React.FC<{
             disabled={locked}
             content={
               <>
-                {t('You have no locked CAKE.')} {t('To cast your vote, lock your CAKE for 3 weeks or more.')}
+                {t('You have no locked COMET.')} {t('To cast your vote, lock your COMETfor 3 weeks or more.')}
               </>
             }
           >
@@ -102,3 +102,4 @@ export const RemainingVotePower: React.FC<{
     </StyledBox>
   )
 }
+

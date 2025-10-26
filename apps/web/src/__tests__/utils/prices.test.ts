@@ -1,5 +1,5 @@
-import { Pair, Route, Token, Trade, TradeType, CurrencyAmount } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { Pair, Route, Token, Trade, TradeType, CurrencyAmount } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 import { computeTradePriceBreakdown } from 'utils/exchange'
 
 describe('prices', () => {
@@ -39,3 +39,4 @@ describe('prices', () => {
     })
   })
 })
+

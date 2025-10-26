@@ -57,3 +57,4 @@ export const useSidNameForAddress = (address: string, fetchData = true) => {
     return { sidName: sidName?.name, isLoading: status !== 'success' }
   }, [sidName, status])
 }
+

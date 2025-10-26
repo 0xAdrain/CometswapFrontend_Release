@@ -77,3 +77,4 @@ const DELIST_COLLECTIONS = {
 } as const
 
 export default DELIST_COLLECTIONS
+

@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { AutoColumn } from '@pancakeswap/uikit'
+import { AutoColumn } from '@cometswap/uikit'
 import { RowBetween } from 'components/Layout/Row'
 
 const Grouping = styled(RowBetween)`
@@ -80,3 +80,4 @@ export default function ProgressCircles({ steps, disabled = false, ...rest }: Pr
     </AutoColumn>
   )
 }
+

@@ -1,7 +1,7 @@
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { createSelector } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
-import { VaultPosition, getVaultPosition } from '../../utils/cakePool'
+import { VaultPosition, getVaultPosition } from '../../utils/cometPool'
 import { State, VaultKey } from '../types'
 import { transformPool, transformVault } from './helpers'
 import { initialPoolVaultState } from './index'
@@ -30,40 +30,40 @@ export const makeVaultPoolByKey = (key) => createSelector([selectVault(key)], (v
 export const poolsWithVaultSelector = createSelector(
   [
     poolsWithUserDataLoadingSelector,
-    makeVaultPoolByKey(VaultKey.CakeVault),
-    makeVaultPoolByKey(VaultKey.CakeFlexibleSideVault),
+    makeVaultPoolByKey(VaultKey.veCometVault),
+    makeVaultPoolByKey(VaultKey.veCometVault),
   ],
-  (poolsWithUserDataLoading, deserializedLockedCakeVault, deserializedFlexibleSideCakeVault) => {
+  (poolsWithUserDataLoading, deserializedLockedveCometVault, deserializedFlexibleSideveCometVault) => {
     const { pools, userDataLoaded } = poolsWithUserDataLoading
-    const cakePool = pools.find((pool) => !pool.isFinished && pool.sousId === 0)
-    const withoutCakePool = pools.filter((pool) => pool.sousId !== 0)
+    const cometPool = pools.find((pool) => !pool.isFinished && pool.sousId === 0)
+    const withoutveCometPool = pools.filter((pool) => pool.sousId !== 0)
 
-    const cakeAutoVault = cakePool && {
-      ...cakePool,
-      ...deserializedLockedCakeVault,
-      vaultKey: VaultKey.CakeVault,
-      userData: { ...cakePool.userData, ...deserializedLockedCakeVault.userData },
+    const cometAutoVault = cometPool && {
+      ...cometPool,
+      ...deserializedLockedveCometVault,
+      vaultKey: VaultKey.veCometVault,
+      userData: { ...cometPool.userData, ...deserializedLockedveCometVault.userData },
     }
 
-    const lockedVaultPosition = getVaultPosition(deserializedLockedCakeVault.userData)
+    const lockedVaultPosition = getVaultPosition(deserializedLockedveCometVault.userData)
     const hasFlexibleSideSharesStaked =
-      deserializedFlexibleSideCakeVault?.userData && deserializedFlexibleSideCakeVault.userData.userShares.gt(0)
+      deserializedFlexibleSideveCometVault?.userData && deserializedFlexibleSideveCometVault.userData.userShares.gt(0)
 
-    const cakeAutoFlexibleSideVault =
-      cakePool && (lockedVaultPosition > VaultPosition.Flexible || hasFlexibleSideSharesStaked)
+    const cometAutoFlexibleSideVault =
+      cometPool && (lockedVaultPosition > VaultPosition.Flexible || hasFlexibleSideSharesStaked)
         ? [
             {
-              ...cakePool,
-              ...deserializedFlexibleSideCakeVault,
-              vaultKey: VaultKey.CakeFlexibleSideVault,
-              userData: { ...cakePool.userData, ...deserializedFlexibleSideCakeVault.userData },
+              ...cometPool,
+              ...deserializedFlexibleSideveCometVault,
+              vaultKey: VaultKey.veCometVault,
+              userData: { ...cometPool.userData, ...deserializedFlexibleSideveCometVault.userData },
             },
           ]
         : []
 
-    const allPools = [...cakeAutoFlexibleSideVault, ...withoutCakePool]
-    if (cakeAutoVault) {
-      allPools.unshift(cakeAutoVault)
+    const allPools = [...cometAutoFlexibleSideVault, ...withoutveCometPool]
+    if (cometAutoVault) {
+      allPools.unshift(cometAutoVault)
     }
     return { pools: allPools, userDataLoaded }
   },
@@ -79,3 +79,4 @@ export const ifoCreditSelector = createSelector([selectIfoUserCredit], (ifoUserC
 export const ifoCeilingSelector = createSelector([selectIfo], (ifoData) => {
   return new BigNumber(ifoData.ceiling)
 })
+

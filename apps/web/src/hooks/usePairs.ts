@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Pair, pancakePairV2ABI } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Pair, cometPairV2ABI } from '@cometswap/sdk'
 import { useMemo } from 'react'
 
 import { useMultipleContractSingleData } from 'state/multicall/hooks'
@@ -44,7 +44,7 @@ export function useV2Pairs(currencies: [Currency | undefined, Currency | undefin
   )
   const results = useMultipleContractSingleData({
     addresses: pairAddresses,
-    abi: pancakePairV2ABI,
+    abi: cometPairV2ABI,
     functionName: 'getReserves',
   })
 
@@ -77,3 +77,4 @@ export function useV2Pair(tokenA?: Currency, tokenB?: Currency): [PairState, Pai
   )
   return useV2Pairs(pairCurrencies)[0]
 }
+

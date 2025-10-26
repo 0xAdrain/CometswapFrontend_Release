@@ -18,3 +18,4 @@ export const ChoiceText = styled.div`
   white-space: nowrap;
   width: 0;
 `
+

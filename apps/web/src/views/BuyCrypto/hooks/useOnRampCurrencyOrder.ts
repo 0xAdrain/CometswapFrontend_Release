@@ -11,7 +11,7 @@ export const useOnRampCurrencyOrder = (unit: OnRampUnit) => {
   } = useBuyCryptoFormState()
 
   const cryptoCurrency = useMemo(() => {
-    if (!inputCurrencyId || !outputCurrencyId) return onRampCurrenciesMap.CAKE_56
+    if (!inputCurrencyId || !outputCurrencyId) return onRampCurrenciesMap.COMET_56
     const currencyId = isFiat(unit) ? inputCurrencyId : outputCurrencyId
     return getOnRampCryptoById(currencyId)
   }, [inputCurrencyId, outputCurrencyId, unit])
@@ -27,3 +27,4 @@ export const useOnRampCurrencyOrder = (unit: OnRampUnit) => {
 
   return { cryptoCurrency, fiatCurrency, currencyIn, currencyOut }
 }
+

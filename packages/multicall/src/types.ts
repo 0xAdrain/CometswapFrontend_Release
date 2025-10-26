@@ -1,5 +1,5 @@
 import type { Address } from 'viem'
-import { BigintIsh } from '@pancakeswap/sdk'
+import { BigintIsh } from '@cometswap/sdk'
 
 export type MulticallRequest = {
   target: Address

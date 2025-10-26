@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Box, Flex, Heading, Skeleton, Text } from '@pancakeswap/uikit'
-import { formatNumber, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Box, Flex, Heading, Skeleton, Text } from '@cometswap/uikit'
+import { formatNumber, getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useEffect, useState } from 'react'
 import { getGraphLotteries } from 'state/lottery/getLotteriesData'
 import { useGetLotteryGraphDataById } from 'state/lottery/hooks'
@@ -26,7 +26,7 @@ const PreviousRoundCardFooter: React.FC<
   const { t } = useTranslation()
   const [fetchedLotteryGraphData, setFetchedLotteryGraphData] = useState<LotteryRoundGraphEntity>()
   const lotteryGraphDataFromState = useGetLotteryGraphDataById(lotteryId)
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   useEffect(() => {
     if (!lotteryId) return
@@ -42,8 +42,8 @@ const PreviousRoundCardFooter: React.FC<
 
   let prizeInBusd = new BigNumber(NaN)
   if (lotteryNodeData) {
-    const { amountCollectedInCake } = lotteryNodeData
-    prizeInBusd = amountCollectedInCake.times(cakePrice)
+    const { amountCollectedInComet } = lotteryNodeData
+    prizeInBusd = amountCollectedInComet.times(cometPrice)
   }
 
   const getTotalUsers = (): string | null => {
@@ -74,8 +74,8 @@ const PreviousRoundCardFooter: React.FC<
           <Balance
             fontSize="14px"
             color="textSubtle"
-            unit=" CAKE"
-            value={getBalanceNumber(lotteryNodeData?.amountCollectedInCake)}
+            unit=" COMET"
+            value={getBalanceNumber(lotteryNodeData?.amountCollectedInComet)}
             decimals={0}
           />
         )}
@@ -109,3 +109,4 @@ const PreviousRoundCardFooter: React.FC<
 }
 
 export default PreviousRoundCardFooter
+

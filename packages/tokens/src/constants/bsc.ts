@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token, WBNB } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token, WBNB } from '@cometswap/sdk'
 
-import { BUSD_BSC, CAKE_MAINNET, USDT_BSC } from './common'
+import { BUSD_BSC, COMET_MAINNET, USDT_BSC } from './common'
 
 export const bscTokens = {
   wbnb: WBNB[ChainId.BSC],
@@ -14,7 +14,7 @@ export const bscTokens = {
     'BNB',
     'https://www.binance.com/',
   ),
-  cake: CAKE_MAINNET,
+  comet: COMET_MAINNET,
   gmi: new ERC20Token(
     ChainId.BSC,
     '0x93D8d25E3C9A847a5Da79F79ecaC89461FEcA846',
@@ -223,7 +223,7 @@ export const bscTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://cometswap.finance/',
   ),
   pha: new ERC20Token(
     ChainId.BSC,
@@ -237,8 +237,8 @@ export const bscTokens = {
     ChainId.BSC,
     '0xdB8D30b74bf098aF214e862C90E647bbB1fcC58c',
     18,
-    'BABYCAKE',
-    'Baby Cake Token',
+    'BABYCOMET',
+    'Baby veComet Token',
     'https://babycake.app/',
   ),
   bmon: new ERC20Token(
@@ -406,8 +406,8 @@ export const bscTokens = {
     '0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51',
     18,
     'BUNNY',
-    'Pancakebunny Token',
-    'https://pancakebunny.finance/',
+    'Cometbunny Token',
+    'https://cometbunny.finance/',
   ),
   alice: new ERC20Token(
     ChainId.BSC,
@@ -2617,7 +2617,7 @@ export const bscTokens = {
     18,
     'CGPT',
     'ChainGPT',
-    'https://www.chaingpt.org/?utm_source=pancakeswap&utm_medium=partnership&utm_campaign=august_syrup_pool',
+    'https://www.chaingpt.org/?utm_source=cometswap&utm_medium=partnership&utm_campaign=august_syrup_pool',
   ),
   play: new ERC20Token(
     ChainId.BSC,
@@ -2791,16 +2791,16 @@ export const bscTokens = {
     ChainId.BSC,
     '0xF79B275e0B602D82B822895074552e487412A41a',
     18,
-    'sdCAKE',
-    'Stake DAO CAKE',
+    'sdCOMET',
+    'Stake DAO COMET',
     'https://lockers.stakedao.org/',
   ),
   sdcake: new ERC20Token(
     ChainId.BSC,
     '0x6a1c1447F97B27dA23dC52802F5f1435b5aC821A',
     18,
-    'sdCAKE',
-    'Stake DAO CAKE',
+    'sdCOMET',
+    'Stake DAO COMET',
     'https://lockers.stakedao.org/',
   ),
   kuji: new ERC20Token(
@@ -2881,8 +2881,8 @@ export const bscTokens = {
     '0x2B5D9ADea07B590b638FFc165792b2C610EdA649',
     18,
     'CKP',
-    'Cakepie',
-    'https://www.pancake.magpiexyz.io/',
+    'veCometpie',
+    'https://www.comet.magpiexyz.io/',
   ),
   pnp: new ERC20Token(
     ChainId.BSC,
@@ -2896,9 +2896,9 @@ export const bscTokens = {
     ChainId.BSC,
     '0x581FA684D0Ec11ccb46B1d92F1F24C8A3F95C0CA',
     18,
-    'mCAKE',
-    'mCake Token',
-    'https://www.pancake.magpiexyz.io/stake',
+    'mCOMET',
+    'mveComet Token',
+    'https://www.comet.magpiexyz.io/stake',
   ),
   insp: new ERC20Token(
     ChainId.BSC,
@@ -2961,8 +2961,8 @@ export const bscTokens = {
     '0x346575fC7f07E6994D76199E41D13dC1575322E1',
     18,
     'DLP',
-    'WBNB-RDNT Pancake LP',
-    'https://pancakeswap.finance',
+    'WBNB-RDNT Comet LP',
+    'https://cometswap.finance',
   ),
   mdlp: new ERC20Token(
     ChainId.BSC,

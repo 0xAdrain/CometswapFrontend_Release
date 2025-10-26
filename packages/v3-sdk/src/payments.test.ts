@@ -1,4 +1,4 @@
-import { Percent, Token } from '@pancakeswap/sdk'
+import { Percent, Token } from '@cometswap/sdk'
 import { describe, expect, it } from 'vitest'
 import { Payments } from './payments'
 

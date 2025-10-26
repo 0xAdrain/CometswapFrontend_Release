@@ -1,15 +1,15 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Currency, CurrencyAmount, Percent, Price, Token, ZERO } from "@pancakeswap/sdk";
-import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
-import { formatFraction, formatPercent, formatPrice } from "@pancakeswap/utils/formatFractions";
-import { isPositionOutOfRange } from "@pancakeswap/utils/isPositionOutOfRange";
-import { FeeAmount, FeeCalculator, TickMath, sqrtRatioX96ToPrice } from "@pancakeswap/v3-sdk";
+import { useTranslation } from "@cometswap/localization";
+import { Currency, CurrencyAmount, Percent, Price, Token, ZERO } from "@cometswap/sdk";
+import { BIG_ZERO } from "@cometswap/utils/bigNumber";
+import { formatFraction, formatPercent, formatPrice } from "@cometswap/utils/formatFractions";
+import { isPositionOutOfRange } from "@cometswap/utils/isPositionOutOfRange";
+import { FeeAmount, FeeCalculator, TickMath, sqrtRatioX96ToPrice } from "@cometswap/v3-sdk";
 import BigNumber from "bignumber.js";
 import { useCallback, useMemo, useState } from "react";
 
-import { Button, DynamicSection, Flex, useMatchBreakpoints } from "@pancakeswap/uikit";
+import { Button, DynamicSection, Flex, useMatchBreakpoints } from "@cometswap/uikit";
 
-import { ScrollableContainer } from "@pancakeswap/uikit/components/RoiCalculatorModal/RoiCalculatorModal";
+import { ScrollableContainer } from "@cometswap/uikit/components/RoiCalculatorModal/RoiCalculatorModal";
 import { LiquidityChartRangeInput } from "../swap/LiquidityChartRangeInput";
 import { useDensityChartData } from "../swap/LiquidityChartRangeInput/hooks";
 import { AnimatedArrow } from "./AnimationArrow";
@@ -78,7 +78,7 @@ export type RoiCalculatorProps = {
   max?: string;
   maxLabel?: string;
   additionalApr?: number;
-  customCakeApr?: BigNumber;
+  customveCometApr?: BigNumber;
 } & (RoiCalculatorFarmProps | RoiCalculatorLPProps);
 
 type RoiCalculatorLPProps = {
@@ -87,8 +87,8 @@ type RoiCalculatorLPProps = {
 
 type RoiCalculatorFarmProps = {
   isFarm: true;
-  cakePrice?: string;
-  cakeAprFactor?: BigNumber;
+  cometPrice?: string;
+  cometAprFactor?: BigNumber;
 };
 
 // Price is always price of token0
@@ -116,7 +116,7 @@ export function RoiCalculator({
   onPriceSpanChange,
   allowApply = false,
   onApply,
-  customCakeApr,
+  customveCometApr,
   ...props
 }: RoiCalculatorProps) {
   const { isMobile } = useMatchBreakpoints();
@@ -213,15 +213,15 @@ export function RoiCalculator({
   }, [balanceA, balanceB, currencyAUsdPrice, currencyBUsdPrice, max]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [editCakePrice, setEditCakePrice] = useState<number | null>(null);
+  const [editCometPrice, setEditCometPrice] = useState<number | null>(null);
   const [includeFarmingRewards, setIncludeFarmingRewards] = useState(true);
   const farmingRewardsEnabled = props.isFarm && includeFarmingRewards;
-  const cakeAprFactor = farmingRewardsEnabled && props.cakeAprFactor;
+  const cometAprFactor = farmingRewardsEnabled && props.cometAprFactor;
 
-  const cakePriceDiffPercent =
-    farmingRewardsEnabled && props.cakePrice && editCakePrice && editCakePrice / +props.cakePrice;
+  const cometPriceDiffPercent =
+    farmingRewardsEnabled && props.cometPrice && editCometPrice && editCometPrice / +props.cometPrice;
 
-  const derivedCakeApr = useMemo(() => {
+  const derivedveCometApr = useMemo(() => {
     if (
       !amountA ||
       !amountB ||
@@ -229,12 +229,12 @@ export function RoiCalculator({
       typeof priceRange?.tickLower !== "number" ||
       !sqrtRatioX96 ||
       !farmingRewardsEnabled ||
-      !cakeAprFactor
+      !cometAprFactor
     ) {
       return undefined;
     }
-    if (customCakeApr) {
-      return customCakeApr;
+    if (customveCometApr) {
+      return customveCometApr;
     }
 
     if (isPositionOutOfRange(tickCurrent, { tickLower: priceRange.tickLower, tickUpper: priceRange.tickUpper })) {
@@ -254,12 +254,12 @@ export function RoiCalculator({
         return BIG_ZERO;
       }
 
-      const cakeApr =
+      const cometApr =
         positionLiquidity > ZERO
-          ? new BigNumber(positionLiquidity.toString()).times(cakeAprFactor).div(usdValue)
+          ? new BigNumber(positionLiquidity.toString()).times(cometAprFactor).div(usdValue)
           : BIG_ZERO;
 
-      return cakeApr;
+      return cometApr;
     } catch (error) {
       console.error(error, amountA, priceRange, sqrtRatioX96);
       return undefined;
@@ -270,18 +270,18 @@ export function RoiCalculator({
     priceRange,
     sqrtRatioX96,
     farmingRewardsEnabled,
-    cakeAprFactor,
-    customCakeApr,
+    cometAprFactor,
+    customveCometApr,
     tickCurrent,
     usdValue,
   ]);
 
-  const editedCakeApr = useMemo(
+  const editedveCometApr = useMemo(
     () =>
-      derivedCakeApr && typeof cakePriceDiffPercent === "number"
-        ? derivedCakeApr.times(cakePriceDiffPercent)
-        : derivedCakeApr,
-    [cakePriceDiffPercent, derivedCakeApr]
+      derivedveCometApr && typeof cometPriceDiffPercent === "number"
+        ? derivedveCometApr.times(cometPriceDiffPercent)
+        : derivedveCometApr,
+    [cometPriceDiffPercent, derivedveCometApr]
   );
 
   const {
@@ -289,13 +289,13 @@ export function RoiCalculator({
 
     apr,
     apy,
-    cakeApr,
-    cakeApy,
-    editCakeApr,
-    editCakeApy,
+    cometApr,
+    cometApy,
+    editveCometApr,
+    editveCometApy,
 
-    cakeReward,
-    originalCakeReward,
+    cometReward,
+    originalveCometReward,
     combinedApy,
     combinedReward,
     combinedRate,
@@ -314,8 +314,8 @@ export function RoiCalculator({
     compoundEvery: compoundingIndexToFrequency[compoundIndex],
     stakeFor: spanIndexToSpan[spanIndex],
     compoundOn,
-    cakeApr: farmingRewardsEnabled && derivedCakeApr ? derivedCakeApr.toNumber() : undefined,
-    editCakeApr: farmingRewardsEnabled && editedCakeApr ? editedCakeApr.toNumber() : undefined,
+    cometApr: farmingRewardsEnabled && derivedveCometApr ? derivedveCometApr.toNumber() : undefined,
+    editveCometApr: farmingRewardsEnabled && editedveCometApr ? editedveCometApr.toNumber() : undefined,
   });
 
   const handleApply = useCallback(
@@ -335,7 +335,7 @@ export function RoiCalculator({
 
   const totalRate = useMemo(() => parseFloat(formatPercent(combinedRate, 12) ?? "0"), [combinedRate]);
   const lpReward = useMemo(() => parseFloat(formatFraction(fee, 12) ?? "0"), [fee]);
-  const farmReward = cakeReward;
+  const farmReward = cometReward;
   const totalReward = combinedReward;
 
   const depositSection = (
@@ -503,9 +503,9 @@ export function RoiCalculator({
           tickUpper={priceRange?.tickUpper}
           sqrtRatioX96={sqrtRatioX96}
           isFarm={farmingRewardsEnabled}
-          cakeReward={originalCakeReward}
-          cakePrice={farmingRewardsEnabled ? props.cakePrice : undefined}
-          setEditCakePrice={setEditCakePrice}
+          cometReward={originalveCometReward}
+          cometPrice={farmingRewardsEnabled ? props.cometPrice : undefined}
+          setEditCometPrice={setEditCometPrice}
         />
         <AnimatedArrow state={{}} />
         <RoiRate usdAmount={totalReward} roiPercent={totalRate} />
@@ -522,8 +522,8 @@ export function RoiCalculator({
         lpApy={apy}
         compoundIndex={compoundIndex}
         compoundOn={compoundOn}
-        farmApr={farmingRewardsEnabled ? editCakeApr || cakeApr : undefined}
-        farmApy={farmingRewardsEnabled ? editCakeApy || cakeApy : undefined}
+        farmApr={farmingRewardsEnabled ? editveCometApr || cometApr : undefined}
+        farmApy={farmingRewardsEnabled ? editveCometApy || cometApy : undefined}
         farmReward={farmReward}
         isFarm={farmingRewardsEnabled}
         combinedApy={combinedApy}

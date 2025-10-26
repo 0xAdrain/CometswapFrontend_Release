@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import SwapWarningTokensConfig from 'config/constants/swapWarningTokens'
 import ABNBWarning from './ABNBWarning'
 import BTTWarning from './BTTWarning'
@@ -78,3 +78,4 @@ const BSC_WARNING_LIST = {
 }
 
 export default BSC_WARNING_LIST
+

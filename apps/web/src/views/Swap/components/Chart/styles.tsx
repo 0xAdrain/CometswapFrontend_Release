@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 export const StyledPriceChart = styled(Box)<{
@@ -23,3 +23,4 @@ export const StyledPriceChart = styled(Box)<{
 StyledPriceChart.defaultProps = {
   height: '70%',
 }
+

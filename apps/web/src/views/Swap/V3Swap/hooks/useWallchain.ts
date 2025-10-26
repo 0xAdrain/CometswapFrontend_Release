@@ -1,8 +1,8 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Currency, Token, TradeType } from '@pancakeswap/sdk'
-import { SmartRouterTrade } from '@pancakeswap/smart-router'
-import { useUserSlippage } from '@pancakeswap/utils/user'
-import { FeeOptions } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { Currency, Token, TradeType } from '@cometswap/sdk'
+import { SmartRouterTrade } from '@cometswap/smart-router'
+import { useUserSlippage } from '@cometswap/utils/user'
+import { FeeOptions } from '@cometswap/v3-sdk'
 import { captureException } from '@sentry/nextjs'
 import { useQuery } from '@tanstack/react-query'
 import type WallchainSDK from '@wallchain/sdk'
@@ -16,7 +16,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { basisPointsToPercent } from 'utils/exchange'
 import { useWalletClient } from 'wagmi'
 
-import { ClassicOrder } from '@pancakeswap/price-api-sdk'
+import { ClassicOrder } from '@cometswap/price-api-sdk'
 import Bottleneck from 'bottleneck'
 import { WALLCHAIN_ENABLED, WallchainKeys, WallchainTokens } from 'config/wallchain'
 import { Address, Hex } from 'viem'
@@ -299,3 +299,4 @@ export function useWallchainSwapCallArguments(
 
   return swapCalls
 }
+

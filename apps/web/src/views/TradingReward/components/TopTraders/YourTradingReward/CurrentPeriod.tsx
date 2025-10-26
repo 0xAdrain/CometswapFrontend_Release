@@ -1,15 +1,15 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, LightBulbIcon, Message, MessageText, Text } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Card, LightBulbIcon, Message, MessageText, Text } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import BigNumber from 'bignumber.js'
 import { GreyCard } from 'components/Card'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useMemo } from 'react'
 import ComingSoon from 'views/TradingReward/components/YourTradingReward/ComingSoon'
 import { RewardInfo } from 'views/TradingReward/hooks/useAllTradingRewardPair'
 import { UserCampaignInfoDetail } from 'views/TradingReward/hooks/useAllUserCampaignInfo'
-import useRewardInCake from 'views/TradingReward/hooks/useRewardInCake'
+import useRewardInComet from 'views/TradingReward/hooks/useRewardInComet'
 import useRewardInUSD from 'views/TradingReward/hooks/useRewardInUSD'
 import { useUserTradeRank } from 'views/TradingReward/hooks/useUserTradeRank'
 import { timeFormat } from 'views/TradingReward/utils/timeFormat'
@@ -41,7 +41,7 @@ const CurrentPeriod: React.FC<React.PropsWithChildren<CurrentPeriodProps>> = ({
     t,
     currentLanguage: { locale },
   } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPriceBusd = useCometPrice()
   const { data: rank } = useUserTradeRank({ campaignId: currentUserCampaignInfo?.campaignId ?? '' })
 
   const currentDate = Date.now() / 1000
@@ -61,11 +61,11 @@ const CurrentPeriod: React.FC<React.PropsWithChildren<CurrentPeriodProps>> = ({
     rewardTokenDecimal: currentRewardInfo?.rewardTokenDecimal ?? 0,
   })
 
-  const rewardInCake = useRewardInCake({
+  const rewardInComet = useRewardInComet({
     timeRemaining,
     totalEstimateRewardUSD: currentUserCampaignInfo?.totalEstimateRewardUSD ?? 0,
     totalReward: currentUserCampaignInfo?.canClaim ?? '0',
-    cakePrice,
+    cometPriceBusd,
     rewardPrice: currentRewardInfo?.rewardPrice ?? '0',
     rewardTokenDecimal: currentRewardInfo?.rewardTokenDecimal ?? 0,
   })
@@ -115,8 +115,8 @@ const CurrentPeriod: React.FC<React.PropsWithChildren<CurrentPeriodProps>> = ({
                   lineHeight="110%"
                 >{`$${formatNumber(rewardInUSD)}`}</Text>
                 <Text color={isValid ? 'text' : 'textDisabled'} fontSize="14px">{`~${formatNumber(
-                  rewardInCake,
-                )} CAKE`}</Text>
+                  rewardInComet,
+                )} COMET`}</Text>
               </GreyCard>
 
               <Message mt="24px" variant="success" icon={<LightBulbIcon color="#1FC7D4" width="24px" />}>
@@ -126,7 +126,7 @@ const CurrentPeriod: React.FC<React.PropsWithChildren<CurrentPeriodProps>> = ({
                       {t('Keep trading to rank')}
                     </Text>
                     <Text fontSize="14px" color="primary" as="span" bold m="0 4px">
-                      {t('#300 or less')}
+                      {t('#100 or less')}
                     </Text>
                     <Text fontSize="14px" color="primary" as="span">
                       {t('and maintain till the end of the campaign to win and claim your rewards.')}

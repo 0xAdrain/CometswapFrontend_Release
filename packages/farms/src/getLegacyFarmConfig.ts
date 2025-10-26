@@ -1,5 +1,5 @@
-import { ChainId, getChainName } from '@pancakeswap/chains'
-import { getStableSwapPools } from '@pancakeswap/stable-swap-sdk'
+import { ChainId, getChainName } from '@cometswap/chains'
+import { getStableSwapPools } from '@cometswap/stable-swap-sdk'
 import { supportedChainIdV4 } from './const'
 import { fetchUniversalFarms } from './fetchUniversalFarms'
 import { SerializedFarmConfig, SerializedFarmPublicData, UniversalFarmConfig } from './types'
@@ -32,7 +32,7 @@ export async function getLegacyFarmConfig(chainId?: ChainId): Promise<Serialized
             farm.protocol === 'stable'
               ? stablePools.find((s) => s.lpAddress?.toLowerCase() === farm.lpAddress?.toLowerCase())
               : undefined
-          const bCakeWrapperAddress = 'bCakeWrapperAddress' in farm ? farm.bCakeWrapperAddress : undefined
+          const bveCometWrapperAddress = 'bveCometWrapperAddress' in farm ? farm.bveCometWrapperAddress : undefined
 
           return {
             pid: farm.pid ?? 0,
@@ -47,7 +47,7 @@ export async function getLegacyFarmConfig(chainId?: ChainId): Promise<Serialized
                 stableLpFee: stablePair.stableLpFee,
                 stableLpFeeRateOfTotalFee: stablePair.stableLpFeeRateOfTotalFee,
               }),
-              ...(bCakeWrapperAddress && { bCakeWrapperAddress }),
+              ...(bveCometWrapperAddress && { bveCometWrapperAddress }),
             },
           } satisfies SerializedFarmConfig
         })

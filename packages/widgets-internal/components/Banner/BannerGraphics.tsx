@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex, FlexProps } from "@pancakeswap/uikit";
+import { Box, BoxProps, Flex, FlexProps } from "@cometswap/uikit";
 import styled from "styled-components";
 
 import { flyingAnim } from "./animations";

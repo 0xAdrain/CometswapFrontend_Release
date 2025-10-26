@@ -1,4 +1,4 @@
-import { Currency, Price } from '@pancakeswap/sdk'
+import { Currency, Price } from '@cometswap/sdk'
 /**
  * Helper to multiply a Price object by an arbitrary amount
  */
@@ -17,3 +17,4 @@ export const multiplyPriceByAmount = (
     return 0
   }
 }
+

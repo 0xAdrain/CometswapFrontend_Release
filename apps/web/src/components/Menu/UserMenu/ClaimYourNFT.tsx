@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { styled } from 'styled-components'
-import { Flex, UserMenuItem } from '@pancakeswap/uikit'
+import { Flex, UserMenuItem } from '@cometswap/uikit'
 import { useShowOnceAirdropModal } from 'hooks/useShowOnceAirdropModal'
 
 const Dot = styled.div`
@@ -25,3 +25,4 @@ const ClaimYourNFT = () => {
 }
 
 export default ClaimYourNFT
+

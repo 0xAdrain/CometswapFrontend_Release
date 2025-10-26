@@ -1,11 +1,11 @@
-import type { ChainId } from '@pancakeswap/chains'
+import type { ChainId } from '@cometswap/chains'
 import type { ONRAMP_PROVIDERS, OnRampChainId } from './constants'
 import { ProviderAvailabilities } from './hooks/useProviderAvailabilities'
 
 export type ProviderQuote = {
   providerFee: number
   networkFee: number
-  pancakeFee: number
+  cometFee: number
   quote: number
   amount: number
   fiatCurrency: string
@@ -33,7 +33,7 @@ export type FiatCurrency = {
 export type OnRampProviderQuote = {
   providerFee: number
   networkFee: number
-  pancakeFee: number
+  cometFee: number
   amount: number
   quote: number
   fiatCurrency: string
@@ -80,3 +80,4 @@ export interface LimitQuote {
   baseCurrency: CurrencyLimits
   quoteCurrency: CurrencyLimits
 }
+

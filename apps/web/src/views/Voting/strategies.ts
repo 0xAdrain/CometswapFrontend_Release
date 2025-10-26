@@ -1,10 +1,10 @@
 export const votePowerAddress = {
   v0: '0xc0FeBE244cE1ea66d27D23012B3D616432433F42',
   v1: '0x67Dfbb197602FDB9A9D305cC7A43b95fB63a0A56',
-  veCake: '0x67Dfbb197602FDB9A9D305cC7A43b95fB63a0A56',
+  Comet: '0x67Dfbb197602FDB9A9D305cC7A43b95fB63a0A56',
 } as const
 
-export const cakeBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const cometBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -17,7 +17,7 @@ export const cakeBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakeBalance',
+      name: 'getCometBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -31,7 +31,7 @@ export const cakeBalanceStrategy = (version: 'v0' | 'v1') => ({
   },
 })
 
-export const cakeVaultBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const cometVaultBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -44,7 +44,7 @@ export const cakeVaultBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakeVaultBalance',
+      name: 'getCometVaultBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -85,7 +85,7 @@ export const ifoPoolBalanceStrategy = {
   },
 }
 
-export const cakePoolBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const cometPoolBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -98,7 +98,7 @@ export const cakePoolBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakePoolBalance',
+      name: 'getCometPoolBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -112,7 +112,7 @@ export const cakePoolBalanceStrategy = (version: 'v0' | 'v1') => ({
   },
 })
 
-export const cakeBnbLpBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const cometBnbLpBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -125,7 +125,7 @@ export const cakeBnbLpBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakeBnbLpBalance',
+      name: 'getCometBnbLpBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -208,3 +208,4 @@ export function createTotalStrategy(poolAddress, version: 'v0' | 'v1') {
     },
   }
 }
+

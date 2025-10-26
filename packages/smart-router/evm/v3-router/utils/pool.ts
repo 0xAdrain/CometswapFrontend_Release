@@ -1,8 +1,8 @@
-import { SCALE, getPriceFromId } from '@pancakeswap/v4-sdk'
-import { Currency, Pair, Price } from '@pancakeswap/sdk'
-import { Pool as SDKV3Pool, computePoolAddress } from '@pancakeswap/v3-sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import { getSwapOutput } from '@pancakeswap/stable-swap-sdk'
+import { SCALE, getPriceFromId } from '@cometswap/v4-sdk'
+import { Currency, Pair, Price } from '@cometswap/sdk'
+import { Pool as SDKV3Pool, computePoolAddress } from '@cometswap/v3-sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
+import { getSwapOutput } from '@cometswap/stable-swap-sdk'
 import memoize from 'lodash/memoize.js'
 import { Address } from 'viem'
 

@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { SwapParameters, TradeType } from '@pancakeswap/sdk'
-import isZero from '@pancakeswap/utils/isZero'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@cometswap/localization'
+import { SwapParameters, TradeType } from '@cometswap/sdk'
+import isZero from '@cometswap/utils/isZero'
+import truncateHash from '@cometswap/utils/truncateHash'
 import { V2TradeAndStableSwap, isStableSwap } from 'config/constants/types'
 import { useMemo } from 'react'
 import { useGasPrice } from 'state/user/hooks'
@@ -209,3 +209,4 @@ export function useSwapCallback(
     }
   }, [trade, account, chainId, recipient, recipientAddress, swapCalls, gasPrice, t, addTransaction, allowedSlippage])
 }
+

@@ -1,8 +1,8 @@
-import { useModal } from '@pancakeswap/uikit'
-import { SwapUIV2 } from '@pancakeswap/widgets-internal'
+import { useModal } from '@cometswap/uikit'
+import { SwapUIV2 } from '@cometswap/widgets-internal'
 
-import { Currency, Price } from '@pancakeswap/sdk'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { Currency, Price } from '@cometswap/sdk'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { memo } from 'react'
 
 import SettingsModal from 'components/Menu/GlobalSettings/SettingsModal'
@@ -42,3 +42,4 @@ export const PricingAndSlippage = memo(function PricingAndSlippage({
     />
   )
 })
+

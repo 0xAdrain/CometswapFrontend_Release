@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Card, Table, Th } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Card, Table, Th } from '@cometswap/uikit'
 import Container from 'components/Layout/Container'
 import { PredictionUser } from 'state/types'
 import DesktopRow from './DesktopRow'
@@ -40,3 +40,4 @@ const DesktopResults: React.FC<React.PropsWithChildren<DesktopResultsProps>> = (
 }
 
 export default DesktopResults
+

@@ -1,15 +1,15 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { CAKE_VAULT_SUPPORTED_CHAINS, isCakeVaultSupported } from '@pancakeswap/pools'
-import { Button, Flex, Text, useModalV2 } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { isCometVaultSupported } from '@cometswap/pools'
+import { Button, Flex, Text, useModalV2 } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useConfig } from 'views/Ifos/contexts/IfoContext'
 
-import { isTestnetChainId } from '@pancakeswap/chains'
+import { isTestnetChainId } from '@cometswap/chains'
 import { useChainNames } from '../../hooks/useChainNames'
-import { ICakeLogo } from '../Icons'
+import { ICometLogo } from '../Icons'
 import { NetworkSwitcherModal } from './IfoPoolCard/NetworkSwitcherModal'
 
 const StakeVaultButton = (props) => {
@@ -18,13 +18,10 @@ const StakeVaultButton = (props) => {
   const router = useRouter()
   const { isExpanded, setIsExpanded } = useConfig() as any
   const isFinishedPage = router.pathname.includes('history')
-  const cakeVaultSupported = useMemo(() => isCakeVaultSupported(chainId), [chainId])
+  const cakeVaultSupported = useMemo(() => isCometVaultSupported(chainId), [chainId])
 
-  const supportedChainIds = useMemo(
-    () => CAKE_VAULT_SUPPORTED_CHAINS.filter((vaultChainId) => !isTestnetChainId(vaultChainId)),
-    [],
-  )
-  const cakeVaultChainNames = useChainNames(supportedChainIds)
+  // Multi-chain support removed - single chain deployment only
+  const cakeVaultChainNames = []
 
   const { onOpen, onDismiss, isOpen } = useModalV2()
 
@@ -55,8 +52,8 @@ const StakeVaultButton = (props) => {
 
   const tips = (
     <Flex flexDirection="column" justifyContent="flex-start">
-      <ICakeLogo />
-      <Text mt="0.625rem">{t('Stake CAKE to obtain iCAKE - in order to be eligible in the next IFO.')}</Text>
+      <ICometLogo />
+      <Text mt="0.625rem">{t('Stake COMETto obtain iCOMET- in order to be eligible in the next IFO.')}</Text>
     </Flex>
   )
 
@@ -65,19 +62,20 @@ const StakeVaultButton = (props) => {
       <NetworkSwitcherModal
         isOpen={isOpen}
         supportedChains={supportedChainIds}
-        title={t('Lock CAKE')}
-        description={t('Lock CAKE on %chain% to obtain iCAKE', {
+        title={t('Lock COMET')}
+        description={t('Lock COMETon %chain% to obtain iCOMET', {
           chain: cakeVaultChainNames,
         })}
-        buttonText={t('Switch chain to stake CAKE')}
+        buttonText={t('Switch chain to stake COMET')}
         onDismiss={onDismiss}
         tips={tips}
       />
       <Button {...props} onClick={handleClickButton}>
-        {t('Go to CAKE pool')}
+        {t('Go to COMETpool')}
       </Button>
     </>
   )
 }
 
 export default StakeVaultButton
+

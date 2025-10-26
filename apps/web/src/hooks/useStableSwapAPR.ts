@@ -21,3 +21,4 @@ export const useStableSwapAPR = (address: string | undefined): number | undefine
   })
   return data?.toNumber()
 }
+

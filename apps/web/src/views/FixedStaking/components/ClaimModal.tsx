@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/swap-sdk-core'
-import { Box, Button, Card, Flex, Modal, ModalV2, PreTitle, Text, useModalV2 } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/swap-sdk-core'
+import { Box, Button, Card, Flex, Modal, ModalV2, PreTitle, Text, useModalV2 } from '@cometswap/uikit'
 import { LightCard } from 'components/Card'
 import { ReactNode, useMemo } from 'react'
 import { formatUnixTime } from 'utils/formatTime'
@@ -167,3 +167,4 @@ export function ClaimModal({
     </>
   )
 }
+

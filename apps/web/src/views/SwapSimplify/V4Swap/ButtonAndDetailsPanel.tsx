@@ -1,4 +1,4 @@
-import { SwapUIV2 } from '@pancakeswap/widgets-internal'
+import { SwapUIV2 } from '@cometswap/widgets-internal'
 import { useState } from 'react'
 import { styled } from 'styled-components'
 
@@ -48,3 +48,4 @@ export const ButtonAndDetailsPanel: React.FC<ButtonAndDetailsPanelProps> = ({
     </PanelWrapper>
   )
 }
+

@@ -1,5 +1,5 @@
-import { Pair } from '@pancakeswap/sdk'
-import { Tag } from '@pancakeswap/uikit'
+import { Pair } from '@cometswap/sdk'
+import { Tag } from '@cometswap/uikit'
 import { useTokensDeposited } from 'components/PositionCard'
 import useTotalSupply from 'hooks/useTotalSupply'
 import React from 'react'
@@ -36,3 +36,4 @@ export const V2PairCard = React.memo(({ pair, account }: { pair: null | Pair; ac
     />
   )
 })
+

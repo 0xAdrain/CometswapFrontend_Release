@@ -1,10 +1,10 @@
-import { Flex, Text } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Flex, Text } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import React from 'react'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 
 interface MaxStakeRowProps {
@@ -60,3 +60,4 @@ const MaxStakeRow: React.FC<React.PropsWithChildren<MaxStakeRowProps>> = ({
 }
 
 export default MaxStakeRow
+

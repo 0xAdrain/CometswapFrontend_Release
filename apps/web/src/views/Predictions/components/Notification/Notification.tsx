@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PredictionSupportedSymbol } from '@pancakeswap/prediction'
-import { ArrowBackIcon, Card, CardBody, Heading, IconButton } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { PredictionSupportedSymbol } from '@cometswap/prediction'
+import { ArrowBackIcon, Card, CardBody, Heading, IconButton } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { styled } from 'styled-components'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
@@ -57,10 +57,10 @@ const Notification: React.FC<React.PropsWithChildren<NotificationProps>> = ({ ti
         <BackButton />
         <BunnyDecoration
           onClick={() => {
-            if (config?.token?.symbol === PredictionSupportedSymbol.CAKE) {
+            if (config?.token?.symbol === PredictionSupportedSymbol.COMET) {
               router.query.token = PredictionSupportedSymbol.BNB
             } else if (config?.token?.symbol === PredictionSupportedSymbol.BNB) {
-              router.query.token = PredictionSupportedSymbol.CAKE
+              router.query.token = PredictionSupportedSymbol.COMET
             }
 
             router.push(router)
@@ -80,3 +80,4 @@ const Notification: React.FC<React.PropsWithChildren<NotificationProps>> = ({ ti
 }
 
 export default Notification
+

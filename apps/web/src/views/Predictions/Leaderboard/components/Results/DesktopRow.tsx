@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { Td, Text } from '@pancakeswap/uikit'
+import { Token } from '@cometswap/sdk'
+import { Td, Text } from '@cometswap/uikit'
 import { PredictionUser } from 'state/types'
 import ResultAvatar from './ResultAvatar'
 import { NetWinnings } from './styles'
@@ -45,3 +45,4 @@ const DesktopRow: React.FC<React.PropsWithChildren<DesktopRowProps>> = ({ rank, 
 )
 
 export default DesktopRow
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BoxProps, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { BoxProps, Text } from '@cometswap/uikit'
 import { NodeRound } from 'state/types'
 import { getRoundPosition } from '../../helpers'
 import { LockPriceRow, PrizePoolRow, RoundPrice, RoundResultBox } from './styles'
@@ -39,3 +39,4 @@ const RoundResult: React.FC<React.PropsWithChildren<RoundResultProps>> = ({
 }
 
 export default RoundResult
+

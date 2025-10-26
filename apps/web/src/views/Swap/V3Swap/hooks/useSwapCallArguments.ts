@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Percent } from '@pancakeswap/sdk'
+import { Percent } from '@cometswap/sdk'
 import {
-  PancakeSwapUniversalRouter,
+  CometSwapUniversalRouter,
   Permit2Signature,
   getUniversalRouterAddress,
-} from '@pancakeswap/universal-router-sdk'
-import { FeeOptions } from '@pancakeswap/v3-sdk'
+} from '@cometswap/universal-router-sdk'
+import { FeeOptions } from '@cometswap/v3-sdk'
 import { useMemo } from 'react'
 
 import { useGetENSAddressByName } from 'hooks/useGetENSAddressByName'
 
-import { ClassicOrder } from '@pancakeswap/price-api-sdk'
+import { ClassicOrder } from '@cometswap/price-api-sdk'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { safeGetAddress } from 'utils'
 import { Address, Hex } from 'viem'
@@ -52,7 +52,7 @@ export function useSwapCallArguments(
   return useMemo(() => {
     if (!trade || !recipient || !account || !chainId) return []
 
-    const methodParameters = PancakeSwapUniversalRouter.swapERC20CallParameters(trade, {
+    const methodParameters = CometSwapUniversalRouter.swapERC20CallParameters(trade, {
       fee: feeOptions,
       recipient,
       inputTokenPermit: permitSignature,
@@ -70,3 +70,4 @@ export function useSwapCallArguments(
     ]
   }, [account, allowedSlippage, chainId, deadline, feeOptions, recipient, permitSignature, trade])
 }
+

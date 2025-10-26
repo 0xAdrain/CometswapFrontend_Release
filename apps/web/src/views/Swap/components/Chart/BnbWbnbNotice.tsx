@@ -1,5 +1,5 @@
-import { Flex, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 import { StyledPriceChart } from './styles'
 
@@ -25,3 +25,4 @@ const BnbWbnbNotice: React.FC<React.PropsWithChildren<BnbWbnbNoticeProps>> = ({ 
 }
 
 export default BnbWbnbNotice
+

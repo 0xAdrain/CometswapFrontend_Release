@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { ChainId } from '@cometswap/chains'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { styled } from 'styled-components'
 import type { ReactNode } from 'react'
 import { CHAIN_IDS } from 'utils/wagmi'
@@ -35,3 +35,4 @@ export const SelectContainer = styled.div`
   grid-auto-flow: column;
   grid-gap: 4px;
 `
+

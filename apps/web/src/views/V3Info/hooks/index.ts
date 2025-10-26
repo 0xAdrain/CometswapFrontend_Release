@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { GraphQLClient } from 'graphql-request'
 import { useMemo } from 'react'
 import { multiChainId } from 'state/info/constant'
@@ -433,3 +433,4 @@ export const useSearchData = (searchValue: string, enabled = true) => {
   }, [data, status, error])
   return searchResult
 }
+

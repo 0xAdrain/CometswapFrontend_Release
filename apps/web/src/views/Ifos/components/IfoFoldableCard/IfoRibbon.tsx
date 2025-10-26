@@ -1,9 +1,9 @@
-import { Box, Flex, Heading, Progress, ProgressBar } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Flex, Heading, Progress, ProgressBar } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { styled } from 'styled-components'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/sdk'
 import { ReactNode, useMemo } from 'react'
-import { useImageColor } from '@pancakeswap/hooks'
+import { useImageColor } from '@cometswap/hooks'
 
 import { PublicIfoData } from '../../types'
 import LiveTimer, { SoonTimer } from './Timer'
@@ -171,3 +171,4 @@ const IfoRibbonLive = ({ publicIfoData, dark }: { publicIfoData: PublicIfoData }
     </>
   )
 }
+

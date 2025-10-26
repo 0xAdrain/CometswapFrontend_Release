@@ -36,7 +36,7 @@ jobs:
         run: pnpm test:config
 
       - name: Build list
-        run: pnpm turbo run build --filter=@pancakeswap/farms
+        run: pnpm turbo run build --filter=@cometswap/farms
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1

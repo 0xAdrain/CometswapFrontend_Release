@@ -10,3 +10,4 @@ export function stackMiddlewares(functions: MiddlewareFactory[] = [], index = 0)
   }
   return () => NextResponse.next()
 }
+

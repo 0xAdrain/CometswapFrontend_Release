@@ -84,7 +84,7 @@ export const feeOnTransferDetectorAbi = [
         type: 'bytes',
       },
     ],
-    name: 'pancakeCall',
+    name: 'cometCall',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',

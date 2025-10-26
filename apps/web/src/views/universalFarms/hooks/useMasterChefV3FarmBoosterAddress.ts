@@ -15,3 +15,4 @@ export const useMasterChefV3FarmBoosterAddress = (chainId: number) => {
     staleTime: Infinity,
   })
 }
+

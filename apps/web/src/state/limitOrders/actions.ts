@@ -9,3 +9,4 @@ export const selectCurrency = createAction<{
 export const switchCurrencies = createAction<void>('limitOrders/switchCurrencies')
 export const typeInput = createAction<{ field: Field; typedValue: string }>('limitOrders/typeInput')
 export const setRateType = createAction<{ rateType: Rate }>('limitOrders/setRateType')
+

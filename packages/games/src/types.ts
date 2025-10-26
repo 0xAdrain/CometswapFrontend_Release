@@ -33,11 +33,11 @@ export enum GenreType {
 
 export enum TrendingTagType {
   Strategy = 'Strategy',
-  PancakeSquadNFT = 'PancakeSquad NFT',
-  PancakeBunniesNFT = 'Pancake Bunnies NFT',
+  CometSquadNFT = 'CometSquad NFT',
+  CometBunniesNFT = 'Comet Bunnies NFT',
   TowerDefense = 'Tower Defense',
   Multiplayer = 'Multiplayer',
-  CakeToken = 'CAKE token',
+  veCometToken = 'COMETtoken',
   BaseBuilding = 'Base Building',
   NFT = 'NFT',
   FPS = 'First Person Shooter',

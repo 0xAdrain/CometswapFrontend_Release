@@ -1,7 +1,7 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Currency, CurrencyAmount, Token, WNATIVE } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { Currency, CurrencyAmount, Token, WNATIVE } from '@cometswap/sdk'
 
-export { unwrappedToken } from '@pancakeswap/tokens'
+export { unwrappedToken } from '@cometswap/tokens'
 
 export function wrappedCurrency(
   currency: Currency | undefined | null,
@@ -17,3 +17,4 @@ export function wrappedCurrencyAmount(
   const token = currencyAmount && chainId ? wrappedCurrency(currencyAmount.currency, chainId) : undefined
   return token && currencyAmount ? CurrencyAmount.fromRawAmount(token, currencyAmount.quotient) : undefined
 }
+

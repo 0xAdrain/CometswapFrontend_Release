@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, BoxProps, CalenderIcon, Card, Flex, Link, LocationIcon, OpenNewIcon, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, BoxProps, CalenderIcon, Card, Flex, Link, LocationIcon, OpenNewIcon, Text } from '@cometswap/uikit'
 import { useState } from 'react'
 import { styled } from 'styled-components'
 import { HeightProps } from 'styled-system'
@@ -87,7 +87,7 @@ export const BlogCard: React.FC<React.PropsWithChildren<BlogCardProps>> = ({
     <StyledBlogCard
       {...props}
       external
-      href={article?.newsOutBoundLink || `https://blog.pancakeswap.finance/articles/${slug}`}
+      href={article?.newsOutBoundLink || `https://blog.cometswap.finance/articles/${slug}`}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -168,3 +168,4 @@ export const BlogCard: React.FC<React.PropsWithChildren<BlogCardProps>> = ({
     </StyledBlogCard>
   )
 }
+

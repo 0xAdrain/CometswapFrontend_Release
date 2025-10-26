@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { perpLangMap } from 'utils/getPerpetualLanguageCode'
 import { perpTheme } from 'utils/getPerpetualTheme'
 
@@ -27,12 +27,13 @@ const supportV1Chains: ChainId[] = [ChainId.ETHEREUM]
 
 export const getPerpetualUrl = ({ chainId, languageCode, isDark }: GetPerpetualUrlProps) => {
   if (!chainId || !languageCode) {
-    return 'https://perp.pancakeswap.finance/en/futures/v2/BTCUSD'
+    return 'https://perp.cometswap.finance/en/futures/v2/BTCUSD'
   }
 
   const perpChain = mapPerpChain(chainId)
   const version = supportV1Chains.includes(chainId) ? '' : 'v2/'
-  return `https://perp.pancakeswap.finance/${perpLangMap(languageCode)}/futures/${version}BTCUSD?theme=${perpTheme(
+  return `https://perp.cometswap.finance/${perpLangMap(languageCode)}/futures/${version}BTCUSD?theme=${perpTheme(
     isDark,
   )}&chain=${perpChain}`
 }
+

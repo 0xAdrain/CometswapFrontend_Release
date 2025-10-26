@@ -39,17 +39,17 @@ export const StablePositionItem = memo(
     })
     const pool = usePoolInfo<StablePoolInfo>({ poolAddress: stableSwapAddress, chainId })
 
-    const bCakeWrapperAddress = pool?.bCakeWrapperAddress
+    const bCometWrapperAddress = pool?.bCometWrapperAddress
 
-    const { startTimestamp, endTimestamp } = usePoolTimeFrame(bCakeWrapperAddress, chainId)
+    const { startTimestamp, endTimestamp } = usePoolTimeFrame(bCometWrapperAddress, chainId)
 
     const isFarmLive = useMemo(
       () =>
-        bCakeWrapperAddress &&
+        bCometWrapperAddress &&
         (!startTimestamp || Date.now() / 1000 >= startTimestamp) &&
         (!endTimestamp || Date.now() / 1000 < endTimestamp) &&
         (!poolLength || !pool?.pid || pool.pid <= poolLength),
-      [pool?.pid, poolLength, bCakeWrapperAddress, startTimestamp, endTimestamp],
+      [pool?.pid, poolLength, bCometWrapperAddress, startTimestamp, endTimestamp],
     )
     return (
       <>
@@ -70,7 +70,7 @@ export const StablePositionItem = memo(
             amount1={nativeDeposited1}
             detailMode={detailMode}
           >
-            {chainId && address && pool?.bCakeWrapperAddress ? (
+            {chainId && address && pool?.bCometWrapperAddress ? (
               <V2PositionActions
                 isFarmLive={isFarmLive}
                 isStaked={false}
@@ -102,7 +102,7 @@ export const StablePositionItem = memo(
             detailMode={detailMode}
             userPosition={data}
           >
-            {chainId && address && pool?.bCakeWrapperAddress ? (
+            {chainId && address && pool?.bCometWrapperAddress ? (
               <V2PositionActions
                 isFarmLive={isFarmLive}
                 tvlUsd={pool.tvlUsd}
@@ -120,3 +120,4 @@ export const StablePositionItem = memo(
     )
   },
 )
+

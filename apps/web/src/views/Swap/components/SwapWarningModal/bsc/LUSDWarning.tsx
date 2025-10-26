@@ -1,5 +1,5 @@
-import { Box, Link, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Link, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 const LUSDWarning = () => {
   const { t } = useTranslation()
@@ -28,3 +28,4 @@ const LUSDWarning = () => {
 }
 
 export default LUSDWarning
+

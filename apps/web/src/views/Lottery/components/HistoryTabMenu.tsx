@@ -1,5 +1,5 @@
-import { ButtonMenu, ButtonMenuItem } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { ButtonMenu, ButtonMenuItem } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 const HistoryTabMenu = ({ setActiveIndex, activeIndex }) => {
   const { t } = useTranslation()
@@ -13,3 +13,4 @@ const HistoryTabMenu = ({ setActiveIndex, activeIndex }) => {
 }
 
 export default HistoryTabMenu
+

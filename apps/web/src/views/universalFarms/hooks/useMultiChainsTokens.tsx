@@ -4,30 +4,30 @@ import uniqWith from 'lodash/uniqWith'
 import { useMemo } from 'react'
 import { selectorByUrlsAtom } from 'state/lists/hooks'
 import { SUGGESTED_BASES } from 'config/constants/exchange'
-import { ChainId, ERC20Token, Native } from '@pancakeswap/sdk'
-import type { TokenInfo } from '@pancakeswap/token-lists'
+import { ChainId, ERC20Token, Native } from '@cometswap/sdk'
+import type { TokenInfo } from '@cometswap/token-lists'
 import {
-  PANCAKE_ARB_DEFAULT,
-  PANCAKE_BASE_DEFAULT,
-  PANCAKE_BSC_MM,
-  PANCAKE_ETH_DEFAULT,
-  PANCAKE_ETH_MM,
-  PANCAKE_EXTENDED,
-  PANCAKE_LINEA_DEFAULT,
-  PANCAKE_OPBNB_DEFAULT,
-  PANCAKE_POLYGON_ZKEVM_DEFAULT,
-  PANCAKE_ZKSYNC_DEFAULT,
+  COMET_ARB_DEFAULT,
+  COMET_BASE_DEFAULT,
+  COMET_BSC_MM,
+  COMET_ETH_DEFAULT,
+  COMET_ETH_MM,
+  COMET_EXTENDED,
+  COMET_LINEA_DEFAULT,
+  COMET_OPBNB_DEFAULT,
+  COMET_POLYGON_ZKEVM_DEFAULT,
+  COMET_ZKSYNC_DEFAULT,
 } from 'config/constants/lists'
 import { useOrderChainIds } from './useMultiChains'
 
-const BSC_URLS = [PANCAKE_EXTENDED, PANCAKE_BSC_MM]
-const ETH_URLS = [PANCAKE_ETH_DEFAULT, PANCAKE_ETH_MM]
-const ZKSYNC_URLS = [PANCAKE_ZKSYNC_DEFAULT]
-const POLYGON_ZKEVM_URLS = [PANCAKE_POLYGON_ZKEVM_DEFAULT]
-const ARBITRUM_URLS = [PANCAKE_ARB_DEFAULT]
-const LINEA_URLS = [PANCAKE_LINEA_DEFAULT]
-const BASE_URLS = [PANCAKE_BASE_DEFAULT]
-const OPBNB_URLS = [PANCAKE_OPBNB_DEFAULT]
+const BSC_URLS = [COMET_EXTENDED, COMET_BSC_MM]
+const ETH_URLS = [COMET_ETH_DEFAULT, COMET_ETH_MM]
+const ZKSYNC_URLS = [COMET_ZKSYNC_DEFAULT]
+const POLYGON_ZKEVM_URLS = [COMET_POLYGON_ZKEVM_DEFAULT]
+const ARBITRUM_URLS = [COMET_ARB_DEFAULT]
+const LINEA_URLS = [COMET_LINEA_DEFAULT]
+const BASE_URLS = [COMET_BASE_DEFAULT]
+const OPBNB_URLS = [COMET_OPBNB_DEFAULT]
 
 export const MULTI_CHAIN_LIST_URLS: { [chainId: number]: string[] } = {
   [ChainId.BSC]: BSC_URLS,
@@ -67,3 +67,4 @@ export const useMultiChainsTokens = () => {
   const tokenList = useTokensFromUrls(listUrls)
   return useMemo(() => uniqWith(suggestedTokens.concat(tokenList), (a, b) => a.equals(b)), [tokenList, suggestedTokens])
 }
+

@@ -1,2 +1,2 @@
 export * from "./CoBrandBadge";
-export * from "./PancakeSwapBadge";
+export * from "./CometSwapBadge";

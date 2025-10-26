@@ -2,10 +2,10 @@ import { useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { parseEther, encodePacked, keccak256 } from 'viem'
 import { useAccount } from 'wagmi'
-import { ChainId } from '@pancakeswap/chains'
-import { useToast } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { useToast } from '@cometswap/uikit'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { UserCampaignInfoDetail } from 'views/TradingReward/hooks/useAllUserCampaignInfo'
 import { useTradingRewardContract, useTradingRewardTopTraderContract } from 'hooks/useContract'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -28,7 +28,7 @@ export const useClaimAllReward = ({ campaignIds, unclaimData, qualification, typ
   const { fetchWithCatchTxError, loading: isPending } = useCatchTxError()
   const tradingRewardContract = useTradingRewardContract({ chainId: ChainId.BSC })
   const tradingRewardTopTradersContract = useTradingRewardTopTraderContract({ chainId: ChainId.BSC })
-  const contract = type === RewardType.CAKE_STAKERS ? tradingRewardContract : tradingRewardTopTradersContract
+  const contract = type === RewardType.COMET_STAKERS ? tradingRewardContract : tradingRewardTopTradersContract
 
   const handleClaim = useCallback(async () => {
     const claimCampaignIds = unclaimData.map((i) => i.campaignId)

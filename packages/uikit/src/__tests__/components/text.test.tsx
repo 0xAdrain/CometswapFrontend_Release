@@ -3,7 +3,7 @@ import Text from "../../components/Text/Text";
 import { renderWithProvider } from "../../testHelpers";
 
 it("renders correctly", () => {
-  const { asFragment } = renderWithProvider(<Text>pancake</Text>);
+  const { asFragment } = renderWithProvider(<Text>comet</Text>);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
@@ -16,7 +16,7 @@ it("renders correctly", () => {
     <div
         class="c0"
       >
-        pancake
+        comet
       </div>
     </DocumentFragment>
   `);

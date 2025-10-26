@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import uniq from 'lodash/uniq'
 
 // @todo remove all other v2/v3 and type definitions
@@ -19,6 +19,7 @@ export const supportedChainIdV2 = [
   ChainId.BSC_TESTNET,
   ChainId.ETHEREUM,
   ChainId.ARBITRUM_ONE,
+  ChainId.XLAYER_TESTNET,
 ] as const
 export const supportedChainIdV3 = [
   // ChainId.GOERLI,
@@ -34,9 +35,10 @@ export const supportedChainIdV3 = [
   ChainId.BASE,
   ChainId.OPBNB,
   ChainId.OPBNB_TESTNET,
+  ChainId.XLAYER_TESTNET,
 ] as const
 export const supportedChainId = uniq([...supportedChainIdV2, ...supportedChainIdV3])
-export const bCakeSupportedChainId = [
+export const bveCometSupportedChainId = [
   ChainId.BSC,
   ChainId.ARBITRUM_ONE,
   ChainId.ETHEREUM,
@@ -73,6 +75,7 @@ export const masterChefV3Addresses = {
   [ChainId.BASE]: '0xC6A2Db661D5a5690172d8eB0a7DEA2d3008665A3',
   [ChainId.OPBNB]: '0x05ddEDd07C51739d2aE21F6A9d97a8d69C2C3aaA',
   [ChainId.OPBNB_TESTNET]: '0x236e713bFF45adb30e25D1c29A887aBCb0Ea7E21',
+  [ChainId.XLAYER_TESTNET]: '0x77C98E425fFDdD8E0E1F9FFAbA74D60a722c1F81', // MasterChefV3 deployed address
 } as const satisfies Record<FarmV3SupportedChainId, string>
 
 export const crossFarmingVaultAddresses = {

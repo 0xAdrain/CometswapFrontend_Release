@@ -1,7 +1,7 @@
-import { StablePool, isStablePool } from '@pancakeswap/routing-sdk-addon-stable-swap'
-import { V2Pool, isV2Pool } from '@pancakeswap/routing-sdk-addon-v2'
-import { V3Pool, isV3Pool } from '@pancakeswap/routing-sdk-addon-v3'
-import { ChainId } from '@pancakeswap/chains'
+import { StablePool, isStablePool } from '@cometswap/routing-sdk-addon-stable-swap'
+import { V2Pool, isV2Pool } from '@cometswap/routing-sdk-addon-v2'
+import { V3Pool, isV3Pool } from '@cometswap/routing-sdk-addon-v3'
+import { ChainId } from '@cometswap/chains'
 import invariant from 'tiny-invariant'
 
 import type { QuoteRoute } from './types'

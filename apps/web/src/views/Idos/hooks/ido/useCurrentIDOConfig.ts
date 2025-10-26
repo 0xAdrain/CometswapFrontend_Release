@@ -6,3 +6,4 @@ export const useCurrentIDOConfig = () => {
   const currentIdo = query.ido as string
   return idoConfigDict[currentIdo] ?? idoConfigDict.myshell
 }
+

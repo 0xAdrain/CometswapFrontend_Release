@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { zksyncTokens } from '@pancakeswap/tokens'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
+import { zksyncTokens } from '@cometswap/tokens'
 import {
   AtomBox,
   Box,
@@ -17,8 +17,8 @@ import {
   Text,
   useMatchBreakpoints,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { formatNumber, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { formatNumber, getBalanceNumber } from '@cometswap/utils/formatBalance'
 import BN from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ASSET_CDN } from 'config/constants/endpoints'
@@ -152,7 +152,7 @@ export const ClaimZksyncAirdropModal: React.FC<{
                     account: account ?? '',
                   })}
             </Text>
-            <Link href="https://blog.pancakeswap.finance/articles/pancake-swap-airdrops-2-4-million-zk-tokens-to-the-community">
+            <Link href="https://blog.cometswap.finance/articles/comet-swap-airdrops-2-4-million-zk-tokens-to-the-community">
               {t('Learn more about the campaign')}
             </Link>
             {account ? (
@@ -185,3 +185,4 @@ export const ZKSyncAirdropModalWithAutoPopup: React.FC = () => {
   const { isOpen, onDismiss } = useZksyncAirDropAutoPopup()
   return <ClaimZksyncAirdropModal isOpen={isOpen} onDismiss={onDismiss} />
 }
+

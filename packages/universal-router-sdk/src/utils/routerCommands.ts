@@ -72,8 +72,8 @@ export enum CommandType {
   // APPROVE_ERC20 = 0x21,
   STABLE_SWAP_EXACT_IN = 0x22,
   STABLE_SWAP_EXACT_OUT = 0x23,
-  // PANCAKE_NFT_BNB = 0x24,
-  // PANCAKE_NFT_WBNB = 0x25,
+  // COMET_NFT_BNB = 0x24,
+  // COMET_NFT_WBNB = 0x25,
 }
 
 const ALLOW_REVERT_FLAG = 0x80
@@ -184,8 +184,8 @@ export const ABI_PARAMETER = {
   // [CommandType.X2Y2_1155]: parseAbiParameters(
   //   'uint256 value, bytes data, address recipient, address token, uint256 id, uint256 amount',
   // ),
-  // [CommandType.PANCAKE_NFT_WBNB]: parseAbiParameters('address collection, uint256 tokenId, uint256 price'),
-  // [CommandType.PANCAKE_NFT_BNB]: parseAbiParameters('address collection, uint256 tokenId, uint256 price'),
+  // [CommandType.COMET_NFT_WBNB]: parseAbiParameters('address collection, uint256 tokenId, uint256 price'),
+  // [CommandType.COMET_NFT_BNB]: parseAbiParameters('address collection, uint256 tokenId, uint256 price'),
   // @notice: following marketplace not supported now
   // [CommandType.NFTX]: parseAbiParameters('uint256 value, bytes data'),
   // [CommandType.FOUNDATION]: parseAbiParameters(

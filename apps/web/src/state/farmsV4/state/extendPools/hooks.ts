@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/swap-sdk-core'
-import { computePoolAddress, DEPLOYER_ADDRESSES, FeeAmount } from '@pancakeswap/v3-sdk'
+import { Token } from '@cometswap/swap-sdk-core'
+import { computePoolAddress, DEPLOYER_ADDRESSES, FeeAmount } from '@cometswap/v3-sdk'
 import { useQuery } from '@tanstack/react-query'
 import { useAtom } from 'jotai'
 import memoize from 'lodash/memoize'
@@ -109,3 +109,4 @@ export const usePoolInfo = <TPoolType extends PoolInfo>({
 
   return poolInfo as TPoolType | undefined | null
 }
+

@@ -1,4 +1,4 @@
-import { Percent } from '@pancakeswap/sdk'
+import { Percent } from '@cometswap/sdk'
 import { useMemo } from 'react'
 import { DAYS_A_YEAR, PERCENT_DIGIT } from '../constant'
 
@@ -20,3 +20,4 @@ export function useFixedStakeAPR({
     [boostDayPercent, lockDayPercent, unlockDayPercent],
   )
 }
+

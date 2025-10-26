@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { Box, Flex, Text, Card, LinkExternal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Flex, Text, Card, LinkExternal } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import Image from 'next/image'
 import Trans from 'components/Trans'
 
@@ -16,7 +16,7 @@ const stepList = [
     title: <Trans>Start trading</Trans>,
     subTitle: (
       <Trans>
-        Start trading any eligible pairs to earn rewards in CAKE. The more you trade, the more rewards you will earn
+        Start trading any eligible pairs to earn rewards in COMET. The more you trade, the more rewards you will earn
         from the current reward pool.
       </Trans>
     ),
@@ -97,7 +97,7 @@ const HowToEarn = () => {
       </Box>
       <LinkExternal
         external
-        href="https://docs.pancakeswap.finance/products/trading-reward/how-to-participate"
+        href="https://docs.cometswap.finance/products/trading-reward/how-to-participate"
         margin={['auto', 'auto', 'auto', '42px auto 0 auto']}
       >
         {t('Learn More')}

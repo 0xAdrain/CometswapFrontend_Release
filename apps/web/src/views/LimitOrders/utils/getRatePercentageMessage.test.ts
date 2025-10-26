@@ -1,8 +1,8 @@
-import { ERC20Token, Price } from '@pancakeswap/sdk'
+import { ERC20Token, Price } from '@cometswap/sdk'
 import getRatePercentageDifference from './getRatePercentageDifference'
 import { PercentageDirection, getRatePercentageMessage } from './getRatePercentageMessage'
 
-const CAKE = new ERC20Token(56, '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82', 18, 'CAKE', 'PancakeSwap Token')
+const COMET= new ERC20Token(56, '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82', 18, 'COMET', 'CometSwap Token')
 const BUSD = new ERC20Token(56, '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56', 18, 'BUSD', 'Binance USD')
 
 const EIGHTEEN_DECIMALS = 10n ** 18n
@@ -12,11 +12,11 @@ const SEVEN = 7n * EIGHTEEN_DECIMALS
 const SEVEN_HUNDRED = 700n * EIGHTEEN_DECIMALS
 const ELEVEN = 11n * EIGHTEEN_DECIMALS
 
-const ONE_BUSD_PER_CAKE = new Price(CAKE, BUSD, EIGHTEEN_DECIMALS, ONE)
-const FIVE_BUSD_PER_CAKE = new Price(CAKE, BUSD, EIGHTEEN_DECIMALS, FIVE)
-const SEVEN_BUSD_PER_CAKE = new Price(CAKE, BUSD, EIGHTEEN_DECIMALS, SEVEN)
-const ELEVEN_BUSD_PER_CAKE = new Price(CAKE, BUSD, EIGHTEEN_DECIMALS, ELEVEN)
-const SEVEN_HUNDRED_BUSD_PER_CAKE = new Price(CAKE, BUSD, EIGHTEEN_DECIMALS, SEVEN_HUNDRED)
+const ONE_BUSD_PER_COMET= new Price(COMET, BUSD, EIGHTEEN_DECIMALS, ONE)
+const FIVE_BUSD_PER_COMET= new Price(COMET, BUSD, EIGHTEEN_DECIMALS, FIVE)
+const SEVEN_BUSD_PER_COMET= new Price(COMET, BUSD, EIGHTEEN_DECIMALS, SEVEN)
+const ELEVEN_BUSD_PER_COMET= new Price(COMET, BUSD, EIGHTEEN_DECIMALS, ELEVEN)
+const SEVEN_HUNDRED_BUSD_PER_COMET= new Price(COMET, BUSD, EIGHTEEN_DECIMALS, SEVEN_HUNDRED)
 
 const mockT = (key: string, data?: { percentage?: string }) => {
   return key.includes('%percentage%') && data?.percentage ? key.replace('%percentage%', data.percentage) : key
@@ -25,23 +25,23 @@ const mockT = (key: string, data?: { percentage?: string }) => {
 describe('limitOrders/utils/getRatePercentageMessage', () => {
   describe.each([
     [
-      getRatePercentageDifference(SEVEN_BUSD_PER_CAKE, ELEVEN_BUSD_PER_CAKE),
+      getRatePercentageDifference(SEVEN_BUSD_PER_COMET, ELEVEN_BUSD_PER_COMET),
       ['57.14% above market', PercentageDirection.ABOVE],
     ],
     [
-      getRatePercentageDifference(SEVEN_BUSD_PER_CAKE, FIVE_BUSD_PER_CAKE),
+      getRatePercentageDifference(SEVEN_BUSD_PER_COMET, FIVE_BUSD_PER_COMET),
       ['-28.57% below market', PercentageDirection.BELOW],
     ],
     [
-      getRatePercentageDifference(SEVEN_BUSD_PER_CAKE, SEVEN_HUNDRED_BUSD_PER_CAKE),
+      getRatePercentageDifference(SEVEN_BUSD_PER_COMET, SEVEN_HUNDRED_BUSD_PER_COMET),
       ['9,900% above market', PercentageDirection.ABOVE],
     ],
     [
-      getRatePercentageDifference(SEVEN_BUSD_PER_CAKE, ONE_BUSD_PER_CAKE),
+      getRatePercentageDifference(SEVEN_BUSD_PER_COMET, ONE_BUSD_PER_COMET),
       ['-85.71% below market', PercentageDirection.BELOW],
     ],
     [
-      getRatePercentageDifference(SEVEN_BUSD_PER_CAKE, SEVEN_BUSD_PER_CAKE),
+      getRatePercentageDifference(SEVEN_BUSD_PER_COMET, SEVEN_BUSD_PER_COMET),
       ['at market price', PercentageDirection.MARKET],
     ],
   ])('returns correct message and direction', (percent, expected) => {
@@ -52,3 +52,4 @@ describe('limitOrders/utils/getRatePercentageMessage', () => {
     })
   })
 })
+

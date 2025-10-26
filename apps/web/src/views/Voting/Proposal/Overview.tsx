@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ArrowBackIcon,
   Box,
@@ -8,7 +8,7 @@ import {
   NotFound,
   ReactMarkdown,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useQuery } from '@tanstack/react-query'
 import Container from 'components/Layout/Container'
 import PageLoader from 'components/Loader/PageLoader'
@@ -154,3 +154,4 @@ const Overview = () => {
 }
 
 export default Overview
+

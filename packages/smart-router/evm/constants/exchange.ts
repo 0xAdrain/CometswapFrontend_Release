@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token, Token, WNATIVE } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token, Token, WNATIVE } from '@cometswap/sdk'
 import {
   BUSD,
   USDC,
@@ -22,9 +22,10 @@ import {
   polygonZkEvmTokens,
   scrollSepoliaTokens,
   sepoliaTokens,
+  xlayerTestnetTokens,
   zkSyncTestnetTokens,
   zksyncTokens,
-} from '@pancakeswap/tokens'
+} from '@cometswap/tokens'
 
 import { ChainMap, ChainTokenList } from '../types'
 
@@ -45,13 +46,14 @@ export const SMART_ROUTER_ADDRESSES = {
   [ChainId.OPBNB_TESTNET]: '0xf317eD77Baed624d0EA2384AA88D91B774a9b009',
   [ChainId.BASE]: '0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86',
   [ChainId.BASE_TESTNET]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
-  [ChainId.SCROLL_SEPOLIA]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
-  [ChainId.SEPOLIA]: '0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86',
+  [ChainId.SCROLL_SEPOLIA]: '0x13398A962E033145ab55a420bF84f33DB7037996',
+  [ChainId.SEPOLIA]: '0x99A56499346Faa62705b17475f867491C7D60015',
   [ChainId.ARBITRUM_SEPOLIA]: '0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86',
   [ChainId.BASE_SEPOLIA]: '0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86',
+  [ChainId.XLAYER_TESTNET]: '0x9Ab7D40Db2f1a4F316444E529FA8694882344E79',
 } as const satisfies Record<ChainId, string>
 
-export const V2_ROUTER_ADDRESS: ChainMap<string> = {
+export const V2_ROUTER_ADDRESS: Record<ChainId, string> = {
   [ChainId.ETHEREUM]: '0xEfF92A263d31888d860bD50809A8D171709b7b1c',
   [ChainId.GOERLI]: '0xEfF92A263d31888d860bD50809A8D171709b7b1c',
   [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
@@ -68,10 +70,11 @@ export const V2_ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.OPBNB_TESTNET]: '0x62FF25CFD64E55673168c3656f4902bD7Aa5F0f4',
   [ChainId.BASE]: '0x8cFe327CEc66d1C090Dd72bd0FF11d690C33a2Eb',
   [ChainId.BASE_TESTNET]: '0xC259d1D3476558630d83b0b60c105ae958382792',
-  [ChainId.SCROLL_SEPOLIA]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
-  [ChainId.SEPOLIA]: '0x8cFe327CEc66d1C090Dd72bd0FF11d690C33a2Eb',
+  [ChainId.SCROLL_SEPOLIA]: '0x866Bd0a806A329241940989069651A68F8b6d088',
+  [ChainId.SEPOLIA]: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
   [ChainId.ARBITRUM_SEPOLIA]: '0x8cFe327CEc66d1C090Dd72bd0FF11d690C33a2Eb',
   [ChainId.BASE_SEPOLIA]: '0x8cFe327CEc66d1C090Dd72bd0FF11d690C33a2Eb',
+  [ChainId.XLAYER_TESTNET]: '0x0d977a3DE1dc86238113959bCD9Aaf5aa0F088D8',
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -95,6 +98,7 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.SEPOLIA]: '',
   [ChainId.ARBITRUM_SEPOLIA]: '',
   [ChainId.BASE_SEPOLIA]: '',
+  [ChainId.XLAYER_TESTNET]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -103,14 +107,14 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.GOERLI]: [WNATIVE[ChainId.GOERLI], USDC[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [
     bscTokens.wbnb,
-    bscTokens.cake,
+    bscTokens.comet,
     bscTokens.busd,
     bscTokens.usdt,
     bscTokens.btcb,
     bscTokens.eth,
     bscTokens.usdc,
   ],
-  [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
+  [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.comet, bscTestnetTokens.busd],
   [ChainId.ARBITRUM_ONE]: [arbitrumTokens.weth, arbitrumTokens.usdt, arbitrumTokens.usdc],
   [ChainId.ARBITRUM_GOERLI]: [arbitrumGoerliTokens.weth, arbitrumGoerliTokens.usdc],
   [ChainId.POLYGON_ZKEVM]: [polygonZkEvmTokens.weth, polygonZkEvmTokens.usdt, polygonZkEvmTokens.usdc],
@@ -127,6 +131,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.SEPOLIA]: [sepoliaTokens.usdc, sepoliaTokens.weth],
   [ChainId.ARBITRUM_SEPOLIA]: [arbSepoliaTokens.usdc, arbSepoliaTokens.weth],
   [ChainId.BASE_SEPOLIA]: [baseSepoliaTokens.usdc, baseSepoliaTokens.weth],
+  [ChainId.XLAYER_TESTNET]: [xlayerTestnetTokens.mwokb, xlayerTestnetTokens.musdc, xlayerTestnetTokens.musdt],
 }
 
 const czusd = new ERC20Token(ChainId.BSC, '0xE68b79e51bf826534Ff37AA9CeE71a3842ee9c70', 18, 'CZUSD', 'CZUSD')
@@ -162,7 +167,7 @@ export const ADDITIONAL_BASES: {
     [bscTokens.mdlp.address]: [bscTokens.dlp],
     [bscTokens.dlp.address]: [bscTokens.mdlp],
 
-    // pancakeswap/pancake-frontend#7909
+    // cometswap/comet-frontend#7909
     // LSDT
     '0xAa83Bb1Be2a74AaA8795a8887054919A0Ea96BFA': [czusd],
     // GEM

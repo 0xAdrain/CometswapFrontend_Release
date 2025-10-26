@@ -13,3 +13,4 @@ export const RecentTransactionsTab = memo(({ ariaId }: RecentTransactionsTabProp
     </TabContent>
   )
 })
+

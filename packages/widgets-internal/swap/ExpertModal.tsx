@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Button, Checkbox, Flex, InjectedModalProps, Message, Modal, Text, usePrompt } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Button, Checkbox, Flex, InjectedModalProps, Message, Modal, Text, usePrompt } from "@cometswap/uikit";
 import { useCallback, useState } from "react";
 
 interface ExpertModalProps extends InjectedModalProps {

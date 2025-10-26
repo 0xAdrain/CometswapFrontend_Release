@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { CheckmarkIcon, Flex, Skeleton, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { CheckmarkIcon, Flex, Skeleton, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { useMemo } from 'react'
 import { useTheme } from 'styled-components'
 import { OnRampProviderQuote } from 'views/BuyCrypto/types'
@@ -56,3 +56,4 @@ export const QuoteBadge = ({ quotes, selectedQuote, loading }: BadgeProps) => {
     </>
   )
 }
+

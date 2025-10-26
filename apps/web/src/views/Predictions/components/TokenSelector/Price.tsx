@@ -1,5 +1,5 @@
-import { Text, TextProps } from '@pancakeswap/uikit'
-import { formatBigIntToFixed } from '@pancakeswap/utils/formatBalance'
+import { Text, TextProps } from '@cometswap/uikit'
+import { formatBigIntToFixed } from '@cometswap/utils/formatBalance'
 import { useMemo } from 'react'
 import CountUp from 'react-countup'
 import { Address } from 'viem'
@@ -52,3 +52,4 @@ export const Price: React.FC<React.PropsWithChildren<PriceProps>> = ({
     </CountUp>
   )
 }
+

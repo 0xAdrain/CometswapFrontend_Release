@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PaginationButton, Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { PaginationButton, Box, Text } from '@cometswap/uikit'
 import { RankListDetail } from 'views/TradingReward/hooks/useRankList'
 import MobileResult, { StyledMobileRow } from 'views/TradingReward/components/Leaderboard/MobileResult'
 

@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Button, Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
 import { AdPanel } from 'components/AdPanel'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -37,7 +37,7 @@ const BunnyWrapper = styled.div`
   }
 `
 
-const CakeBox = styled.div`
+const CometBox = styled.div`
   width: 300px;
   height: 300px;
   > canvas {
@@ -88,9 +88,9 @@ const VideoWrapper = styled.div`
   position: absolute;
 `
 
-const CakeVideo = styled.video``
+const CometVideo = styled.video``
 
-const CakeCanvas = styled.canvas`
+const CometCanvas = styled.canvas`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -278,8 +278,8 @@ const Hero = () => {
           position="relative"
         >
           <BunnyWrapper>
-            <CakeBox>
-              <CakeCanvas
+            <CometBox>
+              <CometCanvas
                 className={isIOS || isMobile ? 'is-ios' : undefined}
                 width={isIOS || isMobile ? 500 : width}
                 height={isIOS || isMobile ? 500 : height}
@@ -287,27 +287,27 @@ const Hero = () => {
               />
               {!(isIOS || isMobile) && (
                 <VideoWrapper>
-                  <CakeVideo ref={videoRef} width={width} autoPlay muted playsInline preload="auto">
+                  <CometVideo ref={videoRef} width={width} autoPlay muted playsInline preload="auto">
                     <source src={`${ASSET_CDN}/web/landing/bunnyv2.webm`} type="video/webm" />
-                  </CakeVideo>
-                  <CakeVideo ref={starVideoRef} width={width} autoPlay loop muted playsInline preload="auto">
+                  </CometVideo>
+                  <CometVideo ref={starVideoRef} width={width} autoPlay loop muted playsInline preload="auto">
                     <source src={`${ASSET_CDN}/web/landing/star.webm`} type="video/webm" />
-                  </CakeVideo>
-                  <CakeVideo ref={cakeVideoRef} width={width} autoPlay loop muted playsInline>
-                    <source src={`${ASSET_CDN}/web/landing/hero-cake.webm`} type="video/webm" />
-                  </CakeVideo>
-                  <CakeVideo ref={rock01VideoRef} width={width} autoPlay loop muted playsInline preload="auto">
+                  </CometVideo>
+                  <CometVideo ref={cakeVideoRef} width={width} autoPlay loop muted playsInline>
+                    <source src={`${ASSET_CDN}/web/landing/hero-comet.webm`} type="video/webm" />
+                  </CometVideo>
+                  <CometVideo ref={rock01VideoRef} width={width} autoPlay loop muted playsInline preload="auto">
                     <source src={`${ASSET_CDN}/web/landing/rock01.webm`} type="video/webm" />
-                  </CakeVideo>
-                  <CakeVideo ref={rock02VideoRef} width={width} autoPlay loop muted playsInline preload="auto">
+                  </CometVideo>
+                  <CometVideo ref={rock02VideoRef} width={width} autoPlay loop muted playsInline preload="auto">
                     <source src={`${ASSET_CDN}/web/landing/rock02.webm`} type="video/webm" />
-                  </CakeVideo>
-                  <CakeVideo ref={rock03VideoRef} width={width} autoPlay loop muted playsInline preload="auto">
+                  </CometVideo>
+                  <CometVideo ref={rock03VideoRef} width={width} autoPlay loop muted playsInline preload="auto">
                     <source src={`${ASSET_CDN}/web/landing/rock03.webm`} type="video/webm" />
-                  </CakeVideo>
+                  </CometVideo>
                 </VideoWrapper>
               )}
-            </CakeBox>
+            </CometBox>
           </BunnyWrapper>
         </Flex>
       </Flex>
@@ -316,3 +316,4 @@ const Hero = () => {
 }
 
 export default Hero
+

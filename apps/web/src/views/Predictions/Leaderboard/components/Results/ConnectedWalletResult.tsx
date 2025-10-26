@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { Card, Heading, Table, Th, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { Card, Heading, Table, Th, useMatchBreakpoints } from '@cometswap/uikit'
 import Container from 'components/Layout/Container'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useEffect } from 'react'
@@ -69,3 +69,4 @@ const ConnectedWalletResult: React.FC<React.PropsWithChildren<ConnectedWalletRes
 }
 
 export default ConnectedWalletResult
+

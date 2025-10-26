@@ -1,4 +1,4 @@
-import { CurrencyParams, CurrencyUsdResult, getCurrencyKey, getCurrencyListUsdPrice } from '@pancakeswap/price-api-sdk'
+import { CurrencyParams, CurrencyUsdResult, getCurrencyKey, getCurrencyListUsdPrice } from '@cometswap/price-api-sdk'
 import { create, windowedFiniteBatchScheduler } from '@yornaath/batshit'
 
 export const usdPriceBatcher = create<CurrencyUsdResult, CurrencyParams, number>({
@@ -18,3 +18,4 @@ export const usdPriceBatcher = create<CurrencyUsdResult, CurrencyParams, number>
     maxBatchSize: 100,
   }),
 })
+

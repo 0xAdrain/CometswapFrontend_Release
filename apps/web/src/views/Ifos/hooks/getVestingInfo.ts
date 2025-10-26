@@ -1,5 +1,5 @@
-import { PoolIds } from '@pancakeswap/ifos'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { PoolIds } from '@cometswap/ifos'
+import { getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { VestingData } from './vesting/fetchUserWalletIfoData'
 
@@ -72,3 +72,4 @@ export const getHasClaimable = (poolIds: PoolIds[], data: VestingData | null) =>
     return claimable !== '0'
   })
 }
+

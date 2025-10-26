@@ -22,3 +22,4 @@ export const multiChainNameConverter = (name: MultiChainName) => {
       return name
   }
 }
+

@@ -69,7 +69,7 @@ export const ModalContainer = styled(MotionBox)<{
   background: ${({ theme }) => theme.modal.background};
   box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  border-radius: 32px 32px 0px 0px;
+  border-radius: ${({ theme }) => theme.radii.card} ${({ theme }) => theme.radii.card} 0px 0px; /* CometSwap: 减少圆角 32px → 12px */
   width: 100%;
   max-height: calc(var(--vh, 1vh) * 100);
   z-index: ${({ theme }) => theme.zIndices.modal};
@@ -82,7 +82,7 @@ export const ModalContainer = styled(MotionBox)<{
     width: auto;
     position: auto;
     bottom: auto;
-    border-radius: 32px;
+    border-radius: ${({ theme }) => theme.radii.card}; /* CometSwap: 减少圆角 32px → 12px */
     max-height: 100vh;
   }
 ` as typeof MotionBox;

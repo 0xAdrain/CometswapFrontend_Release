@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { useTranslation } from '@pancakeswap/localization'
+import { ChainId } from '@cometswap/chains'
+import { useTranslation } from '@cometswap/localization'
 import {
   AtomBox,
   AutoColumn,
@@ -14,21 +14,21 @@ import {
   Modal,
   ModalV2,
   NotificationDot,
-  PancakeToggle,
+  CometToggle,
   PreTitle,
   QuestionHelper,
   RowFixed,
   Text,
   ThemeSwitcher,
   Toggle,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import {
   useAudioPlay,
   useExpertMode,
   useUserExpertModeAcknowledgement,
   useUserSingleHopOnly,
-} from '@pancakeswap/utils/user'
-import { ExpertModal } from '@pancakeswap/widgets-internal'
+} from '@cometswap/utils/user'
+import { ExpertModal } from '@cometswap/widgets-internal'
 import { TOKEN_RISK } from 'components/AccessRisk'
 import AccessRiskTooltips from 'components/AccessRisk/AccessRiskTooltips'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -276,12 +276,12 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
               <Flex alignItems="center">
                 <Text>{t('Flippy sounds')}</Text>
                 <QuestionHelper
-                  text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
+                  text={t('Fun sounds to make a truly immersive comet-flipping trading experience')}
                   placement="top"
                   ml="4px"
                 />
               </Flex>
-              <PancakeToggle
+              <CometToggle
                 id="toggle-audio-play"
                 checked={audioPlay}
                 onChange={() => setAudioMode((s) => !s)}
@@ -297,7 +297,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                   ml="4px"
                 />
               </Flex>
-              <PancakeToggle
+              <CometToggle
                 id="toggle-speed-quote"
                 checked={speedQuote}
                 onChange={() => setSpeedQuote((s) => !s)}
@@ -377,12 +377,12 @@ function RoutingSettings() {
         {xFeatureEnabled ? (
           <Flex justifyContent="space-between" alignItems="flex-start" mb="24px">
             <Flex flexDirection="column">
-              <Text>PancakeSwap X</Text>
+              <Text>CometSwap X</Text>
               <Text fontSize="12px" color="textSubtle" maxWidth={360} mt={10}>
                 When applicable, aggregates liquidity to provide better price, more token options, and gas free swaps.
               </Text>
             </Flex>
-            <PancakeToggle
+            <CometToggle
               id="stable-swap-toggle"
               scale="md"
               checked={xEnable}
@@ -396,7 +396,7 @@ function RoutingSettings() {
           <PreTitle mb="24px">{t('Liquidity source')}</PreTitle>
           <Flex justifyContent="space-between" alignItems="center" mb="24px">
             <Flex alignItems="center">
-              <Text>PancakeSwap V3</Text>
+              <Text>CometSwap V3</Text>
               <QuestionHelper
                 text={
                   <Flex>
@@ -420,7 +420,7 @@ function RoutingSettings() {
           </Flex>
           <Flex justifyContent="space-between" alignItems="center" mb="24px">
             <Flex alignItems="center">
-              <Text>PancakeSwap V2</Text>
+              <Text>CometSwap V2</Text>
               <QuestionHelper
                 text={
                   <Flex flexDirection="column">
@@ -445,7 +445,7 @@ function RoutingSettings() {
           </Flex>
           <Flex justifyContent="space-between" alignItems="center" mb="24px">
             <Flex alignItems="center">
-              <Text>PancakeSwap {t('StableSwap')}</Text>
+              <Text>CometSwap {t('StableSwap')}</Text>
               <QuestionHelper
                 text={
                   <Flex flexDirection="column">
@@ -545,3 +545,4 @@ function RoutingSettings() {
     </Modal>
   )
 }
+

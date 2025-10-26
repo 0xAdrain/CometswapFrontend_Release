@@ -1,4 +1,4 @@
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@cometswap/uikit'
 
 const TimeText = ({ text }: { text: string }) => {
   return (

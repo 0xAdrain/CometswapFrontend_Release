@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AtomBox, Flex, ModalBody, ModalCloseButton, ModalContainer, RowBetween, Text } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { AtomBox, Flex, ModalBody, ModalCloseButton, ModalContainer, RowBetween, Text } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import { styled } from 'styled-components'
 
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@cometswap/sdk'
 import { useEffect } from 'react'
 import { DeserializedLockedVaultUser } from 'state/types'
 import RevenueSharing from 'views/Pools/components/RevenueSharing/BenefitsModal/RevenueSharing'
@@ -55,7 +55,7 @@ const BenefitsModal: React.FunctionComponent<React.PropsWithChildren<BenefitsMod
       <AtomBox bg="gradientBubblegum" py="24px">
         <RowBetween flexWrap="nowrap" px="24px">
           <Text fontSize={20} bold>
-            {t('Locked CAKE Benefits')}
+            {t('Locked COMETBenefits')}
           </Text>
           <ModalCloseButton onDismiss={onDismiss} />
         </RowBetween>
@@ -71,3 +71,4 @@ const BenefitsModal: React.FunctionComponent<React.PropsWithChildren<BenefitsMod
 }
 
 export default BenefitsModal
+

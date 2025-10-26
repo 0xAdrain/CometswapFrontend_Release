@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, MaxUint256, Percent, Fraction, ZERO } from '@pancakeswap/swap-sdk-core'
+import { Currency, CurrencyAmount, MaxUint256, Percent, Fraction, ZERO } from '@cometswap/swap-sdk-core'
 import invariant from 'tiny-invariant'
-import { parseNumberToFraction } from '@pancakeswap/utils/formatFractions'
+import { parseNumberToFraction } from '@cometswap/utils/formatFractions'
 
 import { maxLiquidityForAmounts } from './maxLiquidityForAmounts'
 import { TickMath } from './tickMath'

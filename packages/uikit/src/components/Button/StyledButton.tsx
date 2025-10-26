@@ -15,7 +15,7 @@ const getDisabledStyles = ({ $isLoading, theme }: TransientButtonProps) => {
   if ($isLoading === true) {
     return `
       &:disabled,
-      &.pancake-button--disabled {
+      &.comet-button--disabled {
         cursor: not-allowed;
       }
     `;
@@ -23,7 +23,7 @@ const getDisabledStyles = ({ $isLoading, theme }: TransientButtonProps) => {
 
   return `
     &:disabled,
-    &.pancake-button--disabled {
+    &.comet-button--disabled {
       background-color: ${theme.colors.backgroundDisabled};
       border-color: ${theme.colors.backgroundDisabled};
       box-shadow: none;
@@ -49,8 +49,8 @@ const StyledButton = styled("button").withConfig({
   position: relative;
   align-items: center;
   border: 0;
-  border-radius: 16px;
-  box-shadow: 0px -1px 0px 0px rgba(14, 14, 44, 0.4) inset;
+  border-radius: ${({ theme }) => theme.radii.default}; /* CometSwap: 使用更新的圆角值 8px */
+  box-shadow: ${({ theme }) => theme.shadows.button}; /* CometSwap: 使用现代化阴影 */
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
@@ -61,7 +61,8 @@ const StyledButton = styled("button").withConfig({
   line-height: 1;
   opacity: ${getOpacity};
   outline: 0;
-  transition: background-color 0.2s, opacity 0.2s;
+  /* CometSwap: 增加更多过渡属性，更流畅的交互 */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus-visible {
     outline: none;
@@ -69,15 +70,17 @@ const StyledButton = styled("button").withConfig({
   }
 
   @media (hover: hover) {
-    &:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
-      opacity: 0.65;
+    &:hover:not(:disabled):not(.comet-button--disabled):not(.comet-button--disabled):not(:active) {
+      /* CometSwap: 现代化悬停效果 - 使用阴影而非透明度 */
+      box-shadow: ${({ theme }) => theme.shadows.buttonHover};
+      transform: translateY(-1px);
     }
   }
 
-  &:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
-    opacity: 0.85;
-    transform: translateY(1px);
-    box-shadow: none;
+  &:active:not(:disabled):not(.comet-button--disabled):not(.comet-button--disabled) {
+    /* CometSwap: 现代化激活效果 */
+    transform: translateY(0px);
+    box-shadow: ${({ theme }) => theme.shadows.button};
   }
 
   ${getDisabledStyles}

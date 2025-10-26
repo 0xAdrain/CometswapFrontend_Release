@@ -1,7 +1,7 @@
-import { isIfoSupported } from '@pancakeswap/ifos'
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/sdk'
-import { Box, Button, Container, Flex, Heading, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { isIfoSupported } from '@cometswap/ifos'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId } from '@cometswap/sdk'
+import { Box, Button, Container, Flex, Heading, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
@@ -96,7 +96,7 @@ const Hero = () => {
                 {t('IFO: Initial Farm Offerings')}
               </StyledHeading>
               <StyledSubTitle bold>
-                {isMobile ? t('Buy new tokens using CAKE') : t('Buy new tokens launching on PancakeSwap using CAKE')}
+                {isMobile ? t('Buy new tokens using COMET') : t('Buy new tokens launching on CometSwap using COMET')}
               </StyledSubTitle>
             </Box>
             {isMobile ? (
@@ -131,3 +131,4 @@ function HeaderBunny() {
 }
 
 export default Hero
+

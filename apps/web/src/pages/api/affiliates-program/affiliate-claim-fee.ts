@@ -29,3 +29,4 @@ const affiliateClaimFee = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default affiliateClaimFee
+

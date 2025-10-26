@@ -1,4 +1,4 @@
-import { useMatchBreakpoints, useModalV2 } from '@pancakeswap/uikit'
+import { useMatchBreakpoints, useModalV2 } from '@cometswap/uikit'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useIsSlideExpanded } from '../useIsSlideExpanded'
 
@@ -55,3 +55,4 @@ export const useExpandableCard = ({ adId, forceMobile }: UseExpandableCardProps)
     handleDismiss,
   }
 }
+

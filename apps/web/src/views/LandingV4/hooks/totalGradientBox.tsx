@@ -1,4 +1,4 @@
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useMatchBreakpoints } from '@cometswap/uikit'
 import { useMemo } from 'react'
 
 interface UseTotalGradientBoxProps {
@@ -28,3 +28,4 @@ export const useTotalGradientBox = ({ isClickedMoreButton, dataLength }: UseTota
     return total ? Array.from({ length: total }, (_, index) => index) : []
   }, [isXxl, isXl, isMd, isLg, isXs, isSm, isClickedMoreButton, dataLength])
 }
+

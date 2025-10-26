@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '@pancakeswap/uikit'
+import { Flex, FlexProps } from '@cometswap/uikit'
 import random from 'lodash/random'
 import uniqueId from 'lodash/uniqueId'
 import { useEffect, useState } from 'react'
@@ -50,3 +50,4 @@ const WinningNumbers: React.FC<React.PropsWithChildren<WinningNumbersProps>> = (
 }
 
 export default WinningNumbers
+

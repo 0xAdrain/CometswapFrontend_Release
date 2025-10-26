@@ -1,4 +1,4 @@
-import { TradeType } from '@pancakeswap/swap-sdk-core'
+import { TradeType } from '@cometswap/swap-sdk-core'
 import { findBestTrade, type FindBestTradeParams } from './findBestTrade'
 import { TradeWithGraph } from './types'
 import { isTradeBetter } from './utils'

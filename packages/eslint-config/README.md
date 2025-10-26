@@ -1,6 +1,6 @@
-# eslint-config-pancake
+# eslint-config-comet
 
-Pancake Eslint config with:
+Comet Eslint config with:
 
 - Airbnb config
 - Typescript
@@ -9,7 +9,7 @@ Pancake Eslint config with:
 ## Usage
 
 ```
-npx install-peerdeps --dev @pancakeswap/eslint-config-pancake
+npx install-peerdeps --dev @cometswap/eslint-config-comet
 ```
 
-Add `"extends": "@pancakeswap/eslint-config-pancake"` to your eslint config file.
+Add `"extends": "@cometswap/eslint-config-comet"` to your eslint config file.

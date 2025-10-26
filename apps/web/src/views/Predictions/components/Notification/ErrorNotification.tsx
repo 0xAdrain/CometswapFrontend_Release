@@ -1,5 +1,5 @@
-import { Button, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Button, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { setHistoryPaneState } from 'state/predictions'
 import Notification from './Notification'
@@ -24,3 +24,4 @@ const ErrorNotification = () => {
 }
 
 export default ErrorNotification
+

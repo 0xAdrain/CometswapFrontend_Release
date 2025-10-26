@@ -29,3 +29,4 @@ const affiliateRegenerateSignature = async (req: NextApiRequest, res: NextApiRes
 }
 
 export default affiliateRegenerateSignature
+

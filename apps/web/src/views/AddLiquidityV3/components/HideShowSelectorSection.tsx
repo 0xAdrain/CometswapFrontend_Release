@@ -1,4 +1,4 @@
-import { AutoRow, Button, ChevronDownIcon } from '@pancakeswap/uikit'
+import { AutoRow, Button, ChevronDownIcon } from '@cometswap/uikit'
 import { LightGreyCard } from 'components/Card'
 import { Dispatch, ReactNode, SetStateAction } from 'react'
 
@@ -45,3 +45,4 @@ export default function HideShowSelectorSection({
     </LightGreyCard>
   )
 }
+

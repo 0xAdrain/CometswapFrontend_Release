@@ -1,4 +1,4 @@
-import { appearAnimation, Box, FlexProps } from '@pancakeswap/uikit'
+import { appearAnimation, Box, FlexProps } from '@cometswap/uikit'
 import styled from 'styled-components'
 import { ExpandButton } from '../Button'
 import { ActionContainer } from './styles'
@@ -36,3 +36,4 @@ export const ExpandableActions = ({
     </ActionContainer>
   )
 }
+

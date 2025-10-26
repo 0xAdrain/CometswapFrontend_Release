@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { BetPosition } from '@pancakeswap/prediction'
-import { BlockIcon, Box, Card, CardBody } from '@pancakeswap/uikit'
-import { formatBigInt } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { BetPosition } from '@cometswap/prediction'
+import { BlockIcon, Box, Card, CardBody } from '@cometswap/uikit'
+import { formatBigInt } from '@cometswap/utils/formatBalance'
 import useTheme from 'hooks/useTheme'
 import { useMemo } from 'react'
 import { getHasRoundFailed } from 'state/predictions/helpers'
@@ -145,3 +145,4 @@ export const AIExpiredRoundCard: React.FC<React.PropsWithChildren<AIExpiredRound
     </Box>
   )
 }
+

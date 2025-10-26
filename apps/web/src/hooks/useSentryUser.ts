@@ -12,3 +12,4 @@ function useSentryUser() {
 }
 
 export default useSentryUser
+

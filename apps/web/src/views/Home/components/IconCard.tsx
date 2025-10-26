@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, CardProps } from '@pancakeswap/uikit'
+import { Box, Card, CardBody, CardProps } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
@@ -52,3 +52,4 @@ const IconCard: React.FC<React.PropsWithChildren<IconCardProps>> = ({
 }
 
 export default IconCard
+

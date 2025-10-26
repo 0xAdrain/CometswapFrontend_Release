@@ -7,3 +7,4 @@ export function formatTime(time: number | Date) {
 export function formatUnixTime(time: number) {
   return formatTime(dayjs.unix(time).toDate())
 }
+

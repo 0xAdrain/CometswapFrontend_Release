@@ -1,7 +1,7 @@
-import { useIntersectionObserver, useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, InfoIcon, SORT_ORDER, TableView, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { toTokenValueByCurrency } from '@pancakeswap/widgets-internal'
+import { useIntersectionObserver, useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Button, InfoIcon, SORT_ORDER, TableView, useMatchBreakpoints } from '@cometswap/uikit'
+import { toTokenValueByCurrency } from '@cometswap/widgets-internal'
 import { useAllTokensByChainIds } from 'hooks/Tokens'
 import flatMap from 'lodash/flatMap'
 import groupBy from 'lodash/groupBy'
@@ -168,7 +168,7 @@ export const PoolsPage = () => {
 
   const { orderedChainIds, activeChainId, othersChains } = useOrderChainIds()
 
-  // default sorting logic: https://linear.app/pancakeswap/issue/PAN-3669/default-sorting-logic-update-for-pair-list
+  // default sorting logic: https://linear.app/cometswap/issue/PAN-3669/default-sorting-logic-update-for-pair-list
   const defaultSortedData = useMemo(() => {
     // active Farms: current chain -> other chains
     // ordered by farm config list
@@ -243,3 +243,4 @@ export const PoolsPage = () => {
     </Card>
   )
 }
+

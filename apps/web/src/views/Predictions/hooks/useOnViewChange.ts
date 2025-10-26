@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { usePreviousValue } from '@pancakeswap/hooks'
+import { usePreviousValue } from '@cometswap/hooks'
 import useSwiper from './useSwiper'
 import { PageView } from '../types'
 
@@ -18,3 +18,4 @@ const useOnViewChange = (liveSwiperIndex: number, view?: PageView) => {
 }
 
 export default useOnViewChange
+

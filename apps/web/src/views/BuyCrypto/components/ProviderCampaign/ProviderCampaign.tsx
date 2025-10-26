@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, InfoFilledIcon, Text } from '@pancakeswap/uikit'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, InfoFilledIcon, Text } from '@cometswap/uikit'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import Image from 'next/image'
 import { ONRAMP_PROVIDERS } from 'views/BuyCrypto/constants'
 import pocketWatch from '../../../../../public/images/pocket-watch.svg'
@@ -47,7 +47,7 @@ const ProviderCampaign = () => {
           }
           tooltipContent={
             <Text as="p">
-              {t('Provider fees are waived for this period. Please note that a 1% PancakeSwap fee still applies.')}
+              {t('Provider fees are waived for this period. Please note that a 1% CometSwap fee still applies.')}
             </Text>
           }
         />
@@ -57,3 +57,4 @@ const ProviderCampaign = () => {
 }
 
 export default ProviderCampaign
+

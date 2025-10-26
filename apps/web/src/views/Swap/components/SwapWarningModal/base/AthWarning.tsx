@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Text } from '@cometswap/uikit'
 
 export const AthWarning = () => {
   const { t } = useTranslation()
@@ -10,3 +10,4 @@ export const AthWarning = () => {
     </Box>
   )
 }
+

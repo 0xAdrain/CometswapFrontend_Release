@@ -1,4 +1,4 @@
-import { Colors, Heading, TextProps } from '@pancakeswap/uikit'
+import { Colors, Heading, TextProps } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { useMemo } from 'react'
 
@@ -31,3 +31,4 @@ const ColoredWordHeading: React.FC<React.PropsWithChildren<HeadingProps>> = ({
 }
 
 export default ColoredWordHeading
+

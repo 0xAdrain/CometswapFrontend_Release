@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, Token, Trade, TradeType } from '@pancakeswap/sdk'
-import { AutoColumn, BottomDrawer, Box, Button, Flex, Link, useMatchBreakpoints, useModal } from '@pancakeswap/uikit'
-import { Swap as SwapUI } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent, Token, Trade, TradeType } from '@cometswap/sdk'
+import { AutoColumn, BottomDrawer, Box, Button, Flex, Link, useMatchBreakpoints, useModal } from '@cometswap/uikit'
+import { Swap as SwapUI } from '@cometswap/widgets-internal'
 
-import replaceBrowserHistoryMultiple from '@pancakeswap/utils/replaceBrowserHistoryMultiple'
+import replaceBrowserHistoryMultiple from '@cometswap/utils/replaceBrowserHistoryMultiple'
 import AccessRisk from 'components/AccessRisk'
 import { ACCESS_TOKEN_SUPPORT_CHAIN_IDS } from 'components/AccessRisk/config/supportedChains'
 import { AppBody } from 'components/App'
@@ -519,3 +519,4 @@ const LimitOrders = () => {
 }
 
 export default LimitOrders
+

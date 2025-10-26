@@ -1,4 +1,4 @@
-// import { bscTokens } from '@pancakeswap/tokens'
+// import { bscTokens } from '@cometswap/tokens'
 
 import { BaseIfoConfig } from '../../types'
 

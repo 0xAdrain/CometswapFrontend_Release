@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const IdoLayout = styled(Box)`
@@ -15,3 +15,4 @@ export const IdoLayoutWrapper = styled(IdoLayout)`
 `
 
 export default IdoLayout
+

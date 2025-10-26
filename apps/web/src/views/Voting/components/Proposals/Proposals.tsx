@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Breadcrumbs, Card, Flex, Heading, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Breadcrumbs, Card, Flex, Heading, Text } from '@cometswap/uikit'
 import { useQuery } from '@tanstack/react-query'
 import Container from 'components/Layout/Container'
 import { useSessionStorage } from 'hooks/useSessionStorage'
@@ -87,3 +87,4 @@ const Proposals = () => {
 }
 
 export default Proposals
+

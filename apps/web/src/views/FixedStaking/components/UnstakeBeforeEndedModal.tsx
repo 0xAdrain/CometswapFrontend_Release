@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/swap-sdk-core'
-import { Box, Button, Flex, Message, MessageText, Modal, ModalV2, PreTitle, Text, useModalV2 } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Percent } from '@cometswap/swap-sdk-core'
+import { Box, Button, Flex, Message, MessageText, Modal, ModalV2, PreTitle, Text, useModalV2 } from '@cometswap/uikit'
 import { LightCard } from 'components/Card'
 import { ReactNode, useMemo } from 'react'
 
@@ -152,3 +152,4 @@ export function UnstakeBeforeEnededModal({
     </>
   )
 }
+

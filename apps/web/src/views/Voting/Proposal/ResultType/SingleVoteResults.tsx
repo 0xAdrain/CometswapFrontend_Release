@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Progress, Text } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Progress, Text } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import { Vote } from 'state/types'
 import TextEllipsis from '../../components/TextEllipsis'
 import { calculateVoteResults, getTotalFromVotes } from '../../helpers'
@@ -42,3 +42,4 @@ export const SingleVoteResults: React.FC<SingleVoteResultsProps> = ({ votes, cho
     </>
   )
 }
+

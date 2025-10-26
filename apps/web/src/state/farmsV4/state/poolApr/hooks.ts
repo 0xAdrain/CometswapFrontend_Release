@@ -5,11 +5,11 @@ import { useCallback } from 'react'
 import sha256 from 'crypto-js/sha256'
 import memoize from 'lodash/memoize'
 import { extendPoolsAtom } from 'state/farmsV4/state/extendPools/atom'
-import { useCakePrice } from 'hooks/useCakePrice'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useCometPrice } from 'hooks/useCometPrice'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import { ChainIdAddressKey, PoolInfo } from '../type'
-import { CakeApr, cakeAprSetterAtom, emptyCakeAprPoolsAtom, merklAprAtom, poolAprAtom } from './atom'
-import { getAllNetworkMerklApr, getCakeApr, getLpApr } from './fetcher'
+import { veCometApr, cakeAprSetterAtom, emptyveCometAprPoolsAtom, merklAprAtom, poolAprAtom } from './atom'
+import { getAllNetworkMerklApr, getveCometApr, getLpApr } from './fetcher'
 
 const generatePoolKey = memoize((pools) => {
   const poolData = pools.map((pool) => `${pool.chainId}:${pool.lpAddress}`).join(',')
@@ -21,14 +21,14 @@ export const usePoolApr = (
   pool: PoolInfo | null,
 ): {
   lpApr: `${number}`
-  cakeApr: CakeApr[keyof CakeApr]
+  cakeApr: veCometApr[keyof veCometApr]
   merklApr: `${number}`
 } => {
   const updatePools = useSetAtom(extendPoolsAtom)
-  const updateCakeApr = useSetAtom(cakeAprSetterAtom)
+  const updateveCometApr = useSetAtom(cakeAprSetterAtom)
   const poolApr = useAtomValue(poolAprAtom)[key ?? '']
   const [merklAprs, updateMerklApr] = useAtom(merklAprAtom)
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const getMerklApr = useCallback(() => {
     if (Object.values(merklAprs).length === 0) {
       return getAllNetworkMerklApr()
@@ -49,8 +49,8 @@ export const usePoolApr = (
         throw new Error('Pool not found')
       }
       const [cakeApr, lpApr, merklApr] = await Promise.all([
-        getCakeApr(pool, cakePrice).then((apr) => {
-          updateCakeApr(apr)
+        getveCometApr(pool, cometPrice).then((apr) => {
+          updateveCometApr(apr)
           return apr
         }),
         getLpApr(pool)
@@ -71,7 +71,7 @@ export const usePoolApr = (
         merklApr,
       } as {
         lpApr: `${number}`
-        cakeApr: CakeApr[keyof CakeApr]
+        cakeApr: veCometApr[keyof veCometApr]
         merklApr: `${number}`
       }
     } catch (error) {
@@ -82,11 +82,11 @@ export const usePoolApr = (
         merklApr: '0',
       } as {
         lpApr: `${number}`
-        cakeApr: CakeApr[keyof CakeApr]
+        cakeApr: veCometApr[keyof veCometApr]
         merklApr: `${number}`
       }
     }
-  }, [getMerklApr, pool, updateCakeApr, updatePools, cakePrice])
+  }, [getMerklApr, pool, updateveCometApr, updatePools, cometPrice])
 
   useQuery({
     queryKey: ['apr', key],
@@ -94,7 +94,7 @@ export const usePoolApr = (
     // calcV3PoolApr depend on pool's TvlUsd
     // so if there are local pool without tvlUsd, don't to fetch queryFn
     // issue: PAN-3698
-    enabled: typeof pool?.tvlUsd !== 'undefined' && !poolApr?.lpApr && !!key && cakePrice && cakePrice.gt(BIG_ZERO),
+    enabled: typeof pool?.tvlUsd !== 'undefined' && !poolApr?.lpApr && !!key && cometPrice && cometPrice.gt(BIG_ZERO),
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
@@ -112,10 +112,10 @@ export const usePoolsApr = () => {
 }
 
 export const usePoolAprUpdater = () => {
-  const pools = useAtomValue(emptyCakeAprPoolsAtom)
-  const updateCakeApr = useSetAtom(cakeAprSetterAtom)
+  const pools = useAtomValue(emptyveCometAprPoolsAtom)
+  const updateveCometApr = useSetAtom(cakeAprSetterAtom)
   const updateMerklApr = useSetAtom(merklAprAtom)
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   useQuery({
     queryKey: ['apr', 'merkl', 'fetchMerklApr'],
@@ -126,14 +126,15 @@ export const usePoolAprUpdater = () => {
   })
 
   useQuery({
-    queryKey: ['apr', 'cake', 'fetchCakeApr', generatePoolKey(pools)],
+    queryKey: ['apr', 'comet', 'fetchveCometApr', generatePoolKey(pools)],
     queryFn: () =>
-      Promise.all(pools.map((pool) => getCakeApr(pool, cakePrice))).then((aprList) => {
-        updateCakeApr(aprList.reduce((acc, apr) => Object.assign(acc, apr), {}))
+      Promise.all(pools.map((pool) => getveCometApr(pool, cometPrice))).then((aprList) => {
+        updateveCometApr(aprList.reduce((acc, apr) => Object.assign(acc, apr), {}))
       }),
-    enabled: pools?.length > 0 && cakePrice && cakePrice.gt(BIG_ZERO),
+    enabled: pools?.length > 0 && cometPrice && cometPrice.gt(BIG_ZERO),
     refetchInterval: SLOW_INTERVAL,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   })
 }
+

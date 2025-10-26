@@ -12,11 +12,11 @@ export const nemesisDownfall: GameType = {
   trendingTags: [
     TrendingTagType.FPS,
     TrendingTagType.Multiplayer,
-    TrendingTagType.CakeToken,
+    TrendingTagType.veCometToken,
     TrendingTagType.Windows,
     TrendingTagType.NFT,
-    TrendingTagType.PancakeSquadNFT,
-    TrendingTagType.PancakeBunniesNFT,
+    TrendingTagType.CometSquadNFT,
+    TrendingTagType.CometBunniesNFT,
   ],
   headerImage: 'https://ndpcs.s3.amazonaws.com/Banner.png',
   headerIconImage: {
@@ -75,7 +75,7 @@ export const nemesisDownfall: GameType = {
     },
   ],
   socialMedia: {
-    telegram: 'https://t.me/PancakeSwap/3340271',
+    telegram: 'https://t.me/CometSwap/3340271',
     discord: 'https://discord.com/channels/897834609272840232/1209684050370105434',
   },
 }

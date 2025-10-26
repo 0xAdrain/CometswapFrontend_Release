@@ -1,17 +1,17 @@
-import { FarmWithStakedValue } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { AtomBox, Button, Flex, RowBetween, Skeleton, Text } from '@pancakeswap/uikit'
+import { FarmWithStakedValue } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { AtomBox, Button, Flex, RowBetween, Skeleton, Text } from '@cometswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 import { styled, useTheme } from 'styled-components'
-import { StatusView } from 'views/Farms/components/YieldBooster/components/bCakeV3/StatusView'
-import { StatusViewButtons } from 'views/Farms/components/YieldBooster/components/bCakeV3/StatusViewButtons'
-import { useBCakeBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { useBoostStatusPM } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBoostStatus'
+import { StatusView } from 'views/Farms/components/YieldBooster/components/bCometV3/StatusView'
+import { StatusViewButtons } from 'views/Farms/components/YieldBooster/components/bCometV3/StatusViewButtons'
+import { useBCometBoostLimitAndLockInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { useBoostStatusPM } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBoostStatus'
 import { useWrapperBooster } from 'views/PositionManagers/hooks'
-import { useUpdateBCakeFarms } from '../../hooks/useUpdateBCake'
+import { useUpdateBCometFarms } from '../../hooks/useUpdateBComet'
 import { HarvestActionContainer } from '../FarmTable/Actions/HarvestAction'
 import { StakedContainer } from '../FarmTable/Actions/StakedAction'
 import HarvestAction from './HarvestAction'
@@ -59,21 +59,21 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
   boosterMultiplier = 1,
 }) => {
   const { t } = useTranslation()
-  const { pid, token, quoteToken, vaultPid, lpSymbol, bCakeWrapperAddress, bCakeUserData } = farm
+  const { pid, token, quoteToken, vaultPid, lpSymbol, bCometWrapperAddress, bCometUserData } = farm
 
   const isReady = farm.multiplier !== undefined
-  const isBooster = Boolean(bCakeWrapperAddress) && farm?.bCakePublicData?.isRewardInRange
-  const { earnings } = (isBooster ? farm.bCakeUserData : farm.userData) || {}
+  const isBooster = Boolean(bCometWrapperAddress) && farm?.bCometPublicData?.isRewardInRange
+  const { earnings } = (isBooster ? farm.bCometUserData : farm.userData) || {}
   const { status } = useBoostStatusPM(isBooster, boosterMultiplier)
   const { colors } = useTheme()
   const dividerBorderStyle = useMemo(() => `1px solid ${colors.input}`, [colors.input])
-  const { shouldUpdate, veCakeUserMultiplierBeforeBoosted } = useWrapperBooster(
-    farm.bCakeUserData?.boosterContractAddress ?? '0x',
+  const { shouldUpdate, cometUserMultiplierBeforeBoosted } = useWrapperBooster(
+    farm.bCometUserData?.boosterContractAddress ?? '0x',
     boosterMultiplier ?? 1,
-    bCakeWrapperAddress,
+    bCometWrapperAddress,
   )
-  const { onUpdate } = useUpdateBCakeFarms(bCakeWrapperAddress ?? '0x', pid)
-  const { locked } = useBCakeBoostLimitAndLockInfo()
+  const { onUpdate } = useUpdateBCometFarms(bCometWrapperAddress ?? '0x', pid)
+  const { locked } = useBCometBoostLimitAndLockInfo()
   const router = useRouter()
   const isHistory = useMemo(() => router.pathname.includes('history'), [router])
 
@@ -111,7 +111,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
             <RowBetween flexDirection="column" alignItems="flex-start" flex={1} width="100%">
               <Flex>
                 <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-                  CAKE
+                  COMET
                 </Text>
                 <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
                   {t('Earned')}
@@ -124,8 +124,8 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
                 token={token}
                 quoteToken={quoteToken}
                 lpSymbol={lpSymbol}
-                bCakeWrapperAddress={bCakeWrapperAddress}
-                bCakeUserData={bCakeUserData}
+                bCometWrapperAddress={bCometWrapperAddress}
+                bCometUserData={bCometUserData}
               >
                 {(props) => <HarvestAction {...props} />}
               </HarvestActionContainer>
@@ -145,16 +145,16 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
               <Flex width="100%" justifyContent="space-between" alignItems="center">
                 <StatusView
                   status={status}
-                  isFarmStaking={farm?.bCakeUserData?.stakedBalance?.gt(0)}
+                  isFarmStaking={farm?.bCometUserData?.stakedBalance?.gt(0)}
                   boostedMultiplier={boosterMultiplier}
                   maxBoostMultiplier={2.5}
-                  shouldUpdate={shouldUpdate && farm?.bCakeUserData?.stakedBalance?.gt(0)}
-                  expectMultiplier={veCakeUserMultiplierBeforeBoosted}
+                  shouldUpdate={shouldUpdate && farm?.bCometUserData?.stakedBalance?.gt(0)}
+                  expectMultiplier={cometUserMultiplierBeforeBoosted}
                 />
                 <StatusViewButtons
                   locked={locked}
                   updateButton={
-                    shouldUpdate && farm?.bCakeUserData?.stakedBalance?.gt(0) ? (
+                    shouldUpdate && farm?.bCometUserData?.stakedBalance?.gt(0) ? (
                       <Button onClick={onUpdate}>{t('Update')}</Button>
                     ) : null
                   }
@@ -169,3 +169,4 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
 }
 
 export default CardActions
+

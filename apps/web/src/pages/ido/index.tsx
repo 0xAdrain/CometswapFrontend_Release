@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { IdoPageLayout } from '../../views/Idos'
 import IDO from '../../views/Idos/ido'
 
@@ -17,3 +17,4 @@ CurrentIdoPage.mp = true
 CurrentIdoPage.w3wWagmiConfig = true
 
 export default CurrentIdoPage
+

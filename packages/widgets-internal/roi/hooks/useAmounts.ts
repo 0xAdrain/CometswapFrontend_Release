@@ -1,7 +1,7 @@
-import { Currency, CurrencyAmount, Price } from "@pancakeswap/sdk";
-import { formatAmount, formatPrice } from "@pancakeswap/utils/formatFractions";
-import tryParseAmount from "@pancakeswap/utils/tryParseAmount";
-import { FeeCalculator, TickMath } from "@pancakeswap/v3-sdk";
+import { Currency, CurrencyAmount, Price } from "@cometswap/sdk";
+import { formatAmount, formatPrice } from "@cometswap/utils/formatFractions";
+import tryParseAmount from "@cometswap/utils/tryParseAmount";
+import { FeeCalculator, TickMath } from "@cometswap/v3-sdk";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { getTokenAmountsFromDepositUsd } from "../utils";

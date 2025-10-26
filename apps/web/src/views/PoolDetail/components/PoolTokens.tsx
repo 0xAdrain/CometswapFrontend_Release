@@ -1,4 +1,4 @@
-import { Flex, RowBetween, Text } from '@pancakeswap/uikit'
+import { Flex, RowBetween, Text } from '@cometswap/uikit'
 import { useMemo } from 'react'
 import { PoolInfo } from 'state/farmsV4/state/type'
 import { useChainNameByQuery } from 'state/info/hooks'
@@ -60,3 +60,4 @@ export const PoolTokens: React.FC<PoolTokensProps> = ({ poolInfo }) => {
     </StyledPoolTokens>
   )
 }
+

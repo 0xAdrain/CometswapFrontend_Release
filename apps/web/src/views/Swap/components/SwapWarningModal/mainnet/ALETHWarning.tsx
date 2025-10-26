@@ -1,5 +1,5 @@
-import { Link, Text, Box } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Link, Text, Box } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 
 const ALETHWarning = () => {
   const { t } = useTranslation()
@@ -34,3 +34,4 @@ const ALETHWarning = () => {
 }
 
 export default ALETHWarning
+

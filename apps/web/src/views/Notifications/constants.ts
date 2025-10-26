@@ -1,9 +1,9 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ContextApi } from '@pancakeswap/localization'
-import { OptionProps } from '@pancakeswap/uikit'
+import { ChainId } from '@cometswap/chains'
+import { ContextApi } from '@cometswap/localization'
+import { OptionProps } from '@cometswap/uikit'
 import {
   EventInformation,
-  PancakeNotificationBuilders,
+  CometNotificationBuilders,
   ResponseEvents,
   SubsctiptionType,
   pushNotification,
@@ -56,37 +56,37 @@ export const NEXT_PUBLIC_WEB_NOTIFICATION_SECURE_TOKEN = process.env.NEXT_PUBLIC
 export const WEB_PUSH_ENCRYPTION_KEY = process.env.NEXT_PUBLIC_WEB_PUSH_ENCRYPTION_KEY ?? ''
 export const WEB_PUSH_IV = process.env.NEXT_PUBLIC_WEB_PUSH_IV ?? ''
 
-export const PancakeNotifications: {
-  [notificationBuilder in keyof PancakeNotificationBuilders]: <T>(t: ContextApi['t'], args: T[]) => pushNotification
+export const CometNotifications: {
+  [notificationBuilder in keyof CometNotificationBuilders]: <T>(t: ContextApi['t'], args: T[]) => pushNotification
 } = {
   newLpNotification: (t): pushNotification => {
     return {
       title: t('New LP Position Added'),
       body: t('New LP position successfully added. You will be notified on important updates.'),
-      icon: `https://pancakeswap.finance/logo.png`,
-      url: 'https://pancakeswap.finance',
+      icon: `https://cometswap.finance/logo.png`,
+      url: 'https://cometswap.finance',
       type: SubsctiptionType.Liquidity,
     }
   },
   onBoardingNotification: (t): pushNotification => {
     return {
-      title: t('Welcome to PancakeSwap Notifications'),
+      title: t('Welcome to CometSwap Notifications'),
       body: t(
         'You are now susbscribed and will receive alerts and updates on PCS features. If you dont want to receive notifications you can unsubscribe at any time.',
       ),
-      icon: `https://pancakeswap.finance/logo.png`,
+      icon: `https://cometswap.finance/logo.png`,
       type: SubsctiptionType.Alerts,
     }
   },
 }
-export const APP_DOMAIN = 'pancakeswap.finance'
+export const APP_DOMAIN = 'cometswap.finance'
 
 export const PUBLIC_VAPID_KEY = process.env.NEXT_PUBLIC_VAPID_KEY ?? ''
 
 export const Events: { [event in keyof typeof ResponseEvents]: EventInformation } = {
   [ResponseEvents.NotificationsEnabled]: {
     title: (t) => t('Notifications Enabled'),
-    message: (t) => t('You can now opt-in to pancakeswap web notifications'),
+    message: (t) => t('You can now opt-in to cometswap web notifications'),
   },
   [ResponseEvents.NotificationsEnabledError]: {
     title: (t) => t('Error Enabling Notifications'),
@@ -133,3 +133,4 @@ export const ENABLE_ALL_SCOPES = [
   SubsctiptionType.Promotional,
 ]
 export const DISABLE_ALL_SCOPES = [SubsctiptionType.Alerts, SubsctiptionType.Liquidity]
+

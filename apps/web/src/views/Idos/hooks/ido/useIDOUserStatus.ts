@@ -1,4 +1,4 @@
-import { type Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { type Currency, CurrencyAmount } from '@cometswap/swap-sdk-core'
 import { useQuery } from '@tanstack/react-query'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useMemo } from 'react'
@@ -122,3 +122,4 @@ const useViewUserOfferingAndRefundingAmounts = () => {
     enabled: !!account && !!idoContract,
   })
 }
+

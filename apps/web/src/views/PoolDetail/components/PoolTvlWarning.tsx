@@ -1,7 +1,7 @@
-import { getChainName } from '@pancakeswap/chains'
-import { Protocol } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Message, MessageText, Text } from '@pancakeswap/uikit'
+import { getChainName } from '@cometswap/chains'
+import { Protocol } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Message, MessageText, Text } from '@cometswap/uikit'
 import { PoolInfo } from 'state/farmsV4/state/type'
 import { TextLink } from 'views/Ifos/components/IfoCardStyles'
 import { useRouterQuery } from '../hooks/useRouterQuery'
@@ -16,7 +16,7 @@ export const PoolTvlWarning = ({ poolInfo }: { poolInfo: PoolInfo }) => {
 
   const version = `${protocol === Protocol.V3 ? '/v3/' : ''}`
   const stableSwap = `${protocol === Protocol.STABLE ? '?type=stableSwap' : ''}`
-  const link = `https://pancakeswap.finance/info/${version}${chain}/pairs/${id}${stableSwap}`
+  const link = `https://cometswap.finance/info/${version}${chain}/pairs/${id}${stableSwap}`
   if (tvlUsd < ONE_BILLION) {
     return null
   }
@@ -34,3 +34,4 @@ export const PoolTvlWarning = ({ poolInfo }: { poolInfo: PoolInfo }) => {
     </Message>
   )
 }
+

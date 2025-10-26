@@ -1,6 +1,6 @@
-import { useCountdown } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useCountdown } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import truncateHash from '@cometswap/utils/truncateHash'
 import {
   CheckmarkCircleIcon,
   CircleLoader,
@@ -11,7 +11,7 @@ import {
   RowBetween,
   Text,
   ScanLink,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { LightGreyCard } from 'components/Card'
 import dayjs from 'dayjs'
 import { useToken } from 'hooks/Tokens'
@@ -40,7 +40,7 @@ export function XSwapTransactionDetailModal({ order }: { order: GetXOrderReceipt
   )
 
   return (
-    <Modal title={t('PancakeSwap X Order')}>
+    <Modal title={t('CometSwap X Order')}>
       <Column justifyContent="center" textAlign="center" gap="24px">
         <Column justifyContent="center" textAlign="center" gap="12px">
           <Flex justifyContent="center">
@@ -135,3 +135,4 @@ function RemainingTime({ deadline }: { deadline: string }) {
     time: `${String(countdown.minutes).padStart(2, '0')}:${String(countdown.seconds).padStart(2, '0')}`,
   })
 }
+

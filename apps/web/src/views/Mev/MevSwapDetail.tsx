@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, QuestionHelperV2, SkeletonV2, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, QuestionHelperV2, SkeletonV2, Text } from '@cometswap/uikit'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { useIsMEVEnabled } from './hooks'
 
@@ -14,7 +14,7 @@ export const MevSwapDetail: React.FC = () => {
       <RowBetween>
         <RowFixed>
           <QuestionHelperV2
-            text={t('PancakeSwap MEV Guard protects you from frontrunning and sandwich attacks when Swapping.')}
+            text={t('CometSwap MEV Guard protects you from frontrunning and sandwich attacks when Swapping.')}
             placement="top-start"
           >
             <Text
@@ -35,3 +35,4 @@ export const MevSwapDetail: React.FC = () => {
     </Box>
   )
 }
+

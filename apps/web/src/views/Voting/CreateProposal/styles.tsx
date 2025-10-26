@@ -1,4 +1,4 @@
-import { Box, Text } from '@pancakeswap/uikit'
+import { Box, Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const BaseLabel = styled.label`
@@ -32,3 +32,4 @@ export const FormErrors: React.FC<React.PropsWithChildren<{ errors: string[] }>>
     </Box>
   )
 }
+

@@ -1,13 +1,13 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Text } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Text } from "@cometswap/uikit";
 import { ActionContent, ActionTitles, StyledActionContainer } from "./styles";
 
 const AccountNotConnect = ({
   children,
-  bCakeInfoSlot,
+  bveCometInfoSlot,
 }: {
   children: React.ReactNode;
-  bCakeInfoSlot?: React.ReactElement;
+  bveCometInfoSlot?: React.ReactElement;
 }) => {
   const { t } = useTranslation();
 
@@ -19,7 +19,7 @@ const AccountNotConnect = ({
         </Text>
       </ActionTitles>
       <ActionContent style={{ justifyContent: "flex-start", alignItems: "center", gap: 16 }}>{children}</ActionContent>
-      {bCakeInfoSlot}
+      {bveCometInfoSlot}
     </StyledActionContainer>
   );
 };

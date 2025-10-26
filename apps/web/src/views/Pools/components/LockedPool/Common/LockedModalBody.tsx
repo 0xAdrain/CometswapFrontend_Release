@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { MAX_LOCK_DURATION } from '@pancakeswap/pools'
-import { AutoRenewIcon, Box, Button, Flex, Message, MessageText, Text } from '@pancakeswap/uikit'
-import { getBalanceAmount, getDecimalAmount } from '@pancakeswap/utils/formatBalance'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { useTranslation } from '@cometswap/localization'
+import { MAX_LOCK_DURATION } from '@cometswap/pools'
+import { AutoRenewIcon, Box, Button, Flex, Message, MessageText, Text } from '@cometswap/uikit'
+import { getBalanceAmount, getDecimalAmount } from '@cometswap/utils/formatBalance'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import BigNumber from 'bignumber.js'
 import _noop from 'lodash/noop'
 import dynamic from 'next/dynamic'
@@ -74,8 +74,8 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
 
   const needsEnable = useMemo(() => cakeNeeded && !hasEnoughBalanceToExtend, [cakeNeeded, hasEnoughBalanceToExtend])
 
-  const { allowance, setLastUpdated } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
-  const { handleApprove, pendingTx: approvePendingTx } = useVaultApprove(VaultKey.CakeVault, setLastUpdated)
+  const { allowance, setLastUpdated } = useCheckVaultApprovalStatus(VaultKey.CometVault)
+  const { handleApprove, pendingTx: approvePendingTx } = useVaultApprove(VaultKey.CometVault, setLastUpdated)
   const [showApproveWarning, setShowApproveWarning] = useState(false)
 
   const needsApprove = useMemo(() => {
@@ -144,11 +144,11 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
       {!needsApprove && cakeNeeded ? (
         hasEnoughBalanceToExtend ? (
           <Text fontSize="12px" mt="24px">
-            {t('0.0001 CAKE will be spent to extend')}
+            {t('0.0001 COMETwill be spent to extend')}
           </Text>
         ) : (
           <Message variant="warning" mt="24px">
-            <MessageText maxWidth="200px">{t('0.0001 CAKE required for enabling extension')}</MessageText>
+            <MessageText maxWidth="200px">{t('0.0001 COMETrequired for enabling extension')}</MessageText>
           </Message>
         )
       ) : null}
@@ -171,7 +171,7 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
           </Button>
         ) : showEnableConfirmButtons ? (
           <ExtendEnable
-            hasEnoughCake={hasEnoughBalanceToExtend ?? false}
+            hasEnoughComet={hasEnoughBalanceToExtend ?? false}
             handleConfirmClick={handleConfirmClick}
             pendingConfirmTx={pendingTx}
             isValidAmount={isValidAmount}
@@ -194,3 +194,4 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
 }
 
 export default LockedModalBody
+

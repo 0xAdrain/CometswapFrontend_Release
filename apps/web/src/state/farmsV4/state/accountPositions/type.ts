@@ -1,7 +1,7 @@
-import { Protocol } from '@pancakeswap/farms'
-import { ERC20Token, Pair } from '@pancakeswap/sdk'
-import { LegacyStableSwapPair } from '@pancakeswap/smart-router/legacy-router'
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { Protocol } from '@cometswap/farms'
+import { ERC20Token, Pair } from '@cometswap/sdk'
+import { LegacyStableSwapPair } from '@cometswap/smart-router/legacy-router'
+import { CurrencyAmount } from '@cometswap/swap-sdk-core'
 import { Address } from 'viem/accounts'
 
 export type PositionDetail = {
@@ -62,3 +62,4 @@ export type StableLPDetail = {
 }
 
 export type PairListType = PositionDetail | V2LPDetail | StableLPDetail
+

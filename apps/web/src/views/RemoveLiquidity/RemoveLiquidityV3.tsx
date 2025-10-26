@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { CurrencyAmount, WNATIVE } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { CurrencyAmount, WNATIVE } from '@cometswap/sdk'
 import {
   ArrowDownIcon,
   AutoColumn,
@@ -18,12 +18,12 @@ import {
   Text,
   Toggle,
   useModal,
-} from '@pancakeswap/uikit'
-import { ConfirmationModalContent } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { ConfirmationModalContent } from '@cometswap/widgets-internal'
 
-import { useDebouncedChangeHandler } from '@pancakeswap/hooks'
-import { useUserSlippage } from '@pancakeswap/utils/user'
-import { MasterChefV3, NonfungiblePositionManager } from '@pancakeswap/v3-sdk'
+import { useDebouncedChangeHandler } from '@cometswap/hooks'
+import { useUserSlippage } from '@cometswap/utils/user'
+import { MasterChefV3, NonfungiblePositionManager } from '@cometswap/v3-sdk'
 import { AppBody, AppHeader } from 'components/App'
 import { LightGreyCard } from 'components/Card'
 import FormattedCurrencyAmount from 'components/FormattedCurrencyAmount/FormattedCurrencyAmount'
@@ -537,7 +537,7 @@ function Remove({ tokenId }: { tokenId?: bigint }) {
           {isStakedInMCv3 ? (
             <Message variant="primary" mb="20px">
               {t(
-                'This liquidity position is currently staking in the Farm. Adding or removing liquidity will also harvest any unclaimed CAKE to your wallet.',
+                'This liquidity position is currently staking in the Farm. Adding or removing liquidity will also harvest any unclaimed COMETto your wallet.',
               )}
             </Message>
           ) : null}
@@ -557,3 +557,4 @@ function Remove({ tokenId }: { tokenId?: bigint }) {
     </Page>
   )
 }
+

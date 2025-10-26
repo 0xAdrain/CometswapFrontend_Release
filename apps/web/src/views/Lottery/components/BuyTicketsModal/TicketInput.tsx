@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { styled } from 'styled-components'
-import { Flex, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { Ticket, UpdateTicketAction } from './useTicketsReducer'
 
 const InputsContainer = styled.div<{ focused: boolean; isDuplicate: boolean }>`
@@ -297,3 +297,4 @@ const TicketContainer: React.FC<
 }
 
 export default TicketContainer
+

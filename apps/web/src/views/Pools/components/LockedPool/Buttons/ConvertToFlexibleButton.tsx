@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, ButtonProps, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, ButtonProps, useToast } from '@cometswap/uikit'
 import { memo, useCallback } from 'react'
 
 import { useAccount } from 'wagmi'
@@ -9,7 +9,7 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useVaultPoolContract } from 'hooks/useContract'
 import { useAppDispatch } from 'state'
-import { fetchCakeVaultUserData } from 'state/pools'
+import { fetchCometVaultUserData } from 'state/pools'
 import { VaultKey } from 'state/types'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useQueryClient } from '@tanstack/react-query'
@@ -20,7 +20,7 @@ const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = 
 
   const { address: account } = useAccount()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const vaultPoolContract = useVaultPoolContract(VaultKey.CakeVault)
+  const vaultPoolContract = useVaultPoolContract(VaultKey.CometVault)
   const { callWithGasPrice } = useCallWithGasPrice()
   const { t } = useTranslation()
   const queryClient = useQueryClient()
@@ -29,7 +29,7 @@ const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = 
   const handleUnlock = useCallback(async () => {
     if (!account || !chainId) return
     const callOptions = {
-      gas: vaultPoolConfig[VaultKey.CakeVault].gasLimit,
+      gas: vaultPoolConfig[VaultKey.CometVault].gasLimit,
     }
 
     const receipt = await fetchWithCatchTxError(() => {
@@ -44,9 +44,9 @@ const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = 
           {t('Your funds have been staked in the pool')}
         </ToastDescriptionWithTx>,
       )
-      dispatch(fetchCakeVaultUserData({ account, chainId }))
+      dispatch(fetchCometVaultUserData({ account, chainId }))
       queryClient.invalidateQueries({
-        queryKey: ['userCakeLockStatus', account],
+        queryKey: ['userCometLockStatus', account],
       })
     }
   }, [
@@ -69,3 +69,4 @@ const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = 
 }
 
 export default memo(ConvertToFlexibleButton)
+

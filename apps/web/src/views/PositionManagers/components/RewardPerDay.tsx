@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Svg, SvgProps, Tag, TagProps } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Svg, SvgProps, Tag, TagProps } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { memo, useMemo } from 'react'
 import {} from 'styled-components'
@@ -13,17 +13,17 @@ export const RewardPerDay: React.FC<{ rewardPerSec: number; symbol?: string } & 
     }, [rewardPerSec])
     return (
       <Tag
-        startIcon={<CakeOutlineIcon color={theme.colors.secondary} width={props.scale === 'sm' ? 13 : undefined} />}
+        startIcon={<CometOutlineIcon color={theme.colors.secondary} width={props.scale === 'sm' ? 13 : undefined} />}
         variant="secondary"
         {...props}
       >
-        {cakePerDay === 0 ? '0.00' : cakePerDay.toFixed(2)} {symbol ?? t('CAKE')}{' '}
+        {cakePerDay === 0 ? '0.00' : cakePerDay.toFixed(2)} {symbol ?? t('COMET')}{' '}
       </Tag>
     )
   },
 )
 
-const CakeOutlineIcon: React.FC<React.PropsWithChildren<SvgProps>> = memo((props) => {
+const CometOutlineIcon: React.FC<React.PropsWithChildren<SvgProps>> = memo((props) => {
   return (
     <Svg viewBox="0 0 13 14" fill="none" {...props}>
       <path
@@ -43,3 +43,4 @@ const CakeOutlineIcon: React.FC<React.PropsWithChildren<SvgProps>> = memo((props
     </Svg>
   )
 })
+

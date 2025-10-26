@@ -11,3 +11,4 @@ export const accurateTimer = (callback, time = 1000) => {
   timeout = setTimeout(wrapper, nextAt - Date.now())
   return { cancel }
 }
+

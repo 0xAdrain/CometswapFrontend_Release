@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 export const GradientBox = styled(Box)`
@@ -9,3 +9,4 @@ export const GradientBox = styled(Box)`
       theme.isDark ? 'rgba(32, 28, 41, 0.5) 100%)' : 'rgba(255, 255, 255, 0.8) 100%)'
     }`};
 `
+

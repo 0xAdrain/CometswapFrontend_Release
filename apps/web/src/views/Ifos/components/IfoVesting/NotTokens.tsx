@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text, BunnyPlaceholderIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Flex, Text, BunnyPlaceholderIcon } from '@cometswap/uikit'
 import NextLink from 'next/link'
 import { MessageTextLink } from '../IfoCardStyles'
 
@@ -14,7 +14,7 @@ const NotTokens: React.FC<React.PropsWithChildren> = () => {
           {t('You have no tokens available for claiming')}
         </Text>
         <Text fontSize="14px" color="textSubtle" textAlign="center">
-          {t('Participate in our next IFO. and remember to lock your CAKE to increase your allocation!')}
+          {t('Participate in our next IFO. and remember to lock your COMETto increase your allocation!')}
         </Text>
         <NextLink href="/ifo#ifo-how-to">
           <MessageTextLink color="primary" display="inline">
@@ -27,3 +27,4 @@ const NotTokens: React.FC<React.PropsWithChildren> = () => {
 }
 
 export default NotTokens
+

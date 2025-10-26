@@ -38,3 +38,4 @@ export interface AdsCampaignConfig {
   ad: AdsConfig
   infoStripe: InfoStripeConfig
 }
+

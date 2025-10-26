@@ -4,7 +4,7 @@ import {
   useUserSingleHopOnly,
   useUserSlippage,
   useSpeedQuote,
-} from '@pancakeswap/utils/user'
+} from '@cometswap/utils/user'
 
 import { useFeatureFlagEvaluation } from 'hooks/useDataDogRUM'
 import useTheme from 'hooks/useTheme'
@@ -64,3 +64,4 @@ export function useGlobalSettingsEvaluation() {
   useFeatureFlagEvaluation('tx-settings-slippage', userSlippageTolerance)
   useFeatureFlagEvaluation('tx-settings-ttl', ttl)
 }
+

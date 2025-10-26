@@ -1,8 +1,8 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { Skeleton, Text } from "@pancakeswap/uikit";
+import { useTranslation } from "@cometswap/localization";
+import { Skeleton, Text } from "@cometswap/uikit";
 import { ActionContent, ActionTitles, StyledActionContainer } from "./styles";
 
-const StakeActionDataNotReady: React.FC<{ bCakeInfoSlot?: React.ReactElement }> = ({ bCakeInfoSlot }) => {
+const StakeActionDataNotReady: React.FC<{ bveCometInfoSlot?: React.ReactElement }> = ({ bveCometInfoSlot }) => {
   const { t } = useTranslation();
   return (
     <StyledActionContainer>
@@ -14,7 +14,7 @@ const StakeActionDataNotReady: React.FC<{ bCakeInfoSlot?: React.ReactElement }> 
       <ActionContent>
         <Skeleton width={180} marginBottom={28} marginTop={14} />
       </ActionContent>
-      {bCakeInfoSlot}
+      {bveCometInfoSlot}
     </StyledActionContainer>
   );
 };

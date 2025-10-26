@@ -23,13 +23,14 @@
       "outputs": ["dist/**"]
     },
     "lint": {
-      "dependsOn": ["@pancakeswap/next-config#build"],
+      "dependsOn": ["@cometswap/next-config#build"],
       "outputs": []
     },
     "dev": {
-      "dependsOn": ["@pancakeswap/next-config#build"],
-      "cache": false,
-      "persistent": true
+      "dependsOn": ["@cometswap/next-config#build"],
+      "cache": true,
+      "persistent": true,
+      "outputs": ["dist/**", ".next/**/*", "!.next/cache/**"]
     },
     "start": {
       "cache": false

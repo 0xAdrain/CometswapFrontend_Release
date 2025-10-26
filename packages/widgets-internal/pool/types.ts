@@ -1,6 +1,6 @@
 import type {
-  DeserializedCakeVault,
-  DeserializedLockedCakeVault,
+  DeserializedCometVault,
+  DeserializedLockedCometVault,
   DeserializedLockedVaultUser,
   DeserializedPool,
   DeserializedPoolConfig,
@@ -12,13 +12,13 @@ import type {
   PoolConfigBaseProps,
   SerializedPoolConfig,
   SerializedVaultFees,
-} from "@pancakeswap/pools";
-import { VaultKey } from "@pancakeswap/pools";
+} from "@cometswap/pools";
+import { VaultKey } from "@cometswap/pools";
 import BigNumber from "bignumber.js";
 
 export {
-  DeserializedCakeVault,
-  DeserializedLockedCakeVault,
+  DeserializedCometVault,
+  DeserializedLockedCometVault,
   DeserializedLockedVaultUser,
   DeserializedPool,
   DeserializedPoolConfig,

@@ -1,4 +1,4 @@
-import { useIsomorphicEffect } from '@pancakeswap/uikit'
+import { useIsomorphicEffect } from '@cometswap/uikit'
 import { logWeb3WalletViews } from 'utils/customGTMEventTracking'
 
 export const useWeb3WalletView = () => {
@@ -7,3 +7,4 @@ export const useWeb3WalletView = () => {
     if (window?.ethereum?.isBinance) logWeb3WalletViews()
   }, [])
 }
+

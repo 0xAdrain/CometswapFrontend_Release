@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/localization",
+  "name": "@cometswap/localization",
   "license": "MIT",
   "version": "6.0.3",
   "description": "A minimal internationalization library",

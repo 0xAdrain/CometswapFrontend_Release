@@ -1,4 +1,4 @@
-import { Ifo } from '@pancakeswap/ifos'
+import { Ifo } from '@cometswap/ifos'
 
 import useGetPublicIfoV8Data from 'views/Ifos/hooks/v8/useGetPublicIfoData'
 import useGetWalletIfoV8Data from 'views/Ifos/hooks/v8/useGetWalletIfoData'
@@ -15,3 +15,4 @@ export const IfoCardV8Data: React.FC<React.PropsWithChildren<Props>> = ({ ifo })
 
   return <IfoFoldableCard ifo={ifo} publicIfoData={publicIfoData} walletIfoData={walletIfoData} />
 }
+

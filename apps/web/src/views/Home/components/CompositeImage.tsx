@@ -1,5 +1,5 @@
 import { styled, keyframes } from 'styled-components'
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@cometswap/uikit'
 
 const floatingAnim = (x: string, y: string) => keyframes`
   from {
@@ -139,3 +139,4 @@ const CompositeImage: React.FC<React.PropsWithChildren<ComponentProps>> = ({
 }
 
 export default CompositeImage
+

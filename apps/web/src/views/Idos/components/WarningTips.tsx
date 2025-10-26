@@ -1,4 +1,4 @@
-import { Box, Message, Flex, Text, InfoFilledIcon } from '@pancakeswap/uikit'
+import { Box, Message, Flex, Text, InfoFilledIcon } from '@cometswap/uikit'
 import { SpaceProps } from 'styled-system'
 import Link from 'next/link'
 import { ReactNode } from 'react'
@@ -38,3 +38,4 @@ export function WarningTips({ action, title, content, ...props }: Props) {
     </Message>
   )
 }
+

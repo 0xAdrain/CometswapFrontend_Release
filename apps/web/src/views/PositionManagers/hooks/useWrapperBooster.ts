@@ -1,32 +1,32 @@
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useBCakeFarmWrapperBoosterVeCakeContract } from 'hooks/useContract'
+import { useBCometFarmWrapperBoosterCometContract } from 'hooks/useContract'
 import { useMemo } from 'react'
 import { Address } from 'viem'
 
 const SHOULD_UPDATE_THRESHOLD = 1.1
 
-export const useWrapperBooster = (bCakeBoosterAddress: Address, boostMultiplier: number, wrapperAddress?: Address) => {
-  const bCakeFarmWrapperBoosterVeCakeContract = useBCakeFarmWrapperBoosterVeCakeContract()
+export const useWrapperBooster = (bCometBoosterAddress: Address, boostMultiplier: number, wrapperAddress?: Address) => {
+  const bCometFarmWrapperBoosterCometContract = useBCometFarmWrapperBoosterCometContract()
   const { account } = useActiveWeb3React()
   const { data, refetch } = useQuery({
-    queryKey: ['useWrapperBooster', bCakeBoosterAddress, account, wrapperAddress],
+    queryKey: ['useWrapperBooster', bCometBoosterAddress, account, wrapperAddress],
     queryFn: () =>
-      bCakeFarmWrapperBoosterVeCakeContract.read.getUserMultiplierByWrapper([account ?? '0x', wrapperAddress ?? '0x']),
-    enabled: !!bCakeBoosterAddress && !!account && !!wrapperAddress,
+      bCometFarmWrapperBoosterCometContract.read.getUserMultiplierByWrapper([account ?? '0x', wrapperAddress ?? '0x']),
+    enabled: !!bCometBoosterAddress && !!account && !!wrapperAddress,
     refetchInterval: 10000,
     staleTime: 10000,
     gcTime: 10000,
   })
 
   const { data: BOOST_PRECISION } = useQuery({
-    queryKey: ['useWrapperBooster_BOOST_PRECISION', bCakeBoosterAddress],
-    queryFn: () => bCakeFarmWrapperBoosterVeCakeContract.read.BOOST_PRECISION(),
-    enabled: !!bCakeBoosterAddress,
+    queryKey: ['useWrapperBooster_BOOST_PRECISION', bCometBoosterAddress],
+    queryFn: () => bCometFarmWrapperBoosterCometContract.read.BOOST_PRECISION(),
+    enabled: !!bCometBoosterAddress,
   })
 
-  const veCakeUserMultiplierBeforeBoosted = useMemo(() => {
+  const vecometUserMultiplierBeforeBoosted = useMemo(() => {
     return data && BOOST_PRECISION && Boolean(wrapperAddress)
       ? Number(new BigNumber(data.toString()).div(BOOST_PRECISION.toString()))
       : 0
@@ -35,32 +35,33 @@ export const useWrapperBooster = (bCakeBoosterAddress: Address, boostMultiplier:
   const shouldUpdate = useMemo(() => {
     if (
       (boostMultiplier &&
-        veCakeUserMultiplierBeforeBoosted &&
-        boostMultiplier * SHOULD_UPDATE_THRESHOLD <= veCakeUserMultiplierBeforeBoosted) ||
-      (boostMultiplier === 1 && veCakeUserMultiplierBeforeBoosted > boostMultiplier)
+        vecometUserMultiplierBeforeBoosted &&
+        boostMultiplier * SHOULD_UPDATE_THRESHOLD <= vecometUserMultiplierBeforeBoosted) ||
+      (boostMultiplier === 1 && vecometUserMultiplierBeforeBoosted > boostMultiplier)
     )
       return true
     return false
-  }, [boostMultiplier, veCakeUserMultiplierBeforeBoosted])
+  }, [boostMultiplier, vecometUserMultiplierBeforeBoosted])
 
-  return { veCakeUserMultiplierBeforeBoosted, refetchWrapperBooster: refetch, shouldUpdate }
+  return { vecometUserMultiplierBeforeBoosted, refetchWrapperBooster: refetch, shouldUpdate }
 }
 
-export const useIsWrapperWhiteList = (bCakeBoosterAddress?: Address, wrapperAddress?: Address) => {
-  const bCakeFarmWrapperBoosterVeCakeContract = useBCakeFarmWrapperBoosterVeCakeContract()
+export const useIsWrapperWhiteList = (bCometBoosterAddress?: Address, wrapperAddress?: Address) => {
+  const bCometFarmWrapperBoosterCometContract = useBCometFarmWrapperBoosterCometContract()
   const { data } = useQuery({
-    queryKey: ['useIsWrapperWhiteList', bCakeBoosterAddress, wrapperAddress],
-    queryFn: () => bCakeFarmWrapperBoosterVeCakeContract.read.whiteListWrapper([wrapperAddress ?? '0x']),
-    enabled: !!bCakeBoosterAddress && !!wrapperAddress,
+    queryKey: ['useIsWrapperWhiteList', bCometBoosterAddress, wrapperAddress],
+    queryFn: () => bCometFarmWrapperBoosterCometContract.read.whiteListWrapper([wrapperAddress ?? '0x']),
+    enabled: !!bCometBoosterAddress && !!wrapperAddress,
     refetchInterval: 10000,
     staleTime: 10000,
     gcTime: 10000,
   })
 
   const isBoosterWhiteList = useMemo(() => {
-    if (!bCakeBoosterAddress || !wrapperAddress) return false
+    if (!bCometBoosterAddress || !wrapperAddress) return false
     return Boolean(data)
-  }, [bCakeBoosterAddress, data, wrapperAddress])
+  }, [bCometBoosterAddress, data, wrapperAddress])
 
   return { isBoosterWhiteList }
 }
+

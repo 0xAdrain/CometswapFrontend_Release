@@ -1,5 +1,5 @@
-import { Percent } from '@pancakeswap/sdk'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Percent } from '@cometswap/sdk'
+import { Flex, Text } from '@cometswap/uikit'
 import { ONE_BIPS } from 'config/constants/exchange'
 import { warningSeverity } from 'utils/exchange'
 import { ErrorText } from './styleds'
@@ -34,3 +34,4 @@ export default function FormattedPriceImpact({ priceImpact, isX }: { priceImpact
     </ErrorText>
   )
 }
+

@@ -60,3 +60,4 @@ export const logError = (error: Error | unknown) => {
   }
   console.error(error)
 }
+

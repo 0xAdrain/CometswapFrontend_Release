@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { deserializeToken } from '@pancakeswap/token-lists'
+import { Token } from '@cometswap/sdk'
+import { deserializeToken } from '@cometswap/token-lists'
 import { createSelector } from '@reduxjs/toolkit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useMemo } from 'react'
@@ -31,3 +31,4 @@ export function useUserAddedTokensByChainIds(chainIds: number[]): {
 } {
   return useSelector(useMemo(() => userAddedTokenSelectorByChainIds(chainIds), [chainIds]))
 }
+

@@ -1,7 +1,7 @@
-import { getChainNameInKebabCase } from '@pancakeswap/chains'
-import { Protocol } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex } from '@pancakeswap/uikit'
+import { getChainNameInKebabCase } from '@cometswap/chains'
+import { Protocol } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { Flex } from '@cometswap/uikit'
 import {
   INetworkProps,
   IPoolTypeMenuProps,
@@ -9,7 +9,7 @@ import {
   NetworkFilter,
   PoolTypeMenu,
   TokenFilter,
-} from '@pancakeswap/widgets-internal'
+} from '@cometswap/widgets-internal'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import isEmpty from 'lodash/isEmpty'
@@ -168,3 +168,4 @@ export const PoolsFilterPanel: React.FC<React.PropsWithChildren<IPoolsFilterPane
     </>
   )
 }
+

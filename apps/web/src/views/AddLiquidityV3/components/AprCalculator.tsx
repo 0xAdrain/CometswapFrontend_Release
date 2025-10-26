@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Price, Token, ZERO } from '@pancakeswap/sdk'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, CurrencyAmount, Price, Token, ZERO } from '@cometswap/sdk'
 import {
   CalculateIcon,
   Flex,
@@ -9,9 +9,9 @@ import {
   RocketIcon,
   Text,
   TooltipText,
-} from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { formatPrice } from '@pancakeswap/utils/formatFractions'
+} from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { formatPrice } from '@cometswap/utils/formatFractions'
 import {
   FeeCalculator,
   Pool,
@@ -19,19 +19,19 @@ import {
   isPoolTickInRange,
   parseProtocolFees,
   TickMath,
-} from '@pancakeswap/v3-sdk'
+} from '@cometswap/v3-sdk'
 import {
   RoiCalculatorModalV2,
   RoiCalculatorPositionInfo,
   useAmountsByUsdValue,
   useRoi,
-} from '@pancakeswap/widgets-internal/roi'
-import { useCakePrice } from 'hooks/useCakePrice'
+} from '@cometswap/widgets-internal/roi'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 
-import { PositionDetails, getPositionFarmApr, getPositionFarmAprFactor } from '@pancakeswap/farms'
+import { PositionDetails, getPositionFarmApr, getPositionFarmAprFactor } from '@cometswap/farms'
 import { Bound } from 'config/constants/types'
 import { useFarm } from 'hooks/useFarm'
 import { usePoolAvgTradingVolume } from 'hooks/usePoolTradingVolume'
@@ -44,8 +44,8 @@ import { batch } from 'react-redux'
 import { CurrencyField as Field } from 'utils/types'
 import currencyId from 'utils/currencyId'
 
-import { useUserPositionInfo } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBCakeV3Info'
-import { BoostStatus, useBoostStatus } from 'views/Farms/components/YieldBooster/hooks/bCakeV3/useBoostStatus'
+import { useUserPositionInfo } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBCometV3Info'
+import { BoostStatus, useBoostStatus } from 'views/Farms/components/YieldBooster/hooks/bCometV3/useBoostStatus'
 import { getActiveTick } from 'utils/getActiveTick'
 import { useV3MintActionHandlers } from '../formViews/V3FormView/form/hooks/useV3MintActionHandlers'
 import { useV3FormState } from '../formViews/V3FormView/form/reducer'
@@ -91,7 +91,7 @@ export function AprCalculator({
   const [isOpen, setOpen] = useState(false)
   const [priceSpan, setPriceSpan] = useState(PairDataTimeWindowEnum.DAY)
   const { data: farm } = useFarm({ currencyA: baseCurrency, currencyB: quoteCurrency, feeAmount })
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const formState = useV3FormState()
 
@@ -222,7 +222,7 @@ export function AprCalculator({
   const [amount0, amount1] = inverted ? [validAmountB, validAmountA] : [validAmountA, validAmountB]
   const inRange = useMemo(() => isPoolTickInRange(pool, tickLower, tickUpper), [pool, tickLower, tickUpper])
   const { positionFarmApr, positionFarmAprFactor } = useMemo(() => {
-    if (!farm || !cakePrice || !positionLiquidity || !amount0 || !amount1 || !inRange) {
+    if (!farm || !cometPrice || !positionLiquidity || !amount0 || !amount1 || !inRange) {
       return {
         positionFarmApr: '0',
         positionFarmAprFactor: BIG_ZERO,
@@ -238,20 +238,20 @@ export function AprCalculator({
       positionFarmApr: getPositionFarmApr({
         poolWeight,
         positionTvlUsd,
-        cakePriceUsd: cakePrice,
+        cakePriceUsd: cometPrice,
         liquidity: positionLiquidity,
         cakePerSecond,
         totalStakedLiquidity: lmPoolLiquidity,
       }),
       positionFarmAprFactor: getPositionFarmAprFactor({
         poolWeight,
-        cakePriceUsd: cakePrice,
+        cakePriceUsd: cometPrice,
         liquidity: positionLiquidity,
         cakePerSecond,
         totalStakedLiquidity: lmPoolLiquidity,
       }),
     }
-  }, [farm, cakePrice, positionLiquidity, amount0, amount1, inRange])
+  }, [farm, cometPrice, positionLiquidity, amount0, amount1, inRange])
 
   // NOTE: Assume no liquidity when opening modal
   const { onFieldAInput, onBothRangeInput, onSetFullRange } = useV3MintActionHandlers(false)
@@ -405,9 +405,10 @@ export function AprCalculator({
         onPriceSpanChange={setPriceSpan}
         onApply={onApply}
         isFarm={Boolean(hasFarmApr)}
-        cakeAprFactor={positionFarmAprFactor.times(isBoosted ? boostMultiplier : 1)}
-        cakePrice={cakePrice.toFixed(3)}
+        cometAprFactor={positionFarmAprFactor.times(isBoosted ? boostMultiplier : 1)}
+        cometPrice={cometPrice.toFixed(3)}
       />
     </>
   )
 }
+

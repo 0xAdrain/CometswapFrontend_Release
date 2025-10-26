@@ -26,3 +26,4 @@ const usePollPredictions = () => {
 }
 
 export default usePollPredictions
+

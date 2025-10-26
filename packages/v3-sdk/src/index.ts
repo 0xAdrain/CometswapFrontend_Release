@@ -13,7 +13,7 @@ export * from './staker'
 export * from './swapRouter'
 
 // abi
-export * from './abi/IPancakeV3Pool'
+export * from './abi/ICometV3Pool'
 export * from './abi/MasterChefV3'
 export * from './abi/NonfungiblePositionManager'
 export * from './abi/PeripheryPaymentsWithFee'

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import SwapWarningTokensConfig from 'config/constants/swapWarningTokens'
 import MPendleWarning from './mPendleWarning'
 
@@ -12,3 +12,4 @@ const ARBITRUM_WARNING_LIST = {
 }
 
 export default ARBITRUM_WARNING_LIST
+

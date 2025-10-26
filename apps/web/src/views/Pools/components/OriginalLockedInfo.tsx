@@ -1,9 +1,9 @@
-import { Box, Text } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { Box, Text } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { Token } from '@cometswap/sdk'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 
 interface OriginalLockedInfoProps {
@@ -36,7 +36,7 @@ const OriginalLockedInfo: React.FC<React.PropsWithChildren<OriginalLockedInfoPro
       </Text>
       <Box mt="12px">
         <Text>{t('Original locked amount')}:</Text>
-        <Text bold>{`${originalLockedAmountText} CAKE (${originalUsdValueText} USD)`}</Text>
+        <Text bold>{`${originalLockedAmountText} COMET(${originalUsdValueText} USD)`}</Text>
       </Box>
       <Box mt="12px">
         <Text>{t('Last action')}:</Text>
@@ -56,3 +56,4 @@ const OriginalLockedInfo: React.FC<React.PropsWithChildren<OriginalLockedInfoPro
 }
 
 export default OriginalLockedInfo
+

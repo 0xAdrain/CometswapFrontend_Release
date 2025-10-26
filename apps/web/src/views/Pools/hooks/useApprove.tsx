@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { MaxUint256 } from '@pancakeswap/swap-sdk-core'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { MaxUint256 } from '@cometswap/swap-sdk-core'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import useCakeApprovalStatus from 'hooks/useCakeApprovalStatus'
-import useCakeApprove from 'hooks/useCakeApprove'
+import useVeCometApprovalStatus from 'hooks/useVeCometApprovalStatus'
+import useVeCometApprove from 'hooks/useVeCometApprove'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useERC20, useSousChef, useVaultPoolContract } from 'hooks/useContract'
@@ -58,20 +58,21 @@ export const useApprovePool = (lpContract: ReturnType<typeof useERC20>, sousId: 
   return { handleApprove, pendingTx }
 }
 
-// Approve CAKE auto pool
+// Approve COMETauto pool
 export const useVaultApprove = (vaultKey: VaultKey | undefined, setLastUpdated: () => void) => {
   const vaultPoolContract = useVaultPoolContract(vaultKey)
   const { t } = useTranslation()
 
-  return useCakeApprove(
+  return useVeCometApprove(
     setLastUpdated,
     vaultPoolContract?.address,
-    t('You can now stake in the %symbol% vault!', { symbol: 'CAKE' }),
+    t('You can now stake in the %symbol% vault!', { symbol: 'COMET' }),
   )
 }
 
 export const useCheckVaultApprovalStatus = (vaultKey?: VaultKey) => {
   const vaultPoolContract = useVaultPoolContract(vaultKey)
 
-  return useCakeApprovalStatus(vaultPoolContract?.address)
+  return useVeCometApprovalStatus(vaultPoolContract?.address)
 }
+

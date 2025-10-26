@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, ERC20Token } from '@pancakeswap/sdk'
-import { AutoRenewIcon, Button } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, ERC20Token } from '@cometswap/sdk'
+import { AutoRenewIcon, Button } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
@@ -39,3 +39,4 @@ export function RequestWithdrawButton({ inputCurrency, currentAmount, selectedLi
     </Button>
   )
 }
+

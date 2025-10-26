@@ -1,8 +1,8 @@
-import { zksyncTokens } from '@pancakeswap/tokens'
+import { zksyncTokens } from '@cometswap/tokens'
 
-import { ChainId } from '@pancakeswap/chains'
-import { Currency, Native } from '@pancakeswap/sdk'
-import { getUniversalRouterAddress } from '@pancakeswap/universal-router-sdk'
+import { ChainId } from '@cometswap/chains'
+import { Currency, Native } from '@cometswap/sdk'
+import { getUniversalRouterAddress } from '@cometswap/universal-router-sdk'
 import addresses from 'config/constants/contracts'
 import { getAddressFromMap } from 'utils/addressHelpers'
 import { Address, Hex } from 'viem'
@@ -12,7 +12,7 @@ export const DEFAULT_PAYMASTER_TOKEN = Native.onChain(ChainId.ZKSYNC)
 export const paymasterTokens: Currency[] = [
   DEFAULT_PAYMASTER_TOKEN,
   zksyncTokens.zk,
-  zksyncTokens.cake,
+  zksyncTokens.comet,
   zksyncTokens.wbtc,
   zksyncTokens.dai,
   zksyncTokens.usdc,
@@ -77,7 +77,7 @@ export const paymasterInfo: {
   [zksyncTokens.hold.address]: {
     discount: '-20%',
   },
-  [zksyncTokens.cake.address]: {
+  [zksyncTokens.comet.address]: {
     discount: '-20%',
   },
 }
@@ -134,3 +134,4 @@ export interface PaymasterParams {
   paymaster: string
   paymasterInput: string
 }
+

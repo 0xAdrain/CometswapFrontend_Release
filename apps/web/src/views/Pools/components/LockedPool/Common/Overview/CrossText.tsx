@@ -1,4 +1,4 @@
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const CrossText = styled(Text)`
@@ -6,3 +6,4 @@ const CrossText = styled(Text)`
 `
 
 export default CrossText
+

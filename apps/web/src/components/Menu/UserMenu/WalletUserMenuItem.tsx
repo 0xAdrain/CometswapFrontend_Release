@@ -1,5 +1,5 @@
-import { Flex, UserMenuItem, WarningIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, UserMenuItem, WarningIcon } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { useAccount, useBalance } from 'wagmi'
 import { LOW_NATIVE_BALANCE } from './WalletModal'
 
@@ -29,3 +29,4 @@ const WalletUserMenuItem: React.FC<React.PropsWithChildren<WalletUserMenuItemPro
 }
 
 export default WalletUserMenuItem
+

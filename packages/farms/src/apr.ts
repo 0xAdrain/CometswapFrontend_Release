@@ -1,6 +1,6 @@
 import BN from 'bignumber.js'
-import { parseNumberToFraction, formatFraction } from '@pancakeswap/utils/formatFractions'
-import { BigintIsh, ZERO } from '@pancakeswap/sdk'
+import { parseNumberToFraction, formatFraction } from '@cometswap/utils/formatFractions'
+import { BigintIsh, ZERO } from '@cometswap/sdk'
 
 type BigNumberish = BN | number | string
 

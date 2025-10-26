@@ -1,4 +1,4 @@
-import { Button } from '@pancakeswap/uikit'
+import { Button } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import { useCallback } from 'react'
 
@@ -41,3 +41,4 @@ export const SortButton = styled(Button)`
     }
   }
 `
+

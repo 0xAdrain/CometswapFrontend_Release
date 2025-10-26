@@ -12,3 +12,4 @@ export const distanceToNowStrict = (timeInMilliSeconds: number) => {
     ? `0 seconds`
     : `${dayjs.duration(dayjs(endTime).diff(dayjs(), 'days'), 'days').asDays()} days`
 }
+

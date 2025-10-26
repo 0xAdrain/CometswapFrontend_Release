@@ -1,6 +1,6 @@
-import { OrderType } from '@pancakeswap/price-api-sdk'
-import { SmartRouterTrade, V4Router } from '@pancakeswap/smart-router'
-import { Currency, TradeType } from '@pancakeswap/swap-sdk-core'
+import { OrderType } from '@cometswap/price-api-sdk'
+import { SmartRouterTrade, V4Router } from '@cometswap/smart-router'
+import { Currency, TradeType } from '@cometswap/swap-sdk-core'
 import { useCallback, useMemo, useRef, useState } from 'react'
 
 import { usePCSX } from 'hooks/usePCSX'
@@ -99,3 +99,4 @@ export const useAllTypeBestTrade = () => {
     resumeQuoting,
   }
 }
+

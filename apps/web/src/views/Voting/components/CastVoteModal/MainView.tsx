@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   AutoRenewIcon,
   Button,
@@ -9,8 +9,8 @@ import {
   RocketIcon,
   Skeleton,
   Text,
-} from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+} from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
@@ -18,7 +18,7 @@ import { useMemo } from 'react'
 import { Proposal, ProposalTypeName } from 'state/types'
 import { styled } from 'styled-components'
 import { getBlockExploreLink } from 'utils'
-import { MyVeCakeCard } from 'views/CakeStaking/components/MyVeCakeCard'
+import { MyCometCard } from 'views/CometStaking/components/MyCometCard'
 import { WeightedVoteResults } from 'views/Voting/Proposal/ResultType/WeightedVoteResults'
 import { SingleVoteState, VoteState, WeightedVoteState } from 'views/Voting/Proposal/VoteType/types'
 import TextEllipsis from '../TextEllipsis'
@@ -59,7 +59,7 @@ interface MainViewProps {
   isError: boolean
   total: number
   disabled?: boolean
-  lockedCakeBalance: number
+  lockedCometBalance: number
   lockedEndTime: number
   proposal: Proposal
   voteType?: ProposalTypeName
@@ -75,7 +75,7 @@ type VeMainViewProps = {
   isError?: boolean
   total: number
   disabled?: boolean
-  veCakeBalance?: number
+  vecometBalance?: number
   voteType?: ProposalTypeName
   onConfirm?: () => void
   onDismiss?: CastVoteModalProps['onDismiss']
@@ -95,7 +95,7 @@ export const VeMainView = ({
   disabled,
   block,
   voteType,
-  veCakeBalance,
+  vecometBalance,
 }: VeMainViewProps) => {
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
@@ -134,18 +134,18 @@ export const VeMainView = ({
           <Message variant="danger" mb="12px">
             <Text color="danger">
               {t(
-                'Hold some CAKE in your wallet or on PancakeSwap at the snapshot block to get voting power for future proposals.',
+                'Hold some COMETin your wallet or on CometSwap at the snapshot block to get voting power for future proposals.',
               )}
             </Text>
           </Message>
         ) : (
           <>
             <br />
-            <MyVeCakeCard type="row" value={!veCakeBalance ? '0' : String(veCakeBalance)} />
+            <MyCometCard type="row" value={!vecometBalance ? '0' : String(vecometBalance)} />
             <br />
             <Text color="textSubtle" fontSize="14px">
               {t(
-                'Your voting power is determined by the number of veCAKE you have at the block detailed above. CAKE held in other places does NOT contribute to your voting power.',
+                'Your voting power is determined by the number of veCOMETyou have at the block detailed above. COMETheld in other places does NOT contribute to your voting power.',
               )}
             </Text>
             <br />
@@ -190,19 +190,19 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
   onViewDetails,
   onDismiss,
   disabled,
-  lockedCakeBalance,
+  lockedCometBalance,
   lockedEndTime,
 }) => {
   const { t } = useTranslation()
   const blockTimestamp = useCurrentBlockTimestamp()
 
-  const hasLockedCake = lockedCakeBalance > 0
+  const hasLockedComet = lockedCometBalance > 0
 
   const isBoostingExpired = useMemo(() => {
     return lockedEndTime !== 0 && new BigNumber(blockTimestamp?.toString() ?? 0).gte(lockedEndTime)
   }, [blockTimestamp, lockedEndTime])
 
-  const hasBoosted = hasLockedCake && !isBoostingExpired
+  const hasBoosted = hasLockedComet && !isBoostingExpired
 
   return (
     <>
@@ -234,11 +234,11 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
                   <Text bold fontSize="20px" color={total === 0 ? 'failure' : 'text'}>
                     {formatNumber(total, 0, 3)}
                   </Text>
-                  {hasLockedCake && (
+                  {hasLockedComet && (
                     <Flex>
                       <RocketIcon color={isBoostingExpired ? 'warning' : 'secondary'} width="15px" height="15px" />
                       <Text ml="4px" bold color={isBoostingExpired ? 'warning' : 'secondary'} fontSize="14px">
-                        {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vCAKE')}
+                        {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vCOMET')}
                       </Text>
                     </Flex>
                   )}
@@ -252,7 +252,7 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
               <Message variant="danger" mb="12px">
                 <Text color="danger">
                   {t(
-                    'Hold some CAKE in your wallet or on PancakeSwap at the snapshot block to get voting power for future proposals.',
+                    'Hold some COMETin your wallet or on CometSwap at the snapshot block to get voting power for future proposals.',
                   )}
                 </Text>
               </Message>
@@ -282,3 +282,4 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
 }
 
 export default MainView
+

@@ -174,3 +174,4 @@ export const LeftBottomBox: React.FC = () => {
     </LeftImageWrapper>
   )
 }
+

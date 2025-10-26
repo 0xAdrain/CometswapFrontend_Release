@@ -1,4 +1,4 @@
-import { ExclusiveDutchOrder, type ExclusiveDutchOrderInfo } from '@pancakeswap/pcsx-sdk'
+import { ExclusiveDutchOrder, type ExclusiveDutchOrderInfo } from '@cometswap/pcsx-sdk'
 import { useMutation } from '@tanstack/react-query'
 import { logger } from 'utils/datadog'
 import { useSignTypedData } from 'wagmi'
@@ -40,3 +40,4 @@ export function useSendXOrder() {
     },
   })
 }
+

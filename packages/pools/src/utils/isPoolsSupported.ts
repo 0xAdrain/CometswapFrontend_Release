@@ -1,16 +1,16 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 import {
   SupportedChainId,
   SUPPORTED_CHAIN_IDS,
-  CakeVaultSupportedChainId,
-  CAKE_VAULT_SUPPORTED_CHAINS,
+  CometVaultSupportedChainId,
+  COMET_VAULT_SUPPORTED_CHAINS,
 } from '../constants/supportedChains'
 
 export function isPoolsSupported(chainId: number): chainId is SupportedChainId {
   return SUPPORTED_CHAIN_IDS.includes(chainId)
 }
 
-export function isCakeVaultSupported(chainId?: ChainId): chainId is CakeVaultSupportedChainId {
-  return !!chainId && (CAKE_VAULT_SUPPORTED_CHAINS as readonly ChainId[]).includes(chainId)
+export function isCometVaultSupported(chainId?: ChainId): chainId is CometVaultSupportedChainId {
+  return !!chainId && (COMET_VAULT_SUPPORTED_CHAINS as readonly ChainId[]).includes(chainId)
 }

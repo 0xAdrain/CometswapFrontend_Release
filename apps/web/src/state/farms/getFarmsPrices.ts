@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 export const nativeStableLpMap = {
   [ChainId.ETHEREUM]: {
@@ -22,3 +22,4 @@ export const nativeStableLpMap = {
     stable: 'BUSD',
   },
 }
+

@@ -14,7 +14,7 @@ export const getProposals = async (first = 5, skip = 0, state = ProposalState.AC
           skip: $skip
           orderBy: "end"
           orderDirection: $orderDirection
-          where: { space_in: "cakevote.eth", state: $state }
+          where: { space_in: "cometvote.eth", state: $state }
         ) {
           id
           title
@@ -119,3 +119,4 @@ export const getAllVotes = async (proposal: Proposal, votesPerChunk = 1000): Pro
     },
   }))
 }
+

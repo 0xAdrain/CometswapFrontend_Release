@@ -1,6 +1,6 @@
-import { Protocol } from '@pancakeswap/farms'
-import { zeroAddress } from '@pancakeswap/price-api-sdk'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { Protocol } from '@cometswap/farms'
+import { zeroAddress } from '@cometswap/price-api-sdk'
+import { Token } from '@cometswap/swap-sdk-core'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import { chainIdToExplorerInfoChainName, explorerApiClient } from 'state/info/api/client'
@@ -71,3 +71,4 @@ export const usePoolTransactions = (address?: string, protocol?: Protocol, chain
     select: useCallback((data: Transaction[]) => data.filter((tx) => tx.amountUSD > 0), []),
   })
 }
+

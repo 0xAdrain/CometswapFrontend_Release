@@ -5,3 +5,4 @@ const LandingV4Page = () => <LandingV4 />
 LandingV4Page.chains = []
 
 export default LandingV4Page
+

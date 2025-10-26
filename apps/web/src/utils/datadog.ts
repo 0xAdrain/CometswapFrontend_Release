@@ -9,7 +9,7 @@ try {
     site: process.env.NEXT_PUBLIC_DD_RUM_SITE || '',
     forwardErrorsToLogs: true,
     sessionSampleRate: 100,
-    service: 'pancakeswap-web',
+    service: 'cometswap-web',
   })
 } catch (e) {
   console.error(e)
@@ -23,7 +23,7 @@ export function getLogger(name: string, config?: Partial<LogsInitConfiguration>)
   return datadogLogs.createLogger(name, {
     handler: process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? 'http' : ['console', 'http'],
     context: {
-      service: `pancakeswap-web-${name}`,
+      service: `cometswap-web-${name}`,
       ...config,
     },
   })
@@ -48,7 +48,7 @@ function createDatadogRumManager() {
       applicationId: process.env.NEXT_PUBLIC_DD_RUM_APP_ID || '',
       clientToken: process.env.NEXT_PUBLIC_DD_RUM_CLIENT_TOKEN || '',
       site: process.env.NEXT_PUBLIC_DD_RUM_SITE || '',
-      service: 'pancakeswap-web',
+      service: 'cometswap-web',
       env,
       sessionSampleRate,
       sessionReplaySampleRate: 10,
@@ -119,3 +119,4 @@ function createDatadogRumManager() {
 }
 
 export const datadogRum = createDatadogRumManager()
+

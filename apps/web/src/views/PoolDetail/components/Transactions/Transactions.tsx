@@ -1,6 +1,6 @@
-import { Protocol } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoColumn, Heading } from '@pancakeswap/uikit'
+import { Protocol } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { AutoColumn, Heading } from '@cometswap/uikit'
 import { useChainIdByQuery } from 'state/info/hooks'
 import { useRouterQuery } from 'views/PoolDetail/hooks/useRouterQuery'
 import { LocalLoader } from 'views/V3Info/components/Loader'
@@ -25,3 +25,4 @@ export const Transactions: React.FC<TransactionProps> = ({ protocol }) => {
     </AutoColumn>
   )
 }
+

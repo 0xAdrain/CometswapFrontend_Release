@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Text } from '@cometswap/uikit'
 import { BodyText } from '../BodyText'
 import { AdButton } from '../Button'
 import { AdCard } from '../Card'
@@ -8,7 +8,7 @@ import { AdPlayerProps } from '../types'
 import { getImageUrl } from '../utils'
 
 const learnMoreLink =
-  'https://blog.pancakeswap.finance/articles/introducing-pancake-swap-x-zero-fee-and-gasless-swaps-on-ethereum-and-arbitrum?utm_source=Website&utm_medium=homepage&utm_campaign=PCSX&utm_id=PCSX'
+  'https://blog.cometswap.finance/articles/introducing-comet-swap-x-zero-fee-and-gasless-swaps-on-ethereum-and-arbitrum?utm_source=Website&utm_medium=homepage&utm_campaign=PCSX&utm_id=PCSX'
 const actionLink = '/swap?utm_source=Website&utm_medium=homepage&utm_campaign=PCSX&utm_id=PCSX'
 
 export const AdPCSX = (props: AdPlayerProps) => {
@@ -33,3 +33,4 @@ export const AdPCSX = (props: AdPlayerProps) => {
     </AdCard>
   )
 }
+

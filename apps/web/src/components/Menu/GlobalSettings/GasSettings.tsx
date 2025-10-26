@@ -1,82 +1,113 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, QuestionHelper, Text } from '@pancakeswap/uikit'
-import { GAS_PRICE, GAS_PRICE_GWEI } from 'state/types'
-import { useGasPriceManager } from 'state/user/hooks'
-import { PrimaryOutlineButton } from './styles'
+import { useTranslation } from '@cometswap/localization'
+import { ChainId } from '@cometswap/sdk'
+import {
+  AtomBox,
+  Button,
+  Flex,
+  InjectedModalProps,
+  Message,
+  MessageText,
+  Modal,
+  QuestionHelper,
+  Text,
+  Toggle,
+} from '@cometswap/uikit'
+import { useActiveChainId } from 'hooks/useActiveChainId'
+import { useGasPrice, GAS_PRICE_GWEI } from 'state/user/hooks'
+import { styled } from 'styled-components'
 
-const GasSettings = () => {
-  const { t } = useTranslation()
-  const [gasPrice, setGasPrice] = useGasPriceManager()
-  // const defaultGasPrice = useDefaultGasPrice()
+const GasSettingsModal = styled(Modal)`
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: 320px;
+  }
+`
 
-  return (
-    <Flex flexDirection="column">
-      <Flex mb="6px" alignItems="center">
-        <Text>{t('Default Transaction Speed (GWEI)')}</Text>
-        <QuestionHelper
-          text={
-            <Flex flexDirection="column">
-              <Text>
-                {t(
-                  'Adjusts the gas price (transaction fee) for your transaction. Higher GWEI = higher speed = higher fees.',
-                )}
-              </Text>
-              <Text mt="8px">{t('Choose “Default” to use the settings from your current blockchain RPC node.')}</Text>
-            </Flex>
-          }
-          placement="top"
-          ml="4px"
-        />
-      </Flex>
-      <Flex flexWrap="wrap">
-        <PrimaryOutlineButton
-          mt="4px"
-          mr="4px"
-          scale="sm"
-          onClick={() => {
-            setGasPrice(GAS_PRICE_GWEI.rpcDefault)
-          }}
-          variant={gasPrice === GAS_PRICE_GWEI.rpcDefault ? 'primary' : 'text'}
-        >
-          {t('Default')}
-          {/* {defaultGasPrice ? ` (${formatGwei(defaultGasPrice)})` : null} */}
-        </PrimaryOutlineButton>
-        <PrimaryOutlineButton
-          mr="4px"
-          mt="4px"
-          scale="sm"
-          onClick={() => {
-            setGasPrice(GAS_PRICE_GWEI.instant)
-          }}
-          variant={gasPrice === GAS_PRICE_GWEI.instant ? 'primary' : 'text'}
-        >
-          {t('Instant (%gasPrice%)', { gasPrice: GAS_PRICE.instant })}
-        </PrimaryOutlineButton>
-        <PrimaryOutlineButton
-          mt="4px"
-          mr="4px"
-          scale="sm"
-          onClick={() => {
-            setGasPrice(GAS_PRICE_GWEI.default)
-          }}
-          variant={gasPrice === GAS_PRICE_GWEI.default ? 'primary' : 'text'}
-        >
-          {t('Standard (%gasPrice%)', { gasPrice: GAS_PRICE.default })}
-        </PrimaryOutlineButton>
-        <PrimaryOutlineButton
-          mt="4px"
-          mr="4px"
-          scale="sm"
-          onClick={() => {
-            setGasPrice(GAS_PRICE_GWEI.fast)
-          }}
-          variant={gasPrice === GAS_PRICE_GWEI.fast ? 'primary' : 'text'}
-        >
-          {t('Fast (%gasPrice%)', { gasPrice: GAS_PRICE.fast })}
-        </PrimaryOutlineButton>
-      </Flex>
-    </Flex>
-  )
+const GasPriceButton = styled(Button)<{ $isActive: boolean }>`
+  background: ${({ $isActive, theme }) => ($isActive ? theme.colors.primary : theme.colors.backgroundAlt)};
+  color: ${({ $isActive, theme }) => ($isActive ? theme.colors.white : theme.colors.text)};
+  border: 1px solid ${({ $isActive, theme }) => ($isActive ? theme.colors.primary : theme.colors.cardBorder)};
+  
+  &:hover {
+    background: ${({ $isActive, theme }) => ($isActive ? theme.colors.primaryDark : theme.colors.backgroundHover)};
+  }
+`
+
+interface GasSettingsProps extends InjectedModalProps {
+  // Add any additional props here
 }
 
-export default GasSettings
+export const GasSettings: React.FC<GasSettingsProps> = ({ onDismiss }) => {
+  const { t } = useTranslation()
+  const { chainId } = useActiveChainId()
+  const [gasPrice, setGasPrice] = useGasPrice()
+
+  const handleGasPriceChange = (newGasPrice: GAS_PRICE_GWEI) => {
+    setGasPrice(newGasPrice)
+  }
+
+  // Only show gas settings for BSC
+  if (chainId !== ChainId.BSC) {
+    return (
+      <GasSettingsModal title={t('Gas Settings')} onDismiss={onDismiss}>
+        <Message variant="warning" mb="24px">
+          <MessageText>
+            {t('Gas settings are only available on BSC network.')}
+          </MessageText>
+        </Message>
+      </GasSettingsModal>
+    )
+  }
+
+  return (
+    <GasSettingsModal title={t('Gas Settings')} onDismiss={onDismiss}>
+      <AtomBox p="24px">
+        <Flex flexDirection="column" gap="16px">
+          <Flex alignItems="center" gap="8px">
+            <Text fontSize="14px" fontWeight="600">
+              {t('Default Transaction Speed (GWEI)')}
+            </Text>
+            <QuestionHelper
+              text={t('Adjusts the gas price (transaction fee) for your transaction. Higher GWEI = higher speed = higher fees.')}
+              placement="top"
+            />
+          </Flex>
+
+          <Flex gap="8px" flexWrap="wrap">
+            <GasPriceButton
+              scale="sm"
+              variant="tertiary"
+              $isActive={gasPrice === GAS_PRICE_GWEI.default}
+              onClick={() => handleGasPriceChange(GAS_PRICE_GWEI.default)}
+            >
+              {t('Standard (5)')}
+            </GasPriceButton>
+            
+            <GasPriceButton
+              scale="sm"
+              variant="tertiary"
+              $isActive={gasPrice === GAS_PRICE_GWEI.fast}
+              onClick={() => handleGasPriceChange(GAS_PRICE_GWEI.fast)}
+            >
+              {t('Fast (6)')}
+            </GasPriceButton>
+            
+            <GasPriceButton
+              scale="sm"
+              variant="tertiary"
+              $isActive={gasPrice === GAS_PRICE_GWEI.instant}
+              onClick={() => handleGasPriceChange(GAS_PRICE_GWEI.instant)}
+            >
+              {t('Instant (10)')}
+            </GasPriceButton>
+          </Flex>
+
+          <Message variant="primary">
+            <MessageText>
+              {t('Higher gas prices can help ensure your transactions are processed faster, but will cost more in fees.')}
+            </MessageText>
+          </Message>
+        </Flex>
+      </AtomBox>
+    </GasSettingsModal>
+  )
+}

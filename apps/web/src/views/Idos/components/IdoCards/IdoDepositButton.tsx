@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Percent } from '@pancakeswap/sdk'
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { useTranslation } from '@cometswap/localization'
+import { Percent } from '@cometswap/sdk'
+import { CurrencyAmount } from '@cometswap/swap-sdk-core'
 import {
   AddIcon,
   Box,
@@ -19,10 +19,10 @@ import {
   domAnimation,
   useModalV2,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
-import { CurrencyLogo, SwapUIV2 } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import { formatAmount } from '@cometswap/utils/formatFractions'
+import { CurrencyLogo, SwapUIV2 } from '@cometswap/widgets-internal'
 import BigNumber from 'bignumber.js'
 import { useStablecoinPriceAmount } from 'hooks/useStablecoinPrice'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -411,3 +411,4 @@ export const IdoDepositButton: React.FC<{
     </>
   )
 }
+

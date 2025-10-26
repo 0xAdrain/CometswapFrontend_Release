@@ -8,8 +8,8 @@ import {
   NotificationDot,
   QuestionHelper,
   AutoRow,
-} from '@pancakeswap/uikit'
-import { useExpertMode } from '@pancakeswap/utils/user'
+} from '@cometswap/uikit'
+import { useExpertMode } from '@cometswap/utils/user'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import Link from 'next/link'
 import { SettingsMode } from '../Menu/GlobalSettings/types'
@@ -116,3 +116,4 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
 }
 
 export default AppHeader
+

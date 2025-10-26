@@ -1,6 +1,6 @@
-import { SerializedToken, Token } from '@pancakeswap/swap-sdk-core'
-import { SerializedWrappedToken } from '@pancakeswap/token-lists'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { SerializedToken, Token } from '@cometswap/swap-sdk-core'
+import { SerializedWrappedToken } from '@cometswap/token-lists'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import BigNumber from 'bignumber.js'
 import { Address, Prettify } from 'viem'
 
@@ -58,7 +58,7 @@ export interface FarmConfigBaseProps {
   }
   boosted?: boolean
   allocPoint?: number
-  bCakeWrapperAddress?: Address
+  bveCometWrapperAddress?: Address
 }
 
 export interface SerializedStableFarmConfig extends FarmConfigBaseProps {
@@ -131,7 +131,7 @@ export interface SerializedFarmPublicData extends SerializedClassicFarmConfig {
   stableLpFee?: number
   stableLpFeeRateOfTotalFee?: number
   lpTokenStakedAmount?: string
-  bCakeWrapperAddress?: Address
+  bveCometWrapperAddress?: Address
 }
 
 export interface AprMap {
@@ -156,7 +156,7 @@ export interface SerializedFarmUserData {
   }
 }
 
-export interface SerializedBCakeUserData {
+export interface SerializedBveCometUserData {
   allowance: string
   tokenBalance: string
   stakedBalance: string
@@ -173,8 +173,8 @@ export interface SerializedBCakeUserData {
 
 export interface SerializedFarm extends SerializedFarmPublicData {
   userData?: SerializedFarmUserData
-  bCakeUserData?: SerializedBCakeUserData
-  bCakePublicData?: SerializedBCakeUserData
+  bveCometUserData?: SerializedBveCometUserData
+  bveCometPublicData?: SerializedBveCometUserData
 }
 
 export interface SerializedFarmsV3State {
@@ -190,10 +190,10 @@ export interface SerializedFarmsState {
   chainId?: number
   loadArchivedFarmsData: boolean
   userDataLoaded: boolean
-  bCakeUserDataLoaded: boolean
+  bveCometUserDataLoaded: boolean
   loadingKeys: Record<string, boolean>
   poolLength?: number
-  regularCakePerBlock?: number
+  regularveCometPerBlock?: number
   totalRegularAllocPoint: string
 }
 
@@ -215,7 +215,7 @@ export interface DeserializedFarmUserData {
     earnings: BigNumber
   }
 }
-export interface DeserializedBCakeWrapperUserData {
+export interface DeserializedBveCometWrapperUserData {
   allowance: BigNumber
   tokenBalance: BigNumber
   stakedBalance: BigNumber
@@ -242,10 +242,10 @@ export interface DeserializedFarm extends DeserializedFarmConfig {
   tokenPriceVsQuote?: BigNumber
   poolWeight?: BigNumber
   userData?: DeserializedFarmUserData
-  bCakeUserData?: DeserializedBCakeWrapperUserData
-  bCakePublicData?: DeserializedBCakeWrapperUserData
+  bveCometUserData?: DeserializedBveCometWrapperUserData
+  bveCometPublicData?: DeserializedBveCometWrapperUserData
   boosted?: boolean
-  bCakeWrapperAddress?: Address
+  bveCometWrapperAddress?: Address
   isStable?: boolean
   stableSwapAddress?: string
   stableLpFee?: number
@@ -263,7 +263,7 @@ export interface DeserializedFarmsState {
   loadArchivedFarmsData: boolean
   userDataLoaded: boolean
   poolLength: number
-  regularCakePerBlock: number
+  regularveCometPerBlock: number
   totalRegularAllocPoint: string
   cakePerBlock?: string
 }
@@ -290,7 +290,7 @@ export interface FarmsV3Response<T extends FarmV3DataWithPrice = FarmV3DataWithP
   totalAllocPoint: string
 }
 
-export type IPendingCakeByTokenId = Record<string, bigint>
+export type IPendingveCometByTokenId = Record<string, bigint>
 
 export interface PositionDetails {
   nonce: bigint
@@ -307,12 +307,13 @@ export interface PositionDetails {
   tokensOwed0: bigint
   tokensOwed1: bigint
   isStaked?: boolean
+  isValidFee?: boolean // 标记fee值是否有效，用于显示问题仓位
 }
 
 export interface FarmV3DataWithPriceAndUserInfo extends FarmV3DataWithPriceTVL {
   unstakedPositions: PositionDetails[]
   stakedPositions: PositionDetails[]
-  pendingCakeByTokenIds: IPendingCakeByTokenId
+  pendingveCometByTokenIds: IPendingveCometByTokenId
 }
 
 export enum Protocol {
@@ -334,12 +335,12 @@ export type FarmBaseConfig = {
 export type UniversalFarmConfigStableSwap = {
   protocol: Protocol.STABLE
   stableSwapAddress: Address
-  bCakeWrapperAddress: Address
+  bveCometWrapperAddress: Address
 } & FarmBaseConfig
 
 export type UniversalFarmConfigV2 = {
   protocol: Protocol.V2
-  bCakeWrapperAddress: Address
+  bveCometWrapperAddress: Address
 } & FarmBaseConfig
 
 export type UniversalFarmConfigV3 = {
@@ -355,9 +356,9 @@ export type UniversalFarmConfig = Prettify<
   UniversalFarmConfigV2 | UniversalFarmConfigStableSwap | UniversalFarmConfigV3
 >
 
-// only v2/ss farms have bCakeWrapperAddress
-export type BCakeWrapperFarmConfig = {
+// only v2/ss farms have bveCometWrapperAddress
+export type BveCometWrapperFarmConfig = {
   chainId: number
   lpAddress: Address
-  bCakeWrapperAddress: Address
+  bveCometWrapperAddress: Address
 }

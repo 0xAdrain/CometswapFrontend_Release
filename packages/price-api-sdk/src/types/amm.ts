@@ -1,5 +1,5 @@
-import { TradeType } from '@pancakeswap/swap-sdk-core'
-import { PoolType, V4Router, SmartRouter } from '@pancakeswap/smart-router'
+import { TradeType } from '@cometswap/swap-sdk-core'
+import { PoolType, V4Router, SmartRouter } from '@cometswap/smart-router'
 
 import { OrderType } from './orderType'
 

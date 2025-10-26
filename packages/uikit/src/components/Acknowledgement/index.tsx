@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 import { useState } from "react";
 import { Flex } from "../Box";
 import { Button } from "../Button";

@@ -1,5 +1,5 @@
 import { memo, PropsWithChildren } from 'react'
-import { Card, CardBody } from '@pancakeswap/uikit'
+import { Card, CardBody } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 
 const LightGreyCard = styled(Card)`
@@ -20,3 +20,4 @@ export const InnerCard = memo(function InnerCard({ children }: PropsWithChildren
     </LightGreyCard>
   )
 })
+

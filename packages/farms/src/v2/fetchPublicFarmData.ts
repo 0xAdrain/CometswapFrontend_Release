@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import chunk from 'lodash/chunk'
 import { Address, PublicClient } from 'viem'
 import { crossFarmingVaultAddresses } from '../const'
@@ -41,7 +41,7 @@ const abi = [
 ] as const
 
 const fetchFarmCalls = (farm: SerializedFarmPublicData, masterChefAddress: string, vaultAddress?: string) => {
-  const { lpAddress, token, quoteToken, bCakeWrapperAddress } = farm
+  const { lpAddress, token, quoteToken, bveCometWrapperAddress } = farm
   return [
     // Balance of token in the LP contract
     {
@@ -62,7 +62,7 @@ const fetchFarmCalls = (farm: SerializedFarmPublicData, masterChefAddress: strin
       abi,
       address: lpAddress,
       functionName: 'balanceOf',
-      args: [(bCakeWrapperAddress || vaultAddress || masterChefAddress) as Address],
+      args: [(bveCometWrapperAddress || vaultAddress || masterChefAddress) as Address],
     },
     // Total supply of LP tokens
     {

@@ -12,3 +12,4 @@ export const sumApr = (...aprs: Array<number | `${number}` | undefined>): number
   }, 0)
   return Number(sum) ? Number(sum) : 0
 }
+

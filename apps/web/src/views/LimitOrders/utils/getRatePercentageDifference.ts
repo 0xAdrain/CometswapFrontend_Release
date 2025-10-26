@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from '@pancakeswap/sdk'
+import { Currency, Percent, Price } from '@cometswap/sdk'
 
 const getRatePercentageDifference = (
   currentMarketRate?: Price<Currency, Currency>,
@@ -12,3 +12,4 @@ const getRatePercentageDifference = (
 }
 
 export default getRatePercentageDifference
+

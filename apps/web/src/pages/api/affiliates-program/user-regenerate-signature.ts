@@ -24,3 +24,4 @@ const userRegenerateSignature = async (req: NextApiRequest, res: NextApiResponse
 }
 
 export default userRegenerateSignature
+

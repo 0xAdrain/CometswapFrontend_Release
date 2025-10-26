@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AddIcon, Button, IconButton, MinusIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { AddIcon, Button, IconButton, MinusIcon } from '@cometswap/uikit'
 import { useCallback } from 'react'
 
 type StakeActionsProps = {
@@ -90,3 +90,4 @@ export const V3ModifyStakeActions: React.FC<V3LiquidityActionsProps> = ({
 
   return <ModifyStakeActions decreaseDisabled={decreaseDisabled} onIncrease={onIncrease} onDecrease={onDecrease} />
 }
+

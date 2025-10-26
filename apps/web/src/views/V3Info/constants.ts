@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { ManipulateType } from 'dayjs'
 
 export const v3InfoPath = `info/v3`
@@ -62,3 +62,4 @@ export const DURATION_INTERVAL = {
   month: ONE_DAY_SECONDS,
   year: ONE_DAY_SECONDS,
 }
+

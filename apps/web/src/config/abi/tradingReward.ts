@@ -1,8 +1,8 @@
 export const tradingRewardABI = [
   {
     inputs: [
-      { internalType: 'address', name: '_veCakeAddress', type: 'address' },
-      { internalType: 'address', name: '_pancakeProfileAddress', type: 'address' },
+      { internalType: 'address', name: '_vecometAddress', type: 'address' },
+      { internalType: 'address', name: '_cometProfileAddress', type: 'address' },
     ],
     stateMutability: 'nonpayable',
     type: 'constructor',
@@ -349,7 +349,7 @@ export const tradingRewardABI = [
   },
   {
     inputs: [],
-    name: 'pancakeProfileAddress',
+    name: 'cometProfileAddress',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -468,7 +468,7 @@ export const tradingRewardABI = [
   },
   {
     inputs: [],
-    name: 'veCakeAddress',
+    name: 'vecometAddress',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
@@ -481,3 +481,4 @@ export const tradingRewardABI = [
     type: 'function',
   },
 ] as const
+

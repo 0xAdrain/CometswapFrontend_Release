@@ -8,10 +8,11 @@ export const getStakedFarms = (
     if (farm.version === 3) {
       return farm.stakedPositions.length > 0
     }
-    const isBooster = Boolean(farm?.bCakeWrapperAddress)
+    const isBooster = Boolean(farm?.bCometWrapperAddress)
     return isBooster
-      ? new BigNumber(farm?.bCakeUserData?.stakedBalance ?? 0).gt(0)
+      ? new BigNumber(farm?.bCometUserData?.stakedBalance ?? 0).gt(0)
       : new BigNumber(farm?.userData?.stakedBalance ?? 0).gt(0) ||
           new BigNumber(farm?.userData?.proxy?.stakedBalance ?? 0).gt(0)
   })
 }
+

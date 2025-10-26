@@ -78,3 +78,4 @@ async function fetchBtcAddressValidationRes(
   const result = await response.json()
   return result.result
 }
+

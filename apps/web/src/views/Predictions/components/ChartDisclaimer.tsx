@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   Button,
@@ -11,7 +11,7 @@ import {
   ModalBody,
   ModalWrapper,
   Text,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { useUserPredictionChartDisclaimerShow } from 'state/user/hooks'
 import { styled } from 'styled-components'
 import { useConfig } from '../context/ConfigProvider'
@@ -62,7 +62,7 @@ const ChartDisclaimer: React.FC<React.PropsWithChildren<InjectedModalProps>> = (
           {t("Only the price shown on the cards determines the round's result.")}
         </Text>
         <LinkExternal
-          href="https://docs.pancakeswap.finance/products/prediction/prediction-faq#what-are-you-using-for-your-price-feed"
+          href="https://docs.cometswap.finance/products/prediction/prediction-faq#what-are-you-using-for-your-price-feed"
           external
           mb="24px"
         >
@@ -92,3 +92,4 @@ const ChartDisclaimer: React.FC<React.PropsWithChildren<InjectedModalProps>> = (
 }
 
 export default ChartDisclaimer
+

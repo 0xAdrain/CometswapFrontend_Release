@@ -13,7 +13,7 @@
 
 import { captureUnderscoreErrorException } from '@sentry/nextjs'
 import NextErrorComponent, { ErrorProps } from 'next/error'
-import { NotFound } from '@pancakeswap/uikit'
+import { NotFound } from '@cometswap/uikit'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 
@@ -35,3 +35,4 @@ CustomErrorComponent.getInitialProps = async (contextData) => {
 CustomErrorComponent.chains = []
 
 export default CustomErrorComponent
+

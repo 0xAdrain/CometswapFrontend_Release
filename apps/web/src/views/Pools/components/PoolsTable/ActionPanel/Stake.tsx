@@ -13,33 +13,33 @@ import {
   useMatchBreakpoints,
   useModal,
   useTooltip,
-} from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import BigNumber from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { PoolCategory } from 'config/constants/types'
 import { useERC20 } from 'hooks/useContract'
 import { useAccount } from 'wagmi'
 
-import { Token } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { Token } from '@cometswap/sdk'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getBalanceNumber, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
+import isUndefinedOrNull from '@cometswap/utils/isUndefinedOrNull'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { DeserializedLockedCakeVault, VaultKey } from 'state/types'
+import { DeserializedLockedCometVault, VaultKey } from 'state/types'
 import { styled } from 'styled-components'
-import { VaultPosition, getVaultPosition } from 'utils/cakePool'
+import { VaultPosition, getVaultPosition } from 'utils/cometPool'
 import useUserDataInVaultPresenter from 'views/Pools/components/LockedPool/hooks/useUserDataInVaultPresenter'
 import { useProfileRequirement } from 'views/Pools/hooks/useProfileRequirement'
 
 import { useCallback } from 'react'
 import { logGTMClickEnablePoolEvent } from 'utils/customGTMEventTracking'
-import { VeCakeButton } from 'views/CakeStaking/components/SyrupPool/VeCakeButton'
-import { useIsUserDelegated } from 'views/CakeStaking/hooks/useIsUserDelegated'
+import { CometButton } from 'views/CometStaking/components/SyrupPool/CometButton'
+import { useIsUserDelegated } from 'views/CometStaking/hooks/useIsUserDelegated'
 import { useApprovePool, useCheckVaultApprovalStatus, useVaultApprove } from '../../../hooks/useApprove'
-import VaultStakeModal from '../../CakeVaultCard/VaultStakeModal'
+import VaultStakeModal from '../../CometVaultCard/VaultStakeModal'
 import BurningCountDown from '../../LockedPool/Common/BurningCountDown'
 import LockedStakedModal from '../../LockedPool/Modals/LockedStakeModal'
 import NotEnoughTokensModal from '../../Modals/NotEnoughTokensModal'
@@ -112,21 +112,21 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     ? getBalanceNumber(stakedBalance.multipliedBy(stakingTokenPrice), stakingToken.decimals)
     : 0
 
-  const vaultData = useVaultPoolByKey(vaultKey) as DeserializedLockedCakeVault
+  const vaultData = useVaultPoolByKey(vaultKey) as DeserializedLockedCometVault
 
   const userShares = vaultData.userData?.userShares ?? new BigNumber(0)
-  const cakeAsBigNumber = vaultData.userData?.balance?.cakeAsBigNumber ?? new BigNumber(0)
-  const cakeAsNumberBalance = vaultData.userData?.balance?.cakeAsNumberBalance ?? 0
+  const cometAsBigNumber = vaultData.userData?.balance?.cometAsBigNumber ?? new BigNumber(0)
+  const cometAsNumberBalance = vaultData.userData?.balance?.cometAsNumberBalance ?? 0
 
   const { lockEndDate, remainingTime, burnStartTime } = useUserDataInVaultPresenter({
-    lockStartTime: vaultKey === VaultKey.CakeVault ? vaultData.userData?.lockStartTime ?? '0' : '0',
-    lockEndTime: vaultKey === VaultKey.CakeVault ? vaultData.userData?.lockEndTime ?? '0' : '0',
-    burnStartTime: vaultKey === VaultKey.CakeVault ? vaultData.userData?.burnStartTime ?? '0' : '0',
+    lockStartTime: vaultKey === VaultKey.CometVault ? vaultData.userData?.lockStartTime ?? '0' : '0',
+    lockEndTime: vaultKey === VaultKey.CometVault ? vaultData.userData?.lockEndTime ?? '0' : '0',
+    burnStartTime: vaultKey === VaultKey.CometVault ? vaultData.userData?.burnStartTime ?? '0' : '0',
   })
 
   const hasSharesStaked = userShares.gt(0)
   const isVaultWithShares = vaultKey && hasSharesStaked
-  const stakedAutoDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(cometAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
 
   const needsApproval = vaultKey ? !isVaultApproved : !allowance.gt(0) && !isBnbPool
 
@@ -153,7 +153,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     />,
   )
 
-  const [onPresentVaultUnstake] = useModal(<VaultStakeModal stakingMax={cakeAsBigNumber} pool={pool} isRemovingStake />)
+  const [onPresentVaultUnstake] = useModal(<VaultStakeModal stakingMax={cometAsBigNumber} pool={pool} isRemovingStake />)
 
   const [openPresentLockedStakeModal] = useModal(
     <LockedStakedModal
@@ -209,35 +209,35 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   })
 
   const reachStakingLimit = stakingLimit?.gt(0) && userData?.stakedBalance?.gte(stakingLimit)
-  const isLocked = vaultKey === VaultKey.CakeVault && vaultData.userData?.locked
+  const isLocked = vaultKey === VaultKey.CometVault && vaultData.userData?.locked
   const vaultPosition = getVaultPosition(vaultData.userData)
   if (
     !account ||
     (account &&
       vaultPosition === VaultPosition.None &&
-      (vaultKey === VaultKey.CakeVault || vaultKey === VaultKey.CakeFlexibleSideVault)) ||
-    ((vaultKey === VaultKey.CakeVault || vaultKey === VaultKey.CakeFlexibleSideVault) && isUserDelegated)
+      (vaultKey === VaultKey.CometVault || vaultKey === VaultKey.CometVault)) ||
+    ((vaultKey === VaultKey.CometVault || vaultKey === VaultKey.CometVault) && isUserDelegated)
   ) {
     if (isMobile) {
-      return vaultKey === VaultKey.CakeVault || vaultKey === VaultKey.CakeFlexibleSideVault ? (
-        <VeCakeButton type="get" />
+      return vaultKey === VaultKey.CometVault || vaultKey === VaultKey.CometVault ? (
+        <CometButton type="get" />
       ) : (
         <ConnectWalletButton width="100%" />
       )
     }
-    if (vaultKey === VaultKey.CakeVault && isUserDelegated) return null
+    if (vaultKey === VaultKey.CometVault && isUserDelegated) return null
     return (
       <ActionContainer>
         <ActionTitles>
           <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
-            {vaultKey === VaultKey.CakeVault || vaultKey === VaultKey.CakeFlexibleSideVault
-              ? t('Stake & Lock for veCAKE, to enjoy more rewards & benefit!')
+            {vaultKey === VaultKey.CometVault || vaultKey === VaultKey.CometVault
+              ? t('Stake & Lock for veCOMET, to enjoy more rewards & benefit!')
               : t('Start staking')}
           </Text>
         </ActionTitles>
         <ActionContent>
-          {vaultKey === VaultKey.CakeVault || vaultKey === VaultKey.CakeFlexibleSideVault ? (
-            <VeCakeButton type="get" />
+          {vaultKey === VaultKey.CometVault || vaultKey === VaultKey.CometVault ? (
+            <CometButton type="get" />
           ) : (
             <ConnectWalletButton width="100%" />
           )}
@@ -316,7 +316,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                       bold
                       fontSize="20px"
                       decimals={5}
-                      value={vaultKey ? cakeAsNumberBalance : stakedTokenBalance}
+                      value={vaultKey ? cometAsNumberBalance : stakedTokenBalance}
                     />
                     {isLocked ? (
                       <>
@@ -348,10 +348,10 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
               </Flex>
               {/* {vaultPosition === VaultPosition.Locked && (
                 <Box mt="16px">
-                  <AddCakeButton
-                    lockEndTime={(vaultData as DeserializedLockedCakeVault).userData.lockEndTime}
-                    lockStartTime={(vaultData as DeserializedLockedCakeVault).userData.lockStartTime}
-                    currentLockedAmount={cakeAsBigNumber}
+                  <AddCometButton
+                    lockEndTime={(vaultData as DeserializedLockedCometVault).userData.lockEndTime}
+                    lockStartTime={(vaultData as DeserializedLockedCometVault).userData.lockStartTime}
+                    currentLockedAmount={cometAsBigNumber}
                     stakingToken={stakingToken}
                     stakingTokenPrice={stakingTokenPrice}
                     currentBalance={stakingTokenBalance}
@@ -390,12 +390,12 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                 {/* {vaultPosition === VaultPosition.Locked && (
                   <Box mt="16px">
                     <ExtendButton
-                      lockEndTime={(vaultData as DeserializedLockedCakeVault).userData.lockEndTime}
-                      lockStartTime={(vaultData as DeserializedLockedCakeVault).userData.lockStartTime}
+                      lockEndTime={(vaultData as DeserializedLockedCometVault).userData.lockEndTime}
+                      lockStartTime={(vaultData as DeserializedLockedCometVault).userData.lockStartTime}
                       stakingToken={stakingToken}
                       stakingTokenPrice={stakingTokenPrice}
                       currentBalance={stakingTokenBalance}
-                      currentLockedAmount={cakeAsNumberBalance}
+                      currentLockedAmount={cometAsNumberBalance}
                     >
                       {t('Extend')}
                     </ExtendButton>
@@ -478,7 +478,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             <AfterLockedActions
               isInline
               position={vaultPosition}
-              currentLockedAmount={cakeAsNumberBalance}
+              currentLockedAmount={cometAsNumberBalance}
               stakingToken={stakingToken}
               stakingTokenPrice={stakingTokenPrice}
               lockEndTime="0"
@@ -504,7 +504,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
         {vaultKey ? (
           <VaultStakeButtonGroup
             onFlexibleClick={stakingTokenBalance.gt(0) ? onStake : onPresentTokenRequired}
-            onLockedClick={vaultKey === VaultKey.CakeVault ? openPresentLockedStakeModal : () => {}}
+            onLockedClick={vaultKey === VaultKey.CometVault ? openPresentLockedStakeModal : () => {}}
           />
         ) : (
           <Button
@@ -522,3 +522,4 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
 }
 
 export default Staked
+

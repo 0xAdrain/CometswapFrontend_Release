@@ -27,3 +27,4 @@ export const useExplorerChainNameByQuery = (): components['schemas']['ChainName'
 
   return isReady ? chainName : undefined
 }
+

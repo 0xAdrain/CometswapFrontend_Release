@@ -1,6 +1,6 @@
 let swapSound: HTMLAudioElement
 
-const swapSoundURL = 'https://cdn.pancakeswap.com/swap.mp3'
+const swapSoundURL = 'https://cdn.cometswap.com/swap.mp3'
 
 export const getSwapSound = () => {
   if (!swapSound) {
@@ -8,3 +8,4 @@ export const getSwapSound = () => {
   }
   return swapSound
 }
+

@@ -17,3 +17,4 @@ export const useLatestTxReceipt = () => {
 
   return [latestTxReceipt, setLatestTxReceipt] as const
 }
+

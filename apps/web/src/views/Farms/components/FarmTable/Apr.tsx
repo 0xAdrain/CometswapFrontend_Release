@@ -1,4 +1,4 @@
-import { Skeleton } from '@pancakeswap/uikit'
+import { Skeleton } from '@cometswap/uikit'
 import BigNumber from 'bignumber.js'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -16,7 +16,7 @@ export interface AprProps {
   lpTokenPrice: BigNumber
   tokenAddress?: string
   quoteTokenAddress?: string
-  cakePrice: BigNumber
+  cometPrice: BigNumber
   originalValue: number
   hideButton?: boolean
   strikethrough?: boolean
@@ -24,7 +24,7 @@ export interface AprProps {
   boosted?: boolean
   stableSwapAddress?: string
   stableLpFee?: number
-  farmCakePerSecond?: string
+  farmCometPerSecond?: string
   totalMultipliers?: string
   boosterMultiplier?: number
   isBooster?: boolean
@@ -61,14 +61,14 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
   multiplier,
   tokenAddress,
   quoteTokenAddress,
-  cakePrice,
+  cometPrice,
   originalValue,
   hideButton = false,
   lpRewardsApr,
   useTooltipText = true,
   stableSwapAddress,
   stableLpFee,
-  farmCakePerSecond,
+  farmCometPerSecond,
   totalMultipliers,
   isBooster,
   boosterMultiplier,
@@ -86,7 +86,7 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
           lpLabel={lpLabel}
           lpTokenPrice={lpTokenPrice}
           multiplier={multiplier}
-          cakePrice={cakePrice}
+          cometPrice={cometPrice}
           apr={originalValue}
           displayApr={value}
           lpRewardsApr={lpRewardsApr}
@@ -95,7 +95,7 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
           hideButton={hideButton}
           stableSwapAddress={stableSwapAddress}
           stableLpFee={stableLpFee}
-          farmCakePerSecond={farmCakePerSecond}
+          farmCometPerSecond={farmCometPerSecond}
           totalMultipliers={totalMultipliers}
           isBooster={isBooster}
           boosterMultiplier={boosterMultiplier}
@@ -114,3 +114,4 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
 }
 
 export default Apr
+

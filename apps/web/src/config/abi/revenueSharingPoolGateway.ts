@@ -28,3 +28,4 @@ export const revenueSharingPoolGatewayABI = [
     type: 'function',
   },
 ] as const
+

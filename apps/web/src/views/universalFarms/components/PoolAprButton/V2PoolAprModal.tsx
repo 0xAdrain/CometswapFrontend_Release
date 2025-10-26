@@ -1,10 +1,10 @@
-import { Protocol } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { LegacyStableSwapPair } from '@pancakeswap/smart-router/legacy-router'
-import { ModalV2, RoiCalculatorModal, UseModalV2Props } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { Protocol } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { LegacyStableSwapPair } from '@cometswap/smart-router/legacy-router'
+import { ModalV2, RoiCalculatorModal, UseModalV2Props } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useMemo } from 'react'
 import { useAccountPositionDetailByPool } from 'state/farmsV4/hooks'
 import { useStableSwapPairsByChainId } from 'state/farmsV4/state/accountPositions/hooks'
@@ -14,7 +14,7 @@ import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { Address } from 'viem'
 import { useMasterChefV2Data } from 'views/Farms/hooks/useMasterChefV2Data'
 import { useV2LpTokenTotalSupply } from 'views/Farms/hooks/useV2LpTokenTotalSupply'
-import { useBCakeWrapperRewardPerSecond } from 'views/universalFarms/hooks/useBCakeWrapperInfo'
+import { useBCometWrapperRewardPerSecond } from 'views/universalFarms/hooks/useBCometWrapperInfo'
 import { displayApr } from 'views/universalFarms/utils/displayApr'
 import { useAccount } from 'wagmi'
 
@@ -38,7 +38,7 @@ const AprModal: React.FC<Omit<V2PoolAprModalProps, 'modal'>> = ({ poolInfo, comb
     [poolInfo],
   )
   const lpLabel = useMemo(() => {
-    return lpSymbol.replace(/pancake/gi, '')
+    return lpSymbol.replace(/comet/gi, '')
   }, [lpSymbol])
   const { data: userPosition } = useAccountPositionDetailByPool<Protocol.STABLE | Protocol.V2>(
     poolInfo.chainId,
@@ -58,7 +58,7 @@ const AprModal: React.FC<Omit<V2PoolAprModalProps, 'modal'>> = ({ poolInfo, comb
   const lpTokenPrice = useMemo(() => {
     return new BigNumber(poolInfo.tvlUsd ?? 0).div((lpTokenTotalSupply ?? 1).toString()).times(1e18)
   }, [poolInfo.tvlUsd, lpTokenTotalSupply])
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   const addLiquidityUrl = useMemo(() => {
     const liquidityUrlPathParts = getLiquidityUrlPathParts({
@@ -78,7 +78,7 @@ const AprModal: React.FC<Omit<V2PoolAprModalProps, 'modal'>> = ({ poolInfo, comb
     return undefined
   }, [pairs, poolInfo?.lpAddress, poolInfo.protocol])
 
-  const { data: farmCakePerSecond } = useBCakeWrapperRewardPerSecond(poolInfo.chainId, poolInfo.bCakeWrapperAddress)
+  const { data: farmCometPerSecond } = useBCometWrapperRewardPerSecond(poolInfo.chainId, poolInfo.bCometWrapperAddress)
   const { data: masterChefV2Data } = useMasterChefV2Data(poolInfo.chainId)
   const totalMultipliers = useMemo(() => {
     const { totalRegularAllocPoint } = masterChefV2Data ?? { totalRegularAllocPoint: 0n }
@@ -95,7 +95,7 @@ const AprModal: React.FC<Omit<V2PoolAprModalProps, 'modal'>> = ({ poolInfo, comb
       stakingTokenDecimals={18}
       stakingTokenSymbol={lpSymbol}
       stakingTokenPrice={lpTokenPrice.toNumber()}
-      earningTokenPrice={cakePrice?.toNumber() ?? 0}
+      earningTokenPrice={cometPrice?.toNumber() ?? 0}
       apr={combinedApr * 100}
       multiplier={boostMultiplier ? `${Number(boostMultiplier.toFixed(1))}X` : undefined}
       displayApr={displayApr(combinedApr, { suffix: '' })}
@@ -104,9 +104,10 @@ const AprModal: React.FC<Omit<V2PoolAprModalProps, 'modal'>> = ({ poolInfo, comb
       isFarm={poolInfo.isFarming}
       stableSwapAddress={stableConfig?.stableSwapAddress}
       stableLpFee={stableConfig?.stableTotalFee}
-      farmCakePerSecond={farmCakePerSecond ? farmCakePerSecond.toString() : '0'}
+      farmCometPerSecond={farmCometPerSecond ? farmCometPerSecond.toString() : '0'}
       totalMultipliers={totalMultipliers}
-      isBCakeBooster={poolInfo.isFarming}
+      isBCometBooster={poolInfo.isFarming}
     />
   )
 }
+

@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, InjectedModalProps, Modal, ModalBody, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Button, InjectedModalProps, Modal, ModalBody, Text } from '@cometswap/uikit'
 import isEmpty from 'lodash/isEmpty'
 import { useCallback, useMemo } from 'react'
 import { useAppDispatch } from 'state'
 import { clearAllTransactions } from 'state/transactions/actions'
-import { TransactionList } from '@pancakeswap/widgets-internal'
+import { TransactionList } from '@cometswap/widgets-internal'
 import { useAllSortedRecentTransactions } from 'state/transactions/hooks'
 import { TransactionDetails } from 'state/transactions/reducer'
 import { chains } from 'utils/wagmi'
@@ -175,3 +175,4 @@ function TransactionWithX({
 }
 
 export default TransactionsModal
+

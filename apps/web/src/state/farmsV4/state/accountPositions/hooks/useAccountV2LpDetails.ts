@@ -1,4 +1,4 @@
-import { ERC20Token } from '@pancakeswap/sdk'
+import { ERC20Token } from '@cometswap/sdk'
 import { useQuery } from '@tanstack/react-query'
 import { SLOW_INTERVAL } from 'config/constants'
 import { useOfficialsAndUserAddedTokensByChainIds } from 'hooks/Tokens'
@@ -78,3 +78,4 @@ export const useAccountV2LpDetails = (chainIds: number[], account?: Address | nu
     [data, isLoading, isFetching],
   )
 }
+

@@ -1,6 +1,6 @@
-import { useTheme } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { AtomBox, AutoColumn, Button, Image, Modal, ModalV2, StyledTooltip, Text } from '@pancakeswap/uikit'
+import { useTheme } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { AtomBox, AutoColumn, Button, Image, Modal, ModalV2, StyledTooltip, Text } from '@cometswap/uikit'
 import { LightCard } from 'components/Card'
 import { ASSET_CDN } from 'config/constants/endpoints'
 import styled from 'styled-components'
@@ -79,7 +79,7 @@ export const V3StakeModal: React.FC<React.PropsWithChildren<IStakeModalProps>> =
                   <>
                     {t('Inactive positions will')}
                     <b> {t('NOT')} </b>
-                    {t('earn CAKE rewards from farm.')}
+                    {t('earn COMETrewards from farm.')}
                   </>
                 ) : (
                   t('You may add or remove liquidity on the position detail page without unstake')
@@ -115,3 +115,4 @@ export const V3StakeModal: React.FC<React.PropsWithChildren<IStakeModalProps>> =
     </ModalV2>
   )
 }
+

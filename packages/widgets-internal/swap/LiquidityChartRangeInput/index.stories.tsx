@@ -1,12 +1,12 @@
 import React from "react";
 /* eslint-disable import/no-unresolved */
 import { Meta } from "@storybook/react/types-6-0";
-import { FeeAmount } from "@pancakeswap/v3-sdk";
-import { CurrencyAmount, Price } from "@pancakeswap/sdk";
+import { FeeAmount } from "@cometswap/v3-sdk";
+import { CurrencyAmount, Price } from "@cometswap/sdk";
 
 import mockData from "./mockData.json";
 import { LiquidityChartRangeInput } from "./LiquidityChartRangeInput";
-import { cakeToken, bscToken } from "../../mockData";
+import { cometToken, bscToken } from "../../mockData";
 import { TickDataRaw } from "./types";
 
 export default {
@@ -23,11 +23,11 @@ export const Default: React.FC<React.PropsWithChildren> = () => {
         price={parseFloat(
           new Price({
             baseAmount: CurrencyAmount.fromRawAmount(bscToken, "15671741929954778"),
-            quoteAmount: CurrencyAmount.fromRawAmount(cakeToken, "10000000000000"),
+            quoteAmount: CurrencyAmount.fromRawAmount(cometToken, "10000000000000"),
           }).toSignificant(6)
         )}
         currencyA={bscToken}
-        currencyB={cakeToken}
+        currencyB={cometToken}
         tickCurrent={-202763}
         liquidity={3799256509904881797n}
         feeAmount={FeeAmount.MEDIUM}

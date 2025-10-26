@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, Percent, Price } from '@pancakeswap/sdk'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { Currency, CurrencyAmount, Percent, Price } from '@cometswap/sdk'
+import { FeeAmount } from '@cometswap/v3-sdk'
 import { Address, Hash } from 'viem'
 
 import { BaseManager, MANAGER } from './constants/managers'
@@ -125,7 +125,7 @@ export interface DuoTokenVault {
   learnMoreUrl?: string
   learnMoreAboutUrl?: string
   aprTimeWindow?: number
-  bCakeWrapperAddress?: Address
+  bveCometWrapperAddress?: Address
   minDepositUSD?: number
 }
 

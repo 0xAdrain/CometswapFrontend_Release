@@ -27,3 +27,4 @@ export interface LimitOrderTableProps {
   orderCategory: ORDER_CATEGORY
   isCompact: boolean
 }
+

@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Percent, Price } from '@pancakeswap/sdk'
-import { AutoRenewIcon, Button, Flex, HelpIcon, Input, SyncAltIcon, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Currency, Percent, Price } from '@cometswap/sdk'
+import { AutoRenewIcon, Button, Flex, HelpIcon, Input, SyncAltIcon, Text, useTooltip } from '@cometswap/uikit'
 import React from 'react'
 import { Rate } from 'state/limitOrders/types'
 import { styled } from 'styled-components'
@@ -174,3 +174,4 @@ const LimitOrderPrice: React.FC<React.PropsWithChildren<LimitOrderPriceProps>> =
 }
 
 export default LimitOrderPrice
+

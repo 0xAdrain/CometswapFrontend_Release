@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { chainlinkOracleBNB } from '@pancakeswap/prediction'
+import { ChainId } from '@cometswap/chains'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { chainlinkOracleBNB } from '@cometswap/prediction'
 import BigNumber from 'bignumber.js'
 import { chainlinkOracleABI } from 'config/abi/chainlinkOracle'
 import { publicClient } from 'utils/wagmi'
@@ -29,3 +29,4 @@ export const getBNBPriceFromOracle = async () => {
 
   return formatUnits(data, 8)
 }
+

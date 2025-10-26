@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@cometswap/uikit'
 import BenefitsTooltipsText from 'views/Pools/components/RevenueSharing/BenefitsModal/BenefitsTooltipsText'
 
 interface BenefitsTextProps {
@@ -26,3 +26,4 @@ const BenefitsText: React.FC<React.PropsWithChildren<BenefitsTextProps>> = ({
 }
 
 export default BenefitsText
+

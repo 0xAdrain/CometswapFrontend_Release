@@ -1,13 +1,13 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { LinkExternal, Text } from '@pancakeswap/uikit'
-import { TransactionErrorContent } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { LinkExternal, Text } from '@cometswap/uikit'
+import { TransactionErrorContent } from '@cometswap/widgets-internal'
 import { useCallback } from 'react'
 
-const PancakeRouterSlippageErrorMsg =
+const CometRouterSlippageErrorMsg =
   'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.'
 
 export const SwapTransactionErrorContent = ({ onDismiss, message, openSettingModal }) => {
-  const isSlippagedErrorMsg = Array.isArray(message) ? message?.includes(PancakeRouterSlippageErrorMsg) : false
+  const isSlippagedErrorMsg = Array.isArray(message) ? message?.includes(CometRouterSlippageErrorMsg) : false
 
   const handleErrorDismiss = useCallback(() => {
     onDismiss?.()
@@ -30,7 +30,7 @@ export const SwapTransactionErrorContent = ({ onDismiss, message, openSettingMod
             </Text>
           </Text>
           <LinkExternal
-            href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/trade-guide"
+            href="https://docs.cometswap.finance/products/cometswap-exchange/trade-guide"
             style={{ width: '100%', justifyContent: 'center' }}
           >
             {t('What are the potential issues with the token?')}
@@ -42,3 +42,4 @@ export const SwapTransactionErrorContent = ({ onDismiss, message, openSettingMod
     <TransactionErrorContent message={message} onDismiss={onDismiss} />
   )
 }
+

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, InfoFilledIcon, LinkExternal, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, InfoFilledIcon, LinkExternal, Text, useTooltip } from '@cometswap/uikit'
 import styled from 'styled-components'
 
 const InlineLink = styled(LinkExternal)`
@@ -17,7 +17,7 @@ export const TaikoEthTooltips = () => {
         <InlineLink m="0 4px 0 0" external display="inline" href="https://bridge.taiko.xyz/">
           {t('Taiko')}
         </InlineLink>
-        {t('ahead of any potential PancakeSwap Affiliate deployment')}
+        {t('ahead of any potential CometSwap Affiliate deployment')}
       </Text>
     </Box>,
     {
@@ -35,3 +35,4 @@ export const TaikoEthTooltips = () => {
     </>
   )
 }
+

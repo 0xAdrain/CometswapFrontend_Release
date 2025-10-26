@@ -6,7 +6,7 @@ import {
   TelegramIcon,
   TwitterIcon,
   YoutubeIcon,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import { cloneElement } from 'react'
 import { styled } from 'styled-components'
 
@@ -41,12 +41,12 @@ const CommunityTag = styled.div`
   }
 `
 const communityData = [
-  { icon: <TwitterIcon />, href: 'https://twitter.com/pancakeswap', alt: 'TwitterIcon' },
-  { icon: <TelegramIcon />, href: 'https://t.me/pancakeswap', alt: 'TelegramIcon' },
-  { icon: <DiscordIcon />, href: 'https://discord.gg/pancakeswap', alt: 'DiscordIcon' },
-  { icon: <InstagramIcon />, href: 'https://www.instagram.com/pancakeswap_official/', alt: 'InstagramIcon' },
-  { icon: <RedditIcon />, href: 'https://www.reddit.com/r/pancakeswap/', alt: 'RedditIcon' },
-  { icon: <YoutubeIcon />, href: 'https://www.youtube.com/@pancakeswap_official', alt: 'YoutubeIcon' },
+  { icon: <TwitterIcon />, href: 'https://twitter.com/cometswap', alt: 'TwitterIcon' },
+  { icon: <TelegramIcon />, href: 'https://t.me/cometswap', alt: 'TelegramIcon' },
+  { icon: <DiscordIcon />, href: 'https://discord.gg/cometswap', alt: 'DiscordIcon' },
+  { icon: <InstagramIcon />, href: 'https://www.instagram.com/cometswap_official/', alt: 'InstagramIcon' },
+  { icon: <RedditIcon />, href: 'https://www.reddit.com/r/cometswap/', alt: 'RedditIcon' },
+  { icon: <YoutubeIcon />, href: 'https://www.youtube.com/@cometswap_official', alt: 'YoutubeIcon' },
 ]
 
 export const CommunityTags: React.FC = () => {
@@ -60,3 +60,4 @@ export const CommunityTags: React.FC = () => {
     </CommunityWrapper>
   )
 }
+

@@ -1,6 +1,6 @@
-import { getCurrentIfoRatio, getUserIfoInfo } from '@pancakeswap/ifos'
-import { ChainId, CurrencyAmount } from '@pancakeswap/sdk'
-import { CAKE } from '@pancakeswap/tokens'
+import { getCurrentIfoRatio, getUserIfoInfo } from '@cometswap/ifos'
+import { ChainId, CurrencyAmount } from '@cometswap/sdk'
+import { COMET} from '@cometswap/tokens'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
@@ -9,11 +9,11 @@ import { Address } from 'viem'
 import { getViemClients } from 'utils/viem'
 import { useAccount } from 'wagmi'
 
-type ICakeRatioParams = {
+type ICometRatioParams = {
   chainId?: ChainId
 }
 
-export function useICakeRatio({ chainId }: ICakeRatioParams) {
+export function useICometRatio({ chainId }: ICometRatioParams) {
   const { address: account } = useAccount()
   const { data } = useQuery({
     queryKey: [chainId, account, 'current-ifo-ratio'],
@@ -38,7 +38,7 @@ type Params = {
 
 export function useUserIfoInfo({ chainId, ifoAddress }: Params) {
   const { address: account } = useAccount()
-  const ratio = useICakeRatio({ chainId })
+  const ratio = useICometRatio({ chainId })
 
   const { data } = useQuery({
     queryKey: [account, chainId, ifoAddress, 'user-ifo-info'],
@@ -61,12 +61,12 @@ export function useUserIfoInfo({ chainId, ifoAddress }: Params) {
 
   const credit = useMemo(
     () =>
-      chainId && CAKE[chainId] && data?.credit !== undefined
-        ? CurrencyAmount.fromRawAmount(CAKE[chainId], data?.credit)
+      chainId && COMET[chainId] && data?.credit !== undefined
+        ? CurrencyAmount.fromRawAmount(COMET[chainId], data?.credit)
         : undefined,
     [data?.credit, chainId],
   )
-  const veCake = useMemo(
+  const Comet = useMemo(
     () =>
       credit && ratio
         ? new BigNumber(credit.numerator.toString()).div(credit.decimalScale.toString()).div(ratio)
@@ -77,7 +77,8 @@ export function useUserIfoInfo({ chainId, ifoAddress }: Params) {
   return {
     snapshotTime,
     credit,
-    veCake,
+    Comet,
     ratio,
   }
 }
+

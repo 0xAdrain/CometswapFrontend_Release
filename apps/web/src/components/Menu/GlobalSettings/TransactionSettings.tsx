@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Flex, FlexGap, Input, Message, QuestionHelper, Text } from '@pancakeswap/uikit'
-import { useUserSlippage } from '@pancakeswap/utils/user'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Flex, FlexGap, Input, Message, QuestionHelper, Text } from '@cometswap/uikit'
+import { useUserSlippage } from '@cometswap/utils/user'
 import { useEffect, useState } from 'react'
 import { escapeRegExp } from 'utils'
 
-import { VerticalDivider } from '@pancakeswap/widgets-internal'
+import { VerticalDivider } from '@cometswap/widgets-internal'
 import { useUserTransactionTTL } from 'hooks/useTransactionDeadline'
 import styled from 'styled-components'
 import { PrimaryOutlineButton } from './styles'
@@ -282,3 +282,4 @@ const SlippageTabs = () => {
 }
 
 export default SlippageTabs
+

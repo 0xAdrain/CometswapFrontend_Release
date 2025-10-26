@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useModal } from '@pancakeswap/uikit'
+import { useModal } from '@cometswap/uikit'
 import { useAccount } from 'wagmi'
 import ClaimNftModal from 'components/ClaimNftModal/ClaimNftModal'
 import noop from 'lodash/noop'
@@ -34,3 +34,4 @@ const useNftClaimStatusCheck = () => {
 }
 
 export default useNftClaimStatusCheck
+

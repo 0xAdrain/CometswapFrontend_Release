@@ -9,3 +9,4 @@ TokenPage.Layout = InfoPageLayout
 TokenPage.chains = [] // set all
 
 export default TokenPage
+

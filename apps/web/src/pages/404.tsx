@@ -1,4 +1,4 @@
-import { NotFound } from '@pancakeswap/uikit'
+import { NotFound } from '@cometswap/uikit'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 
@@ -11,3 +11,4 @@ const NotFoundPage = () => (
 NotFoundPage.chains = []
 
 export default NotFoundPage
+

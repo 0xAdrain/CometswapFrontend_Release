@@ -1,4 +1,4 @@
-import { useExpertMode } from '@pancakeswap/utils/user'
+import { useExpertMode } from '@cometswap/utils/user'
 import { useTransactionDeadline } from 'hooks/useTransactionDeadline'
 
 export type SwapConfig = {
@@ -14,3 +14,4 @@ export const useSwapConfig = (): SwapConfig => {
     deadline,
   }
 }
+

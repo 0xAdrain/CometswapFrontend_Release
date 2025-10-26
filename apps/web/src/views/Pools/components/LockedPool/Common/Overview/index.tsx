@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
-import { Box, Text, Flex, MessageText, Message } from '@pancakeswap/uikit'
+import { Box, Text, Flex, MessageText, Message } from '@cometswap/uikit'
 import BN from 'bignumber.js'
 
 import { LightGreyCard } from 'components/Card'
 import dayjs from 'dayjs'
 import { useVaultApy } from 'hooks/useVaultApy'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import _toNumber from 'lodash/toNumber'
 import { convertTimeToMilliseconds } from 'utils/timeHelper'
 import formatSecondsToWeeks from '../../../utils/formatSecondsToWeeks'
@@ -13,7 +13,7 @@ import TextRow from './TextRow'
 import BalanceRow from './BalanceRow'
 import DateRow from './DateRow'
 import formatRoi from '../../utils/formatRoi'
-import formatICake from '../../utils/formatICake'
+import formatIComet from '../../utils/formatIComet'
 import { OverviewPropsType } from '../../types'
 import CalculatorButton from '../../Buttons/CalculatorButton'
 
@@ -57,15 +57,15 @@ const Overview: React.FC<React.PropsWithChildren<OverviewPropsType>> = ({
     ? new Date(convertTimeToMilliseconds(lockEndTime || ''))
     : now.add(duration, 'seconds').toDate()
 
-  const formattediCake = useMemo(() => {
-    return formatICake({ lockedAmount, duration, ceiling: ceiling || ZERO }) || 0
+  const formattediComet = useMemo(() => {
+    return formatIComet({ lockedAmount, duration, ceiling: ceiling || ZERO }) || 0
   }, [lockedAmount, duration, ceiling])
 
-  const newFormattediCake = useMemo(() => {
+  const newFormattediComet = useMemo(() => {
     const amount = Number(newLockedAmount) ? newLockedAmount : lockedAmount
     const lockDuration = Number(newDuration) ? newDuration : duration
 
-    return formatICake({ lockedAmount: amount, duration: lockDuration || 0, ceiling: ceiling || ZERO }) || 0
+    return formatIComet({ lockedAmount: amount, duration: lockDuration || 0, ceiling: ceiling || ZERO }) || 0
   }, [lockedAmount, newLockedAmount, duration, newDuration, ceiling])
 
   return (
@@ -80,8 +80,8 @@ const Overview: React.FC<React.PropsWithChildren<OverviewPropsType>> = ({
           </Text>
         </Flex>
         <LightGreyCard>
-          <BalanceRow title={t('Cake to be locked')} value={lockedAmount} newValue={newLockedAmount} decimals={2} />
-          <BalanceRow title="iCake" decimals={2} value={formattediCake} newValue={newFormattediCake} />
+          <BalanceRow title={t('Comet to be locked')} value={lockedAmount} newValue={newLockedAmount} decimals={2} />
+          <BalanceRow title="iComet" decimals={2} value={formattediComet} newValue={newFormattediComet} />
           <BalanceRow
             title="apr"
             unit="%"
@@ -129,7 +129,7 @@ const Overview: React.FC<React.PropsWithChildren<OverviewPropsType>> = ({
         <Box mt="16px" maxWidth="370px">
           <Message variant="warning">
             <MessageText>
-              {t('You will be able to withdraw the staked CAKE and profit only when the staking position is unlocked')}
+              {t('You will be able to withdraw the staked COMETand profit only when the staking position is unlocked')}
             </MessageText>
           </Message>
         </Box>
@@ -139,3 +139,4 @@ const Overview: React.FC<React.PropsWithChildren<OverviewPropsType>> = ({
 }
 
 export default Overview
+

@@ -13,7 +13,7 @@ import {
   Route as V2Route,
   Trade as V2Trade,
   WNATIVE,
-} from '@pancakeswap/sdk'
+} from '@cometswap/sdk'
 import {
   FeeAmount,
   Position,
@@ -24,7 +24,7 @@ import {
   Trade as V3Trade,
   encodeSqrtRatioX96,
   nearestUsableTick,
-} from '@pancakeswap/v3-sdk'
+} from '@cometswap/v3-sdk'
 import { describe, expect, it } from 'vitest'
 import { Pool, PoolType, RouteType, SmartRouterTrade, V2Pool, V3Pool } from '../types'
 import { ApprovalTypes } from './approveAndCall'

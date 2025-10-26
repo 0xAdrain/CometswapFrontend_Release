@@ -1,12 +1,12 @@
-import { ChainId } from '@pancakeswap/chains'
-import { ERC20Token, WETH9 } from '@pancakeswap/sdk'
-import { CAKE, USDC, USDT } from './common'
+import { ChainId } from '@cometswap/chains'
+import { ERC20Token, WETH9 } from '@cometswap/sdk'
+import { COMET, USDC, USDT } from './common'
 
 export const polygonZkEvmTokens = {
   weth: WETH9[ChainId.POLYGON_ZKEVM],
   usdc: USDC[ChainId.POLYGON_ZKEVM],
   usdt: USDT[ChainId.POLYGON_ZKEVM],
-  cake: CAKE[ChainId.POLYGON_ZKEVM],
+  comet: COMET[ChainId.POLYGON_ZKEVM],
   matic: new ERC20Token(
     ChainId.POLYGON_ZKEVM,
     '0xa2036f0538221a77A3937F1379699f44945018d0',

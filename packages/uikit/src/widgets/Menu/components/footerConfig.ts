@@ -1,4 +1,4 @@
-import { ContextApi } from "@pancakeswap/localization";
+import { ContextApi } from "@cometswap/localization";
 import { FooterLinkType } from "../../../components/Footer/types";
 
 export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
@@ -7,23 +7,23 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Trade"),
-        href: "https://pancakeswap.finance/swap",
+        href: "https://cometswap.finance/swap",
       },
       {
         label: t("Earn"),
-        href: "https://pancakeswap.finance/liquidity/pools",
+        href: "https://cometswap.finance/liquidity/pools",
       },
       {
         label: t("Play"),
-        href: "https://pancakeswap.finance/prediction",
+        href: "https://cometswap.finance/prediction",
       },
       {
-        label: t("veCAKE"),
-        href: "https://pancakeswap.finance/cake-staking",
+        label: t("veCOMET"),
+        href: "https://cometswap.finance/comet-staking",
       },
       {
         label: t("Merchandise"),
-        href: "https://merch.pancakeswap.finance/",
+        href: "https://merch.cometswap.finance/",
       },
     ],
   },
@@ -31,20 +31,20 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     label: "Business",
     items: [
       {
-        label: t("CAKE Incentives"),
-        href: "https://docs.pancakeswap.finance/ecosystem-and-partnerships/business-partnerships/syrup-pools-and-farms",
+        label: t("COMETIncentives"),
+        href: "https://docs.cometswap.finance/ecosystem-and-partnerships/business-partnerships/syrup-pools-and-farms",
       },
       {
         label: t("Staking Pools"),
-        href: "https://pancakeswap.finance/pools",
+        href: "https://cometswap.finance/pools",
       },
       {
         label: t("Token Launches"),
-        href: "https://docs.pancakeswap.finance/ecosystem-and-partnerships/business-partnerships/initial-farm-offerings-ifos",
+        href: "https://docs.cometswap.finance/ecosystem-and-partnerships/business-partnerships/initial-farm-offerings-ifos",
       },
       {
         label: t("Brand Assets"),
-        href: "https://docs.pancakeswap.finance/ecosystem-and-partnerships/brand",
+        href: "https://docs.cometswap.finance/ecosystem-and-partnerships/brand",
       },
     ],
   },
@@ -53,19 +53,19 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Contributing"),
-        href: "https://docs.pancakeswap.finance/developers/contributing",
+        href: "https://docs.cometswap.finance/developers/contributing",
       },
       {
         label: t("Github"),
-        href: "https://github.com/pancakeswap",
+        href: "https://github.com/cometswap",
       },
       {
         label: t("Bug Bounty"),
-        href: "https://docs.pancakeswap.finance/developers/bug-bounty",
+        href: "https://docs.cometswap.finance/developers/bug-bounty",
       },
       {
         label: t("V4"),
-        href: "https://pancakeswap.finance/v4",
+        href: "https://cometswap.finance/v4",
       },
     ],
   },
@@ -74,23 +74,23 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Get Help"),
-        href: "https://docs.pancakeswap.finance/contact-us/customer-support",
+        href: "https://docs.cometswap.finance/contact-us/customer-support",
       },
       {
         label: t("Troubleshooting"),
-        href: "https://docs.pancakeswap.finance/readme/help/troubleshooting",
+        href: "https://docs.cometswap.finance/readme/help/troubleshooting",
       },
       {
         label: t("Documentation"),
-        href: "https://docs.pancakeswap.finance/",
+        href: "https://docs.cometswap.finance/",
       },
       {
         label: t("Audits"),
-        href: "https://docs.pancakeswap.finance/readme/audits",
+        href: "https://docs.cometswap.finance/readme/audits",
       },
       {
         label: t("Legacy products"),
-        href: "https://docs.pancakeswap.finance/products/legacy-products",
+        href: "https://docs.cometswap.finance/products/legacy-products",
       },
     ],
   },
@@ -99,23 +99,23 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Tokenomics"),
-        href: "https://docs.pancakeswap.finance/governance-and-tokenomics/cake-tokenomics",
+        href: "https://docs.cometswap.finance/governance-and-tokenomics/comet-tokenomics",
       },
       {
-        label: t("CAKE Emission Projection"),
-        href: "https://analytics.pancakeswap.finance/",
+        label: t("COMETEmission Projection"),
+        href: "https://analytics.cometswap.finance/",
       },
       {
         label: t("Blog"),
-        href: "https://blog.pancakeswap.finance/",
+        href: "https://blog.cometswap.finance/",
       },
       {
         label: t("Careers"),
-        href: "https://docs.pancakeswap.finance/team/become-a-chef",
+        href: "https://docs.cometswap.finance/team/become-a-chef",
       },
       {
         label: t("Terms Of Service"),
-        href: "https://pancakeswap.finance/terms-of-service",
+        href: "https://cometswap.finance/terms-of-service",
       },
     ],
   },

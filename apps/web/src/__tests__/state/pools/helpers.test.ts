@@ -44,3 +44,4 @@ describe('transformUserData', () => {
     expect(userData).toHaveProperty('pendingReward')
   })
 })
+

@@ -1,4 +1,4 @@
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@cometswap/uikit'
 
 const TextComponent = ({ text }: { text: string }) => {
   return (

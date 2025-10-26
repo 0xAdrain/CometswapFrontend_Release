@@ -23,3 +23,4 @@ export default function IfoProvider({ children }) {
 
   return <IfoContext.Provider value={providerValue}>{children}</IfoContext.Provider>
 }
+

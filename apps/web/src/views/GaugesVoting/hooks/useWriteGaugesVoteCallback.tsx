@@ -1,6 +1,6 @@
-import { Gauge } from '@pancakeswap/gauges'
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
+import { Gauge } from '@cometswap/gauges'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -49,3 +49,4 @@ export const useWriteGaugesVoteCallback = () => {
 
   return { writeVote: vote, isPending }
 }
+

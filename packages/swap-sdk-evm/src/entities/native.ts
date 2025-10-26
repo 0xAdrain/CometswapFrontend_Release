@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { Currency, Token, NativeCurrency } from '@pancakeswap/swap-sdk-core'
+import { Currency, Token, NativeCurrency } from '@cometswap/swap-sdk-core'
 
 import { WNATIVE, NATIVE } from '../constants'
 
@@ -35,7 +35,7 @@ export class Native extends NativeCurrency {
       return this.cache[chainId]
     }
     invariant(!!NATIVE[chainId as keyof typeof NATIVE], 'NATIVE_CURRENCY')
-    const { decimals, name, symbol } = NATIVE[chainId as keyof typeof WNATIVE]
+    const { decimals, name, symbol } = NATIVE[chainId as keyof typeof NATIVE]
     // eslint-disable-next-line no-return-assign
     return (this.cache[chainId] = new Native({ chainId, decimals, symbol, name }))
   }

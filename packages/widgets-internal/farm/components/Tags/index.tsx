@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@cometswap/localization";
 import {
   AlpIcon,
   ArbitrumIcon,
@@ -23,8 +23,8 @@ import {
   ZkEVMIcon,
   ZkSyncIcon,
   useTooltip,
-} from "@pancakeswap/uikit";
-import type { FeeAmount } from "@pancakeswap/v3-sdk";
+} from "@cometswap/uikit";
+import type { FeeAmount } from "@cometswap/v3-sdk";
 import React, { memo } from "react";
 
 const CoreTag: React.FC<React.PropsWithChildren<TagProps>> = (props) => {

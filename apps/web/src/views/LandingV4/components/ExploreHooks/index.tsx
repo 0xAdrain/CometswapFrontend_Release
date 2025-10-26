@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, Text } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import { AllHooks } from 'views/LandingV4/components/ExploreHooks/AllHooks'
 import { Contribute } from 'views/LandingV4/components/ExploreHooks/Contribute'
@@ -46,3 +46,4 @@ export const ExploreHooks = () => {
     </ExploreHooksContainer>
   )
 }
+

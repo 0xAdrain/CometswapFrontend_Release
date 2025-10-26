@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 
 const pocketPrefix = {
   [ChainId.ARBITRUM_ONE]: 'arbitrum-one',
@@ -25,3 +25,4 @@ export const getGroveUrl = (chainId: keyof typeof pocketPrefix, key?: string) =>
   const url = `https://${pocketPrefix[chainId]}.rpc.grove.city/v1/${key}`
   return url
 }
+

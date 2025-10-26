@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@cometswap/uikit'
 
 export const OutlineText = styled(Text)<{ defaultType?: boolean }>`
   padding: 0 2px;
@@ -14,3 +14,4 @@ export const OutlineText = styled(Text)<{ defaultType?: boolean }>`
 export const DarkTextStyle = styled(Text)`
   color: #280d5f;
 `
+

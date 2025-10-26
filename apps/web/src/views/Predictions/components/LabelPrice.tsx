@@ -1,5 +1,5 @@
-import { Text } from '@pancakeswap/uikit'
-import { formatBigIntToFixed } from '@pancakeswap/utils/formatBalance'
+import { Text } from '@cometswap/uikit'
+import { formatBigIntToFixed } from '@cometswap/utils/formatBalance'
 import { memo, useMemo } from 'react'
 import CountUp from 'react-countup'
 import { styled } from 'styled-components'
@@ -37,3 +37,4 @@ const LabelPrice: React.FC<React.PropsWithChildren<LabelPriceProps>> = ({ price 
 }
 
 export default memo(LabelPrice)
+

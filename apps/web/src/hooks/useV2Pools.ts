@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { SmartRouter, V2Pool } from '@pancakeswap/smart-router'
+import { Currency } from '@cometswap/sdk'
+import { SmartRouter, V2Pool } from '@cometswap/smart-router'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo, useRef } from 'react'
 
@@ -94,3 +94,4 @@ export function useV2CandidatePools(
     dataUpdatedAt,
   }
 }
+

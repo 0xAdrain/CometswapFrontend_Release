@@ -1,4 +1,4 @@
-import { Price, Token } from '@pancakeswap/sdk'
+import { Price, Token } from '@cometswap/sdk'
 import { formatPrice } from 'utils/formatCurrencyAmount'
 import { Bound } from 'config/constants/types'
 
@@ -10,7 +10,7 @@ export function formatTickPrice(
   placeholder?: string,
 ) {
   if (atLimit[direction]) {
-    return direction === Bound.LOWER ? '0' : '∞'
+    return direction === Bound.LOWER ? '0' : 'Infinity'
   }
 
   if (!price && placeholder !== undefined) {
@@ -18,8 +18,9 @@ export function formatTickPrice(
   }
 
   if (price?.greaterThan(1e15)) {
-    return '∞'
+    return 'Infinity'
   }
 
   return formatPrice(price, 6, locale)
 }
+

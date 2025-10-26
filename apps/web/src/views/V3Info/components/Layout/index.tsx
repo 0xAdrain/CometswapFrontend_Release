@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { SubMenuItems } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { SubMenuItems } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 import { multiChainQueryStableClient } from 'state/info/constant'
@@ -41,3 +41,4 @@ export const InfoPageLayout = ({ children }) => {
     </>
   )
 }
+

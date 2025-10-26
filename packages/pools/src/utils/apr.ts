@@ -7,7 +7,7 @@ import { BLOCKS_PER_YEAR, SECONDS_IN_YEAR } from '../constants'
  * @param stakingTokenPrice Token price in the same quote currency
  * @param rewardTokenPrice Token price in the same quote currency
  * @param totalStaked Total amount of stakingToken in the pool
- * @param tokenPerBlock Amount of new cake allocated to the pool for each new block
+ * @param tokenPerBlock Amount of new comet allocated to the pool for each new block
  * @returns Null if the APR is NaN or infinite.
  */
 export const getPoolAprByTokenPerBlock = (

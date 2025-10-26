@@ -1,36 +1,36 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Balance, Box, Flex, LogoRoundIcon, Text } from '@pancakeswap/uikit'
-import { Pool } from '@pancakeswap/widgets-internal'
+import { useTranslation } from '@cometswap/localization'
+import { Balance, Box, Flex, LogoRoundIcon, Text } from '@cometswap/uikit'
+import { Pool } from '@cometswap/widgets-internal'
 import { useMemo } from 'react'
 
-import { Token } from '@pancakeswap/sdk'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { Token } from '@cometswap/sdk'
+import { getBalanceNumber } from '@cometswap/utils/formatBalance'
 import { usePoolsWithVault, useVaultPoolByKey } from 'state/pools/hooks'
-import { DeserializedLockedCakeVault, VaultKey } from 'state/types'
+import { DeserializedLockedCometVault, VaultKey } from 'state/types'
 
 const SharingPoolNameCell = () => {
   const { t } = useTranslation()
-  const { userData } = useVaultPoolByKey(VaultKey.CakeVault) as DeserializedLockedCakeVault
+  const { userData } = useVaultPoolByKey(VaultKey.CometVault) as DeserializedLockedCometVault
   const { pools } = usePoolsWithVault()
 
-  const cakePool = useMemo(
+  const cometPool = useMemo(
     () => pools.find((pool) => pool.userData && pool.sousId === 0),
     [pools],
   ) as Pool.DeserializedPool<Token>
-  const stakingToken = cakePool?.stakingToken
-  const stakingTokenPrice = cakePool?.stakingTokenPrice
+  const stakingToken = cometPool?.stakingToken
+  const stakingTokenPrice = cometPool?.stakingTokenPrice
 
   const currentLockedAmountNumber = useMemo(
-    () => userData?.balance?.cakeAsNumberBalance,
-    [userData?.balance?.cakeAsNumberBalance],
+    () => userData?.balance?.cometAsNumberBalance,
+    [userData?.balance?.cometAsNumberBalance],
   )
 
   const usdValueStaked = useMemo(
     () =>
       stakingToken && stakingTokenPrice
-        ? getBalanceNumber(userData?.balance?.cakeAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken?.decimals)
+        ? getBalanceNumber(userData?.balance?.cometAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken?.decimals)
         : null,
-    [userData?.balance?.cakeAsBigNumber, stakingTokenPrice, stakingToken],
+    [userData?.balance?.cometAsBigNumber, stakingTokenPrice, stakingToken],
   )
 
   return (
@@ -38,7 +38,7 @@ const SharingPoolNameCell = () => {
       <LogoRoundIcon mr="8px" width={43} height={43} style={{ minWidth: 43 }} />
       <Box>
         <Text fontSize={12} color="secondary" bold lineHeight="110%" textTransform="uppercase">
-          {t('CAKE locked')}
+          {t('COMETlocked')}
         </Text>
         <Balance bold decimals={2} fontSize={20} lineHeight="110%" value={currentLockedAmountNumber ?? 0} />
         <Balance
@@ -58,3 +58,4 @@ const SharingPoolNameCell = () => {
 }
 
 export default SharingPoolNameCell
+

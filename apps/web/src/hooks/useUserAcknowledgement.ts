@@ -16,3 +16,4 @@ export function useUserAcknowledgement(id: string) {
 
   return [ack, setAck] as const
 }
+

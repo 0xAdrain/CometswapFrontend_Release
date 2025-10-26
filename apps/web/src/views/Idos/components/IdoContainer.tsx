@@ -1,4 +1,4 @@
-import { Container } from '@pancakeswap/uikit'
+import { Container } from '@cometswap/uikit'
 import { ReactNode } from 'react'
 import { Address } from 'viem'
 
@@ -25,3 +25,4 @@ const IdoContainer: React.FC<React.PropsWithChildren<TypeProps>> = ({ idoSection
 }
 
 export default IdoContainer
+

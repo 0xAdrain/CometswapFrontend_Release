@@ -1,73 +1,19 @@
-import { AllArticleType, getArticle } from '@pancakeswap/blog'
-import { useQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 
-export const useAllNewsArticle = (): AllArticleType => {
-  const { data: articlesData, isPending } = useQuery({
-    queryKey: ['/allNews'],
-
-    queryFn: async () =>
-      getArticle({
-        url: '/articles',
-        urlParamsObject: {
-          populate: 'categories,image',
-          sort: 'createAt:desc',
-          pagination: { limit: 9 },
-          filters: {
-            categories: {
-              name: {
-                $eq: 'News',
-              },
-            },
-          },
-        },
-      }),
-
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-  })
-
-  return {
-    isFetching: isPending,
-    articlesData: articlesData ?? {
-      data: [],
-      pagination: {
-        page: 0,
-        pageSize: 0,
-        pageCount: 0,
-        total: 0,
-      },
-    },
-  }
+export const useLatestArticle = () => {
+  return useMemo(() => ({
+    data: null,
+    isLoading: false,
+    error: null,
+  }), [])
 }
 
-export const useLatestArticle = (): AllArticleType => {
-  const { data: articlesData, isPending } = useQuery({
-    queryKey: ['/latestArticle'],
-
-    queryFn: () =>
-      getArticle({
-        url: '/articles',
-        urlParamsObject: {
-          populate: 'categories,image',
-          sort: 'createAt:desc',
-          pagination: { limit: 1 },
-        },
-      }),
-
-    refetchOnReconnect: false,
-    refetchOnWindowFocus: false,
-  })
-
-  return {
-    isFetching: isPending,
-    articlesData: articlesData ?? {
-      data: [],
-      pagination: {
-        page: 0,
-        pageSize: 0,
-        pageCount: 0,
-        total: 0,
-      },
-    },
-  }
+export const useAllNewsArticle = () => {
+  return useMemo(() => ({
+    data: [],
+    isLoading: false,
+    error: null,
+  }), [])
 }
+
+

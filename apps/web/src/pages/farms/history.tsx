@@ -1,5 +1,5 @@
 import { SUPPORT_FARMS } from 'config/constants/supportChains'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useContext } from 'react'
 import { FarmsV3Context, FarmsV3PageLayout } from 'views/Farms'
 import FarmCard from 'views/Farms/components/FarmCard/FarmCard'
@@ -12,7 +12,7 @@ import { ProxyFarmCardContainer } from '.'
 const FarmsHistoryPage = () => {
   const { address: account } = useAccount()
   const { chosenFarmsMemoized } = useContext(FarmsV3Context)
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
 
   return (
     <>
@@ -27,13 +27,13 @@ const FarmsHistoryPage = () => {
               key={farm.pid}
               farm={farm}
               displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-              cakePrice={cakePrice}
+              cometPrice={cometPrice}
               account={account}
               removed={false}
             />
           )
         }
-        return <FarmV3Card key={farm.pid} farm={farm} cakePrice={cakePrice} account={account} removed={false} />
+        return <FarmV3Card key={farm.pid} farm={farm} cometPrice={cometPrice} account={account} removed={false} />
       })}
     </>
   )
@@ -43,3 +43,4 @@ FarmsHistoryPage.Layout = FarmsV3PageLayout
 FarmsHistoryPage.chains = SUPPORT_FARMS
 
 export default FarmsHistoryPage
+

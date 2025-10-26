@@ -1,6 +1,6 @@
-import { PositionDetails } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { isStableSwapSupported } from '@pancakeswap/stable-swap-sdk'
+import { PositionDetails } from '@cometswap/farms'
+import { useTranslation } from '@cometswap/localization'
+import { isStableSwapSupported } from '@cometswap/stable-swap-sdk'
 import {
   AddIcon,
   Button,
@@ -16,8 +16,8 @@ import {
   Tag,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
-import { Liquidity, NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+} from '@cometswap/uikit'
+import { Liquidity, NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 import { AppBody, AppHeader } from 'components/App'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import { RangeTag } from 'components/RangeTag'
@@ -134,6 +134,7 @@ export default function PoolListPage() {
             positionSummaryLink,
             subtitle,
             setInverted,
+            isValidFee,
           }) => {
             let token0Symbol = ''
             let token1Symbol = ''
@@ -157,6 +158,11 @@ export default function PoolListPage() {
                 }
                 tags={
                   <>
+                    {!isValidFee && (
+                      <Tag outline variant="failure" mr="8px">
+                        {t('Invalid Pool')}
+                      </Tag>
+                    )}
                     {p.isStaked && (
                       <Tag outline variant="warning" mr="8px">
                         {t('Farming')}
@@ -367,3 +373,4 @@ export default function PoolListPage() {
 }
 
 PoolListPage.chains = CHAIN_IDS
+

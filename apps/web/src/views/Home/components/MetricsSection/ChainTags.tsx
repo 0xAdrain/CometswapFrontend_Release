@@ -8,7 +8,7 @@ import {
   Text,
   ZkEVMIcon,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import React, { cloneElement } from 'react'
 import Marquee from 'react-fast-marquee'
 import { styled } from 'styled-components'
@@ -161,3 +161,4 @@ export const ChainTags: React.FC = () => {
     </StyledMarquee>
   )
 }
+

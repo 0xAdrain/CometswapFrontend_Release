@@ -1,5 +1,5 @@
-import { Currency } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
+import { Currency } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
 import SwapWarningTokens from 'config/constants/swapWarningTokens'
 
 const shouldShowSwapWarning = (chainId: ChainId | undefined, swapCurrency?: Currency): boolean => {
@@ -12,3 +12,4 @@ const shouldShowSwapWarning = (chainId: ChainId | undefined, swapCurrency?: Curr
 }
 
 export default shouldShowSwapWarning
+

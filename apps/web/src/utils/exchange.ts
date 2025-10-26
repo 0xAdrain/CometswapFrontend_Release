@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, Fraction, Percent, Trade, TradeType } from '@pancakeswap/sdk'
-import { pancakeRouter02ABI } from 'config/abi/IPancakeRouter02'
+import { Currency, CurrencyAmount, Fraction, Percent, Trade, TradeType } from '@cometswap/sdk'
+import { cometRouter02ABI } from 'config/abi/ICometRouter02'
 import {
   ALLOWED_PRICE_IMPACT_HIGH,
   ALLOWED_PRICE_IMPACT_LOW,
@@ -34,7 +34,7 @@ export function calculateSlippageAmount(value: CurrencyAmount<Currency>, slippag
 
 export function useRouterContract() {
   const { chainId } = useActiveChainId()
-  return useContract(chainId && V2_ROUTER_ADDRESS[chainId], pancakeRouter02ABI)
+  return useContract(chainId && V2_ROUTER_ADDRESS[chainId], cometRouter02ABI)
 }
 
 // computes price breakdown for the trade
@@ -110,3 +110,4 @@ export function formatExecutionPrice(
         trade.inputAmount.currency.symbol
       }`
 }
+

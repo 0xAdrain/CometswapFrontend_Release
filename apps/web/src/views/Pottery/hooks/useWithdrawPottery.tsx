@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { useToast } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { useTranslation } from '@cometswap/localization'
+import { useToast } from '@cometswap/uikit'
+import { useWeb3React } from '@cometswap/wagmi'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { usePotterytVaultContract } from 'hooks/useContract'
@@ -39,3 +39,4 @@ export const useWithdrawPottery = (redeemShare: string, vaultAddress: Address) =
 
   return { isPending, handleWithdraw }
 }
+

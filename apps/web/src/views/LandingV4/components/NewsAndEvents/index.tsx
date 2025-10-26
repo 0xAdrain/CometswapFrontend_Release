@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, PageSection, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, PageSection, Text } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
 import { InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopLeft } from 'views/Home/components/WedgeSvgs'
@@ -64,3 +64,4 @@ export const NewsAndEvents = () => {
     </>
   )
 }
+

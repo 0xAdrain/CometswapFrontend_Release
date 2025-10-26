@@ -1,4 +1,4 @@
-import { ArrowBackIcon, ArrowForwardIcon, BunnyCardsIcon, Flex, IconButton } from '@pancakeswap/uikit'
+import { ArrowBackIcon, ArrowForwardIcon, BunnyCardsIcon, Flex, IconButton } from '@cometswap/uikit'
 import { useGetSortedRoundsCurrentEpoch } from 'state/predictions/hooks'
 import { styled } from 'styled-components'
 import useSwiper from '../hooks/useSwiper'
@@ -65,3 +65,4 @@ const PrevNextNav = () => {
 }
 
 export default PrevNextNav
+

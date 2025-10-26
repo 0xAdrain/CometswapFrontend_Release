@@ -9,3 +9,4 @@ const useInitNotificationsClient = () => {
   })
 }
 export default useInitNotificationsClient
+

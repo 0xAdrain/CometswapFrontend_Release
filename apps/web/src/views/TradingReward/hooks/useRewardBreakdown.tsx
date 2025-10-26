@@ -1,16 +1,17 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { ChainId } from '@cometswap/chains'
+import { Token } from '@cometswap/swap-sdk-core'
 import { useQuery } from '@tanstack/react-query'
 import { tradingRewardPairConfigChainMap } from 'views/TradingReward/config/pairs'
 import { AllTradingRewardPairDetail } from 'views/TradingReward/hooks/useAllTradingRewardPair'
 import { UserCampaignInfoDetail } from 'views/TradingReward/hooks/useAllUserCampaignInfo'
 import { useAccount } from 'wagmi'
-import dayjs from 'dayjs'
+import { FarmV3DataWithPrice } from '@cometswap/farms'
 
 interface UseRewardBreakdownProps {
   allUserCampaignInfo: UserCampaignInfoDetail[]
   allTradingRewardPairData: AllTradingRewardPairDetail
   campaignPairs: { [campaignId in string]: { [chainId in string]: Array<string> } }
+  farms: FarmV3DataWithPrice[]
 }
 
 export interface RewardBreakdownPair {
@@ -42,11 +43,12 @@ const useRewardBreakdown = ({
   allUserCampaignInfo,
   allTradingRewardPairData,
   campaignPairs,
+  farms,
 }: UseRewardBreakdownProps): RewardBreakdown => {
   const { address: account } = useAccount()
 
   const { data: rewardBreakdownList, isPending } = useQuery({
-    queryKey: ['tradingReward', 'rewards-breakdown', allUserCampaignInfo, allTradingRewardPairData, account],
+    queryKey: ['tradingReward', 'rewards-breakdown', allUserCampaignInfo, allTradingRewardPairData, account, farms],
 
     queryFn: async () => {
       try {
@@ -54,24 +56,15 @@ const useRewardBreakdown = ({
           const incentive = allTradingRewardPairData.campaignIdsIncentive.find(
             (i) => i.campaignId!.toLowerCase() === campaignId.toLowerCase(),
           )
-          const campaignInfo = allUserCampaignInfo.find(
-            (user) => user.campaignId.toLowerCase() === campaignId.toLowerCase(),
-          )
-          const showRewardEarned =
-            incentive && incentive.campaignClaimTime
-              ? incentive.campaignClaimTime <= dayjs().unix()
-                ? Boolean(campaignInfo?.isQualified)
-                : true
-              : true
 
           const pairs = Object.keys(campaignPairs?.[campaignId]).map((campaignChainId) => {
-            // @ts-ignore
-            const farms = tradingRewardPairConfigChainMap?.[campaignChainId as ChainId]
+            const currentChainFarms = farms.filter((f) => f.chainId === Number(campaignChainId))
 
             const data = campaignPairs?.[campaignId]?.[campaignChainId].map((lpAddress) => {
-              const pairInfo = farms.find((farm) => farm.lpAddress.toLowerCase() === lpAddress.toLowerCase())
-
-              const userData = campaignInfo?.tradingFeeArr.find((i) => i.pool.toLowerCase() === lpAddress.toLowerCase())
+              const pairInfo = currentChainFarms.find((farm) => farm.lpAddress.toLowerCase() === lpAddress.toLowerCase())
+              const userData = allUserCampaignInfo
+                .find((user) => user.campaignId.toLowerCase() === campaignId.toLowerCase())
+                ?.tradingFeeArr.find((i) => i.pool.toLowerCase() === lpAddress.toLowerCase())
 
               return {
                 chainId: Number(campaignChainId) as ChainId,
@@ -80,10 +73,10 @@ const useRewardBreakdown = ({
                 token: pairInfo?.token,
                 quoteToken: pairInfo?.quoteToken,
                 yourVolume: userData?.volume ?? 0,
-                rewardEarned: (showRewardEarned && userData?.estimateRewardUSD) || 0,
+                rewardEarned: userData?.estimateRewardUSD ?? 0,
                 yourTradingFee: userData?.tradingFee ?? '0',
                 feeAmount: pairInfo?.feeAmount ?? 0,
-                preCap: (showRewardEarned && userData?.preCap) || 0,
+                preCap: userData?.preCap ?? 0,
               }
             })
 
@@ -108,7 +101,7 @@ const useRewardBreakdown = ({
     },
 
     initialData: [],
-    enabled: Boolean(account),
+    enabled: Boolean(account && farms.length > 0),
   })
 
   return {

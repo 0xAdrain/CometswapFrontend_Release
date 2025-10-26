@@ -1,4 +1,4 @@
-import { Currency, TradeType } from '@pancakeswap/swap-sdk-core'
+import { Currency, TradeType } from '@cometswap/swap-sdk-core'
 
 import { logger } from './datadog'
 
@@ -42,3 +42,4 @@ export const logSwap = ({
     //
   }
 }
+

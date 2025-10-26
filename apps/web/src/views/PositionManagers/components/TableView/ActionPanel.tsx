@@ -1,5 +1,5 @@
-import { Strategy } from '@pancakeswap/position-managers'
-import { Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Strategy } from '@cometswap/position-managers'
+import { Flex, useMatchBreakpoints } from '@cometswap/uikit'
 
 import { useTheme } from 'styled-components'
 import { LiquidityManagementProps } from '../LiquidityManagement'
@@ -24,7 +24,7 @@ export const ActionPanel: React.FC<
   isSingleDepositToken,
   tokenPerSecond,
   earningToken,
-  isInCakeRewardDateRange,
+  isInCometRewardDateRange,
   manager,
   managerAddress,
   managerInfoUrl,
@@ -53,7 +53,7 @@ export const ActionPanel: React.FC<
   learnMoreAboutUrl,
   lpTokenDecimals,
   aprTimeWindow,
-  bCakeWrapper,
+  bCometWrapper,
   minDepositUSD,
   isBooster,
   boosterContractAddress,
@@ -85,13 +85,13 @@ export const ActionPanel: React.FC<
             tokenPerSecond={tokenPerSecond}
             earningToken={earningToken}
             isTableView={!isDesktop}
-            isInCakeRewardDateRange={isInCakeRewardDateRange}
+            isInCometRewardDateRange={isInCometRewardDateRange}
           />
         )}
         <VaultLinks
           mt="0.5em"
           manager={manager}
-          vaultAddress={bCakeWrapper ?? contractAddress}
+          vaultAddress={bCometWrapper ?? contractAddress}
           managerAddress={managerAddress}
           managerInfoUrl={managerInfoUrl}
           strategyInfoUrl={strategyInfoUrl}
@@ -140,15 +140,15 @@ export const ActionPanel: React.FC<
             totalSupplyAmounts={totalSupplyAmounts}
             userLpAmounts={userLpAmounts}
             precision={precision}
-            isInCakeRewardDateRange={isInCakeRewardDateRange}
+            isInCometRewardDateRange={isInCometRewardDateRange}
             totalStakedInUsd={totalStakedInUsd}
             strategyInfoUrl={strategyInfoUrl}
             learnMoreAboutUrl={learnMoreAboutUrl}
             lpTokenDecimals={lpTokenDecimals}
             aprTimeWindow={aprTimeWindow}
-            bCakeWrapper={bCakeWrapper}
+            bCometWrapper={bCometWrapper}
             minDepositUSD={minDepositUSD}
-            isBooster={isBooster && isInCakeRewardDateRange}
+            isBooster={isBooster && isInCometRewardDateRange}
             boosterContractAddress={boosterContractAddress}
             adapterAddress={adapterAddress}
           />
@@ -169,9 +169,10 @@ export const ActionPanel: React.FC<
           tokenPerSecond={tokenPerSecond}
           earningToken={earningToken}
           isTableView
-          isInCakeRewardDateRange={isInCakeRewardDateRange}
+          isInCometRewardDateRange={isInCometRewardDateRange}
         />
       )}
     </Flex>
   )
 }
+

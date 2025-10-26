@@ -1,5 +1,5 @@
 import { ChangeEvent, InputHTMLAttributes, useState } from 'react'
-import { Box, CloseIcon, IconButton, Input, InputProps } from '@pancakeswap/uikit'
+import { Box, CloseIcon, IconButton, Input, InputProps } from '@cometswap/uikit'
 
 interface ChoiceProps extends InputProps, InputHTMLAttributes<HTMLInputElement> {
   onTextInput: (value: string) => void
@@ -33,3 +33,4 @@ const Choice: React.FC<React.PropsWithChildren<ChoiceProps>> = ({ onRemove, onTe
 }
 
 export default Choice
+

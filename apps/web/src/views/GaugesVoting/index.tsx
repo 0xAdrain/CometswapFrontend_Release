@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   ArrowBackIcon,
   Box,
@@ -12,14 +12,14 @@ import {
   StyledLink,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import Page from 'components/Layout/Page'
 import NextLink from 'next/link'
 import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { CurrentEpoch } from './components/CurrentEpoch'
 import { FilterFieldByType, FilterFieldInput, FilterFieldSort } from './components/GaugesFilter'
-import { MyVeCakeBalance } from './components/MyVeCakeBalance'
+import { MyCometBalance } from './components/MyCometBalance'
 import { GaugesList, GaugesTable, VoteTable } from './components/Table'
 import { WeightsPieChart } from './components/WeightsPieChart'
 import { useGauges } from './hooks/useGauges'
@@ -84,12 +84,12 @@ const GaugesVoting = () => {
       <StyledPageHeader background="transparent">
         <Flex justifyContent="space-between">
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
-            <NextLink href="/cake-staking">
+            <NextLink href="/comet-staking">
               <StyledLink color="primary">
                 <Button p="0" variant="text">
                   <ArrowBackIcon color="primary" />
                   <Text color="primary" bold fontSize="16px" mr="4px" textTransform="uppercase">
-                    {t('cake staking')}
+                    {t('comet staking')}
                   </Text>
                 </Button>
               </StyledLink>
@@ -100,14 +100,14 @@ const GaugesVoting = () => {
             <Box maxWidth={['200px', '200px', '537px']}>
               <Flex flexDirection={['column', 'column', 'row']}>
                 <Text color="textSubtle" maxWidth={['142px', '100%', '100%']}>
-                  {t('Use veCAKE to vote and determine CAKE emissions.')}
+                  {t('Use veCOMETto vote and determine COMETemissions.')}
                 </Text>
                 <Box ml={['-8px', '-8px', 0]}>
                   <InlineLink
                     external
                     showExternalIcon
                     color="textSubtle"
-                    href="https://docs.pancakeswap.finance/products/vecake"
+                    href="https://docs.cometswap.finance/products/Comet"
                   >
                     {t('Learn More')}
                   </InlineLink>
@@ -216,7 +216,7 @@ const GaugesVoting = () => {
 const EpochPreview = () => {
   return (
     <Card isActive style={{ height: 'fit-content' }}>
-      <MyVeCakeBalance />
+      <MyCometBalance />
       <CurrentEpoch />
     </Card>
   )
@@ -231,3 +231,4 @@ const ResponsiveCard: React.FC<PropsWithChildren> = ({ children }) => {
 }
 
 export default GaugesVoting
+

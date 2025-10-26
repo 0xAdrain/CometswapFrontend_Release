@@ -1,10 +1,10 @@
 {
-  "name": "@pancakeswap/stable-swap-sdk",
+  "name": "@cometswap/stable-swap-sdk",
   "version": "2.0.0",
-  "description": "SDK for pancakeswap stable swap",
+  "description": "SDK for cometswap stable swap",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "https://github.com/cometswap/comet-frontend.git",
     "directory": "packages/stable-swap-sdk"
   },
   "type": "module",
@@ -23,16 +23,16 @@
     "dist"
   ],
   "dependencies": {
-    "@pancakeswap/chains": "workspace:*",
-    "@pancakeswap/swap-sdk-core": "workspace:*",
-    "@pancakeswap/tokens": "workspace:*",
+    "@cometswap/chains": "workspace:*",
+    "@cometswap/swap-sdk-core": "workspace:*",
+    "@cometswap/tokens": "workspace:*",
     "tiny-invariant": "^1.3.0"
   },
   "devDependencies": {
-    "@pancakeswap/token-lists": "workspace:*",
-    "@pancakeswap/tsconfig": "workspace:*",
-    "@pancakeswap/utils": "workspace:*",
-    "@pancakeswap/sdk": "workspace:*",
+    "@cometswap/token-lists": "workspace:*",
+    "@cometswap/tsconfig": "workspace:*",
+    "@cometswap/utils": "workspace:*",
+    "@cometswap/sdk": "workspace:*",
     "tsup": "^6.7.0",
     "viem": "catalog:"
   },

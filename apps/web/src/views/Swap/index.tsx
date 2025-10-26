@@ -1,8 +1,10 @@
-import { Currency } from '@pancakeswap/sdk'
-import { BottomDrawer, Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Currency } from '@cometswap/sdk'
+import { BottomDrawer, Flex, useMatchBreakpoints } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
+import AnimatedPageWrapper from 'components/AnimatedPageWrapper'
 import { useCurrency } from 'hooks/Tokens'
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { Field } from 'state/swap/actions'
@@ -52,8 +54,14 @@ export default function Swap() {
   )
 
   return (
-    <Page removePadding={isChartExpanded} hideFooterOnDesktop={isChartExpanded}>
-      <Flex width={['328px', '100%']} height="100%" justifyContent="center" position="relative" alignItems="flex-start">
+    <AnimatedPageWrapper>
+      <Page removePadding={isChartExpanded} hideFooterOnDesktop={isChartExpanded}>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.3 }}
+        >
+          <Flex width={['328px', '100%']} height="100%" justifyContent="center" position="relative" alignItems="flex-start">
         {isDesktop && isChartSupported && (
           <PriceChartContainer
             inputCurrencyId={inputCurrencyId}
@@ -96,7 +104,10 @@ export default function Swap() {
             </StyledInputCurrencyWrapper>
           </StyledSwapContainer>
         </Flex> */}
-      </Flex>
-    </Page>
+          </Flex>
+        </motion.div>
+      </Page>
+    </AnimatedPageWrapper>
   )
 }
+

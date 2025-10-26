@@ -1,5 +1,5 @@
-import { Currency, Token } from '@pancakeswap/sdk'
-import { FeeAmount, Pool } from '@pancakeswap/v3-sdk'
+import { Currency, Token } from '@cometswap/sdk'
+import { FeeAmount, Pool } from '@cometswap/v3-sdk'
 import { useAllCurrencyCombinations } from 'hooks/Trades'
 import { useMemo } from 'react'
 import { PoolState } from './types'
@@ -46,3 +46,4 @@ export function useV3SwapPools(
     }
   }, [pools])
 }
+

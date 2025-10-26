@@ -1,15 +1,15 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { PairDataTimeWindowEnum, UseModalV2Props } from '@pancakeswap/uikit'
-import { encodeSqrtRatioX96, parseProtocolFees, TickMath } from '@pancakeswap/v3-sdk'
-import { RoiCalculatorModalV2 } from '@pancakeswap/widgets-internal/roi'
+import { useTranslation } from '@cometswap/localization'
+import { PairDataTimeWindowEnum, UseModalV2Props } from '@cometswap/uikit'
+import { encodeSqrtRatioX96, parseProtocolFees, TickMath } from '@cometswap/v3-sdk'
+import { RoiCalculatorModalV2 } from '@cometswap/widgets-internal/roi'
 import BigNumber from 'bignumber.js'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useCometPrice } from 'hooks/useCometPrice'
 import { useCurrencyUsdPrice } from 'hooks/useCurrencyUsdPrice'
 import { usePairTokensPrice } from 'hooks/v3/usePairTokensPrice'
 import { useAllV3Ticks } from 'hooks/v3/usePoolTickData'
 import useV3DerivedInfo from 'hooks/v3/useV3DerivedInfo'
 import React, { useMemo, useState } from 'react'
-import { CakeApr } from 'state/farmsV4/atom'
+import { CometApr } from 'state/farmsV4/atom'
 import { useExtraV3PositionInfo } from 'state/farmsV4/hooks'
 import { PositionDetail } from 'state/farmsV4/state/accountPositions/type'
 import { PoolInfo } from 'state/farmsV4/state/type'
@@ -21,7 +21,7 @@ type V3PoolAprModalProps = {
   modal: UseModalV2Props
   poolInfo: PoolInfo
   // combinedApr: number
-  cakeApr?: CakeApr[keyof CakeApr]
+  cakeApr?: CometApr[keyof CometApr]
   boostMultiplier?: number
   lpApr?: number
   userPosition?: PositionDetail
@@ -33,7 +33,7 @@ export const V3PoolAprModal: React.FC<V3PoolAprModalProps> = ({ modal, ...props 
 
 const AprModal: React.FC<V3PoolAprModalProps> = ({ modal, poolInfo, userPosition, cakeApr }) => {
   const { t } = useTranslation()
-  const cakePrice = useCakePrice()
+  const cometPrice = useCometPrice()
   const { position } = useExtraV3PositionInfo(userPosition)
   const { data: token0PriceUsd } = useCurrencyUsdPrice(poolInfo.token0, { enabled: !!poolInfo.token0 })
   const { data: token1PriceUsd } = useCurrencyUsdPrice(poolInfo.token1, { enabled: !!poolInfo.token1 })
@@ -81,10 +81,10 @@ const AprModal: React.FC<V3PoolAprModalProps> = ({ modal, poolInfo, userPosition
 
     return new BigNumber(cakeApr.poolWeight)
       .times(cakeApr?.cakePerYear)
-      .times(cakePrice)
+      .times(cometPrice)
       .div(new BigNumber(Number(lmPoolLiquidity) ?? 0).plus(position?.liquidity ? position?.liquidity.toString() : 0))
       .times(100)
-  }, [cakeApr?.cakePerYear, cakeApr?.poolWeight, cakePrice, lmPoolLiquidity, position?.liquidity])
+  }, [cakeApr?.cakePerYear, cakeApr?.poolWeight, cometPrice, lmPoolLiquidity, position?.liquidity])
 
   const [protocolFee] = useMemo(
     () => (pool?.feeProtocol && parseProtocolFees(pool.feeProtocol)) || [],
@@ -106,14 +106,14 @@ const AprModal: React.FC<V3PoolAprModalProps> = ({ modal, poolInfo, userPosition
       currencyBUsdPrice={token1PriceUsd}
       sqrtRatioX96={sqrtRatioX96}
       liquidity={pool?.liquidity}
-      customCakeApr={new BigNumber(cakeApr?.value ?? 0).times(100)}
+      customCometApr={new BigNumber(cakeApr?.value ?? 0).times(100)}
       feeAmount={poolInfo.feeTier}
       ticks={ticksData}
       volume24H={Number(poolInfo.vol24hUsd) || 0}
       priceUpper={position?.token0PriceUpper}
       priceLower={position?.token0PriceLower}
-      cakePrice={cakePrice.toFixed(3)}
-      cakeAprFactor={cakeAprFactor}
+      cometPrice={cometPrice.toFixed(3)}
+      cometAprFactor={cakeAprFactor}
       prices={prices}
       priceSpan={priceTimeWindow}
       protocolFee={protocolFee}
@@ -121,3 +121,4 @@ const AprModal: React.FC<V3PoolAprModalProps> = ({ modal, poolInfo, userPosition
     />
   )
 }
+

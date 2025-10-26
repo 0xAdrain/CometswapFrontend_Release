@@ -1,4 +1,4 @@
-import { PCSDuoTokenVault, PCSDuoTokenVaultConfig, createPCSVaultManager } from '@pancakeswap/position-managers'
+import { PCSDuoTokenVault, PCSDuoTokenVaultConfig, createPCSVaultManager } from '@cometswap/position-managers'
 import { useMemo } from 'react'
 
 interface Params {
@@ -27,3 +27,4 @@ export function usePCSVault({ config }: Params): VaultDetail {
     error: null,
   }
 }
+

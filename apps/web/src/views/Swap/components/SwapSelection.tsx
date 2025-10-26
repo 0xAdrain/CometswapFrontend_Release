@@ -1,4 +1,4 @@
-import { ButtonMenu, ButtonMenuItem } from '@pancakeswap/uikit'
+import { ButtonMenu, ButtonMenuItem } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
@@ -46,3 +46,4 @@ export const SwapSelection = ({ swapType }: { swapType: SwapType }) => {
     </ButtonMenu>
   )
 }
+

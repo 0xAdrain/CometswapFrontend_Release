@@ -8,8 +8,8 @@ export type FooterLinkType = {
 
 export type FooterProps = {
   items: FooterLinkType[];
-  buyCakeLabel: string;
-  buyCakeLink: string;
+  buyveCometLabel: string;
+  buyveCometLink: string;
   isDark: boolean;
   toggleTheme: (isDark: boolean) => void;
   cakePriceUsd?: number;

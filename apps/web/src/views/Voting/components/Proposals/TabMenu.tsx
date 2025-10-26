@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { TabMenu as UIKitTabMenu, Tab, Flex, VerifiedIcon, CommunityIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { TabMenu as UIKitTabMenu, Tab, Flex, VerifiedIcon, CommunityIcon } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { ProposalType } from 'state/types'
 
 interface TabMenuProps {
@@ -65,3 +65,4 @@ const TabMenu: React.FC<React.PropsWithChildren<TabMenuProps>> = ({ proposalType
 }
 
 export default TabMenu
+

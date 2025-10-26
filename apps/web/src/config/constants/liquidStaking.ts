@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import { Address } from 'viem'
 
 export const WBETH: Record<number, Address> = {
@@ -13,3 +13,4 @@ export const SNBNB: Record<number, Address> = {
 }
 
 export const UNWRAPPED_ETH_ADDRESS: Address = '0x79973d557CD9dd87eb61E250cc2572c990e20196'
+

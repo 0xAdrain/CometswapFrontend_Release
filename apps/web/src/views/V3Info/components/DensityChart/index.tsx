@@ -1,6 +1,6 @@
-import { CurrencyAmount, Token } from '@pancakeswap/sdk'
-import { Flex, Spinner } from '@pancakeswap/uikit'
-import { FeeAmount, Pool, TICK_SPACINGS, TickMath } from '@pancakeswap/v3-sdk'
+import { CurrencyAmount, Token } from '@cometswap/sdk'
+import { Flex, Spinner } from '@cometswap/uikit'
+import { FeeAmount, Pool, TICK_SPACINGS, TickMath } from '@cometswap/v3-sdk'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Bar, BarChart, Cell, LabelList, ResponsiveContainer, Tooltip, XAxis } from 'recharts'
 import { styled } from 'styled-components'
@@ -297,3 +297,4 @@ export default function DensityChart({ address }: DensityChartProps) {
     </Wrapper>
   )
 }
+

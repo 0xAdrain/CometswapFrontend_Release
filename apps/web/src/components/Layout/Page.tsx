@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import { NextSeo } from 'next-seo'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import { useRouter } from 'next/router'
 import { DEFAULT_META, getCustomMeta } from 'config/constants/meta'
 import Container from './Container'
@@ -62,3 +62,4 @@ const Page: React.FC<React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement
 }
 
 export default Page
+

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Native, Token } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Native, Token } from '@cometswap/sdk'
 import { multicallABI } from 'config/abi/Multicall'
 import { useAllTokens } from 'hooks/Tokens'
 import useNativeCurrency from 'hooks/useNativeCurrency'
@@ -158,3 +158,4 @@ export function useAllTokenBalances(): { [tokenAddress: string]: CurrencyAmount<
   const balances = useTokenBalances(account ?? undefined, allTokensArray)
   return balances ?? {}
 }
+

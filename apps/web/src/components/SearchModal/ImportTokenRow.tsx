@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
-import { Token, Currency } from '@pancakeswap/swap-sdk-core'
-import { TokenRowButton } from '@pancakeswap/widgets-internal'
+import { Token, Currency } from '@cometswap/swap-sdk-core'
+import { TokenRowButton } from '@cometswap/widgets-internal'
 import TokenRowWithCurrencyLogo from './TokenRowWithCurrencyLogo'
 
 interface ImportTokenRowProps {
@@ -47,3 +47,4 @@ const ImportTokenRow: React.FC<React.PropsWithChildren<ImportTokenRowProps>> = (
 }
 
 export default ImportTokenRow
+

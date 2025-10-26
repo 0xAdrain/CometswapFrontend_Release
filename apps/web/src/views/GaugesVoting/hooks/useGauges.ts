@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Gauge } from '@pancakeswap/gauges'
+import { ChainId } from '@cometswap/chains'
+import { Gauge } from '@cometswap/gauges'
 import { useQuery } from '@tanstack/react-query'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { stringify } from 'qs'
@@ -43,3 +43,4 @@ export const useGauges = (showKilled: boolean = false) => {
     isLoading: isPending || data?.length === 0,
   }
 }
+

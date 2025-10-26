@@ -1,6 +1,6 @@
-import { chainNames } from '@pancakeswap/chains'
-import { PredictionStatus } from '@pancakeswap/prediction'
-import { Button, Flex, HelpIcon, PrizeIcon } from '@pancakeswap/uikit'
+import { chainNames } from '@cometswap/chains'
+import { PredictionStatus } from '@cometswap/prediction'
+import { Button, Flex, HelpIcon, PrizeIcon } from '@cometswap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -92,7 +92,7 @@ const Menu = () => {
                 <Button
                   variant="subtle"
                   as="a"
-                  href="https://docs.pancakeswap.finance/products/prediction"
+                  href="https://docs.cometswap.finance/products/prediction"
                   target="_blank"
                   rel="noreferrer noopener"
                   width="48px"
@@ -119,3 +119,4 @@ const Menu = () => {
 }
 
 export default Menu
+

@@ -1,4 +1,4 @@
-import { Box, BoxProps, getPortalRoot, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Box, BoxProps, getPortalRoot, useMatchBreakpoints } from '@cometswap/uikit'
 import { useRouter } from 'next/router'
 import { cloneElement, memo, RefObject, useCallback, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
@@ -161,3 +161,4 @@ export const MobileCard = ({
     </StaticContainer>
   ) : null
 }
+

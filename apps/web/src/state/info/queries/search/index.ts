@@ -88,3 +88,4 @@ const useFetchSearchResults = (searchString: string, enabled = true) => {
 }
 
 export default useFetchSearchResults
+

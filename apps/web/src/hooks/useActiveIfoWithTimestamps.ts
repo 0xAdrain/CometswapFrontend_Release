@@ -1,4 +1,4 @@
-import { Ifo, ifoV7ABI } from '@pancakeswap/ifos'
+import { Ifo, ifoV7ABI } from '@cometswap/ifos'
 import { useQuery } from '@tanstack/react-query'
 
 import { publicClient } from 'utils/wagmi'
@@ -50,3 +50,4 @@ export const useActiveIfoWithTimestamps = (): (Ifo & { startTimestamp: number; e
 
   return activeIfo ? { ...activeIfo, ...currentIfoBlocks } : null
 }
+

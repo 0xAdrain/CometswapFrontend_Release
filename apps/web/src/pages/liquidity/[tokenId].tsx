@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/chains'
-import { isActiveV3Farm } from '@pancakeswap/farms'
-import { Currency, CurrencyAmount, Fraction, Percent, Price, Token } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { isActiveV3Farm } from '@cometswap/farms'
+import { Currency, CurrencyAmount, Fraction, Percent, Price, Token } from '@cometswap/sdk'
 import {
   AtomBox,
   AutoColumn,
@@ -23,12 +23,12 @@ import {
   Toggle,
   useMatchBreakpoints,
   useModal,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 
-import { ConfirmationModalContent, NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
+import { ConfirmationModalContent, NextLinkFromReactRouter } from '@cometswap/widgets-internal'
 
-import { Trans, useTranslation } from '@pancakeswap/localization'
-import { MasterChefV3, NonfungiblePositionManager, Pool, Position, isPoolTickInRange } from '@pancakeswap/v3-sdk'
+import { Trans, useTranslation } from '@cometswap/localization'
+import { MasterChefV3, NonfungiblePositionManager, Pool, Position, isPoolTickInRange } from '@cometswap/v3-sdk'
 import { useQuery } from '@tanstack/react-query'
 import { AppHeader } from 'components/App'
 import { LightGreyCard } from 'components/Card'
@@ -234,11 +234,52 @@ export default function PoolPage() {
   // construct Position from details returned
   const [poolState, pool] = usePool(token0 ?? undefined, token1 ?? undefined, feeAmount)
   const position = useMemo(() => {
-    if (pool && typeof liquidity === 'bigint' && typeof tickLower === 'number' && typeof tickUpper === 'number') {
-      return new Position({ pool, liquidity: liquidity.toString(), tickLower, tickUpper })
+    if (pool && typeof liquidity === 'bigint' && typeof tickLower === 'number' && typeof tickUpper === 'number' && feeAmount) {
+      // 验证fee和tick值的有效性，避免TICK_LOWER/TICK_UPPER错误
+      const validFeeAmounts = [100, 500, 2500, 10000]
+      const isValidFeeAmount = positionDetails?.isValidFee !== false && validFeeAmounts.includes(feeAmount)
+      
+      if (!isValidFeeAmount) {
+        console.warn('Skipping Position creation for invalid fee in [tokenId].tsx:', { 
+          feeAmount,
+          tokenId: tokenId?.toString() 
+        })
+        return undefined
+      }
+      
+      // 验证tick值是否符合tickSpacing要求
+      const tickSpacing = pool.tickSpacing
+      const tickLowerValid = Number.isInteger(tickLower) && tickLower % tickSpacing === 0
+      const tickUpperValid = Number.isInteger(tickUpper) && tickUpper % tickSpacing === 0
+      
+      if (!tickLowerValid || !tickUpperValid) {
+        console.warn('Skipping Position creation for invalid tick values in [tokenId].tsx:', { 
+          feeAmount,
+          tickLower,
+          tickUpper,
+          tickSpacing,
+          tickLowerValid,
+          tickUpperValid,
+          tokenId: tokenId?.toString()
+        })
+        return undefined
+      }
+      
+      try {
+        return new Position({ pool, liquidity: liquidity.toString(), tickLower, tickUpper })
+      } catch (error) {
+        console.error('Failed to create Position in [tokenId].tsx:', { 
+          feeAmount,
+          tickLower,
+          tickUpper,
+          tokenId: tokenId?.toString(),
+          error: error instanceof Error ? error.message : String(error)
+        })
+        return undefined
+      }
     }
     return undefined
-  }, [liquidity, pool, tickLower, tickUpper])
+  }, [liquidity, pool, tickLower, tickUpper, feeAmount, positionDetails, tokenId])
 
   const poolAddress = useMemo(() => (pool ? Pool.getAddress(pool.token0, pool.token1, pool.fee) : undefined), [pool])
 
@@ -512,7 +553,7 @@ export default function PoolPage() {
           <Text display="inline" bold mr="0.25em">{`${currencyQuote?.symbol}-${currencyBase?.symbol}`}</Text>
           <Text display="inline">
             {t(
-              'has an active PancakeSwap farm. Stake your position in the farm to start earning with the indicated APR with CAKE farming.',
+              'has an active CometSwap farm. Stake your position in the farm to start earning with the indicated APR with COMETfarming.',
             )}
           </Text>
           <NextLinkFromReactRouter to="/liquidity/pools">

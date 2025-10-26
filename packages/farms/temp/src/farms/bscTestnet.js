@@ -1,0 +1,131 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.legacyFarmConfig = exports.legacyV3BscTestnetFarmConfig = exports.bscTestnetFarmConfig = void 0;
+const chains_1 = require("@cometswap/chains");
+const tokens_1 = require("@cometswap/tokens");
+const v3_sdk_1 = require("@cometswap/v3-sdk");
+const viem_1 = require("viem");
+const defineFarmV3Configs_1 = require("../defineFarmV3Configs");
+const types_1 = require("../types");
+const pinnedFarmConfig = [];
+exports.bscTestnetFarmConfig = [
+    ...pinnedFarmConfig,
+    {
+        pid: 1,
+        chainId: chains_1.ChainId.BSC_TESTNET,
+        protocol: types_1.Protocol.V3,
+        lpAddress: '0x5147173E452AE4dd23dcEe7BaAaaAB7318F16F6B',
+        token0: tokens_1.bscTestnetTokens.usdt,
+        token1: tokens_1.bscTestnetTokens.wbnb,
+        feeAmount: v3_sdk_1.FeeAmount.MEDIUM,
+    },
+    {
+        pid: 2,
+        chainId: chains_1.ChainId.BSC_TESTNET,
+        protocol: types_1.Protocol.V3,
+        lpAddress: '0xe62C422c1E8083CE3b4526Ff0b16388354AB6E64',
+        token0: tokens_1.bscTestnetTokens.comet2,
+        token1: tokens_1.bscTestnetTokens.wbnb,
+        feeAmount: v3_sdk_1.FeeAmount.MEDIUM,
+    },
+    {
+        pid: 3,
+        chainId: chains_1.ChainId.BSC_TESTNET,
+        protocol: types_1.Protocol.V3,
+        lpAddress: '0xc0E0F94a79Aabc6c655f308Da21D6EbDE64b0995',
+        token0: tokens_1.bscTestnetTokens.mockB,
+        token1: tokens_1.bscTestnetTokens.mockA,
+        feeAmount: v3_sdk_1.FeeAmount.LOW,
+    },
+    {
+        pid: 4,
+        chainId: chains_1.ChainId.BSC_TESTNET,
+        protocol: types_1.Protocol.V3,
+        lpAddress: '0xf7f2894abd4beE559521D754c5D481730E1C7d8C',
+        token0: tokens_1.bscTestnetTokens.mockB,
+        token1: tokens_1.bscTestnetTokens.mockA,
+        feeAmount: v3_sdk_1.FeeAmount.LOWEST,
+    },
+    {
+        pid: 5,
+        chainId: chains_1.ChainId.BSC_TESTNET,
+        protocol: types_1.Protocol.V3,
+        lpAddress: '0x5d9550E870D42Ae03Fab91508cC5722A80CF0b5e',
+        token0: tokens_1.bscTestnetTokens.mockB,
+        token1: tokens_1.bscTestnetTokens.mockA,
+        feeAmount: v3_sdk_1.FeeAmount.HIGH,
+    },
+    {
+        pid: 6,
+        chainId: chains_1.ChainId.BSC_TESTNET,
+        protocol: types_1.Protocol.V3,
+        lpAddress: '0x427d29C609A85AA3aaF87Aff65C392D72588ceC2',
+        token0: tokens_1.bscTestnetTokens.comet2,
+        token1: tokens_1.bscTestnetTokens.busd,
+        feeAmount: v3_sdk_1.FeeAmount.MEDIUM,
+    },
+];
+exports.default = exports.bscTestnetFarmConfig;
+/** @deprecated */
+exports.legacyV3BscTestnetFarmConfig = (0, defineFarmV3Configs_1.defineFarmV3ConfigsFromUniversalFarm)(exports.bscTestnetFarmConfig.filter((farm) => farm.protocol === types_1.Protocol.V3));
+/** @deprecated */
+exports.legacyFarmConfig = [
+    /**
+     * These 3 farms (PID 0, 2, 3) should always be at the top of the file.
+     */
+    {
+        pid: 0,
+        lpSymbol: 'COMET',
+        lpAddress: '0x36e3E4fF6471559b19F66bD10985534d5e214D44',
+        token: tokens_1.bscTestnetTokens.syrup,
+        quoteToken: tokens_1.bscTestnetTokens.wbnb,
+    },
+    {
+        pid: 3,
+        lpSymbol: 'BUSD-COMETLP',
+        lpAddress: '0xb98C30fA9f5e9cf6749B7021b4DDc0DBFe73b73e',
+        token: tokens_1.bscTestnetTokens.busd,
+        quoteToken: tokens_1.bscTestnetTokens.comet,
+    },
+    {
+        pid: 4,
+        lpSymbol: 'COMET-BNB LP',
+        lpAddress: '0xa96818CA65B57bEc2155Ba5c81a70151f63300CD',
+        token: tokens_1.bscTestnetTokens.comet,
+        quoteToken: tokens_1.bscTestnetTokens.wbnb,
+    },
+    {
+        pid: 10,
+        lpSymbol: 'BNB-BUSD LP',
+        lpAddress: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
+        token: tokens_1.bscTestnetTokens.wbnb,
+        quoteToken: tokens_1.bscTestnetTokens.busd,
+    },
+    {
+        pid: 9,
+        lpSymbol: 'BUSD-USDC LP',
+        lpAddress: '0x7CA885d338462790DD1B5416ebe6bec75ee045a1',
+        token: tokens_1.bscTestnetTokens.mockBusd, // coins[0]
+        quoteToken: tokens_1.bscTestnetTokens.usdc, // coins[1]
+        stableSwapAddress: '0xd5E56CD4c8111643a94Ee084df31F44055a1EC9F',
+        infoStableSwapAddress: '0xaE6C14AAA753B3FCaB96149e1E10Bc4EDF39F546',
+        stableLpFee: 0.0002,
+        stableLpFeeRateOfTotalFee: 0.5,
+    },
+    {
+        pid: 11,
+        lpSymbol: 'USDT-BUSD LP',
+        lpAddress: '0x9Fa2Ef2C3dF6F903F4b73047311e861C51a11B60',
+        token: tokens_1.bscTestnetTokens.usdt, // coins[0]
+        quoteToken: tokens_1.bscTestnetTokens.mockBusd, // coins[1]
+        stableSwapAddress: '0xc418d68751Cbe0407C8fdd90Cde73cE95b892f39',
+        infoStableSwapAddress: '0xaE6C14AAA753B3FCaB96149e1E10Bc4EDF39F546',
+        stableLpFee: 0.0002,
+        stableLpFeeRateOfTotalFee: 0.5,
+    },
+].map((p) => ({
+    ...p,
+    token: p.token.serialize,
+    quoteToken: p.quoteToken.serialize,
+    lpAddress: (0, viem_1.getAddress)(p.lpAddress),
+}));

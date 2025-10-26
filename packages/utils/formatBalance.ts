@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { getLanguageCodeFromLS } from '@pancakeswap/localization'
+import { getLanguageCodeFromLS } from '@cometswap/localization'
 import _trimEnd from 'lodash/trimEnd'
 import { getFullDecimalMultiplier } from './getFullDecimalMultiplier'
 import { formatUnits } from './viem/formatUnits'

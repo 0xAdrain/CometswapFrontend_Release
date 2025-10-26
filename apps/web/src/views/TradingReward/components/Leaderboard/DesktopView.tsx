@@ -1,5 +1,5 @@
-import { PaginationButton, Card, Table, Th, Td } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { PaginationButton, Card, Table, Th, Td } from '@cometswap/uikit'
+import { useTranslation } from '@cometswap/localization'
 import { RankListDetail } from 'views/TradingReward/hooks/useRankList'
 import DesktopResult from 'views/TradingReward/components/Leaderboard/DesktopResult'
 

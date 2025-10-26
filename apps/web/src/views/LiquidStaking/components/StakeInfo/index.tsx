@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { RowBetween, Skeleton, Text } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { RowBetween, Skeleton, Text } from '@cometswap/uikit'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
+import { getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
 import { ExchangeRateTitle } from 'views/LiquidStaking/components/StakeInfo/ExchangeRateTitle'
@@ -54,3 +54,4 @@ const StakeInfo: React.FC<StakeInfoProps> = ({ selectedList }) => {
 }
 
 export default StakeInfo
+

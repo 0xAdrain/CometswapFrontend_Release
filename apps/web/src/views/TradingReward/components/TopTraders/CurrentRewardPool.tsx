@@ -1,8 +1,8 @@
-import { useInterval } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { useInterval } from '@cometswap/hooks'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Button, Flex, Text, useMatchBreakpoints } from '@cometswap/uikit'
+import { formatNumber } from '@cometswap/utils/formatBalance'
+import getTimePeriods from '@cometswap/utils/getTimePeriods'
 import Link from 'next/link'
 import { useCallback, useState } from 'react'
 import { styled } from 'styled-components'
@@ -127,7 +127,7 @@ const CurrentRewardPool: React.FC<React.PropsWithChildren<CurrentRewardPoolProps
         <Flex justifyContent="space-between" mb="10px">
           <TextComponent text={t('To win')} />
           <Text bold color="white" fontSize={['14px', '14px', '14px', '20px']}>
-            {t('Rank #300 or higher')}
+            {t('Rank #100 or higher')}
           </Text>
         </Flex>
         <Flex justifyContent="space-between" mb="10px">

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/chains'
+import { ChainId } from '@cometswap/chains'
 import type { Address } from 'viem'
 
 // = 1 << 23 or 100000000000000000000000
@@ -25,4 +25,5 @@ export const MIXED_ROUTE_QUOTER_ADDRESSES = {
   [ChainId.SEPOLIA]: '0x4c650FB471fe4e0f476fD3437C3411B1122c4e3B',
   [ChainId.ARBITRUM_SEPOLIA]: '0x4c650FB471fe4e0f476fD3437C3411B1122c4e3B',
   [ChainId.BASE_SEPOLIA]: '0x4c650FB471fe4e0f476fD3437C3411B1122c4e3B',
+  [ChainId.XLAYER_TESTNET]: '0xebdfF2beC76941fD2938DE009e97dfB8cfc7e7B5',
 } as const satisfies Record<ChainId, Address>

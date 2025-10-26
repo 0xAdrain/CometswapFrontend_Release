@@ -7,3 +7,4 @@ export const teamsById: TeamsById = teamsList.reduce((accum, team) => {
     [team.id]: team,
   }
 }, {})
+

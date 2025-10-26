@@ -1,6 +1,6 @@
-import { BigintIsh, Currency, CurrencyAmount, Native, Price } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { BigintIsh, Currency, CurrencyAmount, Native, Price } from '@cometswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
 import sum from 'lodash/sum.js'
 
 import {

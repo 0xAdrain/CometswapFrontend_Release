@@ -1,7 +1,7 @@
-import { useMasterchef, useV2SSBCakeWrapperContract } from 'hooks/useContract'
+import { useMasterchef, useV2SSBCometWrapperContract } from 'hooks/useContract'
 import { useCallback } from 'react'
 import { useGasPrice } from 'state/user/hooks'
-import { bCakeHarvestFarm, harvestFarm } from 'utils/calls'
+import { bCometHarvestFarm, harvestFarm } from 'utils/calls'
 import { Address } from 'viem'
 
 const useHarvestFarm = (farmPid: number) => {
@@ -15,15 +15,16 @@ const useHarvestFarm = (farmPid: number) => {
   return { onReward: handleHarvest }
 }
 
-export const useBCakeHarvestFarm = (bCakeWrapperAddress: Address) => {
-  const V2SSBCakeContract = useV2SSBCakeWrapperContract(bCakeWrapperAddress)
+export const useBCometHarvestFarm = (bCometWrapperAddress: Address) => {
+  const V2SSBCometContract = useV2SSBCometWrapperContract(bCometWrapperAddress)
   const gasPrice = useGasPrice()
 
   const handleHarvest = useCallback(async () => {
-    return bCakeHarvestFarm(V2SSBCakeContract, gasPrice)
-  }, [V2SSBCakeContract, gasPrice])
+    return bCometHarvestFarm(V2SSBCometContract, gasPrice)
+  }, [V2SSBCometContract, gasPrice])
 
   return { onReward: handleHarvest }
 }
 
 export default useHarvestFarm
+

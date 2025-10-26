@@ -32,3 +32,4 @@ export const fetchCelerApi = async (hash: string) => {
     }
   }
 }
+

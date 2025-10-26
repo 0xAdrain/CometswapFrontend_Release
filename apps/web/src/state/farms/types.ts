@@ -1,4 +1,4 @@
-import { DeserializedFarm, FarmV3DataWithPriceAndUserInfo } from '@pancakeswap/farms'
+import { DeserializedFarm, FarmV3DataWithPriceAndUserInfo } from '@cometswap/farms'
 
 export interface V3FarmWithoutStakedValue extends FarmV3DataWithPriceAndUserInfo {
   version: 3
@@ -11,3 +11,4 @@ export interface V2FarmWithoutStakedValue extends DeserializedFarm {
 export interface V3Farm extends V3FarmWithoutStakedValue {
   version: 3
 }
+

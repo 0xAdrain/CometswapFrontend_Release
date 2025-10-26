@@ -1,4 +1,4 @@
-import type { Currency, Pair } from '@pancakeswap/sdk'
+import type { Currency, Pair } from '@cometswap/sdk'
 
 import { BasePair } from './pair'
 

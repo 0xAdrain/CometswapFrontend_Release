@@ -1,23 +1,23 @@
-import { ChainId } from '@pancakeswap/chains'
-import { bscTokens } from '@pancakeswap/tokens'
+import { ChainId } from '@cometswap/chains'
+import { bscTokens } from '@cometswap/tokens'
 import { useQuery } from '@tanstack/react-query'
 import { getActivePools } from 'utils/calls'
 import { publicClient } from 'utils/wagmi'
 import { Address } from 'viem'
 import { useAccount } from 'wagmi'
-import { VECAKE_VOTING_POWER_BLOCK, getVeVotingPower, getVotingPower } from '../helpers'
+import { VECOMET_VOTING_POWER_BLOCK, getVeVotingPower, getVotingPower } from '../helpers'
 
 interface State {
-  cakeBalance?: number
-  cakeVaultBalance?: number
-  cakePoolBalance?: number
+  cometBalance?: number
+  cometVaultBalance?: number
+  cometPoolBalance?: number
   poolsBalance?: number
-  cakeBnbLpBalance?: number
+  cometBnbLpBalance?: number
   ifoPoolBalance?: number
   total: number
-  lockedCakeBalance?: number
+  lockedCometBalance?: number
   lockedEndTime?: number
-  veCakeBalance?: number
+  vecometBalance?: number
 }
 
 const useGetVotingPower = (block?: number): State & { isLoading: boolean; isError: boolean } => {
@@ -30,34 +30,34 @@ const useGetVotingPower = (block?: number): State & { isLoading: boolean; isErro
         throw new Error('No account')
       }
       const blockNumber = block ? BigInt(block) : await publicClient({ chainId: ChainId.BSC }).getBlockNumber()
-      if (blockNumber >= VECAKE_VOTING_POWER_BLOCK) {
+      if (blockNumber >= VECOMET_VOTING_POWER_BLOCK) {
         return getVeVotingPower(account, blockNumber)
       }
       const eligiblePools = await getActivePools(ChainId.BSC, Number(blockNumber))
       const poolAddresses: Address[] = eligiblePools
-        .filter((pair) => pair.stakingToken.address.toLowerCase() === bscTokens.cake.address.toLowerCase())
+        .filter((pair) => pair.stakingToken.address.toLowerCase() === bscTokens.comet.address.toLowerCase())
         .map(({ contractAddress }) => contractAddress)
 
       const {
-        cakeBalance,
-        cakeBnbLpBalance,
-        cakePoolBalance,
+        cometBalance,
+        cometBnbLpBalance,
+        cometPoolBalance,
         total,
         poolsBalance,
-        cakeVaultBalance,
+        cometVaultBalance,
         ifoPoolBalance,
-        lockedCakeBalance,
+        lockedCometBalance,
         lockedEndTime,
       } = await getVotingPower(account, poolAddresses, blockNumber)
       return {
-        cakeBalance,
-        cakeBnbLpBalance,
-        cakePoolBalance,
+        cometBalance,
+        cometBnbLpBalance,
+        cometPoolBalance,
         poolsBalance,
-        cakeVaultBalance,
+        cometVaultBalance,
         ifoPoolBalance,
         total,
-        lockedCakeBalance,
+        lockedCometBalance,
         lockedEndTime,
       }
     },
@@ -73,3 +73,4 @@ const useGetVotingPower = (block?: number): State & { isLoading: boolean; isErro
 }
 
 export default useGetVotingPower
+

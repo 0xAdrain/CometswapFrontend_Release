@@ -1,5 +1,5 @@
-import { Button, Flex, Link, OpenNewIcon, Text } from '@pancakeswap/uikit'
-import { NextLinkFromReactRouter as RouterLink } from '@pancakeswap/widgets-internal'
+import { Button, Flex, Link, OpenNewIcon, Text } from '@cometswap/uikit'
+import { NextLinkFromReactRouter as RouterLink } from '@cometswap/widgets-internal'
 
 import ColoredWordHeading from '../ColoredWordHeading'
 import CompositeImage, { CompositeImageProps } from '../CompositeImage'
@@ -80,3 +80,4 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
 }
 
 export default SalesSection
+

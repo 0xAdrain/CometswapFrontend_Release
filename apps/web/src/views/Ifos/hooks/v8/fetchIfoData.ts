@@ -1,5 +1,5 @@
-import { Ifo, ifoV8ABI } from '@pancakeswap/ifos'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { Ifo, ifoV8ABI } from '@cometswap/ifos'
+import { BIG_ZERO } from '@cometswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { publicClient } from 'utils/wagmi'
 import { Address } from 'viem'
@@ -180,3 +180,4 @@ const preparePoolData = (
 
   return data
 }
+

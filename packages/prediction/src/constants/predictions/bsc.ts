@@ -1,9 +1,9 @@
-import { ChainId } from '@pancakeswap/chains'
-import { Native } from '@pancakeswap/sdk'
-import { bscTokens } from '@pancakeswap/tokens'
-import { chainlinkOracleBNB, chainlinkOracleCAKE } from '../../chainlinkOracleContract'
-import { GRAPH_API_PREDICTION_BNB, GRAPH_API_PREDICTION_CAKE } from '../../endpoints'
-import { predictionsBNB, predictionsCAKE } from '../../predictionContract'
+import { ChainId } from '@cometswap/chains'
+import { Native } from '@cometswap/sdk'
+import { bscTokens } from '@cometswap/tokens'
+import { chainlinkOracleBNB, chainlinkOracleCOMET} from '../../chainlinkOracleContract'
+import { GRAPH_API_PREDICTION_BNB, GRAPH_API_PREDICTION_COMET} from '../../endpoints'
+import { predictionsBNB, predictionsCOMET} from '../../predictionContract'
 import { PredictionConfig, PredictionSupportedSymbol } from '../../type'
 
 export const predictions: Record<string, PredictionConfig> = {
@@ -16,13 +16,13 @@ export const predictions: Record<string, PredictionConfig> = {
     token: Native.onChain(ChainId.BSC),
     tokenBackgroundColor: '#F0B90B',
   },
-  [PredictionSupportedSymbol.CAKE]: {
+  [PredictionSupportedSymbol.COMET]: {
     isNativeToken: false,
-    address: predictionsCAKE[ChainId.BSC],
-    api: GRAPH_API_PREDICTION_CAKE[ChainId.BSC],
-    chainlinkOracleAddress: chainlinkOracleCAKE[ChainId.BSC],
+    address: predictionsCOMET[ChainId.BSC],
+    api: GRAPH_API_PREDICTION_COMET[ChainId.BSC],
+    chainlinkOracleAddress: chainlinkOracleCOMET[ChainId.BSC],
     displayedDecimals: 4,
-    token: bscTokens.cake,
+    token: bscTokens.comet,
     tokenBackgroundColor: '#25C7D6',
   },
 }

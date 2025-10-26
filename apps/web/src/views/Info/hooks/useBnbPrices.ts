@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { getDeltaTimestamps } from 'utils/getDeltaTimestamps'
 import { explorerApiClient } from 'state/info/api/client'
-import { ChainId } from '@pancakeswap/chains'
-import { WNATIVE } from '@pancakeswap/sdk'
+import { ChainId } from '@cometswap/chains'
+import { WNATIVE } from '@cometswap/sdk'
 import dayjs from 'dayjs'
 
 export interface BnbPrices {
@@ -86,3 +86,4 @@ export const useBnbPrices = (): BnbPrices | undefined => {
 
   return prices
 }
+

@@ -1,4 +1,4 @@
-import { Currency, Percent, Router, SwapParameters, Trade, TradeType } from '@pancakeswap/sdk'
+import { Currency, Percent, Router, SwapParameters, Trade, TradeType } from '@cometswap/sdk'
 import { INITIAL_ALLOWED_SLIPPAGE } from 'config/constants'
 import { BIPS_BASE } from 'config/constants/exchange'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
@@ -60,3 +60,4 @@ export function useSwapCallArguments(
     return swapMethods.map((parameters) => ({ parameters, contract }))
   }, [account, allowedSlippage, chainId, contract, deadline, recipient, trade])
 }
+

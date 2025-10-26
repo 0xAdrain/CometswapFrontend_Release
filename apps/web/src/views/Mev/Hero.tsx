@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, FlexGap, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, FlexGap, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { useMemo } from 'react'
 import styled, { css, keyframes } from 'styled-components'
@@ -9,8 +9,8 @@ import { useIsMEVEnabled } from './hooks'
 import { getImageUrl } from './utils'
 
 const rpcData = {
-  'Network Name': 'PancakeSwap MEV Guard',
-  'New RPC URL': 'https://bscrpc.pancakeswap.finance',
+  'Network Name': 'CometSwap MEV Guard',
+  'New RPC URL': 'https://bscrpc.cometswap.finance',
   'Chain ID': '56',
   'Currency symbol': 'BNB',
   'Block Explorer URL': 'https://bscscan.com',
@@ -314,7 +314,7 @@ export const Hero: React.FC<{ txCount: number }> = ({ txCount }) => {
                 color="secondary"
                 bold
               >
-                {t('PancakeSwap MEV GUARD')}
+                {t('CometSwap MEV GUARD')}
               </Text>
               <Text fontSize={isMobile ? '24px' : '32px'} lineHeight={isMobile ? '36px' : '38px'} bold>
                 {t('Safeguard your swap against frontrunning and sandwich attacks!')}
@@ -365,8 +365,8 @@ export const Hero: React.FC<{ txCount: number }> = ({ txCount }) => {
                           </Text>
                           <Text>
                             {isMEVEnabled
-                              ? t('Added automatically on BNB Smart Chain: PancakeSwap MEV Guard')
-                              : t('Add automatically on BNB Smart Chain: PancakeSwap MEV Guard ')}
+                              ? t('Added automatically on BNB Smart Chain: CometSwap MEV Guard')
+                              : t('Add automatically on BNB Smart Chain: CometSwap MEV Guard ')}
                           </Text>
                         </Box>
                       </FlexGap>
@@ -389,8 +389,8 @@ export const Hero: React.FC<{ txCount: number }> = ({ txCount }) => {
                           </Text>
                           <Text>
                             {isMEVEnabled
-                              ? t('Added automatically on BNB Smart Chain: PancakeSwap MEV Guard')
-                              : t('Add automatically on BNB Smart Chain: PancakeSwap MEV Guard ')}
+                              ? t('Added automatically on BNB Smart Chain: CometSwap MEV Guard')
+                              : t('Add automatically on BNB Smart Chain: CometSwap MEV Guard ')}
                           </Text>
                         </Box>
                       )}
@@ -421,3 +421,4 @@ export const Hero: React.FC<{ txCount: number }> = ({ txCount }) => {
     </HeroWrapper>
   )
 }
+

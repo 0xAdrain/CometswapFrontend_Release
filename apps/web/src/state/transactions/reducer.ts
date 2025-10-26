@@ -6,7 +6,6 @@ import { Hash } from 'viem'
 import { resetUserState } from '../global/actions'
 import {
   FarmTransactionStatus,
-  CrossChainFarmTransactionType,
   SerializableTransactionReceipt,
   TransactionType,
   addTransaction,
@@ -123,3 +122,4 @@ export default createReducer(initialState, (builder) =>
       }
     }),
 )
+

@@ -6,3 +6,4 @@ describe('Config teams', () => {
     expect(duplicates).toHaveLength(1)
   })
 })
+

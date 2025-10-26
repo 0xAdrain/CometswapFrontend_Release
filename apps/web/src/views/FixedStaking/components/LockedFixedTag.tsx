@@ -1,4 +1,4 @@
-import { Tag, LockIcon } from '@pancakeswap/uikit'
+import { Tag, LockIcon } from '@cometswap/uikit'
 import { ReactNode, CSSProperties } from 'react'
 
 export function LockedFixedTag({ children, style }: { children: ReactNode; style?: CSSProperties }) {
@@ -12,3 +12,4 @@ export function LockedFixedTag({ children, style }: { children: ReactNode; style
     </Tag>
   )
 }
+

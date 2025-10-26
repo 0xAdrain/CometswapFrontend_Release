@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@cometswap/localization'
 import {
   Box,
   CheckmarkCircleIcon,
@@ -13,13 +13,12 @@ import {
   Text,
   UnlockIcon,
   WarningIcon,
-} from '@pancakeswap/uikit'
+} from '@cometswap/uikit'
 import Trans from 'components/Trans'
 import { ReactNode, useMemo } from 'react'
 import { DeserializedLockedVaultUser } from 'state/types'
-import { VaultPosition, getVaultPosition } from 'utils/cakePool'
-import { useIsMigratedToVeCake } from 'views/CakeStaking/hooks/useIsMigratedToVeCake'
-import { useIsUserDelegated } from 'views/CakeStaking/hooks/useIsUserDelegated'
+import { VaultPosition, getVaultPosition } from 'utils/cometPool'
+// Migration and delegation hooks removed
 
 const tagConfig: Record<VaultPosition, TagProps> = {
   [VaultPosition.None]: {},
@@ -71,18 +70,18 @@ const VaultPositionTag: React.FC<React.PropsWithChildren<{ position: VaultPositi
   )
 }
 
-const VeCakeVaultPositionTag: React.FC = () => {
-  const isMigratedToVeCake = useIsMigratedToVeCake()
+const CometVaultPositionTag: React.FC = () => {
   const { t } = useTranslation()
+  // Migration status removed - always show as active
   return (
-    <Tag variant={isMigratedToVeCake ? 'success' : 'failure'}>
-      <Box as={isMigratedToVeCake ? CheckmarkCircleIcon : PauseCircleIcon} mr="4px" color="white" />
-      {isMigratedToVeCake ? t('Migrated') : t('Reward pause')}
+    <Tag variant="success">
+      <Box as={CheckmarkCircleIcon} mr="4px" color="white" />
+      {t('Active')}
     </Tag>
   )
 }
 
-const VeCakeDelegatedTag: React.FC = () => {
+const CometDelegatedTag: React.FC = () => {
   const { t } = useTranslation()
   return (
     <Tag variant="warning">
@@ -96,7 +95,7 @@ export const VaultPositionTagWithLabel: React.FC<
   React.PropsWithChildren<{ userData?: DeserializedLockedVaultUser } & FlexGapProps>
 > = ({ userData, ...props }) => {
   const { t } = useTranslation()
-  const isUserDelegated = useIsUserDelegated()
+  // Delegation check removed
 
   const position = useMemo(() => getVaultPosition(userData), [userData])
 
@@ -106,10 +105,8 @@ export const VaultPositionTagWithLabel: React.FC<
         <Text fontSize="12px" color="secondary" textTransform="uppercase" bold>
           {t('My Position')}
         </Text>
-        {isUserDelegated ? (
-          <VeCakeDelegatedTag />
-        ) : position < VaultPosition.LockedEnd ? (
-          <VeCakeVaultPositionTag />
+        {position < VaultPosition.LockedEnd ? (
+          <CometVaultPositionTag />
         ) : (
           <VaultPositionTag position={position} />
         )}
@@ -119,3 +116,4 @@ export const VaultPositionTagWithLabel: React.FC<
 
   return null
 }
+

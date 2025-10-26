@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import { Field } from 'state/swap/actions'
 
-import { PriceOrder } from '@pancakeswap/price-api-sdk'
+import { PriceOrder } from '@cometswap/price-api-sdk'
 import { useCurrencyBalances } from 'state/wallet/hooks'
 import { useAccount } from 'wagmi'
 import { useAllTypeBestTrade } from '../../Swap/V3Swap/hooks/useAllTypeBestTrade'
@@ -39,3 +39,4 @@ export function useUserInsufficientBalance(order: PriceOrder | undefined): boole
 
   return isInsufficientBalance
 }
+

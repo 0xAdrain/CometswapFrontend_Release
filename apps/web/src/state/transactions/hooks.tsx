@@ -10,18 +10,16 @@ import { useSelector } from 'react-redux'
 import { AppState, useAppDispatch } from 'state'
 import { useAccount } from 'wagmi'
 import { Hash } from 'viem'
-import { Token } from '@pancakeswap/swap-sdk-core'
-import { FeeAmount } from '@pancakeswap/v3-sdk'
-import { useTranslation } from '@pancakeswap/localization'
+import { Token } from '@cometswap/swap-sdk-core'
+import { FeeAmount } from '@cometswap/v3-sdk'
+import { useTranslation } from '@cometswap/localization'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useSafeTxHashTransformer } from 'hooks/useSafeTxHashTransformer'
 import {
-  FarmTransactionStatus,
-  CrossChainFarmStepType,
-  CrossChainFarmTransactionType,
+  // FarmTransactionStatus, // Unused
   TransactionType,
   addTransaction,
 } from './actions'
@@ -37,7 +35,7 @@ export function useTransactionAdder(): (
     claim?: { recipient: string }
     type?: TransactionType
     order?: Order
-    crossChainFarm?: CrossChainFarmTransactionType
+    // Cross-chain farm removed
     // add/remove pool
     baseCurrencyId?: string
     quoteCurrencyId?: string
@@ -66,7 +64,7 @@ export function useTransactionAdder(): (
         claim,
         type,
         order,
-        crossChainFarm,
+        // crossChainFarm removed
       }: {
         summary?: string
         translatableSummary?: { text: string; data?: Record<string, string | number | undefined> }
@@ -74,7 +72,7 @@ export function useTransactionAdder(): (
         approval?: { tokenAddress: string; spender: string }
         type?: TransactionType
         order?: Order
-        crossChainFarm?: CrossChainFarmTransactionType
+        // Cross-chain farm removed
       } = {},
     ) => {
       if (!account) return
@@ -110,7 +108,7 @@ export function useTransactionAdder(): (
           claim,
           type,
           order,
-          crossChainFarm,
+          // crossChainFarm removed
         }),
       )
     },
@@ -239,15 +237,9 @@ function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
 }
 
 // calculate pending transactions
-interface CrossChainPendingData {
-  txid?: string
-  lpAddress?: string
-  type?: CrossChainFarmStepType
-}
 export function usePendingTransactions(): {
   hasPendingTransactions: boolean
   pendingNumber: number
-  crossChainFarmPendingList: CrossChainPendingData[]
 } {
   const allTransactions = useAllTransactions()
   const sortedRecentTransactions = useMemo(() => {
@@ -256,40 +248,31 @@ export function usePendingTransactions(): {
   }, [allTransactions])
 
   const pending = sortedRecentTransactions
-    .filter((tx) => !tx.receipt || tx?.crossChainFarm?.status === FarmTransactionStatus.PENDING)
+    .filter((tx) => !tx.receipt)
     .map((tx) => tx.hash)
   const hasPendingTransactions = !!pending.length
 
-  const crossChainFarmPendingList = sortedRecentTransactions
-    .filter((tx) => pending.includes(tx.hash) && !!tx.crossChainFarm)
-    .map((tx) => ({ txid: tx?.hash, lpAddress: tx?.crossChainFarm?.lpAddress, type: tx?.crossChainFarm?.type }))
+  // Cross-chain farm logic removed
 
   return {
     hasPendingTransactions,
-    crossChainFarmPendingList,
     pendingNumber: pending.length,
   }
 }
 
-export function useCrossChainFarmPendingTransaction(lpAddress?: string): CrossChainPendingData[] {
-  const { crossChainFarmPendingList } = usePendingTransactions()
-  return useMemo(() => {
-    if (!lpAddress) return []
-    return crossChainFarmPendingList.filter((tx) => tx?.lpAddress?.toLowerCase() === lpAddress.toLowerCase())
-  }, [lpAddress, crossChainFarmPendingList])
-}
+// Cross-chain farm pending transaction hook removed
 
 export function useReadableTransactionType(type?: TransactionType) {
   const { t } = useTranslation()
   return useMemo(() => {
     if (type === undefined) {
-      return t('PancakeSwap AMM')
+      return t('CometSwap AMM')
     }
     switch (type) {
       case 'approve':
         return t('Token Approval')
       case 'swap':
-        return t('PancakeSwap AMM')
+        return t('CometSwap AMM')
       case 'wrap':
         return t('Wrap Native Token')
       case 'add-liquidity':
@@ -310,7 +293,7 @@ export function useReadableTransactionType(type?: TransactionType) {
         return t('Farming')
       case 'migrate-v3':
         return t('Migration')
-      case 'bridge-icake':
+      case 'bridge-icomet':
         return t('IFO')
       case 'claim-liquid-staking':
         return t('Liquid Staking')
@@ -319,3 +302,4 @@ export function useReadableTransactionType(type?: TransactionType) {
     }
   }, [type, t])
 }
+

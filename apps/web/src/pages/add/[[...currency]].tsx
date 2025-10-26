@@ -1,4 +1,4 @@
-import { isStableFarm } from '@pancakeswap/farms'
+import { isStableFarm } from '@cometswap/farms'
 import { useCurrency } from 'hooks/Tokens'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'

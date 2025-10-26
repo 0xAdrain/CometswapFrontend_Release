@@ -1,6 +1,6 @@
-import { TradeType } from '@pancakeswap/sdk'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import { useUserSingleHopOnly } from '@pancakeswap/utils/user'
+import { TradeType } from '@cometswap/sdk'
+import tryParseAmount from '@cometswap/utils/tryParseAmount'
+import { useUserSingleHopOnly } from '@cometswap/utils/user'
 
 import { useCurrency } from 'hooks/Tokens'
 import { useBestAMMTrade, useBestTradeFromApi, useBestTradeFromApiShadow } from 'hooks/useBestAMMTrade'
@@ -185,3 +185,4 @@ export function useSwapBestTrade({ maxHops }: Options = {}) {
     trade: typedValue ? trade : undefined,
   }
 }
+

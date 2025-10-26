@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@cometswap/sdk'
 import { useQuery } from '@tanstack/react-query'
 
 import { SLOW_INTERVAL } from 'config/constants'
@@ -22,3 +22,4 @@ export function useCurrencyUsdPrice(currency: Currency | undefined | null, { ena
     enabled: Boolean(enabled && currency),
   })
 }
+

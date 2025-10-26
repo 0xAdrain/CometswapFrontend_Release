@@ -1,4 +1,4 @@
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@cometswap/uikit'
 import styled from 'styled-components'
 
 export const Container = styled(Flex)`
@@ -12,3 +12,4 @@ export const Container = styled(Flex)`
   background: ${({ theme }) => theme.card.background};
   margin: 8px 0;
 `
+

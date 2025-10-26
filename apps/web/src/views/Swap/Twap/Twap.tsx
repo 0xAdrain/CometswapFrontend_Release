@@ -1,10 +1,14 @@
-import { Orders, ToastProps, TWAP as PancakeTWAP } from '@orbs-network/twap-ui-pancake'
-import { useTheme } from '@pancakeswap/hooks'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/swap-sdk-core'
-import { AutoColumn, Button, useMatchBreakpoints, useModal, useToast, useTooltip } from '@pancakeswap/uikit'
-import replaceBrowserHistoryMultiple from '@pancakeswap/utils/replaceBrowserHistoryMultiple'
-import { useUserSingleHopOnly } from '@pancakeswap/utils/user'
-import { CurrencyLogo, NumericalInput, SwapUIV2 } from '@pancakeswap/widgets-internal'
+// import { Orders, ToastProps, TWAP as CometTWAP } from '@orbs-network/twap-ui-comet'
+// Placeholder for TWAP functionality
+const Orders = () => <div>Orders placeholder</div>
+const CometTWAP = () => <div>TWAP placeholder</div>
+type ToastProps = any
+import { useTheme } from '@cometswap/hooks'
+import { Currency, CurrencyAmount, TradeType } from '@cometswap/swap-sdk-core'
+import { AutoColumn, Button, useMatchBreakpoints, useModal, useToast, useTooltip } from '@cometswap/uikit'
+import replaceBrowserHistoryMultiple from '@cometswap/utils/replaceBrowserHistoryMultiple'
+import { useUserSingleHopOnly } from '@cometswap/utils/user'
+import { CurrencyLogo, NumericalInput, SwapUIV2 } from '@cometswap/widgets-internal'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { AutoRow } from 'components/Layout/Row'
 import CurrencySearchModal from 'components/SearchModal/CurrencySearchModal'
@@ -178,7 +182,7 @@ export function TWAPPanel({ limit }: { limit?: boolean }) {
   const outputCurrency = useCurrency(outputCurrencyId)
 
   return (
-    <PancakeTWAP
+    <CometTWAP
       ConnectButton={ConnectWalletButton}
       connectedChainId={chainId}
       account={address}
@@ -318,3 +322,4 @@ export const OrderHistory = () => {
     </div>
   )
 }
+

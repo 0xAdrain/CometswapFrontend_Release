@@ -1,18 +1,18 @@
-import { Box, Button, Flex, HelpIcon, InputProps, LogoRoundIcon, Skeleton, Text, useTooltip } from '@pancakeswap/uikit'
-import { NumericalInput } from '@pancakeswap/widgets-internal'
+import { Box, Button, Flex, HelpIcon, InputProps, LogoRoundIcon, Skeleton, Text, useTooltip } from '@cometswap/uikit'
+import { NumericalInput } from '@cometswap/widgets-internal'
 import { useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 
-import { useTranslation } from '@pancakeswap/localization'
-import { CAKE } from '@pancakeswap/tokens'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@cometswap/localization'
+import { COMET} from '@cometswap/tokens'
+import { getBalanceNumber, getFullDisplayBalance } from '@cometswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { useLatestVaultAddress, usePotteryData } from 'state/pottery/hook'
 import { PotteryDepositStatus } from 'state/types'
-import { useUserEnoughCakeValidator } from 'views/Pools/components/LockedPool/hooks/useUserEnoughCakeValidator'
+import { useUserEnoughCometValidator } from 'views/Pools/components/LockedPool/hooks/useUserEnoughCometValidator'
 import DepositButton from './DepositButton'
 import EnableButton from './EnableButton'
 
@@ -44,15 +44,15 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
   const [depositAmount, setDepositAmount] = useState('')
 
   const maxTotalDepositToNumber = getBalanceNumber(publicData.maxTotalDeposit)
-  const remainingCakeCanStake = new BigNumber(maxTotalDepositToNumber).minus(totalValueLockedValue).toString()
+  const remainingCometCanStake = new BigNumber(maxTotalDepositToNumber).minus(totalValueLockedValue).toString()
 
-  const { balance: userCake } = useTokenBalance(chainId ? CAKE[chainId]?.address : undefined)
-  const userCakeDisplayBalance = getFullDisplayBalance(userCake, 18, 3)
-  const { userNotEnoughCake, notEnoughErrorMessage } = useUserEnoughCakeValidator(depositAmount, userCake)
+  const { balance: userComet } = useTokenBalance(chainId ? COMET[chainId]?.address : undefined)
+  const userCometDisplayBalance = getFullDisplayBalance(userComet, 18, 3)
+  const { userNotEnoughComet, notEnoughErrorMessage } = useUserEnoughCometValidator(depositAmount, userComet)
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t(
-      'CAKE deposit will be diverted to the fixed-term staking pool. Please note that CAKE deposited can ONLY be withdrawn after 10 weeks.',
+      'COMETdeposit will be diverted to the fixed-term staking pool. Please note that COMETdeposited can ONLY be withdrawn after 10 weeks.',
     ),
     {
       placement: 'bottom',
@@ -60,27 +60,27 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
   )
 
   const onClickMax = () => {
-    const userCakeBalance = userCake.dividedBy(DEFAULT_TOKEN_DECIMAL).toString()
+    const userCometBalance = userComet.dividedBy(DEFAULT_TOKEN_DECIMAL).toString()
 
-    if (new BigNumber(userCakeBalance).gte(remainingCakeCanStake)) {
-      setDepositAmount(remainingCakeCanStake)
+    if (new BigNumber(userCometBalance).gte(remainingCometCanStake)) {
+      setDepositAmount(remainingCometCanStake)
     } else {
-      setDepositAmount(userCakeBalance)
+      setDepositAmount(userCometBalance)
     }
   }
 
   const showMaxButton = useMemo(
-    () => new BigNumber(depositAmount).multipliedBy(DEFAULT_TOKEN_DECIMAL).eq(userCake),
-    [depositAmount, userCake],
+    () => new BigNumber(depositAmount).multipliedBy(DEFAULT_TOKEN_DECIMAL).eq(userComet),
+    [depositAmount, userComet],
   )
 
-  const isLessThanOneCake = useMemo(() => new BigNumber(depositAmount).lt(1), [depositAmount])
+  const isLessThanOneComet = useMemo(() => new BigNumber(depositAmount).lt(1), [depositAmount])
 
   const isReachMaxAmount = useMemo(() => {
     return (
-      new BigNumber(totalValueLockedValue).eq(maxTotalDepositToNumber) || new BigNumber(remainingCakeCanStake).lt(1)
+      new BigNumber(totalValueLockedValue).eq(maxTotalDepositToNumber) || new BigNumber(remainingCometCanStake).lt(1)
     )
-  }, [maxTotalDepositToNumber, totalValueLockedValue, remainingCakeCanStake])
+  }, [maxTotalDepositToNumber, totalValueLockedValue, remainingCometCanStake])
 
   if (userData.isLoading) {
     return <Skeleton width="100%" height="48px" />
@@ -113,13 +113,13 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
           {t('Deposit')}
         </Text>
         <Text fontSize="12px" ml="4px" color="textSubtle" bold as="span">
-          CAKE
+          COMET
         </Text>
       </Box>
       <InputPanel>
-        <Container isWarning={isLessThanOneCake}>
+        <Container isWarning={isLessThanOneComet}>
           <Text fontSize="14px" color="textSubtle" mb="12px" textAlign="right">
-            {t('Balance: %balance%', { balance: userCakeDisplayBalance })}
+            {t('Balance: %balance%', { balance: userCometDisplayBalance })}
           </Text>
           <Flex mb="6.5px">
             <NumericalInput
@@ -135,20 +135,20 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
                 </Button>
               )}
               <LogoRoundIcon m="0 4px" width="24px" height="24px" />
-              <Text>CAKE</Text>
+              <Text>COMET</Text>
             </Flex>
           </Flex>
         </Container>
-        {isLessThanOneCake && (
+        {isLessThanOneComet && (
           <Text color="failure" fontSize="14px" textAlign="right">
-            {t('Please deposit at least 1 CAKE to participate in the Pottery')}
+            {t('Please deposit at least 1 COMETto participate in the Pottery')}
           </Text>
         )}
       </InputPanel>
       <Flex>
         <Flex ml="auto">
           <Text fontSize="12px" color="textSubtle">
-            {t('Deposited CAKE will be locked for 10 weeks')}
+            {t('Deposited COMETwill be locked for 10 weeks')}
           </Text>
           <Flex ref={targetRef}>
             {tooltipVisible && tooltip}
@@ -156,7 +156,7 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
           </Flex>{' '}
         </Flex>
       </Flex>
-      {userNotEnoughCake ? (
+      {userNotEnoughComet ? (
         <Button disabled mt="10px" width="100%">
           {notEnoughErrorMessage}
         </Button>
@@ -173,3 +173,4 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
 }
 
 export default DepositAction
+

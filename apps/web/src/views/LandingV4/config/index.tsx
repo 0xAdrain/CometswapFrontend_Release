@@ -1,4 +1,4 @@
-import { Trans } from '@pancakeswap/localization'
+import { Trans } from '@cometswap/localization'
 import { HooksType, TagType, TagValue } from './types'
 
 export const HooksConfig: HooksType[] = [
@@ -13,7 +13,7 @@ export const HooksConfig: HooksType[] = [
     tags: [TagType.MISCELLANEOUS, TagType.CLAMM, TagType.LPs],
     tagsValue: [TagValue.MISCELLANEOUS, TagValue.CLAMM, TagValue.LPs],
     createDate: '15/03/2024',
-    githubLink: 'https://github.com/pancakeswap/pancake-v4-hooks/tree/main/src/pool-cl/full-range',
+    githubLink: 'https://github.com/cometswap/comet-v4-hooks/tree/main/src/pool-cl/full-range',
   },
   {
     title: <Trans>Geomean Oracle</Trans>,
@@ -26,7 +26,7 @@ export const HooksConfig: HooksType[] = [
     tags: [TagType.ORACLE, TagType.CLAMM],
     tagsValue: [TagValue.ORACLE, TagValue.CLAMM],
     createDate: '15/03/2024',
-    githubLink: 'https://github.com/pancakeswap/pancake-v4-hooks/tree/main/src/pool-cl/geomean-oracle',
+    githubLink: 'https://github.com/cometswap/comet-v4-hooks/tree/main/src/pool-cl/geomean-oracle',
   },
   {
     title: <Trans>Limit Order</Trans>,
@@ -41,7 +41,7 @@ export const HooksConfig: HooksType[] = [
     tags: [TagType.ORDER_TYPES, TagType.CLAMM, TagType.TRADERS],
     tagsValue: [TagValue.ORDER_TYPES, TagValue.CLAMM, TagValue.TRADERS],
     createDate: '15/03/2024',
-    githubLink: 'https://github.com/pancakeswap/pancake-v4-hooks/tree/main/src/pool-cl/limit-order',
+    githubLink: 'https://github.com/cometswap/comet-v4-hooks/tree/main/src/pool-cl/limit-order',
   },
   {
     title: <Trans>Geomean Oracle</Trans>,
@@ -54,7 +54,7 @@ export const HooksConfig: HooksType[] = [
     tags: [TagType.ORACLE, TagType.LBAMM],
     tagsValue: [TagValue.ORACLE, TagValue.LBAMM],
     createDate: '15/03/2024',
-    githubLink: 'https://github.com/pancakeswap/pancake-v4-hooks/tree/main/src/pool-bin/geomean-oracle',
+    githubLink: 'https://github.com/cometswap/comet-v4-hooks/tree/main/src/pool-bin/geomean-oracle',
   },
   {
     title: <Trans>Limit Order</Trans>,
@@ -69,6 +69,7 @@ export const HooksConfig: HooksType[] = [
     tags: [TagType.ORDER_TYPES, TagType.LBAMM, TagType.TRADERS],
     tagsValue: [TagValue.ORDER_TYPES, TagValue.LBAMM, TagValue.TRADERS],
     createDate: '15/03/2024',
-    githubLink: 'https://github.com/pancakeswap/pancake-v4-hooks/tree/main/src/pool-bin/limit-order',
+    githubLink: 'https://github.com/cometswap/comet-v4-hooks/tree/main/src/pool-bin/limit-order',
   },
 ]
+

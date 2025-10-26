@@ -7,3 +7,4 @@ const airdropModal = atomWithStorage('pcs:v3-airdrop-modal', false)
 export function useShowOnceAirdropModal() {
   return useAtom(airdropModal)
 }
+

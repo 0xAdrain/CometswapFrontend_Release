@@ -17,3 +17,4 @@ const useThemeCookie = () => {
 }
 
 export default useThemeCookie
+

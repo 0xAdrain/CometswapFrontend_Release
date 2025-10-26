@@ -1,7 +1,7 @@
-import { Price, Currency } from "@pancakeswap/swap-sdk-core";
-import { formatPrice } from "@pancakeswap/utils/formatFractions";
+import { Price, Currency } from "@cometswap/swap-sdk-core";
+import { formatPrice } from "@cometswap/utils/formatFractions";
 import { useState } from "react";
-import { AtomBox, SyncAltIcon, AutoRenewIcon, Text, Loading, SwapCSS } from "@pancakeswap/uikit";
+import { AtomBox, SyncAltIcon, AutoRenewIcon, Text, Loading, SwapCSS } from "@cometswap/uikit";
 
 interface TradePriceProps {
   price?: Price<Currency, Currency>;

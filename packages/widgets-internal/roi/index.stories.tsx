@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { LanguageProvider } from "@pancakeswap/localization";
-import { CurrencyAmount, Price } from "@pancakeswap/sdk";
-import { ethereumTokens } from "@pancakeswap/tokens";
-import { FeeAmount } from "@pancakeswap/v3-sdk";
-import { Button, MatchBreakpointsProvider } from "@pancakeswap/uikit";
+import { LanguageProvider } from "@cometswap/localization";
+import { CurrencyAmount, Price } from "@cometswap/sdk";
+import { ethereumTokens } from "@cometswap/tokens";
+import { FeeAmount } from "@cometswap/v3-sdk";
+import { Button, MatchBreakpointsProvider } from "@cometswap/uikit";
 import mockData from "swap/LiquidityChartRangeInput/mockData.json";
 
 import { RoiCalculator } from "./RoiCalculator";

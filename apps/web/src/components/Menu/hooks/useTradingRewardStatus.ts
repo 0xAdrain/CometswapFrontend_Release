@@ -4,7 +4,7 @@ import useAllTradingRewardPair, { RewardStatus, RewardType } from 'views/Trading
 export const useTradingRewardStatus = () => {
   const { data: allTradingRewardPairData } = useAllTradingRewardPair({
     status: RewardStatus.ALL,
-    type: RewardType.CAKE_STAKERS,
+    type: RewardType.COMET_STAKERS,
   })
 
   const latestCampaignId = allTradingRewardPairData.campaignIds?.[allTradingRewardPairData.campaignIds.length - 1]
@@ -24,3 +24,4 @@ export const useTradingRewardStatus = () => {
     return ''
   }, [latestCampaignId, allTradingRewardPairData])
 }
+

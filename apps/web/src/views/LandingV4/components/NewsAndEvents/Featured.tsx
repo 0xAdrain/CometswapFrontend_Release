@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, HotIcon, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@cometswap/localization'
+import { Box, Flex, HotIcon, Text, useMatchBreakpoints } from '@cometswap/uikit'
 import { styled } from 'styled-components'
 import { BlogCard } from 'views/LandingV4/components/NewsAndEvents/BlogCard'
 import { useV4Featured } from 'views/LandingV4/hooks/useAllArticle'
@@ -58,3 +58,4 @@ export const Featured = () => {
     </Box>
   )
 }
+
