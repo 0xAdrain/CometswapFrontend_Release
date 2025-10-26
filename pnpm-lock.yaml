@@ -367,7 +367,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/widgets-internal
       '@cyberlab/cyber-app-sdk':
-        specifier: 3.0.0-beta.5
+        specifier: v3.0.0-beta.5
         version: 3.0.0-beta.5(@react-native-async-storage/async-storage@1.24.0(react-native@0.73.6(@babel/core@7.23.9)(@babel/preset-env@7.23.3(@babel/core@7.23.9))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@5.0.10)))(@tanstack/query-core@5.52.0)(@tanstack/react-query@5.52.1(react@18.2.0))(@types/node@18.19.75)(@types/react@18.2.37)(bufferutil@4.0.8)(immer@9.0.21)(react@18.2.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.22.4)
       '@datadog/browser-logs':
         specifier: ^5.8.0
