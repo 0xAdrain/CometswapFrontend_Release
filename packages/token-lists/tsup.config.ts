@@ -9,4 +9,7 @@ export default defineConfig({
   dts: true,
   treeshake: true,
   splitting: true,
+  loader: {
+    '.json': 'json',
+  },
 })
