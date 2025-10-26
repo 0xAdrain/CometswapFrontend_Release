@@ -17,9 +17,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "echo 'Using pre-built dist files'",
-    "dev": "echo 'Using pre-built dist files'",
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "build": "echo 'this package is pre-built'"
   },
   "dependencies": {
     "@cometswap/sdk": "workspace:*",
@@ -27,12 +25,6 @@
     "@cometswap/v3-sdk": "workspace:*",
     "@popperjs/core": "^2.11.8",
     "react-popper": "^2.3.0"
-  },
-  "devDependencies": {
-    "@cometswap/tsconfig": "workspace:*",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.2.17",
-    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

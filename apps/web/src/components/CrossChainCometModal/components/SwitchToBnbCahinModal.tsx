@@ -24,3 +24,5 @@ export const SwitchToBnbChainModal: React.FC<SwitchToBnbChainModalProps> = ({
 }
 
 
+
+

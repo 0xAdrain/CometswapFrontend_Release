@@ -1,4 +1,4 @@
-// import '@cometswap/liquidity-widgets/dist/style.css'
+import '@cometswap/liquidity-widgets/dist/style.css'
 import { useTranslation } from '@cometswap/localization'
 import { Currency } from '@cometswap/sdk'
 import {
@@ -38,13 +38,10 @@ interface ZapLiquidityProps {
   onSubmit?: () => void
 }
 
-// Temporarily disabled for build
-const LiquidityWidget = () => <div>Liquidity Widget temporarily disabled</div>
-
-// const LiquidityWidget = dynamic(
-//   () => import('@cometswap/liquidity-widgets').then((mod) => mod.LiquidityWidget),
-//   { ssr: false },
-// )
+const LiquidityWidget = dynamic(
+  () => import('@cometswap/liquidity-widgets').then((mod) => mod.LiquidityWidget),
+  { ssr: false },
+)
 
 const NATIVE_CURRENCY_ADDRESS = getAddress('0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE')
 
